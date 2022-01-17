@@ -62,9 +62,9 @@
     background: rgba(0, 0, 0, 0.4);
   }
   .stateless-slide .caption h1 {
-    font-size: 60px;
+    font-size: 50px;
     font-weight: 700;
-    line-height: 68px;
+    line-height: 58px;
   }
 }
 @media (max-width: 380px) {
