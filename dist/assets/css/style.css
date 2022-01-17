@@ -1,0 +1,91 @@
+.stateless-slide {
+  position: relative;
+  padding: 0;
+  z-index: 1;
+  display: flex;
+  box-sizing: content-box;
+  min-height: 100vh;
+  flex-shrink: 0;
+}
+@media screen and (max-width: 991px) {
+  .bg-img {
+    background-position: left !important;
+  }
+}
+.stateless-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  background-image: url(../img/bg-xnsh.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+}
+.stateless-slide .container {
+  position: relative;
+  z-index: 2;
+}
+.stateless-slide .caption h1 {
+  font-family: "Archivo Black", sans-serif;
+  font-size: 70px;
+  font-weight: 700;
+  line-height: 80px;
+  letter-spacing: 4px;
+  color: #fff;
+}
+.stateless-slide .caption p {
+  color: #eee;
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
+}
+@media (max-width: 550px) {
+  .stateless-bg {
+    display: none;
+  }
+  .stateless-slide {
+    background-image: url(../img/bg-xnsh.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+  }
+  .stateless-slide:before {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.4);
+  }
+  .stateless-slide .caption h1 {
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 68px;
+  }
+}
+@media (max-width: 380px) {
+  .stateless-slide .caption h1 {
+    font-size: 45px;
+    line-height: 60px;
+  }
+}
+.stateless-slide .social-icon {
+  position: absolute;
+  left: 40px;
+  bottom: 40px;
+  z-index: 8;
+}
+.stateless-slide .social-icon a {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 13px;
+}
