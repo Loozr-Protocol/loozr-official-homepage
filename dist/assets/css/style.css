@@ -31,7 +31,7 @@
   font-family: "Archivo Black", sans-serif;
   font-size: 70px;
   font-weight: 700;
-  line-height: 80px;
+  line-height: 69px;
   letter-spacing: 4px;
   color: #fff;
 }
@@ -63,13 +63,13 @@
   .stateless-slide .caption h1 {
     font-size: 50px;
     font-weight: 700;
-    line-height: 48px;
+    line-height: 47px;
   } 
 }
 @media (max-width: 380px) {
   .stateless-slide .caption h1 {
     font-size: 54px;
-    line-height: 50px;
+    line-height: 48px;
   }
 }
 .stateless-slide .social-icon {
