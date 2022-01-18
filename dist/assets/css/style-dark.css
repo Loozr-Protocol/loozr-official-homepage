@@ -1230,7 +1230,7 @@ body {
     .btn-curve.btn-color:hover span {
       color: #8369F4; }
   .btn-curve.btn-lg {
-    padding: 14px 40px; }
+    padding: 12px 40px; }
     .btn-curve.btn-lg span {
       font-size: 14px; }
   .btn-curve.btn-wit {
@@ -4841,7 +4841,7 @@ body {
   .topnav .logo {
     width: 40px; }
   .btn-curve {
-    padding: 8px 15px; }
+    padding: 10px 35px; }
     .btn-curve span {
       font-size: 12px;
       letter-spacing: 1px; }
