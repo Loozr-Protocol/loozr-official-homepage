@@ -31,7 +31,7 @@
   font-family: "Archivo Black", sans-serif;
   font-size: 70px;
   font-weight: 700;
-  line-height: 69px;
+  line-height: 71px;
   letter-spacing: 4px;
   color: #fff;
 }
@@ -61,15 +61,15 @@
     background: rgba(0, 0, 0, 0.79);
   }
   .stateless-slide .caption h1 {
-    font-size: 50px;
+    font-size: 58px;
     font-weight: 700;
-    line-height: 47px;
+    line-height: 60px;
   }
 }
 @media (max-width: 380px) {
   .stateless-slide .caption h1 {
-    font-size: 54px;
-    line-height: 48px;
+    font-size: 58px;
+    line-height: 60px;
   }
 }
 .stateless-slide .social-icon {
