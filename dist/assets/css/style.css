@@ -53,7 +53,7 @@
     background-attachment: fixed;
   }
   .stateless-slide:before {
-    content: "";
+    /* content: ""; */
     height: 100%;
     width: 100%;
     position: absolute;
