@@ -2802,7 +2802,7 @@ body {
     position: relative;
     z-index: 2; }
   .services .item-box {
-    padding: 80px 30px;
+    padding: 30px 30px;
     text-align: center; }
     /* .services .item-box:nth-of-type(2) {
       background: #181b21; }
@@ -4577,8 +4577,8 @@ body {
       -o-object-position: center center;
       object-position: center center; }
   .footer-half .copyrights {
-    margin-top: 50px;
-    padding: 30px 0; }
+    margin-top: 20px;
+    padding-bottom: 30px; }
     .footer-half .copyrights p {
       font-size: 12px;
       color: #999; }
@@ -4775,7 +4775,7 @@ body {
   .footer-half:after {
     width: 100%; }
   .footer-half .cont {
-    margin-bottom: 50px; }
+    margin-bottom: 20px; }
   .next-prog .box .caption h1,
   .next-prog .box .copy-cap h1 {
     font-size: 40px; } }
