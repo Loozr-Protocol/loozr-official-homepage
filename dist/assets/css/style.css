@@ -50,10 +50,10 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    background-attachment: fixed;
+    /* background-attachment: fixed; */
   }
   .stateless-slide:before {
-    /* content: ""; */
+    content: "";
     height: 100%;
     width: 100%;
     position: absolute;
