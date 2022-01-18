@@ -2805,12 +2805,12 @@ body {
   .services .item-box {
     padding: 80px 30px;
     text-align: center; }
-    .services .item-box:nth-of-type(2) {
+    /* .services .item-box:nth-of-type(2) {
       background: #181b21; }
     .services .item-box:nth-of-type(3) {
-      background: #1a1e25; }
-    .services .item-box:last-of-type {
-      background: #20242c; }
+      background: #1a1e25; } */
+    /* .services .item-box:last-of-type {
+      background: #20242c; } */
     .services .item-box.bg-img {
       position: relative;
       text-align: left;
