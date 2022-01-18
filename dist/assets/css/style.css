@@ -7,6 +7,9 @@
   min-height: 100vh;
   flex-shrink: 0;
 }
+.stateless-slide .caption h1 span {
+    display: block;
+  }
 @media screen and (max-width: 991px) {
   .bg-img {
     background-position: left !important;
@@ -44,6 +47,9 @@
 @media (max-width: 550px) {
   .stateless-bg {
     display: none;
+  }
+  .stateless-slide .caption h1 span {
+    display: inline-block;
   }
   .stateless-slide {
     background-image: url(../img/bg-xnsh.png);
