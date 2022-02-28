@@ -16,7 +16,7 @@ export default function Footer() {
                     ><i className="fab fa-twitter"></i
                     ></a>
                     <a
-                      href="https://discord.gg/rJZJGhRf"
+                      href="https://discord.gg/TBgKqud2"
                       target="_blank" rel="noopener noreferrer"
                       className="icon"
                     ><img src="/img/discord.png" alt="discord"

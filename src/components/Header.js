@@ -25,7 +25,7 @@ export default function Header() {
           <a href="https://twitter.com/officialloozr" target="_blank" rel="noopener noreferrer"
           ><i className="fab fa-twitter"></i
           ></a>
-          <a href="https://discord.gg/rJZJGhRf" target="_blank" rel="noopener noreferrer"
+          <a href="https://discord.gg/TBgKqud2" target="_blank" rel="noopener noreferrer"
           ><img src="/img/discord.png" alt=""
             /></a>
           <a href="https://t.me/+Zi7-M7wMW6A4MjE0" target="_blank" rel="noopener noreferrer"
