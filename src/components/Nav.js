@@ -36,7 +36,7 @@ function Nav() {
             >
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/about">Litepaper</a>
+              <a className="nav-link" href="https://loozr-1.gitbook.io/docs/">Litepaper</a>
           </li>
           <li className="nav-item">
             <a
