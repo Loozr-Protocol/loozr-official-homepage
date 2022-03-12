@@ -49,8 +49,10 @@ export default function WhySection() {
                 <img src="/img/gallery/3.png" alt="The Fans/Followers" />
                 <h6 className="mt-10">The Fans/Followers</h6>
                 <p>
-                  Those who love good music, love to create playlists but are
-                  neglected by their favourite artists.
+                  Those who enjoy good music
+                  enjoy making playlists, but
+                  their favourite musicians
+                  ignore them.
                 </p>
               </div>
             </div>
