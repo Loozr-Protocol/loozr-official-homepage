@@ -25,10 +25,9 @@ export default function AboutSection() {
                   Web 3.0
                 </h3>
                 <p className="wow txt">
-                  Loozr introduces DAO and the stock market to the music
-                  space. It enables creators to tokenize their brand,
-                  contents, and songs; allowing fans to buy and sell these
-                  contents on the blockchain.
+                  Loozr brings DeFi and the stock market to the music industry.
+                  It allows creators to tokenize their brand, content, and songs,
+                  enabling fans to buy, sell, and trade these tokens on the blockchain.
                 </p>
               </div>
             </div>
