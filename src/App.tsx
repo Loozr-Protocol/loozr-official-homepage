@@ -1,5 +1,6 @@
 import Header from './components/Header';
 import AboutSection from './components/AboutSection';
+import ArtistShowcase from "./components/ArtistShowcase";
 import WhySection from './components/WhySection';
 import Community from './components/Community';
 import Footer from './components/Footer';
@@ -25,12 +26,16 @@ function App() {
       <div className="mouse-cursor cursor-outer"></div>
       <div className="mouse-cursor cursor-inner"></div>
 
-      <div className="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+      <div
+        className="dialog-off-canvas-main-canvas"
+        data-off-canvas-main-canvas
+      >
         <Header />
         <div className="main-content">
           <AboutSection />
-          <WhySection/>
-          <Community/>
+          <ArtistShowcase />
+          <WhySection />
+          <Community />
         </div>
         <Footer />
       </div>
