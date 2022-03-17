@@ -1,9 +1,6 @@
-import Header from './components/Header';
-import AboutSection from './components/AboutSection';
-import ArtistShowcase from "./components/ArtistShowcase";
-import WhySection from './components/WhySection';
-import Community from './components/Community';
-import Footer from './components/Footer';
+import Nav from "./components/Nav";
+import Home from "./containers/Home";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -30,13 +27,8 @@ function App() {
         className="dialog-off-canvas-main-canvas"
         data-off-canvas-main-canvas
       >
-        <Header />
-        <div className="main-content">
-          <AboutSection />
-          <ArtistShowcase />
-          <WhySection />
-          <Community />
-        </div>
+        <Nav />
+        <Home />
         <Footer />
       </div>
     </div>

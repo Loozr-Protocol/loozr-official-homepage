@@ -1,9 +1,6 @@
-import Nav from './Nav';
-
 export default function Header() {
   return (
-    <div>
-      <Nav/>
+    <>
       <div className="valign stateless-slide">
         <div className="container">
           <div className="row">
@@ -37,6 +34,6 @@ export default function Header() {
         </div>
       </div>
       <div className="clearfix"></div>
-    </div>
+    </>
   );
 }

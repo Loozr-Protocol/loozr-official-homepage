@@ -38,7 +38,6 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   outline: none;
-  list-style: none;
 }
 
 body {
@@ -3390,6 +3389,36 @@ body {
   margin-bottom: -50px;
   margin-top: auto;
 }
+.services .xfact-item {
+  padding: 5px 30px;
+}
+.services .xfact-item h6 {
+  text-align: center;
+}
+.services .xfact-item ul {
+  padding: 25px;
+  border: solid 3px #8369f4;
+  border-radius: 20px;
+  min-height: 150px;
+}
+.services .xfact-item ul li {
+  position: relative;
+  font-size: 13px;
+  font-weight: 600;
+  padding-left: 8px;
+}
+.services .xfact-item ul li + li {
+  margin-top: 8px;
+}
+.services .xfact-item ul li > span:before {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 1.8px;
+  background: #fff;
+  left: 0px;
+  top: 48%;
+}
 .services .mas-item {
   padding: 40px;
   margin: 50px 0;
@@ -3454,6 +3483,10 @@ body {
   background: #151921;
   position: relative;
 }
+.services .step-item img {
+  width: 65px;
+  margin-bottom: 25px;
+}
 .services .step-item.xbottom {
   bottom: -60px;
 }
@@ -3462,13 +3495,10 @@ body {
 }
 .services .step-item.xcolor {
   background: #8369f4;
-  color: #11141b;
-}
-.services .step-item.xcolor .icon {
-  color: #11141b !important;
+  color: #fff;
 }
 .services .step-item.xcolor p {
-  color: #333;
+  color: #fff;
 }
 .services .step-item .icon {
   color: #8369f4;
@@ -4602,7 +4632,12 @@ body {
   .services .step-item.xbottom,
   .services .step-item.xtop {
     bottom: auto;
-    top: auto;
+  }
+  .services .step-item.xbottom {
+    top: -50px;
+  }
+  .services .step-item.xcenter {
+    bottom: -50px;
   }
   .services .step-item {
     margin: 25px 0;
@@ -4632,6 +4667,12 @@ body {
 }
 
 @media screen and (max-width: 767px) {
+  .services .step-item.xbottom,
+  .services .step-item.xtop,
+  .services .step-item.xcenter {
+    bottom: auto;
+    top: auto;
+  }
   .sm-mb10 {
     margin-bottom: 10px;
   }

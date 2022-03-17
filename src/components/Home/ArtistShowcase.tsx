@@ -1,5 +1,5 @@
-import ShowcaseCard from "./ShowcaseCard";
-import { Artist } from "../config/constants/types";
+import ShowcaseCard from "../ShowcaseCard";
+import { Artist } from "../../config/constants/types";
 
 export default function ArtistShowcase() {
   const artists: Artist[] = [
@@ -67,7 +67,7 @@ export default function ArtistShowcase() {
             <h3 className="wow" data-splitting>
               TOP ARTISTS
             </h3>
-            <span className="tbg">TOP TRACKS</span>
+            <span className="tbg">TOP ARTISTS</span>
           </div>
         </div>
         <div className="clearfix"></div>
