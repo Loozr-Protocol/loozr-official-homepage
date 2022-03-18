@@ -1,7 +1,7 @@
 export default function Team() {
   return (
     <>
-      <div id="block-nvblockteamindex4" className="team-crv section-padding">
+      <div id="block-nvblockteamindex4" className="team-crv section-padding pb-30">
         <div className="container">
           <div className="row">
             <div className="col-lg-5 valign">
