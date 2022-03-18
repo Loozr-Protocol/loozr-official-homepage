@@ -18,7 +18,7 @@ export default function RoadMap() {
       agendas: ["Private Sale", "Feedbacks, R&D"],
     },
     {
-      label: "Q1 2023",
+      label: "Q4 2022",
       agendas: [
         "Loozr V2.0",
         "Year Review & Feedbacks",
@@ -26,7 +26,7 @@ export default function RoadMap() {
       ],
     },
     {
-      label: "Q2 2023",
+      label: "Q1 2023 Onwards",
       agendas: ["Loozr V3.0"],
     },
   ];
@@ -48,16 +48,16 @@ export default function RoadMap() {
         <div>
           <div className="container">
             <div className="row">
-              {quotas.map((quota) => (
-                <div className="col-lg-4 col-md-6">
+              {quotas.map((quota, index) => (
+                <div key={index} className="col-lg-4 col-md-6">
                   <div
                     className="item-box xfact-item text-left wow fadeInLeft"
                     data-wow-delay=".5s"
                   >
                     <h6 className="mt-10">{quota.label}</h6>
                     <ul className="list-unstyled">
-                      {quota.agendas.map((agenda) => (
-                        <li><span></span> {agenda}</li>
+                      {quota.agendas.map((agenda, i) => (
+                        <li key={i}><span></span> {agenda}</li>
                       ))}
                     </ul>
                   </div>
