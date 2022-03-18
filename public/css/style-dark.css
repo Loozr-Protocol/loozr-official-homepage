@@ -1365,7 +1365,6 @@ body {
 
 .sub-title {
   position: relative;
-  padding-left: 20px;
   margin-bottom: 20px;
 }
 .sub-title h6 {
@@ -1374,6 +1373,7 @@ body {
   font-size: 16px;
   text-transform: uppercase;
   letter-spacing: 4px;
+  color: #8369F4;
 }
 .sub-title span {
   width: 4px;

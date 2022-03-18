@@ -6,6 +6,7 @@ import Community from "../components/Home/Community";
 import Services from "../components/Home/Services";
 import RoadMap from "../components/Home/Roadmap";
 import Tokenomics from "../components/Home/Tokenomics";
+import Team from "../components/Home/Team";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
         <Services />
         <RoadMap />
         <Tokenomics />
+        <Team />
         <Community />
       </div>
     </>
