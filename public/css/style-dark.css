@@ -1065,6 +1065,10 @@ span:hover {
   }
 }
 
+.txt {
+  font-family: "Poppins", sans-serif;
+}
+
 .imago {
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
   clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
@@ -1392,9 +1396,12 @@ body {
 }
 
 .main-title {
-  font-weight: 600;
+  font-weight: 600 !important;
   line-height: 1.5;
-  font-size: 21px;
+  font-size: 21px !important;
+  text-transform: none !important;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: normal !important;
   margin-bottom: 15px;
 }
 
