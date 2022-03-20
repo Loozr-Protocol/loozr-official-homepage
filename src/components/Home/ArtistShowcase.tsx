@@ -1,58 +1,10 @@
 import ShowcaseCard from "../ShowcaseCard";
 import { Artist } from "../../config/constants/types";
+import artistsData from "../../config/mock-data/artists.json";
 
 export default function ArtistShowcase() {
-  const artists: Artist[] = [
-    {
-      name: "Crowd Kontroller",
-      tokenName: "$KONTROLLER",
-      isVerified: true,
-      coinPrice: "3.7k LZR",
-      photo: "/img/gallery/4.png",
-    },
-    {
-      name: "Padre El Ferenco",
-      tokenName: "$PADRE",
-      isVerified: false,
-      coinPrice: "4.63k LZR",
-      photo: "/img/gallery/5.png",
-    },
-    {
-      name: "Arlene FL",
-      tokenName: "$ARLENE",
-      isVerified: false,
-      coinPrice: "988.02 LZR",
-      photo: "/img/gallery/6.png",
-    },
-    {
-      name: "Molisa Ifagha",
-      tokenName: "$MOLISA",
-      isVerified: false,
-      coinPrice: "1.89k LZR",
-      photo: "/img/gallery/7.png",
-    },
-    {
-      name: "King Stunna",
-      tokenName: "$STUNNA",
-      isVerified: true,
-      coinPrice: "2.6k LZR",
-      photo: "/img/gallery/8.png",
-    },
-    {
-      name: "Naomi Branch",
-      tokenName: "$NAYOMI",
-      isVerified: false,
-      coinPrice: "970.12 LZR",
-      photo: "/img/gallery/9.png",
-    },
-    {
-      name: "Callmhe Mhizjae",
-      tokenName: "$MHIZJAE",
-      isVerified: false,
-      coinPrice: "888.12 LZR",
-      photo: "/img/gallery/10.png",
-    },
-  ];
+  const artists: Artist[] = artistsData.map((artist) => artist);
+
   return (
     <>
       <div
@@ -77,7 +29,7 @@ export default function ArtistShowcase() {
               <div className="swiper-container">
                 <div className="swiper-wrapper">
                   {artists.map((artist, index) => (
-                    <ShowcaseCard artist={artist} key={index} />
+                    <ShowcaseCard artist={artist} id={index} key={index} />
                   ))}
                 </div>
               </div>

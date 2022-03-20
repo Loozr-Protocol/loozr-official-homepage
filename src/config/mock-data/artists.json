@@ -1,0 +1,128 @@
+[
+  {
+    "name": "Crowd Kontroller",
+    "tokenName": "$KONTROLLER",
+    "isVerified": true,
+    "coinPrice": "3.7k LZR",
+    "coinPriceFull": "3,700",
+    "USDValue": "3,700",
+    "photo": "/img/gallery/4.png",
+    "songs": [
+      {
+        "name": "$SWEET_MONEY",
+        "duration": "3.47 mins",
+        "photo": "/img/songs/1.png",
+        "coinValue": "1,890",
+        "USDValue": "3,700"
+      }
+    ]
+  },
+  {
+    "name": "Padre El Ferenco",
+    "tokenName": "$PADRE",
+    "isVerified": false,
+    "coinPrice": "4.63k LZR",
+    "coinPriceFull": "4,630",
+    "USDValue": "3,700",
+    "photo": "/img/gallery/5.png",
+    "songs": [
+      {
+        "name": "$SWEET_MONEY",
+        "duration": "3.47 mins",
+        "photo": "/img/songs/1.png",
+        "coinValue": "1,890",
+        "USDValue": "3,700"
+      }
+    ]
+  },
+  {
+    "name": "Arlene FL",
+    "tokenName": "$ARLENE",
+    "isVerified": false,
+    "coinPrice": "988.02 LZR",
+    "coinPriceFull": "988.02",
+    "USDValue": "3,700",
+    "photo": "/img/gallery/6.png",
+    "songs": [
+      {
+        "name": "$SWEET_MONEY",
+        "duration": "3.47 mins",
+        "photo": "/img/songs/1.png",
+        "coinValue": "1,890",
+        "USDValue": "3,700"
+      }
+    ]
+  },
+  {
+    "name": "Molisa Ifagha",
+    "tokenName": "$MOLISA",
+    "isVerified": false,
+    "coinPrice": "1.89k LZR",
+    "coinPriceFull": "1,890",
+    "USDValue": "3,700",
+    "photo": "/img/gallery/7.png",
+    "songs": [
+      {
+        "name": "$SWEET_MONEY",
+        "duration": "3.47 mins",
+        "photo": "/img/songs/1.png",
+        "coinValue": "1,890",
+        "USDValue": "3,700"
+      }
+    ]
+  },
+  {
+    "name": "King Stunna",
+    "tokenName": "$STUNNA",
+    "isVerified": true,
+    "coinPrice": "2.6k LZR",
+    "coinPriceFull": "2,600",
+    "USDValue": "3,700",
+    "photo": "/img/gallery/8.png",
+    "songs": [
+      {
+        "name": "$SWEET_MONEY",
+        "duration": "3.47 mins",
+        "photo": "/img/songs/1.png",
+        "coinValue": "1,890",
+        "USDValue": "3,700"
+      }
+    ]
+  },
+  {
+    "name": "Naomi Branch",
+    "tokenName": "$NAYOMI",
+    "isVerified": false,
+    "coinPrice": "970.12 LZR",
+    "coinPriceFull": "970.12",
+    "USDValue": "3,700",
+    "photo": "/img/gallery/9.png",
+    "songs": [
+      {
+        "name": "$SWEET_MONEY",
+        "duration": "3.47 mins",
+        "photo": "/img/songs/1.png",
+        "coinValue": "1,890",
+        "USDValue": "3,700"
+      }
+    ]
+  },
+  {
+    "name": "Callmhe Mhizjae",
+    "tokenName": "$MHIZJAE",
+    "isVerified": false,
+    "coinPrice": "888.12 LZR",
+    "coinPriceFull": "888.12",
+    "USDValue": "3,700",
+    "photo": "/img/gallery/10.png",
+    "songs": [
+      {
+        "name": "$SWEET_MONEY",
+        "duration": "3.47 mins",
+        "photo": "/img/songs/1.png",
+        "coinValue": "1,890",
+        "USDValue": "3,700"
+      }
+    ]
+  }
+]

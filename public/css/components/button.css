@@ -46,3 +46,6 @@
   background: transparent linear-gradient(195deg, #8369f4 0%, #f039e2 100%) 0%
     0% no-repeat padding-box;
 }
+.btn-accent {
+  background: #8369F4;
+}

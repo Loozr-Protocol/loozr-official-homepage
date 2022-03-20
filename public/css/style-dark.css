@@ -61,6 +61,13 @@ a:hover {
   color: inherit;
 }
 
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid #536079;
+}
+
 h1 {
   font-size: 55px;
 }
@@ -1377,7 +1384,7 @@ body {
   font-size: 16px;
   text-transform: uppercase;
   letter-spacing: 4px;
-  color: #8369F4;
+  color: #8369f4;
 }
 .sub-title span {
   width: 4px;
@@ -3157,6 +3164,27 @@ body {
   z-index: 99999;
 }
 
+.profile-summary-li li {
+  color: #536079;
+  font-size: 15px;
+  line-height: 26px;
+}
+.profile-summary-li li:not(:last-child) {
+  margin-right: 2rem;
+}
+
+.wrip-wrap {
+  height: 1.2rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.anchor {
+  color: #62fa85;
+}
+
 /* ====================== [ end showcase ] ====================== */
 /* ====================== [ Start Intro ] ====================== */
 .about .content .co-tit {
@@ -3715,6 +3743,35 @@ body {
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
   transition: all 0.4s;
+}
+
+.profile-content h6 {
+  font-size: 13px;
+  line-height: 23px;
+  color: #536079;
+}
+
+.profile-content h3 {
+  font-size: 26px;
+  color: #fff;
+}
+
+.profile-content h5 {
+  font-weight: 500;
+  font-size: 14px;
+  color: #fff;
+  line-height: 29px;
+}
+
+.profile-content img {
+  width: 18px;
+  height: 18px;
+}
+
+.read-or-hide {
+  color: rgb(192, 192, 192);
+  cursor: pointer;
+  color: #8369f4;
 }
 
 /* ====================== [ End brands ] ====================== */
@@ -4411,6 +4468,38 @@ body {
 .footer-half .copyrights p a {
   color: #8369f4;
 }
+.tiny-txt {
+  bottom: 0.04em;
+  font-size: 55%;
+}
+h4.vxcaption {
+  font-weight: 500;
+  font-size: 17px;
+  color: #536079;
+}
+p.vxcaption {
+  color: #536079;
+}
+.img-icon {
+  width: 16px;
+  height: 16px;
+}
+.vxthumbnail {
+  height: 70px;
+  width: 70px;
+}
+.vxdescription {
+  margin-left: 15px;
+}
+.vxdescription h4 {
+  color: #fff;
+  font-weight: bold;
+  font-size: 17px;
+}
+.vxdescription p {
+  font-size: 13px;
+  font-weight: 500;
+}
 
 /* ====================== [ End Footer ] ====================== */
 /* ====================== [ Start Responsive ] ====================== */
@@ -4673,12 +4762,29 @@ body {
   }
 }
 
+@media screen and (min-width: 767px) {
+  .mt-md-100 {
+    margin-top: 100px;
+  }
+  .partial-offset-md-1 {
+    margin-left: 3.1666665%;
+  }
+}
 @media screen and (max-width: 767px) {
   .services .step-item.xbottom,
   .services .step-item.xtop,
   .services .step-item.xcenter {
     bottom: auto;
     top: auto;
+  }
+  .sm-mt10 {
+    margin-top: 10px;
+  }
+  .sm-mt20 {
+    margin-top: 20px;
+  }
+  .sm-mt30 {
+    margin-top: 30px;
   }
   .sm-mb10 {
     margin-bottom: 10px;
