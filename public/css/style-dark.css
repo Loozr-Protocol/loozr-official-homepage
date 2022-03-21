@@ -3363,7 +3363,7 @@ body {
   bottom: 0px;
   right: 0px;
   left: 0px;
-  background: #8369F4;
+  background: #8369f4;
   opacity: 0.3;
   border-radius: 50%;
   z-index: -1;
@@ -4544,6 +4544,14 @@ p.vxcaption {
 
 /* ====================== [ End Footer ] ====================== */
 /* ====================== [ Start Responsive ] ====================== */
+@media screen and (min-width: 991px) {
+  .navbar .navbar-nav .nav-btn {
+    margin-top: 15px;
+    background: rgba(83, 96, 121, 0.5);
+    padding: 10px 25px;
+    border-radius: 20px;
+  }
+}
 @media screen and (max-width: 991px) {
   .bg-img {
     background-position: center !important;
