@@ -2,9 +2,11 @@ import { Song } from "../../config/constants/types";
 
 interface SongTableProps {
   song: Song;
+  id: number;
+  songId: number;
 }
 
-export default function SongTable({ song }: SongTableProps) {
+export default function SongTable({ id, songId, song }: SongTableProps) {
   return (
     <>
       <div className="row mt-40">
@@ -34,7 +36,7 @@ export default function SongTable({ song }: SongTableProps) {
                 className="dropdown-menu"
                 aria-labelledby="dropdownMenuButton"
               >
-                <a className="dropdown-item" href="/">
+                <a className="dropdown-item" href={`/artists/${id}/songs/${songId}`}>
                   View Song
                 </a>
                 <a className="dropdown-item" href="/">

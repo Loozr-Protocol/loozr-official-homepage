@@ -1091,6 +1091,25 @@ span:hover {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 
+.img1-thumb {
+  width: 100%;
+  max-width: 490px;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center center;
+  object-position: center center;
+  border-radius: 10px;
+}
+
+.d-thumb {
+  position: absolute;
+  top: 0;
+  left: 20%;
+  z-index: -1;
+  border-radius: 0;
+}
+
 /* ====================== [ End Text Animation & Images ] ====================== */
 /* ====================== [ Start Cursor Style ] ====================== */
 body {
@@ -3330,7 +3349,7 @@ body {
   height: 45px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
-  line-height: 100px;
+  line-height: 40px;
   text-align: center;
   position: relative;
   -webkit-transition: all 0.5s;
@@ -3344,7 +3363,7 @@ body {
   bottom: 0px;
   right: 0px;
   left: 0px;
-  background: #fff;
+  background: #8369F4;
   opacity: 0.3;
   border-radius: 50%;
   z-index: -1;
@@ -3756,6 +3775,12 @@ body {
   color: #fff;
 }
 
+.profile-content h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+}
+
 .profile-content h5 {
   font-weight: 500;
   font-size: 14px;
@@ -3766,6 +3791,22 @@ body {
 .profile-content img {
   width: 18px;
   height: 18px;
+}
+
+.profile-content img.profile {
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+}
+
+.profile-content span {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.info-block span {
+  font-weight: normal;
+  color: #536079;
 }
 
 .read-or-hide {

@@ -3,6 +3,7 @@ import Nav from "./components/Nav";
 import Home from "./containers/Home";
 import ArtistDashboard from "./containers/ArtistDashboard";
 import Footer from "./components/Footer";
+import SongDashboard from "./containers/SongDashboard";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/artists/:id" element={<ArtistDashboard />} />
+            <Route path="/artists/:id/songs/:songId" element={<SongDashboard />} />
           </Routes>
           <Footer />
         </div>

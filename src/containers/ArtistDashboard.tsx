@@ -19,7 +19,8 @@ export default function ArtistDashboard() {
       </>
     );
   }
-  const artist = artists[parseInt(id)];
+  const artistId = parseInt(id);
+  const artist = artists[artistId];
 
   return (
     <>
@@ -101,8 +102,8 @@ export default function ArtistDashboard() {
           <div className="container d-flex justify-content-center mt-20">
             <div className="col-lg-10">
               <h4 className="vxcaption">Songs Tokens by Artist $KONTROLLER</h4>
-              {artist.songs.map((song) => (
-                <SongTable song={song} />
+              {artist.songs.map((song, index) => (
+                <SongTable song={song} songId={index} id={artistId} />
               ))}
             </div>
           </div>
