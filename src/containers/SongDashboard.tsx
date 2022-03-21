@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
 import { Artist } from "../config/constants/types";
-import ProfileSummary from "../components/ProfileSummary";
 import artistsData from "../config/mock-data/artists.json";
 import ReadMore from "../components/Readmore";
 
