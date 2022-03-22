@@ -1728,9 +1728,8 @@ body {
   cursor: pointer;
 }
 .navbar .logo {
-  width: 50px;
+  width: 100px;
 }
-
 .nav-scroll {
   background: #11141b;
   border-color: #181b21;
@@ -4633,7 +4632,7 @@ p.vxcaption {
   }
   .navbar .logo {
     margin-left: 15px;
-    width: 50px;
+    width: 90px;
   }
   .nav-scroll .navbar-collapse .nav-link,
   .light .navbar-collapse .nav-link {
@@ -4909,7 +4908,7 @@ p.vxcaption {
     bottom: 15px;
   }
   .navbar .logo {
-    width: 40px;
+    width: 90px;
   }
   .hamenu .menu-links .main-menu > li {
     font-size: 24px;

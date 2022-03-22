@@ -4,7 +4,7 @@ function Nav() {
       <div className="container">
         <div id="block-avo-branding">
           <a href="/" className="logo">
-            <img className="logo-light" src="/img/logo-light.png" alt="Home" />
+            <img className="logo-light" src="/img/logo-light.svg" alt="Home" />
           </a>
         </div>
         <button
