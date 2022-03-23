@@ -20,12 +20,14 @@ export default function ShowcaseCard({ artist, id }: ShowcaseCardProps) {
         </div>
         <div className="cont">
           <h4 className="d-flex align-items-center">
-            <span>{artist.name} </span>
+            <a href={`/artists/${id}`}>{artist.name} </a>
             {artist.isVerified ? (
               <img src="/img/check-circle.png" alt="check" />
             ) : null}
           </h4>
-          <h3>{artist.tokenName}</h3>
+          <a href={`/artists/${id}`}>
+            <h3>{artist.tokenName}</h3>
+          </a>
           <div className="buy-section-xml">
             <span>{artist.coinPrice} ~ </span>
             &nbsp;
