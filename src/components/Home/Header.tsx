@@ -24,11 +24,14 @@ export default function Header() {
                   Share their success in cryptocurrencies on the Metaverse.
                 </p>
                 <div className="mt-20">
-                  <a href="/" className="button btn-lit mr-3">
-                    <span>Coming Soon</span>
+                  <a
+                    href="https://loozr-1.gitbook.io/docs/"
+                    className="button btn-lit mr-3"
+                  >
+                    <span>Learn more</span>
                   </a>
                   <a href="/" className="button btn-primary btn-lit">
-                    <span>Coming Soon</span>
+                    <span>Join Waitlist</span>
                   </a>
                 </div>
               </div>
