@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Header() {
   return (
     <>
@@ -30,9 +32,9 @@ export default function Header() {
                   >
                     <span>Learn more</span>
                   </a>
-                  <a href="/" className="button btn-primary btn-lit">
+                  <Link to="/" className="button btn-primary btn-lit">
                     <span>Join Waitlist</span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

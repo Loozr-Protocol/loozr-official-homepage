@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Song } from "../../config/constants/types";
 
 interface SongTableProps {
@@ -36,15 +37,15 @@ export default function SongTable({ id, songId, song }: SongTableProps) {
                 className="dropdown-menu"
                 aria-labelledby="dropdownMenuButton"
               >
-                <a className="dropdown-item" href={`/artists/${id}/songs/${songId}`}>
+                <Link className="dropdown-item" to={`/artists/${id}/songs/${songId}`}>
                   View Song
-                </a>
-                <a className="dropdown-item" href="/">
+                </Link>
+                <Link className="dropdown-item" to="/">
                   Copy Song Link
-                </a>
-                <a className="dropdown-item" href="/">
+                </Link>
+                <Link className="dropdown-item" to="/">
                   How It Works
-                </a>
+                </Link>
               </div>
             </div>
           </div>

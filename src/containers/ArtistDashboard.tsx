@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Artist } from "../config/constants/types";
 import ProfileSummary from "../components/ProfileSummary";
 import artistsData from "../config/mock-data/artists.json";
@@ -52,9 +52,9 @@ export default function ArtistDashboard() {
                       />
                     </div>
                     <div className="d-flex align-items-center mt-20">
-                      <a href="/" className="button btn-accent">
+                      <Link to="/" className="button btn-accent">
                         Buy Artist Coin
-                      </a>
+                      </Link>
                       <div className="dropdown dropdown-dialog ml-3">
                         <button
                           className="btn btn-menu"

@@ -1,11 +1,13 @@
+import { Link } from "react-router-dom";
+
 function Nav() {
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="container">
         <div id="block-avo-branding">
-          <a href="/" className="logo">
+          <Link to="/" className="logo">
             <img className="logo-light" src="/img/logo-light.svg" alt="Home" />
-          </a>
+          </Link>
         </div>
         <button
           className="navbar-toggler"
