@@ -1,21 +1,21 @@
 [
   {
-    "name": "Crowd Kontroller",
-    "tokenName": "$KONTROLLER",
+    "name": "Goya Menor",
+    "tokenName": "$GOYA_MENOR",
     "isVerified": true,
-    "coinPrice": "3.7k LZR",
-    "coinPriceFull": "3,700",
-    "USDValue": "3,700",
+    "coinPrice": "1k LZR",
+    "coinPriceFull": "1000.20",
+    "USDValue": "1,700.34",
     "photo": "/img/gallery/4.png",
     "songs": [
       {
-        "name": "$SWEET_MONEY",
-        "tokenName": "$SWEET_MONEY",
+        "name": "$AMENO",
+        "tokenName": "$AMENO",
         "duration": "3.47 mins",
         "listens": "3.47M",
         "photo": "/img/songs/1.png",
-        "coinValue": "1,890",
-        "USDValue": "3,700"
+        "coinValue": "2,022.93",
+        "USDValue": "3,438.981"
       }
     ]
   },
@@ -23,19 +23,39 @@
     "name": "Padre El Ferenco",
     "tokenName": "$PADRE",
     "isVerified": false,
-    "coinPrice": "4.63k LZR",
-    "coinPriceFull": "4,630",
-    "USDValue": "3,700",
+    "coinPrice": "902.07 LZR",
+    "coinPriceFull": "902.07",
+    "USDValue": "6,801.07",
     "photo": "/img/gallery/5.png",
     "songs": [
       {
-        "name": "$SWEET_MONEY",
-        "tokenName": "$SWEET_MONEY",
+        "name": "$LOST_TIME",
+        "tokenName": "$LOST_TIME",
         "duration": "3.47 mins",
         "listens": "3.47M",
         "photo": "/img/songs/1.png",
-        "coinValue": "1,890",
-        "USDValue": "3,700"
+        "coinValue": "967.34",
+        "USDValue": "1,644.478"
+      }
+    ]
+  },
+  {
+    "name": "Crowd Kontroller",
+    "tokenName": "$KONTROLLER",
+    "isVerified": true,
+    "coinPrice": "981.77 LZR",
+    "coinPriceFull": "981.77",
+    "USDValue": "1,669.009",
+    "photo": "/img/gallery/6.png",
+    "songs": [
+      {
+        "name": "$MONEY_SWEET",
+        "tokenName": "$MONEY_SWEET",
+        "duration": "3.47 mins",
+        "listens": "3.47M",
+        "photo": "/img/songs/1.png",
+        "coinValue": "1,300.01",
+        "USDValue": "2,210.017"
       }
     ]
   },
@@ -43,39 +63,39 @@
     "name": "Arlene FL",
     "tokenName": "$ARLENE",
     "isVerified": false,
-    "coinPrice": "988.02 LZR",
-    "coinPriceFull": "988.02",
-    "USDValue": "3,700",
-    "photo": "/img/gallery/6.png",
+    "coinPrice": "405.09 LZR",
+    "coinPriceFull": "405.09",
+    "USDValue": "688.653",
+    "photo": "/img/gallery/7.png",
     "songs": [
       {
-        "name": "$SWEET_MONEY",
-        "tokenName": "$SWEET_MONEY",
+        "name": "$FREAK",
+        "tokenName": "$FREAK",
         "duration": "3.47 mins",
         "listens": "3.47M",
         "photo": "/img/songs/1.png",
-        "coinValue": "1,890",
-        "USDValue": "3,700"
+        "coinValue": "909.44",
+        "USDValue": "1,546.048"
       }
     ]
   },
   {
-    "name": "Molisa Ifagha",
-    "tokenName": "$MOLISA",
+    "name": "Sammy Hart",
+    "tokenName": "$HART",
     "isVerified": false,
-    "coinPrice": "1.89k LZR",
-    "coinPriceFull": "1,890",
-    "USDValue": "3,700",
-    "photo": "/img/gallery/7.png",
+    "coinPrice": "784.22 LZR",
+    "coinPriceFull": "784.22",
+    "USDValue": "1,333.174",
+    "photo": "/img/gallery/8.png",
     "songs": [
       {
-        "name": "$SWEET_MONEY",
-        "tokenName": "$SWEET_MONEY",
+        "name": "$THIS_YEAR",
+        "tokenName": "$THIS_YEAR",
         "duration": "3.47 mins",
         "listens": "3.47M",
         "photo": "/img/songs/1.png",
-        "coinValue": "1,890",
-        "USDValue": "3,700"
+        "coinValue": "545.38",
+        "USDValue": "927.146"
       }
     ]
   },
@@ -83,19 +103,19 @@
     "name": "King Stunna",
     "tokenName": "$STUNNA",
     "isVerified": true,
-    "coinPrice": "2.6k LZR",
-    "coinPriceFull": "2,600",
-    "USDValue": "3,700",
-    "photo": "/img/gallery/8.png",
+    "coinPrice": "808.88 LZR",
+    "coinPriceFull": "808.88",
+    "USDValue": "1,375.096",
+    "photo": "/img/gallery/9.png",
     "songs": [
       {
-        "name": "$SWEET_MONEY",
-        "tokenName": "$SWEET_MONEY",
+        "name": "$POSE",
+        "tokenName": "$POSE",
         "duration": "3.47 mins",
         "listens": "3.47M",
         "photo": "/img/songs/1.png",
-        "coinValue": "1,890",
-        "USDValue": "3,700"
+        "coinValue": "344.99",
+        "USDValue": "586.483"
       }
     ]
   },
@@ -103,19 +123,39 @@
     "name": "Naomi Branch",
     "tokenName": "$NAYOMI",
     "isVerified": false,
-    "coinPrice": "970.12 LZR",
-    "coinPriceFull": "970.12",
-    "USDValue": "3,700",
-    "photo": "/img/gallery/9.png",
+    "coinPrice": "399.20 LZR",
+    "coinPriceFull": "399.20",
+    "USDValue": "678.64",
+    "photo": "/img/gallery/10.png",
     "songs": [
       {
-        "name": "$SWEET_MONEY",
-        "tokenName": "$SWEET_MONEY",
+        "name": "$AYE",
+        "tokenName": "$AYE",
         "duration": "3.47 mins",
         "listens": "3.47M",
         "photo": "/img/songs/1.png",
-        "coinValue": "1,890",
-        "USDValue": "3,700"
+        "coinValue": "321.94",
+        "USDValue": "547.298"
+      }
+    ]
+  },
+  {
+    "name": "Molisa Ifagha",
+    "tokenName": "$MOLISA",
+    "isVerified": false,
+    "coinPrice": "566.84 LZR",
+    "coinPriceFull": "566.84",
+    "USDValue": "963.628",
+    "photo": "/img/gallery/11.png",
+    "songs": [
+      {
+        "name": "$NOTHING_SUP",
+        "tokenName": "$NOTHING_SUP",
+        "duration": "3.47 mins",
+        "listens": "3.47M",
+        "photo": "/img/songs/1.png",
+        "coinValue": "700.45",
+        "USDValue": "1,190.765"
       }
     ]
   },
@@ -123,19 +163,19 @@
     "name": "Callmhe Mhizjae",
     "tokenName": "$MHIZJAE",
     "isVerified": false,
-    "coinPrice": "888.12 LZR",
-    "coinPriceFull": "888.12",
-    "USDValue": "3,700",
-    "photo": "/img/gallery/10.png",
+    "coinPrice": "446.93 LZR",
+    "coinPriceFull": "446.93",
+    "USDValue": "759.781",
+    "photo": "/img/gallery/12.png",
     "songs": [
       {
-        "name": "$SWEET_MONEY",
-        "tokenName": "$SWEET_MONEY",
+        "name": "$GRATITUDE",
+        "tokenName": "$GRATITUDE",
         "duration": "3.47 mins",
         "listens": "3.47M",
         "photo": "/img/songs/1.png",
-        "coinValue": "1,890",
-        "USDValue": "3,700"
+        "coinValue": "602.97",
+        "USDValue": "1,025.049"
       }
     ]
   }
