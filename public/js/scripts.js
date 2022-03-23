@@ -162,7 +162,7 @@ jQuery(function () {
             spaceBetween: 0
           },
           1200: {
-            slidesPerView: 5.2,
+            slidesPerView: 4.5,
             spaceBetween: 0
           },
         },
