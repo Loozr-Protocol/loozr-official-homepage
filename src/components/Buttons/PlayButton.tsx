@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
 import PlayIcon from "../../assets/img/play.png";
 import PauseIcon from "../../assets/img/play.png";
+import { Song } from "../../config/constants/types";
 
-const PlayButton = (url: string) => {
-  const [audio] = useState(new Audio(url));
+interface PlayButtonProps {
+  song: Song;
+}
+
+const PlayButton = ({ song }: PlayButtonProps) => {
+  const [audio] = useState(new Audio(song.url));
   const [playing, setPlaying] = useState(false);
 
   const toggle = () => setPlaying(!playing);
@@ -20,9 +25,11 @@ const PlayButton = (url: string) => {
   });
 
   return (
-    <span className="play-butn" onClick={toggle}>
-      <span className="d-flex justify-content-center align-items-center icon">
-        <img src={playing ? PauseIcon : PlayIcon} alt="play button" />
+    <span className="audio-wrapper">
+      <span onClick={toggle} className="play-butn">
+        <span className="icon">
+          <img src={playing ? PauseIcon : PlayIcon} alt="play" />
+        </span>
       </span>
     </span>
   );

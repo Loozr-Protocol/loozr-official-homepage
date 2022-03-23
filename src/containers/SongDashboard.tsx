@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { Artist } from "../config/constants/types";
 import artistsData from "../config/mock-data/artists.json";
 import ReadMore from "../components/Readmore";
+import PlayButton from "../components/Buttons/PlayButton";
 
 export default function ArtistDashboard() {
   const artists: Artist[] = artistsData.map((artist) => artist);
@@ -85,13 +86,7 @@ rewards as ${song.tokenName} investor.`}
                       />
                     </div>
                     <div className="d-flex align-items-center mt-20">
-                      <div className="audio-wrapper">
-                        <a href="/" className="play-butn">
-                          <span className="icon">
-                            <img src="/img/play.png" alt="play" />
-                          </span>
-                        </a>
-                      </div>
+                      <PlayButton song={song} />
                       <a href="/" className="button btn-accent ml-3">
                         Buy Artist Coin
                       </a>

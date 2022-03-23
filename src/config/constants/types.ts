@@ -8,13 +8,14 @@ export interface Track {
 }
 
 export interface Song {
-  name: string,
-  listens: string,
-  tokenName: string,
-  duration: string,
-  photo: string,
-  coinValue: string,
-  USDValue: string
+  name: string;
+  listens: string;
+  tokenName: string;
+  duration: string;
+  photo: string;
+  coinValue: string;
+  USDValue: string;
+  url: string;
 }
 
 export interface Artist {
