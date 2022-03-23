@@ -31,7 +31,7 @@ export default function AboutSection() {
         </div>
         <div className="clearfix"></div>
         <div className="container d-flex flex-column align-items-center">
-          <div className="col-md-5 img-mons">
+          <div className="mx-auto col-md-6 img-mons">
             <div className="img1 wow imago" data-wow-delay=".5s">
               <img src="/img/intro.png" alt="" />
             </div>
