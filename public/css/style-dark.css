@@ -2874,6 +2874,7 @@ body {
   background: #0c0f16;
   position: relative;
   z-index: 3;
+  overflow-x: hidden;
 }
 
 /* ====================== [ End Slider ] ====================== */
@@ -3919,7 +3920,7 @@ body {
 }
 
 .slide-media .item-img {
-  padding: 10px;
+  padding: 0px;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -3927,10 +3928,6 @@ body {
   right: 0;
   border: 0;
   border-radius: inherit;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-color: rgba(120, 120, 120, 0.1);
   display: flex;
   -webkit-box-pack: start;
   -ms-flex-pack: center;

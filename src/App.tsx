@@ -1,3 +1,4 @@
+import React, { Component } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Nav from "./components/Nav";
 import Home from "./containers/Home";
@@ -5,15 +6,22 @@ import ArtistDashboard from "./containers/ArtistDashboard";
 import Footer from "./components/Footer";
 import SongDashboard from "./containers/SongDashboard";
 
-function App() {
-  return (
-    <Router>
-      <div>
-        <a href="#main-content" className="visually-hidden focusable">
-          Skip to main content
-        </a>
+export default class App extends Component {
+  constructor(props: any) {
+    super(props);
+    this.state = {};
+    
+  }
 
-        <div id="preloader"></div>
+  render() {
+    return (
+      <Router>
+        <div>
+          <a href="#main-content" className="visually-hidden focusable">
+            Skip to main content
+          </a>
+
+          <div id="preloader"></div>
         <div className="progress-wrap cursor-pointer">
           <svg
             className="progress-circle svg-content"
@@ -24,24 +32,26 @@ function App() {
             <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
           </svg>
         </div>
-        <div className="mouse-cursor cursor-outer"></div>
-        <div className="mouse-cursor cursor-inner"></div>
+          <div className="mouse-cursor cursor-outer"></div>
+          <div className="mouse-cursor cursor-inner"></div>
 
-        <div
-          className="dialog-off-canvas-main-canvas"
-          data-off-canvas-main-canvas
-        >
-          <Nav />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/artists/:id" element={<ArtistDashboard />} />
-            <Route path="/artists/:id/songs/:songId" element={<SongDashboard />} />
-          </Routes>
-          <Footer />
+          <div
+            className="dialog-off-canvas-main-canvas"
+            data-off-canvas-main-canvas
+          >
+            <Nav />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/artists/:id" element={<ArtistDashboard />} />
+              <Route
+                path="/artists/:id/songs/:songId"
+                element={<SongDashboard />}
+              />
+            </Routes>
+            <Footer />
+          </div>
         </div>
-      </div>
-    </Router>
-  );
+      </Router>
+    );
+  }
 }
-
-export default App;

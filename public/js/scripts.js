@@ -126,70 +126,6 @@ jQuery(function () {
         jQuery(".main-menu .sub-menu").removeClass("sub-open");
     });
 
-
-    /* ===============================  Swiper slider  =============================== */
-
-
-    var swiperWorkMetro = new Swiper('.metro .swiper-container', {
-        slidesPerView: 2,
-        spaceBetween: 0,
-        speed: 1000,
-        loop: true,
-        centeredSlides: false,
-        autoplay: {
-          delay: 5000,
-        },
-
-        breakpoints: {
-          576: {
-            slidesPerView: 2,
-            spaceBetween: 0
-          },
-          640: {
-            slidesPerView: 2.5,
-            spaceBetween: 0
-          },
-          768: {
-            slidesPerView: 3,
-            spaceBetween: 0
-          },
-          901: {
-            slidesPerView: 3.4,
-            spaceBetween: 0
-          },
-          920: {
-            slidesPerView: 4.5,
-            spaceBetween: 0
-          },
-          1200: {
-            slidesPerView: 4.5,
-            spaceBetween: 0
-          },
-        },
-
-        pagination: {
-            el: '.metro .swiper-pagination',
-            type: 'progressbar',
-        },
-
-        navigation: {
-            nextEl: '.metro .swiper-button-next',
-            prevEl: '.metro .swiper-button-prev'
-        },
-    });
-
-
-    /* ===============================  Var Background image  =============================== */
-
-    var pageSection = jQuery(".bg-img, section");
-    pageSection.each(function (indx) {
-
-        if (jQuery(this).attr("data-background")) {
-            jQuery(this).css("background-image", "url(" + jQuery(this).data("background") + ")");
-        }
-    });
-
-
     /* ===============================  slick Carousel  =============================== */
     jQuery('.team .team-container').slick({
         slidesToShow: 4,
@@ -367,18 +303,6 @@ function hasScrolled() {
 
 /* ===============================  Preloader page  =============================== */
 
-paceOptions = {
-    ajax: true,
-    document: true,
-    eventLag: false
-};
-
-Pace.on('done', function () {
-    jQuery('#preloader').addClass("isdone");
-    jQuery('.loading-text').addClass("isdone");
-});
-
-
 /* ===============================  Scroll back to top  =============================== */
 
 jQuery(document).ready(function () {
@@ -465,6 +389,3 @@ jQuery(window).scroll(function () {
     });
 
 });
-
-/* ===============================  Swiper showcases with data  =============================== */
-

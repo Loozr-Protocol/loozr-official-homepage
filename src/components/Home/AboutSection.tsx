@@ -1,7 +1,7 @@
 export default function AboutSection() {
   const tbgStyle = {
     bottom: "100px",
-    "font-size": "14vw",
+    "fontSize": "14vw",
   };
   return (
     <div>

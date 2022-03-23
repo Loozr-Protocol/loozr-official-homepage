@@ -1,6 +1,7 @@
 import ShowcaseCard from "../ShowcaseCard";
 import { Artist } from "../../config/constants/types";
 import artistsData from "../../config/mock-data/artists.json";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 export default function ArtistShowcase() {
   const artists: Artist[] = artistsData.map((artist) => artist);
@@ -26,13 +27,45 @@ export default function ArtistShowcase() {
         <div className="container ontop">
           <div className="row">
             <div className="col-lg-12 no-padding">
-              <div className="swiper-container">
-                <div className="swiper-wrapper">
-                  {artists.map((artist, index) => (
-                    <ShowcaseCard artist={artist} id={index} key={index} />
-                  ))}
-                </div>
-              </div>
+              <Swiper
+                autoplay={{ delay: 5000 }}
+                loop={true}
+                speed={1000}
+                spaceBetween={0}
+                slidesPerView={2}
+                breakpoints={{
+                  576: {
+                    slidesPerView: 2,
+                    spaceBetween: 0,
+                  },
+                  640: {
+                    slidesPerView: 2.5,
+                    spaceBetween: 0,
+                  },
+                  768: {
+                    slidesPerView: 3,
+                    spaceBetween: 0,
+                  },
+                  901: {
+                    slidesPerView: 3.4,
+                    spaceBetween: 0,
+                  },
+                  920: {
+                    slidesPerView: 4.5,
+                    spaceBetween: 0,
+                  },
+                  1200: {
+                    slidesPerView: 4.5,
+                    spaceBetween: 0,
+                  },
+                }}
+              >
+                {artists.map((artist, index) => (
+                  <SwiperSlide key={index}>
+                    <ShowcaseCard artist={artist} id={index} />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             </div>
           </div>
         </div>
