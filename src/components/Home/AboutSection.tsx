@@ -5,7 +5,7 @@ export default function AboutSection() {
   };
   return (
     <div>
-      <div id="block-nvblockaboutindex" className="about section-padding mt-80">
+      <div id="block-nvblockaboutindex" className="about section-padding mt-30">
         <div className="container">
           <div className="sec-head mb-3 custom-font d-flex flex-column align-items-center">
             <div className="content col-md-6">

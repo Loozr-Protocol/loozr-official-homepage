@@ -19,9 +19,9 @@
   color: #ffffff;
   position: relative;
   overflow: hidden;
-   -webkit-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s;
+   -webkit-transition: all 0.7s;
+  -o-transition: all 0.7s;
+  transition: all 0.7s;
 }
 .button:hover:after {
   width: 50px;

@@ -621,6 +621,10 @@ span:hover {
   margin-top: 100px !important;
 }
 
+.mt-130 {
+  margin-top: 130px !important;
+}
+
 /*-------------------------------------------------------
 			 margin-bottom  (0/100) +5
 -------------------------------------------------------*/
@@ -4546,7 +4550,7 @@ p.vxcaption {
 @media screen and (min-width: 991px) {
   .navbar .navbar-nav .nav-btn {
     margin-top: 15px;
-    background: rgba(83, 96, 121, 0.5);
+    background: rgba(255, 255, 255, 0.3);
     padding: 10px 25px;
     border-radius: 20px;
   }
