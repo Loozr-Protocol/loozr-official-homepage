@@ -8,6 +8,7 @@ export interface Track {
 }
 
 export interface Song {
+  author: string;
   name: string;
   listens: string;
   tokenName: string;
@@ -16,6 +17,7 @@ export interface Song {
   coinValue: string;
   USDValue: string;
   url: string;
+  audio?: HTMLAudioElement;
 }
 
 export interface Artist {

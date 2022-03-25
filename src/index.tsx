@@ -1,10 +1,12 @@
 import React from "react";
+import { Provider } from "react-redux";
 import ReactDOM from "react-dom";
 import Swiper, { Autoplay } from "swiper";
 import "./index.css";
 import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
+import store from './state/store';
 
 declare global {
   interface Window {
@@ -76,7 +78,9 @@ window.paceOptions = {
 
 ReactDOM.render(
   <React.StrictMode>
+    <Provider store={store}>
     <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );
