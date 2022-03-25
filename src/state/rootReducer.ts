@@ -15,7 +15,7 @@ const playerStateReducer = (isPlaying = false, action: { type: string; payload: 
   return isPlaying;
 };
 
-const volumeReducer = (volume = 100, action: { type: string; payload: any; }) => {
+const volumeReducer = (volume = 100, action: { type: string; payload: number; }) => {
   if (action.type === "SET_VOLUME") {
     return action.payload;
   }

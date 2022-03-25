@@ -1,11 +1,12 @@
 import "./Player.css";
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
 import {
   setPlayerState,
   setDuration,
   setCurrentLocation,
   setMute,
+  setVolume,
 } from "../../../state/actions";
 import Time from "./Time";
 import Progress from "./Progress";
@@ -14,7 +15,7 @@ import { Song } from "../../../config/constants/types";
 interface PlayerProps {
   selectedSong: Song;
   isPlaying: any;
-  volume: any;
+  volume: number;
   duration: number;
   currentLocation: number;
   mute: boolean;
@@ -31,11 +32,19 @@ const Player = (props: PlayerProps) => {
     dispatch(setPlayerState(!props.isPlaying));
   };
 
+  const onVolumeChange = (event: { target: { value: any; }; }) => {
+    dispatch(setVolume(event.target.value));
+  }
+
+  const inputStyle = (val: number) => {
+    return { "--value": `${val}%` } as React.CSSProperties;
+  };
+
   useEffect(() => {
     if (props.selectedSong) {
       if (props.selectedSong.audio) {
         props.selectedSong.audio.muted = props.mute;
-        props.selectedSong.audio.volume = props.volume / 500;
+        props.selectedSong.audio.volume = props.volume / 100;
       }
     }
   }, [props.mute, props.selectedSong, props.volume]);
@@ -248,17 +257,20 @@ const Player = (props: PlayerProps) => {
                 </span>
               </button>
               <div className="plyr__volume">
-                {/* <input
+                <input
                   data-plyr="volume"
                   type="range"
                   min="0"
-                  max="1"
+                  max="100"
                   step="0.05"
-                  value="1"
+                  value={props.volume}
+                  onChange={onVolumeChange}
                   autoComplete="off"
                   aria-label="Volume"
-                  aria-valuenow={0.8}
-                /> */}
+                  aria-valuenow={props.volume}
+                  style={inputStyle(props.volume)}
+                  seek-value={props.volume}
+                />
               </div>
               <button type="button" className="plyr__control" data-plyr="list">
                 <svg role="presentation">
@@ -281,7 +293,7 @@ const mapStateToProps = (state: {
   playerState: boolean;
   duration: number;
   currentLocation: number;
-  volume: any;
+  volume: number;
   mute: boolean;
 }) => {
   return {

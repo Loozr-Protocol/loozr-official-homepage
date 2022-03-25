@@ -42,18 +42,11 @@ function Progress(props: ProgressProps) {
           aria-label="Seek"
           aria-valuenow={currentPosition}
           style={inputStyle(currentPosition)}
-          seek-value="currentPosition"
+          seek-value={currentPosition}
         />
         <progress className="plyr__progress__buffer" max="100" value="100">
           % buffered
         </progress>
-        <span
-          role="tooltip"
-          className="plyr__tooltip"
-          style={{ left: "83.139%" }}
-        >
-          00:24
-        </span>
       </div>
     </>
   );

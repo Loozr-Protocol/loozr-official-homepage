@@ -157,7 +157,7 @@
   outline: 0;
 }
 .plyr__control.plyr__tab-focus {
-  box-shadow: 0 0 0 3px rgba(26, 175, 255, 0.35);
+  box-shadow: 0 0 0 3px rgba(26, 30, 255, 0.35);
   outline: 0;
 }
 
@@ -171,12 +171,12 @@
 .plyr--audio .plyr__control.plyr__tab-focus,
 .plyr--audio .plyr__control:hover,
 .plyr--audio .plyr__control[aria-expanded="true"] {
-  background: #1aafff;
+  background: #8369f4;
   color: #fff;
 }
 
 .plyr__control--overlaid {
-  background: rgba(26, 175, 255, 0.8);
+  background: rgba(113, 46, 189, 0.8);
   border: 0;
   border-radius: 100%;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
@@ -197,7 +197,7 @@
 }
 .plyr__control--overlaid:hover,
 .plyr__control--overlaid:focus {
-  background: #1aafff;
+  background: #8369f4;
 }
 
 .plyr--playing .plyr__control--overlaid {
@@ -270,7 +270,7 @@
 .plyr--video .plyr__controls .plyr__control.plyr__tab-focus,
 .plyr--video .plyr__controls .plyr__control:hover,
 .plyr--video .plyr__controls .plyr__control[aria-expanded="true"] {
-  background: #1aafff;
+  background: #8369f4;
   color: #fff;
 }
 
@@ -464,7 +464,7 @@
   width: 6px;
 }
 .plyr__menu__container label.plyr__control input[type="radio"]:checked + span {
-  background: #1aafff;
+  background: #8369f4;
 }
 .plyr__menu__container
   label.plyr__control
@@ -500,7 +500,7 @@
   background: transparent;
   border: 0;
   border-radius: 16px;
-  color: #1aafff;
+  color: #8369f4;
   display: block;
   height: 14px;
   margin: 0;
@@ -1346,11 +1346,11 @@
 
 .plyr__control.is--repeat svg,
 .plyr__control.is--shuffle svg {
-  fill: #c02afe;
+  fill: #8369f4;
 }
 
 .plyr__control[data-plyr="like"] .icon--pressed {
-  fill: #c02afe;
+  fill: #806bdd;
 }
 
 .plyr__title,
@@ -1508,7 +1508,7 @@
 }
 
 .plyrist-theme-2 [data-plyr="play"] {
-  background: #c02afe linear-gradient(135deg, #c02afe, #562afe) !important;
+  background: #8369f4 linear-gradient(135deg, #8369f4, #F039E2) !important;
   color: #fff !important;
   border-radius: 100%;
   padding: 8px;

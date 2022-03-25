@@ -14,7 +14,7 @@ export const setPlayerState = (isPlaying: boolean) => {
   };
 };
 
-export const setVolume = (val: any) => {
+export const setVolume = (val: number) => {
   return {
     type: "SET_VOLUME",
     payload: val,
