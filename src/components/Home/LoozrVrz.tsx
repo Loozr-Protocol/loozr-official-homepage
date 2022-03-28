@@ -1,7 +1,10 @@
 export default function LoozrVrz() {
   return (
     <>
-      <div id="block-nvblockaboutindex" className="about section-padding pt-5 pb-0">
+      <div
+        id="block-nvblockaboutindex"
+        className="about section-padding pt-5 pb-0"
+      >
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-5 img-mons">
@@ -25,8 +28,8 @@ export default function LoozrVrz() {
                   sales on the Metaverse.
                 </h3>
                 <p className="wow txt">
-                  Unleash imagination, hang out with celebrities, friends, fans
-                  and immerse yourself in the virtual world - Web Browser Only.
+                  Unleash imagination, hang out with celebrities, friends, fans,
+                  and immerse yourself in the virtual world - Web Player Only.
                 </p>
                 <a
                   href="https://yobozorle.github.io/loozr_meta/"

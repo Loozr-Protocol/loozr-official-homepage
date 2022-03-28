@@ -24,8 +24,8 @@ export default function Services() {
                   <img src="/img/icon-launch.png" alt="" />
                   <h6>Launch Your Coin</h6>
                   <p>
-                    Onboard to create your Profile, Song, Playlists, set %
-                    Reward and have them all tokenised individually.
+                    Get tokenised by creating your Profile, adding your Songs &
+                    Playlists.
                   </p>
                 </div>
               </div>
@@ -37,8 +37,8 @@ export default function Services() {
                   <img src="/img/music-chart.png" alt="" />
                   <h6>Buy, Sell & Trade</h6>
                   <p>
-                    With Loozr coin, fans can stream and invest in artist
-                    Profile, Song, and Playlist tokens.
+                    With Loozr coin, fans can stream and trade Artist Profile,
+                    Songs, and Playlist tokens.
                   </p>
                 </div>
               </div>
@@ -50,9 +50,9 @@ export default function Services() {
                   <img src="/img/icon-hearts.png" alt="" />
                   <h6>Collective Wins</h6>
                   <p>
-                    The price of each coin goes up when people invest just like
-                    Bitcoin. % Reward is being shared accordingly on realtime +
-                    streaming gains.
+                    When fans invest in a token, like Bitcoin, the price of that
+                    token price rises. Artistes receive a percentage incentive
+                    from these trades in addition to their streaming money.
                   </p>
                 </div>
               </div>
