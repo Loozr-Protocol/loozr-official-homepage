@@ -47,15 +47,15 @@
   z-index: 2;
 }
 .hero-head .hero-content h1 {
-  font-family: "Archivo Black", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 63px;
   font-weight: 700;
   line-height: 71px;
   letter-spacing: 1px;
   color: #fff;
 }
-.hero-head .caption h1 span {
-  display: block;
+.hero-head .hero-content h1 span {
+  font-weight: 100;
 }
 .hero-head .hero-content p {
   color: #eee;

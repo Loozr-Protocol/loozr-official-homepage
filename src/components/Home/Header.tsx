@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import TextSlides from "./TextSlides";
 
 export default function Header() {
   return (
@@ -18,12 +19,12 @@ export default function Header() {
             <div className="d-flex">
               <div className="col-12 col-md-7">
                 <h1>
-                  Invest
+                  <TextSlides /> Music
                   <br />
-                  in artists.
+                  Tokens.
                 </h1>
                 <p className="mt-10">
-                  Share their success in cryptocurrencies on the Metaverse.
+                  Don’t just stream, earn, and succeed with artistes.
                 </p>
                 <div className="mt-20">
                   <a
