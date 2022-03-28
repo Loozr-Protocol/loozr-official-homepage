@@ -24,8 +24,8 @@ export default function WhySection() {
                 className="col-lg-4 col-md-6 item-box wow fadeInLeft"
                 data-wow-delay=".5s"
               >
-                <img src="/img/gallery/1.png" alt="The Music Artist" />
-                <h6 className="mt-10">The Music Artist</h6>
+                <img src="/img/gallery/1.png" alt="The Music Artiste" />
+                <h6 className="mt-10">The Music Artiste</h6>
                 <p>
                   Those who have spent months creating a hit but lack the funds
                   and community to help bring their dreams to fruition. Those
@@ -37,8 +37,8 @@ export default function WhySection() {
                 className="col-lg-4 col-md-6 item-box wow fadeInLeft"
                 data-wow-delay=".5s"
               >
-                <img src="/img/gallery/2.png" alt="The Creators/Producers/DJ" />
-                <h6 className="mt-10">The Creators/Producers/DJ</h6>
+                <img src="/img/gallery/2.png" alt="The Creators/Labels/DJ" />
+                <h6 className="mt-10">The Creators/Labels/DJ</h6>
                 <p>
                   Those who are bursting at the seams with creative juice. Those
                   who can take something interesting and expand, improve, and
