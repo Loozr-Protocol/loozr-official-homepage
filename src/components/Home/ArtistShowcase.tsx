@@ -15,12 +15,12 @@ export default function ArtistShowcase() {
         <div className="container">
           <div className="sec-head custom-font text-center">
             <h6 className="wow fadeIn" data-wow-delay=".5s">
-              FEATURED CREATORS
+              CREATOR ECOSYSTEM
             </h6>
             <h3 className="wow" data-splitting>
-              TOP ARTISTS
+              TOP ARTISTES
             </h3>
-            <span className="tbg">TOP ARTISTS</span>
+            <span className="tbg">TOP ARTISTES</span>
           </div>
         </div>
         <div className="clearfix"></div>
