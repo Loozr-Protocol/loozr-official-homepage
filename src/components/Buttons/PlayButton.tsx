@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import _ from 'lodash';
 import { connect, useDispatch } from "react-redux";
 import { setPlayerState, selectSong } from "../../state/actions";

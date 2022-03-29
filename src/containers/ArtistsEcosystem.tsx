@@ -1,13 +1,13 @@
 export default function ArtistEcosystem() {
-  const tbgStyle = {
-    bottom: "60px",
-    fontSize: "14vw",
-  };
-  const gridImages = [
-    <img src="/img/gallery/1.png" alt="" />,
-    <img src="/img/gallery/2.png" alt="" />,
-    <img src="/img/gallery/3.png" alt="" />,
-  ];
+  // const tbgStyle = {
+  //   bottom: "60px",
+  //   fontSize: "14vw",
+  // };
+  // const gridImages = [
+  //   <img src="/img/gallery/1.png" alt="" />,
+  //   <img src="/img/gallery/2.png" alt="" />,
+  //   <img src="/img/gallery/3.png" alt="" />,
+  // ];
   return (
     <>
       <div className="main-content">
@@ -39,7 +39,6 @@ export default function ArtistEcosystem() {
               </div>
             </div>
             <div className="container d-flex align-items-around">
-              //
               {/* {gridImages.map(image, i) => (
 <div className="col-6 col-sm4">
 
