@@ -1,0 +1,10 @@
+
+/* ----------------------------------------------------------------
+			[ All Css Plugins & Helper Classes File ]
+-----------------------------------------------------------------*/
+
+/* == bootstrap == */
+@import url("plugins/bootstrap.min.css");
+
+@import url("plugins/fontawesome-all.min.css");
+@import url("plugins/animate.css");
