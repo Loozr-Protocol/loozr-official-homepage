@@ -46,12 +46,9 @@ function Nav() {
               </a>
             </li>
             <li className="nav-item">
-              <a
-                className="nav-link nav-btn"
-                href="https://discord.gg/mm5mV8PHpq"
-              >
-                Join Whitelisting
-              </a>
+              <Link className="nav-link nav-btn" to="/artistes/ecosystem">
+                View Ecosystem
+              </Link>
             </li>
           </ul>
         </div>

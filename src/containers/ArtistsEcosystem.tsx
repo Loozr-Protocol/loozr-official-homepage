@@ -1,20 +1,20 @@
+import ShowcaseCard from "../components/ShowcaseCard";
+import { Artist } from "../config/constants/types";
+import artistsData from "../config/mock-data/artists.json";
+
 export default function ArtistEcosystem() {
-  // const tbgStyle = {
-  //   bottom: "60px",
-  //   fontSize: "14vw",
-  // };
-  // const gridImages = [
-  //   <img src="/img/gallery/1.png" alt="" />,
-  //   <img src="/img/gallery/2.png" alt="" />,
-  //   <img src="/img/gallery/3.png" alt="" />,
-  // ];
+  const artists: Artist[] = artistsData.map((artist) => artist);
+  const paddingStyle = {
+    "paddingTop": "15px",
+    "paddingBottom": "15px",
+  }
   return (
     <>
       <div className="main-content">
         <div>
           <div
             id="block-nvblockaboutindex"
-            className="about section-padding mt-30"
+            className="section-padding mt-30 work-carousel"
           >
             <div className="container">
               <div className="sec-head custom-font text-center mb-10">
@@ -38,12 +38,18 @@ export default function ArtistEcosystem() {
                 </p>
               </div>
             </div>
-            <div className="container d-flex align-items-around">
-              {/* {gridImages.map(image, i) => (
-<div className="col-6 col-sm4">
-
-                </div>
-              )}§ */}
+            <div className="container mt-60">
+              <div className="d-flex flex-wrap">
+                {artists.map((artist, index) => (
+                  <div
+                    key={index}
+                    className="col-6 col-sm-4 col-md-3"
+                    style={paddingStyle}
+                  >
+                    <ShowcaseCard artist={artist} id={index} />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
           <div className="clearfix"></div>
