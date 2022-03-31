@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import TextSlides from "./TextSlides";
 
 export default function Header() {
+  const style = { position: "relative" } as React.CSSProperties;
   return (
     <>
       <div className="d-flex align-items-center hero-head">
@@ -17,7 +18,7 @@ export default function Header() {
         <div className="container">
           <div className="mt-100 hero-content">
             <div className="d-flex">
-              <div className="col-12 col-md-7 px-remove">
+              <div className="col-12 col-md-7 px-remove-all">
                 <h1>
                   <TextSlides /> Music
                   <br />
@@ -40,41 +41,43 @@ export default function Header() {
               </div>
             </div>
           </div>
-          <div className="social-icon">
-            <a
-              href="https://twitter.com/officialloozr"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i className="fab fa-twitter"></i>
-            </a>
-            <a
-              href="https://discord.gg/mm5mV8PHpq"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img src="/img/discord.png" alt="" />
-            </a>
-            <a
-              href="https://t.me/+Zi7-M7wMW6A4MjE0"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i className="fab fa-telegram-plane"></i>
-            </a>
-            <a
-              href="https://medium.com/@officialloozr"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i className="fab fa-medium-m"></i>
-            </a>
+          <div className="container" style={style}>
+            <div className="social-icon">
+              <a
+                href="https://twitter.com/officialloozr"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i className="fab fa-twitter"></i>
+              </a>
+              <a
+                href="https://discord.gg/mm5mV8PHpq"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src="/img/discord.png" alt="" />
+              </a>
+              <a
+                href="https://t.me/+Zi7-M7wMW6A4MjE0"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i className="fab fa-telegram-plane"></i>
+              </a>
+              <a
+                href="https://medium.com/@officialloozr"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i className="fab fa-medium-m"></i>
+              </a>
+            </div>
           </div>
         </div>
       </div>
       <div className="clearfix"></div>
       <div className="container">
-        <div className="d-flex mt-50 powered-section">
+        <div className="d-flex align-items-center mt-50 powered-section">
           <span>Powered by </span>
           <img src="/img/algo.png" alt="algo" />
           <img src="/img/unity.png" alt="unity" />
