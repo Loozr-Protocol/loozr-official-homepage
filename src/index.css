@@ -237,6 +237,7 @@ iframe {
 .hero-head .social-icon {
   position: absolute;
   right: 40px;
+  bottom: 20px;
   z-index: 1;
 }
 .hero-head .social-icon img,
