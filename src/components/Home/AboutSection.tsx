@@ -8,7 +8,7 @@ export default function AboutSection() {
       <div id="block-nvblockaboutindex" className="about section-padding mt-30">
         <div className="container">
           <div className="sec-head mb-3 custom-font d-flex flex-column align-items-center">
-            <div className="content col-md-6">
+            <div className="content col-md-6 px-remove">
               <h6 className="wow fadeIn" data-wow-delay=".5s">
                 WHAT’S LOOZR?
               </h6>

@@ -46,7 +46,7 @@ function Nav() {
               </a>
             </li>
             <li className="nav-item">
-              <Link className="nav-link nav-btn" to="/artistes/ecosystem">
+              <Link className="nav-link nav-btn mr-0" to="/artistes/ecosystem">
                 View Ecosystem
               </Link>
             </li>

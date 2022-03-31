@@ -19,9 +19,9 @@ export default function WhySection() {
         <div className="clearfix"></div>
         <div>
           <div className="container">
-            <div className="row">
+            <div className="d-flex flex-wrap">
               <div
-                className="col-lg-4 col-md-6 item-box wow fadeInLeft"
+                className="col-lg-4 col-md-6 item-box wow fadeInLeft px-remove"
                 data-wow-delay=".5s"
               >
                 <img src="/img/gallery/1.png" alt="The Music Artiste" />
@@ -34,7 +34,7 @@ export default function WhySection() {
                 </p>
               </div>
               <div
-                className="col-lg-4 col-md-6 item-box wow fadeInLeft"
+                className="col-lg-4 col-md-6 item-box wow fadeInLeft px-remove"
                 data-wow-delay=".5s"
               >
                 <img src="/img/gallery/2.png" alt="The Creators/Labels/DJ" />
@@ -46,7 +46,7 @@ export default function WhySection() {
                 </p>
               </div>
               <div
-                className="col-lg-4 col-md-6 item-box wow fadeInLeft"
+                className="col-lg-4 col-md-6 item-box wow fadeInLeft px-remove"
                 data-wow-delay=".5s"
               >
                 <img src="/img/gallery/3.png" alt="The Fans/Followers" />

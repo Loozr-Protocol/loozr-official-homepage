@@ -17,7 +17,7 @@ export default function Header() {
         <div className="container">
           <div className="mt-100 hero-content">
             <div className="d-flex">
-              <div className="col-12 col-md-7">
+              <div className="col-12 col-md-7 px-remove">
                 <h1>
                   <TextSlides /> Music
                   <br />

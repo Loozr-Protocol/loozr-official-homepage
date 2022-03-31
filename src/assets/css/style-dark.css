@@ -4554,6 +4554,11 @@ p.vxcaption {
   .bg-img {
     background-position: center !important;
   }
+  .navbar-expand-lg > .container,
+  .navbar-expand-lg > .container-fluid {
+    padding-right: 25px;
+    padding-left: 25px;
+  }
   .md-mb10 {
     margin-bottom: 10px;
   }
@@ -4630,7 +4635,6 @@ p.vxcaption {
     margin: 10px auto !important;
   }
   .navbar .logo {
-    margin-left: 15px;
     width: 90px;
   }
   .nav-scroll .navbar-collapse .nav-link,
@@ -4741,7 +4745,7 @@ p.vxcaption {
   .skills-box {
     margin-bottom: 50px;
   }
-  
+
   .about .blc-img .skills-circle {
     right: 0;
   }
@@ -4819,6 +4823,10 @@ p.vxcaption {
   }
 }
 @media screen and (max-width: 767px) {
+  .px-remove {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
   .services .step-item.xbottom,
   .services .step-item.xtop,
   .services .step-item.xcenter {

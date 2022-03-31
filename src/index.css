@@ -1,3 +1,7 @@
+.container {
+  padding-right: 25px;
+  padding-left: 25px;
+}
 .bg-fixed {
   background-attachment: fixed !important;
 }
