@@ -1,7 +1,10 @@
 export default function Team() {
   return (
     <>
-      <div id="block-nvblockteamindex4" className="team-crv section-padding pb-30">
+      <div
+        id="block-nvblockteamindex4"
+        className="team-crv section-padding pb-30"
+      >
         <div className="container">
           <div className="row">
             <div className="col-lg-5 valign">
@@ -20,11 +23,11 @@ export default function Team() {
                 </p>
               </div>
             </div>
-            <div className="col-lg-6 offset-lg-1">
+            <div className="col-lg-6 offset-lg-1 sm-mt20">
               <div className="img-box">
                 <div className="row">
                   <div className="col-sm-6 toright">
-                    <div className="full-width">
+                    <div className="full-width d-flex d-sm-block">
                       <div
                         className="img sizxl mb-30"
                         data-tooltip-tit="Yobo Zorle"
@@ -50,7 +53,7 @@ export default function Team() {
                     </div>
                   </div>
                   <div className="col-sm-6 toleft valign">
-                    <div className="full-width text-left">
+                    <div className="full-width text-left d-flex d-sm-block">
                       <div
                         className="img sizmd mb-30"
                         data-tooltip-tit="Confidence Yobo"

@@ -5049,6 +5049,14 @@ p.vxcaption {
   }
 }
 
+@media screen and (max-width: 576px) {
+  .team-crv .img-box .img {
+    width: 50%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .work-carousel .noraidus .cont h3 {
     font-size: 15px;
