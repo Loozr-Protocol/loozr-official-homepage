@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { Link, useParams } from "react-router-dom";
 import { Artist } from "../config/constants/types";
 import ProfileSummary from "../components/ProfileSummary";
@@ -52,9 +53,14 @@ export default function ArtistDashboard() {
                       />
                     </div>
                     <div className="d-flex align-items-center mt-20">
-                      <Link to="/" className="button btn-accent">
+                      <a
+                        role="button"
+                        data-toggle="modal"
+                        data-target="#waitlistDialog"
+                        className="button btn-accent"
+                      >
                         Buy Artist Coin
-                      </Link>
+                      </a>
                       <div className="dropdown dropdown-dialog ml-3">
                         <button
                           className="btn btn-menu"
@@ -103,7 +109,12 @@ export default function ArtistDashboard() {
             <div className="col-lg-10">
               <h4 className="vxcaption">Songs Tokens by Artist $KONTROLLER</h4>
               {artist.songs.map((song, index) => (
-                <SongTable song={song} songId={index} key={index} id={artistId} />
+                <SongTable
+                  song={song}
+                  songId={index}
+                  key={index}
+                  id={artistId}
+                />
               ))}
             </div>
           </div>

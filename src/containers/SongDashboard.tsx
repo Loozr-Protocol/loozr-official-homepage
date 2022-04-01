@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { useParams } from "react-router-dom";
 import { Artist } from "../config/constants/types";
 import artistsData from "../config/mock-data/artists.json";
@@ -87,7 +88,12 @@ rewards as ${song.tokenName} investor.`}
                     </div>
                     <div className="d-flex align-items-center mt-20">
                       <PlayButton song={song} />
-                      <a href="/" className="button btn-accent ml-3">
+                      <a
+                        role="button"
+                        data-toggle="modal"
+                        data-target="#waitlistDialog"
+                        className="button btn-accent ml-3"
+                      >
                         Buy Artist Coin
                       </a>
                       <img

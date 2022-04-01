@@ -7,6 +7,7 @@ import ArtistDashboard from "./containers/ArtistDashboard";
 import Footer from "./components/Footer";
 import SongDashboard from "./containers/SongDashboard";
 import ArtistsEcosystem from "./containers/ArtistsEcosystem";
+import WaitlistModal from "./components/WaitlistModal";
 
 export default class App extends Component {
   constructor(props: any) {
@@ -42,10 +43,14 @@ export default class App extends Component {
               className="dialog-off-canvas-main-canvas"
               data-off-canvas-main-canvas
             >
+              <WaitlistModal />
               <Nav />
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/artistes/ecosystem" element={<ArtistsEcosystem />} />
+                <Route
+                  path="/artistes/ecosystem"
+                  element={<ArtistsEcosystem />}
+                />
                 <Route path="/artists/:id" element={<ArtistDashboard />} />
                 <Route
                   path="/artists/:id/songs/:songId"
