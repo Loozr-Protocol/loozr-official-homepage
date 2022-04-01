@@ -1,7 +1,108 @@
+import React, { useState, useRef, useEffect } from "react";
+import axios from "axios";
 import ModalDialog from "./Modal";
+import { gsap } from "gsap";
 
 export default function WaitlistModal() {
-  const style = { maxHeight: "600px", objectFit: "unset"} as React.CSSProperties;
+  const style = {
+    maxHeight: "600px",
+    objectFit: "unset",
+  } as React.CSSProperties;
+  const successIcon = useRef();
+  const [category, setCategory] = useState("");
+  const [emailAddress, setEmailAddress] = useState("");
+  const [isSucccess, setIsSucccess] = useState(false);
+  const [isLoading, setRequestStatus] = useState(false);
+
+  const handleEmailChange = (event: any) => {
+    setEmailAddress(event.target.value);
+  };
+
+  const handleCategoryChange = (event: any) => {
+    setCategory(event.target.value);
+  };
+
+  useEffect(() => {
+    if (isSucccess) {
+      gsap.fromTo(
+        successIcon.current,
+        {
+          opacity: 1,
+          duration: 0.5,
+          stagger: 0.1,
+        },
+        {
+          scale: 1,
+          yoyo: true,
+          repeat: 2,
+          duration: 0.9,
+          stagger: 0.1,
+        }
+      );
+    }
+  });
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setIsSucccess(true);
+    if (!!category && !!emailAddress) {
+      setRequestStatus(true);
+      try {
+        await axios.post("/register-whitelist", { category, emailAddress });
+        setRequestStatus(false);
+        setIsSucccess(true);
+        setCategory("");
+        setEmailAddress("");
+      } catch (err) {
+        console.log(err);
+        setRequestStatus(false);
+      }
+    }
+  };
+
+  const successView = (
+    <div className="d-flex align-items-center justify-content-center form-success-wrapper">
+      <span
+        ref={successIcon}
+        className="fa fa-check-circle success-icon"
+      ></span>
+    </div>
+  );
+
+  const formView = (
+    <form onSubmit={handleSubmit} className="mt-30">
+      <div className="form-wrap">
+        <select value={category} onChange={handleCategoryChange}>
+          <option value="">Choose Category</option>
+          <option value="Artist">Artist</option>
+          <option value="Listener">Listener</option>
+        </select>
+      </div>
+      <div className="form-wrap">
+        <input
+          type="email"
+          value={emailAddress}
+          onChange={handleEmailChange}
+          className="form-control"
+          placeholder="Enter your email"
+        />
+      </div>
+      <div className="form-wrap mt-40">
+        <button
+          type="submit"
+          className="button w-100 d-block"
+          disabled={isLoading}
+        >
+          {isLoading ? (
+            <span className="fa fa-spin fa-spinner"></span>
+          ) : (
+            <span>Submit</span>
+          )}
+        </button>
+      </div>
+    </form>
+  );
+
   return (
     <>
       <ModalDialog modalName="waitlistDialog">
@@ -31,29 +132,7 @@ export default function WaitlistModal() {
                     provide your email address, and we will take it from there.
                   </p>
                 </div>
-                <form className="mt-30">
-                  <div className="form-wrap">
-                    <select>
-                      <option value="" selected>
-                        Choose Category
-                      </option>
-                      <option value="Artist">Artist</option>
-                      <option value="Listener">Listener</option>
-                    </select>
-                  </div>
-                  <div className="form-wrap">
-                    <input
-                      type="email"
-                      className="form-control"
-                      placeholder="Enter your email"
-                    />
-                  </div>
-                  <div className="form-wrap mt-40">
-                    <button type="button" className="button w-100 d-block">
-                      Submit
-                    </button>
-                  </div>
-                </form>
+                {isSucccess ? successView : formView}
               </div>
             </div>
           </div>

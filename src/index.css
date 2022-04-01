@@ -59,20 +59,6 @@
 .indented {
   margin-left: 40px;
 }
-[type="submit"] {
-  padding: 12px 35px !important;
-  border: 1px solid #1e1e1e !important;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  background: transparent;
-  border-color: #75dab4 !important;
-  color: #75dab4;
-  font-family: inherit;
-  text-transform: uppercase;
-  width: auto !important;
-}
-
 .user-pass input,
 .user-register-form input,
 .user-login-form input,
@@ -281,6 +267,22 @@ iframe {
 .powered-section img {
   width: 80px;
   height: auto;
+}
+.form-success-wrapper {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  padding: 10px;
+}
+.success-icon {
+  font-size: 100px;
+  transition: all ease 0.4s;
+  -webkit-transition: all ease 0.4s;
+  -moz-transition: all ease 0.4s;
+  -o-transition: all ease 0.4s;
+  -ms-transition: all ease 0.4s;
+  transform: scale(0.1);
+  opacity: 0;
+  color: #48d55f;
 }
 @media (max-width: 990px) {
   .hero-head {

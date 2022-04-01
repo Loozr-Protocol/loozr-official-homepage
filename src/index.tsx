@@ -1,6 +1,7 @@
 import React from "react";
 import { Provider } from "react-redux";
 import ReactDOM from "react-dom";
+import Axios from "axios";
 import Swiper, { Autoplay } from "swiper";
 import "./assets/css/normalize.css";
 import "swiper/css";
@@ -12,6 +13,7 @@ import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 import store from './state/store';
+import { API_BASE_ENDPOINT } from "./config/constants/endpoints";
 
 declare global {
   interface Window {
@@ -19,6 +21,10 @@ declare global {
     Pace: any;
   }
 }
+console.log(process.env);
+Axios.defaults.headers.common["Content-Type"] = "application/json";
+Axios.defaults.headers.common["Accept"] = "application/json";
+Axios.defaults.baseURL = API_BASE_ENDPOINT;
 
 window.Pace.on("done", function () {
   document.querySelector("#preloader")?.classList.add("isdone");
