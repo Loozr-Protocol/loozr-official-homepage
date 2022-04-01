@@ -5141,6 +5141,12 @@ p.vxcaption {
 .img-light {
   display: initial;
 }
+.form-wrap + .form-wrap {
+  margin-top: 20px;
+}
+.form-wrap:last-of-type {
+  margin-bottom: 25px;
+}
 input[type="search"],
 input[type="email"],
 input[type="text"],
@@ -5151,7 +5157,7 @@ select {
   /* float: left; */
   padding: 10px;
   border: 1px solid #0c0f16;
-  color: #fff;
+  color: #FFFFFF;
   width: 100%;
   padding: 17px;
   background: #0c0f16;

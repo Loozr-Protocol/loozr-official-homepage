@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable react/jsx-no-comment-textnodes */
 import TextSlides from "./TextSlides";
 
 export default function Header() {
@@ -34,9 +35,14 @@ export default function Header() {
                   >
                     <span>Learn more</span>
                   </a>
-                  <Link to="/" className="button btn-primary btn-lit">
+                  <a
+                    role="button"
+                    data-toggle="modal"
+                    data-target="#waitlistDialog"
+                    className="button btn-primary btn-lit"
+                  >
                     <span>Join Waitlist</span>
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>
