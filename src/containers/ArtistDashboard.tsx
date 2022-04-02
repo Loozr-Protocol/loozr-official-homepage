@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Artist } from "../config/constants/types";
 import ProfileSummary from "../components/ProfileSummary";
 import artistsData from "../config/mock-data/artists.json";
