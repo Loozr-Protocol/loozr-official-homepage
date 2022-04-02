@@ -14,7 +14,7 @@ export default function ShowcaseCard({ artist, id }: ShowcaseCardProps) {
     >
       <div className="slide-media">
         <div className="item-img bg-img wow imago">
-          <img src={artist.photo} alt={artist.name}/>
+          <img src={artist.photo} alt={artist.name} />
         </div>
       </div>
       <div className="cont">
@@ -28,7 +28,7 @@ export default function ShowcaseCard({ artist, id }: ShowcaseCardProps) {
           <h3>{artist.tokenName}</h3>
         </Link>
         <div className="buy-section-xml">
-          <span>{artist.coinPrice} ~ </span>
+          <span>${artist.USDValue} ~ </span>
           &nbsp;
           <Link to={`/artists/${id}`} className="buy-xhn">
             Buy Coin
