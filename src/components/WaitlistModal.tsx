@@ -10,7 +10,7 @@ export default function WaitlistModal() {
   } as React.CSSProperties;
   const successIcon = useRef();
   const [category, setCategory] = useState("");
-  const [emailAddress, setEmailAddress] = useState("");
+  const [email, setEmailAddress] = useState("");
   const [isSucccess, setIsSucccess] = useState(false);
   const [isLoading, setRequestStatus] = useState(false);
 
@@ -44,11 +44,10 @@ export default function WaitlistModal() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setIsSucccess(true);
-    if (!!category && !!emailAddress) {
+    if (!!category && !!email) {
       setRequestStatus(true);
       try {
-        await axios.post("/register-whitelist", { category, emailAddress });
+        await axios.post("/waitlist/", { category, email });
         setRequestStatus(false);
         setIsSucccess(true);
         setCategory("");
@@ -81,7 +80,7 @@ export default function WaitlistModal() {
       <div className="form-wrap">
         <input
           type="email"
-          value={emailAddress}
+          value={email}
           onChange={handleEmailChange}
           className="form-control"
           placeholder="Enter your email"
