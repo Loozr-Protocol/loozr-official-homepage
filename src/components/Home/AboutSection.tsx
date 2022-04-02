@@ -13,8 +13,7 @@ export default function AboutSection() {
                 WHAT’S LOOZR?
               </h6>
               <h3 className="main-title wow">
-                The decentralized music streaming & investment platform on Web
-                3.0
+                The decentralized trading & music streaming platform on Web 3.0
               </h3>
               <p className="wow txt">
                 Loozr brings DeFi and trading to the music industry. It enables
