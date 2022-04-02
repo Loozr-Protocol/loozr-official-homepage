@@ -83,10 +83,11 @@ export default function Header() {
       </div>
       <div className="clearfix"></div>
       <div className="container">
-        <div className="d-flex align-items-center mt-50 powered-section">
+        <div className="d-flex flex-wrap align-items-center mt-50 powered-section">
           <span>Powered by </span>
           <img src="/img/algo.png" alt="algo" />
           <img src="/img/unity.png" alt="unity" />
+          <img src="/img/applied.png" className="applied" alt="unity" />
         </div>
       </div>
     </>

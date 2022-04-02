@@ -260,13 +260,17 @@ iframe {
 }
 .powered-section {
   color: #536079;
+  font-size: 90%;
 }
 .powered-section * + * {
-  margin-left: 10px;
+  margin-left: 18px;
 }
 .powered-section img {
   width: 80px;
   height: auto;
+}
+.powered-section img.applied {
+  width: 180px;
 }
 .form-success-wrapper {
   margin-top: 20px;
