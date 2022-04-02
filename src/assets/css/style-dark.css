@@ -3912,10 +3912,19 @@ body {
   align-items: flex-start;
 }
 
+.slide-media-action a:hover {
+  transition: cubic-bezier(1, 0, 0, 1) 0.4s;
+  transform: perspective(15cm) rotateY(28deg);
+}
+
 .slide-media:after {
   content: "";
   display: block;
   padding-top: 100%;
+}
+
+.slide-media:before {
+  content: ""
 }
 
 .slide-media .item-img {
