@@ -4840,6 +4840,9 @@ p.vxcaption {
   }
 }
 @media screen and (max-width: 767px) {
+  .tiny-mt-20 {
+    margin-top: 20px;
+  }
   .px-remove {
     padding-left: 0 !important;
     padding-right: 0 !important;

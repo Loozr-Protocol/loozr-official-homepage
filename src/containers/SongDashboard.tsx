@@ -47,7 +47,7 @@ export default function ArtistDashboard() {
           <div className="container d-flex justify-content-center">
             <div className="col-lg-10">
               <div className="row">
-                <div className="col-md-3">
+                <div className="col-10 col-md-3">
                   <div className="wow position-relative" data-wow-delay=".5s">
                     <img
                       src={song.photo}
@@ -62,7 +62,7 @@ export default function ArtistDashboard() {
                   </div>
                 </div>
                 <div className="col-md-8 offset-md-1">
-                  <div className="profile-content mt-md-10 mb-0">
+                  <div className="profile-content mt-md-10 mb-0 tiny-mt-20">
                     <div className="row mb-30">
                       <div className="col-12">
                         <h6>Song Name Token</h6>
@@ -132,7 +132,7 @@ rewards as ${song.tokenName} investor.`}
               </div>
             </div>
           </div>
-          <div className="d-flex justify-content-end">
+          <div className="d-flex justify-content-end mt-15">
             <hr className="col-9" />
           </div>
         </div>
