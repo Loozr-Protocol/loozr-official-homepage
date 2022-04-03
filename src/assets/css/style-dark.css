@@ -3914,7 +3914,7 @@ body {
   padding: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  align-items: flex-start; 
+  align-items: flex-start;
 }
 
 .slide-media-action a:hover {
@@ -3929,7 +3929,7 @@ body {
 }
 
 .slide-media:before {
-  content: ""
+  content: "";
 }
 
 .slide-media .item-img {
@@ -5074,7 +5074,17 @@ p.vxcaption {
   }
 }
 
+@media screen and (min-width: 480px) {
+  .col-sm-6-2 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
 @media screen and (max-width: 480px) {
+  .tiny-mt-20 {
+    margin-top: 20px;
+  }
   .work-carousel .noraidus .cont h3 {
     font-size: 15px;
     height: 1.2rem;
@@ -5174,7 +5184,7 @@ select {
   /* float: left; */
   padding: 10px;
   border: 1px solid #0c0f16;
-  color: #FFFFFF;
+  color: #ffffff;
   width: 100%;
   padding: 17px;
   background: #0c0f16;
