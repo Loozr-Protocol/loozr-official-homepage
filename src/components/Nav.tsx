@@ -34,6 +34,16 @@ function Nav() {
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ml-auto">
+            <li className="nav-item">
+              <a className="nav-link" href="https://loozr-1.gitbook.io/docs/">
+                LiteDoc
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="https://medium.com/@officialloozr">
+                Blog
+              </a>
+            </li>
             {showLoozrVrze ? (
               <li className="nav-item">
                 <a
@@ -47,16 +57,6 @@ function Nav() {
                 </a>
               </li>
             ) : null}
-            <li className="nav-item">
-              <a className="nav-link" href="https://loozr-1.gitbook.io/docs/">
-                LiteDoc
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="https://medium.com/@officialloozr">
-                Blog
-              </a>
-            </li>
             <li className="nav-item">
               <a
                 className="nav-link"
