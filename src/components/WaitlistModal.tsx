@@ -52,9 +52,17 @@ export default function WaitlistModal() {
         setIsSucccess(true);
         setCategory("");
         setEmailAddress("");
-      } catch (err) {
-        console.log(err);
+      } catch (err: any) {
+        console.log(err.response);
         setRequestStatus(false);
+        if (err.response) {
+          if (err.response.status === 400) {
+            setRequestStatus(false);
+            setIsSucccess(true);
+            setCategory("");
+            setEmailAddress("");
+          }
+        }
       }
     }
   };
