@@ -59,7 +59,7 @@ export default function WhySection() {
             </div>
           </div>
         </div>
-        <div className="half-bg bottom"></div>
+        {/* <div className="half-bg bottom"></div> */}
       </div>
       <div className="clearfix"></div>
     </>

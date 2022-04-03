@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { gsap, Elastic } from 'gsap';
+import { gsap } from 'gsap';
 
 import { Link } from "react-router-dom";
 import { Artist } from "../config/constants/types";
@@ -13,13 +13,11 @@ export default function ShowcaseCard({ artist, id }: ShowcaseCardProps) {
   const slideMedia = useRef();
 
   const onSlideMediaHovered = (event) => {
-    console.log(slideMedia.current);
     gsap.to(slideMedia.current, {
       scaleX: 1.12,
       scaleY: 1.12,
       scaleZ: 1.5,
       duration: 1.5,
-      ease: Elastic.easeInOut,
     });
   }
 

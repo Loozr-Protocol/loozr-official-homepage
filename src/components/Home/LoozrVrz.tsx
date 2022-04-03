@@ -1,4 +1,11 @@
+import { useEffect } from "react";
+
 export default function LoozrVrz() {
+  useEffect(() => {
+    const lzrVerzElement = document.getElementById("lzrVerz");
+    lzrVerzElement.scrollIntoView({ behavior: "smooth" });
+  })
+  
   return (
     <>
       <div
@@ -6,7 +13,7 @@ export default function LoozrVrz() {
         className="about section-padding pt-5 pb-0"
       >
         <div className="container">
-          <div className="row align-items-center">
+          <div className="row align-items-center" id="lzrVerz">
             <div className="col-lg-5 img-mons">
               <div className="img1 wow imago" data-wow-delay=".5s">
                 <img src="/img/loozrvrz.png" alt="" />

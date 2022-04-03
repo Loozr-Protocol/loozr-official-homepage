@@ -2,7 +2,7 @@ export default function Services() {
   return (
     <>
       <div
-        className="views-element-container services section-padding sub-bg"
+        className="views-element-container services section-padding"
         id="block-views-block-nv-section-content-block-services-3"
       >
         <div className="container">

@@ -43,9 +43,6 @@ export default function SongTable({ id, songId, song }: SongTableProps) {
                 <Link className="dropdown-item" to="/">
                   Copy Song Link
                 </Link>
-                <Link className="dropdown-item" to="/">
-                  How It Works
-                </Link>
               </div>
             </div>
           </div>

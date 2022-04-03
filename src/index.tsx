@@ -21,7 +21,6 @@ declare global {
     Pace: any;
   }
 }
-console.log(process.env);
 Axios.defaults.headers.common["Content-Type"] = "application/json";
 Axios.defaults.headers.common["Accept"] = "application/json";
 Axios.defaults.baseURL = API_BASE_ENDPOINT;

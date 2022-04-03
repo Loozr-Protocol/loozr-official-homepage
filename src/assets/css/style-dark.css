@@ -3189,8 +3189,13 @@ body {
 
 .profile-summary-li li {
   color: #536079;
-  font-size: 15px;
+  font-size: 13px;
   line-height: 26px;
+  font-weight: 300;
+}
+.profile-summary-li .wrip-wrap {
+  font-size: 13px;
+  font-weight: 300;
 }
 .profile-summary-li li:not(:last-child) {
   margin-right: 2rem;
@@ -3909,7 +3914,7 @@ body {
   padding: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  align-items: flex-start;
+  align-items: flex-start; 
 }
 
 .slide-media-action a:hover {
@@ -4049,6 +4054,9 @@ body {
   bottom: 7px;
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.25);
+}
+.zero-radius {
+  border-radius: 0 !important;
 }
 .process .item .bg-img h3 {
   color: #fff;

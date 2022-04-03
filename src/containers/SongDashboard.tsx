@@ -49,7 +49,11 @@ export default function ArtistDashboard() {
               <div className="row">
                 <div className="col-md-3">
                   <div className="wow position-relative" data-wow-delay=".5s">
-                    <img src={song.photo} className="img1-thumb" alt="" />
+                    <img
+                      src={song.photo}
+                      className="img1-thumb  zero-radius"
+                      alt=""
+                    />
                     <img
                       src="/img/thumbnail.png"
                       className="img1-thumb d-thumb"

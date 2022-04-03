@@ -35,7 +35,10 @@ export default function ArtistDashboard() {
             <div className="col-lg-10">
               <div className="row">
                 <div className="col-md-3 img-mons">
-                  <div className="img1 wow imago" data-wow-delay=".5s">
+                  <div
+                    className="img1 wow imago zero-radius"
+                    data-wow-delay=".5s"
+                  >
                     <img src={artist.photo} alt="" />
                   </div>
                 </div>
@@ -78,9 +81,6 @@ export default function ArtistDashboard() {
                             Copy Profile Link
                           </a>
                           <a className="dropdown-item" href="/">
-                            Join Telegram
-                          </a>
-                          <a className="dropdown-item" href="/">
                             Follow Artist
                           </a>
                         </div>
@@ -107,7 +107,7 @@ export default function ArtistDashboard() {
           </div>
           <div className="container d-flex justify-content-center mt-20">
             <div className="col-lg-10">
-              <h4 className="vxcaption">Songs Tokens by Artist $KONTROLLER</h4>
+              <h4 className="vxcaption">Song Tokens by Artiste $KONTROLLER</h4>
               {artist.songs.map((song, index) => (
                 <SongTable
                   song={song}
