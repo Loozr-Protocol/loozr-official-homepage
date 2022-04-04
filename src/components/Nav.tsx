@@ -50,7 +50,9 @@ function Nav() {
                   className="nav-link"
                   role="button"
                   onClick={() =>
-                    document.getElementById("lzrVerz").scrollIntoView()
+                    document
+                      .getElementById("lzrVerz")
+                      .scrollIntoView({ behavior: "smooth" })
                   }
                 >
                   LoozrVrze

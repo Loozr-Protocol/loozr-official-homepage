@@ -3,7 +3,6 @@ import { useEffect } from "react";
 export default function LoozrVrz() {
   useEffect(() => {
     const lzrVerzElement = document.getElementById("lzrVerz");
-    lzrVerzElement.scrollIntoView({ behavior: "smooth" });
   })
   
   return (
