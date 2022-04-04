@@ -57,7 +57,7 @@ registerRoute(
 // precache, in this case same-origin .png requests like those from in public/
 registerRoute(
   // Add in any other file extensions or routing criteria as needed.
-  ({ url }) => url.origin === self.location.origin && url.pathname.endsWith('.png'),
+  ({ url }) => url.origin === self.location.origin && (url.pathname.endsWith('.png') || url.pathname.endsWith('.jpg')),
   // Customize this strategy as needed, e.g., by changing to CacheFirst.
   new StaleWhileRevalidate({
     cacheName: 'images',
@@ -75,6 +75,20 @@ registerRoute(
   // Customize this strategy as needed, e.g., by changing to CacheFirst.
   new StaleWhileRevalidate({
     cacheName: 'javascript',
+    plugins: [
+      // Ensure that once this runtime cache reaches a maximum size the
+      // least-recently used javascript are removed.
+      new ExpirationPlugin({ maxEntries: 50, maxAgeSeconds: 7200 }),
+    ],
+  })
+);
+
+registerRoute(
+  // Add in any other file extensions or routing criteria as needed.
+  ({ url }) => url.origin === self.location.origin && url.pathname.endsWith('.css'),
+  // Customize this strategy as needed, e.g., by changing to CacheFirst.
+  new StaleWhileRevalidate({
+    cacheName: 'stylesheet',
     plugins: [
       // Ensure that once this runtime cache reaches a maximum size the
       // least-recently used javascript are removed.
