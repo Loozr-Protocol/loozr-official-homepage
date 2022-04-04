@@ -1,15 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
 
 function Nav() {
-  let showLoozrVrze = true;
-  const location = useLocation();
-
-  if (location.pathname !== '/') {
-    showLoozrVrze = false;
-  }
-
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="container">
@@ -44,21 +36,6 @@ function Nav() {
                 Blog
               </a>
             </li>
-            {showLoozrVrze ? (
-              <li className="nav-item">
-                <a
-                  className="nav-link"
-                  role="button"
-                  onClick={() =>
-                    document
-                      .getElementById("lzrVerz")
-                      .scrollIntoView({ behavior: "smooth" })
-                  }
-                >
-                  LoozrVrze
-                </a>
-              </li>
-            ) : null}
             <li className="nav-item">
               <a
                 className="nav-link"
