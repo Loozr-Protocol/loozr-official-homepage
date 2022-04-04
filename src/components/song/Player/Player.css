@@ -1508,13 +1508,17 @@
 }
 
 .plyrist-theme-2 [data-plyr="play"] {
-  background: #8369f4 linear-gradient(135deg, #8369f4, #F039E2) !important;
+  background: #8369f4 linear-gradient(135deg, #8369f4, #f039e2) !important;
   color: #fff !important;
   border-radius: 100%;
   padding: 8px;
 }
 
 @media (max-width: 768px) {
+  .plyr__row {
+    justify-content: end;
+    margin-right: 15px;
+  }
   .plyrist [data-plyr="mute"],
   .plyrist .plyr_author,
   .plyrist .plyr__time,

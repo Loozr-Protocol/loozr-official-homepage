@@ -4,6 +4,7 @@ import { Artist } from "../config/constants/types";
 import artistsData from "../config/mock-data/artists.json";
 import ReadMore from "../components/Readmore";
 import PlayButton from "../components/Buttons/PlayButton";
+import LoveIcon from "../components/Buttons/LoveIcon";
 
 export default function ArtistDashboard() {
   const artists: Artist[] = artistsData.map((artist) => artist);
@@ -100,11 +101,7 @@ rewards as ${song.tokenName} investor.`}
                       >
                         Buy Artist Coin
                       </a>
-                      <img
-                        src="/img/icon-heart.png"
-                        className="ml-3 img-icon"
-                        alt=""
-                      />
+                      <LoveIcon />
                       <div className="dropdown dropdown-dialog ml-3">
                         <button
                           className="btn btn-menu"
@@ -132,7 +129,7 @@ rewards as ${song.tokenName} investor.`}
               </div>
             </div>
           </div>
-          <div className="d-flex justify-content-end mt-15">
+          <div className="d-flex justify-content-end mt-20">
             <hr className="col-9" />
           </div>
         </div>

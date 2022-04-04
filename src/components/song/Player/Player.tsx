@@ -101,110 +101,98 @@ const Player = (props: PlayerProps) => {
                 </a>
                 <div className="plyr__author">{props.selectedSong.author}</div>
               </div>
-              <button
-                type="button"
-                className="plyr__control"
-                data-plyr="repeat"
-              >
-                <svg role="presentation">
-                  <use xlinkHref="/img/plyrist.svg#plyr-repeat"></use>
-                </svg>
-                <span className="plyr__tooltip" role="tooltip">
-                  Repeat
-                </span>
-              </button>
-              <button type="button" className="plyr__control" data-plyr="prev">
-                <svg role="presentation">
-                  <use xlinkHref="/img/plyrist.svg#plyr-prev"></use>
-                </svg>
-                <span className="plyr__tooltip" role="tooltip">
-                  Prev
-                </span>
-              </button>
-              <button
-                type="button"
-                onClick={toggle}
-                className="plyr__control"
-                aria-pressed="false"
-                aria-label="Play"
-                data-plyr="play"
-              >
-                <svg
-                  className={
-                    props.isPlaying ? "icon--not-pressed" : "icon--pressed"
-                  }
-                  role="presentation"
+
+              <div className="plyr__row">
+                <button
+                  type="button"
+                  className="plyr__control"
+                  data-plyr="repeat"
                 >
-                  <use xlinkHref="/img/plyrist.svg#plyr-pause"></use>
-                </svg>
-                <svg
-                  className={
-                    !props.isPlaying ? "icon--not-pressed" : "icon--pressed"
-                  }
-                  role="presentation"
+                  <svg role="presentation">
+                    <use xlinkHref="/img/plyrist.svg#plyr-repeat"></use>
+                  </svg>
+                  <span className="plyr__tooltip" role="tooltip">
+                    Repeat
+                  </span>
+                </button>
+                <button
+                  type="button"
+                  className="plyr__control"
+                  data-plyr="prev"
                 >
-                  <use xlinkHref="/img/plyrist.svg#plyr-play"></use>
-                </svg>
-                <span
-                  className={`${
-                    !props.isPlaying ? "label--pressed" : "label--not-pressed"
-                  } plyr__tooltip`}
-                  role="tooltip"
+                  <svg role="presentation">
+                    <use xlinkHref="/img/plyrist.svg#plyr-prev"></use>
+                  </svg>
+                  <span className="plyr__tooltip" role="tooltip">
+                    Prev
+                  </span>
+                </button>
+                <button
+                  type="button"
+                  onClick={toggle}
+                  className="plyr__control"
+                  aria-pressed="false"
+                  aria-label="Play"
+                  data-plyr="play"
                 >
-                  Pause
-                </span>
-                <span
-                  className={`${
-                    props.isPlaying ? "label--pressed" : "label--not-pressed"
-                  } plyr__tooltip`}
-                  role="tooltip"
+                  <svg
+                    className={
+                      props.isPlaying ? "icon--not-pressed" : "icon--pressed"
+                    }
+                    role="presentation"
+                  >
+                    <use xlinkHref="/img/plyrist.svg#plyr-pause"></use>
+                  </svg>
+                  <svg
+                    className={
+                      !props.isPlaying ? "icon--not-pressed" : "icon--pressed"
+                    }
+                    role="presentation"
+                  >
+                    <use xlinkHref="/img/plyrist.svg#plyr-play"></use>
+                  </svg>
+                  <span
+                    className={`${
+                      !props.isPlaying ? "label--pressed" : "label--not-pressed"
+                    } plyr__tooltip`}
+                    role="tooltip"
+                  >
+                    Pause
+                  </span>
+                  <span
+                    className={`${
+                      props.isPlaying ? "label--pressed" : "label--not-pressed"
+                    } plyr__tooltip`}
+                    role="tooltip"
+                  >
+                    Play
+                  </span>
+                </button>
+                <button
+                  type="button"
+                  className="plyr__control"
+                  data-plyr="next"
                 >
-                  Play
-                </span>
-              </button>
-              <button type="button" className="plyr__control" data-plyr="next">
-                <svg role="presentation">
-                  <use xlinkHref="/img/plyrist.svg#plyr-next"></use>
-                </svg>
-                <span className="plyr__tooltip" role="tooltip">
-                  Next
-                </span>
-              </button>
-              <button
-                type="button"
-                className="plyr__control"
-                data-plyr="shuffle"
-              >
-                <svg role="presentation">
-                  <use xlinkHref="/img/plyrist.svg#plyr-shuffle"></use>
-                </svg>
-                <span className="plyr__tooltip" role="tooltip">
-                  Shuffle
-                </span>
-              </button>
-              <button
-                type="button"
-                className="plyr__control"
-                aria-pressed="false"
-                data-plyr="like"
-              >
-                <svg className="icon--pressed" role="presentation">
-                  <use xlinkHref="/img/plyrist.svg#plyr-liked"></use>
-                </svg>
-                <svg className="icon--not-pressed" role="presentation">
-                  <use xlinkHref="/img/plyrist.svg#plyr-like"></use>
-                </svg>
-                <span className="label--pressed plyr__tooltip" role="tooltip">
-                  Dislike
-                </span>
-                <span
-                  className="label--not-pressed plyr__tooltip"
-                  role="tooltip"
+                  <svg role="presentation">
+                    <use xlinkHref="/img/plyrist.svg#plyr-next"></use>
+                  </svg>
+                  <span className="plyr__tooltip" role="tooltip">
+                    Next
+                  </span>
+                </button>
+                <button
+                  type="button"
+                  className="plyr__control"
+                  data-plyr="shuffle"
                 >
-                  Like
-                </span>
-              </button>
-              <div className="plyr__row"></div>
+                  <svg role="presentation">
+                    <use xlinkHref="/img/plyrist.svg#plyr-shuffle"></use>
+                  </svg>
+                  <span className="plyr__tooltip" role="tooltip">
+                    Shuffle
+                  </span>
+                </button>
+              </div>
               <div
                 className="plyr__time plyr__time--current"
                 aria-label="Current time"
@@ -272,14 +260,6 @@ const Player = (props: PlayerProps) => {
                   seek-value={props.volume}
                 />
               </div>
-              <button type="button" className="plyr__control" data-plyr="list">
-                <svg role="presentation">
-                  <use xlinkHref="/img/plyrist.svg#plyr-list"></use>
-                </svg>
-                <span className="plyr__tooltip" role="tooltip">
-                  Playlist
-                </span>
-              </button>
             </div>
           </div>
         </div>

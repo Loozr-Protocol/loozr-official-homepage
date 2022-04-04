@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import LoveIcon from '../Buttons/LoveIcon';
 import { Song } from "../../config/constants/types";
 
 interface SongTableProps {
@@ -23,7 +24,7 @@ export default function SongTable({ id, songId, song }: SongTableProps) {
         <div className="col-md-7 partial-offset-md-1 sm-mt10">
           <div className="d-flex align-items-center">
             <p className="vxcaption">{song.duration} mins</p>
-            <img src="/img/icon-heart.png" className="ml-4 img-icon" alt="" />
+            <LoveIcon/>
             <div className="dropdown dropdown-dialog ml-4">
               <button
                 className="btn btn-menu"
