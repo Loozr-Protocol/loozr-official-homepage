@@ -4,7 +4,6 @@ import ReactDOM from "react-dom";
 import Axios from "axios";
 import Swiper, { Autoplay } from "swiper";
 import "swiper/css";
-import "./index.css";
 import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
