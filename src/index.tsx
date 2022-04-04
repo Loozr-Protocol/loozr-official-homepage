@@ -81,7 +81,7 @@ new Swiper(".metro .swiper-container", {
 });
 
 window.paceOptions = {
-  ajax: true,
+  ajax: false,
   document: true,
   eventLag: false,
 };
