@@ -5,6 +5,7 @@ import ProfileSummary from "../components/ProfileSummary";
 import artistsData from "../config/mock-data/artists.json";
 import ReadMore from "../components/Readmore";
 import SongTable from "../components/song/SongTable";
+import { copy } from "../helpers/utils";
 
 export default function ArtistDashboard() {
   const artists: Artist[] = artistsData.map((artist) => artist);
@@ -91,8 +92,20 @@ export default function ArtistDashboard() {
                       <li>300k followers</li>
                       <li>304 holders</li>
                       <li className="d-flex">
-                        <span className="wrip-wrap">0xe007120…e505767f5</span>
-                        <a href="/" className="ml-2 anchor">
+                        <span className="wrip-wrap">
+                          JXXEXDUX6G…467FKKYNZNY
+                        </span>
+                        <a
+                          // eslint-disable-next-line no-script-url
+                          href="javascript:void(0)"
+                          role="button"
+                          onClick={() =>
+                            copy(
+                              "JXXEXDB36LUX6GAVBI43EQUDUC4US75SFMHWI7O4TEN6CAU467FKKYNZNY"
+                            )
+                          }
+                          className="ml-2 anchor"
+                        >
                           Copy
                         </a>
                       </li>

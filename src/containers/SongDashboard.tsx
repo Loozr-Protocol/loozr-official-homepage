@@ -5,6 +5,7 @@ import artistsData from "../config/mock-data/artists.json";
 import ReadMore from "../components/Readmore";
 import PlayButton from "../components/Buttons/PlayButton";
 import LoveIcon from "../components/Buttons/LoveIcon";
+import { copy } from "../helpers/utils";
 
 export default function ArtistDashboard() {
   const artists: Artist[] = artistsData.map((artist) => artist);
@@ -115,11 +116,16 @@ rewards as ${song.tokenName} investor.`}
                           className="dropdown-menu"
                           aria-labelledby="dropdownMenuButton"
                         >
-                          <a className="dropdown-item" href="/">
+                          <a
+                            className="dropdown-item"
+                            role="button"
+                            onClick={() =>
+                              copy(
+                                `${window.location.protocol}//${window.location.host}/artists/${id}/songs/${songId}`
+                              )
+                            }
+                          >
                             Copy Song Link
-                          </a>
-                          <a className="dropdown-item" href="/">
-                            How It Works
                           </a>
                         </div>
                       </div>
