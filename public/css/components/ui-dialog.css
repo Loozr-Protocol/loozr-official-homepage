@@ -3,7 +3,7 @@
 }
 
 .dropdown-dialog .btn-menu {
-  background: url("../../img/dotted-menu.png");
+  background: url("/img/dotted-menu.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: contain;

@@ -3,11 +3,7 @@ import { Provider } from "react-redux";
 import ReactDOM from "react-dom";
 import Axios from "axios";
 import Swiper, { Autoplay } from "swiper";
-import "./assets/css/normalize.css";
 import "swiper/css";
-import "./assets/css/plugins.css";
-import "./assets/css/components.css";
-import "./assets/css/style-dark.css";
 import "./index.css";
 import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
@@ -28,7 +24,7 @@ Axios.defaults.baseURL = API_BASE_ENDPOINT;
 setTimeout(() => {
   document.querySelector("#preloader")?.classList.add("isdone");
   document.querySelector(".loading-text")?.classList.add("isdone");
-}, 3000);
+}, 2000);
 
 Swiper.use([Autoplay]);
 
