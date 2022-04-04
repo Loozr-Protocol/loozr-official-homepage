@@ -9,6 +9,7 @@ export default function Header() {
       <div className="d-flex align-items-center hero-head">
         <div className="overlay"></div>
         <video
+          poster="/img/vid-thumbnail.jpg"
           className="fullscreen"
           src="/vid-0399482.mp4"
           playsInline
