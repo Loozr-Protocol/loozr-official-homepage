@@ -1,6 +1,8 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { Link } from "react-router-dom";
 import LoveIcon from '../Buttons/LoveIcon';
 import { Song } from "../../config/constants/types";
+import { copy } from "../../helpers/utils";
 
 interface SongTableProps {
   song: Song;
@@ -24,7 +26,7 @@ export default function SongTable({ id, songId, song }: SongTableProps) {
         <div className="col-md-7 partial-offset-md-1 sm-mt10">
           <div className="d-flex align-items-center">
             <p className="vxcaption">{song.duration} mins</p>
-            <LoveIcon/>
+            <LoveIcon />
             <div className="dropdown dropdown-dialog ml-4">
               <button
                 className="btn btn-menu"
@@ -44,9 +46,17 @@ export default function SongTable({ id, songId, song }: SongTableProps) {
                 >
                   View Song
                 </Link>
-                <Link className="dropdown-item" to="/">
+                <a
+                  role="button"
+                  className="dropdown-item"
+                  onClick={() =>
+                    copy(
+                      `${window.location.protocol}//${window.location.host}/artists/${id}/songs/${songId}`
+                    )
+                  }
+                >
                   Copy Song Link
-                </Link>
+                </a>
               </div>
             </div>
           </div>
