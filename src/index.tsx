@@ -12,7 +12,7 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
-import store from './state/store';
+import store from "./state/store";
 import { API_BASE_ENDPOINT } from "./config/constants/endpoints";
 
 declare global {
@@ -25,10 +25,10 @@ Axios.defaults.headers.common["Content-Type"] = "application/json";
 Axios.defaults.headers.common["Accept"] = "application/json";
 Axios.defaults.baseURL = API_BASE_ENDPOINT;
 
-window.Pace.on("done", function () {
+setTimeout(() => {
   document.querySelector("#preloader")?.classList.add("isdone");
   document.querySelector(".loading-text")?.classList.add("isdone");
-});
+}, 3000);
 
 Swiper.use([Autoplay]);
 
@@ -80,16 +80,10 @@ new Swiper(".metro .swiper-container", {
   },
 });
 
-window.paceOptions = {
-  ajax: false,
-  document: true,
-  eventLag: false,
-};
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-    <App />
+      <App />
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")

@@ -126,45 +126,6 @@ jQuery(function () {
         jQuery(".main-menu .sub-menu").removeClass("sub-open");
     });
 
-    /* ===============================  slick Carousel  =============================== */
-    jQuery('.team .team-container').slick({
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        arrows: true,
-        prevArrow: '.team .prev',
-        nextArrow: '.team .next',
-        dots: false,
-        autoplay: true,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 4
-                }
-            },
-            {
-                breakpoint: 767,
-                settings: {
-                    slidesToShow: 2
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1
-                }
-            }
-        ]
-    });
-
-    /* ===============================  parallaxie  =============================== */
-
-    jQuery('.parallaxie').parallaxie({
-        speed: 0.2,
-        size: "cover"
-    });
-
-
     /* ===============================  skills-circle  =============================== */
 
     var c4 = jQuery('.skills-circle .skill');
@@ -239,26 +200,10 @@ jQuery(function () {
 
 jQuery(window).on("load", function () {
 
-
     /* ===============================  SPLITTING TEXT  =============================== */
 
     // Splitting();
 
-
-    /* ===============================  thumparallax  =============================== */
-
-    var imageUp = document.getElementsByClassName('thumparallax');
-    new simpleParallax(imageUp, {
-        delay: 1,
-        scale: 1.1
-    });
-
-    var imageDown = document.getElementsByClassName('thumparallax-down');
-    new simpleParallax(imageDown, {
-        orientation: 'down',
-        delay: 1,
-        scale: 1.1
-    });
 });
 
 
