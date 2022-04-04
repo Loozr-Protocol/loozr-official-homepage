@@ -1,0 +1,44 @@
+.x-modal .modal-dialog {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  margin: 0 !important;
+}
+
+.x-modal .modal-content {
+  height: 100%;
+  overflow: hidden;
+  background: #0c0f15;
+  border-radius: 0;
+}
+.x-modal .modal-header {
+  border-radius: 0;
+  border: 0;
+}
+.x-modal .modal-header .close {
+  font-weight: 100;
+  line-height: 1;
+  color: #fff;
+  text-shadow: 0 1px 0 rgb(236, 232, 232);
+  opacity: 1;
+}
+
+.x-modal .modal-header button.close:focus {
+  outline: none;
+}
+
+.x-modal input[type="search"], .x-modal input[type="email"], .x-modal input[type="text"], .x-modal input[type="password"], .x-modal select {
+  padding-left: 0;
+  padding-right: 0;
+  border-radius: 0;
+  border-bottom: 1px solid #536079;
+}
+.x-modal .form-control::placeholder {
+  color: #fff;
+}
+.x-modal .form-control:focus {
+    color: #495057;
+    background-color: transparent;
+    outline: 0;
+    box-shadow: none;
+}

@@ -1,0 +1,54 @@
+.image-button {
+  margin-right: 1em;
+  margin-left: 1em;
+}
+.image-button:first-child {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.button {
+  padding: 12px 30px;
+  border: 1px solid #536079a4 !important;
+  border-radius: 70px;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0px;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  -webkit-transition: all 0.7s;
+  -o-transition: all 0.7s;
+  transition: all 0.7s;
+}
+.button:hover:after {
+  width: 10px;
+  height: 10px;
+  -webkit-transform: scale(100);
+  -ms-transform: scale(100);
+  transform: scale(100);
+}
+.button:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: #fff;
+  opacity: 0.3;
+  border-radius: 50%;
+  -webkit-transition: all 0.5s cubic-bezier(1, 0, 0, 1);
+  -o-transition: all 0.5s cubic-bezier(1, 0, 0, 1);
+  transition: all 0.5s cubic-bezier(1, 0, 0, 1);
+}
+.button .fa-spinner {
+  font-size: 20px;
+}
+.btn-primary {
+  background: transparent linear-gradient(195deg, #8369f4 0%, #f039e2 100%) 0%
+    0% no-repeat padding-box;
+}
+.btn-accent {
+  background: #8369f4;
+}
