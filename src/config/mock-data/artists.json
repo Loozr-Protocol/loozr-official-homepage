@@ -88,28 +88,6 @@
     ]
   },
   {
-    "name": "Sammy Hart",
-    "tokenName": "$HART",
-    "isVerified": false,
-    "coinPrice": "784.22 LZR",
-    "coinPriceFull": "784.22",
-    "USDValue": "1,333.174",
-    "photo": "/img/gallery/8.png",
-    "songs": [
-      {
-        "author": "Sammy Hart",
-        "name": "$THIS_YEAR",
-        "tokenName": "$THIS_YEAR",
-        "duration": "3.47 mins",
-        "listens": "3.47M",
-        "photo": "/img/songs/1.png",
-        "coinValue": "545.38",
-        "USDValue": "927.146",
-        "url": "https://cdns-preview-d.dzcdn.net/stream/c-d639acdde0970daf29e0ada7677acb2b-4.mp3"
-      }
-    ]
-  },
-  {
     "name": "King Stunna",
     "tokenName": "$STUNNA",
     "isVerified": true,
