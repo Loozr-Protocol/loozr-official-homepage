@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { gsap } from 'gsap';
+import { gsap } from "gsap";
 
 import { Link } from "react-router-dom";
 import { Artist } from "../config/constants/types";
@@ -19,7 +19,7 @@ export default function ShowcaseCard({ artist, id }: ShowcaseCardProps) {
       scaleZ: 1.5,
       duration: 1.5,
     });
-  }
+  };
 
   const onSlideMediaHoverOut = (event) => {
     gsap.to(slideMedia.current, {
@@ -29,7 +29,7 @@ export default function ShowcaseCard({ artist, id }: ShowcaseCardProps) {
       duration: 1.5,
       ease: "ease-in-out",
     });
-  }
+  };
 
   return (
     <div
@@ -43,7 +43,11 @@ export default function ShowcaseCard({ artist, id }: ShowcaseCardProps) {
         ref={slideMedia}
       >
         <div className="item-img bg-img wow imago">
-          <img src={artist.photo} alt={artist.name} />
+          <img
+            style={{ height: "100%" }}
+            src={artist.photo}
+            alt={artist.name}
+          />
         </div>
       </div>
       <div className="cont slide-media-action">
