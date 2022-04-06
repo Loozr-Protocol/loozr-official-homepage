@@ -14,10 +14,10 @@
         "tokenName": "$AMENO",
         "duration": "3.47 mins",
         "listens": "3.47M",
-        "photo": "/img/songs/1.png",
         "coinValue": "2,022.93",
         "USDValue": "3,438.981",
-        "url": "https://cdns-preview-d.dzcdn.net/stream/c-d639acdde0970daf29e0ada7677acb2b-4.mp3"
+        "photo": "https://loozr.s3.eu-central-1.amazonaws.com/storage-e922c/assets/audio/GoyaMenor/cover/1.jpg",
+        "url": "https://loozr.s3.eu-central-1.amazonaws.com/storage-e922c/assets/audio/GoyaMenor/audio/1.mp3"
       }
     ]
   },
@@ -36,10 +36,10 @@
         "tokenName": "$LOST_TIME",
         "duration": "3.47 mins",
         "listens": "3.47M",
-        "photo": "/img/songs/1.png",
         "coinValue": "967.34",
         "USDValue": "1,644.478",
-        "url": "https://cdns-preview-d.dzcdn.net/stream/c-d639acdde0970daf29e0ada7677acb2b-4.mp3"
+        "photo": "https://loozr.s3.eu-central-1.amazonaws.com/storage-e922c/assets/audio/PadreElFerenco/cover/1.jpg",
+        "url": "https://loozr.s3.eu-central-1.amazonaws.com/storage-e922c/assets/audio/PadreElFerenco/audio/1.mp3"
       }
     ]
   },
@@ -58,10 +58,32 @@
         "tokenName": "$MONEY_SWEET",
         "duration": "3.47 mins",
         "listens": "3.47M",
-        "photo": "/img/songs/1.png",
         "coinValue": "1,300.01",
         "USDValue": "2,210.017",
-        "url": "https://cdns-preview-d.dzcdn.net/stream/c-d639acdde0970daf29e0ada7677acb2b-4.mp3"
+        "photo": "https://loozr.s3.eu-central-1.amazonaws.com/storage-e922c/assets/audio/CrowdKontroller/cover/1.jpg",
+        "url": "https://loozr.s3.eu-central-1.amazonaws.com/storage-e922c/assets/audio/CrowdKontroller/audio/1.mp3"
+      }
+    ]
+  },
+  {
+    "name": "Gillian Baci",
+    "tokenName": "$BACI",
+    "isVerified": true,
+    "coinPrice": "279.85 LZR",
+    "coinPriceFull": "279.85",
+    "USDValue": "139.93",
+    "photo": "/img/gallery/13.png",
+    "songs": [
+      {
+        "author": "Gillian Baci",
+        "name": "$LIVING_LONELY",
+        "tokenName": "$LIVING_LONELY",
+        "duration": "3.33 mins",
+        "listens": "2.47M",
+        "coinValue": "239.57",
+        "USDValue": "119.785",
+        "photo": "https://loozr.s3.eu-central-1.amazonaws.com/storage-e922c/assets/audio/GillianBaci/cover/1.jpg",
+        "url": "https://loozr.s3.eu-central-1.amazonaws.com/storage-e922c/assets/audio/GillianBaci/audio/1.mp3"
       }
     ]
   },
@@ -80,10 +102,32 @@
         "tokenName": "$FREAK",
         "duration": "3.47 mins",
         "listens": "3.47M",
-        "photo": "/img/songs/1.png",
         "coinValue": "909.44",
         "USDValue": "1,546.048",
-        "url": "https://cdns-preview-d.dzcdn.net/stream/c-d639acdde0970daf29e0ada7677acb2b-4.mp3"
+        "photo": "https://loozr.s3.eu-central-1.amazonaws.com/storage-e922c/assets/audio/ArleneFL/cover/1.jpg",
+        "url": "https://loozr.s3.eu-central-1.amazonaws.com/storage-e922c/assets/audio/ArleneFL/audio/1.mp3"
+      }
+    ]
+  },
+  {
+    "name": "Samuel Dixon",
+    "tokenName": "$DIXON",
+    "isVerified": true,
+    "coinPrice": "300.64 LZR",
+    "coinPriceFull": "300.64",
+    "USDValue": "150.32",
+    "photo": "/img/gallery/8.png",
+    "songs": [
+      {
+        "author": "Samuel Dixon",
+        "name": "$MOST_SATISFIED",
+        "tokenName": "$MOST_SATISFIED",
+        "duration": "4.47 mins",
+        "listens": "3.7M",
+        "coinValue": "300.64",
+        "USDValue": "150.32",
+        "photo": "https://loozr.s3.eu-central-1.amazonaws.com/storage-e922c/assets/audio/GoyaMenor/cover/1.jpg",
+        "url": "https://loozr.s3.eu-central-1.amazonaws.com/storage-e922c/assets/audio/GoyaMenor/audio/1.mp3"
       }
     ]
   },
@@ -102,10 +146,10 @@
         "tokenName": "$POSE",
         "duration": "3.47 mins",
         "listens": "3.47M",
-        "photo": "/img/songs/1.png",
         "coinValue": "344.99",
         "USDValue": "586.483",
-        "url": "https://cdns-preview-d.dzcdn.net/stream/c-d639acdde0970daf29e0ada7677acb2b-4.mp3"
+        "photo": "https://loozr.s3.eu-central-1.amazonaws.com/storage-e922c/assets/audio/KingStunna/cover/1.jpg",
+        "url": "https://loozr.s3.eu-central-1.amazonaws.com/storage-e922c/assets/audio/KingStunna/audio/1.mp3"
       }
     ]
   },
@@ -124,10 +168,10 @@
         "tokenName": "$AYE",
         "duration": "3.47 mins",
         "listens": "3.47M",
-        "photo": "/img/songs/1.png",
         "coinValue": "321.94",
         "USDValue": "547.298",
-        "url": "https://cdns-preview-d.dzcdn.net/stream/c-d639acdde0970daf29e0ada7677acb2b-4.mp3"
+        "photo": "https://loozr.s3.eu-central-1.amazonaws.com/storage-e922c/assets/audio/NayomiBranch/cover/1.jpg",
+        "url": "https://loozr.s3.eu-central-1.amazonaws.com/storage-e922c/assets/audio/NayomiBranch/audio/1.mp3"
       }
     ]
   },
@@ -146,10 +190,10 @@
         "tokenName": "$NOTHING_SUP",
         "duration": "3.47 mins",
         "listens": "3.47M",
-        "photo": "/img/songs/1.png",
         "coinValue": "700.45",
         "USDValue": "1,190.765",
-        "url": "https://cdns-preview-d.dzcdn.net/stream/c-d639acdde0970daf29e0ada7677acb2b-4.mp3"
+        "photo": "https://loozr.s3.eu-central-1.amazonaws.com/storage-e922c/assets/audio/MolisaIfagha/cover/1.jpg",
+        "url": "https://loozr.s3.eu-central-1.amazonaws.com/storage-e922c/assets/audio/MolisaIfagha/audio/1.mp3"
       }
     ]
   },
@@ -168,10 +212,54 @@
         "tokenName": "$GRATITUDE",
         "duration": "3.47 mins",
         "listens": "3.47M",
-        "photo": "/img/songs/1.png",
         "coinValue": "602.97",
         "USDValue": "1,025.049",
-        "url": "https://cdns-preview-d.dzcdn.net/stream/c-d639acdde0970daf29e0ada7677acb2b-4.mp3"
+        "photo": "https://loozr.s3.eu-central-1.amazonaws.com/storage-e922c/assets/audio/CallmheMhizjae/cover/1.jpg",
+        "url": "https://loozr.s3.eu-central-1.amazonaws.com/storage-e922c/assets/audio/CallmheMhizjae/audio/1.mp3"
+      }
+    ]
+  },
+  {
+    "name": "SavageTha Beast",
+    "tokenName": "$SAVAGE",
+    "isVerified": false,
+    "coinPrice": "378.73 LZR",
+    "coinPriceFull": "378.73",
+    "USDValue": "189.37",
+    "photo": "/img/gallery/15.jpg",
+    "songs": [
+      {
+        "author": "SavageTha Beast",
+        "name": "$CONFIDENCE",
+        "tokenName": "$CONFIDENCE",
+        "duration": "3.32 mins",
+        "listens": "3.1M",
+        "coinValue": "507.99",
+        "USDValue": "253.995",
+        "photo": "https://loozr.s3.eu-central-1.amazonaws.com/storage-e922c/assets/audio/SavageThaBeast/cover/1.jpg",
+        "url": "https://loozr.s3.eu-central-1.amazonaws.com/storage-e922c/assets/audio/SavageThaBeast/audio/1.mp3"
+      }
+    ]
+  },
+  {
+    "name": "Team Kreamate",
+    "tokenName": "$KREAMATE",
+    "isVerified": false,
+    "coinPrice": "396.95 LZR",
+    "coinPriceFull": "396.95",
+    "USDValue": "198.475",
+    "photo": "/img/gallery/14.jpg",
+    "songs": [
+      {
+        "author": "Team Kreamate",
+        "name": "$I_AINT_GOT_TIME",
+        "tokenName": "$I_AINT_GOT_TIME",
+        "duration": "3.25 mins",
+        "listens": "2.4M",
+        "coinValue": "455.83",
+        "USDValue": "227.915",
+        "photo": "https://loozr.s3.eu-central-1.amazonaws.com/storage-e922c/assets/audio/TeamKreamate/cover/1.jpg",
+        "url": "https://loozr.s3.eu-central-1.amazonaws.com/storage-e922c/assets/audio/TeamKreamate/audio/1.mp3"
       }
     ]
   }
