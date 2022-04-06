@@ -1,7 +1,11 @@
 import React, { useState } from "react";
-import _ from 'lodash';
 import { connect, useDispatch } from "react-redux";
-import { setPlayerState, selectSong } from "../../state/actions";
+import {
+  setPlayerState,
+  selectSong,
+  setDuration,
+  setCurrentLocation,
+} from "../../state/actions";
 import PlayIcon from "../../assets/img/play.png";
 import PauseIcon from "../../assets/img/play.png";
 import { Song } from "../../config/constants/types";
@@ -17,26 +21,43 @@ const PlayButton = ({ song, selectedSong, isPlaying }: PlayButtonProps) => {
   const [audio] = useState(new Audio(song.url));
 
   const toggle = () => {
-    if (selectedSong == null || !_.isEqual(selectedSong, song)) {
+    let currentlyPlaying = isPlaying;
+
+    if (
+      selectedSong == null ||
+      (selectedSong && selectedSong.url !== song.url)
+    ) {
+      if (selectedSong && selectedSong.audio) {
+        selectedSong.audio.pause();
+        selectedSong.audio.currentTime = 0;
+        dispatch(setDuration(0));
+        dispatch(setPlayerState(false));
+        currentlyPlaying = false;
+        dispatch(setCurrentLocation(0));
+      }
       song.audio = audio;
       dispatch(selectSong(song));
     }
-    isPlaying ? audio.pause() : audio.play();
-    dispatch(setPlayerState(!isPlaying));
+    if (selectedSong && selectedSong.url === song.url) {
+      currentlyPlaying ? selectedSong.audio.pause() : selectedSong.audio.play();
+    } else {
+      currentlyPlaying ? audio.pause() : audio.play();
+    }
+    dispatch(setPlayerState(!currentlyPlaying));
   };
 
   return (
     <span className="audio-wrapper">
       <span onClick={toggle} className="play-butn">
         <span className="icon">
-          <img src={isPlaying ? PlayIcon : PauseIcon } alt="play" />
+          <img src={isPlaying ? PlayIcon : PauseIcon} alt="play" />
         </span>
       </span>
     </span>
   );
 };
 
-const mapStateToProps = (state: { playerState: any; selectedSong: any}) => {
+const mapStateToProps = (state: { playerState: any; selectedSong: any }) => {
   return {
     isPlaying: state.playerState,
     selectedSong: state.selectedSong,
