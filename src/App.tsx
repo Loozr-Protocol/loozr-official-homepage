@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Nav from "./components/Nav";
 import Player from "./components/song/Player/Player";
 import Home from "./containers/Home";
@@ -9,11 +9,17 @@ import SongDashboard from "./containers/SongDashboard";
 import ArtistsEcosystem from "./containers/ArtistsEcosystem";
 import WaitlistModal from "./components/WaitlistModal";
 
+const NotFound = () => (
+  <div className="main-content">
+    <h1>404 - Not Found!</h1>
+    <Link to="/">Go Home</Link>
+  </div>
+);
+
 export default class App extends Component {
   constructor(props: any) {
     super(props);
     this.state = {};
-    
   }
 
   render() {
@@ -56,6 +62,7 @@ export default class App extends Component {
                   path="/artists/:id/songs/:songId"
                   element={<SongDashboard />}
                 />
+                <Route path="*" element={NotFound} />
               </Routes>
               <Footer />
               <Player />
