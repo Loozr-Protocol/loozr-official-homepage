@@ -126,8 +126,8 @@
         "listens": "3.7M",
         "coinValue": "300.64",
         "USDValue": "150.32",
-        "photo": "https://loozr.s3.eu-central-1.amazonaws.com/storage-e922c/assets/audio/GoyaMenor/cover/1.jpg",
-        "url": "https://loozr.s3.eu-central-1.amazonaws.com/storage-e922c/assets/audio/GoyaMenor/audio/1.mp3"
+        "photo": "https://loozr.s3.eu-central-1.amazonaws.com/storage-e922c/assets/audio/SamuelDixon/cover/1.jpg",
+        "url": "https://loozr.s3.eu-central-1.amazonaws.com/storage-e922c/assets/audio/SamuelDixon/audio/1.mp3"
       }
     ]
   },
@@ -150,6 +150,28 @@
         "USDValue": "586.483",
         "photo": "https://loozr.s3.eu-central-1.amazonaws.com/storage-e922c/assets/audio/KingStunna/cover/1.jpg",
         "url": "https://loozr.s3.eu-central-1.amazonaws.com/storage-e922c/assets/audio/KingStunna/audio/1.mp3"
+      }
+    ]
+  },
+  {
+    "name": "Sammy Hart",
+    "tokenName": "$HART",
+    "isVerified": true,
+    "coinPrice": "196.99 LZR",
+    "coinPriceFull": "196.99",
+    "USDValue": "98.49",
+    "photo": "/img/gallery/16.png",
+    "songs": [
+      {
+        "author": "Sammy Hart",
+        "name": "$THIS_YEAR",
+        "tokenName": "$THIS_YEAR",
+        "duration": "3.12 mins",
+        "listens": "2.3M",
+        "coinValue": "232.87",
+        "USDValue": "116.435",
+        "photo": "https://loozr.s3.eu-central-1.amazonaws.com/storage-e922c/assets/audio/SammyHart/cover/1.jpg",
+        "url": "https://loozr.s3.eu-central-1.amazonaws.com/storage-e922c/assets/audio/SammyHart/audio/1.mp3"
       }
     ]
   },
@@ -226,7 +248,7 @@
     "coinPrice": "378.73 LZR",
     "coinPriceFull": "378.73",
     "USDValue": "189.37",
-    "photo": "/img/gallery/15.jpg",
+    "photo": "/img/gallery/15.png",
     "songs": [
       {
         "author": "SavageTha Beast",
@@ -248,7 +270,7 @@
     "coinPrice": "396.95 LZR",
     "coinPriceFull": "396.95",
     "USDValue": "198.475",
-    "photo": "/img/gallery/14.jpg",
+    "photo": "/img/gallery/14.png",
     "songs": [
       {
         "author": "Team Kreamate",
