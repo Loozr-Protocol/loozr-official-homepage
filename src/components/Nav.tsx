@@ -39,7 +39,7 @@ function Nav() {
             <li className="nav-item">
               <a
                 className="nav-link"
-                href="https://discord.gg/mm5mV8PHpq"
+                href="https://t.me/officialloozr"
                 rel="noopener noreferrer"
                 target="_blank"
               >
