@@ -15,7 +15,7 @@ export default function SongTable({ id, songId, song }: SongTableProps) {
     <>
       <div className="row mt-40">
         <div className="col-md-4">
-          <Link className="d-flex" to={`/artists/${id}/songs/${songId}`}>
+          <Link className="d-flex" to={`/artists/songs/${song.id}`}>
             <img src={song.photo} className="vxthumbnail" alt="" />
             <div className="vxdescription">
               <h4>{song.name}</h4>
@@ -42,7 +42,7 @@ export default function SongTable({ id, songId, song }: SongTableProps) {
               >
                 <Link
                   className="dropdown-item"
-                  to={`/artists/${id}/songs/${songId}`}
+                  to={`/artists/songs/${song.id}`}
                 >
                   View Song
                 </Link>
@@ -51,7 +51,7 @@ export default function SongTable({ id, songId, song }: SongTableProps) {
                   className="dropdown-item"
                   onClick={() =>
                     copy(
-                      `${window.location.protocol}//${window.location.host}/artists/${id}/songs/${songId}`
+                      `${window.location.protocol}//${window.location.host}/artists/songs/${song.id}`
                     )
                   }
                 >

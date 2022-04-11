@@ -43,6 +43,13 @@ const muteReducer = (muteState = false, action: { type: string; payload: boolean
   return muteState;
 };
 
+const songsReducer = (songs = [], action: { type: string; payload: Song[]; }) => {
+  if(action.type === "SET_SONGS") {
+    return action.payload;
+  }
+  return songs;
+}
+
 export default combineReducers({
   selectedSong: selectedSongReducer,
   playerState: playerStateReducer,
@@ -50,4 +57,5 @@ export default combineReducers({
   duration: durationReducer,
   currentLocation: currentLocationReducer,
   mute: muteReducer,
+  songs: songsReducer,
 });
