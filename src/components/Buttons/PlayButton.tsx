@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
 import {
   setPlayerState,
@@ -6,19 +6,30 @@ import {
   setDuration,
   setCurrentLocation,
 } from "../../state/actions";
-import PlayIcon from "../../assets/img/play.png";
-import PauseIcon from "../../assets/img/play.png";
+import PlayControllerIcon from "../../assets/img/play.png";
+import PauseControllerIcon from "../../assets/img/pause.png";
+import PauseControllerIconAlt from "../../assets/img/pause-alt.png";
+import PlayControllerIconAlt from "../../assets/img/play-alt.png";
 import { Song } from "../../config/constants/types";
 
 interface PlayButtonProps {
   song: Song;
+  altIcons?: boolean;
   selectedSong: Song;
   isPlaying: boolean;
 }
 
-const PlayButton = ({ song, selectedSong, isPlaying }: PlayButtonProps) => {
+const PlayButton = ({
+  song,
+  selectedSong,
+  isPlaying,
+  altIcons = false,
+}: PlayButtonProps) => {
+  let playIcon = PlayControllerIcon;
+  let pauseIcon = PauseControllerIcon;
   const dispatch = useDispatch();
   const [audio] = useState(new Audio(song.url));
+  const [currentAudioPlaying, setCurrentAudioPlayingState] = useState(false);
 
   const toggle = () => {
     let currentlyPlaying = isPlaying;
@@ -46,11 +57,24 @@ const PlayButton = ({ song, selectedSong, isPlaying }: PlayButtonProps) => {
     dispatch(setPlayerState(!currentlyPlaying));
   };
 
+  if (altIcons) {
+    playIcon = PlayControllerIconAlt;
+    pauseIcon = PauseControllerIconAlt;
+  }
+
+  useEffect(() => {
+    if (selectedSong && selectedSong.url === song.url) {
+      setCurrentAudioPlayingState(!isPlaying);
+    } else {
+      setCurrentAudioPlayingState(audio.paused);
+    }
+  }, [selectedSong, song.url, audio.paused, isPlaying]);
+
   return (
     <span className="audio-wrapper">
       <span onClick={toggle} className="play-butn">
         <span className="icon">
-          <img src={isPlaying ? PlayIcon : PauseIcon} alt="play" />
+          <img src={currentAudioPlaying ? playIcon : pauseIcon} alt="play" />
         </span>
       </span>
     </span>

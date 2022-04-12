@@ -3922,6 +3922,36 @@ body {
   transform: perspective(15cm) rotateY(28deg);
 }
 
+.slide-media:hover:before {
+  content: "";
+  position: absolute;
+  background: rgba(131, 105, 244, 0.26);
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+.slide-media:hover .audio-wrapper {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  z-index: 120;
+}
+.slide-media:hover .audio-wrapper .play-butn .icon {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+.slide-media:hover .audio-wrapper .play-butn .icon:before {
+    background: #fff;
+    opacity: 0.5;
+}
+
+.slide-media .audio-wrapper {
+  display: none;
+}
+
+.slide-media:hover .audio-wrapper {
+  display: block;
+}
+
 .slide-media:after {
   content: "";
   display: block;
