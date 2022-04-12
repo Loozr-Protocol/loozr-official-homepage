@@ -8,8 +8,6 @@ import {
 } from "../../state/actions";
 import PlayControllerIcon from "../../assets/img/play.png";
 import PauseControllerIcon from "../../assets/img/pause.png";
-import PauseControllerIconAlt from "../../assets/img/pause-alt.png";
-import PlayControllerIconAlt from "../../assets/img/play-alt.png";
 import { Song } from "../../config/constants/types";
 
 interface PlayButtonProps {
