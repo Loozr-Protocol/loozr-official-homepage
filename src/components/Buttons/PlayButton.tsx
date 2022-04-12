@@ -57,10 +57,10 @@ const PlayButton = ({
     dispatch(setPlayerState(!currentlyPlaying));
   };
 
-  if (altIcons) {
-    playIcon = PlayControllerIconAlt;
-    pauseIcon = PauseControllerIconAlt;
-  }
+  // if (altIcons) {
+  //   playIcon = PlayControllerIconAlt;
+  //   pauseIcon = PauseControllerIconAlt;
+  // }
 
   useEffect(() => {
     if (selectedSong && selectedSong.url === song.url) {
