@@ -11,6 +11,7 @@ import {
 import Time from "./Time";
 import Progress from "./Progress";
 import { Song } from "../../../config/constants/types";
+import { Link } from "react-router-dom";
 
 interface PlayerProps {
   selectedSong: Song;
@@ -19,6 +20,7 @@ interface PlayerProps {
   duration: number;
   currentLocation: number;
   mute: boolean;
+  song: Song[];
 }
 
 const Player = (props: PlayerProps) => {
@@ -85,20 +87,21 @@ const Player = (props: PlayerProps) => {
           <div className="plyr plyr--full-ui plyr--audio">
             <div className="plyr__controls">
               <Progress />
-              <div
+              <Link
+                to={`/artists/songs/${props.selectedSong.id}`}
                 className="plyr__poster"
                 style={{
                   backgroundImage: `url('${props.selectedSong.photo}')`,
                 }}
-              ></div>
+              ></Link>
               <div className="plyr__col plyr__info">
-                <a
+                <Link
                   className="plyr__title ajax"
-                  href="item.detail.html#440557235"
+                  to={`/artists/songs/${props.selectedSong.id}`}
                   data-pjax-state=""
                 >
                   {props.selectedSong.name}
-                </a>
+                </Link>
                 <div className="plyr__author">{props.selectedSong.author}</div>
               </div>
 
@@ -275,6 +278,7 @@ const mapStateToProps = (state: {
   currentLocation: number;
   volume: number;
   mute: boolean;
+  songs: Song[];
 }) => {
   return {
     selectedSong: state.selectedSong,
@@ -283,6 +287,7 @@ const mapStateToProps = (state: {
     currentLocation: state.currentLocation,
     volume: state.volume,
     mute: state.mute,
+    song: state.songs,
   };
 };
 

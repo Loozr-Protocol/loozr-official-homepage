@@ -59,7 +59,7 @@ export default class App extends Component {
                 />
                 <Route path="/artists/:id" element={<ArtistDashboard />} />
                 <Route
-                  path="/artists/:id/songs/:songId"
+                  path="/artists/songs/:id"
                   element={<SongDashboard />}
                 />
                 <Route path="*" element={NotFound} />

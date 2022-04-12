@@ -1,17 +1,22 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { useParams } from "react-router-dom";
-import { Artist } from "../config/constants/types";
+import { Artist, Song } from "../config/constants/types";
 import artistsData from "../config/mock-data/artists.json";
 import ReadMore from "../components/Readmore";
 import PlayButton from "../components/Buttons/PlayButton";
 import LoveIcon from "../components/Buttons/LoveIcon";
 import { copy } from "../helpers/utils";
+import { connect } from "react-redux";
 
-export default function ArtistDashboard() {
+interface SongDashboardProps {
+  songs: Song[];
+}
+
+const SongDashboard = (props: SongDashboardProps) => {
   const artists: Artist[] = artistsData.map((artist) => artist);
-  let { id, songId } = useParams();
+  let { id } = useParams();
 
-  if (!id || !songId) {
+  if (!id) {
     return (
       <>
         <div className="main-content">
@@ -21,11 +26,9 @@ export default function ArtistDashboard() {
       </>
     );
   }
+  const song = props.songs.find((song) => song.id === parseInt(id));
 
-  if (
-    !artists[parseInt(id)] ||
-    !artists[parseInt(id)].songs[parseInt(songId)]
-  ) {
+  if (!song) {
     return (
       <>
         <div className="main-content">
@@ -35,8 +38,9 @@ export default function ArtistDashboard() {
       </>
     );
   }
-  const artist = artists[parseInt(id)];
-  const song = artists[parseInt(id)].songs[parseInt(songId)];
+  const artist = artists.filter((artist) =>
+    artist.songs.includes(song) ? artist : null
+  )[0];
 
   return (
     <>
@@ -121,7 +125,7 @@ rewards as ${song.tokenName} investor.`}
                             role="button"
                             onClick={() =>
                               copy(
-                                `${window.location.protocol}//${window.location.host}/artists/${id}/songs/${songId}`
+                                `${window.location.protocol}//${window.location.host}/artists/songs/${song.id}`
                               )
                             }
                           >
@@ -143,4 +147,12 @@ rewards as ${song.tokenName} investor.`}
       </div>
     </>
   );
-}
+};
+
+const mapStateToProps = (state: { songs: Song[] }) => {
+  return {
+    songs: state.songs,
+  };
+};
+
+export default connect(mapStateToProps, {})(SongDashboard);

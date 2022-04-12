@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 
 import { Link } from "react-router-dom";
 import { Artist } from "../config/constants/types";
+import PlayButton from "./Buttons/PlayButton";
 
 interface ShowcaseCardProps {
   artist: Artist;
@@ -31,6 +32,8 @@ export default function ShowcaseCard({ artist, id }: ShowcaseCardProps) {
     });
   };
 
+  const song = artist.songs[0];
+
   return (
     <div
       className="d-flex flex-column content wow noraidus fadeInUp"
@@ -42,6 +45,7 @@ export default function ShowcaseCard({ artist, id }: ShowcaseCardProps) {
         onMouseLeave={onSlideMediaHoverOut}
         ref={slideMedia}
       >
+        <PlayButton altIcons={true} song={song} />
         <div className="item-img bg-img wow imago">
           <img
             style={{ height: "100%" }}

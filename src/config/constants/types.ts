@@ -8,6 +8,7 @@ export interface Track {
 }
 
 export interface Song {
+  id: number;
   author: string;
   name: string;
   listens: string;
