@@ -297,5 +297,28 @@
         "url": "https://loozr.s3.eu-central-1.amazonaws.com/storage-e922c/assets/audio/TeamKreamate/audio/1.mp3"
       }
     ]
+  },
+  {
+    "name": "Oyen & Babe",
+    "tokenName": "$OYEN",
+    "isVerified": false,
+    "coinPrice": "106 LZR",
+    "coinPriceFull": "106",
+    "USDValue": "191.00",
+    "photo": "/img/gallery/17.png",
+    "songs": [
+      {
+        "id": 472304,
+        "author": "Oyen & Babe",
+        "name": "$TURN_YOU_ON",
+        "tokenName": "$TURN_YOU_ON",
+        "duration": "3.04 mins",
+        "listens": "1.2M",
+        "coinValue": "218.01",
+        "USDValue": "122.84",
+        "photo": "https://loozr.s3.eu-central-1.amazonaws.com/storage-e922c/assets/audio/OyenNBabe/cover/1.jpg",
+        "url": "https://loozr.s3.eu-central-1.amazonaws.com/storage-e922c/assets/audio/OyenNBabe/audio/1.mp3"
+      }
+    ]
   }
 ]
