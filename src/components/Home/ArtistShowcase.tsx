@@ -6,6 +6,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 export default function ArtistShowcase() {
   const artists: Artist[] = artistsData.map((artist) => artist);
 
+  const getFirstFiveArtists = () => {
+    return artists.slice(0, 7);
+  }
+
   return (
     <>
       <div
@@ -60,7 +64,7 @@ export default function ArtistShowcase() {
                   },
                 }}
               >
-                {artists.map((artist, index) => (
+                {getFirstFiveArtists().map((artist, index) => (
                   <SwiperSlide key={index}>
                     <ShowcaseCard artist={artist} id={index} />
                   </SwiperSlide>
