@@ -1,33 +1,48 @@
 export default function RoadMap() {
   const quotas = [
     {
-      label: "Q1 2022",
-      agendas: ["Roadmap Creation", "Structure Formation", "Tokenomics"],
-    },
-    {
-      label: "Q2 2022",
+      label: "Phase 01.",
       agendas: [
-        "Seed Sale",
-        "Token Creation/Launch",
-        "BETA dApp Launch",
-        "Community Campaigns",
+        "Ideation/structure formation",
+        "Core team formation",
+        "Market research",
       ],
     },
     {
-      label: "Q3 2022",
-      agendas: ["Private Sale", "Feedbacks, R&D"],
-    },
-    {
-      label: "Q4 2022",
+      label: "Phase 02",
       agendas: [
-        "Loozr V2.0",
-        "Year Review & Feedbacks",
-        "Events & Partnerships",
+        "Token launch",
+        "Seed round",
+        "Artiste Tokenization Launch v1.0 [Web Only]",
+        "PoC LoozrVerse - Metaverse",
       ],
     },
     {
-      label: "Q1 2023 Onwards",
-      agendas: ["Loozr V3.0"],
+      label: "Phase 03",
+      agendas: [
+        "Private sale",
+        "Song Tokenization Launch v2.0 [Web only]",
+        "Video streaming/Audio streaming",
+        "TikTok integration",
+        "Music NFT marketplace",
+      ],
+    },
+    {
+      label: "Phase 04",
+      agendas: [
+        "Moment Tokenization v3.0",
+        "Live-streaming/Tipping feature ",
+        "Interoperability for other blockchains",
+      ],
+    },
+    {
+      label: "Long term",
+      agendas: [
+        "Event ticketing",
+        "Live audio conversations",
+        "Full Movie Tokenization",
+        "LoozrVerse XR Music World",
+      ],
     },
   ];
   return (
