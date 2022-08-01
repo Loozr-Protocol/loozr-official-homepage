@@ -94,4 +94,5 @@ export const dashboard = [
     private: true,
     component: Wallet,
   },
+  { name: "wallet1", path: "wallet", private: true, component: Wallet },
 ];
