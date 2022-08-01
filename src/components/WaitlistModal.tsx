@@ -124,7 +124,7 @@ export default function WaitlistModal() {
               <div className="col-md-5 offset-md-1 col-lg-5 offset-lg-1">
                 <div className="content">
                   <div className="pl-0 container">
-                    <div className="sec-head custom-font mb-10">
+                    <div className="sec-head custom-font mb-2.5">
                       <h6>JOIN WAITLIST</h6>
                     </div>
                   </div>

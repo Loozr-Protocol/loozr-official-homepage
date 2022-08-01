@@ -637,7 +637,7 @@ span:hover {
 }
 
 .mb-10 {
-  margin-bottom: 10px !important;
+  /* margin-bottom: 10px !important; */
 }
 
 .mb-15 {
@@ -645,7 +645,7 @@ span:hover {
 }
 
 .mb-20 {
-  margin-bottom: 20px !important;
+  /* margin-bottom: 20px !important; */
 }
 
 .mb-25 {
@@ -3940,8 +3940,8 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.5);
 }
 .slide-media:hover .audio-wrapper .play-butn .icon:before {
-    background: #fff;
-    opacity: 0.5;
+  background: #fff;
+  opacity: 0.5;
 }
 
 .slide-media .audio-wrapper {

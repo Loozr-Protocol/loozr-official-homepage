@@ -8,6 +8,12 @@ import Footer from "./components/Footer";
 import SongDashboard from "./containers/SongDashboard";
 import ArtistsEcosystem from "./containers/ArtistsEcosystem";
 import WaitlistModal from "./components/WaitlistModal";
+import Login from "./containers/Login";
+import Signup from "./containers/Signup";
+import AppLayout from "./components/Layout/App";
+import RecoverPassword from "./containers/RecoverPassword";
+import { authRoutes, dashboard, routes } from "./router/routes";
+import Dashboard from "./components/Layout/dashboard";
 
 const NotFound = () => (
   <div className="main-content">
@@ -50,21 +56,45 @@ export default class App extends Component {
               data-off-canvas-main-canvas
             >
               <WaitlistModal />
-              <Nav />
+              {/* <Nav /> */}
               <Routes>
-                <Route path="/" element={<Home />} />
-                <Route
-                  path="/artistes/ecosystem"
-                  element={<ArtistsEcosystem />}
-                />
-                <Route path="/artists/:id" element={<ArtistDashboard />} />
-                <Route
-                  path="/artists/songs/:id"
-                  element={<SongDashboard />}
-                />
+                {authRoutes.map((route) => (
+                  <Route
+                    key={route.name}
+                    path={route.path}
+                    element={
+                      <>
+                        <route.component />
+                        <Footer />
+                      </>
+                    }
+                  />
+                ))}
+                {routes.map((route) => (
+                  <Route
+                    key={route.name}
+                    path={route.path}
+                    element={
+                      <AppLayout>
+                        <route.component />
+                        <Footer />
+                      </AppLayout>
+                    }
+                  />
+                ))}
+                {dashboard.map((route) => (
+                  <Route
+                    key={route.name}
+                    path={route.path}
+                    element={
+                      <Dashboard>
+                        <route.component />
+                      </Dashboard>
+                    }
+                  />
+                ))}
                 <Route path="*" element={NotFound} />
               </Routes>
-              <Footer />
               <Player />
               <a href="#focused" id="focus-link" hidden>
                 Go to playing element

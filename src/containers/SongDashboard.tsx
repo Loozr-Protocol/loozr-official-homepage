@@ -75,7 +75,7 @@ const SongDashboard = (props: SongDashboardProps) => {
                         <h2 className="text-uppercase">{artist.tokenName}</h2>
                       </div>
                     </div>
-                    <div className="d-flex song-summary mb-20">
+                    <div className="d-flex song-summary mb-5">
                       <div className="d-flex align-items-center profile">
                         <img
                           src={artist.photo}
