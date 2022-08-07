@@ -24,11 +24,13 @@ const tabs = [
     icon: Artist,
     label: "Artistes ",
     available: true,
+    path: "/artistes",
   },
   {
     icon: Tracks,
     label: "Tracks",
     available: false,
+    path: "/tracks",
   },
   {
     icon: NFT,
@@ -68,11 +70,7 @@ export const Left = () => {
     setHasLaunchedToken(sessionStorage.getItem("hasLaunchedToken") === "true");
   }, []);
 
-  const launchToken = () => {
-    sessionStorage.setItem("hasLaunchedToken", "true");
-    setHasLaunchedToken(true);
-    alert("Token launched successfully :)");
-  };
+  const launchToken = () => push("/launch-token");
 
   return (
     <div
@@ -82,15 +80,26 @@ export const Left = () => {
       <img
         src={LoozrBeta}
         alt=""
-        className={`${isLoggedIn && !hasLaunchedToken ? "mb-7" : "mb-16"}`}
+        className={`${isLoggedIn ? "mb-7" : "mb-16"}`}
       />
-      {isLoggedIn && !hasLaunchedToken && (
-        <button
-          onClick={launchToken}
-          className="text-base font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
-        >
-          Launch token
-        </button>
+      {isLoggedIn ? (
+        !hasLaunchedToken ? (
+          <button
+            onClick={launchToken}
+            className="text-sm font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
+          >
+            Become an artist
+          </button>
+        ) : (
+          <button
+            onClick={launchToken}
+            className="text-sm font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
+          >
+            Upload song
+          </button>
+        )
+      ) : (
+        ""
       )}
       <div className="w-full h-[85%] overflow-y-auto overflow-x-hidden">
         {tabs.map((tab) => (
@@ -115,7 +124,10 @@ export const Left = () => {
         ))}
         <div className="h-px w-full bg-muted-50" />
         {isLoggedIn ? (
-          <div className="flex items-center justify-center w-full mt-16">
+          <div
+            onClick={() => push("/profile")}
+            className="flex items-center justify-center w-full mt-16"
+          >
             <img
               src={Memoji}
               alt=""

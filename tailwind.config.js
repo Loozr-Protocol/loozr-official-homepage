@@ -13,6 +13,7 @@ module.exports = {
         muted: "#536079",
         "muted-50": "#222A3B",
         "loozr-purple": "#8369F4",
+        "loozr-green": "#15FFAB",
         "dark-900": "#0C0F15",
         "dark-800": "#12161F",
         "dark-700": "#141922",

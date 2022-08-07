@@ -14,6 +14,10 @@ import AddTokenName from "../containers/AddTokenName";
 
 import ArtisteDashboard from "../containers/ArtisteDashboard";
 import Wallet from "../containers/Wallet";
+import Profile from "../containers/Profile";
+import LaunchToken from "../containers/LaunchToken";
+import EditProfile from "../containers/EditProfile";
+import Tracks from "../containers/Tracks";
 
 export const authRoutes = [
   {
@@ -45,6 +49,12 @@ export const authRoutes = [
     path: "verify-email",
     private: false,
     component: VerifyEmail,
+  },
+  {
+    name: "Launch Token",
+    path: "launch-token",
+    private: true,
+    component: LaunchToken,
   },
 ];
 
@@ -94,5 +104,22 @@ export const dashboard = [
     private: true,
     component: Wallet,
   },
-  { name: "wallet1", path: "wallet", private: true, component: Wallet },
+  {
+    name: "profile",
+    path: "profile",
+    private: true,
+    component: Profile,
+  },
+  {
+    name: "edit profile",
+    path: "profile/edit",
+    private: true,
+    component: EditProfile,
+  },
+  {
+    name: "edit profile",
+    path: "tracks",
+    private: true,
+    component: Tracks,
+  },
 ];

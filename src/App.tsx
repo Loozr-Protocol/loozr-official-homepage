@@ -56,7 +56,6 @@ export default class App extends Component {
               data-off-canvas-main-canvas
             >
               <WaitlistModal />
-              {/* <Nav /> */}
               <Routes>
                 {authRoutes.map((route) => (
                   <Route
