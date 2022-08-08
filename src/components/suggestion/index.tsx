@@ -5,6 +5,31 @@ import ArrowLeft from "../../assets/icons/caret-left.svg";
 import ArrowRight from "../../assets/icons/caret-right.svg";
 
 const Suggestion = () => {
+  const handleMoveRight = (id: number) => {
+    console.log("courosel", document.getElementById(`carousel`));
+    // if (isMobile) {
+    //   document.getElementById(`carousel-${index}`).scrollLeft +=
+    //     window.screen.width + 24;
+    // } else {
+    if (
+      document.getElementById(`carousel-${id}`).scrollLeft >=
+      window.screen.width
+    ) {
+      document.getElementById(`carousel-${id}`).scrollLeft = 0;
+    } else {
+      document.getElementById(`carousel-${id}`).scrollLeft += 800;
+    }
+    // }
+  };
+  const handleMoveLeft = (id: number) => {
+    // if (isMobile) {
+    //   document.getElementById(`carousel-${id}`).scrollLeft -=
+    //     window.screen.width + 24;
+    // } else {
+    document.getElementById(`carousel-${id}`).scrollLeft -= 800;
+    // }
+  };
+
   return (
     <div className="w-full">
       <div className="flex items-center justify-between mb-6">
@@ -12,15 +37,24 @@ const Suggestion = () => {
           Tracks you&apos;d love
         </p>
         <div className="flex items-center">
-          <div className="py-2 5 px-3 border-[1.5px] border-dark-700 rounded-xl mr-5">
+          <div
+            className="py-2 5 px-3 border-[1.5px] border-dark-700 rounded-xl mr-5 cursor-pointer"
+            onClick={() => handleMoveLeft(1)}
+          >
             <img src={ArrowLeft} alt="" />
           </div>
-          <div className="py-2 5 px-3 border-[1.5px] border-dark-700 rounded-xl">
+          <div
+            className="py-2 5 px-3 border-[1.5px] border-dark-700 rounded-xl cursor-pointer"
+            onClick={() => handleMoveRight(1)}
+          >
             <img src={ArrowRight} alt="" />
           </div>
         </div>
       </div>
-      <div className="max-w-full overflow-auto whitespace-nowrap mb-[74px]">
+      <div
+        id={"carousel-1"}
+        className="max-w-full overflow-auto whitespace-nowrap mb-[74px]"
+      >
         <div className="flex">
           {Array(15)
             .fill(1)
@@ -42,15 +76,24 @@ const Suggestion = () => {
       <div className="flex items-center justify-between mb-6">
         <p className="font-bold text-2xl text-white">Music NFT drops</p>
         <div className="flex items-center">
-          <div className="py-2 5 px-3 border-[1.5px] border-dark-700 rounded-xl mr-5">
+          <div
+            className="py-2 5 px-3 border-[1.5px] border-dark-700 rounded-xl mr-5 cursor-pointer"
+            onClick={() => handleMoveLeft(2)}
+          >
             <img src={ArrowLeft} alt="" />
           </div>
-          <div className="py-2 5 px-3 border-[1.5px] border-dark-700 rounded-xl">
+          <div
+            className="py-2 5 px-3 border-[1.5px] border-dark-700 rounded-xl cursor-pointer"
+            onClick={() => handleMoveRight(2)}
+          >
             <img src={ArrowRight} alt="" />
           </div>
         </div>
       </div>
-      <div className="max-w-full overflow-auto whitespace-nowrap mb-[74px]">
+      <div
+        id={"carousel-2"}
+        className="max-w-full overflow-auto whitespace-nowrap mb-[74px]"
+      >
         <div className="flex">
           {Array(15)
             .fill(1)

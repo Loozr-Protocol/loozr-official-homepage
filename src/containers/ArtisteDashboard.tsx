@@ -1,17 +1,13 @@
 import React from "react";
 import Banner from "../assets/img/dashboard-banner.png";
 import Arlene from "../assets/img/artists/arlene.png";
-import Goya from "../assets/img/artists/goya.png";
-
-import AppStore from "../assets/img/AppStore.png";
-import GooglePlay from "../assets/img/GooglePlay.png";
-
 import ArrowLeft from "../assets/icons/caret-left.svg";
 import ArrowRight from "../assets/icons/caret-right.svg";
 import Suggestion from "../components/suggestion";
 
 const ArtisteDashboard = () => {
   const handleMoveRight = () => {
+    console.log("courosel", document.getElementById(`carousel`));
     // if (isMobile) {
     //   document.getElementById(`carousel-${index}`).scrollLeft +=
     //     window.screen.width + 24;
@@ -48,16 +44,25 @@ const ArtisteDashboard = () => {
       <div className="flex items-center justify-between mb-10">
         <p className="font-bold text-2xl">Featured artistes</p>
         <div className="flex items-center">
-          <div className="py-2 5 px-3 border-[1.5px] border-dark-700 rounded-xl mr-5 cursor-pointer">
-            <img src={ArrowLeft} alt="" onClick={() => handleMoveLeft()} />
+          <div
+            className="py-2 5 px-3 border-[1.5px] border-dark-700 rounded-xl mr-5 cursor-pointer"
+            onClick={() => handleMoveLeft()}
+          >
+            <img src={ArrowLeft} alt="" />
           </div>
-          <div className="py-2 5 px-3 border-[1.5px] border-dark-700 rounded-xl cursor-pointer">
-            <img src={ArrowRight} alt="" onClick={() => handleMoveRight()} />
+          <div
+            className="py-2 5 px-3 border-[1.5px] border-dark-700 rounded-xl cursor-pointer"
+            onClick={() => handleMoveRight()}
+          >
+            <img src={ArrowRight} alt="" />
           </div>
         </div>
       </div>
-      <div className="max-w-full overflow-auto whitespace-nowrap mb-16">
-        <div id={"carousel"} className="flex">
+      <div
+        id={"carousel"}
+        className="max-w-full overflow-auto whitespace-nowrap mb-16"
+      >
+        <div className="flex">
           {Array(15)
             .fill(1)
             .map((_, index) => (
