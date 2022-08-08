@@ -8,8 +8,10 @@ import { capitalize } from "../functions";
 import Arrow45Deg from "../assets/icons/arrow-45deg.svg";
 import Arrow225Deg from "../assets/icons/arrow-225deg.svg";
 import Arlene from "../assets/img/artists/arlene.png";
+import { useNavigate } from "react-router-dom";
 
 const Wallet = () => {
+  const push = useNavigate();
   const [active, setActive] = useState(1);
 
   const renderHistory = useMemo(() => {
@@ -126,10 +128,16 @@ const Wallet = () => {
         </p>
         <p className="text-base font-medium text-white mb-12">≈ $0.0007 USD</p>
         <div className="flex items-center mb-11">
-          <button className="py-[19px] px-7 lg:px-auto lg:w-[220px] rounded-full bg-white text-black mr-7 font-semibold">
+          <button
+            onClick={() => push("/lzr/send")}
+            className="py-[19px] px-7 lg:px-auto lg:w-[220px] rounded-full bg-white text-black mr-7 font-semibold"
+          >
             Send $LZR
           </button>
-          <button className="py-[19px] px-7 lg:px-auto lg:w-[220px] rounded-full text-white border border-muted-50 font-semibold">
+          <button
+            onClick={() => push("/lzr/buy")}
+            className="py-[19px] px-7 lg:px-auto lg:w-[220px] rounded-full text-white border border-muted-50 font-semibold"
+          >
             Buy $LZR
           </button>
         </div>

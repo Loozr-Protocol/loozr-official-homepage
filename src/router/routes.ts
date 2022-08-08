@@ -12,12 +12,16 @@ import ArtistDashboard from "../containers/ArtistDashboard";
 import SongDashboard from "../containers/SongDashboard";
 import AddTokenName from "../containers/AddTokenName";
 
+import Artistes from "../containers/Artistes";
 import ArtisteDashboard from "../containers/ArtisteDashboard";
 import Wallet from "../containers/Wallet";
 import Profile from "../containers/Profile";
 import LaunchToken from "../containers/LaunchToken";
 import EditProfile from "../containers/EditProfile";
 import Tracks from "../containers/Tracks";
+import BuyLzr from "../containers/BuyLzr";
+import SendLzr from "../containers/SendLzr";
+import NFTs from "../containers/Nfts";
 
 export const authRoutes = [
   {
@@ -93,8 +97,14 @@ export const routes = [
 
 export const dashboard = [
   {
-    name: "artist dashboard",
-    path: "artistes/:id",
+    name: "artistes",
+    path: "artistes",
+    private: true,
+    component: Artistes,
+  },
+  {
+    name: "artiste dashboard",
+    path: "explore",
     private: true,
     component: ArtisteDashboard,
   },
@@ -117,9 +127,27 @@ export const dashboard = [
     component: EditProfile,
   },
   {
-    name: "edit profile",
+    name: "tracks",
     path: "tracks",
     private: true,
     component: Tracks,
+  },
+  {
+    name: "buy lzr",
+    path: "lzr/buy",
+    private: true,
+    component: BuyLzr,
+  },
+  {
+    name: "send lzr",
+    path: "lzr/send",
+    private: true,
+    component: SendLzr,
+  },
+  {
+    name: "music nfts",
+    path: "nfts",
+    private: true,
+    component: NFTs,
   },
 ];

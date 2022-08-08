@@ -7,7 +7,7 @@ const LaunchToken = () => {
   const launchToken = () => {
     sessionStorage.setItem("hasLaunchedToken", "true");
     alert("Token launched successfully :)");
-    push("/artistes/1");
+    push("/explore");
   };
   return (
     <div className="min-h-screen flex flex-col justify-center items-center ">

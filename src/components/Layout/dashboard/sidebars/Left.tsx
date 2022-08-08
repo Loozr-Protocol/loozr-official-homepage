@@ -18,7 +18,7 @@ const tabs = [
     icon: Explore,
     label: "Explore",
     available: true,
-    path: "/artistes/1",
+    path: "/explore",
   },
   {
     icon: Artist,
@@ -36,6 +36,7 @@ const tabs = [
     icon: NFT,
     label: "Music NFT",
     available: true,
+    path: "/nfts",
   },
   {
     icon: Wallet,

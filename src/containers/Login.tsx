@@ -11,7 +11,7 @@ const Login = () => {
     console.log("Login");
     sessionStorage.setItem("isLoggedIn", "true");
     setTimeout(() => {
-      push("/artistes/1");
+      push("/explore");
     }, 2000);
   };
   return (
