@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import LoozrBeta from "../../../../assets/icons/loozr-beta.svg";
-import Explore from "../../../../assets/icons/explore_icon.svg";
-import Artist from "../../../../assets/icons/artiste_icon.svg";
-import Tracks from "../../../../assets/icons/tracks_icon.svg";
-import NFT from "../../../../assets/icons/nft.svg";
-import Wallet from "../../../../assets/icons/wallet.svg";
-import Notification from "../../../../assets/icons/notification.svg";
-import More from "../../../../assets/icons/more.svg";
+
+import Explore from "../../../../assets/svg/Explore";
+import Artist from "../../../../assets/svg/Artist";
+import Tracks from "../../../../assets/svg/Tracks";
+import NFT from "../../../../assets/svg/NFT";
+import Wallet from "../../../../assets/svg/Wallet";
+import Notification from "../../../../assets/svg/Notification";
+import More from "../../../../assets/svg/More";
 import Memoji from "../../../../assets/img/memoji.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
@@ -48,6 +49,7 @@ const tabs = [
     icon: Notification,
     label: "Notifications",
     available: true,
+    path: "/notifications",
   },
   {
     icon: More,
@@ -103,16 +105,17 @@ export const Left = () => {
         ""
       )}
       <div className="w-full h-[85%] overflow-y-auto overflow-x-hidden">
-        {tabs.map((tab) => (
+        {tabs.map((tab: any) => (
           <div
             key={tab.label}
             className="flex items-center text-lg font-medium text-muted mb-7"
           >
-            <img
-              src={tab.icon}
-              alt=""
-              className="object-contain w-5 h-5 mr-4"
+            <tab.icon
+              className={`object-contain w-5 h-5 mr-4 ${
+                tab.path === pathname ? "text-white" : "text-[#536079]"
+              }`}
             />
+
             <Link
               to={tab.path || "#!"}
               className={`${

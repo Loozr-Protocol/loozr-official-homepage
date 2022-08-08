@@ -22,6 +22,7 @@ import Tracks from "../containers/Tracks";
 import BuyLzr from "../containers/BuyLzr";
 import SendLzr from "../containers/SendLzr";
 import NFTs from "../containers/Nfts";
+import Notifications from "../containers/Notifications";
 
 export const authRoutes = [
   {
@@ -149,5 +150,11 @@ export const dashboard = [
     path: "nfts",
     private: true,
     component: NFTs,
+  },
+  {
+    name: "notifications",
+    path: "notifications",
+    private: true,
+    component: Notifications,
   },
 ];
