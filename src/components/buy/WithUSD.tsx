@@ -6,8 +6,8 @@ const WithUSD = () => {
   const [amount, setAmount] = useState<undefined | number>();
   return (
     <>
-      <div className="flex justify-between items-center w-full max-w-[80%] mb-10">
-        <div className="max-w-[45%] flex-1 py-6 px-9 bg-dark-800">
+      <div className="flex flex-col md:flex-row justify-between items-center w-full md:max-w-[80%] mb-10">
+        <div className="w-full md:max-w-[45%] flex-1 py-6 px-9 bg-dark-800">
           <div className="flex justify-between w-full mb-4">
             <p className="text-lg font-medium">You pay</p>
             <p className="text-lg font-medium flex items-center">
@@ -40,7 +40,7 @@ const WithUSD = () => {
           </div>
         </div>
         <div className="text-muted mx-6 text-4xl">≈</div>
-        <div className="flex-1 py-6 px-9 bg-dark-800">
+        <div className="w-full md:w-auto flex-1 py-6 px-9 bg-dark-800">
           <div className="flex justify-between w-full mb-4">
             <p className="text-lg font-medium">You get</p>
             <div className="text-lg font-medium flex items-center">
@@ -64,7 +64,7 @@ const WithUSD = () => {
         </div>
       </div>
       {amount ? (
-        <div className="max-w-[60%]">
+        <div className="w-full md:max-w-[60%]">
           <div>
             <p className="text-lg font-medium text-muted mb-5">Summary:</p>
             <p className="py-6 px-11 text-white text-xl font-medium bg-dark-800">
