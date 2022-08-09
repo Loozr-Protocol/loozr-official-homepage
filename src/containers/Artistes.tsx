@@ -3,15 +3,15 @@ import Arlene from "../assets/img/artists/arlene.png";
 
 const Artistes = () => {
   return (
-    <div className="w-full mt-16 pb-28">
+    <div className="w-full mt-8 md:mt-16 pb-28">
       <p className="text-white text-2xl font-semibold mb-11">Artistes</p>
-      <div className="grid grid-cols-4 gap-y-16">
+      <div className="grid grid-cols-3 md:grid-cols-4 gap-y-16">
         {Array(20)
           .fill(0)
           .map((_, i) => (
             <div
               key={i}
-              className="flex flex-col items-center mr-4 min-w-[200px]"
+              className="flex flex-col items-center mr-4 min-w-full md:min-w-[200px]"
             >
               <img
                 src={Arlene}

@@ -7,7 +7,6 @@ import Suggestion from "../components/suggestion";
 
 const ArtisteDashboard = () => {
   const handleMoveRight = () => {
-    console.log("courosel", document.getElementById(`carousel`));
     // if (isMobile) {
     //   document.getElementById(`carousel-${index}`).scrollLeft +=
     //     window.screen.width + 24;
@@ -30,8 +29,8 @@ const ArtisteDashboard = () => {
   return (
     <div className="w-full">
       <div
-        className="w-full  min-h-[290px] bg-no-repeat bg-cover bg-center pl-8 py-7 flex flex-col justify-end mb-7"
-        style={{ background: `url(${Banner})` }}
+        className="min-w-full w-full  min-h-[290px] bg-no-repeat bg-cover bg-center pl-8 py-7 flex flex-col justify-end mb-7"
+        style={{ background: `url(${Banner})`, backgroundColor: "#000" }}
       >
         <p>
           <span className="text-loozr-purple font-medium text-sm">MUSIC</span>{" "}

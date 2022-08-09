@@ -1,6 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import SearchIcon from "../../../../assets/icons/search.svg";
+import LoozrGradient from "../../../../assets/icons/loozr-gradient.svg";
+import SearchWhiteIcon from "../../../../assets/icons/search-white.svg";
+import PlusIcon from "../../../../assets/icons/plus.svg";
+import UserIcon from "../../../../assets/icons/user.svg";
 
 export const TopBar = () => {
   const push = useNavigate();
@@ -9,7 +13,7 @@ export const TopBar = () => {
   return (
     <div className="w-full mb-6">
       <div className="flex justify-between items-center">
-        <div className="relative">
+        <div className="hidden md:block relative">
           <input
             type="text"
             placeholder="Search artiste, fans… "
@@ -27,7 +31,7 @@ export const TopBar = () => {
           />
         </div>
         {!isLoggedIn && (
-          <div className="flex items-center justify-end gap-x-4">
+          <div className="hidden md:flex items-center justify-end gap-x-4">
             <button
               className="rounded-full py-[16px] px-[40px] border border-grey-white min-w-[200px] text-lg font-semibold outline-none focus:outline-none"
               onClick={() => push("/login")}
@@ -42,6 +46,21 @@ export const TopBar = () => {
             </button>
           </div>
         )}
+        <div className="md:hidden flex items-center">
+          <p className="text-xl text-white pr-0.5 font-bold">~$46.23/</p>
+          <img src={LoozrGradient} alt="" />
+        </div>
+        <div className="md:hidden flex items-center">
+          <img src={PlusIcon} alt="" width={17} height={17} />
+          <img
+            src={SearchWhiteIcon}
+            alt=""
+            className="ml-8"
+            width={17}
+            height={17}
+          />
+          <img src={UserIcon} alt="" className="ml-8" width={17} height={17} />
+        </div>
       </div>
     </div>
   );

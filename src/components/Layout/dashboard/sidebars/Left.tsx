@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import LoozrBeta from "../../../../assets/icons/loozr-beta.svg";
+import Loozr from "../../../../assets/icons/loozr.svg";
 
 import Explore from "../../../../assets/svg/Explore";
 import Artist from "../../../../assets/svg/Artist";
@@ -10,6 +11,8 @@ import Notification from "../../../../assets/svg/Notification";
 import More from "../../../../assets/svg/More";
 import Memoji from "../../../../assets/img/memoji.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 export const drawerMinWidth = 280;
 export const drawerMaxWidth = 20;
@@ -61,6 +64,8 @@ const tabs = [
 export const Left = () => {
   const { pathname } = useLocation();
   const push = useNavigate();
+  const lg = useMediaQuery("(min-width:1024px)");
+  const md = useMediaQuery("(min-width:768px)");
   const [hasLaunchedToken, setHasLaunchedToken] = useState(
     sessionStorage.getItem("hasLaunchedToken") === "true"
   );
@@ -77,14 +82,25 @@ export const Left = () => {
 
   return (
     <div
-      className={`bg-dark-800 fixed left-0 h-screen pl-16 pr-14 py-14 mb-5`}
-      style={{ minWidth: drawerMinWidth, maxWidth: `${drawerMaxWidth}vw` }}
+      className={`bg-dark-800 fixed left-0 h-screen md:pl-12 lg:pl-16 pr-auto lg:pr-14 py-14 mb-5`}
+      style={{
+        minWidth: lg ? drawerMinWidth : "auto",
+        maxWidth: md ? `${drawerMaxWidth}vw` : 0,
+      }}
     >
-      <img
-        src={LoozrBeta}
-        alt=""
-        className={`${isLoggedIn ? "mb-7" : "mb-16"}`}
-      />
+      {lg ? (
+        <img
+          src={LoozrBeta}
+          alt=""
+          className={`${isLoggedIn ? "mb-7" : "mb-16"}`}
+        />
+      ) : (
+        <img
+          src={Loozr}
+          alt=""
+          className={`${isLoggedIn ? "mb-7" : "mb-16"} h-6 w-6`}
+        />
+      )}
       {isLoggedIn ? (
         !hasLaunchedToken ? (
           <button
@@ -106,9 +122,10 @@ export const Left = () => {
       )}
       <div className="w-full h-[85%] overflow-y-auto overflow-x-hidden">
         {tabs.map((tab: any) => (
-          <div
+          <Link
+            className="hover:flex flex items-center text-lg font-medium text-muted mb-7"
+            to={tab.path || "#!"}
             key={tab.label}
-            className="flex items-center text-lg font-medium text-muted mb-7"
           >
             <tab.icon
               className={`object-contain w-5 h-5 mr-4 ${
@@ -116,17 +133,16 @@ export const Left = () => {
               }`}
             />
 
-            <Link
-              to={tab.path || "#!"}
+            <span
               className={`${
                 tab.path === pathname && "font-bold text-white"
-              } cursor-pointer`}
+              } cursor-pointer hidden lg:inline`}
             >
               {tab.label}
-            </Link>
-          </div>
+            </span>
+          </Link>
         ))}
-        <div className="h-px w-full bg-muted-50" />
+        <div className="h-px w-7/12 lg:w-full bg-muted-50" />
         {isLoggedIn ? (
           <div
             onClick={() => push("/profile")}
@@ -138,7 +154,7 @@ export const Left = () => {
               className="object-contain w-16 h-12 rounded-full mr-3"
               style={{ border: "6px solid #141922" }}
             />
-            <div className="w-full">
+            <div className="hidden lg:block w-full">
               <p className="text-lg font-extrabold text-white">Felix Harty</p>
               <p className="text-xs font-medium text-muted">
                 {hasLaunchedToken ? (
@@ -164,7 +180,7 @@ export const Left = () => {
               className="object-contain w-16 h-12 rounded-full mr-3"
               style={{ border: "6px solid #141922" }}
             />
-            <div className="w-full">
+            <div className="hidden lg:block w-full">
               <p className="text-base font-extrabold text-white">
                 Hello, there?
               </p>
