@@ -55,23 +55,31 @@ const Profile = () => {
               <img
                 src={Arlene}
                 alt=""
-                className="h-[60px] w-[60px] rounded-full mr-3"
+                className="h-8 md:h-[60px] w-8 md:w-[60px] rounded-full mr-3"
                 style={{ border: "6px solid #141922" }}
               />
               <div>
-                <p className="text-xl font-extrabold">{item.name}</p>
-                <p className="text-base font-semibold text-muted">
+                <p className="text-sm md:text-xl font-extrabold">{item.name}</p>
+                <p className="text-xs md:text-base font-semibold text-muted">
                   You own 0.735 LZR
                 </p>
               </div>
             </div>
             <div>
-              <p className="text-xl font-extrabold">{capitalize(item.type)}</p>
-              <p className="text-base font-semibold text-muted">Type of user</p>
+              <p className="text-sm md:text-xl font-extrabold">
+                {capitalize(item.type)}
+              </p>
+              <p className="text-xs md:text-base font-semibold text-muted">
+                Type of user
+              </p>
             </div>
             <div>
-              <p className="text-xl font-extrabold">~${item.price}</p>
-              <p className="text-base font-semibold text-muted">USD value</p>
+              <p className="text-sm md:text-xl font-extrabold">
+                ~${item.price}
+              </p>
+              <p className="text-xs md:text-base font-semibold text-muted">
+                USD value
+              </p>
             </div>
           </div>
         ));
@@ -85,23 +93,29 @@ const Profile = () => {
               <img
                 src={Arlene}
                 alt=""
-                className="h-[60px] w-[60px] rounded-full mr-3"
+                className="h-8 md:h-[60px] w-8 md:w-[60px] rounded-full mr-3"
                 style={{ border: "6px solid #141922" }}
               />
               <div>
-                <p className="text-xl font-extrabold">{item.name}</p>
-                <p className="text-base font-semibold text-muted">
+                <p className="text-sm md:text-xl font-extrabold">{item.name}</p>
+                <p className="md:text-base font-semibold text-muted">
                   Owns {item.owns} LZR of your artiste token
                 </p>
               </div>
             </div>
             <div>
-              <p className="text-xl font-extrabold">{capitalize(item.type)}</p>
-              <p className="text-base font-semibold text-muted">Type of user</p>
+              <p className="text-sm md:text-xl font-extrabold">
+                {capitalize(item.type)}
+              </p>
+              <p className="md:text-base font-semibold text-muted">
+                Type of user
+              </p>
             </div>
             <div>
-              <p className="text-xl font-extrabold">~${item.price}</p>
-              <p className="text-base font-semibold text-muted">USD value</p>
+              <p className="text-sm md:text-xl font-extrabold">
+                ~${item.price}
+              </p>
+              <p className="md:text-base font-semibold text-muted">USD value</p>
             </div>
           </div>
         ));
@@ -120,63 +134,78 @@ const Profile = () => {
                 />
               </div>
               <div>
-                <p className="text-xl font-medium">
+                <p className="text-sm md:text-xl font-medium">
                   {item.type === "dr" ? "Sent" : "Received"}
                   <span className="font-extrabold px-1">{item.token}</span>
                   coin
                 </p>
-                <p className="text-base font-semibold text-muted">
+                <p className="md:text-base font-semibold text-muted">
                   {item.type === "dr" ? "to" : "from"}{" "}
                   {item.type === "dr" ? item.to : item.from}
                 </p>
               </div>
             </div>
             <div>
-              <p className="text-xl font-extrabold">~${item.price}</p>
-              <p className="text-base font-semibold text-muted">USD value</p>
+              <p className="text-sm md:text-xl font-extrabold">
+                ~${item.price}
+              </p>
+              <p className="md:text-base font-semibold text-muted">USD value</p>
             </div>
           </div>
         ));
-      default:
-        return "";
     }
   }, [active]);
+
   return (
     <div className="w-full">
       {hasLaunchedToken && (
-        <div className="w-full bg-dark-700 px-10 py-7 mb-[52px] min-h-[290px]">
-          <div className="grid grid-cols-2">
+        <div className="w-full bg-dark-700 px-3 md:px-10 py-7 mb-[52px] min-h-[290px]">
+          <div className="grid grid-cols-1 md:grid-cols-2">
             <div>
-              <p className="font-medium text-base text-muted mb-[22px]">
+              <p className="font-medium text-base text-muted mb-2 md:mb-[22px]">
                 Your Artiste token
               </p>
-              <p className="font-extrabold text-3xl text-white mb-6">$ARLENE</p>
-              <div className="grid grid-cols-4 items-center justify-between">
-                <div>
-                  <p className="font-bold text-base text-white">$0.768</p>
+              <p className="font-extrabold text-2xl md:text-3xl text-white mb-6">
+                $ARLENE
+              </p>
+              <div className="grid grid-cols-4 items-center justify-between mb-6 md:mb-auto">
+                <div className="text-center md:text-left">
+                  <p className="font-bold text-sm md:text-base text-white">
+                    $0.768
+                  </p>
                   <p className="text-muted text-xs font-medium">
                     My coin price
                   </p>
                 </div>
-                <div>
-                  <p className="font-bold text-base text-white">$104.58K</p>
+                <div className="text-center md:text-left">
+                  <p className="font-bold text-sm md:text-base text-white">
+                    $104.58K
+                  </p>
                   <p className="text-muted text-xs font-medium">Market cap</p>
                 </div>
-                <div>
-                  <p className="font-bold text-base text-white">203</p>
+                <div className="text-center md:text-left">
+                  <p className="font-bold text-sm md:text-base text-white">
+                    203
+                  </p>
                   <p className="text-muted text-xs font-medium">Holders</p>
                 </div>
-                <div>
-                  <p className="font-bold text-base text-white">10%</p>
+                <div className="text-center md:text-left">
+                  <p className="font-bold text-sm md:text-base text-white">
+                    10%
+                  </p>
                   <p className="text-muted text-xs font-medium">% Reward</p>
                 </div>
               </div>
             </div>
             <div className="flex justify-start">
-              <div className="pl-24 flex flex-col items-center">
-                <p className="font-medium text-muted mb-6">Your token chart</p>
-                <p className="mb-1 font-semibold text-lg">87%</p>
-                <p className="mb-3.5 font-medium text-[#15FFAB]">+4.5%</p>
+              <div className="md:pl-24 flex md:flex-col items-center">
+                <div>
+                  <p className="font-medium text-muted mb-6">
+                    Your token chart
+                  </p>
+                  <p className="mb-1 font-semibold text-lg">87%</p>
+                  <p className="mb-3.5 font-medium text-[#15FFAB]">+4.5%</p>
+                </div>
                 <ResponsiveContainer width={200} height={80}>
                   <AreaChart
                     data={data}
@@ -220,35 +249,35 @@ const Profile = () => {
         <img
           src={Arlene}
           alt=""
-          className="h-[170px] w-[170px] rounded-full mr-3"
+          className="h-8 md:h-[170px] w-8 md:w-[170px] rounded-full mr-3"
           style={{ border: "20px solid #141922" }}
         />
-        <div className="ml-20">
-          <p className="text-3xl font-medium text-white mb-1.5">
+        <div className="md:ml-20">
+          <p className="text-xl md:text-3xl font-medium text-white mb-1.5">
             lzr.yourname.near
           </p>
-          <p className="text-muted font-medium text-base mb-[20px]">
+          <p className="text-muted font-medium text-sm md:text-base mb-[20px]">
             <span>Arlene Daniels</span>
             <span className="pointer ml-1.5 pl-2 before:top-2">Artiste</span>
           </p>
-          <p className="text-white max-w-[435px] text-base mb-[20px]">
+          <p className="text-white max-w-[435px] text-sm md:text-base mb-[20px]">
             Hello fam i am a musician and i love playing music all round the
             world.
           </p>
-          <div className="flex items center mb-9">
-            <p className="text-base font-bold mr-6">
+          <div className="flex items-center mb-9">
+            <p className="text-xs md:text-base font-bold mr-6">
               1.3M
               <span className="ml-2 text-sm text-muted font-medium">
                 Followers
               </span>
             </p>
-            <p className="text-base font-bold mr-6">
+            <p className="text-xs md:text-base font-bold mr-6">
               203
               <span className="ml-2 text-sm text-muted font-medium">
                 Following
               </span>
             </p>
-            <p className="text-base font-bold">
+            <p className="text-xs md:text-base font-bold">
               61.2k
               <span className="ml-2 text-sm text-muted font-medium">
                 Listens
@@ -268,11 +297,11 @@ const Profile = () => {
           </div>
         </div>
       </div>
-      <div className="w-full pb-[19px] mb-9 border-b-2 border-muted-50 flex items-center text-2xl font-medium text-muted">
+      <div className="w-full pb-[19px] mb-9 border-b-2 border-muted-50 flex items-center text-sm md:text-2xl font-medium text-muted">
         <p
           className={`mr-10 cursor-pointer ${
             active === 1 &&
-            "font-semibold text-2xl relative before:absolute before:w-full before:h-1 before:bg-loozr-purple before:bottom-[-25px]"
+            "font-semibold text-sm md:text-2xl relative before:absolute before:w-full before:h-1 before:bg-loozr-purple before:bottom-[-25px]"
           }`}
           onClick={() => setActive(1)}
         >
@@ -281,7 +310,7 @@ const Profile = () => {
         <p
           className={`mr-10 cursor-pointer ${
             active === 2 &&
-            "font-semibold text-2xl relative before:absolute before:w-full before:h-1 before:bg-loozr-purple before:bottom-[-25px]"
+            "font-semibold text-sm md:text-2xl relative before:absolute before:w-full before:h-1 before:bg-loozr-purple before:bottom-[-25px]"
           }`}
           onClick={() => setActive(2)}
         >
@@ -290,7 +319,7 @@ const Profile = () => {
         <p
           className={`cursor-pointer ${
             active === 3 &&
-            "font-semibold text-2xl relative before:absolute before:w-full before:h-1 before:bg-loozr-purple before:bottom-[-25px]"
+            "font-semibold text-sm md:text-2xl relative before:absolute before:w-full before:h-1 before:bg-loozr-purple before:bottom-[-25px]"
           }`}
           onClick={() => setActive(3)}
         >
