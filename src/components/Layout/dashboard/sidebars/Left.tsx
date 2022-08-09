@@ -105,14 +105,14 @@ export const Left = () => {
         !hasLaunchedToken ? (
           <button
             onClick={launchToken}
-            className="text-sm font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
+            className="hidden md:blocktext-sm font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
           >
             Become an artist
           </button>
         ) : (
           <button
             onClick={launchToken}
-            className="text-sm font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
+            className="hidden md:blocktext-sm font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
           >
             Upload song
           </button>
@@ -123,7 +123,7 @@ export const Left = () => {
       <div className="w-full h-[85%] overflow-y-auto overflow-x-hidden">
         {tabs.map((tab: any) => (
           <Link
-            className="hover:flex flex items-center text-lg font-medium text-muted mb-7"
+            className="hover:flex flex items-center text-lg font-medium text-muted mb-[20px]"
             to={tab.path || "#!"}
             key={tab.label}
           >
@@ -146,7 +146,7 @@ export const Left = () => {
         {isLoggedIn ? (
           <div
             onClick={() => push("/profile")}
-            className="flex items-center justify-center w-full mt-16"
+            className="flex items-center justify-center w-full mt-12"
           >
             <img
               src={Memoji}
@@ -171,7 +171,7 @@ export const Left = () => {
           </div>
         ) : (
           <div
-            className="flex items-center justify-center w-full mt-16 cursor-pointer"
+            className="flex items-center justify-center w-full mt-12 cursor-pointer"
             onClick={() => push("/login")}
           >
             <img

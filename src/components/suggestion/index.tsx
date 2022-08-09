@@ -33,7 +33,7 @@ const Suggestion = () => {
   return (
     <div className="w-full">
       <div className="flex items-center justify-between mb-6">
-        <p className="font-bold text-2xl text-white mb-6">
+        <p className="font-bold text-xl md:text-2xl text-white">
           Tracks you&apos;d love
         </p>
         <div className="flex items-center">
@@ -74,7 +74,9 @@ const Suggestion = () => {
         </div>
       </div>
       <div className="flex items-center justify-between mb-6">
-        <p className="font-bold text-2xl text-white">Music NFT drops</p>
+        <p className="font-bold text-xl md:text-2xl text-white">
+          Music NFT drops
+        </p>
         <div className="flex items-center">
           <div
             className="py-2 5 px-3 border-[1.5px] border-dark-700 rounded-xl mr-5 cursor-pointer"

@@ -23,11 +23,13 @@ const Login = () => {
       />
       <div className="flex flex-col items-center justify-center px-8 md:px-auto">
         <div style={{ zoom: "85%", width: "100%" }}>
-          <p className="text-[22px] font-normal text-muted mb-2">
+          <p className="text-lg md:text-[22px] font-normal text-muted mb-2">
             WELCOME BACK
           </p>
-          <p className="text-label font-bold mb-10">Login account</p>
-          <p className="text-xl font-normal mb-20">
+          <p className="text-4xl md:text-label font-bold mb-6 md:mb-10">
+            Login account
+          </p>
+          <p className="md:text-xl font-normal mb-20">
             Don&apos;t have an account?{" "}
             <Link to="/signup" className="text-loozr-purple">
               Create account
@@ -36,14 +38,14 @@ const Login = () => {
           <input
             type="email"
             placeholder="Enter email"
-            className="py-8 px-11 text-muted placeholder:text-muted font-medium text-xl bg-dark-800 mb-11"
+            className="py-8 px-11 text-muted placeholder:text-muted font-medium md:text-xl bg-dark-800 mb-11"
             style={{ backgroundColor: "#12161F" }}
           />
           <div className="w-full relative">
             <input
               type={passwordVisible ? "text" : "password"}
               placeholder="Password"
-              className="py-8 px-11 text-muted placeholder:text-muted font-medium text-xl bg-dark-800 w-full"
+              className="py-8 px-11 text-muted placeholder:text-muted font-medium md:text-xl bg-dark-800 w-full"
               style={{ backgroundColor: "#12161F", marginBottom: 60 }}
             />
             <span
@@ -58,12 +60,12 @@ const Login = () => {
             </span>
           </div>
           <button
-            className="py-6 text-white disabled:text-muted font-medium text-xl bg-gradient-ld disabled:bg-dark-800 mb-11 w-full focus:outline-none"
+            className="py-6 text-white disabled:text-muted font-medium md:text-xl bg-gradient-ld disabled:bg-dark-800 mb-11 w-full focus:outline-none"
             onClick={handleLogin}
           >
             Login
           </button>
-          <p className="text-xl font-normal">
+          <p className="md:text-xl font-normal">
             Forgot your password?{" "}
             <Link to="/recover-password" className="text-loozr-purple">
               Reset here

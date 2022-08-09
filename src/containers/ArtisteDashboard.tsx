@@ -41,7 +41,9 @@ const ArtisteDashboard = () => {
         </p>
       </div>
       <div className="flex items-center justify-between mb-10">
-        <p className="font-bold text-2xl">Featured artistes</p>
+        <p className="font-bold text-xl md:text-2xl text-white">
+          Featured artistes
+        </p>
         <div className="flex items-center">
           <div
             className="py-2 5 px-3 border-[1.5px] border-dark-700 rounded-xl mr-5 cursor-pointer"
@@ -67,20 +69,20 @@ const ArtisteDashboard = () => {
             .map((_, index) => (
               <div
                 key={index}
-                className="flex flex-col items-center mr-4 min-w-[200px]"
+                className="flex flex-col items-center mr-4 min-w-max md:min-w-[200px]"
               >
                 <img
                   src={Arlene}
                   alt=""
-                  className="object-cover h-36 w-36 rounded-full border-[15px] border-dark-700 mb-[18px]"
+                  className="object-cover h-20 md:h-36 w-20 md:w-36 rounded-full border-[15px] border-dark-700 mb-[18px]"
                   style={{
                     border: "15px solid #141922",
                   }}
                 />
-                <p className="mb-1 font-extrabold text-xl text-white text-center">
+                <p className="mb-1 font-semibold md:font-extrabold text-base md:text-xl text-white text-center">
                   $ARLENE
                 </p>
-                <p className="text-muted text-base font-semibold text-center">
+                <p className="text-muted text-sm md:text-base font-medium md:font-semibold text-center">
                   2,474.14 LZR
                 </p>
               </div>

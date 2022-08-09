@@ -33,9 +33,9 @@ export default class App extends Component {
       <>
         <Router>
           <div>
-            <a href="#main-content" className="visually-hidden focusable">
+            {/* <a href="#main-content" className="visually-hidden focusable">
               Skip to main content
-            </a>
+            </a> */}
 
             <div id="preloader"></div>
             <div className="progress-wrap cursor-pointer">
