@@ -40,17 +40,22 @@ const tabs = [
 ];
 
 const Dashboard = ({ children }: { children: React.ReactNode }) => {
+  const xl = useMediaQuery("(min-width:1280px)");
   const lg = useMediaQuery("(min-width:1024px)");
   const md = useMediaQuery("(min-width:768px)");
   const { pathname } = useLocation();
+
+  console.log({ md, lg, xl });
   return (
     <div className="flex justify-between w-full !overflow-x-hidden">
       <Left />
       <div
         className={`flex-1 py-10 px-3 md:px-0 md:pl-14 lg:pr-28 !overflow-x-hidden mb-24 md:mb-auto`}
         style={{
-          marginLeft: lg
-            ? `calc(80px + ${drawerMaxWidth}vw)`
+          marginLeft: xl
+            ? `calc(100px + ${drawerMaxWidth}vw)`
+            : lg
+            ? `200px`
             : md
             ? "150px"
             : "auto",

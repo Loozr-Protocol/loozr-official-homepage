@@ -64,6 +64,7 @@ const tabs = [
 export const Left = () => {
   const { pathname } = useLocation();
   const push = useNavigate();
+  const xl = useMediaQuery("(min-width:1280px)");
   const lg = useMediaQuery("(min-width:1024px)");
   const md = useMediaQuery("(min-width:768px)");
   const [hasLaunchedToken, setHasLaunchedToken] = useState(
@@ -82,13 +83,13 @@ export const Left = () => {
 
   return (
     <div
-      className={`bg-dark-800 fixed left-0 h-screen md:pl-12 lg:pl-16 pr-auto lg:pr-14 py-14 mb-5`}
+      className={`bg-dark-800 fixed left-0 h-screen md:pl-8 xl:pl-16 pr-auto xl:pr-14 py-14 mb-5`}
       style={{
-        minWidth: lg ? drawerMinWidth : "auto",
+        minWidth: xl ? drawerMinWidth : "auto",
         maxWidth: md ? `${drawerMaxWidth}vw` : 0,
       }}
     >
-      {lg ? (
+      {xl ? (
         <img
           src={LoozrBeta}
           alt=""
@@ -105,14 +106,14 @@ export const Left = () => {
         !hasLaunchedToken ? (
           <button
             onClick={launchToken}
-            className="hidden md:blocktext-sm font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
+            className="hidden xl:block text-sm font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
           >
             Become an artist
           </button>
         ) : (
           <button
             onClick={launchToken}
-            className="hidden md:blocktext-sm font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
+            className="hidden xl:block text-sm font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
           >
             Upload song
           </button>
@@ -120,7 +121,7 @@ export const Left = () => {
       ) : (
         ""
       )}
-      <div className="w-full h-[85%] overflow-y-auto overflow-x-hidden">
+      <div className="w-full  h-[85%] overflow-y-auto overflow-x-hidden">
         {tabs.map((tab: any) => (
           <Link
             className="hover:flex flex items-center text-lg font-medium text-muted mb-[20px]"
@@ -136,7 +137,7 @@ export const Left = () => {
             <span
               className={`${
                 tab.path === pathname && "font-bold text-white"
-              } cursor-pointer hidden lg:inline`}
+              } cursor-pointer hidden xl:inline`}
             >
               {tab.label}
             </span>
@@ -154,7 +155,7 @@ export const Left = () => {
               className="object-contain w-16 h-12 rounded-full mr-3"
               style={{ border: "6px solid #141922" }}
             />
-            <div className="hidden lg:block w-full">
+            <div className="hidden xl:block w-full">
               <p className="text-lg font-extrabold text-white">Felix Harty</p>
               <p className="text-xs font-medium text-muted">
                 {hasLaunchedToken ? (
