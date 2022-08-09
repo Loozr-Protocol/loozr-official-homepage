@@ -47,7 +47,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
     <div className="flex justify-between w-full !overflow-x-hidden">
       <Left />
       <div
-        className={`flex-1 py-10 md:pl-14 lg:pr-28 !overflow-x-hidden mb-24 md:mb-auto`}
+        className={`flex-1 py-10 px-7 md:px-0 md:pl-14 lg:pr-28 !overflow-x-hidden mb-24 md:mb-auto`}
         style={{
           marginLeft: lg
             ? `calc(80px + ${drawerMaxWidth}vw)`
@@ -55,7 +55,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
             ? "150px"
             : "auto",
           marginRight: "auto",
-          zoom: md ? "80%" : "90%",
+          zoom: md ? "80%" : "100%",
           maxWidth: `100vw`,
         }}
       >
