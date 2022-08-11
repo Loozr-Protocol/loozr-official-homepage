@@ -21,7 +21,7 @@ const Login = () => {
         alt=""
         className="w-full lg:w-4/5 hidden md:block h-screen"
       />
-      <div className="flex flex-col items-center justify-center px-8 md:px-auto">
+      <div className="flex flex-col items-center justify-center px-6 md:px-auto">
         <div style={{ zoom: "85%", width: "100%" }}>
           <p className="text-lg md:text-[22px] font-normal text-muted mb-2">
             WELCOME BACK

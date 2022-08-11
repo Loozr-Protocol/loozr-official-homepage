@@ -14,12 +14,12 @@ const Signup = () => {
         alt=""
         className="w-full lg:w-4/5 hidden md:block h-screen"
       />
-      <div className="flex flex-col items-center justify-center px-8 md:px-auto">
+      <div className="flex flex-col items-center justify-center px-6 md:px-auto">
         <div style={{ zoom: "85%", width: "100%" }}>
           <p className="text-lg md:text-[22px] font-normal text-muted mb-2">
             START FOR FREE
           </p>
-          <p className="text-4xl md:text-5xl 2xl:text-label mb-6 md:mb-10 font-bold">
+          <p className="text-4xl md:text-5xl 2xl:text-label mb-2 md:mb-10 font-bold">
             Create account
           </p>
           <p className="md:text-xl font-normal mb-10 md:mb-20">
@@ -70,12 +70,12 @@ const Signup = () => {
               )}
             </span>
           </div>
-          <p className="w-4/5 text-muted text-base my-8">
+          <p className="w-4/5 text-muted text-sm md:text-base my-8">
             By clicking “Create account” you agree to our{" "}
             <span className="text-loozr-purple">Terms of Service</span> and our{" "}
             <span className="text-loozr-purple">Policy.</span>
           </p>
-          <button className="py-6 text-white disabled:text-muted font-medium md:text-xl bg-gradient-ld disabled:bg-dark-800 mb-11 w-full focus:outline-none">
+          <button className="py-3 md:py-6 text-white disabled:text-muted font-medium md:text-xl bg-gradient-ld disabled:bg-dark-800 mb-11 w-full focus:outline-none">
             Create account
           </button>
         </div>
