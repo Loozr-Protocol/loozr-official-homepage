@@ -45,7 +45,7 @@ const ArtisteDashboard = () => {
       </div> */}
       <Carousel />
       <div className="flex items-center justify-between mb-10">
-        <p className="font-thin md:font-medium text-base md:text-lg text-white">
+        <p className="font-medium text-base md:text-lg text-white">
           Featured artistes
         </p>
         <div className="flex items-center">
