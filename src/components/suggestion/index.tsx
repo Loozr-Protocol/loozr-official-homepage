@@ -63,12 +63,14 @@ const Suggestion = () => {
                 <img
                   src={Goya}
                   alt=""
-                  className="object-cover h-32 w-h-32 mb-[18px]"
+                  className="object-cover h-36 w-h-36 mb-[18px]"
                 />
                 <p className="mb-1 font-normal text-sm text-white">
                   Chiling good
                 </p>
-                <p className="text-muted text-xs font-light">Goya Menor</p>
+                <p className="text-muted text-xs font-medium md:text-sm md:font-medium">
+                  Goya Menor
+                </p>
               </div>
             ))}
         </div>

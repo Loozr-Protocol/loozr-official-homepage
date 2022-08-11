@@ -59,7 +59,7 @@ const nfts = [
 
 const Nfts = () => {
   return (
-    <div className="w-full mt-16 pb-28">
+    <div className="w-full mt-8 md:mt-0 pb-28">
       <p className="text-white text-lg font-thin md:font-medium mb-7">
         Music NFT drops
       </p>

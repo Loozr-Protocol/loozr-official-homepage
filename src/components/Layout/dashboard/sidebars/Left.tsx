@@ -83,7 +83,7 @@ export const Left = () => {
 
   return (
     <div
-      className={`bg-dark-800 fixed left-0 h-screen md:pl-8 xl:pl-16 pr-auto xl:pr-14 py-14 mb-5`}
+      className={`bg-dark-800 fixed left-0 h-screen md:pl-8 xl:pl-14 pr-auto xl:pr-12 pt-8 pb-12 mb-5`}
       style={{
         // minWidth: xl ? drawerMinWidth : "auto",
         // maxWidth: md ? `${drawerMaxWidth}vw` : 0,
@@ -94,7 +94,7 @@ export const Left = () => {
         <img
           src={LoozrBeta}
           alt=""
-          className={`${isLoggedIn ? "mb-7" : "mb-16"}`}
+          className={`w-32 h-8 ${isLoggedIn ? "mb-7" : "mb-16"}`}
         />
       ) : (
         <img
@@ -125,12 +125,12 @@ export const Left = () => {
       <div className="w-full  h-[85%] overflow-y-auto overflow-x-hidden">
         {tabs.map((tab: any) => (
           <Link
-            className="hover:flex flex items-center text-xs font-medium text-muted mb-[20px]"
+            className="hover:flex flex items-center text-sm font-medium text-[#536079] mb-[22px]"
             to={tab.path || "#!"}
             key={tab.label}
           >
             <tab.icon
-              className={`object-contain w-3 h-3 mr-4 ${
+              className={`object-contain w-3.5 h-3.5 mr-4 ${
                 tab.path === pathname ? "text-white" : "text-[#536079]"
               }`}
             />
@@ -144,11 +144,11 @@ export const Left = () => {
             </span>
           </Link>
         ))}
-        <div className="h-px w-7/12 lg:w-full bg-muted-50" />
+        <div className="h-px w-7/12 lg:w-full bg-muted-50 mt-8 mb-7" />
         {isLoggedIn ? (
           <div
             onClick={() => push("/profile")}
-            className="flex items-center justify-center w-full mt-12"
+            className="flex items-center justify-center w-full mt-6"
           >
             <img
               src={Memoji}
@@ -173,7 +173,7 @@ export const Left = () => {
           </div>
         ) : (
           <div
-            className="flex items-center justify-center w-full mt-12 cursor-pointer"
+            className="flex items-center justify-center w-full mt-6 cursor-pointer"
             onClick={() => push("/login")}
           >
             <img

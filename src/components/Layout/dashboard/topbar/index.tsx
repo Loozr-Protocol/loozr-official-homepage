@@ -11,37 +11,37 @@ export const TopBar = () => {
   const isLoggedIn = sessionStorage.getItem("isLoggedIn") === "true";
 
   return (
-    <div className="w-full mb-6">
+    <div className="w-full mb-6 px-3">
       <div className="flex justify-between items-center">
         <div className="hidden md:block relative">
           <input
             type="text"
             placeholder="Search artiste, fans… "
-            className="rounded-full py-[6px] text-xs"
+            className="placeholder:text-[#536079] rounded-full py-[6px] text-xs"
             style={{
-              paddingLeft: "3rem",
+              paddingLeft: "3.5rem",
               paddingRight: 16,
               width: 400,
-              background: "#141922",
+              background: "#12161F",
               color: "#536079",
             }}
           />
           <img
             src={SearchIcon}
             alt=""
-            className="absolute w-3 h-3 object-contain inset-y-[19px] left-7"
+            className="absolute w-4 h-4 object-contain inset-y-[16px] left-7"
           />
         </div>
         {!isLoggedIn && (
           <div className="hidden md:flex items-center justify-end gap-x-4">
             <button
-              className="rounded-full py-[16px] px-[40px] border border-grey-white min-w-[200px] text-lg font-semibold outline-none focus:outline-none"
+              className="rounded-full py-[16px] px-[40px] bg-[#141922] min-w-[170px] text-xs font-semibold outline-none focus:outline-none"
               onClick={() => push("/login")}
             >
               LOG IN
             </button>
             <button
-              className="rounded-full py-[16px] px-[40px] bg-s-gradient min-w-[200px] text-lg font-semibold outline-none focus:outline-none"
+              className="rounded-full py-[16px] px-[40px] bg-s-gradient min-w-[170px] text-xs font-semibold outline-none focus:outline-none"
               onClick={() => push("/signup")}
             >
               CREATE ACCOUNT

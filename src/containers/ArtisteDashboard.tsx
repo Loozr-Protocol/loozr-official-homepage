@@ -7,6 +7,7 @@ import Suggestion from "../components/suggestion";
 import Carousel from "../components/Carousel";
 import VerifiedBadge from "../assets/icons/verified_badge.svg";
 import { featured } from "../components/dummy/featuredArtist";
+import { Link } from "react-router-dom";
 
 const ArtisteDashboard = () => {
   const handleMoveRight = () => {
@@ -49,7 +50,7 @@ const ArtisteDashboard = () => {
           Featured artistes
         </p>
         <div className="flex items-center">
-          <div
+          {/* <div
             className="py-1 px-2 border-[1.5px] border-dark-700 rounded-xl mr-5 cursor-pointer"
             onClick={() => handleMoveLeft()}
           >
@@ -60,7 +61,10 @@ const ArtisteDashboard = () => {
             onClick={() => handleMoveRight()}
           >
             <img src={ArrowRight} alt="" />
-          </div>
+          </div> */}
+          <Link to="/artistes" className="text-xs font-medium text-muted">
+            View all
+          </Link>
         </div>
       </div>
       <div
@@ -71,29 +75,29 @@ const ArtisteDashboard = () => {
           {featured.map((_, index) => (
             <div
               key={index}
-              className="flex flex-col items-center mr-4 min-w-max md:min-w-[100px] relative"
+              className="flex flex-col items-center mr-4 min-w-max md:min-w-[145px] relative"
             >
               <div className="relative">
                 <img
                   src={_.img}
                   alt=""
-                  className="object-cover h-20 md:h-24 w-20 md:w-24 rounded-full border-[15px] border-dark-700 mb-[18px]"
+                  className="object-cover h-20 md:h-32 w-20 md:w-32 rounded-full border-[15px] border-dark-700 mb-[18px]"
                   style={{
-                    border: "8px solid #141922",
+                    border: "14px solid #141922",
                   }}
                 />
                 {_.verified && (
                   <img
                     src={VerifiedBadge}
                     alt=""
-                    className="absolute w-4 md:w-6 h-4 md:h-6 right-3 bottom-6"
+                    className="absolute w-4 md:w-8 h-4 md:h-8 right-3 bottom-6"
                   />
                 )}
               </div>
-              <p className="font-normal md:font-bold text-base md:text-base text-white text-center">
+              <p className="font-normal mb-1 md:font-bold text-base md:text-base text-white text-center">
                 {_.name}
               </p>
-              <p className="text-muted text-xs font-medium md:font-semibold text-center">
+              <p className="text-muted text-xs font-medium md:text-sm md:font-medium text-center">
                 {_.price}
               </p>
             </div>

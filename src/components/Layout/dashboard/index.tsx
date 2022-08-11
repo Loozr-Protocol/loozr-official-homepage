@@ -50,7 +50,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
     <div className="flex justify-between w-full !overflow-x-hidden">
       <Left />
       <div
-        className={`flex-1 py-10 px-3 md:px-0 md:pl-14 lg:pr-28 !overflow-x-hidden mb-24 md:mb-auto`}
+        className={`flex-1 pt-4 pb-10 px-3 md:px-0 md:pl-14 lg:pr-28 !overflow-x-hidden mb-24 md:mb-auto`}
         style={{
           marginLeft: lg
             ? `calc(${drawerMaxWidth}vw)`
@@ -67,25 +67,27 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
         <div className="flex flex-col items-center w-full mx-auto">
           <TopBar />
           <div className="w-full">
-            <div className="w-full flex flex-col md:flex-row gap-6 md:justify-between md:items-start">
-              <div className="w-full md:w-[70%]">{children}</div>
+            <div className="w-full flex flex-col md:flex-row md:justify-between md:items-start">
+              <div className="w-full md:w-[70%] md:pl-3 md:pr-8">
+                {children}
+              </div>
               <div className="w-full md:w-[30%]">
-                <div className="bg-dark-700 w-full min-h-[240px] mb-7">
+                <div className="bg-dark-800 w-full min-h-[210px] mb-7">
                   <div className="py-8 px-6 border-dark-900 border-b">
-                    <p className="text-muted text-sm font-medium mb-1">
+                    <p className="text-muted text-xs font-medium mb-1.5">
                       Your Balance
                     </p>
-                    <p className="text-white text-3xl font-extrabold mb-2.5">
+                    <p className="text-white text-2xl font-extrabold mb-2">
                       300.1512 <span className="text-sm font-medium">LZR</span>
                     </p>
-                    <div className="text-white text-base">≈ $0.0007 USD</div>
+                    <div className="text-white text-xs">≈ $0.0007 USD</div>
                   </div>
-                  <div className="py-4 px-6 text-sm font-medium text-muted">
+                  <div className="py-4 px-6 text-xs font-medium text-muted">
                     ~ $0.05 USD per LZR coin price
                   </div>
                 </div>
                 <div className="flex justify-between items-center mb-10">
-                  <p className="text-sm font-semibold text-muted">
+                  <p className="text-sm font-semibold text-white">
                     Suggested For You
                   </p>
                   <p className="text-xs font-medium text-muted">View all</p>
@@ -106,19 +108,21 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                           style={{ border: "6px solid #141922" }}
                         />
                         <div>
-                          <p className="text-sm font-extrabold">Nathan Jose</p>
+                          <p className="text-sm font-bold text-white">
+                            Nathan Jose
+                          </p>
                           <p className="flex items-center">
-                            <span className="text-muted text-xs font-extrabold mr-1">
+                            <span className="text-muted text-[10px] font-extrabold mr-1">
                               $HARTY
                             </span>{" "}
                             <span className="bg-muted rounded-full h-1 w-1 mr-1" />{" "}
-                            <span className="text-xs text-muted font-medium">
+                            <span className="text-[10px] text-muted font-medium">
                               $3,001.99
                             </span>
                           </p>
                         </div>
                       </div>
-                      <p className="text-xs font-bold text-loozr-purple">
+                      <p className="text-[10px] font-medium text-loozr-purple">
                         Follow
                       </p>
                     </div>
