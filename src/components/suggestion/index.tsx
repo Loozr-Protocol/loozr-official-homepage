@@ -33,7 +33,7 @@ const Suggestion = () => {
   return (
     <div className="w-full">
       <div className="flex items-center justify-between mb-6">
-        <p className="font-bold text-xl md:text-2xl text-white">
+        <p className="font-thin md:font-medium text-base md:text-lg text-white">
           Tracks you&apos;d love
         </p>
         <div className="flex items-center">
@@ -59,22 +59,22 @@ const Suggestion = () => {
           {Array(15)
             .fill(1)
             .map((_, index) => (
-              <div key={index} className="flex flex-col mr-4 min-w-[200px]">
+              <div key={index} className="flex flex-col mr-4 min-w-[150px]">
                 <img
                   src={Goya}
                   alt=""
-                  className="object-cover h-52 w-52 mb-[18px]"
+                  className="object-cover h-32 w-h-32 mb-[18px]"
                 />
-                <p className="mb-1 font-extrabold text-xl text-white">
+                <p className="mb-1 font-normal text-sm text-white">
                   Chiling good
                 </p>
-                <p className="text-muted text-base font-semibold">Goya Menor</p>
+                <p className="text-muted text-xs font-light">Goya Menor</p>
               </div>
             ))}
         </div>
       </div>
       <div className="flex items-center justify-between mb-6">
-        <p className="font-bold text-xl md:text-2xl text-white">
+        <p className="font-thin md:font-medium text-base md:text-lg text-white">
           Music NFT drops
         </p>
         <div className="flex items-center">
@@ -100,13 +100,13 @@ const Suggestion = () => {
           {Array(15)
             .fill(1)
             .map((_, index) => (
-              <div key={index} className="flex flex-col mr-16 min-w-[250px]">
+              <div key={index} className="flex flex-col mr-16 min-w-[200px]">
                 <img
                   src={Goya}
                   alt=""
-                  className="object-cover h-[250px] w-[250px] mb-[18px]"
+                  className="object-cover h-[200px] w-[200px] mb-[18px]"
                 />
-                <p className="pl-[21px] font-extrabold text-xl text-white">
+                <p className="pl-[21px] font-normal text-sm text-white">
                   Happy everyday
                 </p>
               </div>

@@ -26,29 +26,27 @@ const Wallet = () => {
               <img
                 src={Arlene}
                 alt=""
-                className="h-12 md:h-[60px] w-12 md:w-[60px] rounded-full mr-3"
+                className="h-12 md:h-12 w-12 md:w-12 rounded-full mr-3"
                 style={{ border: "6px solid #141922" }}
               />
               <div>
-                <p className="text-sm md:text-xl font-extrabold">{item.name}</p>
-                <p className="text-xs md:text-base font-semibold text-muted">
+                <p className="text-xs md:text-base font-medium">{item.name}</p>
+                <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
                   You own 0.735 LZR
                 </p>
               </div>
             </div>
             <div>
-              <p className="text-sm md:text-xl font-extrabold">
+              <p className="text-xs md:text-base font-medium">
                 {capitalize(item.type)}
               </p>
-              <p className="text-xs md:text-base font-semibold text-muted">
+              <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
                 Type of user
               </p>
             </div>
             <div>
-              <p className="text-sm md:text-xl font-extrabold">
-                ~${item.price}
-              </p>
-              <p className="text-xs md:text-base font-semibold text-muted">
+              <p className="text-xs md:text-base font-medium">~${item.price}</p>
+              <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
                 USD value
               </p>
             </div>
@@ -64,29 +62,27 @@ const Wallet = () => {
               <img
                 src={Arlene}
                 alt=""
-                className="h-12 md:h-[60px] w-12 md:w-[60px] rounded-full mr-3"
+                className="h-12 w-12 rounded-full mr-3"
                 style={{ border: "6px solid #141922" }}
               />
               <div>
-                <p className="text-sm md:text-xl font-extrabold">{item.name}</p>
-                <p className="text-xs md:text-base font-semibold text-muted">
+                <p className="text-xs md:text-base font-medium">{item.name}</p>
+                <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
                   Owns {item.owns} LZR of your artiste token
                 </p>
               </div>
             </div>
             <div>
-              <p className="text-sm md:text-xl font-extrabold">
+              <p className="text-xs md:text-base font-medium">
                 {capitalize(item.type)}
               </p>
-              <p className="text-xs md:text-base font-semibold text-muted">
+              <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
                 Type of user
               </p>
             </div>
             <div>
-              <p className="text-sm md:text-xl font-extrabold">
-                ~${item.price}
-              </p>
-              <p className="text-xs md:text-base font-semibold text-muted">
+              <p className="text-xs md:text-base font-medium">~${item.price}</p>
+              <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
                 USD value
               </p>
             </div>
@@ -107,22 +103,20 @@ const Wallet = () => {
                 />
               </div>
               <div>
-                <p className="text-sm md:text-xl font-medium">
+                <p className="text-xs md:text-base font-medium">
                   {item.type === "dr" ? "Sent" : "Received"}
                   <span className="font-extrabold px-1">{item.token}</span>
                   coin
                 </p>
-                <p className="text-xs md:text-base font-semibold text-muted">
+                <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
                   {item.type === "dr" ? "to" : "from"}{" "}
                   {item.type === "dr" ? item.to : item.from}
                 </p>
               </div>
             </div>
             <div>
-              <p className="text-sm md:text-xl font-extrabold">
-                ~${item.price}
-              </p>
-              <p className="text-xs md:text-base font-semibold text-muted">
+              <p className="text-xs md:text-base font-medium">~${item.price}</p>
+              <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
                 USD value
               </p>
             </div>
@@ -132,47 +126,50 @@ const Wallet = () => {
         return "";
     }
   }, [active]);
+
   return (
     <div className="w-full">
-      <div className="w-full bg-dark-700 p-7 md:p-14 mb-12">
+      <div className="w-full bg-dark-700 p-4 md:p-16 mb-12">
         <div className="flex items-center justify-between mb-9">
-          <p className="text-lg md:text-2xl font-semibold text-white">
+          <p className="text-lg font-thin md:font-medium text-white">
             My Wallet
           </p>
-          <p className="text-base md:text-lg font-medium text-white">
+          <p className="text-xs md:text-sm font-thin md:font-normal text-white">
             ~ $0.05 USD per LZR coin
           </p>
         </div>
-        <p className="text-muted text-lg font-medium mb-2.5">Total Balance</p>
+        <p className="text-muted text-sm font-normal mb-2.5">Total Balance</p>
         <p className="flex items-end text-white mb-1">
-          <span className="text-4xl md:text-5xl font-black">300.1512</span>
+          <span className="text-2xl md:text-3xl font-black">300.1512</span>
           <span className="font-medium text-xl ml-2">LZR</span>
         </p>
-        <p className="text-base font-medium text-white mb-12">≈ $0.0007 USD</p>
+        <p className="text-sm md:text-base font-light md:font-medium text-white mb-4 md:mb-8">
+          ≈ $0.0007 USD
+        </p>
         <div className="flex items-center mb-8 md:mb-11">
           <button
             onClick={() => push("/lzr/send")}
-            className="py-3 md:py-[19px] px-7 lg:px-auto lg:w-[220px] rounded-full bg-white text-black mr-7 font-semibold"
+            className="py-2.5 md:py-4 px-7 lg:px-auto lg:w-[170px] rounded-full bg-white text-black mr-7 font-semibold"
           >
             Send $LZR
           </button>
           <button
             onClick={() => push("/lzr/buy")}
-            className="py-3 md:py-[19px] px-7 lg:px-auto lg:w-[220px] rounded-full text-white border border-muted-50 font-semibold"
+            className="py-2.5 md:py-4 px-7 lg:px-auto lg:w-[170px] rounded-full text-white border border-muted-50 font-semibold"
           >
             Buy $LZR
           </button>
         </div>
-        <p className="text-white text-base md:text-xl">
+        <p className="text-white text-sm md:text-base">
           <span className="text-muted">Your Token ID:</span> lzr.yourname.near{" "}
           <span className="text-[#00FFFF] cursor-pointer">copy</span>
         </p>
       </div>
-      <div className="w-full pb-[19px] mb-9 border-b-2 border-muted-50 flex items-center text-base md:text-2xl font-medium text-muted">
+      <div className="w-full pb-2 mb-9 border-b-2 border-muted-50 flex items-center text-sm md:text-lg font-medium text-muted">
         <p
           className={`mr-10 cursor-pointer ${
             active === 1 &&
-            "md:font-semibold text-base md:text-2xl relative before:absolute before:w-full before:h-1 before:bg-loozr-purple before:bottom-[-25px]"
+            "md:font-semibold text-sm md:text-lg relative before:absolute before:w-full before:h-1 before:bg-loozr-purple before:bottom-[-13px]"
           }`}
           onClick={() => setActive(1)}
         >
@@ -181,7 +178,7 @@ const Wallet = () => {
         <p
           className={`mr-10 cursor-pointer ${
             active === 2 &&
-            "md:font-semibold text-base md:text-2xl relative before:absolute before:w-full before:h-1 before:bg-loozr-purple before:bottom-[-25px]"
+            "md:font-semibold text-sm md:text-lg relative before:absolute before:w-full before:h-1 before:bg-loozr-purple before:bottom-[-13px]"
           }`}
           onClick={() => setActive(2)}
         >
@@ -190,7 +187,7 @@ const Wallet = () => {
         <p
           className={`cursor-pointer ${
             active === 3 &&
-            "md:font-semibold text-base md:text-2xl relative before:absolute before:w-full before:h-1 before:bg-loozr-purple before:bottom-[-25px]"
+            "md:font-semibold text-sm md:text-lg relative before:absolute before:w-full before:h-1 before:bg-loozr-purple before:bottom-[-13px]"
           }`}
           onClick={() => setActive(3)}
         >

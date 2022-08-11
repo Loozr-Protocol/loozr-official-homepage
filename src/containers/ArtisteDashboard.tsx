@@ -45,18 +45,18 @@ const ArtisteDashboard = () => {
       </div> */}
       <Carousel />
       <div className="flex items-center justify-between mb-10">
-        <p className="font-bold text-xl md:text-2xl text-white">
+        <p className="font-thin md:font-medium text-base md:text-lg text-white">
           Featured artistes
         </p>
         <div className="flex items-center">
           <div
-            className="py-2 5 px-3 border-[1.5px] border-dark-700 rounded-xl mr-5 cursor-pointer"
+            className="py-1 px-2 border-[1.5px] border-dark-700 rounded-xl mr-5 cursor-pointer"
             onClick={() => handleMoveLeft()}
           >
             <img src={ArrowLeft} alt="" />
           </div>
           <div
-            className="py-2 5 px-3 border-[1.5px] border-dark-700 rounded-xl cursor-pointer"
+            className="py-1 px-2 border-[1.5px] border-dark-700 rounded-xl cursor-pointer"
             onClick={() => handleMoveRight()}
           >
             <img src={ArrowRight} alt="" />
@@ -71,29 +71,29 @@ const ArtisteDashboard = () => {
           {featured.map((_, index) => (
             <div
               key={index}
-              className="flex flex-col items-center mr-4 min-w-max md:min-w-[200px] relative"
+              className="flex flex-col items-center mr-4 min-w-max md:min-w-[100px] relative"
             >
               <div className="relative">
                 <img
                   src={_.img}
                   alt=""
-                  className="object-cover h-20 md:h-36 w-20 md:w-36 rounded-full border-[15px] border-dark-700 mb-[18px]"
+                  className="object-cover h-20 md:h-24 w-20 md:w-24 rounded-full border-[15px] border-dark-700 mb-[18px]"
                   style={{
-                    border: "15px solid #141922",
+                    border: "8px solid #141922",
                   }}
                 />
                 {_.verified && (
                   <img
                     src={VerifiedBadge}
                     alt=""
-                    className="absolute w-4 md:w-8 h-4 md:h-8 right-3 bottom-6"
+                    className="absolute w-4 md:w-6 h-4 md:h-6 right-3 bottom-6"
                   />
                 )}
               </div>
-              <p className="mb-1 font-semibold md:font-extrabold text-base md:text-xl text-white text-center">
+              <p className="font-normal md:font-bold text-base md:text-base text-white text-center">
                 {_.name}
               </p>
-              <p className="text-muted text-sm md:text-base font-medium md:font-semibold text-center">
+              <p className="text-muted text-xs font-medium md:font-semibold text-center">
                 {_.price}
               </p>
             </div>

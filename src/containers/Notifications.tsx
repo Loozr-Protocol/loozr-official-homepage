@@ -85,13 +85,13 @@ const Notifications = () => {
             alt=""
             width={44}
             height={44}
-            className="w-11 h-11"
+            className="w-9 h-9"
           />
         );
       case "trx":
         return (
           <div
-            className={`rounded-full h-11 w-11 ${
+            className={`rounded-full h-9 w-9 ${
               read ? "bg-loozr-purple" : "bg-dark-700"
             } flex items-center justify-center`}
           >
@@ -103,7 +103,7 @@ const Notifications = () => {
           <img
             src={Arlene}
             alt=""
-            className="h-11 w-11 rounded-full"
+            className="h-9 w-9 rounded-full"
             style={{ border: "6px solid #141922" }}
           />
         );
@@ -112,9 +112,9 @@ const Notifications = () => {
 
   return (
     <div className="w-full">
-      <div className="flex items-center cursor-pointer mb-16">
-        <img src={Filter} alt="" className="w-[22px] h-[16px] mr-6" />
-        <p className="text-xl text-muted font-medium mr-3">
+      <div className="flex items-center cursor-pointer mb-12">
+        <img src={Filter} alt="" className="w-[18px] h-[16px] mr-6" />
+        <p className="text-sm md:text-base text-muted font-medium mr-3">
           Filter notifications
         </p>
         <img src={CaretDown} alt="" className="w-[11px] h-1.5" />
@@ -122,14 +122,14 @@ const Notifications = () => {
       {notifications.map((notification, index) => (
         <div key={index} className="flex items-center mb-9">
           {!notification.read && (
-            <div className="h-3.5 w-3.5 bg-loozr-green rounded-full mr-10" />
+            <div className="h-3 w-3 bg-loozr-green rounded-full mr-7" />
           )}
           {renderNotificationIcon(notification.type, notification.read)}
           <div className="ml-6">
-            <p className="mb-0.5 font-medium text-xl text-white">
+            <p className="mb-0.5 font-medium text-base text-white">
               {notification.detail}
             </p>
-            <p className="text-base font-semibold text-[#536079]">
+            <p className="text-xs md:text-sm font-normal text-[#536079]">
               {notification.time}
             </p>
           </div>

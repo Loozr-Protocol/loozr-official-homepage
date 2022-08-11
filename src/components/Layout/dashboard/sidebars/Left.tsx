@@ -85,8 +85,9 @@ export const Left = () => {
     <div
       className={`bg-dark-800 fixed left-0 h-screen md:pl-8 xl:pl-16 pr-auto xl:pr-14 py-14 mb-5`}
       style={{
-        minWidth: xl ? drawerMinWidth : "auto",
-        maxWidth: md ? `${drawerMaxWidth}vw` : 0,
+        // minWidth: xl ? drawerMinWidth : "auto",
+        // maxWidth: md ? `${drawerMaxWidth}vw` : 0,
+        width: md ? `${drawerMaxWidth}vw` : 0,
       }}
     >
       {xl ? (
@@ -106,14 +107,14 @@ export const Left = () => {
         !hasLaunchedToken ? (
           <button
             onClick={launchToken}
-            className="hidden xl:block text-sm font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
+            className="hidden xl:block text-xs font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
           >
             Become an artist
           </button>
         ) : (
           <button
             onClick={launchToken}
-            className="hidden xl:block text-sm font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
+            className="hidden xl:block text-xs font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
           >
             Upload song
           </button>
@@ -124,12 +125,12 @@ export const Left = () => {
       <div className="w-full  h-[85%] overflow-y-auto overflow-x-hidden">
         {tabs.map((tab: any) => (
           <Link
-            className="hover:flex flex items-center text-lg font-medium text-muted mb-[20px]"
+            className="hover:flex flex items-center text-xs font-medium text-muted mb-[20px]"
             to={tab.path || "#!"}
             key={tab.label}
           >
             <tab.icon
-              className={`object-contain w-5 h-5 mr-4 ${
+              className={`object-contain w-3 h-3 mr-4 ${
                 tab.path === pathname ? "text-white" : "text-[#536079]"
               }`}
             />
@@ -152,12 +153,12 @@ export const Left = () => {
             <img
               src={Memoji}
               alt=""
-              className="object-contain w-16 h-12 rounded-full mr-3"
+              className="object-contain w-14 h-10 rounded-full mr-3"
               style={{ border: "6px solid #141922" }}
             />
             <div className="hidden xl:block w-full">
-              <p className="text-lg font-extrabold text-white">Felix Harty</p>
-              <p className="text-xs font-medium text-muted">
+              <p className="text-xs font-extrabold text-white">Felix Harty</p>
+              <p className="text-[10px] font-medium text-muted">
                 {hasLaunchedToken ? (
                   <span>
                     $HARTY{" "}
@@ -182,10 +183,10 @@ export const Left = () => {
               style={{ border: "6px solid #141922" }}
             />
             <div className="hidden xl:block w-full">
-              <p className="text-base font-extrabold text-white">
-                Hello, there?
+              <p className="text-xs font-extrabold text-white">Hello, there?</p>
+              <p className="text-[10px] font-medium text-muted">
+                Click to Sign in
               </p>
-              <p className="text-sm font-medium text-muted">Click to Sign in</p>
             </div>
           </div>
         )}

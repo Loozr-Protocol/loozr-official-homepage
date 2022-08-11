@@ -100,7 +100,7 @@ const Tracks = () => {
           <div
             key={index}
             onClick={() => setActive(filter)}
-            className={`py-3.5 px-8 bg-dark-700 font-semibold text-base mr-4 min-w-max ${
+            className={`py-2.5 px-6 bg-dark-700 font-normal text-sm mr-3 min-w-max ${
               active === filter ? "text-white" : "text-muted cursor-pointer"
             }`}
           >
@@ -108,15 +108,15 @@ const Tracks = () => {
           </div>
         ))}
       </div>
-      <p className="font-bold text-2xl text-white mb-5">Tracks</p>
+      <p className="text-lg font-thin md:font-medium text-white mb-5">Tracks</p>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-x-5  gap-y-10">
         {tracks.map((track, index) => (
           <div key={index}>
             <img src={track.img} alt="" width={"100%"} height={203} />
-            <p className="font-bold text-lg mt-3 mb-[1px] text-white">
+            <p className="font-normal text-sm mt-3 mb-[1px] text-white">
               {track.title}
             </p>
-            <p className="text-muted font-medium text-sm">{track.artist}</p>
+            <p className="text-muted text-xs font-light">{track.artist}</p>
           </div>
         ))}
       </div>

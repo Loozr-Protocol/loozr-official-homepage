@@ -17,17 +17,19 @@ export const TopBar = () => {
           <input
             type="text"
             placeholder="Search artiste, fans… "
-            className="rounded-full py-[16px] bg-dark-700 border"
+            className="rounded-full py-[6px] text-xs"
             style={{
-              paddingLeft: "4rem",
+              paddingLeft: "3rem",
               paddingRight: 16,
               width: 400,
+              background: "#141922",
+              color: "#536079",
             }}
           />
           <img
             src={SearchIcon}
             alt=""
-            className="absolute w-[20px] h-[20px] object-contain inset-y-5 left-7"
+            className="absolute w-3 h-3 object-contain inset-y-[19px] left-7"
           />
         </div>
         {!isLoggedIn && (

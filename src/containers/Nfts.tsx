@@ -60,8 +60,10 @@ const nfts = [
 const Nfts = () => {
   return (
     <div className="w-full mt-16 pb-28">
-      <p className="text-white text-2xl font-semibold mb-7">Music NFT drops</p>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-12">
+      <p className="text-white text-lg font-thin md:font-medium mb-7">
+        Music NFT drops
+      </p>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-8">
         {nfts.map(({ platform, price, liked, token, img }, index) => (
           <NFT key={index} {...{ platform, price, liked, token, img }} />
         ))}
