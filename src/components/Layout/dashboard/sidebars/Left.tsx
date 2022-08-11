@@ -181,7 +181,7 @@ export const Left = () => {
               className="object-contain w-16 h-12 rounded-full mr-3"
               style={{ border: "6px solid #141922" }}
             />
-            <div className="hidden lg:block w-full">
+            <div className="hidden xl:block w-full">
               <p className="text-base font-extrabold text-white">
                 Hello, there?
               </p>

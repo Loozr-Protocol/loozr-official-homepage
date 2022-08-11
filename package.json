@@ -27,9 +27,11 @@
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
+    "react-swipe": "^6.0.4",
     "recharts": "^2.1.13",
     "redux-thunk": "^2.4.1",
     "styled-components": "^5.3.5",
+    "swipe-js-iso": "^2.1.5",
     "swiper": "^8.0.7",
     "typescript": "^4.6.2",
     "web-vitals": "^0.2.4",
@@ -71,6 +73,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-swipe": "^6.0.2",
     "autoprefixer": "^10.4.7",
     "postcss": "^8.4.14",
     "tailwindcss": "^3.1.6"

@@ -26,10 +26,10 @@ const Login = () => {
           <p className="text-lg md:text-[22px] font-normal text-muted mb-2">
             WELCOME BACK
           </p>
-          <p className="text-4xl md:text-label font-bold mb-6 md:mb-10">
+          <p className="text-4xl md:text-label font-bold mb-2 md:mb-10">
             Login account
           </p>
-          <p className="md:text-xl font-normal mb-20">
+          <p className="md:text-xl font-normal mb-14 md:mb-20">
             Don&apos;t have an account?{" "}
             <Link to="/signup" className="text-loozr-purple">
               Create account
@@ -60,7 +60,7 @@ const Login = () => {
             </span>
           </div>
           <button
-            className="py-6 text-white disabled:text-muted font-medium md:text-xl bg-gradient-ld disabled:bg-dark-800 mb-11 w-full focus:outline-none"
+            className="py-4 md:py-6 text-white disabled:text-muted font-medium md:text-xl bg-gradient-ld disabled:bg-dark-800 mb-6 md:mb-11 w-full focus:outline-none"
             onClick={handleLogin}
           >
             Login

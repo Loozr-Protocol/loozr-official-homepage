@@ -4,6 +4,9 @@ import Arlene from "../assets/img/artists/arlene.png";
 import ArrowLeft from "../assets/icons/caret-left.svg";
 import ArrowRight from "../assets/icons/caret-right.svg";
 import Suggestion from "../components/suggestion";
+import Carousel from "../components/Carousel";
+import VerifiedBadge from "../assets/icons/verified_badge.svg";
+import { featured } from "../components/dummy/featuredArtist";
 
 const ArtisteDashboard = () => {
   const handleMoveRight = () => {
@@ -28,7 +31,7 @@ const ArtisteDashboard = () => {
   };
   return (
     <div className="w-full">
-      <div
+      {/* <div
         className="min-w-full w-full  min-h-[290px] bg-no-repeat bg-cover bg-center pl-8 py-7 flex flex-col justify-end mb-7"
         style={{ background: `url(${Banner})`, backgroundColor: "#000" }}
       >
@@ -39,7 +42,8 @@ const ArtisteDashboard = () => {
         <p className="text-white font-bold text-2xl max-w-[300px]">
           DISCOVER, BUY & SELL ARTISTE Coins.
         </p>
-      </div>
+      </div> */}
+      <Carousel />
       <div className="flex items-center justify-between mb-10">
         <p className="font-bold text-xl md:text-2xl text-white">
           Featured artistes
@@ -64,29 +68,36 @@ const ArtisteDashboard = () => {
         className="max-w-full overflow-auto whitespace-nowrap mb-16"
       >
         <div className="flex">
-          {Array(15)
-            .fill(1)
-            .map((_, index) => (
-              <div
-                key={index}
-                className="flex flex-col items-center mr-4 min-w-max md:min-w-[200px]"
-              >
+          {featured.map((_, index) => (
+            <div
+              key={index}
+              className="flex flex-col items-center mr-4 min-w-max md:min-w-[200px] relative"
+            >
+              <div className="relative">
                 <img
-                  src={Arlene}
+                  src={_.img}
                   alt=""
                   className="object-cover h-20 md:h-36 w-20 md:w-36 rounded-full border-[15px] border-dark-700 mb-[18px]"
                   style={{
                     border: "15px solid #141922",
                   }}
                 />
-                <p className="mb-1 font-semibold md:font-extrabold text-base md:text-xl text-white text-center">
-                  $ARLENE
-                </p>
-                <p className="text-muted text-sm md:text-base font-medium md:font-semibold text-center">
-                  2,474.14 LZR
-                </p>
+                {_.verified && (
+                  <img
+                    src={VerifiedBadge}
+                    alt=""
+                    className="absolute w-4 md:w-8 h-4 md:h-8 right-3 bottom-6"
+                  />
+                )}
               </div>
-            ))}
+              <p className="mb-1 font-semibold md:font-extrabold text-base md:text-xl text-white text-center">
+                {_.name}
+              </p>
+              <p className="text-muted text-sm md:text-base font-medium md:font-semibold text-center">
+                {_.price}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
       <Suggestion />
