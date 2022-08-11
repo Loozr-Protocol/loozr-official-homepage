@@ -60,7 +60,7 @@ const Login = () => {
             </span>
           </div>
           <button
-            className="py-4 md:py-6 text-white disabled:text-muted font-medium md:text-xl bg-gradient-ld disabled:bg-dark-800 mb-6 md:mb-11 w-full focus:outline-none"
+            className="py-3 md:py-6 text-white disabled:text-muted font-medium md:text-xl bg-gradient-ld disabled:bg-dark-800 mb-4 md:mb-11 w-full focus:outline-none"
             onClick={handleLogin}
           >
             Login
