@@ -156,7 +156,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
             }`}
           >
             <tab.icon
-              className={`object-contain w-5 h-5 mb-2 ${
+              className={`object-contain w-3.5 h-3.5 mb-2 ${
                 tab.path === pathname ? "text-white" : "text-[#536079]"
               }`}
             />
