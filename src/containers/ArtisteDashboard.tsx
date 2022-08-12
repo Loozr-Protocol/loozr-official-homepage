@@ -1,67 +1,24 @@
 import React from "react";
-import Banner from "../assets/img/dashboard-banner.png";
-import Arlene from "../assets/img/artists/arlene.png";
-import ArrowLeft from "../assets/icons/caret-left.svg";
-import ArrowRight from "../assets/icons/caret-right.svg";
+import Arrow from "../assets/Arrow.svg";
+import Heart from "../assets/Heart.svg";
+import Chart from "../assets/Chart.svg";
 import Suggestion from "../components/suggestion";
 import Carousel from "../components/Carousel";
 import VerifiedBadge from "../assets/icons/verified_badge.svg";
 import { featured } from "../components/dummy/featuredArtist";
 import { Link } from "react-router-dom";
+import NFT from "../components/SingleNFT";
+import { nfts } from "../components/dummy/nfts";
 
 const ArtisteDashboard = () => {
-  const handleMoveRight = () => {
-    // if (isMobile) {
-    //   document.getElementById(`carousel-${index}`).scrollLeft +=
-    //     window.screen.width + 24;
-    // } else {
-    if (document.getElementById(`carousel`).scrollLeft >= window.screen.width) {
-      document.getElementById(`carousel`).scrollLeft = 0;
-    } else {
-      document.getElementById(`carousel`).scrollLeft += 800;
-    }
-    // }
-  };
-  const handleMoveLeft = () => {
-    // if (isMobile) {
-    //   document.getElementById(`carousel`).scrollLeft -=
-    //     window.screen.width + 24;
-    // } else {
-    document.getElementById(`carousel`).scrollLeft -= 800;
-    // }
-  };
   return (
     <div className="w-full">
-      {/* <div
-        className="min-w-full w-full  min-h-[290px] bg-no-repeat bg-cover bg-center pl-8 py-7 flex flex-col justify-end mb-7"
-        style={{ background: `url(${Banner})`, backgroundColor: "#000" }}
-      >
-        <p>
-          <span className="text-loozr-purple font-medium text-sm">MUSIC</span>{" "}
-          <span className="text-xs">/ 2 months ago</span>
-        </p>
-        <p className="text-white font-bold text-2xl max-w-[300px]">
-          DISCOVER, BUY & SELL ARTISTE Coins.
-        </p>
-      </div> */}
       <Carousel />
       <div className="flex items-center justify-between mb-10">
         <p className="font-medium text-base md:text-lg text-white">
           Featured artistes
         </p>
         <div className="flex items-center">
-          {/* <div
-            className="py-1 px-2 border-[1.5px] border-dark-700 rounded-xl mr-5 cursor-pointer"
-            onClick={() => handleMoveLeft()}
-          >
-            <img src={ArrowLeft} alt="" />
-          </div>
-          <div
-            className="py-1 px-2 border-[1.5px] border-dark-700 rounded-xl cursor-pointer"
-            onClick={() => handleMoveRight()}
-          >
-            <img src={ArrowRight} alt="" />
-          </div> */}
           <Link to="/artistes" className="text-xs font-medium text-muted">
             View all
           </Link>
@@ -105,6 +62,62 @@ const ArtisteDashboard = () => {
         </div>
       </div>
       <Suggestion />
+      <div className="flex items-center justify-between mb-6">
+        <p className="font-medium text-base md:text-lg text-white">
+          Music NFT drops
+        </p>
+        <div className="flex items-center">
+          <Link to="/nfts" className="text-xs font-medium text-muted">
+            View all
+          </Link>
+        </div>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-8 mb-16">
+        {nfts
+          .splice(0, 3)
+          .map(({ platform, price, liked, token, img }, index) => (
+            <NFT key={index} {...{ platform, price, liked, token, img }} />
+          ))}
+      </div>
+      <p className="font-medium text-base md:text-lg text-white mb-6">
+        How does Loozr work?
+      </p>
+      <div className="grid gap-5 lg:gap-10 mb-10">
+        <div className="grid md:grid-cols-2 gap-5 lg:gap-10">
+          <div className="bg-dark-700 py-7 px-7">
+            <img src={Arrow} alt="" className="w-10 h-10 mb-[19px]" />
+            <p className="font-normal text-sm text-white mb-2.5">
+              Launch Your Own Coin
+            </p>
+            <p className="text-muted text-xs font-medium">
+              Get tokenised by creating your Profile, adding your Songs &
+              Playlists, EPs, Albums, etc.
+            </p>
+          </div>
+          <div className="bg-dark-700 py-7 px-7">
+            <img src={Chart} alt="" className="w-10 h-10 mb-[19px]" />
+            <p className="font-normal text-sm text-white mb-2.5">
+              Buy, Sell & Trade
+            </p>
+            <p className="text-muted text-xs font-medium">
+              Fans can stream and trade artiste profiles & songs with Loozr
+              coins & explore the Metaverse music world.
+            </p>
+          </div>
+        </div>
+        <div className="bg-dark-700 py-7 px-7 md:w-[85%]">
+          <img src={Heart} alt="" className="w-10 h-10 mb-[19px]" />
+          <p className="font-normal text-sm text-white mb-2.5">
+            Collective Wins!
+          </p>
+          <p className="text-muted text-xs font-medium">
+            When fans invest in a token, like Bitcoin, the price of that token
+            price rises. Artistes receive a percentage incentive from these
+            trades in addition to their streaming money which they split with
+            their token holders.
+          </p>
+        </div>
+      </div>
     </div>
   );
 };

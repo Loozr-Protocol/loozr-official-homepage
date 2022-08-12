@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Selina from "../../assets/img/nfts/selina.png";
 import HeartIcon from "../../assets/icons/heart.svg";
 import HeartFilledIcon from "../../assets/icons/heart-filled.svg";
 
 const NFT = ({ platform, price, liked, token, img }) => {
-  const [isLiked, setIsLiked] = useState<undefined | boolean>();
-
-  useEffect(() => {
-    setIsLiked(liked);
-  }, [liked]);
+  const [isLiked, setIsLiked] = useState<boolean>(liked);
 
   return (
     <div className="bg-dark-900">
@@ -17,11 +13,11 @@ const NFT = ({ platform, price, liked, token, img }) => {
         <p className="font-normal text-sm text-white mb-3">Happy everyday</p>
         <div className="flex items-center ">
           <img src={Selina} alt="" className="w-4 h-4 rounded-full" />
-          <p className="text-muted text-xs font-light ml-2">Selina Amber</p>
+          <p className="text-muted text-xs font-medium ml-2">Selina Amber</p>
         </div>
       </div>
       <div className="bg-dark-700 py-3.5 px-[20px]">
-        <p className="text-xs font-light text-muted mb-0.5">
+        <p className="text-xs font-normal text-muted mb-0.5">
           Buy from {platform}
         </p>
         <div className="flex justify-between items-center">

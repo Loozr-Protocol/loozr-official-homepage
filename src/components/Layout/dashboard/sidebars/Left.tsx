@@ -83,11 +83,11 @@ export const Left = () => {
 
   return (
     <div
-      className={`bg-dark-800 fixed left-0 h-screen md:pl-8 xl:pl-14 pr-auto xl:pr-12 pt-8 pb-12 mb-5`}
+      className={`bg-dark-800 fixed flex flex-col items-end lg:block left-0 h-screen md:pl-11 xl:pl-14 pr-auto md:pr-4 xl:pr-12 pt-8 pb-12 mb-5`}
       style={{
         // minWidth: xl ? drawerMinWidth : "auto",
         // maxWidth: md ? `${drawerMaxWidth}vw` : 0,
-        width: md ? `${drawerMaxWidth}vw` : 0,
+        width: lg ? `${drawerMaxWidth}vw` : md ? "max-content" : 0,
       }}
     >
       {xl ? (
@@ -122,7 +122,7 @@ export const Left = () => {
       ) : (
         ""
       )}
-      <div className="w-full  h-[85%] overflow-y-auto overflow-x-hidden">
+      <div className="w-full  h-[85%] flex flex-col items-end lg:block overflow-y-auto overflow-x-hidden">
         {tabs.map((tab: any) => (
           <Link
             className="hover:flex flex items-center text-sm font-medium text-[#536079] mb-[22px]"
@@ -130,7 +130,7 @@ export const Left = () => {
             key={tab.label}
           >
             <tab.icon
-              className={`object-contain w-3.5 h-3.5 mr-4 ${
+              className={`object-contain w-3.5 h-3.5 mr-2 lg:mr-4 ${
                 tab.path === pathname ? "text-white" : "text-[#536079]"
               }`}
             />
@@ -144,7 +144,7 @@ export const Left = () => {
             </span>
           </Link>
         ))}
-        <div className="h-px w-7/12 lg:w-full bg-muted-50 mt-8 mb-7" />
+        <div className="h-px w-full lg:w-full bg-muted-50 mt-8 mb-7" />
         {isLoggedIn ? (
           <div
             onClick={() => push("/profile")}
@@ -153,7 +153,7 @@ export const Left = () => {
             <img
               src={Memoji}
               alt=""
-              className="object-contain w-14 h-10 rounded-full mr-3"
+              className="object-contain w-8 h-8 lg:w-14 lg:h-10 rounded-full lg:mr-3"
               style={{ border: "6px solid #141922" }}
             />
             <div className="hidden xl:block w-full">
@@ -179,7 +179,7 @@ export const Left = () => {
             <img
               src={Memoji}
               alt=""
-              className="object-contain w-16 h-12 rounded-full mr-3"
+              className="object-contain w-8 h-8 lg:w-16 lg:h-12 rounded-full lg:mr-3"
               style={{ border: "6px solid #141922" }}
             />
             <div className="hidden xl:block w-full">

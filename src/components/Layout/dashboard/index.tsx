@@ -57,7 +57,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
             : // : lg
             // ? `200px`
             md
-            ? "150px"
+            ? "100px"
             : "auto",
           marginRight: "auto",
           // zoom: md ? "80%" : "100%",

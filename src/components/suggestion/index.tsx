@@ -3,14 +3,11 @@ import Goya from "../../assets/img/artists/goya.png";
 
 import ArrowLeft from "../../assets/icons/caret-left.svg";
 import ArrowRight from "../../assets/icons/caret-right.svg";
+import { Link } from "react-router-dom";
 
 const Suggestion = () => {
   const handleMoveRight = (id: number) => {
     console.log("courosel", document.getElementById(`carousel`));
-    // if (isMobile) {
-    //   document.getElementById(`carousel-${index}`).scrollLeft +=
-    //     window.screen.width + 24;
-    // } else {
     if (
       document.getElementById(`carousel-${id}`).scrollLeft >=
       window.screen.width
@@ -19,36 +16,21 @@ const Suggestion = () => {
     } else {
       document.getElementById(`carousel-${id}`).scrollLeft += 800;
     }
-    // }
   };
   const handleMoveLeft = (id: number) => {
-    // if (isMobile) {
-    //   document.getElementById(`carousel-${id}`).scrollLeft -=
-    //     window.screen.width + 24;
-    // } else {
     document.getElementById(`carousel-${id}`).scrollLeft -= 800;
-    // }
   };
 
   return (
     <div className="w-full">
       <div className="flex items-center justify-between mb-6">
-        <p className="font-thin md:font-medium text-base md:text-lg text-white">
+        <p className="font-medium text-base md:text-lg text-white">
           Tracks you&apos;d love
         </p>
         <div className="flex items-center">
-          <div
-            className="py-2 5 px-3 border-[1.5px] border-dark-700 rounded-xl mr-5 cursor-pointer"
-            onClick={() => handleMoveLeft(1)}
-          >
-            <img src={ArrowLeft} alt="" />
-          </div>
-          <div
-            className="py-2 5 px-3 border-[1.5px] border-dark-700 rounded-xl cursor-pointer"
-            onClick={() => handleMoveRight(1)}
-          >
-            <img src={ArrowRight} alt="" />
-          </div>
+          <Link to="/tracks" className="text-xs font-medium text-muted">
+            View all
+          </Link>
         </div>
       </div>
       <div
@@ -75,8 +57,8 @@ const Suggestion = () => {
             ))}
         </div>
       </div>
-      <div className="flex items-center justify-between mb-6">
-        <p className="font-thin md:font-medium text-base md:text-lg text-white">
+      <div className="hidden mflex items-center justify-between mb-6">
+        <p className="font-medium text-base md:text-lg text-white">
           Music NFT drops
         </p>
         <div className="flex items-center">
@@ -96,7 +78,7 @@ const Suggestion = () => {
       </div>
       <div
         id={"carousel-2"}
-        className="max-w-full overflow-auto whitespace-nowrap mb-[74px]"
+        className="hidden max-w-full overflow-auto whitespace-nowrap mb-[74px]"
       >
         <div className="flex">
           {Array(15)
