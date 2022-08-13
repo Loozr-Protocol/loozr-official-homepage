@@ -6,11 +6,11 @@ const BuyLzr = () => {
   const [active, setActive] = useState(1);
 
   return (
-    <div className="w-full mt-16">
+    <div className="w-full mt-16 md:mt-0">
       <p className="text-white text-2xl font-semibold mb-12">Buy LZR</p>
-      <div className="w-full pt-[19px] border-t-2 border-muted-50 flex items-center text-2xl font-medium text-muted mb-20">
+      <div className="w-full pt-[19px] border-t-2 border-muted-50 flex items-center text-sm md:text-lg font-medium text-muted mb-20">
         <p
-          className={`mr-10 cursor-pointer text-sm md:text-xl  ${
+          className={`mr-10 cursor-pointer text-sm md:text-lg  ${
             active === 1
               ? "text-white font-semibold relative before:absolute before:w-full before:h-0.5 before:bg-loozr-purple before:top-[-22px]"
               : "font-normal text-muted"
@@ -20,7 +20,7 @@ const BuyLzr = () => {
           Buy with USD
         </p>
         <p
-          className={`mr-10 cursor-pointer text-sm md:text-xl  ${
+          className={`mr-10 cursor-pointer text-sm md:text-lg  ${
             active === 2
               ? "text-white font-semibold relative before:absolute before:w-full before:h-0.5 before:bg-loozr-purple before:top-[-22px]"
               : "font-normal text-muted"

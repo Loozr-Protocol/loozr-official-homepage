@@ -12,8 +12,10 @@ const EditProfile = () => {
   }, []);
 
   return (
-    <div className="w-full mt-[70px]">
-      <p className="font-semibold text-2xl text-white mb-16">Update Profile</p>
+    <div className="w-full mt-[70px] md:mt-0">
+      <p className="font-medium text-base md:text-lg text-white mb-12">
+        Update Profile
+      </p>
       <div className="flex items-center justify-between w-1/2 mb-12">
         <div className="relative">
           <img
@@ -26,69 +28,69 @@ const EditProfile = () => {
           />
         </div>
         <div>
-          <p className="text-2xl text-white font-semibold mb-3">
+          <p className="text-xl text-white font-semibold mb-2">
             lzr.yourname.near
           </p>
-          <p className="text-loozr-green text-xl font-medium">
+          <p className="text-loozr-green text-base font-medium">
             change profile picture
           </p>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-start mb-10">
-        <div className="grid gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 justify-start mb-10">
+        <div className="grid gap-6">
           <input
             type="text"
-            className="px-7 py-4 text-muted placeholder:text-muted"
+            className="px-7 py-3 text-muted text-sm placeholder:text-muted"
             style={{ backgroundColor: "#12161F" }}
             placeholder="Enter full name"
           />
           <input
             type="text"
-            className="px-7 py-4 text-muted placeholder:text-muted"
+            className="px-7 py-3 text-muted text-sm placeholder:text-muted"
             style={{ backgroundColor: "#12161F" }}
             placeholder="Genre"
           />
           <input
             type="text"
-            className="px-7 py-4 text-muted placeholder:text-muted"
+            className="px-7 py-3 text-muted text-sm placeholder:text-muted"
             style={{ backgroundColor: "#12161F" }}
             placeholder="Website link"
           />
           <input
             type="text"
-            className="px-7 py-4 text-muted placeholder:text-muted"
+            className="px-7 py-3 text-muted text-sm placeholder:text-muted"
             style={{ backgroundColor: "#12161F" }}
             placeholder="Twitter link"
           />
           <input
             type="text"
-            className="px-7 py-4 text-muted placeholder:text-muted"
+            className="px-7 py-3 text-muted text-sm placeholder:text-muted"
             style={{ backgroundColor: "#12161F" }}
             placeholder="Country"
           />
         </div>
         <div
-          className="grid gap-8"
+          className="grid gap-6"
           style={{
             gridTemplateRows: "auto minmax(0,1fr)",
           }}
         >
           <input
             type="text"
-            className="px-7 py-4 text-white placeholder:text-muted"
+            className="px-7 py-3 text-white text-sm placeholder:text-muted"
             style={{ backgroundColor: "#12161F" }}
             placeholder="uneditable_input@email.com*"
             value={"uneditable_input@email.com"}
             disabled
           />
           <textarea
-            className="px-7 py-4 text-muted placeholder:text-muted resize-none"
+            className="px-[18px] py-3 text-muted text-sm placeholder:text-muted resize-none"
             style={{ backgroundColor: "#12161F" }}
             placeholder="Bio"
           />
           <input
             type="text"
-            className="px-7 py-4 text-muted placeholder:text-muted"
+            className="px-7 py-3 text-muted text-sm placeholder:text-muted"
             style={{ backgroundColor: "#12161F" }}
             placeholder="Souncloud link"
           />
@@ -97,13 +99,13 @@ const EditProfile = () => {
       {hasLaunchedToken && (
         <>
           <div className="h-px bg-muted-50 mb-11" />
-          <p className="text-white text-2xl font-semibold mb-10">
+          <p className="font-medium text-base md:text-lg text-white mb-8">
             Artiste Details
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-start mb-10">
             <input
               type="text"
-              className="px-7 py-4 font-bold text-lg text-white placeholder:text-muted"
+              className="px-7 py-3 font-medium text-base md:text-sm text-white placeholder:text-muted"
               style={{ backgroundColor: "#12161F" }}
               placeholder="$DAVIDO *"
               value="$DAVIDO *"
@@ -111,7 +113,7 @@ const EditProfile = () => {
             <div className="flex items-center">
               <input
                 type="text"
-                className="max-w-[50%] mr-12 px-7 py-4 font-medium text-lg text-white placeholder:text-muted"
+                className="max-w-[50%] mr-12 px-7 py-3 font-medium text-sm text-white placeholder:text-muted"
                 style={{ backgroundColor: "#12161F" }}
                 placeholder="10%"
                 value={"10%"}
@@ -142,10 +144,7 @@ const EditProfile = () => {
           </div>
         </>
       )}
-      <button
-        className="py-6 text-white disabled:text-muted font-medium text-xl bg-gradient-ld disabled:bg-dark-800 mt-11 w-[48%] focus:outline-none"
-        // onClick={launchToken}
-      >
+      <button className="py-[17px] text-white disabled:text-muted font-medium md:text-sm bg-gradient-ld disabled:bg-dark-800 mb-11 w-[48%] focus:outline-none">
         Update profile
       </button>
     </div>
