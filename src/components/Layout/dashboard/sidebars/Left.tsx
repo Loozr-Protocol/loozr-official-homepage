@@ -158,7 +158,7 @@ export const Left = () => {
             />
             <div className="hidden xl:block w-full">
               <p className="text-xs font-extrabold text-white">Felix Harty</p>
-              <p className="text-[10px] font-medium text-muted">
+              <p className="text-[11px] font-medium text-muted">
                 {hasLaunchedToken ? (
                   <span>
                     $HARTY{" "}

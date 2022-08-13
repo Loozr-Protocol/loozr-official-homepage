@@ -23,6 +23,7 @@ import BuyLzr from "../containers/BuyLzr";
 import SendLzr from "../containers/SendLzr";
 import NFTs from "../containers/Nfts";
 import Notifications from "../containers/Notifications";
+import CreateProfile from "../containers/CreateProfile";
 
 export const authRoutes = [
   {
@@ -54,6 +55,12 @@ export const authRoutes = [
     path: "verify-email",
     private: false,
     component: VerifyEmail,
+  },
+  {
+    name: "profile/create",
+    path: "profile/create",
+    private: false,
+    component: CreateProfile,
   },
   {
     name: "Launch Token",

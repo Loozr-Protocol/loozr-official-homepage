@@ -126,10 +126,10 @@ const Notifications = () => {
           )}
           {renderNotificationIcon(notification.type, notification.read)}
           <div className="ml-6">
-            <p className="mb-0.5 font-medium text-base text-white">
+            <p className="mb-0.5 font-medium text-sm text-white">
               {notification.detail}
             </p>
-            <p className="text-xs md:text-sm font-normal text-[#536079]">
+            <p className="text-xs font-normal text-[#536079]">
               {notification.time}
             </p>
           </div>

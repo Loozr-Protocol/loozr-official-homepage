@@ -95,12 +95,12 @@ const Tracks = () => {
   const [active, setActive] = useState(filters[0]);
   return (
     <div className="pb-32">
-      <div className="w-full overflow-x-auto flex mb-12">
+      <div className="w-full overflow-x-auto flex mb-9">
         {filters.map((filter, index) => (
           <div
             key={index}
             onClick={() => setActive(filter)}
-            className={`py-2.5 px-6 bg-dark-700 font-normal text-sm mr-3 min-w-max ${
+            className={`py-2.5 px-6 bg-dark-700 font-normal text-xs mr-3 min-w-max ${
               active === filter ? "text-white" : "text-muted cursor-pointer"
             }`}
           >
@@ -108,7 +108,7 @@ const Tracks = () => {
           </div>
         ))}
       </div>
-      <p className="text-lg font-thin md:font-medium text-white mb-5">Tracks</p>
+      <p className="text-lg font-thin md:font-medium text-white mb-6">Tracks</p>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-x-5  gap-y-10">
         {tracks.map((track, index) => (
           <div key={index}>

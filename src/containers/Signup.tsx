@@ -1,11 +1,16 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import AuthImage from "../assets/img/auth-img.png";
 
 const Signup = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const push = useNavigate();
+
+  const handleSignup = () => {
+    push("/verify-email");
+  };
 
   return (
     <div className="min-h-screen w-full grid md:grid-cols-2 lg:grid-cols-3">
@@ -16,13 +21,11 @@ const Signup = () => {
       />
       <div className="flex flex-col items-center justify-center px-6 md:px-auto">
         <div style={{ zoom: "85%", width: "100%" }}>
-          <p className="text-lg md:text-[22px] font-normal text-muted mb-2">
-            START FOR FREE
-          </p>
-          <p className="text-4xl md:text-5xl 2xl:text-label mb-2 md:mb-10 font-bold">
+          <p className="text-sm font-normal text-muted mb-2">START FOR FREE</p>
+          <p className="text-4xl mb-2 md:!mb-11 font-bold text-white">
             Create account
           </p>
-          <p className="md:text-xl font-normal mb-10 md:mb-20">
+          <p className="text-lg font-normal mb-[40px]">
             Already have an account?{" "}
             <Link to="/login" className="text-loozr-purple">
               Login
@@ -31,18 +34,18 @@ const Signup = () => {
           <input
             type="email"
             placeholder="Enter email"
-            className="py-8 px-11 text-muted placeholder:text-muted font-medium md:text-xl bg-dark-800 mb-11"
-            style={{ backgroundColor: "#12161F" }}
+            className="py-8 !px-[39px] text-muted placeholder:text-muted font-medium text-base bg-dark-800 mb-7"
+            style={{ backgroundColor: "#12161F", height: 74 }}
           />
           <div className="w-full relative">
             <input
               type={passwordVisible ? "text" : "password"}
               placeholder="Password"
-              className="py-8 px-11 text-muted placeholder:text-muted font-medium md:text-xl bg-dark-800 mb-11"
-              style={{ backgroundColor: "#12161F" }}
+              className="py-8 !px-[39px] text-muted placeholder:text-muted font-medium text-base bg-dark-800 mb-7"
+              style={{ backgroundColor: "#12161F", height: 74 }}
             />
             <span
-              className="absolute right-4 inset-y-4 cursor-pointer"
+              className="absolute right-10 inset-y-6 cursor-pointer"
               onClick={() => setPasswordVisible(!passwordVisible)}
             >
               {passwordVisible ? (
@@ -56,11 +59,11 @@ const Signup = () => {
             <input
               type={passwordVisible ? "text" : "password"}
               placeholder="Re-type Password"
-              className="py-8 px-11 text-muted placeholder:text-muted font-medium md:text-xl bg-dark-800 "
-              style={{ backgroundColor: "#12161F" }}
+              className="py-8 !px-[39px] text-muted placeholder:text-muted font-medium text-base bg-dark-800 "
+              style={{ backgroundColor: "#12161F", height: 74 }}
             />
             <span
-              className="absolute right-4 inset-y-4 cursor-pointer"
+              className="absolute right-10 inset-y-6 cursor-pointer"
               onClick={() => setPasswordVisible(!passwordVisible)}
             >
               {passwordVisible ? (
@@ -70,12 +73,15 @@ const Signup = () => {
               )}
             </span>
           </div>
-          <p className="w-4/5 text-muted text-sm md:text-base my-8">
+          <p className="text-muted text-sm md:text-base my-11">
             By clicking “Create account” you agree to our{" "}
             <span className="text-loozr-purple">Terms of Service</span> and our{" "}
             <span className="text-loozr-purple">Policy.</span>
           </p>
-          <button className="py-3 md:py-6 text-white disabled:text-muted font-medium md:text-xl bg-gradient-ld disabled:bg-dark-800 mb-11 w-full focus:outline-none">
+          <button
+            onClick={handleSignup}
+            className="py-3 md:py-6 text-white disabled:text-muted font-medium text-base bg-gradient-ld disabled:bg-dark-800 mb-11 w-full focus:outline-none h-[74px]"
+          >
             Create account
           </button>
         </div>

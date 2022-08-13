@@ -134,10 +134,10 @@ const Artistes = () => {
                 />
               )}
             </div>
-            <p className="mb-1 font-normal md:font-medium text-base md:text-base text-white text-center">
+            <p className="font-normal mb-1.5 md:font-bold text-base md:text-base text-white text-center">
               $ARLENE
             </p>
-            <p className="text-muted text-xs font-light md:font-medium text-center">
+            <p className="text-muted text-xs font-medium md:text-xs md:font-medium text-center">
               2,474.14 LZR
             </p>
           </div>
