@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Arrow from "../assets/Arrow.svg";
 import Heart from "../assets/Heart.svg";
 import Chart from "../assets/Chart.svg";
@@ -11,6 +11,13 @@ import NFT from "../components/SingleNFT";
 import { nfts } from "../components/dummy/nfts";
 
 const ArtisteDashboard = () => {
+  const [_nfts, setNfts] = useState([]);
+
+  useEffect(() => {
+    const slice = nfts.slice(0, 3);
+    setNfts(slice);
+  }, []);
+
   return (
     <div className="w-full">
       <Carousel />
@@ -73,11 +80,9 @@ const ArtisteDashboard = () => {
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-8 mb-16">
-        {nfts
-          .splice(0, 3)
-          .map(({ platform, price, liked, token, img }, index) => (
-            <NFT key={index} {...{ platform, price, liked, token, img }} />
-          ))}
+        {_nfts.map(({ platform, price, liked, token, img }, index) => (
+          <NFT key={index} {...{ platform, price, liked, token, img }} />
+        ))}
       </div>
       <p className="font-medium text-base md:text-lg text-white mb-6">
         How does Loozr work?
