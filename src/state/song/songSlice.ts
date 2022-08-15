@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import artistsData from "../../config/mock-data/artists.json";
 import { Song } from "../../config/constants/types";
 
@@ -20,25 +20,25 @@ export const songSlice = createSlice({
     selectedSong: null,
   },
   reducers: {
-    selectSong: (state, action) => {
+    selectSong: (state, action: PayloadAction<Song>) => {
       state.selectedSong = action.payload;
     },
     setSongs: (state, action) => {
       state.songs = action.payload;
     },
-    setPlayerState: (state, action) => {
+    setPlayerState: (state, action: PayloadAction<boolean>) => {
       state.playerState = action.payload;
     },
-    setVolume: (state, action) => {
+    setVolume: (state, action: PayloadAction<number>) => {
       state.volume = action.payload;
     },
-    setMute: (state, action) => {
+    setMute: (state, action: PayloadAction<boolean>) => {
       state.mute = action.payload;
     },
-    setDuration: (state, action) => {
+    setDuration: (state, action: PayloadAction<number>) => {
       state.duration = action.payload;
     },
-    setCurrentLocation: (state, action) => {
+    setCurrentLocation: (state, action: PayloadAction<number>) => {
       state.currentLocation = action.payload;
     },
   }
