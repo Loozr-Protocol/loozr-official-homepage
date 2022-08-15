@@ -1,37 +1,39 @@
 import "./Player.css";
 import { useEffect } from "react";
-import { connect, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {
   setPlayerState,
   setDuration,
   setCurrentLocation,
   setMute,
   setVolume,
-} from "../../../state/actions";
+  selectVolume,
+  selectMute,
+  selectCurrentLocation,
+  selectDuration,
+  selectSelectedSong,
+  selectPlayerState,
+} from "../../../state/song/songSlice";
 import Time from "./Time";
 import Progress from "./Progress";
-import { Song } from "../../../config/constants/types";
 import { Link } from "react-router-dom";
 
-interface PlayerProps {
-  selectedSong: Song;
-  isPlaying: any;
-  volume: number;
-  duration: number;
-  currentLocation: number;
-  mute: boolean;
-  song: Song[];
-}
-
-const Player = (props: PlayerProps) => {
+const Player = () => {
   const dispatch = useDispatch();
+  const duration = useSelector(selectDuration);
+  const selectedSong = useSelector(selectSelectedSong);
+  const mute = useSelector(selectMute);
+  const isPlaying = useSelector(selectPlayerState);
+  const currentLocation = useSelector(selectCurrentLocation);
+  const volume = useSelector(selectVolume);
+
   let timer: any;
 
   const toggle = () => {
-    props.isPlaying
-      ? props.selectedSong.audio?.pause()
-      : props.selectedSong.audio?.play();
-    dispatch(setPlayerState(!props.isPlaying));
+    isPlaying
+      ? selectedSong.audio?.pause()
+      : selectedSong.audio?.play();
+    dispatch(setPlayerState(!isPlaying));
   };
 
   const onVolumeChange = (event: { target: { value: any; }; }) => {
@@ -43,66 +45,66 @@ const Player = (props: PlayerProps) => {
   };
 
   useEffect(() => {
-    if (props.selectedSong) {
-      if (props.selectedSong.audio) {
-        props.selectedSong.audio.muted = props.mute;
-        props.selectedSong.audio.volume = props.volume / 100;
+    if (selectedSong) {
+      if (selectedSong.audio) {
+        selectedSong.audio.muted = mute;
+        selectedSong.audio.volume = volume / 100;
       }
     }
-  }, [props.mute, props.selectedSong, props.volume]);
+  }, [mute, selectedSong, volume]);
 
   useEffect(() => {
-    if (props.selectedSong) {
-      if (props.selectedSong.audio) {
-        let duration = props.selectedSong.audio?.duration;
+    if (selectedSong) {
+      if (selectedSong.audio) {
+        let duration = selectedSong.audio?.duration;
         if (duration) {
           dispatch(setDuration(duration));
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
         timer = setInterval(() => {
-          const currentTime = props.selectedSong.audio?.currentTime;
+          const currentTime = selectedSong.audio?.currentTime;
           if (currentTime) {
             dispatch(setCurrentLocation(currentTime));
           }
         }, 1000);
       }
     }
-  }, [dispatch, props.selectedSong, timer]);
+  }, [dispatch, selectedSong, timer]);
 
   useEffect(() => {
-    if (props.selectedSong) {
-      props.selectedSong.audio?.addEventListener("ended", () => {
+    if (selectedSong) {
+      selectedSong.audio?.addEventListener("ended", () => {
         dispatch(setPlayerState(false));
       });
-      props.selectedSong.audio?.removeEventListener("ended", () => {
+      selectedSong.audio?.removeEventListener("ended", () => {
         dispatch(setPlayerState(false));
       });
     }
-  }, [dispatch, props.selectedSong, timer]);
+  }, [dispatch, selectedSong, timer]);
 
   return (
     <>
-      {props.selectedSong ? (
+      {selectedSong ? (
         <div className="plyrist plyrist-theme-2 plyrist_audio">
           <div className="plyr plyr--full-ui plyr--audio">
             <div className="plyr__controls">
               <Progress />
               <Link
-                to={`/artists/songs/${props.selectedSong.id}`}
+                to={`/artists/songs/${selectedSong.id}`}
                 className="plyr__poster"
                 style={{
-                  backgroundImage: `url('${props.selectedSong.photo}')`,
+                  backgroundImage: `url('${selectedSong.photo}')`,
                 }}
               ></Link>
               <div className="plyr__col plyr__info">
                 <Link
                   className="plyr__title ajax"
-                  to={`/artists/songs/${props.selectedSong.id}`}
+                  to={`/artists/songs/${selectedSong.id}`}
                   data-pjax-state=""
                 >
-                  {props.selectedSong.name}
+                  {selectedSong.name}
                 </Link>
-                <div className="plyr__author">{props.selectedSong.author}</div>
+                <div className="plyr__author">{selectedSong.author}</div>
               </div>
 
               <div className="plyr__row">
@@ -140,7 +142,7 @@ const Player = (props: PlayerProps) => {
                 >
                   <svg
                     className={
-                      props.isPlaying ? "icon--not-pressed" : "icon--pressed"
+                      isPlaying ? "icon--not-pressed" : "icon--pressed"
                     }
                     role="presentation"
                   >
@@ -148,7 +150,7 @@ const Player = (props: PlayerProps) => {
                   </svg>
                   <svg
                     className={
-                      !props.isPlaying ? "icon--not-pressed" : "icon--pressed"
+                      !isPlaying ? "icon--not-pressed" : "icon--pressed"
                     }
                     role="presentation"
                   >
@@ -156,7 +158,7 @@ const Player = (props: PlayerProps) => {
                   </svg>
                   <span
                     className={`${
-                      !props.isPlaying ? "label--pressed" : "label--not-pressed"
+                      !isPlaying ? "label--pressed" : "label--not-pressed"
                     } plyr__tooltip`}
                     role="tooltip"
                   >
@@ -164,7 +166,7 @@ const Player = (props: PlayerProps) => {
                   </span>
                   <span
                     className={`${
-                      props.isPlaying ? "label--pressed" : "label--not-pressed"
+                      isPlaying ? "label--pressed" : "label--not-pressed"
                     } plyr__tooltip`}
                     role="tooltip"
                   >
@@ -200,13 +202,13 @@ const Player = (props: PlayerProps) => {
                 className="plyr__time plyr__time--current"
                 aria-label="Current time"
               >
-                <Time time={props.currentLocation} />
+                <Time time={currentLocation} />
               </div>
               <div
                 className="plyr__time plyr__time--duration"
                 aria-label="Duration"
               >
-                <Time time={props.duration} />
+                <Time time={duration} />
               </div>
               <button
                 type="button"
@@ -214,17 +216,17 @@ const Player = (props: PlayerProps) => {
                 aria-pressed="false"
                 aria-label="Mute"
                 data-plyr="mute"
-                onClick={() => dispatch(setMute(!props.mute))}
+                onClick={() => dispatch(setMute(!mute))}
               >
                 <svg
-                  className={props.mute ? "icon--not-pressed" : "icon--pressed"}
+                  className={mute ? "icon--not-pressed" : "icon--pressed"}
                   role="presentation"
                 >
                   <use xlinkHref="/img/plyrist.svg#plyr-muted"></use>
                 </svg>
                 <svg
                   className={
-                    !props.mute ? "icon--not-pressed" : "icon--pressed"
+                    !mute ? "icon--not-pressed" : "icon--pressed"
                   }
                   role="presentation"
                 >
@@ -232,7 +234,7 @@ const Player = (props: PlayerProps) => {
                 </svg>
                 <span
                   className={`${
-                    !props.mute ? "label--pressed" : "label--not-pressed"
+                    !mute ? "label--pressed" : "label--not-pressed"
                   } plyr__tooltip`}
                   role="tooltip"
                 >
@@ -240,7 +242,7 @@ const Player = (props: PlayerProps) => {
                 </span>
                 <span
                   className={`${
-                    props.mute ? "label--pressed" : "label--not-pressed"
+                    mute ? "label--pressed" : "label--not-pressed"
                   } plyr__tooltip`}
                   role="tooltip"
                 >
@@ -254,13 +256,13 @@ const Player = (props: PlayerProps) => {
                   min="0"
                   max="100"
                   step="0.05"
-                  value={props.volume}
+                  value={volume}
                   onChange={onVolumeChange}
                   autoComplete="off"
                   aria-label="Volume"
-                  aria-valuenow={props.volume}
-                  style={inputStyle(props.volume)}
-                  seek-value={props.volume}
+                  aria-valuenow={volume}
+                  style={inputStyle(volume)}
+                  seek-value={volume}
                 />
               </div>
             </div>
@@ -271,24 +273,5 @@ const Player = (props: PlayerProps) => {
   );
 };
 
-const mapStateToProps = (state: {
-  selectedSong: Song;
-  playerState: boolean;
-  duration: number;
-  currentLocation: number;
-  volume: number;
-  mute: boolean;
-  songs: Song[];
-}) => {
-  return {
-    selectedSong: state.selectedSong,
-    isPlaying: state.playerState,
-    duration: state.duration,
-    currentLocation: state.currentLocation,
-    volume: state.volume,
-    mute: state.mute,
-    song: state.songs,
-  };
-};
 
-export default connect(mapStateToProps, {})(Player);
+export default Player;

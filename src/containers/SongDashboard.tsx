@@ -1,18 +1,16 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { useParams } from "react-router-dom";
-import { Artist, Song } from "../config/constants/types";
+import { Artist } from "../config/constants/types";
 import artistsData from "../config/mock-data/artists.json";
 import ReadMore from "../components/Readmore";
 import PlayButton from "../components/Buttons/PlayButton";
 import LoveIcon from "../components/Buttons/LoveIcon";
 import { copy } from "../helpers/utils";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
+import { selectSongs } from "../state/song/songSlice";
 
-interface SongDashboardProps {
-  songs: Song[];
-}
-
-const SongDashboard = (props: SongDashboardProps) => {
+const SongDashboard = () => {
+  const songs = useSelector(selectSongs);
   const artists: Artist[] = artistsData.map((artist) => artist);
   let { id } = useParams();
 
@@ -26,7 +24,7 @@ const SongDashboard = (props: SongDashboardProps) => {
       </>
     );
   }
-  const song = props.songs.find((song) => song.id === parseInt(id));
+  const song = songs.find((song) => song.id === parseInt(id));
 
   if (!song) {
     return (
@@ -149,10 +147,4 @@ rewards as ${song.tokenName} investor.`}
   );
 };
 
-const mapStateToProps = (state: { songs: Song[] }) => {
-  return {
-    songs: state.songs,
-  };
-};
-
-export default connect(mapStateToProps, {})(SongDashboard);
+export default SongDashboard;

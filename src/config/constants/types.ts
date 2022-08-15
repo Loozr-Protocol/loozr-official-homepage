@@ -31,3 +31,17 @@ export interface Artist {
   photo: string;
   songs: Song[]
 }
+
+export interface UserState {
+  userInfo: {
+    username: string;
+    accountId: string;
+    email: string;
+  };
+  jwtToken: string;
+}
+
+export interface AppState {
+  songs: Song[];
+  user: UserState;
+}

@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { connect, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {
   setPlayerState,
   selectSong,
   setDuration,
   setCurrentLocation,
-} from "../../state/actions";
+  selectPlayerState,
+  selectSelectedSong,
+} from "../../state/song/songSlice";
 import PlayControllerIcon from "../../assets/img/play.png";
 import PauseControllerIcon from "../../assets/img/pause.png";
 import { Song } from "../../config/constants/types";
@@ -13,19 +15,16 @@ import { Song } from "../../config/constants/types";
 interface PlayButtonProps {
   song: Song;
   altIcons?: boolean;
-  selectedSong: Song;
-  isPlaying: boolean;
 }
 
-const PlayButton = ({
-  song,
-  selectedSong,
-  isPlaying,
-  altIcons = false,
-}: PlayButtonProps) => {
+const PlayButton = ({ song, altIcons = false }: PlayButtonProps) => {
   let playIcon = PlayControllerIcon;
   let pauseIcon = PauseControllerIcon;
+
+  const isPlaying = useSelector(selectPlayerState);
+  const selectedSong = useSelector(selectSelectedSong);
   const dispatch = useDispatch();
+
   const [audio] = useState(new Audio(song.url));
   const [currentAudioPlaying, setCurrentAudioPlayingState] = useState(false);
 
@@ -44,8 +43,9 @@ const PlayButton = ({
         currentlyPlaying = false;
         dispatch(setCurrentLocation(0));
       }
-      song.audio = audio;
-      dispatch(selectSong(song));
+      const newSongInstance = { ...song };
+      newSongInstance.audio = audio;
+      dispatch(selectSong(newSongInstance));
     }
     if (selectedSong && selectedSong.url === song.url) {
       currentlyPlaying ? selectedSong.audio.pause() : selectedSong.audio.play();
@@ -78,14 +78,4 @@ const PlayButton = ({
     </span>
   );
 };
-
-const mapStateToProps = (state: { playerState: any; selectedSong: any }) => {
-  return {
-    isPlaying: state.playerState,
-    selectedSong: state.selectedSong,
-  };
-};
-
-export default connect(mapStateToProps, { setPlayerState, selectSong })(
-  PlayButton
-);
+export default PlayButton;

@@ -1,26 +1,17 @@
-import { applyMiddleware, createStore } from "redux";
-import thunk from "redux-thunk";
-import rootReducer from "./rootReducer";
-import artistsData from "../config/mock-data/artists.json";
-import { Song } from "../config/constants/types";
+import { configureStore } from '@reduxjs/toolkit';
+import songReducer from './song/songSlice';
 
+const store = configureStore({
+  reducer: {
+    song: songReducer
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      thunk: true,
+    }),
+  devTools: process.env.NODE_ENV === 'development',
+});
 
-const artistsSong = () => {
-  const songs: Song[] = [];
-  artistsData.map((artist) => songs.push(...artist.songs));
-  return songs;
-}
-
-const initialData = {
-  songs: artistsSong(),
-};
-
-const middlewares = [thunk];
-
-const store = createStore(
-  rootReducer,
-  initialData,
-  applyMiddleware(...middlewares)
-);
+export type AppState = ReturnType<typeof store.getState>;
 
 export default store;

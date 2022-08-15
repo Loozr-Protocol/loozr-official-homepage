@@ -1,29 +1,25 @@
-import { connect, useDispatch } from "react-redux";
-import { setCurrentLocation } from "../../../state/actions";
-import { Song } from "../../../config/constants/types";
+import { useSelector, useDispatch } from "react-redux";
+import { setCurrentLocation, selectDuration, selectCurrentLocation, selectSelectedSong } from "../../../state/song/songSlice";
 
-interface ProgressProps {
-  duration: number;
-  currentLocation: number;
-  selectedSong: Song;
-}
-
-function Progress(props: ProgressProps) {
+function Progress() {
   const dispatch = useDispatch();
+  const duration = useSelector(selectDuration);
+  const currentLocation = useSelector(selectCurrentLocation);
+  const selectedSong = useSelector(selectSelectedSong);
 
   const toPercent = () =>
-    ((props.duration - props.currentLocation) / props.duration) * 100;
+    ((duration - currentLocation) / duration) * 100;
 
-  const currentPosition = props.duration > 0 ? 100 - toPercent() : 0;
+  const currentPosition = duration > 0 ? 100 - toPercent() : 0;
 
   const inputStyle = (val: number) => {
     return { "--value": `${val}%` } as React.CSSProperties;
   };
 
   const seekUpdate = (event: { target: { value: any } }) => {
-    if (props.selectedSong.audio) {
-      const newPosition = (event.target.value / 100) * props.duration;
-      props.selectedSong.audio.currentTime = newPosition;
+    if (selectedSong.audio) {
+      const newPosition = (event.target.value / 100) * duration;
+      selectedSong.audio.currentTime = newPosition;
       dispatch(setCurrentLocation(newPosition));
     }
   };
@@ -52,15 +48,4 @@ function Progress(props: ProgressProps) {
   );
 }
 
-const mapStateToProps = (state: {
-  selectedSong: Song;
-  duration: number;
-  currentLocation: number;
-}) => {
-  return {
-    selectedSong: state.selectedSong,
-    duration: state.duration,
-    currentLocation: state.currentLocation,
-  };
-};
-export default connect(mapStateToProps, {})(Progress);
+export default Progress;
