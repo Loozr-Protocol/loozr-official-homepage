@@ -86,7 +86,7 @@ const ArtisteDashboard = () => {
         <div className="flex">
           {nfts.map(({ platform, price, liked, likes, token, img }, index) => (
             <NFT
-              className="min-w-[250px] mr-4"
+              className="min-w-[200px] mr-4"
               key={index}
               {...{ platform, price, likes, liked, token, img }}
             />
