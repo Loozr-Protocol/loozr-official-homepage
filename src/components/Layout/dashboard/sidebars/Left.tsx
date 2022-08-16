@@ -97,11 +97,7 @@ export const Left = () => {
           className={`w-32 h-8 ${isLoggedIn ? "mb-7" : "mb-16"}`}
         />
       ) : (
-        <img
-          src={Loozr}
-          alt=""
-          className={`${isLoggedIn ? "mb-7" : "mb-16"} h-6 w-6`}
-        />
+        <img src={Loozr} alt="" className={`mb-6 h-6 w-6`} />
       )}
       {isLoggedIn ? (
         !hasLaunchedToken ? (
@@ -122,15 +118,15 @@ export const Left = () => {
       ) : (
         ""
       )}
-      <div className="w-full  h-[85%] flex flex-col items-end xl:block overflow-y-auto overflow-x-hidden">
+      <div className="w-full  xl:h-[85%] flex flex-col items-end xl:block overflow-y-auto overflow-x-hidden">
         {tabs.map((tab: any) => (
           <Link
-            className="hover:flex flex items-center text-sm font-medium text-[#536079] mb-[22px]"
+            className="hover:flex flex items-center text-sm font-medium text-[#536079] mt-2.5 xl:mt-auto mb-[22px]"
             to={tab.path || "#!"}
             key={tab.label}
           >
             <tab.icon
-              className={`object-contain w-3.5 h-3.5 mr-2 lg:mr-4 ${
+              className={`object-contain w-4 xl:w-3.5 h-4 xl:h-3.5 mr-3 xl:mr-4 ${
                 tab.path === pathname ? "text-white" : "text-[#536079]"
               }`}
             />
