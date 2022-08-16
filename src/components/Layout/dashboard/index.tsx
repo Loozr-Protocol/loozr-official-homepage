@@ -108,11 +108,11 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                           style={{ border: "6px solid #141922" }}
                         />
                         <div>
-                          <p className="text-sm font-bold text-white">
+                          <p className="text-sm font-semibold text-white">
                             Nathan Jose
                           </p>
                           <p className="flex items-center">
-                            <span className="text-muted text-[11px] font-extrabold mr-1">
+                            <span className="text-muted text-[11px] font-bold mr-1">
                               $HARTY
                             </span>{" "}
                             <span className="bg-muted rounded-full h-1 w-1 mr-1" />{" "}
@@ -129,7 +129,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                   ))}
 
                 <div className="mt-[67px] flex justify-between items-center mb-[18px]">
-                  <p className="text-sm font-semibold text-muted">
+                  <p className="text-[13px] font-medium leading-5 text-muted">
                     Coming Soon
                   </p>
                 </div>

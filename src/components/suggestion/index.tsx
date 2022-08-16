@@ -24,7 +24,7 @@ const Suggestion = () => {
   return (
     <div className="w-full">
       <div className="flex items-center justify-between mb-6">
-        <p className="font-medium text-base md:text-lg text-white">
+        <p className="font-medium text-base md:text-[17px] text-white">
           Tracks you&apos;d love
         </p>
         <div className="flex items-center">
@@ -47,10 +47,10 @@ const Suggestion = () => {
                   alt=""
                   className="object-cover h-36 w-h-36 mb-[18px]"
                 />
-                <p className="mb-1 font-normal text-sm text-white">
+                <p className="mb-1 font-medium text-sm text-white">
                   Chiling good
                 </p>
-                <p className="text-muted text-xs font-medium md:text-sm md:font-medium">
+                <p className="text-muted text-xs font-medium md:text-[13px] md:font-medium">
                   Goya Menor
                 </p>
               </div>

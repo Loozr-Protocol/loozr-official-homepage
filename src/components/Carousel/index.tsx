@@ -14,10 +14,12 @@ const Carousel = () => {
         style={{ background: `url(${Banner})`, backgroundColor: "#000" }}
       >
         <p>
-          <span className="text-loozr-purple font-medium text-sm">MUSIC</span>{" "}
+          <span className="text-loozr-purple font-medium text-[13px]">
+            MUSIC
+          </span>{" "}
           <span className="text-xs">/ 2 months ago</span>
         </p>
-        <p className="text-white font-semibold text-lg max-w-[300px]">
+        <p className="text-white font-semibold text-[17px] leading-7 max-w-[300px]">
           DISCOVER, BUY & SELL ARTISTE Coins.
         </p>
         {/* .flex.cols */}

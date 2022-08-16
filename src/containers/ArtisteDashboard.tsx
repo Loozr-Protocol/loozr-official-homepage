@@ -70,7 +70,7 @@ const ArtisteDashboard = () => {
       </div>
       <Suggestion />
       <div className="flex items-center justify-between mb-6">
-        <p className="font-medium text-base md:text-lg text-white">
+        <p className="font-medium text-base md:text-[17px] text-white">
           Music NFT drops
         </p>
         <div className="flex items-center">
@@ -79,32 +79,41 @@ const ArtisteDashboard = () => {
           </Link>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-8 mb-16">
-        {_nfts.map(({ platform, price, liked, token, img }, index) => (
-          <NFT key={index} {...{ platform, price, liked, token, img }} />
-        ))}
+      <div
+        // className="grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-8 mb-16"
+        className="max-w-full overflow-auto whitespace-nowrap mb-16"
+      >
+        <div className="flex">
+          {nfts.map(({ platform, price, liked, likes, token, img }, index) => (
+            <NFT
+              className="min-w-[250px] mr-4"
+              key={index}
+              {...{ platform, price, likes, liked, token, img }}
+            />
+          ))}
+        </div>
       </div>
-      <p className="font-medium text-base md:text-lg text-white mb-6">
+      <p className="font-medium text-base md:text-[17px] text-white mb-6">
         How does Loozr work?
       </p>
       <div className="grid gap-5 lg:gap-10 mb-10">
         <div className="grid md:grid-cols-2 gap-5 lg:gap-10">
           <div className="bg-dark-700 py-7 px-7">
             <img src={Arrow} alt="" className="w-10 h-10 mb-[19px]" />
-            <p className="font-normal text-sm text-white mb-2.5">
+            <p className="font-medium text-sm text-white mb-2.5">
               Launch Your Own Coin
             </p>
-            <p className="text-muted text-xs font-medium">
+            <p className="text-muted text-xs font-normal">
               Get tokenised by creating your Profile, adding your Songs &
               Playlists, EPs, Albums, etc.
             </p>
           </div>
           <div className="bg-dark-700 py-7 px-7">
             <img src={Chart} alt="" className="w-10 h-10 mb-[19px]" />
-            <p className="font-normal text-sm text-white mb-2.5">
+            <p className="font-medium text-sm text-white mb-2.5">
               Buy, Sell & Trade
             </p>
-            <p className="text-muted text-xs font-medium">
+            <p className="text-muted text-xs font-normal">
               Fans can stream and trade artiste profiles & songs with Loozr
               coins & explore the Metaverse music world.
             </p>
@@ -112,10 +121,10 @@ const ArtisteDashboard = () => {
         </div>
         <div className="bg-dark-700 py-7 px-7 md:w-[85%]">
           <img src={Heart} alt="" className="w-10 h-10 mb-[19px]" />
-          <p className="font-normal text-sm text-white mb-2.5">
+          <p className="font-medium text-sm text-white mb-2.5">
             Collective Wins!
           </p>
-          <p className="text-muted text-xs font-medium">
+          <p className="text-muted text-xs font-normal">
             When fans invest in a token, like Bitcoin, the price of that token
             price rises. Artistes receive a percentage incentive from these
             trades in addition to their streaming money which they split with

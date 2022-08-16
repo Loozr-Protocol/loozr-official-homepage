@@ -14,6 +14,7 @@ export const nfts = [
   {
     platform: "Mintbase.id",
     price: 0.24,
+    likes: "104",
     liked: true,
     token: Near,
     img: One,
@@ -21,6 +22,7 @@ export const nfts = [
   {
     platform: "Mintbase.id",
     price: 0.24,
+    likes: 0,
     liked: false,
     token: ETH,
     img: Two,
@@ -28,6 +30,7 @@ export const nfts = [
   {
     platform: "Mintbase.id",
     price: 0.24,
+    likes: "1.24k",
     liked: true,
     token: Sol,
     img: Three,
@@ -35,6 +38,7 @@ export const nfts = [
   {
     platform: "Mintbase.id",
     price: 0.24,
+    likes: 104,
     liked: true,
     token: Near,
     img: Four,
@@ -42,6 +46,7 @@ export const nfts = [
   {
     platform: "Mintbase.id",
     price: 0.24,
+    likes: "1.2k",
     liked: true,
     token: Sol,
     img: Five,
@@ -49,6 +54,7 @@ export const nfts = [
   {
     platform: "Mintbase.id",
     price: 0.24,
+    likes: 102,
     liked: false,
     token: Near,
     img: Six,
