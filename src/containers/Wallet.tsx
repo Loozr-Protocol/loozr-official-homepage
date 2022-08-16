@@ -111,7 +111,7 @@ const Wallet = () => {
                 />
               </div>
               <div>
-                <p className="text-xs md:text-sm font-bold text-white mb-0.5">
+                <p className="text-xs md:text-sm font-semibold text-white mb-0.5">
                   {item.type === "dr" ? "Sent" : "Received"}
                   <span className="font-extrabold px-1">{item.token}</span>
                   coin
@@ -145,17 +145,17 @@ const Wallet = () => {
     <div className="w-full">
       <div className="w-full bg-dark-700 p-4 md:!py-8 md:!px-11 mb-12">
         <div className="flex items-center justify-between mb-9">
-          <p className="text-lg font-thin md:font-medium text-white">
+          <p className="text-[17px] leading-7 font-thin md:font-medium text-white">
             My Wallet
           </p>
-          <p className="text-xs md:text-sm font-thin md:font-normal text-white">
+          <p className="text-xs md:text-sm leading-5 font-thin md:font-normal text-white">
             ~ $0.05 USD per LZR coin
           </p>
         </div>
         <p className="text-muted text-sm font-normal mb-2.5">Total Balance</p>
-        <p className="flex items-end text-white mb-1">
+        <p className="flex items-end text-white mb-1.5">
           <span className="text-2xl md:text-3xl font-black">300.1512</span>
-          <span className="font-medium text-xl ml-2">LZR</span>
+          <span className="font-medium text-base leading-7 ml-2">LZR</span>
         </p>
         <p className="font-light text-sm md:font-medium text-white mb-4 md:mb-8">
           ≈ $0.0007 USD
@@ -163,19 +163,20 @@ const Wallet = () => {
         <div className="flex items-center mb-8 md:mb-11">
           <button
             onClick={() => push("/lzr/send")}
-            className="py-2.5 md:py-3 px-7 lg:px-auto lg:w-[150px] rounded-full bg-white text-black text-sm mr-4 font-semibold"
+            className="py-2.5 md:py-2.5 px-7 lg:px-auto lg:w-[130px] rounded-full bg-white text-black text-sm mr-4 font-semibold"
           >
             Send $LZR
           </button>
           <button
             onClick={() => push("/lzr/buy")}
-            className="py-2.5 md:py-3 px-7 lg:px-auto lg:w-[150px] rounded-full text-white text-sm border border-muted-50 font-semibold"
+            className="py-2.5 md:py-2.5 px-7 lg:px-auto lg:w-[130px] rounded-full text-white text-sm font-semibold"
+            style={{ border: "1.5px solid #222A3B" }}
           >
             Buy $LZR
           </button>
         </div>
-        <p className="text-white text-sm md:text-sm">
-          <span className="text-muted">Your Username:</span> lzr.yourname.near{" "}
+        <p className="text-white font-medium text-sm md:text-sm">
+          <span className="text-muted">My username:</span> lzr.yourname.near{" "}
           <span
             className="text-[#00FFFF] cursor-pointer"
             onClick={() => copyToClipboard("lzr.yourname.near")}

@@ -108,7 +108,7 @@ export const featured = [
 const Artistes = () => {
   return (
     <div className="w-full mt-8 md:mt-0 pb-28">
-      <p className="text-white text-lg font-thin md:font-medium mb-7">
+      <p className="text-white text-[17px] leading-7 font-thin md:font-medium mb-7">
         Artistes
       </p>
       <div className="grid grid-cols-3 md:grid-cols-4 gap-y-16">

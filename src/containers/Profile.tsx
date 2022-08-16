@@ -281,18 +281,18 @@ const Profile = () => {
   return (
     <div className="w-full">
       {hasLaunchedToken && (
-        <div className="w-full bg-dark-700 px-3 md:px-10 pt-7 pb- mb-[52px] min-h-[260px]">
-          <div className="grid grid-cols-1 md:grid-cols-2">
-            <div>
+        <div className="w-full bg-dark-700 px-3 md:!pl-10 pt-7 pb- mb-[52px] min-h-[260px]">
+          <div className="grid grid-cols-1 md:flex">
+            <div className="flex-1">
               <p className="font-medium text-sm text-muted mb-2 md:mb-[22px]">
-                Your Artiste token
+                My coin name
               </p>
               <p className="font-extrabold text-2xl md:text-3xl text-white mb-6">
                 $ARLENE
               </p>
-              <div className="grid grid-cols-4 items-center justify-between mb-6 md:mb-auto">
+              <div className="flex items-center justify-between mb-6 md:mb-auto">
                 <div className="text-center md:text-left">
-                  <p className="font-bold text-sm md:text-sm text-white">
+                  <p className="font-bold text-sm md:text-sm text-white text-left mb-1">
                     $0.768
                   </p>
                   <p className="text-muted text-xs font-medium">
@@ -300,33 +300,37 @@ const Profile = () => {
                   </p>
                 </div>
                 <div className="text-center md:text-left">
-                  <p className="font-bold text-sm md:text-sm text-white">
+                  <p className="font-bold text-sm md:text-sm text-white text-left mb-1">
                     $104.58K
                   </p>
                   <p className="text-muted text-xs font-medium">Market cap</p>
                 </div>
                 <div className="text-center md:text-left">
-                  <p className="font-bold text-sm md:text-sm text-white">203</p>
+                  <p className="font-bold text-sm md:text-sm text-white text-left mb-1">
+                    203
+                  </p>
                   <p className="text-muted text-xs font-medium">Holders</p>
                 </div>
                 <div className="text-center md:text-left">
-                  <p className="font-bold text-sm md:text-sm text-white">10%</p>
+                  <p className="font-bold text-sm md:text-sm text-white text-left mb-1">
+                    10%
+                  </p>
                   <p className="text-muted text-xs font-medium">% Reward</p>
                 </div>
               </div>
             </div>
             <div className="flex justify-start">
-              <div className="md:pl-24 flex md:flex-col items-center">
+              <div className="md:pl-24 flex md:flex-col kitems-center">
                 <div>
                   <p className="font-medium text-sm text-muted mb-6">
-                    Your token chart
+                    My coin chart
                   </p>
                   <p className="mb-1 font-semibold text-sm">87%</p>
                   <p className="mb-3.5 font-medium text-sm text-[#15FFAB]">
                     +4.5%
                   </p>
                 </div>
-                <ResponsiveContainer width={200} height={80}>
+                <ResponsiveContainer width={170} height={80}>
                   <AreaChart
                     data={data}
                     margin={{ top: 20, right: 30, left: 0, bottom: 0 }}

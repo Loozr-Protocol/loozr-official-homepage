@@ -108,7 +108,9 @@ const Tracks = () => {
           </div>
         ))}
       </div>
-      <p className="text-lg font-thin md:font-medium text-white mb-6">Tracks</p>
+      <p className="text-[17px] leading-7 font-thin md:font-medium text-white mb-6">
+        Tracks
+      </p>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-x-5  gap-y-10">
         {tracks.map((track, index) => (
           <div key={index}>
