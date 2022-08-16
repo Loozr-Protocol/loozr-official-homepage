@@ -113,7 +113,7 @@ const Tracks = () => {
         {tracks.map((track, index) => (
           <div key={index}>
             <img src={track.img} alt="" width={"100%"} height={203} />
-            <p className="font-normal text-sm mt-3 mb-[1px] text-white">
+            <p className="font-normal text-sm mt-3 mb-0.5 text-white">
               {track.title}
             </p>
             <p className="text-muted text-xs font-normal">{track.artist}</p>
