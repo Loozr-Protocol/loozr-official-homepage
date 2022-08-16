@@ -187,7 +187,7 @@ const Wallet = () => {
       <div className="w-full pb-2 mb-9 border-b-2 border-muted-50 flex items-center text-sm font-medium text-muted">
         <p
           className={`mr-10 cursor-pointer ${
-            active === 1 ? "active-tab-bottom" : "text-muted"
+            active === 1 ? "active-tab-bottom" : "text-muted font-medium"
           }`}
           onClick={() => setActive(1)}
         >
@@ -195,7 +195,7 @@ const Wallet = () => {
         </p>
         <p
           className={`mr-10 cursor-pointer ${
-            active === 2 ? "active-tab-bottom" : "text-muted"
+            active === 2 ? "active-tab-bottom" : "text-muted font-medium"
           }`}
           onClick={() => setActive(2)}
         >
@@ -203,7 +203,7 @@ const Wallet = () => {
         </p>
         <p
           className={`cursor-pointer ${
-            active === 3 ? "active-tab-bottom" : "text-muted"
+            active === 3 ? "active-tab-bottom" : "text-muted font-medium"
           }`}
           onClick={() => setActive(3)}
         >

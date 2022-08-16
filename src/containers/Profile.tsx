@@ -172,14 +172,16 @@ const Profile = () => {
                 style={{ border: "6px solid #141922" }}
               />
               <div>
-                <p className="text-xs md:text-base font-medium">{item.name}</p>
+                <p className="text-xs md:text-sm font-bold text-white mb-0.5">
+                  {item.name}
+                </p>
                 <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
                   You own 0.735 LZR
                 </p>
               </div>
             </div>
             <div>
-              <p className="text-xs md:text-base font-medium">
+              <p className="text-xs md:text-sm font-semibold text-white mb-0.5">
                 {capitalize(item.type)}
               </p>
               <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
@@ -187,7 +189,9 @@ const Profile = () => {
               </p>
             </div>
             <div>
-              <p className="text-xs md:text-base font-medium">~${item.price}</p>
+              <p className="text-xs md:text-sm font-semibold text-white mb-0.5">
+                ~${item.price}
+              </p>
               <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
                 USD value
               </p>
@@ -208,14 +212,16 @@ const Profile = () => {
                 style={{ border: "6px solid #141922" }}
               />
               <div>
-                <p className="text-xs md:text-base font-medium">{item.name}</p>
+                <p className="text-xs md:text-sm font-bold text-white mb-0.5">
+                  {item.name}
+                </p>
                 <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
                   Owns {item.owns} LZR of your artiste token
                 </p>
               </div>
             </div>
             <div>
-              <p className="text-xs md:text-base font-medium">
+              <p className="text-xs md:text-sm font-semibold text-white mb-0.5">
                 {capitalize(item.type)}
               </p>
               <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
@@ -223,7 +229,9 @@ const Profile = () => {
               </p>
             </div>
             <div>
-              <p className="text-xs md:text-base font-medium">~${item.price}</p>
+              <p className="text-xs md:text-sm font-semibold text-white mb-0.5">
+                ~${item.price}
+              </p>
               <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
                 USD value
               </p>
@@ -245,7 +253,7 @@ const Profile = () => {
                 />
               </div>
               <div>
-                <p className="text-xs md:text-base font-medium">
+                <p className="text-xs md:text-sm font-bold text-white mb-0.5">
                   {item.type === "dr" ? "Sent" : "Received"}
                   <span className="font-extrabold px-1">{item.token}</span>
                   coin
@@ -257,7 +265,9 @@ const Profile = () => {
               </div>
             </div>
             <div>
-              <p className="text-xs md:text-base font-medium">~${item.price}</p>
+              <p className="text-xs md:text-sm font-semibold text-white mb-0.5">
+                ~${item.price}
+              </p>
               <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
                 USD value
               </p>
@@ -268,7 +278,6 @@ const Profile = () => {
         return "";
     }
   }, [active]);
-
   return (
     <div className="w-full">
       {hasLaunchedToken && (
@@ -408,11 +417,10 @@ const Profile = () => {
           </div>
         </div>
       </div>
-      <div className="w-full pb-2 mb-9 border-b-2 border-muted-50 flex items-center text-sm md:text-lg font-medium text-muted">
+      <div className="w-full pb-2 mb-9 border-b-2 border-muted-50 flex items-center text-sm font-medium text-muted">
         <p
           className={`mr-10 cursor-pointer ${
-            active === 1 &&
-            "md:font-semibold text-sm md:text-lg relative before:absolute before:w-full before:h-1 before:bg-loozr-purple before:bottom-[-13px]"
+            active === 1 ? "active-tab-bottom" : "text-muted font-medium"
           }`}
           onClick={() => setActive(1)}
         >
@@ -420,8 +428,7 @@ const Profile = () => {
         </p>
         <p
           className={`mr-10 cursor-pointer ${
-            active === 2 &&
-            "md:font-semibold text-sm md:text-lg relative before:absolute before:w-full before:h-1 before:bg-loozr-purple before:bottom-[-13px]"
+            active === 2 ? "active-tab-bottom" : "text-muted font-medium"
           }`}
           onClick={() => setActive(2)}
         >
@@ -429,8 +436,7 @@ const Profile = () => {
         </p>
         <p
           className={`cursor-pointer ${
-            active === 3 &&
-            "md:font-semibold text-sm md:text-lg relative before:absolute before:w-full before:h-1 before:bg-loozr-purple before:bottom-[-13px]"
+            active === 3 ? "active-tab-bottom" : "text-muted font-medium"
           }`}
           onClick={() => setActive(3)}
         >
