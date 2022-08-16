@@ -24,8 +24,8 @@ const Login = () => {
       <div className="flex flex-col items-center justify-center px-6 md:px-auto">
         <div style={{ zoom: "85%", width: "100%" }}>
           <p className="text-sm font-normal text-muted mb-3">WELCOME BACK</p>
-          <p className="text-4xl font-bold mb-11 text-white">Login account</p>
-          <p className="text-sm font-normal mb-11">
+          <p className="text-4xl font-bold mb-9 text-white">Login account</p>
+          <p className="text-[15px] font-normal mb-11">
             Don&apos;t have an account?{" "}
             <Link to="/signup" className="text-loozr-purple">
               Create account
@@ -70,7 +70,7 @@ const Login = () => {
           >
             Login
           </button>
-          <p className="text-sm font-normal">
+          <p className="text-[15px] font-normal">
             Forgot your password?{" "}
             <Link to="/recover-password" className="text-loozr-purple">
               Reset here
