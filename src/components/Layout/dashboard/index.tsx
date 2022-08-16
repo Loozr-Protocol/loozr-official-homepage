@@ -52,7 +52,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
       <div
         className={`flex-1 pt-4 pb-10 px-3 md:px-0 md:pl-14 lg:pr-28 !overflow-x-hidden mb-24 md:mb-auto`}
         style={{
-          marginLeft: lg
+          marginLeft: xl
             ? `calc(${drawerMaxWidth}vw)`
             : // : lg
             // ? `200px`

@@ -45,7 +45,7 @@ const ArtisteDashboard = () => {
                 <img
                   src={_.img}
                   alt=""
-                  className="object-cover h-20 md:h-32 w-20 md:w-32 rounded-full border-[15px] border-dark-700 mb-[18px]"
+                  className="object-cover h-20 md:h-32 w-20 md:w-32 rounded-full border-[15px] border-dark-700 mb-[16px]"
                   style={{
                     border: "14px solid #141922",
                   }}
@@ -58,7 +58,7 @@ const ArtisteDashboard = () => {
                   />
                 )}
               </div>
-              <p className="font-normal mb-1 md:font-bold text-[15px] text-white text-center">
+              <p className="font-normal mb-px md:font-bold text-[15px] text-white text-center">
                 {_.name}
               </p>
               <p className="text-muted text-xs font-medium md:text-[13px] md:font-medium text-center">
@@ -86,7 +86,7 @@ const ArtisteDashboard = () => {
         <div className="flex">
           {nfts.map(({ platform, price, liked, likes, token, img }, index) => (
             <NFT
-              className="min-w-[200px] mr-4"
+              className="min-w-[200px] mr-[16px]"
               key={index}
               {...{ platform, price, likes, liked, token, img }}
             />

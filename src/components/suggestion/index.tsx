@@ -47,10 +47,10 @@ const Suggestion = () => {
                   alt=""
                   className="object-cover h-36 w-h-36 mb-[18px]"
                 />
-                <p className="mb-1 font-medium text-sm text-white">
+                <p className="mb-0.5 font-medium text-sm text-white">
                   Chiling good
                 </p>
-                <p className="text-muted text-xs font-medium md:text-[13px] md:font-medium">
+                <p className="text-muted text-xs font-normal md:text-[13px] md:font-normal">
                   Goya Menor
                 </p>
               </div>

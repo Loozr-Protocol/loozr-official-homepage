@@ -116,7 +116,7 @@ const Tracks = () => {
             <p className="font-normal text-sm mt-3 mb-[1px] text-white">
               {track.title}
             </p>
-            <p className="text-muted text-xs font-light">{track.artist}</p>
+            <p className="text-muted text-xs font-normal">{track.artist}</p>
           </div>
         ))}
       </div>

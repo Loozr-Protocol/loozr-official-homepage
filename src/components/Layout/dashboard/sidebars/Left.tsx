@@ -87,7 +87,7 @@ export const Left = () => {
       style={{
         // minWidth: xl ? drawerMinWidth : "auto",
         // maxWidth: md ? `${drawerMaxWidth}vw` : 0,
-        width: lg ? `${drawerMaxWidth}vw` : md ? "max-content" : 0,
+        width: xl ? `${drawerMaxWidth}vw` : md ? "max-content" : 0,
       }}
     >
       {xl ? (
@@ -122,7 +122,7 @@ export const Left = () => {
       ) : (
         ""
       )}
-      <div className="w-full  h-[85%] flex flex-col items-end lg:block overflow-y-auto overflow-x-hidden">
+      <div className="w-full  h-[85%] flex flex-col items-end xl:block overflow-y-auto overflow-x-hidden">
         {tabs.map((tab: any) => (
           <Link
             className="hover:flex flex items-center text-sm font-medium text-[#536079] mb-[22px]"
@@ -153,7 +153,7 @@ export const Left = () => {
             <img
               src={Memoji}
               alt=""
-              className="object-contain w-8 h-8 lg:w-14 lg:h-10 rounded-full lg:mr-3"
+              className="object-contain w-8 h-8 xl:w-14 xl:h-10 rounded-full xl:mr-3"
               style={{ border: "6px solid #141922" }}
             />
             <div className="hidden xl:block w-full">
@@ -179,7 +179,7 @@ export const Left = () => {
             <img
               src={Memoji}
               alt=""
-              className="object-contain w-8 h-8 lg:w-16 lg:h-12 rounded-full lg:mr-3"
+              className="object-contain w-8 h-8 xl:w-16 xl:h-12 rounded-full xl:mr-3"
               style={{ border: "6px solid #141922" }}
             />
             <div className="hidden xl:block w-full">
