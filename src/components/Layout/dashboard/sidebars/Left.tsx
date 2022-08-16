@@ -148,7 +148,7 @@ export const Left = () => {
         {isLoggedIn ? (
           <div
             onClick={() => push("/profile")}
-            className="flex items-center justify-center w-full mt-6"
+            className="flex items-center justify-center w-full mt-6 cursor-pointer"
           >
             <img
               src={Memoji}
@@ -157,13 +157,13 @@ export const Left = () => {
               style={{ border: "6px solid #141922" }}
             />
             <div className="hidden xl:block w-full">
-              <p className="text-xs font-extrabold text-white">Felix Harty</p>
-              <p className="text-[11px] font-medium text-muted">
+              <p className="text-sm font-extrabold text-white">Felix Harty</p>
+              <p className="text-sm font-medium flex items-center w-auto flex-nowrap whitespace-nowrap text-muted">
                 {hasLaunchedToken ? (
                   <span>
-                    $HARTY{" "}
-                    <span className="h-1 w-1 rounded-full bg-muted opacity-90" />{" "}
-                    Artiste
+                    <span>$HARTY</span>{" "}
+                    <span className="h-1 w-1 rounded-full bg-muted opacity-90 mb-[3px]" />{" "}
+                    <span>Artiste</span>
                   </span>
                 ) : (
                   "Listener"

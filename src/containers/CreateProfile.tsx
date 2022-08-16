@@ -12,7 +12,7 @@ const CreateProfile = () => {
     <div className="min-h-screen flex flex-col justify-center items-center ">
       <div className="px-4 max-w-[450px] mx-auto">
         <p className="font-bold text-4xl text-white mb-9">Add your username</p>
-        <p className="text-sm md:text-base mb-11">
+        <p className="text-sm md:text-[15.5px] mb-11">
           Enter a custom username that you'll use for all transactions,
           including earning, streaming, sending, and receiving tokens.
         </p>
@@ -22,7 +22,7 @@ const CreateProfile = () => {
           style={{ backgroundColor: "#12161F" }}
           placeholder="lzr.your_username.near"
         />
-        <p className="italic text-sm md:text-base text-muted mb-8 md:mb-12">
+        <p className="italic text-sm md:text-[15.5px] text-muted mb-8 md:mb-12">
           Username: lzr.your_token_name.near
         </p>
         <button

@@ -21,11 +21,11 @@ const Signup = () => {
       />
       <div className="flex flex-col items-center justify-center px-6 md:px-auto">
         <div style={{ zoom: "85%", width: "100%" }}>
-          <p className="text-sm font-normal text-muted mb-2">START FOR FREE</p>
-          <p className="text-4xl mb-2 md:!mb-11 font-bold text-white">
+          <p className="text-sm font-normal text-muted mb-3">START FOR FREE</p>
+          <p className="text-4xl mb-2 md:!mb-9 font-bold text-white">
             Create account
           </p>
-          <p className="text-lg font-normal mb-[40px]">
+          <p className="text-[15px] font-normal mb-[40px]">
             Already have an account?{" "}
             <Link to="/login" className="text-loozr-purple">
               Login
@@ -73,7 +73,7 @@ const Signup = () => {
               )}
             </span>
           </div>
-          <p className="text-muted text-sm md:text-base my-11">
+          <p className="text-muted text-[15px] md:text-base my-11">
             By clicking “Create account” you agree to our{" "}
             <span className="text-loozr-purple">Terms of Service</span> and our{" "}
             <span className="text-loozr-purple">Policy.</span>

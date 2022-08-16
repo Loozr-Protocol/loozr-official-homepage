@@ -112,17 +112,17 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                             Nathan Jose
                           </p>
                           <p className="flex items-center">
-                            <span className="text-muted text-[10px] font-extrabold mr-1">
+                            <span className="text-muted text-[11px] font-extrabold mr-1">
                               $HARTY
                             </span>{" "}
                             <span className="bg-muted rounded-full h-1 w-1 mr-1" />{" "}
-                            <span className="text-[10px] text-muted font-medium">
+                            <span className="text-[11px] text-muted font-medium">
                               $3,001.99
                             </span>
                           </p>
                         </div>
                       </div>
-                      <p className="text-[10px] font-medium text-loozr-purple">
+                      <p className="text-[11px] font-medium text-loozr-purple">
                         Follow
                       </p>
                     </div>

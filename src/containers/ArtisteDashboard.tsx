@@ -22,7 +22,7 @@ const ArtisteDashboard = () => {
     <div className="w-full">
       <Carousel />
       <div className="flex items-center justify-between mb-6">
-        <p className="font-medium text-base md:text-lg text-white">
+        <p className="font-medium text-base md:text-[17px] text-white">
           Featured artistes
         </p>
         <div className="flex items-center">
@@ -58,10 +58,10 @@ const ArtisteDashboard = () => {
                   />
                 )}
               </div>
-              <p className="font-normal mb-1 md:font-bold text-base md:text-base text-white text-center">
+              <p className="font-normal mb-1 md:font-bold text-[15px] text-white text-center">
                 {_.name}
               </p>
-              <p className="text-muted text-xs font-medium md:text-sm md:font-medium text-center">
+              <p className="text-muted text-xs font-medium md:text-[13px] md:font-medium text-center">
                 {_.price}
               </p>
             </div>

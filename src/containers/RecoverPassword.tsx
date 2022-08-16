@@ -14,8 +14,8 @@ const RecoverPassword = () => {
       <div className="flex flex-col items-center justify-center px-8 md:px-auto">
         <div style={{ zoom: "85%", width: "100%" }}>
           <p className="text-sm font-normal text-muted mb-2">Oops!</p>
-          <p className="text-4xl font-bold mb-6 md:!mb-11">Recover password</p>
-          <p className="text-lg font-normal mb-10">
+          <p className="text-4xl font-bold mb-6 md:!mb-9">Recover password</p>
+          <p className="text-[15px] font-normal mb-10">
             Please provide your email address in order to receive a reset code.
           </p>
           <input
@@ -31,7 +31,7 @@ const RecoverPassword = () => {
               Reset password
             </button>
           </Link>
-          <p className="text-base font-normal">
+          <p className="text-[15px] font-normal">
             Remember your password?{" "}
             <Link to="/login" className="text-loozr-purple">
               Login
