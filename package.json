@@ -20,8 +20,11 @@
     "@types/react-redux": "^7.1.23",
     "@types/react-router-dom": "^5.3.3",
     "axios": "^0.27.2",
+    "formik": "^2.2.9",
+    "framer-motion": "^6.2.8",
     "gsap": "^3.9.1",
     "lodash": "^4.17.21",
+    "logrocket": "^3.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-player": "^2.9.0",
@@ -29,6 +32,7 @@
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
     "react-swipe": "^6.0.4",
+    "react-toastify": "^9.0.8",
     "recharts": "^2.1.13",
     "redux-thunk": "^2.4.1",
     "styled-components": "^5.3.5",
@@ -47,7 +51,8 @@
     "workbox-range-requests": "^5.1.4",
     "workbox-routing": "^5.1.4",
     "workbox-strategies": "^5.1.4",
-    "workbox-streams": "^5.1.4"
+    "workbox-streams": "^5.1.4",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",

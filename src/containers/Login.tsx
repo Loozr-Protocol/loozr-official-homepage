@@ -2,18 +2,59 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import * as yup from "yup";
+import { useFormik } from "formik";
+import { motion } from "framer-motion";
+import { useLoginCallback } from "../state/user/hooks/useAuth";
 import AuthImage from "../assets/img/auth-img.png";
+import { httpError } from "../helpers/httpHelper";
+import { useDispatch } from "react-redux";
+import { login } from "../state/user/userReducer";
 
 const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [isLoading, setLoading] = useState(false);
   const push = useNavigate();
-  const handleLogin = () => {
-    console.log("Login");
-    sessionStorage.setItem("isLoggedIn", "true");
-    setTimeout(() => {
-      push("/explore");
-    }, 2000);
+  const dispatch = useDispatch();
+  const { handleLogin } = useLoginCallback();
+
+  const loginSchema = yup.object({
+    email: yup
+      .string()
+      .email("This email is not valid")
+      .required("Your email is required"),
+    password: yup
+      .string()
+      .required("Your password is required")
+      .min(4, "A minimum of 6 characters"),
+  });
+
+  const formik = useFormik({
+    initialValues: { email: "", password: "" },
+    validationSchema: loginSchema,
+    onSubmit: () => {},
+  });
+
+  const handleLoginSubmit = async () => {
+    if (!formik.dirty) {
+      return;
+    } else if (!formik.isValid) {
+      return;
+    }
+    setLoading(true);
+    try {
+      const result = await handleLogin(formik.values);
+      setLoading(false);
+      const jwtToken = result["access_token"];
+      localStorage.setItem("jwtToken", jwtToken);
+      dispatch(login(result['user']));
+      push("/explore", { replace: true });
+    } catch (err: any) {
+      setLoading(false);
+       httpError(err);
+    }
   };
+
   return (
     <div className="min-h-screen w-full grid md:grid-cols-2 lg:grid-cols-3">
       <img
@@ -33,6 +74,10 @@ const Login = () => {
           </p>
           <input
             type="email"
+            name="email"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            onFocus={() => formik.setFieldTouched("email", true, true)}
             placeholder="Enter email"
             className="py-8 !px-[39px] text-muted placeholder:text-muted text-base font-medium bg-dark-800 mb-7"
             style={{
@@ -41,9 +86,25 @@ const Login = () => {
               padding: "auto 40px",
             }}
           />
+          <div className="w-full h-auto pt-2">
+            {formik.touched.email && formik.errors.email && (
+              <motion.div
+                initial={{ y: -100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                className="text-xs font-Inter-SemiBold text-[#F25341]"
+                style={{ marginTop: "-42px" }}
+              >
+                {formik.errors.email}
+              </motion.div>
+            )}
+          </div>
           <div className="w-full relative">
             <input
               type={passwordVisible ? "text" : "password"}
+              name="password"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              onFocus={() => formik.setFieldTouched("password", true, true)}
               placeholder="Password"
               className="py-8 !px-[39px] text-muted placeholder:text-muted text-base font-medium bg-dark-800 w-full"
               style={{
@@ -64,11 +125,24 @@ const Login = () => {
               )}
             </span>
           </div>
+          <div className="w-full h-auto pt-2">
+            {formik.touched.password && formik.errors.password && (
+              <motion.div
+                initial={{ y: -100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                className="text-xs font-Inter-SemiBold text-[#F25341]"
+                style={{ marginTop: "-56px" }}
+              >
+                {formik.errors.password}
+              </motion.div>
+            )}
+          </div>
           <button
             className="py-3 md:py-6 text-white disabled:text-muted font-medium text-base bg-gradient-ld disabled:bg-dark-800 mb-4 md:!mb-12 w-full focus:outline-none h-[74px]"
-            onClick={handleLogin}
+            onClick={handleLoginSubmit}
+            disabled={isLoading}
           >
-            Login
+            {isLoading ? "Login in..." : "Login"}
           </button>
           <p className="text-[15px] font-normal">
             Forgot your password?{" "}

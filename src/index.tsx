@@ -4,12 +4,15 @@ import ReactDOM from "react-dom";
 import Axios from "axios";
 import Swiper, { Autoplay } from "swiper";
 import "swiper/css";
+import "react-toastify/dist/ReactToastify.css";
 import "./index.css";
 import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 import store from "./state/store";
 import { API_BASE_ENDPOINT } from "./config/constants/endpoints";
+import LogRocket from "logrocket";
+import { getUserDetails } from "./state/user/userActions";
 
 declare global {
   interface Window {
@@ -75,6 +78,18 @@ new Swiper(".metro .swiper-container", {
     prevEl: ".metro .swiper-button-prev",
   },
 });
+
+const jwtToken = localStorage.getItem("jwtToken")
+  ? localStorage.getItem("jwtToken")
+  : null;
+
+if(jwtToken){
+  store.dispatch(getUserDetails());
+}
+
+if (process.env.NODE_ENV === "production") {
+  LogRocket.init("hrsvnj/loozr");
+}
 
 ReactDOM.render(
   <React.StrictMode>

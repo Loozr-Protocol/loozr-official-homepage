@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import songReducer from './song/songSlice';
+import userReducer from './user/userReducer';
 
 const store = configureStore({
   reducer: {
-    song: songReducer
+    song: songReducer,
+    user: userReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

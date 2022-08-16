@@ -4,6 +4,7 @@ import Signup from "../containers/Signup";
 import RecoverPassword from "../containers/RecoverPassword";
 import ResetPassword from "../containers/ResetPassword";
 import VerifyEmail from "../containers/VerifyEmail";
+import AccountVerificationSuccess from "../containers/AccountVerificationSuccess";
 
 // Non-auth components
 import Home from "../containers/Home";
@@ -52,9 +53,14 @@ export const authRoutes = [
   },
   {
     name: "verify-email",
-    path: "verify-email",
+    path: "verify-email/:email",
     private: false,
     component: VerifyEmail,
+  },  {
+    name: "complete-verification",
+    path: "account-activation-success",
+    private: false,
+    component: AccountVerificationSuccess,
   },
   {
     name: "profile/create",

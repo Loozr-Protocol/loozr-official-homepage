@@ -39,6 +39,9 @@ export interface UserState {
     email: string;
   };
   jwtToken: string;
+  loading: boolean;
+  success: boolean;
+  error: string
 }
 
 export interface AppState {
