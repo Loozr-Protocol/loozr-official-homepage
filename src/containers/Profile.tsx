@@ -19,6 +19,10 @@ import {
   Area,
 } from "recharts";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { AppState } from "../state/store";
+import { MIXER_ACCOUNT } from "../config/constants";
+import { abbrevNumber } from "../utils/formatBalance";
 
 const data = [
   { name: "May", uv: 70000 },
@@ -35,6 +39,8 @@ const data = [
 const Profile = () => {
   const push = useNavigate();
   const [active, setActive] = useState(1);
+  const user = useSelector((state: AppState) => state.user.userInfo);
+  const lzrAccountId = `${user.account_id}.${MIXER_ACCOUNT}`;
   const [hasLaunchedToken, setHasLaunchedToken] = useState(
     sessionStorage.getItem("hasLaunchedToken") === "true"
   );
@@ -372,41 +378,44 @@ const Profile = () => {
       <div className="flex items-start mb-12">
         <img
           src={Arlene}
-          alt=""
+          alt={user.account_id}
           className="h-8 md:h-[170px] w-8 md:w-[170px] rounded-full mr-3"
           style={{ border: "20px solid #141922" }}
         />
         <div className="md:ml-10">
           <p className="text-xl md:text-xl font-medium text-white mb-1.5">
-            lzr.yourname.near
+            {lzrAccountId}
           </p>
           <p className="text-muted font-medium text-sm md:text-sm mb-[10px]">
-            <span>Arlene Daniels</span>
-            <span className="pointer ml-1.5 pl-2 before:top-2">Artiste</span>
+            <span>{user.account_id}</span>
+            {user.is_artist ? (
+              <span className="pointer ml-1.5 pl-2 before:top-2">Artiste</span>
+            ) : (
+              ""
+            )}
           </p>
           <p className="text-white max-w-[435px] text-sm md:text-sm mb-[20px]">
-            Hello fam i am a musician and i love playing music all round the
-            world.
+            {user.bio}
           </p>
           <div className="flex items-center mb-9">
             <p className="text-xs md:text-sm font-bold mr-6">
-              1.3M
+              {abbrevNumber(user.followers_count)}
               <span className="ml-2 text-sm text-muted font-medium">
                 Followers
               </span>
             </p>
             <p className="text-xs md:text-sm font-bold mr-6">
-              203
+              {abbrevNumber(user.followings_count)}
               <span className="ml-2 text-sm text-muted font-medium">
                 Following
               </span>
             </p>
-            <p className="text-xs md:text-sm font-bold">
+            {user.is_artist ? <p className="text-xs md:text-sm font-bold">
               61.2k
               <span className="ml-2 text-sm text-muted font-medium">
                 Listens
               </span>
-            </p>
+            </p>: null}
           </div>
           <div className="flex items-center">
             <button
