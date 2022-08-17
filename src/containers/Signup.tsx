@@ -55,7 +55,7 @@ const Signup = () => {
 
   useEffect(() => {
     if (success)
-      navigate(`verify-email/${formik.values.email}`, { replace: true });
+      navigate(`/verify-email/${formik.values.email}`, { replace: true });
   }, [navigate, success, formik.values.email]);
 
   return (

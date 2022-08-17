@@ -13,6 +13,7 @@ import store from "./state/store";
 import { API_BASE_ENDPOINT } from "./config/constants/endpoints";
 import LogRocket from "logrocket";
 import { getUserDetails } from "./state/user/userActions";
+import { parseJwt } from "./helpers/utils";
 
 declare global {
   interface Window {
@@ -84,7 +85,8 @@ const jwtToken = localStorage.getItem("jwtToken")
   : null;
 
 if(jwtToken){
-  store.dispatch(getUserDetails());
+  const decodedJwt = parseJwt(jwtToken);
+  store.dispatch(getUserDetails(decodedJwt.id));
 }
 
 if (process.env.NODE_ENV === "production") {

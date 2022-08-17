@@ -20,6 +20,7 @@ import { getUserDetails } from "./state/user/userActions";
 import { AppState } from "./state/store";
 import AuthVerify from "./containers/AuthVerify";
 import RequireAuth from "./containers/RequireAuth";
+import { parseJwt } from "./helpers/utils";
 
 const NotFound = () => (
   <div className="main-content">
@@ -34,7 +35,8 @@ const App = () => {
 
   useEffect(() => {
     if (jwtToken) {
-      dispatch(getUserDetails());
+      const decodedJwt = parseJwt(jwtToken);
+      dispatch(getUserDetails(decodedJwt.id));
     }
   }, [jwtToken, dispatch]);
 

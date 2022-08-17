@@ -18,13 +18,13 @@ import ArtisteDashboard from "../containers/ArtisteDashboard";
 import Wallet from "../containers/Wallet";
 import Profile from "../containers/Profile";
 import LaunchToken from "../containers/LaunchToken";
+import AccountSetup from "../containers/AccountSetup";
 import EditProfile from "../containers/EditProfile";
 import Tracks from "../containers/Tracks";
 import BuyLzr from "../containers/BuyLzr";
 import SendLzr from "../containers/SendLzr";
 import NFTs from "../containers/Nfts";
 import Notifications from "../containers/Notifications";
-import CreateProfile from "../containers/CreateProfile";
 
 export const authRoutes = [
   {
@@ -56,19 +56,18 @@ export const authRoutes = [
     path: "verify-email/:email",
     private: false,
     component: VerifyEmail,
-  },  {
+  }, {
     name: "complete-verification",
     path: "account-activation-success",
     private: false,
     component: AccountVerificationSuccess,
   },
   {
-    name: "profile/create",
-    path: "profile/create",
-    private: false,
-    component: CreateProfile,
-  },
-  {
+    name: "Complete Setup",
+    path: "account-setup",
+    private: true,
+    component: AccountSetup,
+  }, {
     name: "Launch Token",
     path: "launch-token",
     private: true,

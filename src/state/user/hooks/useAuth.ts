@@ -10,9 +10,9 @@ export function useLoginCallback() {
 }
 
 export function useGetUserCallback() {
-  const handleGetUser = async (): Promise<any> => {
+  const handleGetUser = async (userId: number): Promise<any> => {
     const httpClient = new HttpClient();
-    const result = await httpClient.axiosInstance.get('/users/');
+    const result = await httpClient.axiosInstance.get(`/users/${userId}`);
     return result.data;
   }
   return { handleGetUser }
@@ -34,4 +34,13 @@ export function useResendVerificationLinkCallback() {
     return result.data;
   }
   return { handleResend }
+}
+
+export function useAccountSetupCallback() {
+  const handleAccountSetup = async (account_id: string): Promise<any> => {
+    const httpClient = new HttpClient();
+    const result = await httpClient.axiosInstance.post('/users/account-setup', { account_id });
+    return result.data;
+  }
+  return { handleAccountSetup }
 }

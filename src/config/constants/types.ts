@@ -35,16 +35,19 @@ export interface Artist {
 export interface UserState {
   userInfo: {
     username: string;
-    accountId: string;
+    account_id: string;
+    followings_count: number;
+    id: number;
+    followers_count: number;
+    token_name: string;
+    bio: string;
+    website: string;
+    is_artist: string;
     email: string;
   };
   jwtToken: string;
   loading: boolean;
   success: boolean;
+  accountSetupSuccess: boolean;
   error: string
-}
-
-export interface AppState {
-  songs: Song[];
-  user: UserState;
 }

@@ -2,14 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { logout } from "../state/user/userReducer";
 import { useLocation, useNavigate } from "react-router-dom";
-
-const parseJwt = (token: string) => {
-  try {
-    return JSON.parse(atob(token.split(".")[1]));
-  } catch (e) {
-    return null;
-  }
-};
+import { parseJwt } from "../helpers/utils";
 
 const AuthVerify = () => {
   const location = useLocation();

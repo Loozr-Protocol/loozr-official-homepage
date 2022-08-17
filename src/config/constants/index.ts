@@ -14,3 +14,12 @@ export const TOAST_OPTIONS: ToastOptions = {
   draggable: true,
   progress: undefined,
 };
+
+export const NEAR_NETWORK_DOMAINS = {
+  testnet: '.testnet',
+  mainnet: '.near'
+}
+
+export const LOOZR_MIXER = process.env.REACT_APP_LOOZR_MIXER;
+
+export const NEAR_NETWORK_DOMAIN = NEAR_NETWORK_DOMAINS[process.env.REACT_APP_NETWORK]
