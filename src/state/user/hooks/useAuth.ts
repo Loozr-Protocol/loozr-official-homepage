@@ -1,4 +1,4 @@
-import HttpClient from "../../../helpers/httpHelper";
+import HttpClient from "../../../utils/httpHelper";
 
 export function useLoginCallback() {
   const handleLogin = async (postData: { email: string; password: string }): Promise<any> => {

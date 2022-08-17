@@ -20,7 +20,7 @@ import { getUserDetails } from "./state/user/userActions";
 import { AppState } from "./state/store";
 import AuthVerify from "./containers/AuthVerify";
 import RequireAuth from "./containers/RequireAuth";
-import { parseJwt } from "./helpers/utils";
+import { parseJwt } from "./utils/index";
 
 const NotFound = () => (
   <div className="main-content">

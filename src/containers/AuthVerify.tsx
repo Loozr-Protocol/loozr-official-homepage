@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { logout } from "../state/user/userReducer";
 import { useLocation, useNavigate } from "react-router-dom";
-import { parseJwt } from "../helpers/utils";
+import { parseJwt } from "../utils/index";
 
 const AuthVerify = () => {
   const location = useLocation();

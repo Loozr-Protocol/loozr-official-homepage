@@ -13,7 +13,7 @@ import store from "./state/store";
 import { API_BASE_ENDPOINT } from "./config/constants/endpoints";
 import LogRocket from "logrocket";
 import { getUserDetails } from "./state/user/userActions";
-import { parseJwt } from "./helpers/utils";
+import { parseJwt } from "./utils/index";
 
 declare global {
   interface Window {

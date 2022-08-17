@@ -1,5 +1,5 @@
 import React from "react";
-import { Left, drawerMaxWidth, drawerMinWidth } from "./sidebars";
+import { Left, drawerMaxWidth } from "./sidebars";
 import { TopBar } from "./topbar";
 import AppStore from "../../../assets/img/AppStore.png";
 import GooglePlay from "../../../assets/img/GooglePlay.png";
@@ -12,6 +12,11 @@ import Wallet from "../../../assets/svg/Wallet";
 import More from "../../../assets/svg/More";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { LZR_IN_USD, MIXER_ACCOUNT } from "../../../config/constants";
+import { usePollLZRBalance } from "../../../state/wallet/hooks/fetchBalance";
+import { useSelector } from "react-redux";
+import { AppState } from "../../../state/store";
+import { formatBalanceUSD, formatNumber, getFullDisplayBalance } from "../../../utils/formatBalance";
 
 const tabs = [
   {
@@ -41,9 +46,17 @@ const tabs = [
 
 const Dashboard = ({ children }: { children: React.ReactNode }) => {
   const xl = useMediaQuery("(min-width:1280px)");
-  const lg = useMediaQuery("(min-width:1024px)");
+  // const lg = useMediaQuery("(min-width:1024px)");
   const md = useMediaQuery("(min-width:768px)");
   const { pathname } = useLocation();
+
+  const user = useSelector((state: AppState) => state.user.userInfo);
+  const lzrAccountId = `${user.account_id}.${MIXER_ACCOUNT}`;
+  const balanceResult = usePollLZRBalance(lzrAccountId);
+  const balanceBN = getFullDisplayBalance(balanceResult);
+  
+  const balanceInLzr = formatNumber(Number(balanceBN));
+  const balanceUsd = formatBalanceUSD(Number(balanceBN));
 
   return (
     <div className="flex justify-between w-full !overflow-x-hidden">
@@ -77,12 +90,15 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                       Your Balance
                     </p>
                     <p className="text-white text-2xl font-extrabold mb-2">
-                      300.1512 <span className="text-sm font-medium">LZR</span>
+                      {balanceInLzr}{" "}
+                      <span className="text-sm font-medium">LZR</span>
                     </p>
-                    <div className="text-white text-xs">≈ $0.0007 USD</div>
+                    <div className="text-white text-xs">
+                      ≈ ${balanceUsd} USD
+                    </div>
                   </div>
                   <div className="py-4 px-6 text-xs font-medium text-muted">
-                    ~ $0.05 USD per LZR coin price
+                    ~ ${LZR_IN_USD} USD per LZR coin price
                   </div>
                 </div>
                 <div className="flex justify-between items-center mb-10">

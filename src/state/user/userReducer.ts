@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { UserState } from '../../config/constants/types';
-import { httpError } from '../../helpers/httpHelper';
+import { httpError } from '../../utils/httpHelper';
 import { getUserDetails, signUp, resendVerificationMail, accountSetup } from './userActions';
 
 const jwtToken = localStorage.getItem('jwtToken')

@@ -8,7 +8,6 @@ import UserIcon from "../../../../assets/icons/user.svg";
 
 export const TopBar = () => {
   const push = useNavigate();
-  const isLoggedIn = sessionStorage.getItem("isLoggedIn") === "true";
 
   return (
     <div className="w-full mb-6 px-3">
@@ -32,22 +31,6 @@ export const TopBar = () => {
             className="absolute w-4 h-4 object-contain inset-y-[16px] left-7"
           />
         </div>
-        {!isLoggedIn && (
-          <div className="hidden md:flex items-center justify-end gap-x-4">
-            <button
-              className="rounded-full py-[16px] px-[40px] bg-[#141922] min-w-[170px] text-xs font-semibold outline-none focus:outline-none"
-              onClick={() => push("/login")}
-            >
-              LOG IN
-            </button>
-            <button
-              className="rounded-full py-[16px] px-[40px] bg-s-gradient min-w-[170px] text-xs font-semibold outline-none focus:outline-none"
-              onClick={() => push("/signup")}
-            >
-              CREATE ACCOUNT
-            </button>
-          </div>
-        )}
         <div className="md:hidden flex items-center">
           <p className="text-xl text-white pr-0.5 font-bold">~$46.23/</p>
           <img src={LoozrGradient} alt="" />

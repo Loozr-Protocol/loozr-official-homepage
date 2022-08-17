@@ -5,7 +5,7 @@ import userReducer from './user/userReducer';
 const store = configureStore({
   reducer: {
     song: songReducer,
-    user: userReducer
+    user: userReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

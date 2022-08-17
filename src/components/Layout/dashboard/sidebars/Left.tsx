@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import LoozrBeta from "../../../../assets/icons/loozr-beta.svg";
 import Loozr from "../../../../assets/icons/loozr.svg";
 
@@ -13,6 +14,9 @@ import Memoji from "../../../../assets/img/memoji.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { AppState } from "../../../../state/store";
+import { toast } from "react-toastify";
+import { TOAST_OPTIONS } from "../../../../config/constants";
 
 export const drawerMinWidth = 280;
 export const drawerMaxWidth = 20;
@@ -65,21 +69,20 @@ export const Left = () => {
   const { pathname } = useLocation();
   const push = useNavigate();
   const xl = useMediaQuery("(min-width:1280px)");
-  const lg = useMediaQuery("(min-width:1024px)");
+  // const lg = useMediaQuery("(min-width:1024px)");
   const md = useMediaQuery("(min-width:768px)");
   const [hasLaunchedToken, setHasLaunchedToken] = useState(
     sessionStorage.getItem("hasLaunchedToken") === "true"
   );
-  const [isLoggedIn, setIsLoggedIn] = useState(
-    sessionStorage.getItem("isLoggedIn") === "true"
-  );
+  const user = useSelector((state: AppState) => state.user.userInfo);
 
   useEffect(() => {
-    setIsLoggedIn(sessionStorage.getItem("isLoggedIn") === "true");
     setHasLaunchedToken(sessionStorage.getItem("hasLaunchedToken") === "true");
   }, []);
 
-  const launchToken = () => push("/launch-token");
+  const launchToken = () => {
+    toast.info('Coming soon!', TOAST_OPTIONS);
+  };
 
   return (
     <div
@@ -91,32 +94,24 @@ export const Left = () => {
       }}
     >
       {xl ? (
-        <img
-          src={LoozrBeta}
-          alt=""
-          className={`w-32 h-8 ${isLoggedIn ? "mb-7" : "mb-16"}`}
-        />
+        <img src={LoozrBeta} alt="" className={`w-32 h-8 mb-7`} />
       ) : (
         <img src={Loozr} alt="" className={`mb-6 h-6 w-6`} />
       )}
-      {isLoggedIn ? (
-        !hasLaunchedToken ? (
-          <button
-            onClick={launchToken}
-            className="hidden xl:block text-xs font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
-          >
-            Become an artist
-          </button>
-        ) : (
-          <button
-            onClick={launchToken}
-            className="hidden xl:block text-xs font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
-          >
-            Upload song
-          </button>
-        )
+      {!hasLaunchedToken ? (
+        <button
+          onClick={launchToken}
+          className="hidden xl:block text-xs font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
+        >
+          Become an artist
+        </button>
       ) : (
-        ""
+        <button
+          onClick={launchToken}
+          className="hidden xl:block text-xs font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
+        >
+          Upload song
+        </button>
       )}
       <div className="w-full  xl:h-[85%] flex flex-col items-end xl:block overflow-y-auto overflow-x-hidden">
         {tabs.map((tab: any) => (
@@ -141,51 +136,33 @@ export const Left = () => {
           </Link>
         ))}
         <div className="h-px w-full lg:w-full bg-muted-50 mt-8 mb-7" />
-        {isLoggedIn ? (
-          <div
-            onClick={() => push("/profile")}
-            className="flex items-center justify-center w-full mt-6 cursor-pointer"
-          >
-            <img
-              src={Memoji}
-              alt=""
-              className="object-contain w-8 h-8 xl:w-14 xl:h-10 rounded-full xl:mr-3"
-              style={{ border: "6px solid #141922" }}
-            />
-            <div className="hidden xl:block w-full">
-              <p className="text-sm font-extrabold text-white">Felix Harty</p>
-              <p className="text-[11px] font-medium flex items-center w-auto flex-nowrap whitespace-nowrap text-muted">
-                {hasLaunchedToken ? (
-                  <span>
-                    <span>$HARTY</span>{" "}
-                    <span className="h-1 w-1 rounded-full bg-muted opacity-90 mb-[3px]" />{" "}
-                    <span>Artiste</span>
-                  </span>
-                ) : (
-                  "Listener"
-                )}
-              </p>
-            </div>
+        <div
+          onClick={() => push("/profile")}
+          className="flex items-center justify-center w-full mt-6 cursor-pointer"
+        >
+          <img
+            src={Memoji}
+            alt=""
+            className="object-contain w-8 h-8 xl:w-14 xl:h-10 rounded-full xl:mr-3"
+            style={{ border: "6px solid #141922" }}
+          />
+          <div className="hidden xl:block w-full">
+            <p className="text-sm font-extrabold text-white">
+              {user.account_id}
+            </p>
+            <p className="text-[11px] font-medium flex items-center w-auto flex-nowrap whitespace-nowrap text-muted">
+              {user.is_artist ? (
+                <span>
+                  ${user.token_name}
+                  <span className="h-1 w-1 rounded-full bg-muted opacity-90 mb-[3px]" />{" "}
+                  Artiste
+                </span>
+              ) : (
+                "Listener"
+              )}
+            </p>
           </div>
-        ) : (
-          <div
-            className="flex items-center justify-center w-full mt-6 cursor-pointer"
-            onClick={() => push("/login")}
-          >
-            <img
-              src={Memoji}
-              alt=""
-              className="object-contain w-8 h-8 xl:w-16 xl:h-12 rounded-full xl:mr-3"
-              style={{ border: "6px solid #141922" }}
-            />
-            <div className="hidden xl:block w-full">
-              <p className="text-xs font-extrabold text-white">Hello, there?</p>
-              <p className="text-[10px] font-medium text-muted">
-                Click to Sign in
-              </p>
-            </div>
-          </div>
-        )}
+        </div>
       </div>
     </div>
   );

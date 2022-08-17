@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 import LoveIcon from '../Buttons/LoveIcon';
 import { Song } from "../../config/constants/types";
-import { copy } from "../../helpers/utils";
+import { copy } from "../../utils/index";
 
 interface SongTableProps {
   song: Song;

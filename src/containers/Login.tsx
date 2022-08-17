@@ -7,7 +7,7 @@ import { useFormik } from "formik";
 import { motion } from "framer-motion";
 import { useLoginCallback } from "../state/user/hooks/useAuth";
 import AuthImage from "../assets/img/auth-img.png";
-import { httpError } from "../helpers/httpHelper";
+import { httpError } from "../utils/httpHelper";
 import { useDispatch } from "react-redux";
 import { login } from "../state/user/userReducer";
 

@@ -5,7 +5,7 @@ import ProfileSummary from "../components/ProfileSummary";
 import artistsData from "../config/mock-data/artists.json";
 import ReadMore from "../components/Readmore";
 import SongTable from "../components/song/SongTable";
-import { copy } from "../helpers/utils";
+import { copy } from "../utils/index";
 
 export default function ArtistDashboard() {
   const artists: Artist[] = artistsData.map((artist) => artist);

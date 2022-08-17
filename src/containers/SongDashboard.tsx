@@ -5,7 +5,7 @@ import artistsData from "../config/mock-data/artists.json";
 import ReadMore from "../components/Readmore";
 import PlayButton from "../components/Buttons/PlayButton";
 import LoveIcon from "../components/Buttons/LoveIcon";
-import { copy } from "../helpers/utils";
+import { copy } from "../utils/index";
 import { useSelector } from "react-redux";
 import { selectSongs } from "../state/song/songSlice";
 
