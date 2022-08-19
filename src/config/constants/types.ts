@@ -42,6 +42,9 @@ export interface UserState {
     token_name: string;
     bio: string;
     website: string;
+    soundcloud_link: string;
+    twitter_link: string;
+    country: string;
     is_artist: string;
     email: string;
   };

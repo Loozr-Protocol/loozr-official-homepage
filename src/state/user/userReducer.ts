@@ -39,6 +39,9 @@ const userSlice = createSlice({
     login: (state, action) => {
       state.userInfo = action.payload;
       localStorage.setItem("accountId", state.userInfo.account_id);
+    },
+    updateProfile: (state, action) => {
+      state.userInfo = action.payload;
     }
   },
   extraReducers: (builder) => {
@@ -104,5 +107,5 @@ const userSlice = createSlice({
   }
 });
 
-export const { logout, login } = userSlice.actions
+export const { logout, login, updateProfile } = userSlice.actions
 export default userSlice.reducer
