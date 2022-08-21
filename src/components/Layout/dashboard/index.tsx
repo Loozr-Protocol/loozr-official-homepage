@@ -45,7 +45,6 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
   const md = useMediaQuery("(min-width:768px)");
   const { pathname } = useLocation();
 
-  console.log({ md, lg, xl });
   return (
     <div className="flex justify-between w-full !overflow-x-hidden">
       <Left />

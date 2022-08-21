@@ -2,12 +2,42 @@ import React, { useState } from "react";
 import Selina from "../../assets/img/nfts/selina.png";
 import HeartIcon from "../../assets/icons/heart.svg";
 import HeartFilledIcon from "../../assets/icons/heart-filled.svg";
+import useAudioPlayer from "../../hooks/useAudioPlayer";
 
-const NFT = ({ platform, price, liked, likes, token, img, className = "" }) => {
+type NFTProp = {
+  platform: string;
+  price: string | number;
+  liked: boolean;
+  likes: number | string;
+  token: string;
+  img: string;
+  className?: string;
+  index?: null | number;
+};
+
+const NFT = ({
+  platform,
+  price,
+  liked,
+  likes,
+  token,
+  img,
+  className = "",
+  index = null,
+}) => {
+  const { setPlaying } = useAudioPlayer(index);
   const [isLiked, setIsLiked] = useState<boolean>(liked);
 
   return (
-    <div className={"bg-dark-900 " + className}>
+    <div
+      className={"bg-dark-900 " + className}
+      onMouseOver={() => setPlaying(true)}
+      onMouseOut={() => setPlaying(false)}
+    >
+      <audio id={`audio-${index}`}>
+        <source src={"/song.mp3"} />
+        Your browser does not support the <code>audio</code> element.
+      </audio>
       <img src={img} alt="" height={280} width={280} />
       <div className="bg-dark-700 py-3.5 px-[20px] mb-px">
         <p className="font-normal text-sm text-white mb-3">Happy everyday</p>

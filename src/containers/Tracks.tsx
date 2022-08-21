@@ -11,6 +11,9 @@ import Circle from "../assets/img/artists/chilg2.png";
 import HeartBleeding from "../assets/img/artists/hbaa.png";
 import FNA from "../assets/img/artists/fna.png";
 import Monalisa from "../assets/img/artists/suaa.png";
+import useAudioPlayer from "../hooks/useAudioPlayer";
+import Play from "../components/Play";
+import Pause from "../components/Pause";
 
 const tracks = [
   {
@@ -112,15 +115,45 @@ const Tracks = () => {
         Tracks
       </p>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-x-5  gap-y-10">
-        {tracks.map((track, index) => (
-          <div key={index}>
-            <img src={track.img} alt="" width={"100%"} height={203} />
-            <p className="font-normal text-sm mt-3 mb-0.5 text-white">
-              {track.title}
-            </p>
-            <p className="text-muted text-xs font-normal">{track.artist}</p>
-          </div>
-        ))}
+        {tracks.map((track, index) => {
+          // eslint-disable-next-line react-hooks/rules-of-hooks
+          const { setPlaying, playing } = useAudioPlayer(index);
+          // eslint-disable-next-line react-hooks/rules-of-hooks
+          const [show, setShow] = useState(false);
+          return (
+            <div key={index}>
+              <div
+                className="relative"
+                onMouseOver={() => (setPlaying(true), setShow(true))}
+                onMouseOut={() => (setPlaying(false), setShow(false))}
+                onClick={() => setPlaying(!playing)}
+              >
+                <img src={track.img} alt="" width={"100%"} height={203} />
+                <div
+                  onMouseOver={() => setShow(true)}
+                  onMouseOut={() => setShow(false)}
+                  className={`absolute inset-y-[45%] inset-x-[43%] ${
+                    !show && "hidden"
+                  }`}
+                >
+                  {playing ? (
+                    <Pause handleClick={() => setPlaying(false)} />
+                  ) : (
+                    <Play handleClick={() => setPlaying(true)} />
+                  )}
+                </div>
+              </div>
+              <audio id={`audio-${index}`}>
+                <source src={"/song.mp3"} />
+                Your browser does not support the <code>audio</code> element.
+              </audio>
+              <p className="font-normal text-sm mt-3 mb-0.5 text-white">
+                {track.title}
+              </p>
+              <p className="text-muted text-xs font-normal">{track.artist}</p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

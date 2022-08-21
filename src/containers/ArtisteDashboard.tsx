@@ -1,7 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useMemo } from "react";
 import Arrow from "../assets/Arrow.svg";
 import Heart from "../assets/Heart.svg";
 import Chart from "../assets/Chart.svg";
+import Goya from "../assets/img/artists/goya.png";
+import Forward from "../assets/svg/controls/forward.svg";
+import Rewind from "../assets/svg/controls/rewind.svg";
+import Play from "../assets/svg/controls/play.svg";
+import Pause from "../assets/svg/controls/pause.svg";
 import Suggestion from "../components/suggestion";
 import Carousel from "../components/Carousel";
 import VerifiedBadge from "../assets/icons/verified_badge.svg";
@@ -9,18 +14,85 @@ import { featured } from "../components/dummy/featuredArtist";
 import { Link } from "react-router-dom";
 import NFT from "../components/SingleNFT";
 import { nfts } from "../components/dummy/nfts";
+import LinearProgress, {
+  linearProgressClasses,
+} from "@mui/material/LinearProgress";
+import { styled } from "@mui/material/styles";
+import useAudioPlayer from "../hooks/useAudioPlayer";
+
+const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
+  height: 4,
+  borderRadius: 5,
+  [`&.${linearProgressClasses.colorPrimary}`]: {
+    backgroundColor: "#536079",
+  },
+  [`& .${linearProgressClasses.bar}`]: {
+    borderRadius: 5,
+    backgroundColor: "#D9D9D9",
+  },
+}));
 
 const ArtisteDashboard = () => {
-  const [_nfts, setNfts] = useState([]);
+  const { playing, setPlaying, duration, curTime } = useAudioPlayer(100);
 
-  useEffect(() => {
-    const slice = nfts.slice(0, 3);
-    setNfts(slice);
-  }, []);
+  const renderAudioPlayer = useMemo(() => {
+    return (
+      <div className="fixed bottom-6 left-14 rounded-2xl">
+        <audio id={`audio-100`}>
+          <source src={"/song.mp3"} />
+          Your browser does not support the <code>audio</code> element.
+        </audio>
+        <div className="flex rounded-2xl">
+          <img src={Goya} alt="" className="rounded-l-2xl w-14" />
+          <div
+            className="py-2 px-3 rounded-r-2xl flex items-center"
+            style={{
+              background: "rgba(20, 25, 34, 0.65)",
+              backdropFilter: "blur(25px)",
+            }}
+          >
+            <div>
+              <p className="mb-px font-medium text-[13px] leading-5 text-white">
+                Chiling good
+              </p>
+              <p className="text-muted text-xs font-normal md:font-normal">
+                Goya Menor
+              </p>
+            </div>
+            <BorderLinearProgress
+              variant="determinate"
+              value={(curTime / duration) * 100}
+              className="ml-6 mr-8 min-w-[180px]"
+            />
+            <div className="flex items-center mr-3">
+              <img src={Rewind} alt="" className="cursor-pointer w-4 h-4" />
+              {playing ? (
+                <img
+                  src={Pause}
+                  alt=""
+                  onClick={() => setPlaying(false)}
+                  className="mx-6 cursor-pointer w-5 h-6"
+                />
+              ) : (
+                <img
+                  src={Play}
+                  alt=""
+                  onClick={() => setPlaying(true)}
+                  className="mx-6 cursor-pointer w-5 h-7"
+                />
+              )}
+              <img src={Forward} alt="" className="cursor-pointer w-4 h-4" />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }, [curTime, duration, playing, setPlaying]);
 
   return (
-    <div className="w-full">
+    <div className="w-full relative">
       <Carousel />
+      {renderAudioPlayer}
       <div className="flex items-center justify-between mb-6">
         <p className="font-medium text-base md:text-[17px] text-white">
           Featured artistes
@@ -88,7 +160,7 @@ const ArtisteDashboard = () => {
             <NFT
               className="min-w-[200px] mr-[16px]"
               key={index}
-              {...{ platform, price, likes, liked, token, img }}
+              {...{ platform, price, likes, liked, token, img, index }}
             />
           ))}
         </div>
