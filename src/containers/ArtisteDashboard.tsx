@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import Arrow from "../assets/Arrow.svg";
 import Heart from "../assets/Heart.svg";
 import Chart from "../assets/Chart.svg";
@@ -33,12 +33,15 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 }));
 
 const ArtisteDashboard = () => {
+  const [canPlay, setCanPlay] = useState(false);
   const { playing, setPlaying, duration, curTime } = useAudioPlayer(100);
 
   const renderAudioPlayer = useMemo(() => {
     return (
-      <div className="fixed bottom-6 left-14 rounded-2xl">
-        <audio id={`audio-100`}>
+      <div
+        className={`${!canPlay && "hidden"} fixed bottom-6 left-14 rounded-2xl`}
+      >
+        <audio id={`audio-100`} onCanPlay={() => setCanPlay(true)}>
           <source src={"/song.mp3"} />
           Your browser does not support the <code>audio</code> element.
         </audio>
@@ -87,7 +90,7 @@ const ArtisteDashboard = () => {
         </div>
       </div>
     );
-  }, [curTime, duration, playing, setPlaying]);
+  }, [canPlay, curTime, duration, playing, setPlaying]);
 
   return (
     <div className="w-full relative">
