@@ -1,4 +1,5 @@
 import { ToastOptions } from "react-toastify";
+import { BIG_TEN } from '../../utils/bigNumber'
 
 export const HTTP_STATUS_CODES = {
   UNAUTHORIZED: 401,
@@ -27,3 +28,4 @@ export const NEAR_NETWORK_DOMAIN = NEAR_NETWORK_DOMAINS[NEAR_NETWORK]
 export const MIXER_ACCOUNT = `${LOOZR_MIXER}${NEAR_NETWORK_DOMAIN}`
 
 export const LZR_IN_USD = 16;
+export const DEFAULT_TOKEN_DECIMAL = BIG_TEN.pow(24)

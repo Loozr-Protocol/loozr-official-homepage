@@ -9,10 +9,23 @@ import Arrow45Deg from "../assets/icons/arrow-45deg.svg";
 import Arrow225Deg from "../assets/icons/arrow-225deg.svg";
 import Arlene from "../assets/img/artists/arlene.png";
 import { useNavigate } from "react-router-dom";
+import { usePollLZRBalance } from "../state/wallet/hooks/fetchBalance";
+import { LZR_IN_USD, MIXER_ACCOUNT } from "../config/constants";
+import { AppState } from "../state/store";
+import { formatBalanceUSD, formatNumber, getFullDisplayBalance } from "../utils/formatBalance";
+import { useSelector } from "react-redux";
+import { copy } from "../utils";
 
 const Wallet = () => {
   const push = useNavigate();
   const [active, setActive] = useState(1);
+   const user = useSelector((state: AppState) => state.user.userInfo);
+   const lzrAccountId = `${user.account_id}.${MIXER_ACCOUNT}`;
+   const balanceResult = usePollLZRBalance(lzrAccountId);
+   const balanceBN = getFullDisplayBalance(balanceResult);
+
+   const balanceInLzr = formatNumber(Number(balanceBN));
+   const balanceUsd = formatBalanceUSD(Number(balanceBN));
 
   const renderHistory = useMemo(() => {
     switch (active) {
@@ -149,16 +162,18 @@ const Wallet = () => {
             My Wallet
           </p>
           <p className="text-xs md:text-sm leading-5 font-thin md:font-normal text-white">
-            ~ $0.05 USD per LZR coin
+            ~ ${LZR_IN_USD} USD per LZR coin
           </p>
         </div>
         <p className="text-muted text-sm font-normal mb-2.5">Total Balance</p>
         <p className="flex items-end text-white mb-1.5">
-          <span className="text-2xl md:text-3xl font-black">300.1512</span>
+          <span className="text-2xl md:text-3xl font-black">
+            {balanceInLzr}{" "}
+          </span>
           <span className="font-medium text-base leading-7 ml-2">LZR</span>
         </p>
         <p className="font-light text-sm md:font-medium text-white mb-4 md:mb-8">
-          ≈ $0.0007 USD
+          ≈ ${balanceUsd} USD
         </p>
         <div className="flex items-center mb-8 md:mb-11">
           <button
@@ -176,10 +191,10 @@ const Wallet = () => {
           </button>
         </div>
         <p className="text-white font-medium text-sm md:text-sm">
-          <span className="text-muted">My username:</span> lzr.yourname.near{" "}
+          <span className="text-muted">Your Token ID:</span> {lzrAccountId}
           <span
             className="text-[#00FFFF] cursor-pointer"
-            onClick={() => copyToClipboard("lzr.yourname.near")}
+            onClick={() => copy(lzrAccountId)}
           >
             copy
           </span>

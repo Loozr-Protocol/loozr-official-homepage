@@ -1,7 +1,7 @@
 import useSWR from 'swr'
 import HttpClient from '../../../utils/httpHelper';
 
-const REFRESH_BLOCK_INTERVAL = 6000
+const REFRESH_BLOCK_INTERVAL = 12000
 
 export function useGetLZRBalanceCallback() {
   const handleGetLZRBalanace = async (accountId: string): Promise<any> => {
