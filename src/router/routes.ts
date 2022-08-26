@@ -47,7 +47,7 @@ export const authRoutes = [
   },
   {
     name: "reset password",
-    path: "reset-password",
+    path: "password-reset/:id/:token",
     private: false,
     component: ResetPassword,
   },

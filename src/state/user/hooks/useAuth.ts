@@ -9,6 +9,33 @@ export function useLoginCallback() {
   return { handleLogin }
 }
 
+export function useRequestPasswordResetCallback() {
+  const handleRequestResetLink = async (postData: { email: string; }): Promise<any> => {
+    const httpClient = new HttpClient();
+    const result = await httpClient.axiosInstance.post('/users/password-reset', postData);
+    return result.data;
+  }
+  return { handleRequestResetLink }
+}
+
+export function usePasswordResetCallback() {
+  const handlePasswordReset = async (postData): Promise<any> => {
+    const httpClient = new HttpClient();
+    const result = await httpClient.axiosInstance.post('/users/password-reset-confirm', postData);
+    return result.data;
+  }
+  return { handlePasswordReset }
+}
+
+export function useCheckPasswordResetDataCallback() {
+  const checkDataValidity = async (id: string, token: string): Promise<any> => {
+    const httpClient = new HttpClient();
+    const result = await httpClient.axiosInstance.get(`/users/password-reset-token-validity/${id}/${token}`);
+    return result.data;
+  }
+  return { checkDataValidity }
+}
+
 export function useGetUserCallback() {
   const handleGetUser = async (userId: number): Promise<any> => {
     const httpClient = new HttpClient();

@@ -44,3 +44,19 @@ export function httpError(err: any) {
     toast.error("Request failed! Please try again", TOAST_OPTIONS);
   }
 }
+
+export function returnHttpError(err: any) {
+  let errorMsg: string;
+  if (err.response) {
+    if (err.response.status === HTTP_STATUS_CODES.BAD_REQUEST) {
+      err.response.data.errors.forEach(errMsg => {
+        errorMsg = errMsg;
+      });
+    } else {
+      errorMsg = "Request failed! Please try again";
+    }
+  } else {
+    errorMsg = "Request failed! Please try again";
+  }
+  return errorMsg;
+}
