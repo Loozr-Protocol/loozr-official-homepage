@@ -12,6 +12,11 @@
   .card {
     @apply rounded-2xl border border-grey-blur-20;
   }
+  .active-tab-bottom {
+    @apply md:font-semibold text-sm text-white relative before:absolute before:w-full before:h-0.5 before:bg-loozr-purple before:bottom-[-13px];
+  }
+  .active-tab-top {
+  }
 }
 
 /* Chrome, Safari, Edge, Opera */

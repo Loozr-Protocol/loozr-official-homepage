@@ -7,10 +7,10 @@ const WithUSD = () => {
   return (
     <>
       <div className="flex flex-col md:flex-row justify-between items-center w-full md:max-w-[80%] mb-10">
-        <div className="w-full md:max-w-[45%] flex-1 py-6 px-9 bg-dark-800">
+        <div className="w-full md:max-w-[45%] flex-1 py-6 px-6 bg-dark-800">
           <div className="flex justify-between w-full mb-4">
-            <p className="text-lg font-medium">You pay</p>
-            <p className="text-lg font-medium flex items-center">
+            <p className="text-sm font-medium">You pay</p>
+            <p className="text-sm font-medium flex items-center">
               <img
                 src={USA}
                 alt=""
@@ -22,16 +22,15 @@ const WithUSD = () => {
             </p>
           </div>
           <div className="flex justify-between relative">
-            {/* <p className="text-muted font-semibold text-4xl">$0.00</p> */}
             <input
               type="number"
               value={amount}
               onChange={(e: any) => setAmount(e.target.value)}
               placeholder="0.00"
-              className="placeholder:text-muted text-white font-semibold text-4xl bg-transparent px-4 py-0"
+              className="placeholder:text-muted text-white font-semibold text-3xl bg-transparent px-4 py-0"
             />
             <span
-              className={`absolute font-semibold text-4xl top-0 ${
+              className={`absolute font-semibold text-3xl top-0 ${
                 !amount ? "text-[#536079]" : "text-white"
               }`}
             >
@@ -39,11 +38,11 @@ const WithUSD = () => {
             </span>
           </div>
         </div>
-        <div className="text-muted mx-6 text-4xl">≈</div>
-        <div className="w-full md:w-auto flex-1 py-6 px-9 bg-dark-800">
+        <div className="text-muted mx-6 text-3xl">≈</div>
+        <div className="w-full md:w-auto flex-1 py-6 px-6 bg-dark-800">
           <div className="flex justify-between w-full mb-4">
-            <p className="text-lg font-medium">You get</p>
-            <div className="text-lg font-medium flex items-center">
+            <p className="text-sm font-medium">You get</p>
+            <div className="text-sm font-medium flex items-center">
               <div className="rounded-full h-5 w-5 bg-gradient-ld flex items-center justify-center">
                 <img src={Loozr} alt="" width={10} height={10} />
               </div>
@@ -54,7 +53,7 @@ const WithUSD = () => {
             <p
               className={`${
                 amount ? "text-white" : "text-[#536079]"
-              } font-semibold text-4xl`}
+              } font-semibold text-3xl`}
             >
               {(2.8 * amount || 0).toLocaleString(undefined, {
                 minimumFractionDigits: 2,
@@ -66,8 +65,8 @@ const WithUSD = () => {
       {amount ? (
         <div className="w-full md:max-w-[60%]">
           <div>
-            <p className="text-lg font-medium text-muted mb-5">Summary:</p>
-            <p className="py-6 px-11 text-white text-xl font-medium bg-dark-800">
+            <p className="text-sm font-medium text-muted mb-5">Summary:</p>
+            <p className="py-4 px-7 text-white text-base font-medium bg-dark-800">
               You will get{" "}
               {(2.8 * amount).toLocaleString(undefined, {
                 minimumFractionDigits: 2,
@@ -83,10 +82,10 @@ const WithUSD = () => {
       ) : (
         ""
       )}
-      <div className="max-w-[50%] mt-[73px]">
+      <div className="max-w-[50%] mt-[50px]">
         <button
           disabled={!amount}
-          className="py-6 text-white disabled:opacity-40 font-medium text-xl  bg-gradient-ld disabled:bg-dark-800 mb-11 w-full focus:outline-none"
+          className="py-4 text-white disabled:opacity-40 font-medium text-sm  bg-gradient-ld disabled:bg-dark-800 mb-11 w-full focus:outline-none"
         >
           Buy -{" "}
           {(2.8 * amount || 0).toLocaleString(undefined, {

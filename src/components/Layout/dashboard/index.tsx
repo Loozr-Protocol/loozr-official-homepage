@@ -45,14 +45,13 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
   const md = useMediaQuery("(min-width:768px)");
   const { pathname } = useLocation();
 
-  console.log({ md, lg, xl });
   return (
     <div className="flex justify-between w-full !overflow-x-hidden">
       <Left />
       <div
         className={`flex-1 pt-4 pb-10 px-3 md:px-0 md:pl-14 lg:pr-28 !overflow-x-hidden mb-24 md:mb-auto`}
         style={{
-          marginLeft: lg
+          marginLeft: xl
             ? `calc(${drawerMaxWidth}vw)`
             : // : lg
             // ? `200px`
@@ -108,28 +107,28 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                           style={{ border: "6px solid #141922" }}
                         />
                         <div>
-                          <p className="text-sm font-bold text-white">
+                          <p className="text-sm font-semibold text-white">
                             Nathan Jose
                           </p>
                           <p className="flex items-center">
-                            <span className="text-muted text-[10px] font-extrabold mr-1">
+                            <span className="text-muted text-[11px] font-bold mr-1">
                               $HARTY
                             </span>{" "}
                             <span className="bg-muted rounded-full h-1 w-1 mr-1" />{" "}
-                            <span className="text-[10px] text-muted font-medium">
+                            <span className="text-[11px] text-muted font-medium">
                               $3,001.99
                             </span>
                           </p>
                         </div>
                       </div>
-                      <p className="text-[10px] font-medium text-loozr-purple">
+                      <p className="text-[11px] font-medium text-loozr-purple">
                         Follow
                       </p>
                     </div>
                   ))}
 
                 <div className="mt-[67px] flex justify-between items-center mb-[18px]">
-                  <p className="text-sm font-semibold text-muted">
+                  <p className="text-[13px] font-medium leading-5 text-muted">
                     Coming Soon
                   </p>
                 </div>

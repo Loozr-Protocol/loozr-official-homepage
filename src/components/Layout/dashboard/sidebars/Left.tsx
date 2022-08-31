@@ -87,7 +87,7 @@ export const Left = () => {
       style={{
         // minWidth: xl ? drawerMinWidth : "auto",
         // maxWidth: md ? `${drawerMaxWidth}vw` : 0,
-        width: lg ? `${drawerMaxWidth}vw` : md ? "max-content" : 0,
+        width: xl ? `${drawerMaxWidth}vw` : md ? "max-content" : 0,
       }}
     >
       {xl ? (
@@ -97,11 +97,7 @@ export const Left = () => {
           className={`w-32 h-8 ${isLoggedIn ? "mb-7" : "mb-16"}`}
         />
       ) : (
-        <img
-          src={Loozr}
-          alt=""
-          className={`${isLoggedIn ? "mb-7" : "mb-16"} h-6 w-6`}
-        />
+        <img src={Loozr} alt="" className={`mb-6 h-6 w-6`} />
       )}
       {isLoggedIn ? (
         !hasLaunchedToken ? (
@@ -122,15 +118,15 @@ export const Left = () => {
       ) : (
         ""
       )}
-      <div className="w-full  h-[85%] flex flex-col items-end lg:block overflow-y-auto overflow-x-hidden">
+      <div className="w-full  xl:h-[85%] flex flex-col items-end xl:block overflow-y-auto overflow-x-hidden">
         {tabs.map((tab: any) => (
           <Link
-            className="hover:flex flex items-center text-sm font-medium text-[#536079] mb-[22px]"
+            className="hover:flex flex items-center text-sm font-medium text-[#536079] mt-2.5 xl:mt-auto mb-[22px]"
             to={tab.path || "#!"}
             key={tab.label}
           >
             <tab.icon
-              className={`object-contain w-3.5 h-3.5 mr-2 lg:mr-4 ${
+              className={`object-contain w-4 xl:w-3.5 h-4 xl:h-3.5 mr-3 xl:mr-4 ${
                 tab.path === pathname ? "text-white" : "text-[#536079]"
               }`}
             />
@@ -148,22 +144,22 @@ export const Left = () => {
         {isLoggedIn ? (
           <div
             onClick={() => push("/profile")}
-            className="flex items-center justify-center w-full mt-6"
+            className="flex items-center justify-center w-full mt-6 cursor-pointer"
           >
             <img
               src={Memoji}
               alt=""
-              className="object-contain w-8 h-8 lg:w-14 lg:h-10 rounded-full lg:mr-3"
+              className="object-contain w-8 h-8 xl:w-14 xl:h-10 rounded-full xl:mr-3"
               style={{ border: "6px solid #141922" }}
             />
             <div className="hidden xl:block w-full">
-              <p className="text-xs font-extrabold text-white">Felix Harty</p>
-              <p className="text-[10px] font-medium text-muted">
+              <p className="text-sm font-extrabold text-white">Felix Harty</p>
+              <p className="text-[11px] font-medium flex items-center w-auto flex-nowrap whitespace-nowrap text-muted">
                 {hasLaunchedToken ? (
                   <span>
-                    $HARTY{" "}
-                    <span className="h-1 w-1 rounded-full bg-muted opacity-90" />{" "}
-                    Artiste
+                    <span>$HARTY</span>{" "}
+                    <span className="h-1 w-1 rounded-full bg-muted opacity-90 mb-[3px]" />{" "}
+                    <span>Artiste</span>
                   </span>
                 ) : (
                   "Listener"
@@ -179,7 +175,7 @@ export const Left = () => {
             <img
               src={Memoji}
               alt=""
-              className="object-contain w-8 h-8 lg:w-16 lg:h-12 rounded-full lg:mr-3"
+              className="object-contain w-8 h-8 xl:w-16 xl:h-12 rounded-full xl:mr-3"
               style={{ border: "6px solid #141922" }}
             />
             <div className="hidden xl:block w-full">
