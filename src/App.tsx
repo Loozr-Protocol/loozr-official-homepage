@@ -1,18 +1,10 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import Nav from "./components/Nav";
 import Player from "./components/song/Player/Player";
-import Home from "./containers/Home";
-import ArtistDashboard from "./containers/ArtistDashboard";
 import Footer from "./components/Footer";
-import SongDashboard from "./containers/SongDashboard";
-import ArtistsEcosystem from "./containers/ArtistsEcosystem";
 import WaitlistModal from "./components/WaitlistModal";
-import Login from "./containers/Login";
-import Signup from "./containers/Signup";
 import AppLayout from "./components/Layout/App";
-import RecoverPassword from "./containers/RecoverPassword";
 import { authRoutes, dashboard, routes } from "./router/routes";
 import Dashboard from "./components/Layout/dashboard";
 import { useDispatch, useSelector } from "react-redux";

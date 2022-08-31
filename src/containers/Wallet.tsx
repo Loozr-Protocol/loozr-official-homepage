@@ -150,9 +150,6 @@ const Wallet = () => {
     }
   }, [active]);
 
-  const copyToClipboard = (text) => {
-    navigator.clipboard.writeText(text);
-  };
 
   return (
     <div className="w-full">

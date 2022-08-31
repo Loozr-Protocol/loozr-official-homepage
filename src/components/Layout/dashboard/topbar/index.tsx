@@ -1,5 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import SearchIcon from "../../../../assets/icons/search.svg";
 import LoozrGradient from "../../../../assets/icons/loozr-gradient.svg";
 import SearchWhiteIcon from "../../../../assets/icons/search-white.svg";
@@ -7,7 +6,6 @@ import PlusIcon from "../../../../assets/icons/plus.svg";
 import UserIcon from "../../../../assets/icons/user.svg";
 
 export const TopBar = () => {
-  const push = useNavigate();
 
   return (
     <div className="w-full mb-6 px-3">
