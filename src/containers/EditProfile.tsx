@@ -95,8 +95,8 @@ const EditProfile = () => {
           <p className="text-xl text-white font-semibold mb-2">
             {lzrAccountId}
           </p>
-          <p className="text-loozr-green text-base font-medium">
-            change profile picture</p>
+          {/* <p className="text-loozr-green text-base font-medium">
+            change profile picture</p> */}
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 justify-start mb-10">
