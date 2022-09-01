@@ -37,10 +37,6 @@ const App = () => {
       <ToastContainer />
       <Router>
         <div>
-          {/* <a href="#main-content" className="visually-hidden focusable">
-              Skip to main content
-            </a> */}
-
           <div id="preloader"></div>
           <div className="progress-wrap cursor-pointer">
             <svg
