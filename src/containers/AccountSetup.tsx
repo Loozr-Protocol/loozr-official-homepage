@@ -82,7 +82,7 @@ export default function AccountSetup() {
           {NEAR_NETWORK_DOMAIN}
         </p>
         <button
-          className="py-6 text-white disabled:text-muted font-medium md:text-xl bg-gradient-ld disabled:bg-dark-800 mb-11 w-full focus:outline-none"
+          className="py-4 text-white disabled:text-muted font-medium text-base bg-gradient-ld disabled:bg-dark-800 mb-11 w-full focus:outline-none h-[74px]"
           onClick={handleLaunchToken}
           disabled={isLoading}
         >
