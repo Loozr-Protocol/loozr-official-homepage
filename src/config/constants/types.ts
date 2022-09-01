@@ -32,22 +32,24 @@ export interface Artist {
   songs: Song[]
 }
 
+export interface IUser {
+  username: string;
+  account_id: string;
+  followings_count: number;
+  id: number;
+  followers_count: number;
+  token_name: string;
+  bio: string;
+  website: string;
+  soundcloud_link: string;
+  twitter_link: string;
+  country: string;
+  is_artist: string;
+  email: string;
+}
+
 export interface UserState {
-  userInfo: {
-    username: string;
-    account_id: string;
-    followings_count: number;
-    id: number;
-    followers_count: number;
-    token_name: string;
-    bio: string;
-    website: string;
-    soundcloud_link: string;
-    twitter_link: string;
-    country: string;
-    is_artist: string;
-    email: string;
-  };
+  userInfo: IUser;
   jwtToken: string;
   loading: boolean;
   success: boolean;

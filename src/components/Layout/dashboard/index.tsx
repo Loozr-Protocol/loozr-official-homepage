@@ -3,7 +3,6 @@ import { Left, drawerMaxWidth } from "./sidebars";
 import { TopBar } from "./topbar";
 import AppStore from "../../../assets/img/AppStore.png";
 import GooglePlay from "../../../assets/img/GooglePlay.png";
-import Arlene from "../../../assets/img/artists/arlene.png";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 import Explore from "../../../assets/svg/Explore";
@@ -17,6 +16,7 @@ import { usePollLZRBalance } from "../../../state/wallet/hooks/fetchBalance";
 import { useSelector } from "react-redux";
 import { AppState } from "../../../state/store";
 import { formatBalanceUSD, formatNumber, getFullDisplayBalance } from "../../../utils/formatBalance";
+import SuggestedFollows from "../../suggestion/SuggestedFollows";
 
 const tabs = [
   {
@@ -101,47 +101,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                     ~ ${LZR_IN_USD} USD per LZR coin price
                   </div>
                 </div>
-                <div className="flex justify-between items-center mb-10">
-                  <p className="text-sm font-semibold text-white">
-                    Suggested For You
-                  </p>
-                  <p className="text-xs font-medium text-muted">View all</p>
-                </div>
-
-                {Array(3)
-                  .fill(1)
-                  .map((_, index) => (
-                    <div
-                      key={index}
-                      className="flex justify-between items-center mb-9"
-                    >
-                      <div className="flex items-center text-muted">
-                        <img
-                          src={Arlene}
-                          alt=""
-                          className="h-[45px] w-[45px] rounded-full mr-2"
-                          style={{ border: "6px solid #141922" }}
-                        />
-                        <div>
-                          <p className="text-sm font-semibold text-white">
-                            Nathan Jose
-                          </p>
-                          <p className="flex items-center">
-                            <span className="text-muted text-[11px] font-bold mr-1">
-                              $HARTY
-                            </span>{" "}
-                            <span className="bg-muted rounded-full h-1 w-1 mr-1" />{" "}
-                            <span className="text-[11px] text-muted font-medium">
-                              $3,001.99
-                            </span>
-                          </p>
-                        </div>
-                      </div>
-                      <p className="text-[11px] font-medium text-loozr-purple">
-                        Follow
-                      </p>
-                    </div>
-                  ))}
+                <SuggestedFollows />
 
                 <div className="mt-[67px] flex justify-between items-center mb-[18px]">
                   <p className="text-[13px] font-medium leading-5 text-muted">

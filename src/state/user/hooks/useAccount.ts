@@ -15,3 +15,12 @@ export function useUpdateProfileCallback() {
   }
   return { handleUpdateProfile }
 }
+
+export function useGetSuggestedFollowsCallback() {
+  const getSuggestedFollows = async (): Promise<any> => {
+    const httpClient = new HttpClient();
+    const result = await httpClient.axiosInstance.get('/users/suggested-follows');
+    return result.data.results;
+  }
+  return { getSuggestedFollows }
+}
