@@ -55,11 +55,6 @@ const PlayButton = ({ song, altIcons = false }: PlayButtonProps) => {
     dispatch(setPlayerState(!currentlyPlaying));
   };
 
-  // if (altIcons) {
-  //   playIcon = PlayControllerIconAlt;
-  //   pauseIcon = PauseControllerIconAlt;
-  // }
-
   useEffect(() => {
     if (selectedSong && selectedSong.url === song.url) {
       setCurrentAudioPlayingState(!isPlaying);
