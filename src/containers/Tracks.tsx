@@ -124,8 +124,14 @@ const Tracks = () => {
             <div key={index}>
               <div
                 className="relative"
-                onMouseOver={() => (setPlaying(true), setShow(true))}
-                onMouseOut={() => (setPlaying(false), setShow(false))}
+                onMouseOver={() => {
+                  setPlaying(true);
+                  setShow(true);
+                }}
+                onMouseOut={() => {
+                  setPlaying(false);
+                  setShow(false);
+                }}
                 onClick={() => setPlaying(!playing)}
               >
                 <img src={track.img} alt="" width={"100%"} height={203} />
