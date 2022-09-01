@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation, Navigate } from "react-router-dom";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { motion } from "framer-motion";
@@ -15,6 +15,11 @@ export default function AccountSetup() {
   const success = useSelector(
     (state: AppState) => state.user.accountSetupSuccess
   );
+
+  const jwtToken = localStorage.getItem("jwtToken")
+    ? localStorage.getItem("jwtToken")
+    : null;
+  let location = useLocation();
 
   const formSchema = yup.object({
     account_id: yup
@@ -42,6 +47,10 @@ export default function AccountSetup() {
 
     dispatch(accountSetup(formik.values));
   };
+
+  if (!jwtToken) {
+    return <Navigate to="/login" state={{ from: location }} replace />;
+  }
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center ">

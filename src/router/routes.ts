@@ -61,6 +61,12 @@ export const authRoutes = [
     path: "account-activation-success",
     private: false,
     component: AccountVerificationSuccess,
+  },
+  {
+    name: "Complete Setup",
+    path: "account-setup",
+    private: true,
+    component: AccountSetup,
   }, {
     name: "Launch Token",
     path: "launch-token",
@@ -103,12 +109,6 @@ export const routes = [
 ];
 
 export const dashboard = [
-  {
-    name: "Complete Setup",
-    path: "account-setup",
-    private: true,
-    component: AccountSetup,
-  },
   {
     name: "artistes",
     path: "artistes",
