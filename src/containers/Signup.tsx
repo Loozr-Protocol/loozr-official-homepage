@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Signup = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [email, setEmail] = useState('');
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -49,14 +50,14 @@ const Signup = () => {
     } else if (!formik.isValid) {
       return;
     }
-
+    setEmail(formik.values.email);
     dispatch(signUp(formik.values));
   };
 
   useEffect(() => {
     if (success)
-      navigate(`/verify-email/${formik.values.email}`, { replace: true });
-  }, [navigate, success, formik.values.email]);
+      navigate(`/verify-email/${email}`, { replace: true });
+  }, [navigate, success, email]);
 
   return (
     <div className="min-h-screen w-full grid md:grid-cols-2 lg:grid-cols-3">
