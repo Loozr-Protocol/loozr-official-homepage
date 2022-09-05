@@ -18,7 +18,7 @@ const Signup = () => {
   const navigate = useNavigate();
 
   const isLoading = useSelector((state: AppState) => state.user.loading);
-  const success = useSelector((state: AppState) => state.user.success);
+  const success = useSelector((state: AppState) => state.user.signUpSuccess);
 
   const formSchema = yup.object({
     email: yup

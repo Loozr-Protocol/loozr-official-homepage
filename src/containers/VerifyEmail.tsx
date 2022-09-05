@@ -10,7 +10,7 @@ const VerifyEmail = () => {
   let { email } = useParams();
   const dispatch = useDispatch();
   const isLoading = useSelector((state: AppState) => state.user.loading);
-  const success = useSelector((state: AppState) => state.user.success);
+  const success = useSelector((state: AppState) => state.user.verifySuccess);
 
   const handleResend = () => {
     dispatch(resendVerificationMail(email));

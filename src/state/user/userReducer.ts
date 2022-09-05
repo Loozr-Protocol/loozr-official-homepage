@@ -22,6 +22,8 @@ const initialState: UserState = {
   jwtToken,
   loading: false,
   success: false,
+  signUpSuccess: false,
+  verifySuccess: false,
   accountSetupSuccess: false,
   error: null
 }
@@ -67,7 +69,7 @@ const userSlice = createSlice({
 
     builder.addCase(signUp.fulfilled, (state, action) => {
       state.loading = false;
-      state.success = true;
+      state.signUpSuccess = true;
     });
 
     builder.addCase(signUp.rejected, (state, action) => {
@@ -81,7 +83,7 @@ const userSlice = createSlice({
 
     builder.addCase(resendVerificationMail.fulfilled, (state, action) => {
       state.loading = false;
-      state.success = true;
+      state.verifySuccess = true;
     });
 
     builder.addCase(resendVerificationMail.rejected, (state, action) => {

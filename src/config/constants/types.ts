@@ -53,6 +53,8 @@ export interface UserState {
   jwtToken: string;
   loading: boolean;
   success: boolean;
+  signUpSuccess: boolean;
+  verifySuccess: boolean;
   accountSetupSuccess: boolean;
   error: string
 }
