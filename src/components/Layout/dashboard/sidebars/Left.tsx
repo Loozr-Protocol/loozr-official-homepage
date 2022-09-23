@@ -71,14 +71,7 @@ export const Left = () => {
   const xl = useMediaQuery("(min-width:1280px)");
   // const lg = useMediaQuery("(min-width:1024px)");
   const md = useMediaQuery("(min-width:768px)");
-  const [hasLaunchedToken, setHasLaunchedToken] = useState(
-    sessionStorage.getItem("hasLaunchedToken") === "true"
-  );
   const user = useSelector((state: AppState) => state.user.userInfo);
-
-  useEffect(() => {
-    setHasLaunchedToken(sessionStorage.getItem("hasLaunchedToken") === "true");
-  }, []);
 
   const launchToken = () => {
     toast.info('Coming soon!', TOAST_OPTIONS);
@@ -98,7 +91,7 @@ export const Left = () => {
       ) : (
         <img src={Loozr} alt="" className={`mb-6 h-6 w-6`} />
       )}
-      {!hasLaunchedToken ? (
+      {!user.is_artist ? (
         <button
           onClick={launchToken}
           className="hidden xl:block text-xs font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"

@@ -44,15 +44,17 @@ export interface IUser {
   soundcloud_link: string;
   twitter_link: string;
   country: string;
-  is_artist: string;
+  is_artist: boolean;
   email: string;
 }
 
 export interface UserState {
   userInfo: IUser;
+  currentProfile: IUser;
   jwtToken: string;
   loading: boolean;
   success: boolean;
+  errorLoadingProfile: boolean;
   signUpSuccess: boolean;
   verifySuccess: boolean;
   accountSetupSuccess: boolean;

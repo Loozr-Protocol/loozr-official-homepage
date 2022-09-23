@@ -13,6 +13,20 @@ export const getUserDetails = createAsyncThunk(
     }
   }
 )
+
+export const getIndividualProfile = createAsyncThunk(
+  'user/getIndividualProfile',
+  async (userId: number, { rejectWithValue }) => {
+    const { handleGetUser } = useGetUserCallback();
+    try {
+      const result = await handleGetUser(userId);
+      return result;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+)
+
 export const signUp = createAsyncThunk(
   'user/signUp',
   async (postData: any, { rejectWithValue }) => {
@@ -36,7 +50,7 @@ export const resendVerificationMail = createAsyncThunk('user/resendVerificationM
   }
 })
 
-export const accountSetup = createAsyncThunk('user/accountSetup', async ({account_id}: {account_id: string}, { rejectWithValue }) => {
+export const accountSetup = createAsyncThunk('user/accountSetup', async ({ account_id }: { account_id: string }, { rejectWithValue }) => {
   try {
     const { handleAccountSetup } = useAccountSetupCallback();
     const data = await handleAccountSetup(account_id);

@@ -4,6 +4,7 @@ import LoozrGradient from "../../../../assets/icons/loozr-gradient.svg";
 import SearchWhiteIcon from "../../../../assets/icons/search-white.svg";
 import PlusIcon from "../../../../assets/icons/plus.svg";
 import UserIcon from "../../../../assets/icons/user.svg";
+import { LZR_IN_USD } from "../../../../config/constants";
 
 export const TopBar = () => {
 
@@ -30,7 +31,7 @@ export const TopBar = () => {
           />
         </div>
         <div className="md:hidden flex items-center">
-          <p className="text-xl text-white pr-0.5 font-bold">~$46.23/</p>
+          <p className="text-xl text-white pr-0.5 font-bold">~${LZR_IN_USD}/</p>
           <img src={LoozrGradient} alt="" />
         </div>
         <div className="md:hidden flex items-center">

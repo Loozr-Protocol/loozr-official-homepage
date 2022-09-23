@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { UserState } from '../../config/constants/types';
 import { httpError } from '../../utils/httpHelper';
-import { getUserDetails, signUp, resendVerificationMail, accountSetup } from './userActions';
+import { getUserDetails, signUp, resendVerificationMail, accountSetup, getIndividualProfile } from './userActions';
 
 const jwtToken = localStorage.getItem('jwtToken')
   ? localStorage.getItem('jwtToken')
@@ -20,6 +20,8 @@ if (jwtToken) {
 const initialState: UserState = {
   userInfo: precachedUser,
   jwtToken,
+  currentProfile: null,
+  errorLoadingProfile: false,
   loading: false,
   success: false,
   signUpSuccess: false,
@@ -37,6 +39,9 @@ const userSlice = createSlice({
       localStorage.removeItem('accountId')
       state.userInfo = null;
       state.jwtToken = null;
+    },
+    setCurrentUser: (state, action) => {
+      state.currentProfile = action.payload;
     },
     login: (state, action) => {
       state.userInfo = action.payload;
@@ -60,6 +65,16 @@ const userSlice = createSlice({
 
     builder.addCase(getUserDetails.rejected, (state, action) => {
       state.loading = false;
+      httpError(action.payload);
+    });
+
+    builder.addCase(getIndividualProfile.fulfilled, (state, action) => {
+      state.errorLoadingProfile = false;
+      state.currentProfile = action.payload;
+    });
+
+    builder.addCase(getIndividualProfile.rejected, (state, action) => {
+      state.errorLoadingProfile = true;
       httpError(action.payload);
     });
 

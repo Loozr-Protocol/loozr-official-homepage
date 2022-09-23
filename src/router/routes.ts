@@ -129,6 +129,12 @@ export const dashboard = [
   },
   {
     name: "profile",
+    path: "profile/:id",
+    private: true,
+    component: Profile,
+  },
+  {
+    name: "profile",
     path: "profile",
     private: true,
     component: Profile,

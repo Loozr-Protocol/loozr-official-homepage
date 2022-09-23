@@ -26,6 +26,7 @@ export const NEAR_NETWORK = process.env.REACT_APP_NETWORK
 
 export const NEAR_NETWORK_DOMAIN = NEAR_NETWORK_DOMAINS[NEAR_NETWORK]
 export const MIXER_ACCOUNT = `${LOOZR_MIXER}${NEAR_NETWORK_DOMAIN}`
+export const CREATOR_COIN_DOMAIN = process.env.REACT_APP_CREATOR_COIN_DOMAIN;
 
-export const LZR_IN_USD = 16;
+export const LZR_IN_USD = 16.35;
 export const DEFAULT_TOKEN_DECIMAL = BIG_TEN.pow(24)

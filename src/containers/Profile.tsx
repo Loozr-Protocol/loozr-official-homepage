@@ -18,11 +18,13 @@ import {
   Tooltip,
   Area,
 } from "recharts";
-import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../state/store";
 import { MIXER_ACCOUNT } from "../config/constants";
 import { abbrevNumber } from "../utils/formatBalance";
+import { getIndividualProfile } from "../state/user/userActions";
+import { IUser } from "../config/constants/types";
 
 const data = [
   { name: "May", uv: 70000 },
@@ -38,16 +40,45 @@ const data = [
 
 const Profile = () => {
   const push = useNavigate();
+  let { id } = useParams();
   const [active, setActive] = useState(1);
+  const dispatch = useDispatch();
   const user = useSelector((state: AppState) => state.user.userInfo);
-  const lzrAccountId = `${user.account_id}.${MIXER_ACCOUNT}`;
-  const [hasLaunchedToken, setHasLaunchedToken] = useState(
-    sessionStorage.getItem("hasLaunchedToken") === "true"
+  const errorLoadingProfile = useSelector(
+    (state: AppState) => state.user.errorLoadingProfile
+  );
+  const currentProfileFromState = useSelector(
+    (state: AppState) => state.user.currentProfile
+  );
+  const [currentProfile, setCurrentProfile] = useState<IUser>(user);
+  const [lzrAccountId, setAccountId] = useState<string>(
+    `${user.account_id}.${MIXER_ACCOUNT}`
   );
 
   useEffect(() => {
-    setHasLaunchedToken(sessionStorage.getItem("hasLaunchedToken") === "true");
-  }, []);
+    setCurrentProfile(user);
+    if (id) {
+      if (Number(id) !== user.id) {
+        setCurrentProfile(null);
+        if (currentProfileFromState) {
+          setCurrentProfile(currentProfileFromState);
+          dispatch(getIndividualProfile(Number(id)));
+        } else {
+          dispatch(getIndividualProfile(Number(id)));
+        }
+      }
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if (currentProfile) {
+      setAccountId(`${currentProfile.account_id}.${MIXER_ACCOUNT}`);
+    }
+  }, [currentProfile]);
+
+  useEffect(() => {
+    setCurrentProfile(currentProfileFromState);
+  }, [currentProfileFromState]);
 
   // const renderHistory = useMemo(() => {
   //   switch (active) {
@@ -284,179 +315,204 @@ const Profile = () => {
         return "";
     }
   }, [active]);
+
+  if (currentProfile && !currentProfile.account_id) {
+    return <div className="text-center">Profile Not Found!</div>;
+  }
+
   return (
     <div className="w-full">
-      {hasLaunchedToken && (
-        <div className="w-full bg-dark-700 px-3 md:!pl-10 pt-7 pb- mb-[52px] min-h-[260px]">
-          <div className="grid grid-cols-1 md:flex">
-            <div className="flex-1">
-              <p className="font-medium text-sm text-muted mb-2 md:mb-[22px]">
-                My coin name
-              </p>
-              <p className="font-extrabold text-2xl md:text-3xl text-white mb-6">
-                $ARLENE
-              </p>
-              <div className="flex items-center justify-between mb-6 md:mb-auto">
-                <div className="text-center md:text-left">
-                  <p className="font-bold text-sm md:text-sm text-white text-left mb-1">
-                    $0.768
+      {currentProfile ? (
+        <>
+          {currentProfile.is_artist && (
+            <div className="w-full bg-dark-700 px-3 md:!pl-10 pt-7 pb- mb-[52px] min-h-[260px]">
+              <div className="grid grid-cols-1 md:flex">
+                <div className="flex-1">
+                  <p className="font-medium text-sm text-muted mb-2 md:mb-[22px]">
+                    My coin name
                   </p>
-                  <p className="text-muted text-xs font-medium">
-                    My coin price
+                  <p className="font-extrabold text-2xl md:text-3xl text-white mb-6">
+                    $ARLENE
                   </p>
+                  <div className="flex items-center justify-between mb-6 md:mb-auto">
+                    <div className="text-center md:text-left">
+                      <p className="font-bold text-sm md:text-sm text-white text-left mb-1">
+                        $0.768
+                      </p>
+                      <p className="text-muted text-xs font-medium">
+                        My coin price
+                      </p>
+                    </div>
+                    <div className="text-center md:text-left">
+                      <p className="font-bold text-sm md:text-sm text-white text-left mb-1">
+                        $104.58K
+                      </p>
+                      <p className="text-muted text-xs font-medium">
+                        Market cap
+                      </p>
+                    </div>
+                    <div className="text-center md:text-left">
+                      <p className="font-bold text-sm md:text-sm text-white text-left mb-1">
+                        203
+                      </p>
+                      <p className="text-muted text-xs font-medium">Holders</p>
+                    </div>
+                    <div className="text-center md:text-left">
+                      <p className="font-bold text-sm md:text-sm text-white text-left mb-1">
+                        10%
+                      </p>
+                      <p className="text-muted text-xs font-medium">% Reward</p>
+                    </div>
+                  </div>
                 </div>
-                <div className="text-center md:text-left">
-                  <p className="font-bold text-sm md:text-sm text-white text-left mb-1">
-                    $104.58K
-                  </p>
-                  <p className="text-muted text-xs font-medium">Market cap</p>
-                </div>
-                <div className="text-center md:text-left">
-                  <p className="font-bold text-sm md:text-sm text-white text-left mb-1">
-                    203
-                  </p>
-                  <p className="text-muted text-xs font-medium">Holders</p>
-                </div>
-                <div className="text-center md:text-left">
-                  <p className="font-bold text-sm md:text-sm text-white text-left mb-1">
-                    10%
-                  </p>
-                  <p className="text-muted text-xs font-medium">% Reward</p>
+                <div className="flex justify-start">
+                  <div className="md:pl-24 flex md:flex-col kitems-center">
+                    <div>
+                      <p className="font-medium text-sm text-muted mb-6">
+                        My coin chart
+                      </p>
+                      <p className="mb-1 font-semibold text-sm">87%</p>
+                      <p className="mb-3.5 font-medium text-sm text-[#15FFAB]">
+                        +4.5%
+                      </p>
+                    </div>
+                    <ResponsiveContainer width={170} height={80}>
+                      <AreaChart
+                        data={data}
+                        margin={{ top: 20, right: 30, left: 0, bottom: 0 }}
+                      >
+                        <defs>
+                          <linearGradient
+                            id="colorUv"
+                            x1="0"
+                            y1="0"
+                            x2="0"
+                            y2="1"
+                          >
+                            <stop
+                              offset="5%"
+                              stopColor="#15FFAB"
+                              stopOpacity={0.1}
+                            />
+                            <stop
+                              offset="95%"
+                              stopColor="#15FFAB"
+                              stopOpacity={0}
+                            />
+                          </linearGradient>
+                        </defs>
+                        <XAxis dataKey="name" hide={true} />
+                        <YAxis hide={true} />
+
+                        <Tooltip />
+
+                        <Area
+                          type="monotone"
+                          dataKey="uv"
+                          stroke="#15FFAB"
+                          // fill="#15FFAB"
+                          fillOpacity={1}
+                          fill="url(#colorUv)"
+                        />
+                      </AreaChart>
+                    </ResponsiveContainer>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="flex justify-start">
-              <div className="md:pl-24 flex md:flex-col kitems-center">
-                <div>
-                  <p className="font-medium text-sm text-muted mb-6">
-                    My coin chart
+          )}
+          <div className="flex items-start mb-12">
+            <img
+              src={Arlene}
+              alt={currentProfile.account_id}
+              className="h-8 md:h-[170px] w-8 md:w-[170px] rounded-full mr-3"
+              style={{ border: "20px solid #141922" }}
+            />
+            <div className="md:ml-10">
+              <p className="text-xl md:text-xl font-medium text-white mb-1.5">
+                {lzrAccountId}
+              </p>
+              <p className="text-muted font-medium text-sm md:text-sm mb-[10px]">
+                <span>{currentProfile.account_id}</span>
+                {currentProfile.is_artist ? (
+                  <span className="pointer ml-1.5 pl-2 before:top-2">
+                    Artiste
+                  </span>
+                ) : (
+                  ""
+                )}
+              </p>
+              <p className="text-white max-w-[435px] text-sm md:text-sm mb-[20px]">
+                {currentProfile.bio}
+              </p>
+              <div className="flex items-center mb-9">
+                <p className="text-xs md:text-sm font-bold mr-6">
+                  {abbrevNumber(currentProfile.followers_count)}
+                  <span className="ml-2 text-sm text-muted font-medium">
+                    Followers
+                  </span>
+                </p>
+                <p className="text-xs md:text-sm font-bold mr-6">
+                  {abbrevNumber(currentProfile.followings_count)}
+                  <span className="ml-2 text-sm text-muted font-medium">
+                    Following
+                  </span>
+                </p>
+                {currentProfile.is_artist ? (
+                  <p className="text-xs md:text-sm font-bold">
+                    61.2k
+                    <span className="ml-2 text-sm text-muted font-medium">
+                      Listens
+                    </span>
                   </p>
-                  <p className="mb-1 font-semibold text-sm">87%</p>
-                  <p className="mb-3.5 font-medium text-sm text-[#15FFAB]">
-                    +4.5%
-                  </p>
-                </div>
-                <ResponsiveContainer width={170} height={80}>
-                  <AreaChart
-                    data={data}
-                    margin={{ top: 20, right: 30, left: 0, bottom: 0 }}
+                ) : null}
+              </div>
+              {currentProfile.id === user.id ? (
+                <div className="flex items-center">
+                  <button
+                    onClick={() => push("/profile/edit")}
+                    className="py-3 px-16 text-sm font-medium bg-loozr-purple rounded-full"
                   >
-                    <defs>
-                      <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                        <stop
-                          offset="5%"
-                          stopColor="#15FFAB"
-                          stopOpacity={0.1}
-                        />
-                        <stop
-                          offset="95%"
-                          stopColor="#15FFAB"
-                          stopOpacity={0}
-                        />
-                      </linearGradient>
-                    </defs>
-                    <XAxis dataKey="name" hide={true} />
-                    <YAxis hide={true} />
-
-                    <Tooltip />
-
-                    <Area
-                      type="monotone"
-                      dataKey="uv"
-                      stroke="#15FFAB"
-                      // fill="#15FFAB"
-                      fillOpacity={1}
-                      fill="url(#colorUv)"
-                    />
-                  </AreaChart>
-                </ResponsiveContainer>
-              </div>
+                    Update
+                  </button>
+                  <div className="w-[50px] h-[50px] rounded-full bg-dark-700 flex items-center justify-center ml-6">
+                    <MoreIcon />
+                  </div>
+                </div>
+              ) : null}
             </div>
           </div>
-        </div>
-      )}
-      <div className="flex items-start mb-12">
-        <img
-          src={Arlene}
-          alt={user.account_id}
-          className="h-8 md:h-[170px] w-8 md:w-[170px] rounded-full mr-3"
-          style={{ border: "20px solid #141922" }}
-        />
-        <div className="md:ml-10">
-          <p className="text-xl md:text-xl font-medium text-white mb-1.5">
-            {lzrAccountId}
-          </p>
-          <p className="text-muted font-medium text-sm md:text-sm mb-[10px]">
-            <span>{user.account_id}</span>
-            {user.is_artist ? (
-              <span className="pointer ml-1.5 pl-2 before:top-2">Artiste</span>
-            ) : (
-              ""
-            )}
-          </p>
-          <p className="text-white max-w-[435px] text-sm md:text-sm mb-[20px]">
-            {user.bio}
-          </p>
-          <div className="flex items-center mb-9">
-            <p className="text-xs md:text-sm font-bold mr-6">
-              {abbrevNumber(user.followers_count)}
-              <span className="ml-2 text-sm text-muted font-medium">
-                Followers
-              </span>
-            </p>
-            <p className="text-xs md:text-sm font-bold mr-6">
-              {abbrevNumber(user.followings_count)}
-              <span className="ml-2 text-sm text-muted font-medium">
-                Following
-              </span>
-            </p>
-            {user.is_artist ? <p className="text-xs md:text-sm font-bold">
-              61.2k
-              <span className="ml-2 text-sm text-muted font-medium">
-                Listens
-              </span>
-            </p>: null}
-          </div>
-          <div className="flex items-center">
-            <button
-              onClick={() => push("/profile/edit")}
-              className="py-3 px-16 text-sm font-medium bg-loozr-purple rounded-full"
+          <div className="w-full pb-2 mb-9 border-b-2 border-muted-50 flex items-center text-sm font-medium text-muted">
+            <p
+              className={`mr-10 cursor-pointer ${
+                active === 1 ? "active-tab-bottom" : "text-muted font-medium"
+              }`}
+              onClick={() => setActive(1)}
             >
-              Update
-            </button>
-            <div className="w-[50px] h-[50px] rounded-full bg-dark-700 flex items-center justify-center ml-6">
-              <MoreIcon />
-            </div>
+              Coins bought
+            </p>
+            <p
+              className={`mr-10 cursor-pointer ${
+                active === 2 ? "active-tab-bottom" : "text-muted font-medium"
+              }`}
+              onClick={() => setActive(2)}
+            >
+              My coin holders
+            </p>
+            <p
+              className={`cursor-pointer ${
+                active === 3 ? "active-tab-bottom" : "text-muted font-medium"
+              }`}
+              onClick={() => setActive(3)}
+            >
+              Transactions
+            </p>
           </div>
-        </div>
-      </div>
-      <div className="w-full pb-2 mb-9 border-b-2 border-muted-50 flex items-center text-sm font-medium text-muted">
-        <p
-          className={`mr-10 cursor-pointer ${
-            active === 1 ? "active-tab-bottom" : "text-muted font-medium"
-          }`}
-          onClick={() => setActive(1)}
-        >
-          Coins bought
-        </p>
-        <p
-          className={`mr-10 cursor-pointer ${
-            active === 2 ? "active-tab-bottom" : "text-muted font-medium"
-          }`}
-          onClick={() => setActive(2)}
-        >
-          My coin holders
-        </p>
-        <p
-          className={`cursor-pointer ${
-            active === 3 ? "active-tab-bottom" : "text-muted font-medium"
-          }`}
-          onClick={() => setActive(3)}
-        >
-          Transactions
-        </p>
-      </div>
-      {renderHistory}
+          {renderHistory}
+        </>
+      ) : errorLoadingProfile ? (
+        <div className="text-center">Profile Not Found!</div>
+      ) : null}
     </div>
   );
 };
