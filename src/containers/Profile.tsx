@@ -62,13 +62,21 @@ const Profile = () => {
         setCurrentProfile(null);
         if (currentProfileFromState) {
           setCurrentProfile(currentProfileFromState);
-          dispatch(getIndividualProfile(Number(id)));
         } else {
           dispatch(getIndividualProfile(Number(id)));
         }
       }
     }
-  }, [user]);
+  }, []);
+
+  useEffect(() => {
+    if (id) {
+      const user_id = Number(id) !== user.id ? Number(id) : user.id;
+      dispatch(getIndividualProfile(user_id));
+    }else {
+      dispatch(getIndividualProfile(user.id));
+    }
+  }, [id]);
 
   useEffect(() => {
     if (currentProfile) {

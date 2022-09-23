@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { UserState } from '../../config/constants/types';
+import { parseJwt } from '../../utils';
 import { httpError } from '../../utils/httpHelper';
 import { getUserDetails, signUp, resendVerificationMail, accountSetup, getIndividualProfile } from './userActions';
 
@@ -13,7 +14,7 @@ if (jwtToken) {
     ? localStorage.getItem('accountId')
     : null;
   if (userAccountId) {
-    precachedUser = { account_id: userAccountId }
+    precachedUser = { account_id: userAccountId, id: parseJwt(jwtToken)['id'] }
   }
 }
 
