@@ -1,0 +1,66 @@
+import { Model } from '../types';
+import User from './user';
+ 
+export interface JsonProps {
+  id: number;
+  is_verified: boolean;
+  approved: string;
+  creator_coin_id: string;
+  founder_reward: number;
+  total_listens: number;
+}
+
+export interface ArtistProps {
+  id?: number;
+  isVerified?: boolean;
+  approved?: string;
+  creatorCoinId?: string;
+  totalListens?: number;
+  founderReward?: number;
+  user?: User
+}
+
+export default class Artist implements Model {
+  id: number;
+  isVerified: boolean;
+  approved: string;
+  creatorCoinId: string;
+  totalListens: number;
+  founderReward: number;
+  user: User;
+
+  constructor({ id, isVerified, approved, creatorCoinId, totalListens, founderReward, user }: ArtistProps) {
+    this.id = id;
+    this.isVerified = isVerified;
+    this.approved = approved;
+    this.creatorCoinId = creatorCoinId;
+    this.totalListens = totalListens;
+    this.founderReward = founderReward;
+    this.user = user;
+  }
+
+  fromJson(jsonData: JsonProps) {
+    this.id = jsonData['id'];
+    this.isVerified = jsonData['is_verified'];
+    this.approved = jsonData['approved'];
+    this.creatorCoinId = jsonData['creator_coin_id'];
+    this.founderReward = jsonData['founder_reward'];
+    this.totalListens = jsonData['total_listens'];
+    const user = new User({});
+    user.fromJson(jsonData['user']);
+    this.user = user;
+  }
+
+  toJson() {
+    const map = {
+      'id': this.id,
+      'is_verified': this.isVerified,
+      'approved': this.approved,
+      'creator_coin_id': this.creatorCoinId,
+      'founder_reward': this.founderReward,
+      'total_listens': this.totalListens,
+    }
+
+    return map;
+  }
+}

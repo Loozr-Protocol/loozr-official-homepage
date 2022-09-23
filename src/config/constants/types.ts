@@ -60,3 +60,8 @@ export interface UserState {
   accountSetupSuccess: boolean;
   error: string
 }
+
+export interface Model {
+  fromJson(jsonData: { [key: string]: any }): void;
+  toJson(): { [key: string]: any }
+}
