@@ -20,7 +20,7 @@ const Wallet = () => {
   const push = useNavigate();
   const [active, setActive] = useState(1);
    const user = useSelector((state: AppState) => state.user.userInfo);
-   const lzrAccountId = `${user.account_id}.${MIXER_ACCOUNT}`;
+   const lzrAccountId = `${user.accountId}.${MIXER_ACCOUNT}`;
    const balanceResult = usePollLZRBalance(lzrAccountId);
    const balanceBN = getFullDisplayBalance(balanceResult);
 

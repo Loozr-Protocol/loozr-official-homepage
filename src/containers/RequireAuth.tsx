@@ -15,7 +15,7 @@ export default function RequireAuth({ children }: { children: JSX.Element }) {
   }
 
   if (user) {
-    if (!user.account_id) {
+    if (!user.accountId) {
       return (
         <Navigate to="/account-setup" state={{ from: location }} replace />
       );

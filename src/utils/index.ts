@@ -1,3 +1,5 @@
+import User, { JsonProps } from "../config/constants/models/user";
+
 export function copy(content: string) {
   if (!!content) {
     const el = document.createElement('textarea');
@@ -19,3 +21,9 @@ export const parseJwt = (token: string) => {
     return null;
   }
 };
+
+export const jsonToUser = (jsonData: JsonProps) => {
+  const user = new User({});
+  user.fromJson(jsonData);
+  return user;
+}

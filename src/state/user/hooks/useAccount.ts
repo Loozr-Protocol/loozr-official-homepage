@@ -1,4 +1,4 @@
-import { IUser } from '../../../config/constants/types';
+import { JsonProps } from '../../../config/constants/models/user';
 import HttpClient from "../../../utils/httpHelper";
 
 interface AccountUpdateProps {
@@ -18,7 +18,7 @@ export function useUpdateProfileCallback() {
 }
 
 export function useGetSuggestedFollowsCallback() {
-  const getSuggestedFollows = async (): Promise<IUser[]> => {
+  const getSuggestedFollows = async (): Promise<JsonProps[]> => {
     const httpClient = new HttpClient();
     const result = await httpClient.axiosInstance.get('/users/suggested-follows');
     return result.data.results;

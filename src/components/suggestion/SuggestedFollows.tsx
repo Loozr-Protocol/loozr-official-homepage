@@ -1,7 +1,7 @@
 import React from "react";
 import Memoji from "../../assets/img/memoji.png";
 import { MIXER_ACCOUNT } from "../../config/constants";
-import { IUser } from "../../config/constants/types";
+import User from "../../config/constants/models/user";
 import {
   useFollowCallback,
   usePollSuggestedFollows,
@@ -11,7 +11,7 @@ const SuggestedFollows = () => {
   const users = usePollSuggestedFollows();
   const { handleFollow } = useFollowCallback();
 
-  const onFollow = async (user: IUser) => {
+  const onFollow = async (user: User) => {
     await handleFollow(user.id);
     const userIndex = users.indexOf(user);
     if (userIndex > -1) {
@@ -37,11 +37,11 @@ const SuggestedFollows = () => {
                 />
                 <div>
                   <p className="text-sm font-semibold text-white">
-                    {user.account_id}
+                    {user.accountId}
                   </p>
                   <p className="flex items-center">
                     <span className="text-muted text-[11px] font-bold mr-1">
-                      {user.account_id}.{MIXER_ACCOUNT}
+                      {user.accountId}.{MIXER_ACCOUNT}
                     </span>
                     <span className="bg-muted rounded-full h-1 w-1 mr-1" />{" "}
                     {/* <span className="text-[11px] text-muted font-medium">

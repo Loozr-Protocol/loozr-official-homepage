@@ -24,7 +24,7 @@ import { AppState } from "../state/store";
 import { MIXER_ACCOUNT } from "../config/constants";
 import { abbrevNumber } from "../utils/formatBalance";
 import { getIndividualProfile } from "../state/user/userActions";
-import { IUser } from "../config/constants/types";
+import User from "../config/constants/models/user";
 
 const data = [
   { name: "May", uv: 70000 },
@@ -50,9 +50,9 @@ const Profile = () => {
   const currentProfileFromState = useSelector(
     (state: AppState) => state.user.currentProfile
   );
-  const [currentProfile, setCurrentProfile] = useState<IUser>(user);
+  const [currentProfile, setCurrentProfile] = useState<User>(user);
   const [lzrAccountId, setAccountId] = useState<string>(
-    `${user.account_id}.${MIXER_ACCOUNT}`
+    `${user.accountId}.${MIXER_ACCOUNT}`
   );
 
   useEffect(() => {
@@ -80,7 +80,7 @@ const Profile = () => {
 
   useEffect(() => {
     if (currentProfile) {
-      setAccountId(`${currentProfile.account_id}.${MIXER_ACCOUNT}`);
+      setAccountId(`${currentProfile.accountId}.${MIXER_ACCOUNT}`);
     }
   }, [currentProfile]);
 
@@ -324,7 +324,7 @@ const Profile = () => {
     }
   }, [active]);
 
-  if (currentProfile && !currentProfile.account_id) {
+  if (currentProfile && !currentProfile.accountId) {
     return <div className="text-center">Profile Not Found!</div>;
   }
 
@@ -332,7 +332,7 @@ const Profile = () => {
     <div className="w-full">
       {currentProfile ? (
         <>
-          {currentProfile.is_artist && (
+          {currentProfile.isArtist && (
             <div className="w-full bg-dark-700 px-3 md:!pl-10 pt-7 pb- mb-[52px] min-h-[260px]">
               <div className="grid grid-cols-1 md:flex">
                 <div className="flex-1">
@@ -432,7 +432,7 @@ const Profile = () => {
           <div className="flex items-start mb-12">
             <img
               src={Arlene}
-              alt={currentProfile.account_id}
+              alt={currentProfile.accountId}
               className="h-8 md:h-[170px] w-8 md:w-[170px] rounded-full mr-3"
               style={{ border: "20px solid #141922" }}
             />
@@ -441,8 +441,8 @@ const Profile = () => {
                 {lzrAccountId}
               </p>
               <p className="text-muted font-medium text-sm md:text-sm mb-[10px]">
-                <span>{currentProfile.account_id}</span>
-                {currentProfile.is_artist ? (
+                <span>{currentProfile.accountId}</span>
+                {currentProfile.isArtist ? (
                   <span className="pointer ml-1.5 pl-2 before:top-2">
                     Artiste
                   </span>
@@ -455,18 +455,18 @@ const Profile = () => {
               </p>
               <div className="flex items-center mb-9">
                 <p className="text-xs md:text-sm font-bold mr-6">
-                  {abbrevNumber(currentProfile.followers_count)}
+                  {abbrevNumber(currentProfile.followersCount)}
                   <span className="ml-2 text-sm text-muted font-medium">
                     Followers
                   </span>
                 </p>
                 <p className="text-xs md:text-sm font-bold mr-6">
-                  {abbrevNumber(currentProfile.followings_count)}
+                  {abbrevNumber(currentProfile.followingsCount)}
                   <span className="ml-2 text-sm text-muted font-medium">
                     Following
                   </span>
                 </p>
-                {currentProfile.is_artist ? (
+                {currentProfile.isArtist ? (
                   <p className="text-xs md:text-sm font-bold">
                     61.2k
                     <span className="ml-2 text-sm text-muted font-medium">

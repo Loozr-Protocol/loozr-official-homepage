@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { UserState } from '../../config/constants/types';
-import { parseJwt } from '../../utils';
+import { jsonToUser, parseJwt } from '../../utils';
 import { httpError } from '../../utils/httpHelper';
 import { getUserDetails, signUp, resendVerificationMail, accountSetup, getIndividualProfile } from './userActions';
 
@@ -14,7 +14,7 @@ if (jwtToken) {
     ? localStorage.getItem('accountId')
     : null;
   if (userAccountId) {
-    precachedUser = { account_id: userAccountId, id: parseJwt(jwtToken)['id'] }
+    precachedUser = jsonToUser({ account_id: userAccountId, id: parseJwt(jwtToken)['id'] });
   }
 }
 
@@ -46,7 +46,8 @@ const userSlice = createSlice({
     },
     login: (state, action) => {
       state.userInfo = action.payload;
-      localStorage.setItem("accountId", state.userInfo.account_id);
+      console.log(state.userInfo);
+      localStorage.setItem("accountId", state.userInfo.accountId);
     },
     updateProfile: (state, action) => {
       state.userInfo = action.payload;
@@ -61,7 +62,7 @@ const userSlice = createSlice({
       state.loading = false;
       state.success = true;
       state.userInfo = action.payload;
-      localStorage.setItem("accountId", state.userInfo.account_id);
+      localStorage.setItem("accountId", state.userInfo.accountId);
     });
 
     builder.addCase(getUserDetails.rejected, (state, action) => {

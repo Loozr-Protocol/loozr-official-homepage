@@ -1,3 +1,5 @@
+import User from "./models/user";
+
 export interface Track {
   title: string;
   author: string;
@@ -32,25 +34,9 @@ export interface Artist {
   songs: Song[]
 }
 
-export interface IUser {
-  username: string;
-  account_id: string;
-  followings_count: number;
-  id: number;
-  followers_count: number;
-  token_name: string;
-  bio: string;
-  website: string;
-  soundcloud_link: string;
-  twitter_link: string;
-  country: string;
-  is_artist: boolean;
-  email: string;
-}
-
 export interface UserState {
-  userInfo: IUser;
-  currentProfile: IUser;
+  userInfo: User;
+  currentProfile: User;
   jwtToken: string;
   loading: boolean;
   success: boolean;

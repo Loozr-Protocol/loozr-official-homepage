@@ -1,19 +1,19 @@
 import { Model } from "../types";
 
 export interface JsonProps {
-  username: string;
+  username?: string;
   account_id: string;
-  followings_count: number;
+  followings_count?: number;
   id: number;
-  followers_count: number;
-  token_name: string;
-  bio: string;
-  website: string;
-  soundcloud_link: string;
-  twitter_link: string;
-  country: string;
-  is_artist: boolean;
-  email: string;
+  followers_count?: number;
+  token_name?: string;
+  bio?: string;
+  website?: string;
+  soundcloud_link?: string;
+  twitter_link?: string;
+  country?: string;
+  is_artist?: boolean;
+  email?: string;
 }
 
 export interface UserProps {

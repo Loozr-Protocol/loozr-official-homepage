@@ -10,6 +10,7 @@ import AuthImage from "../assets/img/auth-img.png";
 import { httpError } from "../utils/httpHelper";
 import { useDispatch } from "react-redux";
 import { login } from "../state/user/userReducer";
+import { jsonToUser } from "../utils";
 
 const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -47,7 +48,8 @@ const Login = () => {
       setLoading(false);
       const jwtToken = result["access_token"];
       localStorage.setItem("jwtToken", jwtToken);
-      dispatch(login(result['user']));
+      const user = jsonToUser(result["user"]);
+      dispatch(login(user));
       push("/explore", { replace: true });
     } catch (err: any) {
       setLoading(false);

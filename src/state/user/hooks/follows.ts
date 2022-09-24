@@ -1,4 +1,5 @@
 import useSWR from 'swr';
+import { jsonToUser } from '../../../utils';
 import HttpClient from '../../../utils/httpHelper';
 import { useGetSuggestedFollowsCallback } from './useAccount';
 
@@ -10,8 +11,11 @@ export const usePollSuggestedFollows = () => {
     'getSuggestedFollows',
     async () => {
       const result = await getSuggestedFollows();
+      const users = result.map((userJson) => {
+        return jsonToUser(userJson);
+      })
 
-      return result;
+      return users;
     },
     {
       refreshInterval: REFRESH_INTERVAL,

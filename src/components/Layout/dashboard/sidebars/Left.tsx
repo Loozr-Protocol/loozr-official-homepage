@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import LoozrBeta from "../../../../assets/icons/loozr-beta.svg";
 import Loozr from "../../../../assets/icons/loozr.svg";
@@ -91,7 +91,7 @@ export const Left = () => {
       ) : (
         <img src={Loozr} alt="" className={`mb-6 h-6 w-6`} />
       )}
-      {!user.is_artist ? (
+      {!user.isArtist ? (
         <button
           onClick={launchToken}
           className="hidden xl:block text-xs font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
@@ -141,12 +141,12 @@ export const Left = () => {
           />
           <div className="hidden xl:block w-full">
             <p className="text-sm font-extrabold text-white">
-              {user.account_id}
+              {user.accountId}
             </p>
             <p className="text-[11px] font-medium flex items-center w-auto flex-nowrap whitespace-nowrap text-muted">
-              {user.is_artist ? (
+              {user.isArtist ? (
                 <span>
-                  ${user.token_name}
+                  ${user.tokenName}
                   <span className="h-1 w-1 rounded-full bg-muted opacity-90 mb-[3px]" />{" "}
                   Artiste
                 </span>

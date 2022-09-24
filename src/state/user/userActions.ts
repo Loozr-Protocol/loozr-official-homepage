@@ -1,4 +1,5 @@
-import { createAsyncThunk } from "@reduxjs/toolkit"
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { jsonToUser } from "../../utils";
 import { useGetUserCallback, useResendVerificationLinkCallback, useSignUpCallback, useAccountSetupCallback } from "./hooks/useAuth"
 
 export const getUserDetails = createAsyncThunk(
@@ -7,12 +8,13 @@ export const getUserDetails = createAsyncThunk(
     const { handleGetUser } = useGetUserCallback();
     try {
       const result = await handleGetUser(userId);
-      return result;
+      const user = jsonToUser(result);
+      return user;
     } catch (error) {
       return rejectWithValue(error);
     }
   }
-)
+);
 
 export const getIndividualProfile = createAsyncThunk(
   'user/getIndividualProfile',
@@ -20,12 +22,13 @@ export const getIndividualProfile = createAsyncThunk(
     const { handleGetUser } = useGetUserCallback();
     try {
       const result = await handleGetUser(userId);
-      return result;
+      const user = jsonToUser(result);
+      return user;
     } catch (error) {
       return rejectWithValue(error);
     }
   }
-)
+);
 
 export const signUp = createAsyncThunk(
   'user/signUp',
@@ -38,7 +41,7 @@ export const signUp = createAsyncThunk(
       return rejectWithValue(error);
     }
   }
-)
+);
 
 export const resendVerificationMail = createAsyncThunk('user/resendVerificationMail', async (email: string, { rejectWithValue }) => {
   try {
@@ -48,14 +51,15 @@ export const resendVerificationMail = createAsyncThunk('user/resendVerificationM
   } catch (error) {
     return rejectWithValue(error);
   }
-})
+});
 
 export const accountSetup = createAsyncThunk('user/accountSetup', async ({ account_id }: { account_id: string }, { rejectWithValue }) => {
   try {
     const { handleAccountSetup } = useAccountSetupCallback();
-    const data = await handleAccountSetup(account_id);
-    return data;
+    const result = await handleAccountSetup(account_id);
+    const user = jsonToUser(result);
+    return user;
   } catch (error) {
     return rejectWithValue(error);
   }
-})
+});

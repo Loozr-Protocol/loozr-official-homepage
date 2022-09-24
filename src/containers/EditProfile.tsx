@@ -21,7 +21,7 @@ const EditProfile = () => {
   const dispatch = useDispatch();
   const { handleUpdateProfile } = useUpdateProfileCallback();
   const user = useSelector((state: AppState) => state.user.userInfo);
-  const lzrAccountId = `${user.account_id}.${MIXER_ACCOUNT}`;
+  const lzrAccountId = `${user.accountId}.${MIXER_ACCOUNT}`;
 
   const profileEditSchema = yup.object({
     username: yup.string().required("Please enter full name"),
