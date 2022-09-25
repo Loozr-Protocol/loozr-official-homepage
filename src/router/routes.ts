@@ -25,6 +25,8 @@ import BuyLzr from "../containers/BuyLzr";
 import SendLzr from "../containers/SendLzr";
 import NFTs from "../containers/Nfts";
 import Notifications from "../containers/Notifications";
+import BuyArtistToken from "../containers/BuyArtistToken";
+import SellArtistToken from "../containers/SellArtistToken";
 
 export const authRoutes = [
   {
@@ -114,6 +116,18 @@ export const dashboard = [
     path: "artistes",
     private: true,
     component: Artistes,
+  },
+  {
+    name: "buy-artiste-coin",
+    path: "artistes/buy/:id",
+    private: true,
+    component: BuyArtistToken,
+  },
+  {
+    name: "sell-artiste-coin",
+    path: "artistes/sell/:id",
+    private: true,
+    component: SellArtistToken,
   },
   {
     name: "artiste dashboard",

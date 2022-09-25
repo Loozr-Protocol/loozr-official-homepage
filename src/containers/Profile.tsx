@@ -337,10 +337,10 @@ const Profile = () => {
               <div className="grid grid-cols-1 md:flex">
                 <div className="flex-1">
                   <p className="font-medium text-sm text-muted mb-2 md:mb-[22px]">
-                    My coin name
+                    Coin name
                   </p>
-                  <p className="font-extrabold text-2xl md:text-3xl text-white mb-6">
-                    $ARLENE
+                  <p className="font-extrabold uppercase text-2xl md:text-3xl text-white mb-6">
+                    ${currentProfile.tokenName}
                   </p>
                   <div className="flex items-center justify-between mb-6 md:mb-auto">
                     <div className="text-center md:text-left">
@@ -468,13 +468,29 @@ const Profile = () => {
                 </p>
                 {currentProfile.isArtist ? (
                   <p className="text-xs md:text-sm font-bold">
-                    61.2k
+                    0
                     <span className="ml-2 text-sm text-muted font-medium">
                       Listens
                     </span>
                   </p>
                 ) : null}
               </div>
+              {currentProfile.isArtist ? (
+                <div className="flex items-center">
+                  <button
+                    onClick={() => push(`/artistes/buy/${currentProfile.id}`)}
+                    className="py-3 px-16 text-sm font-medium bg-loozr-purple rounded-full"
+                  >
+                    Buy artiste coin
+                  </button>
+                  <button
+                    onClick={() => push(`/artistes/sell/${currentProfile.id}`)}
+                    className="py-3 px-16 text-sm font-medium bg-dark-700 rounded-full ml-6"
+                  >
+                    Sell artiste coin
+                  </button>
+                </div>
+              ) : null}
               {currentProfile.id === user.id ? (
                 <div className="flex items-center">
                   <button

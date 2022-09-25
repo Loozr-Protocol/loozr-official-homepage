@@ -1,6 +1,6 @@
 import { Model } from "../types";
 
-export interface JsonProps {
+export interface UserJsonProps {
   username?: string;
   account_id: string;
   followings_count?: number;
@@ -63,7 +63,7 @@ export default class User implements Model {
     this.email = email;
   }
 
-  fromJson(jsonData: JsonProps) {
+  fromJson(jsonData: UserJsonProps) {
     this.username = jsonData['username'];
     this.accountId = jsonData['account_id'];
     this.followingsCount = jsonData['followings_count'];

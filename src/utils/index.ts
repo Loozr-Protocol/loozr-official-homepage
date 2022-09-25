@@ -1,4 +1,5 @@
-import User, { JsonProps } from "../config/constants/models/user";
+import Artist, { ArtistJsonProps } from "../config/constants/models/artist";
+import User, { UserJsonProps } from "../config/constants/models/user";
 
 export function copy(content: string) {
   if (!!content) {
@@ -22,8 +23,14 @@ export const parseJwt = (token: string) => {
   }
 };
 
-export const jsonToUser = (jsonData: JsonProps) => {
+export const jsonToUser = (jsonData: UserJsonProps) => {
   const user = new User({});
   user.fromJson(jsonData);
   return user;
+}
+
+export const jsonToArtist = (jsonData: ArtistJsonProps) => {
+  const artist = new Artist({});
+  artist.fromJson(jsonData);
+  return artist;
 }

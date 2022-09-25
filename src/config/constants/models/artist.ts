@@ -1,7 +1,7 @@
 import { Model } from '../types';
 import User from './user';
  
-export interface JsonProps {
+export interface ArtistJsonProps {
   id: number;
   is_verified: boolean;
   approved: string;
@@ -39,7 +39,7 @@ export default class Artist implements Model {
     this.user = user;
   }
 
-  fromJson(jsonData: JsonProps) {
+  fromJson(jsonData: ArtistJsonProps) {
     this.id = jsonData['id'];
     this.isVerified = jsonData['is_verified'];
     this.approved = jsonData['approved'];
