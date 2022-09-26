@@ -13,6 +13,7 @@ import { AppState } from "./state/store";
 import AuthVerify from "./containers/AuthVerify";
 import RequireAuth from "./containers/RequireAuth";
 import { parseJwt } from "./utils/index";
+import FullpageLoader from "./components/loaders/FullpageLoader";
 
 const NotFound = () => (
   <div className="main-content">
@@ -34,6 +35,7 @@ const App = () => {
 
   return (
     <>
+      <FullpageLoader/>
       <ToastContainer />
       <Router>
         <div>

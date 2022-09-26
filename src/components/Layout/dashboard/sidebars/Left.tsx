@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import LoozrBeta from "../../../../assets/icons/loozr-beta.svg";
 import Loozr from "../../../../assets/icons/loozr.svg";
 
@@ -17,6 +17,8 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { AppState } from "../../../../state/store";
 import { toast } from "react-toastify";
 import { TOAST_OPTIONS } from "../../../../config/constants";
+import { useBecomeArtisteCallback } from "../../../../state/artist/hooks";
+import { setPageLoaderStatus } from "../../../../state/misc";
 
 export const drawerMinWidth = 280;
 export const drawerMaxWidth = 20;
@@ -67,13 +69,25 @@ const tabs = [
 
 export const Left = () => {
   const { pathname } = useLocation();
+  const dispatch = useDispatch()
   const push = useNavigate();
   const xl = useMediaQuery("(min-width:1280px)");
   // const lg = useMediaQuery("(min-width:1024px)");
   const md = useMediaQuery("(min-width:768px)");
   const user = useSelector((state: AppState) => state.user.userInfo);
+  const {handleBecomeArtiste} = useBecomeArtisteCallback();
 
-  const launchToken = () => {
+  const becomeArtist = async () => {
+    dispatch(setPageLoaderStatus(true));
+    try {
+      await handleBecomeArtiste({});
+      window.location.reload();
+    }catch(err) {
+      dispatch(setPageLoaderStatus(false));
+    }
+  };
+
+  const musicUpload = () => {
     toast.info('Coming soon!', TOAST_OPTIONS);
   };
 
@@ -93,14 +107,14 @@ export const Left = () => {
       )}
       {!user.isArtist ? (
         <button
-          onClick={launchToken}
+          onClick={becomeArtist}
           className="hidden xl:block text-xs font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
         >
           Become an artist
         </button>
       ) : (
         <button
-          onClick={launchToken}
+          onClick={musicUpload}
           className="hidden xl:block text-xs font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
         >
           Upload song

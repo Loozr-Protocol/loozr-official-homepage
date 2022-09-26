@@ -11,7 +11,6 @@ import Home from "../containers/Home";
 import ArtistEcosystem from "../containers/ArtistsEcosystem";
 import ArtistDashboard from "../containers/ArtistDashboard";
 import SongDashboard from "../containers/SongDashboard";
-import AddTokenName from "../containers/AddTokenName";
 
 import Artistes from "../containers/Artistes";
 import ArtisteDashboard from "../containers/ArtisteDashboard";
@@ -69,9 +68,10 @@ export const authRoutes = [
     path: "account-setup",
     private: true,
     component: AccountSetup,
-  }, {
-    name: "Launch Token",
-    path: "launch-token",
+  },
+  {
+    name: "add token name",
+    path: "/artist-account-setup",
     private: true,
     component: LaunchToken,
   },
@@ -101,12 +101,6 @@ export const routes = [
     path: "/artists/songs/:id",
     private: false,
     component: SongDashboard,
-  },
-  {
-    name: "add token name",
-    path: "/tokenname/add",
-    private: true,
-    component: AddTokenName,
   },
 ];
 

@@ -45,7 +45,7 @@ const Artistes = () => {
             </div>
             <Link
               to={`/profile/${_.user.id}`}
-              className="font-normal mb-1.5 md:font-bold text-base md:text-base text-white text-center"
+              className="font-normal mb-1.5 md:font-bold text-base md:text-base text-white text-center uppercase"
             >
               ${_.creatorCoinId}
             </Link>

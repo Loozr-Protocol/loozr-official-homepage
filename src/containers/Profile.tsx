@@ -492,7 +492,7 @@ const Profile = () => {
                 </div>
               ) : null}
               {currentProfile.id === user.id ? (
-                <div className="flex items-center">
+                <div className="flex items-center mt-4">
                   <button
                     onClick={() => push("/profile/edit")}
                     className="py-3 px-16 text-sm font-medium bg-loozr-purple rounded-full"

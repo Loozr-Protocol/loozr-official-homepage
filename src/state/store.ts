@@ -2,12 +2,14 @@ import { configureStore } from '@reduxjs/toolkit';
 import songReducer from './song/songSlice';
 import userReducer from './user/userReducer';
 import artistReducer from './artist/artistReducer';
+import miscReducer from './misc/index';
 
 const store = configureStore({
   reducer: {
     song: songReducer,
     user: userReducer,
     artist: artistReducer,
+    misc: miscReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

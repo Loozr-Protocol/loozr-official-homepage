@@ -35,3 +35,21 @@ export function useSellArtistTokenCallback() {
   }
   return { handleSellToken }
 }
+
+export function useBecomeArtisteCallback() {
+  const handleBecomeArtiste = async (data: any): Promise<any> => {
+    const httpClient = new HttpClient();
+    const result = await httpClient.axiosInstance.post(`/users/become-artist`, data);
+    return result.data;
+  }
+  return { handleBecomeArtiste }
+}
+
+export function useArtisteSetupCallback() {
+  const handleArtisteSetup = async ({account_id, founder_reward}: {account_id: string, founder_reward: number}): Promise<any> => {
+    const httpClient = new HttpClient();
+    const result = await httpClient.axiosInstance.post(`/users/artist-setup`, {creator_coin_id: account_id, founder_reward});
+    return result.data;
+  }
+  return { handleArtisteSetup }
+}
