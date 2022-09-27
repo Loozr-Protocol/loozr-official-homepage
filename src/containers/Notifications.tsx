@@ -7,72 +7,72 @@ import Filter from "../assets/icons/filter.svg";
 import CaretDown from "../assets/icons/caret-down.svg";
 
 const notifications = [
-  {
-    type: "follow",
-    time: "3 min ago",
-    read: false,
-    detail: "Nina Slough followed you",
-  },
-  {
-    type: "trx",
-    time: "2 days ago",
-    read: false,
-    detail: "Anderson Gibbs sent you 10 LZR coin (~$109.50)",
-  },
-  {
-    type: "trx",
-    time: "7:39AM, 3rd Aug",
-    read: false,
-    detail: "Anderson Gibbs sent you 106 $DAVIDO coin (~$50.3K)",
-  },
-  {
-    type: "follow",
-    time: "3:28 PM 4th Aug",
-    read: false,
-    detail: "Nina Slough followed you",
-  },
-  {
-    type: "follow",
-    time: "3 days ago",
-    read: true,
-    detail: "Nina Slough followed you",
-  },
-  {
-    type: "follow",
-    time: "3 days ago",
-    read: true,
-    detail: "Nina Slough followed you",
-  },
-  {
-    type: "trx",
-    time: "7:39AM, 3rd Aug",
-    read: true,
-    detail: "Anderson Gibbs sent you 106 $DAVIDO coin (~$50.3K)",
-  },
-  {
-    type: "follow",
-    time: "3 days ago",
-    read: true,
-    detail: "Nina Slough followed you",
-  },
-  {
-    type: "trx",
-    time: "7:39AM, 3rd Aug",
-    read: true,
-    detail: "Anderson Gibbs sent you 106 $DAVIDO coin (~$50.3K)",
-  },
-  {
-    type: "trx",
-    time: "7:39AM, 3rd Aug",
-    read: true,
-    detail: "Anderson Gibbs sent you 106 $DAVIDO coin (~$50.3K)",
-  },
-  {
-    type: "verification",
-    time: "8 secs ago",
-    read: true,
-    detail: "You have earned the VERIFIED badge!",
-  },
+  // {
+  //   type: "follow",
+  //   time: "3 min ago",
+  //   read: false,
+  //   detail: "Nina Slough followed you",
+  // },
+  // {
+  //   type: "trx",
+  //   time: "2 days ago",
+  //   read: false,
+  //   detail: "Anderson Gibbs sent you 10 LZR coin (~$109.50)",
+  // },
+  // {
+  //   type: "trx",
+  //   time: "7:39AM, 3rd Aug",
+  //   read: false,
+  //   detail: "Anderson Gibbs sent you 106 $DAVIDO coin (~$50.3K)",
+  // },
+  // {
+  //   type: "follow",
+  //   time: "3:28 PM 4th Aug",
+  //   read: false,
+  //   detail: "Nina Slough followed you",
+  // },
+  // {
+  //   type: "follow",
+  //   time: "3 days ago",
+  //   read: true,
+  //   detail: "Nina Slough followed you",
+  // },
+  // {
+  //   type: "follow",
+  //   time: "3 days ago",
+  //   read: true,
+  //   detail: "Nina Slough followed you",
+  // },
+  // {
+  //   type: "trx",
+  //   time: "7:39AM, 3rd Aug",
+  //   read: true,
+  //   detail: "Anderson Gibbs sent you 106 $DAVIDO coin (~$50.3K)",
+  // },
+  // {
+  //   type: "follow",
+  //   time: "3 days ago",
+  //   read: true,
+  //   detail: "Nina Slough followed you",
+  // },
+  // {
+  //   type: "trx",
+  //   time: "7:39AM, 3rd Aug",
+  //   read: true,
+  //   detail: "Anderson Gibbs sent you 106 $DAVIDO coin (~$50.3K)",
+  // },
+  // {
+  //   type: "trx",
+  //   time: "7:39AM, 3rd Aug",
+  //   read: true,
+  //   detail: "Anderson Gibbs sent you 106 $DAVIDO coin (~$50.3K)",
+  // },
+  // {
+  //   type: "verification",
+  //   time: "8 secs ago",
+  //   read: true,
+  //   detail: "You have earned the VERIFIED badge!",
+  // },
 ];
 
 const Notifications = () => {
