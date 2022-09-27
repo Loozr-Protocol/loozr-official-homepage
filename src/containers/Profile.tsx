@@ -23,6 +23,7 @@ import User from "../config/constants/models/user";
 import CreatorStatCard from "../components/CreatorStatCard";
 import CoinHodlers from "../components/history/CoinHodlers";
 import { resetCoinPrice, resetHoldersList } from "../state/artist/artistReducer";
+import { decodedJWT, parseJwt } from "../utils";
 
 const Profile = () => {
   const push = useNavigate();
@@ -47,6 +48,7 @@ const Profile = () => {
       }
       dispatch(getIndividualProfile(Number(id)));
     }
+    dispatch(getIndividualProfile(Number(decodedJWT()["id"])));
     setCurrentProfile(user);
   };
 

@@ -23,6 +23,14 @@ export const parseJwt = (token: string) => {
   }
 };
 
+export const decodedJWT = () => {
+  const jwtToken = localStorage.getItem("jwtToken")
+    ? localStorage.getItem("jwtToken")
+    : null;
+  const result = parseJwt(jwtToken);
+  return result
+}
+
 export const jsonToUser = (jsonData: UserJsonProps) => {
   const user = new User({});
   user.fromJson(jsonData);
