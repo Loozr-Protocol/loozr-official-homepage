@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import * as yup from "yup";
 import { useFormik } from "formik";
-import Memoji from "../assets/img/artists/arlene.png";
 import { motion } from "framer-motion";
 import {
   useBuyArtistTokenCallback,
@@ -12,6 +11,7 @@ import Artist from "../config/constants/models/artist";
 import { jsonToArtist } from "../utils";
 import { httpError } from "../utils/httpHelper";
 import { Link } from "react-router-dom";
+import Photo from "../components/Photo";
 
 const BuyArtistToken = () => {
   const navigate = useNavigate();
@@ -105,9 +105,7 @@ const BuyArtistToken = () => {
         </div>
       </div>
     </div>
-  ) : 
-
-(
+  ) : (
     <div className="w-full mt-16 md:mt-0">
       <p className="text-white text-2xl font-semibold mb-12">
         Buy Artiste Token
@@ -115,8 +113,7 @@ const BuyArtistToken = () => {
       <div className="max-w-[490px]">
         <div className="w-30 mb-8">
           <div className="relative mb-2">
-            <img
-              src={Memoji}
+            <Photo
               alt=""
               width={113}
               height={113}
@@ -170,7 +167,7 @@ const BuyArtistToken = () => {
         </div>
       </div>
     </div>
-  )
+  );
 };
 
 export default BuyArtistToken;

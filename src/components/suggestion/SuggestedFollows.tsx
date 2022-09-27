@@ -7,6 +7,7 @@ import {
   useFollowCallback,
   usePollSuggestedFollows,
 } from "../../state/user/hooks/follows";
+import Photo from "../Photo";
 
 const SuggestedFollows = () => {
   const users = usePollSuggestedFollows();
@@ -30,8 +31,7 @@ const SuggestedFollows = () => {
         ? users.map((user, index) => (
             <div key={index} className="flex justify-between items-center mb-9">
               <div className="flex items-center text-muted">
-                <img
-                  src={Memoji}
+                <Photo
                   alt=""
                   className="h-[45px] w-[45px] rounded-full mr-2"
                   style={{ border: "6px solid #141922" }}

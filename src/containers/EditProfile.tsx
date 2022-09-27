@@ -12,6 +12,7 @@ import { httpError } from "../utils/httpHelper";
 import { useUpdateProfileCallback } from "../state/user/hooks/useAccount";
 import { toast } from "react-toastify";
 import { updateProfile } from "../state/user/userReducer";
+import Photo from "../components/Photo";
 
 const EditProfile = () => {
   const [hasLaunchedToken, setHasLaunchedToken] = useState(
@@ -82,8 +83,7 @@ const EditProfile = () => {
       </p>
       <div className="flex items-center justify-between w-1/2 mb-12">
         <div className="relative">
-          <img
-            src={Memoji}
+          <Photo
             alt=""
             width={113}
             height={113}

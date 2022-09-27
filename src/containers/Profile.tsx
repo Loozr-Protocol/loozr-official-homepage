@@ -3,7 +3,6 @@ import { transactions, coinsBought } from "../components/dummy/wallet";
 import { capitalize } from "../functions";
 import Arrow45Deg from "../assets/icons/arrow-45deg.svg";
 import Arrow225Deg from "../assets/icons/arrow-225deg.svg";
-import Arlene from "../assets/img/artists/arlene.png";
 import { ReactComponent as MoreIcon } from "../assets/icons/more-white.svg";
 
 import {
@@ -24,6 +23,7 @@ import CreatorStatCard from "../components/CreatorStatCard";
 import CoinHodlers from "../components/history/CoinHodlers";
 import { resetCoinPrice, resetHoldersList } from "../state/artist/artistReducer";
 import { decodedJWT, parseJwt } from "../utils";
+import Photo from "../components/Photo";
 
 const Profile = () => {
   const push = useNavigate();
@@ -191,8 +191,7 @@ const Profile = () => {
             key={index}
           >
             <div className="flex items-center">
-              <img
-                src={Arlene}
+              <Photo
                 alt=""
                 className="h-12 md:h-12 w-12 md:w-12 rounded-full mr-3"
                 style={{ border: "6px solid #141922" }}
@@ -277,8 +276,7 @@ const Profile = () => {
             <CreatorStatCard user={currentProfile} />
           )}
           <div className="flex items-start mb-12">
-            <img
-              src={Arlene}
+            <Photo
               alt={currentProfile.accountDomain}
               className="h-8 md:h-[170px] w-8 md:w-[170px] rounded-full mr-3"
               style={{ border: "20px solid #141922" }}

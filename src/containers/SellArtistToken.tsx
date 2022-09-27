@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import * as yup from "yup";
 import { useFormik } from "formik";
-import Memoji from "../assets/img/artists/arlene.png";
 import { motion } from "framer-motion";
 import {
   useGetArtistDetailsCallback,
@@ -11,6 +10,7 @@ import {
 import Artist from "../config/constants/models/artist";
 import { jsonToArtist } from "../utils";
 import { httpError } from "../utils/httpHelper";
+import Photo from "../components/Photo";
 
 const SellArtistToken = () => {
   const navigate = useNavigate();
@@ -112,8 +112,7 @@ const SellArtistToken = () => {
       <div className="max-w-[490px]">
         <div className="w-30 mb-8">
           <div className="relative mb-2">
-            <img
-              src={Memoji}
+            <Photo
               alt=""
               width={113}
               height={113}

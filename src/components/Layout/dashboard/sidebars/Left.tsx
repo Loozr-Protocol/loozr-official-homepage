@@ -19,6 +19,7 @@ import { toast } from "react-toastify";
 import { TOAST_OPTIONS } from "../../../../config/constants";
 import { useBecomeArtisteCallback } from "../../../../state/artist/hooks";
 import { setPageLoaderStatus } from "../../../../state/misc";
+import Photo from "../../../Photo";
 
 export const drawerMinWidth = 280;
 export const drawerMaxWidth = 20;
@@ -147,8 +148,7 @@ export const Left = () => {
           onClick={() => push("/profile")}
           className="flex items-center justify-center w-full mt-6 cursor-pointer"
         >
-          <img
-            src={Memoji}
+          <Photo
             alt=""
             className="object-contain w-8 h-8 xl:w-14 xl:h-10 rounded-full xl:mr-3"
             style={{ border: "6px solid #141922" }}
