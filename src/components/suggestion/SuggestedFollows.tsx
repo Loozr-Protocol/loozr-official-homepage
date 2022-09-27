@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Memoji from "../../assets/img/memoji.png";
 import { MIXER_ACCOUNT } from "../../config/constants";
 import User from "../../config/constants/models/user";
@@ -35,7 +36,7 @@ const SuggestedFollows = () => {
                   className="h-[45px] w-[45px] rounded-full mr-2"
                   style={{ border: "6px solid #141922" }}
                 />
-                <div>
+                <Link to={`/profile/${user.id}`}>
                   <p className="text-sm font-semibold text-white">
                     {user.accountId}
                   </p>
@@ -48,7 +49,7 @@ const SuggestedFollows = () => {
                   $3,001.99
                 </span> */}
                   </p>
-                </div>
+                </Link>
               </div>
               <p
                 className="text-[11px] font-medium text-loozr-purple"
