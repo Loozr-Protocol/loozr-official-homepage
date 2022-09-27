@@ -53,3 +53,12 @@ export function useArtisteSetupCallback() {
   }
   return { handleArtisteSetup }
 }
+
+export function useGetArtistStatCallback() {
+  const handleGetStat = async (id: number): Promise<any> => {
+    const httpClient = new HttpClient();
+    const result = await httpClient.axiosInstance.get(`/transactions/coin-stat/${id}`);
+    return result.data;
+  }
+  return { handleGetStat }
+}

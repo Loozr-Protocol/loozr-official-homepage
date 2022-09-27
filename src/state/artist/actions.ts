@@ -1,8 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { useGetArtistCallback } from "./hooks";
+import { useGetArtistCallback, useGetArtistStatCallback } from "./hooks";
 
 export const getArtists = createAsyncThunk(
-  'user/getArtists',
+  'artist/getArtists',
   async (any, { rejectWithValue }) => {
     const { handleGetArtists } = useGetArtistCallback();
     try {
@@ -13,3 +13,13 @@ export const getArtists = createAsyncThunk(
     }
   }
 )
+
+export const getCoinPrice = createAsyncThunk('artist/getCoinPrice', async (id: number, { rejectWithValue }) => {
+  try {
+    const { handleGetStat } = useGetArtistStatCallback();
+    const result = await handleGetStat(id);
+    return result;
+  } catch (error) {
+    return rejectWithValue(error);
+  }
+});

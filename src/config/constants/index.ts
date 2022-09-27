@@ -1,4 +1,5 @@
 import { ToastOptions } from "react-toastify";
+import BigNumber from 'bignumber.js'
 import { BIG_TEN } from '../../utils/bigNumber'
 
 export const HTTP_STATUS_CODES = {
@@ -30,3 +31,6 @@ export const CREATOR_COIN_DOMAIN = process.env.REACT_APP_CREATOR_COIN_DOMAIN;
 
 export const LZR_IN_USD = 16.35;
 export const DEFAULT_TOKEN_DECIMAL = BIG_TEN.pow(24)
+
+export const PRICE_SLOPE = new BigNumber(0.003);
+export const PRICE_RATE_EXPONENT = 2; // the rate at which the price of tokens go up or down

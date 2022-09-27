@@ -25,18 +25,7 @@ import { MIXER_ACCOUNT } from "../config/constants";
 import { abbrevNumber } from "../utils/formatBalance";
 import { getIndividualProfile } from "../state/user/userActions";
 import User from "../config/constants/models/user";
-
-const data = [
-  { name: "May", uv: 70000 },
-  { name: "May", uv: 70000 },
-  { name: "May", uv: 70000 },
-  { name: "Feb", uv: 63000 },
-  { name: "Jan", uv: 27000 },
-  { name: "Mar", uv: 40000 },
-  { name: "Apr", uv: 10000 },
-  { name: "Jun", uv: 43000 },
-  { name: "Dec", uv: 32000 },
-];
+import CreatorStatCard from "../components/CreatorStatCard";
 
 const Profile = () => {
   const push = useNavigate();
@@ -332,102 +321,8 @@ const Profile = () => {
     <div className="w-full">
       {currentProfile ? (
         <>
-          {currentProfile.isArtist && (
-            <div className="w-full bg-dark-700 px-3 md:!pl-10 pt-7 pb- mb-[52px] min-h-[260px]">
-              <div className="grid grid-cols-1 md:flex">
-                <div className="flex-1">
-                  <p className="font-medium text-sm text-muted mb-2 md:mb-[22px]">
-                    Coin name
-                  </p>
-                  <p className="font-extrabold uppercase text-2xl md:text-3xl text-white mb-6">
-                    ${currentProfile.tokenName}
-                  </p>
-                  <div className="flex items-center justify-between mb-6 md:mb-auto">
-                    <div className="text-center md:text-left">
-                      <p className="font-bold text-sm md:text-sm text-white text-left mb-1">
-                        $0.768
-                      </p>
-                      <p className="text-muted text-xs font-medium">
-                        My coin price
-                      </p>
-                    </div>
-                    <div className="text-center md:text-left">
-                      <p className="font-bold text-sm md:text-sm text-white text-left mb-1">
-                        $104.58K
-                      </p>
-                      <p className="text-muted text-xs font-medium">
-                        Market cap
-                      </p>
-                    </div>
-                    <div className="text-center md:text-left">
-                      <p className="font-bold text-sm md:text-sm text-white text-left mb-1">
-                        203
-                      </p>
-                      <p className="text-muted text-xs font-medium">Holders</p>
-                    </div>
-                    <div className="text-center md:text-left">
-                      <p className="font-bold text-sm md:text-sm text-white text-left mb-1">
-                        10%
-                      </p>
-                      <p className="text-muted text-xs font-medium">% Reward</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex justify-start">
-                  <div className="md:pl-24 flex md:flex-col kitems-center">
-                    <div>
-                      <p className="font-medium text-sm text-muted mb-6">
-                        My coin chart
-                      </p>
-                      <p className="mb-1 font-semibold text-sm">87%</p>
-                      <p className="mb-3.5 font-medium text-sm text-[#15FFAB]">
-                        +4.5%
-                      </p>
-                    </div>
-                    <ResponsiveContainer width={170} height={80}>
-                      <AreaChart
-                        data={data}
-                        margin={{ top: 20, right: 30, left: 0, bottom: 0 }}
-                      >
-                        <defs>
-                          <linearGradient
-                            id="colorUv"
-                            x1="0"
-                            y1="0"
-                            x2="0"
-                            y2="1"
-                          >
-                            <stop
-                              offset="5%"
-                              stopColor="#15FFAB"
-                              stopOpacity={0.1}
-                            />
-                            <stop
-                              offset="95%"
-                              stopColor="#15FFAB"
-                              stopOpacity={0}
-                            />
-                          </linearGradient>
-                        </defs>
-                        <XAxis dataKey="name" hide={true} />
-                        <YAxis hide={true} />
-
-                        <Tooltip />
-
-                        <Area
-                          type="monotone"
-                          dataKey="uv"
-                          stroke="#15FFAB"
-                          // fill="#15FFAB"
-                          fillOpacity={1}
-                          fill="url(#colorUv)"
-                        />
-                      </AreaChart>
-                    </ResponsiveContainer>
-                  </div>
-                </div>
-              </div>
-            </div>
+          {currentProfile.isArtist && currentProfile.tokenName && (
+            <CreatorStatCard user={currentProfile}/>
           )}
           <div className="flex items-start mb-12">
             <img
@@ -521,7 +416,7 @@ const Profile = () => {
               }`}
               onClick={() => setActive(2)}
             >
-              My coin holders
+              Coin holders
             </p>
             <p
               className={`cursor-pointer ${

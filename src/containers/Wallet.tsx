@@ -12,20 +12,24 @@ import { useNavigate } from "react-router-dom";
 import { usePollLZRBalance } from "../state/wallet/hooks/fetchBalance";
 import { LZR_IN_USD, MIXER_ACCOUNT } from "../config/constants";
 import { AppState } from "../state/store";
-import { formatBalanceUSD, formatNumber, getFullDisplayBalance } from "../utils/formatBalance";
+import {
+  formatBalanceUSD,
+  formatNumber,
+  getFullDisplayBalance,
+} from "../utils/formatBalance";
 import { useSelector } from "react-redux";
 import { copy } from "../utils";
 
 const Wallet = () => {
   const push = useNavigate();
   const [active, setActive] = useState(1);
-   const user = useSelector((state: AppState) => state.user.userInfo);
-   const lzrAccountId = `${user.accountId}.${MIXER_ACCOUNT}`;
-   const balanceResult = usePollLZRBalance(lzrAccountId);
-   const balanceBN = getFullDisplayBalance(balanceResult);
+  const user = useSelector((state: AppState) => state.user.userInfo);
+  const lzrAccountId = `${user.accountId}.${MIXER_ACCOUNT}`;
+  const balanceResult = usePollLZRBalance(lzrAccountId);
+  const balanceBN = getFullDisplayBalance(balanceResult);
 
-   const balanceInLzr = formatNumber(Number(balanceBN));
-   const balanceUsd = formatBalanceUSD(Number(balanceBN));
+  const balanceInLzr = formatNumber(Number(balanceBN));
+  const balanceUsd = formatBalanceUSD(Number(balanceBN));
 
   const renderHistory = useMemo(() => {
     switch (active) {
@@ -150,7 +154,6 @@ const Wallet = () => {
     }
   }, [active]);
 
-
   return (
     <div className="w-full">
       <div className="w-full bg-dark-700 p-4 md:!py-8 md:!px-11 mb-12">
@@ -212,7 +215,7 @@ const Wallet = () => {
           }`}
           onClick={() => setActive(2)}
         >
-          My coin holders
+          Coin holders
         </p>
         <p
           className={`cursor-pointer ${
