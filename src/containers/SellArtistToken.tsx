@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import Memoji from "../assets/img/artists/arlene.png";
@@ -10,13 +10,12 @@ import {
 } from "../state/artist/hooks";
 import Artist from "../config/constants/models/artist";
 import { jsonToArtist } from "../utils";
-import { toast } from "react-toastify";
-import { TOAST_OPTIONS } from "../config/constants";
 import { httpError } from "../utils/httpHelper";
 
 const SellArtistToken = () => {
   const navigate = useNavigate();
   const [isLoading, setLoading] = useState(false);
+  const [isSuccess, setSuccess] = useState(false);
   const { handleGetArtists } = useGetArtistDetailsCallback();
   const { handleSellToken } = useSellArtistTokenCallback();
   let { id } = useParams();
@@ -64,8 +63,9 @@ const SellArtistToken = () => {
     try {
       await handleSellToken(artistDetails.id, formik.values.amount);
       setLoading(false);
-      toast.success("Exchange successful!", TOAST_OPTIONS);
+      setSuccess(true);
     } catch (err: any) {
+      setSuccess(false);
       setLoading(false);
       httpError(err);
     }
@@ -80,7 +80,31 @@ const SellArtistToken = () => {
     return <></>;
   }
 
-  return (
+  return isSuccess ? (
+    <div className="w-full h-full grid pt-16">
+      <div className="flex flex-col items-center justify-center px-8 md:px-auto w-full max-w-5xl mx-auto text-white">
+        <div
+          className="bg-dark-800 text-center w-full py-16 px-7 md:px-[107px]"
+          style={{ zoom: "85%" }}
+        >
+          <p className="text-2xl md:text-3xl mb-10 font-medium">
+            Transaction complete!
+          </p>
+
+          <p className="text-xl md:text-2xl font-medium text-muted">
+            You exchanged {formik.values.amount}{" "}
+            <strong className="uppercase">
+              ${artistDetails.creatorCoinId}
+            </strong>
+            for LZR
+          </p>
+          <Link to="/explore" className="mt-2 text-loozr-purple">
+            Continue
+          </Link>
+        </div>
+      </div>
+    </div>
+  ) : (
     <div className="w-full mt-16 md:mt-0">
       <p className="text-white text-2xl font-semibold mb-12">
         Sell Artiste Token
@@ -103,8 +127,9 @@ const SellArtistToken = () => {
         </div>
         <div className="w-full mb-8">
           <p className="text-sm font-medium text-muted mb-5">
-            Amount of <span className="uppercase">${artistDetails.creatorCoinId}</span> to exchange
-            for LZR:
+            Amount of{" "}
+            <span className="uppercase">${artistDetails.creatorCoinId}</span> to
+            exchange for LZR:
           </p>
           <input
             type="tel"

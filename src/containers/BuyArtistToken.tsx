@@ -10,13 +10,13 @@ import {
 } from "../state/artist/hooks";
 import Artist from "../config/constants/models/artist";
 import { jsonToArtist } from "../utils";
-import { toast } from "react-toastify";
-import { TOAST_OPTIONS } from "../config/constants";
 import { httpError } from "../utils/httpHelper";
+import { Link } from "react-router-dom";
 
 const BuyArtistToken = () => {
   const navigate = useNavigate();
   const [isLoading, setLoading] = useState(false);
+  const [isSuccess, setSuccess] = useState(false);
   const { handleGetArtists } = useGetArtistDetailsCallback();
   const { handleBuyToken } = useBuyArtistTokenCallback();
   let { id } = useParams();
@@ -64,8 +64,9 @@ const BuyArtistToken = () => {
     try {
       await handleBuyToken(artistDetails.id, formik.values.amount);
       setLoading(false);
-      toast.success("Purchase successful!", TOAST_OPTIONS);
+      setSuccess(true);
     } catch (err: any) {
+      setSuccess(false);
       setLoading(false);
       httpError(err);
     }
@@ -80,7 +81,33 @@ const BuyArtistToken = () => {
     return <></>;
   }
 
-  return (
+  return isSuccess ? (
+    <div className="w-full h-full grid pt-16">
+      <div className="flex flex-col items-center justify-center px-8 md:px-auto w-full max-w-5xl mx-auto text-white">
+        <div
+          className="bg-dark-800 text-center w-full py-16 px-7 md:px-[107px]"
+          style={{ zoom: "85%" }}
+        >
+          <p className="text-2xl md:text-3xl mb-10 font-medium">
+            Transaction complete!
+          </p>
+
+          <p className="text-xl md:text-2xl font-medium text-muted">
+            You exchanged {formik.values.amount} LZR for{" "}
+            <strong className="uppercase">
+              ${artistDetails.creatorCoinId}
+            </strong>{" "}
+            coin
+          </p>
+          <Link to="/explore" className="mt-2 text-loozr-purple">
+            Continue
+          </Link>
+        </div>
+      </div>
+    </div>
+  ) : 
+
+(
     <div className="w-full mt-16 md:mt-0">
       <p className="text-white text-2xl font-semibold mb-12">
         Buy Artiste Token
@@ -143,7 +170,7 @@ const BuyArtistToken = () => {
         </div>
       </div>
     </div>
-  );
+  )
 };
 
 export default BuyArtistToken;
