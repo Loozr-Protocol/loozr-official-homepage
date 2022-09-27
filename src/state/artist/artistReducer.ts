@@ -1,10 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import BigNumber from 'bignumber.js';
 import Artist from '../../config/constants/models/artist';
+import User from '../../config/constants/models/user';
+import { jsonToUser } from '../../utils';
 import { priceInLoozr } from '../../utils/creatorCoinFormater';
-import { formatBalanceUSD, formatNumber, getBalanceAmount } from '../../utils/formatBalance';
+import { formatBalanceUSD, formatNumber, getBalanceAmount, getFullDisplayBalance } from '../../utils/formatBalance';
 import { httpError } from '../../utils/httpHelper';
-import { getArtists, getCoinPrice } from './actions';
+import { getArtists, getCoinPrice, getHodlers, getHodlersBalance } from './actions';
 
 export interface CoinInfo {
   coinPrice: number;
@@ -15,10 +17,19 @@ export interface CoinInfo {
   totalSupply: BigNumber;
 }
 
+interface Hodler {
+  user: User;
+  balance?: {
+    balance: string;
+    balanceUSD: string;
+  }
+}
+
 export interface ArtistState {
   artists: Artist[];
   artistInfo?: Artist;
   coinInfo: CoinInfo;
+  holders: Hodler[];
   loading: boolean;
   success: boolean;
   error: string;
@@ -28,6 +39,7 @@ const initialState: ArtistState = {
   artists: [],
   artistInfo: null,
   coinInfo: null,
+  holders: [],
   loading: false,
   success: false,
   error: null
@@ -64,7 +76,7 @@ const artistSlice = createSlice({
       state.error = null;
       httpError(action.payload);
     });
-    
+
     builder.addCase(getCoinPrice.pending, (state) => {
       state.coinInfo = null;
     });
@@ -89,6 +101,47 @@ const artistSlice = createSlice({
 
     builder.addCase(getCoinPrice.rejected, (state, action) => {
       state.coinInfo = null;
+    });
+
+    builder.addCase(getHodlers.pending, (state) => {
+      state.holders = [];
+    });
+
+    builder.addCase(getHodlers.fulfilled, (state, action) => {
+      state.holders = action.payload.results.map((res: any) => {
+        const user = jsonToUser(res['user']);
+        return { user };
+      });
+    });
+
+    builder.addCase(getHodlers.rejected, (state, action) => {
+      state.holders = [];
+    });
+
+    builder.addCase(getHodlersBalance.fulfilled, (state, action) => {
+      const [userId, balance] = action.payload;
+      const holder = state.holders.find(e => e.user.id === userId);
+      const holderIndex = state.holders.indexOf(holder)
+
+      if (holderIndex > -1) {
+        const piceInLzr = getFullDisplayBalance(balance);
+        let priceInUSD = '0';
+        
+        if(state.coinInfo) {
+          priceInUSD = formatNumber(Number(piceInLzr) * Number(state.coinInfo.priceUSD), 2, 6);
+        }
+        const data: Hodler = {
+          ...holder,
+          balance: {
+            balance: formatNumber(Number(piceInLzr), 2, 6),
+            balanceUSD: priceInUSD,
+          }
+        }
+        const holders = state.holders;
+        holders[holderIndex] = data;
+
+        state.holders = holders;
+      }
     });
   }
 });

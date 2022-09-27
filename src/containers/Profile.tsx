@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import {
   transactions,
-  tokenHolder,
   coinsBought,
 } from "../components/dummy/wallet";
 import { capitalize } from "../functions";
@@ -26,6 +25,8 @@ import { abbrevNumber } from "../utils/formatBalance";
 import { getIndividualProfile } from "../state/user/userActions";
 import User from "../config/constants/models/user";
 import CreatorStatCard from "../components/CreatorStatCard";
+import CoinHodlers from "../components/history/CoinHodlers";
+import { resetCoinPrice } from "../state/artist/artistReducer";
 
 const Profile = () => {
   const push = useNavigate();
@@ -43,9 +44,12 @@ const Profile = () => {
   const [lzrAccountId, setAccountId] = useState<string>(
     `${user.accountId}.${MIXER_ACCOUNT}`
   );
+  const coinInfo = useSelector((state: AppState) => state.artist.coinInfo);
 
   useEffect(() => {
     setCurrentProfile(user);
+    dispatch(resetCoinPrice());
+
     if (id) {
       if (Number(id) !== user.id) {
         setCurrentProfile(null);
@@ -62,7 +66,7 @@ const Profile = () => {
     if (id) {
       const user_id = Number(id) !== user.id ? Number(id) : user.id;
       dispatch(getIndividualProfile(user_id));
-    }else {
+    } else {
       dispatch(getIndividualProfile(user.id));
     }
   }, [id]);
@@ -193,6 +197,8 @@ const Profile = () => {
   const renderHistory = useMemo(() => {
     switch (active) {
       case 1:
+        return <CoinHodlers user={currentProfile} />
+      case 2:
         return coinsBought.map((item, index) => (
           <div
             className="w-full flex items-center justify-between mb-6"
@@ -211,46 +217,6 @@ const Profile = () => {
                 </p>
                 <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
                   You own 0.735 LZR
-                </p>
-              </div>
-            </div>
-            <div>
-              <p className="text-xs md:text-sm font-semibold text-white mb-0.5">
-                {capitalize(item.type)}
-              </p>
-              <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
-                Type of user
-              </p>
-            </div>
-            <div>
-              <p className="text-xs md:text-sm font-semibold text-white mb-0.5">
-                ~${item.price}
-              </p>
-              <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
-                USD value
-              </p>
-            </div>
-          </div>
-        ));
-      case 2:
-        return tokenHolder.map((item, index) => (
-          <div
-            className="w-full flex items-center justify-between text-white mb-6"
-            key={index}
-          >
-            <div className="flex items-center">
-              <img
-                src={Arlene}
-                alt=""
-                className="h-12 w-12 rounded-full mr-3"
-                style={{ border: "6px solid #141922" }}
-              />
-              <div>
-                <p className="text-xs md:text-sm font-bold text-white mb-0.5">
-                  {item.name}
-                </p>
-                <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
-                  Owns {item.owns} LZR of your artiste token
                 </p>
               </div>
             </div>
@@ -322,7 +288,7 @@ const Profile = () => {
       {currentProfile ? (
         <>
           {currentProfile.isArtist && currentProfile.tokenName && (
-            <CreatorStatCard user={currentProfile}/>
+            <CreatorStatCard user={currentProfile} />
           )}
           <div className="flex items-start mb-12">
             <img
@@ -408,7 +374,7 @@ const Profile = () => {
               }`}
               onClick={() => setActive(1)}
             >
-              Coins bought
+              Coin holders
             </p>
             <p
               className={`mr-10 cursor-pointer ${
@@ -416,7 +382,7 @@ const Profile = () => {
               }`}
               onClick={() => setActive(2)}
             >
-              Coin holders
+              Coins bought
             </p>
             <p
               className={`cursor-pointer ${
@@ -427,7 +393,7 @@ const Profile = () => {
               Transactions
             </p>
           </div>
-          {renderHistory}
+          {coinInfo ? renderHistory : null}
         </>
       ) : errorLoadingProfile ? (
         <div className="text-center">Profile Not Found!</div>

@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { useGetArtistCallback, useGetArtistStatCallback } from "./hooks";
+import { useGetArtistCallback, useGetArtistHodlersCallback, useGetArtistStatCallback, useGetHodlersBalanceCallback } from "./hooks";
 
 export const getArtists = createAsyncThunk(
   'artist/getArtists',
@@ -23,3 +23,29 @@ export const getCoinPrice = createAsyncThunk('artist/getCoinPrice', async (id: n
     return rejectWithValue(error);
   }
 });
+
+export const getHodlers = createAsyncThunk(
+  'artist/getHodlers',
+  async (id: number, { rejectWithValue }) => {
+    const { handleGetHodlers } = useGetArtistHodlersCallback();
+    try {
+      const result = await handleGetHodlers(id);
+      return result;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+)
+
+export const getHodlersBalance = createAsyncThunk(
+  'artist/getHodlersBalance',
+  async ({ id, accountId }: { id: number, accountId: string }, { rejectWithValue }) => {
+    const { handleGetHodlerBalance } = useGetHodlersBalanceCallback();
+    try {
+      const result = await handleGetHodlerBalance(id, accountId);
+      return [id, result];
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+)

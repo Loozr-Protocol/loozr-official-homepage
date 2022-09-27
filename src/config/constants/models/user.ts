@@ -1,3 +1,4 @@
+import { MIXER_ACCOUNT } from "..";
 import { Model } from "../types";
 
 export interface UserJsonProps {
@@ -61,6 +62,14 @@ export default class User implements Model {
     this.country = country;
     this.isArtist = isArtist;
     this.email = email;
+  }
+
+  get accountType() {
+    return this.isArtist ? "Artiste" : "Listener";
+  }
+
+  get accountDomain() {
+    return `${this.accountId}.${MIXER_ACCOUNT}`;
   }
 
   fromJson(jsonData: UserJsonProps) {

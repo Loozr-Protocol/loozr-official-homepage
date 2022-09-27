@@ -62,3 +62,21 @@ export function useGetArtistStatCallback() {
   }
   return { handleGetStat }
 }
+
+export function useGetArtistHodlersCallback() {
+  const handleGetHodlers = async (id: number): Promise<any> => {
+    const httpClient = new HttpClient();
+    const result = await httpClient.axiosInstance.get(`/transactions/coin-holders/${id}`);
+    return result.data;
+  }
+  return { handleGetHodlers }
+}
+
+export function useGetHodlersBalanceCallback() {
+  const handleGetHodlerBalance = async (id: number, accountId: string): Promise<any> => {
+    const httpClient = new HttpClient();
+    const result = await httpClient.axiosInstance.get(`/transactions/coin-price/${id}/${accountId}`);
+    return result.data;
+  }
+  return { handleGetHodlerBalance }
+}
