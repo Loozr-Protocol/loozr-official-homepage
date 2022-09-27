@@ -5,19 +5,28 @@ import { getHodlers, getHodlersBalance } from "../../state/artist/actions";
 import Arlene from "../../assets/img/artists/arlene.png";
 import { AppState } from "../../state/store";
 
-export default function CoinHodlers({ user }: { user: User }) {
+export default function CoinHodlers({ coin, user }: { coin: User; user: User }) {
   const dispatch = useDispatch();
   const holders = useSelector((state: AppState) => state.artist.holders);
+  const holderLoaded = useSelector(
+    (state: AppState) => state.artist.holderLoaded
+  );
 
   useEffect(() => {
-    dispatch(getHodlers(user.id));
-  }, [user]);
+    dispatch(getHodlers(coin.id));
+  }, []);
 
   useEffect(() => {
     holders.map((_) => {
-      dispatch(getHodlersBalance({ id: user.id, accountId: _.user.accountDomain }));
+      dispatch(
+        getHodlersBalance({
+          id: coin.id,
+          accountId: user.accountDomain,
+          userId: user.id,
+        })
+      );
     });
-  }, [holders]);
+  }, [holderLoaded]);
 
   return (
     <>
@@ -38,8 +47,10 @@ export default function CoinHodlers({ user }: { user: User }) {
                 {hodler.user.accountId}
               </p>
               <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
-                {hodler.balance ? `Owns ${hodler.balance.balance} LZR of
-                your artiste token` : ""}
+                {hodler.balance
+                  ? `Owns ${hodler.balance.balance} LZR of
+                your artiste token`
+                  : ""}
               </p>
             </div>
           </div>

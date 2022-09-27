@@ -1,8 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import {
-  transactions,
-  coinsBought,
-} from "../components/dummy/wallet";
+import { transactions, coinsBought } from "../components/dummy/wallet";
 import { capitalize } from "../functions";
 import Arrow45Deg from "../assets/icons/arrow-45deg.svg";
 import Arrow225Deg from "../assets/icons/arrow-225deg.svg";
@@ -20,13 +17,12 @@ import {
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../state/store";
-import { MIXER_ACCOUNT } from "../config/constants";
 import { abbrevNumber } from "../utils/formatBalance";
 import { getIndividualProfile } from "../state/user/userActions";
 import User from "../config/constants/models/user";
 import CreatorStatCard from "../components/CreatorStatCard";
 import CoinHodlers from "../components/history/CoinHodlers";
-import { resetCoinPrice } from "../state/artist/artistReducer";
+import { resetCoinPrice, resetHoldersList } from "../state/artist/artistReducer";
 
 const Profile = () => {
   const push = useNavigate();
@@ -40,42 +36,30 @@ const Profile = () => {
   const currentProfileFromState = useSelector(
     (state: AppState) => state.user.currentProfile
   );
-  const [currentProfile, setCurrentProfile] = useState<User>(user);
-  const [lzrAccountId, setAccountId] = useState<string>(
-    `${user.accountId}.${MIXER_ACCOUNT}`
-  );
+  const [currentProfile, setCurrentProfile] = useState<User>();
   const coinInfo = useSelector((state: AppState) => state.artist.coinInfo);
 
-  useEffect(() => {
-    setCurrentProfile(user);
-    dispatch(resetCoinPrice());
-
+  const loadProfile = () => {
     if (id) {
       if (Number(id) !== user.id) {
-        setCurrentProfile(null);
-        if (currentProfileFromState) {
-          setCurrentProfile(currentProfileFromState);
-        } else {
-          dispatch(getIndividualProfile(Number(id)));
-        }
+        dispatch(getIndividualProfile(Number(id)));
+        return;
       }
+      dispatch(getIndividualProfile(Number(id)));
     }
+    setCurrentProfile(user);
+  };
+
+  useEffect(() => {
+    dispatch(resetCoinPrice());
+    dispatch(resetHoldersList());
   }, []);
 
   useEffect(() => {
-    if (id) {
-      const user_id = Number(id) !== user.id ? Number(id) : user.id;
-      dispatch(getIndividualProfile(user_id));
-    } else {
-      dispatch(getIndividualProfile(user.id));
-    }
-  }, [id]);
-
-  useEffect(() => {
-    if (currentProfile) {
-      setAccountId(`${currentProfile.accountId}.${MIXER_ACCOUNT}`);
-    }
-  }, [currentProfile]);
+    dispatch(resetCoinPrice());
+    dispatch(resetHoldersList());
+    loadProfile();
+  }, [id, user]);
 
   useEffect(() => {
     setCurrentProfile(currentProfileFromState);
@@ -197,7 +181,7 @@ const Profile = () => {
   const renderHistory = useMemo(() => {
     switch (active) {
       case 1:
-        return <CoinHodlers user={currentProfile} />
+        return <CoinHodlers coin={currentProfile} user={user} />;
       case 2:
         return coinsBought.map((item, index) => (
           <div
@@ -277,7 +261,7 @@ const Profile = () => {
       default:
         return "";
     }
-  }, [active]);
+  }, [active, currentProfile]);
 
   if (currentProfile && !currentProfile.accountId) {
     return <div className="text-center">Profile Not Found!</div>;
@@ -293,13 +277,13 @@ const Profile = () => {
           <div className="flex items-start mb-12">
             <img
               src={Arlene}
-              alt={currentProfile.accountId}
+              alt={currentProfile.accountDomain}
               className="h-8 md:h-[170px] w-8 md:w-[170px] rounded-full mr-3"
               style={{ border: "20px solid #141922" }}
             />
             <div className="md:ml-10">
               <p className="text-xl md:text-xl font-medium text-white mb-1.5">
-                {lzrAccountId}
+                {currentProfile.accountDomain}
               </p>
               <p className="text-muted font-medium text-sm md:text-sm mb-[10px]">
                 <span>{currentProfile.accountId}</span>
@@ -397,7 +381,9 @@ const Profile = () => {
         </>
       ) : errorLoadingProfile ? (
         <div className="text-center">Profile Not Found!</div>
-      ) : null}
+      ) : (
+        <div className="text-center">Loading Profile...</div>
+      )}
     </div>
   );
 };

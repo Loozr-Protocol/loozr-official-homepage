@@ -30,6 +30,7 @@ export interface ArtistState {
   artistInfo?: Artist;
   coinInfo: CoinInfo;
   holders: Hodler[];
+  holderLoaded: boolean;
   loading: boolean;
   success: boolean;
   error: string;
@@ -40,6 +41,7 @@ const initialState: ArtistState = {
   artistInfo: null,
   coinInfo: null,
   holders: [],
+  holderLoaded: false,
   loading: false,
   success: false,
   error: null
@@ -51,6 +53,10 @@ const artistSlice = createSlice({
   reducers: {
     resetCoinPrice(state) {
       state.coinInfo = null;
+    },
+    resetHoldersList(state) {
+      state.holders = [];
+      state.holderLoaded = false;
     }
   },
   extraReducers: (builder) => {
@@ -105,6 +111,7 @@ const artistSlice = createSlice({
 
     builder.addCase(getHodlers.pending, (state) => {
       state.holders = [];
+      state.holderLoaded = false;
     });
 
     builder.addCase(getHodlers.fulfilled, (state, action) => {
@@ -112,16 +119,18 @@ const artistSlice = createSlice({
         const user = jsonToUser(res['user']);
         return { user };
       });
+      state.holderLoaded = true;
     });
 
     builder.addCase(getHodlers.rejected, (state, action) => {
       state.holders = [];
+      state.holderLoaded = false;
     });
 
     builder.addCase(getHodlersBalance.fulfilled, (state, action) => {
       const [userId, balance] = action.payload;
       const holder = state.holders.find(e => e.user.id === userId);
-      const holderIndex = state.holders.indexOf(holder)
+      const holderIndex = state.holders.indexOf(holder);
 
       if (holderIndex > -1) {
         const piceInLzr = getFullDisplayBalance(balance);
@@ -146,5 +155,5 @@ const artistSlice = createSlice({
   }
 });
 
-export const { resetCoinPrice } = artistSlice.actions
+export const { resetCoinPrice, resetHoldersList } = artistSlice.actions
 export default artistSlice.reducer

@@ -39,11 +39,11 @@ export const getHodlers = createAsyncThunk(
 
 export const getHodlersBalance = createAsyncThunk(
   'artist/getHodlersBalance',
-  async ({ id, accountId }: { id: number, accountId: string }, { rejectWithValue }) => {
+  async ({ id, accountId, userId }: { id: number, accountId: string, userId: number }, { rejectWithValue }) => {
     const { handleGetHodlerBalance } = useGetHodlersBalanceCallback();
     try {
       const result = await handleGetHodlerBalance(id, accountId);
-      return [id, result];
+      return [userId, result];
     } catch (error) {
       return rejectWithValue(error);
     }
