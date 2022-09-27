@@ -160,7 +160,7 @@ export const Left = () => {
             <p className="text-[11px] font-medium flex items-center w-auto flex-nowrap whitespace-nowrap text-muted">
               {user.isArtist ? (
                 <span>
-                  ${user.tokenName}
+                  <span className="uppercase">${user.tokenName}</span>{" "}
                   <span className="h-1 w-1 rounded-full bg-muted opacity-90 mb-[3px]" />{" "}
                   Artiste
                 </span>
