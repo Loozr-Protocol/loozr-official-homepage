@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { motion } from "framer-motion";
-import Memoji from "../assets/img/memoji.png";
 import { ReactComponent as HelpIcon } from "../assets/icons/help.svg";
 import ToolTip from "../components/Tooltip";
 import { AppState } from "../state/store";
@@ -13,11 +12,9 @@ import { useUpdateProfileCallback } from "../state/user/hooks/useAccount";
 import { toast } from "react-toastify";
 import { updateProfile } from "../state/user/userReducer";
 import Photo from "../components/Photo";
+import { jsonToUser } from "../utils";
 
 const EditProfile = () => {
-  const [hasLaunchedToken, setHasLaunchedToken] = useState(
-    sessionStorage.getItem("hasLaunchedToken") === "true"
-  );
   const [isLoading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const { handleUpdateProfile } = useUpdateProfileCallback();
@@ -25,7 +22,7 @@ const EditProfile = () => {
   const lzrAccountId = `${user.accountId}.${MIXER_ACCOUNT}`;
 
   const profileEditSchema = yup.object({
-    username: yup.string().required("Please enter full name"),
+    username: yup.string().required("Please enter full name").nullable(),
     website: yup.string(),
     country: yup.string(),
     bio: yup.string(),
@@ -53,7 +50,6 @@ const EditProfile = () => {
   }, [user.username, user.country, user.bio, user.website]);
 
   const handleSubmit = async () => {
-    console.log(formik.values);
     if (!formik.dirty) {
       return;
     } else if (!formik.isValid) {
@@ -62,19 +58,15 @@ const EditProfile = () => {
     setLoading(true);
     try {
       const result = await handleUpdateProfile(formik.values);
+      const user = jsonToUser(result);
       setLoading(false);
-      console.log("Good here:::: ", result);
-      dispatch(updateProfile(result));
+      dispatch(updateProfile(user));
       toast.success("Profile updated!", TOAST_OPTIONS);
     } catch (err: any) {
       setLoading(false);
       httpError(err);
     }
   };
-
-  useEffect(() => {
-    setHasLaunchedToken(sessionStorage.getItem("hasLaunchedToken") === "true");
-  }, []);
 
   return (
     <div className="w-full mt-[70px] md:mt-0">
@@ -179,7 +171,7 @@ const EditProfile = () => {
           ></textarea>
         </div>
       </div>
-      {hasLaunchedToken && (
+      {/* {hasLaunchedToken && (
         <>
           <div className="h-px bg-muted-50 mb-11" />
           <p className="font-medium text-base md:text-lg text-white mb-8">
@@ -238,7 +230,7 @@ const EditProfile = () => {
             </div>
           </div>
         </>
-      )}
+      )} */}
       <button
         className="py-[17px] text-white disabled:text-muted font-medium md:text-sm bg-gradient-ld disabled:bg-dark-800 mb-11 w-[48%] focus:outline-none"
         onClick={handleSubmit}
