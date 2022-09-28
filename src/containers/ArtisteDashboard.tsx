@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import Arrow from "../assets/Arrow.svg";
 import Heart from "../assets/Heart.svg";
 import Chart from "../assets/Chart.svg";
@@ -19,6 +19,10 @@ import LinearProgress, {
 } from "@mui/material/LinearProgress";
 import { styled } from "@mui/material/styles";
 import useAudioPlayer from "../hooks/useAudioPlayer";
+import { useDispatch, useSelector } from "react-redux";
+import { AppState } from "../state/store";
+import { getArtists } from "../state/artist/actions";
+import Photo from "../components/Photo";
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 4,
@@ -33,8 +37,14 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 }));
 
 const ArtisteDashboard = () => {
+  const dispatch = useDispatch();
+  const artists = useSelector((state: AppState) => state.artist.artists);
   const [canPlay, setCanPlay] = useState(false);
   const { playing, setPlaying, duration, curTime } = useAudioPlayer(100);
+
+  useEffect(() => {
+    dispatch(getArtists());
+  }, []);
 
   const renderAudioPlayer = useMemo(() => {
     return (
@@ -111,21 +121,20 @@ const ArtisteDashboard = () => {
         className="max-w-full overflow-auto whitespace-nowrap mb-16"
       >
         <div className="flex">
-          {featured.map((_, index) => (
+          {artists.map((_, i) => (
             <div
-              key={index}
+              key={i}
               className="flex flex-col items-center mr-4 min-w-max md:min-w-[145px] relative"
             >
               <div className="relative">
-                <img
-                  src={_.img}
+                <Photo
                   alt=""
                   className="object-cover h-20 md:h-32 w-20 md:w-32 rounded-full border-[15px] border-dark-700 mb-[16px]"
                   style={{
                     border: "14px solid #141922",
                   }}
                 />
-                {_.verified && (
+                {_.isVerified && (
                   <img
                     src={VerifiedBadge}
                     alt=""
@@ -133,12 +142,12 @@ const ArtisteDashboard = () => {
                   />
                 )}
               </div>
-              <p className="font-normal mb-px md:font-bold text-[15px] text-white text-center">
-                {_.name}
-              </p>
-              <p className="text-muted text-xs font-medium md:text-[13px] md:font-medium text-center">
-                {_.price}
-              </p>
+              <Link
+                to={`/profile/${_.user.id}`}
+                className="font-normal mb-px md:font-bold text-[15px] text-white text-center uppercase"
+              >
+                ${_.creatorCoinId}
+              </Link>
             </div>
           ))}
         </div>
