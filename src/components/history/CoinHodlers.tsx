@@ -4,6 +4,7 @@ import User from "../../config/constants/models/user";
 import { getHodlers, getHodlersBalance } from "../../state/artist/actions";
 import Arlene from "../../assets/img/artists/arlene.png";
 import { AppState } from "../../state/store";
+import Photo from "../Photo";
 
 export default function CoinHodlers({ coin, user }: { coin: User; user: User }) {
   const dispatch = useDispatch();
@@ -38,8 +39,7 @@ export default function CoinHodlers({ coin, user }: { coin: User; user: User }) 
           key={index}
         >
           <div className="flex items-center">
-            <img
-              src={Arlene}
+            <Photo
               alt=""
               className="h-12 w-12 rounded-full mr-3"
               style={{ border: "6px solid #141922" }}
@@ -49,7 +49,13 @@ export default function CoinHodlers({ coin, user }: { coin: User; user: User }) 
                 {hodler.user.accountId}
               </p>
               <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
-                {hodler.balance ? (<>Owns {hodler.balance.balance} {coinName} coins</>) : ""}
+                {hodler.balance ? (
+                  <>
+                    Owns {hodler.balance.balance} {coinName} coins
+                  </>
+                ) : (
+                  ""
+                )}
               </p>
             </div>
           </div>
