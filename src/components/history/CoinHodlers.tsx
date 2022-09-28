@@ -21,8 +21,8 @@ export default function CoinHodlers({ coin, user }: { coin: User; user: User }) 
       dispatch(
         getHodlersBalance({
           id: coin.id,
-          accountId: user.accountDomain,
-          userId: user.id,
+          accountId: _.user.accountDomain,
+          userId: _.user.id,
         })
       );
     });
