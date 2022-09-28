@@ -48,9 +48,9 @@ const Artistes = () => {
             >
               ${_.creatorCoinId}
             </Link>
-            <p className="text-muted text-xs font-medium md:text-xs md:font-medium text-center">
+            {/* <p className="text-muted text-xs font-medium md:text-xs md:font-medium text-center">
               474.14 LZR
-            </p>
+            </p> */}
           </div>
         ))}
       </div>
