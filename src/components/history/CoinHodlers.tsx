@@ -28,6 +28,8 @@ export default function CoinHodlers({ coin, user }: { coin: User; user: User }) 
     });
   }, [holderLoaded]);
 
+  const coinName = <span className="uppercase">{coin.tokenName}</span>;
+
   return (
     <>
       {holders.map((hodler, index) => (
@@ -47,10 +49,7 @@ export default function CoinHodlers({ coin, user }: { coin: User; user: User }) 
                 {hodler.user.accountId}
               </p>
               <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
-                {hodler.balance
-                  ? `Owns ${hodler.balance.balance} LZR of
-                your artiste token`
-                  : ""}
+                {hodler.balance ? (<>Owns {hodler.balance.balance} {coinName} coins</>) : ""}
               </p>
             </div>
           </div>
