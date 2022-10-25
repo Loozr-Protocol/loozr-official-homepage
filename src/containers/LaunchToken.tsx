@@ -9,11 +9,13 @@ import { jsonToArtist } from "../utils";
 import { httpError } from "../utils/httpHelper";
 import { useDispatch } from "react-redux";
 import { updateProfile } from "../state/user/userReducer";
+import AccountSetupInput from "../components/AccountSetupInput";
 
 const LaunchToken = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { handleArtisteSetup } = useArtisteSetupCallback();
+  const [isAccountAvailable, setAvailableState] = useState(false);
   const [isLoading, setLoader] = useState<boolean>(false);
 
   const formSchema = yup.object({
@@ -35,6 +37,8 @@ const LaunchToken = () => {
     } else if (!formik.isValid) {
       return;
     }
+
+    if (!isAccountAvailable) return;
 
     setLoader(true);
 
@@ -64,15 +68,15 @@ const LaunchToken = () => {
             that can be held, traded and exchanged for goods and services.
           </span>
         </p>
-        <input
-          type="text"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          onFocus={() => formik.setFieldTouched("account_id", true, true)}
+        <AccountSetupInput
+          accountDomain={`.${CREATOR_COIN_DOMAIN}`}
           name="account_id"
-          className="px-7 py-4 text-muted placeholder:text-muted mb-3"
-          style={{ backgroundColor: "#12161F" }}
           placeholder="$YOUR_COIN_NAME"
+          value={formik.values.account_id}
+          setResult={(result) => setAvailableState(result)}
+          onChange={formik.handleChange}
+          onBlur={(e) => formik.handleBlur(e)}
+          onFocus={() => formik.setFieldTouched("account_id", true, true)}
         />
         <div className="w-full h-auto mb-1">
           {formik.touched.account_id && formik.errors.account_id && (
@@ -119,7 +123,7 @@ const LaunchToken = () => {
         <button
           className="py-4 text-white disabled:text-muted font-medium md:text-base bg-gradient-ld disabled:bg-dark-800 mb-11 w-full focus:outline-none"
           onClick={handleLaunchToken}
-          disabled={isLoading}
+          disabled={isLoading || !isAccountAvailable}
         >
           {isLoading ? "Reserving username..." : "Reserve Coin Name"}
         </button>

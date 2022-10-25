@@ -1,16 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation, Navigate } from "react-router-dom";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
-import { LOOZR_MIXER, NEAR_NETWORK_DOMAIN } from "../config/constants/index";
 import { AppState } from "../state/store";
-import { accountSetup } from '../state/user/userActions';
+import { MIXER_ACCOUNT } from "../config/constants/index";
+import { accountSetup } from "../state/user/userActions";
+import AccountSetupInput from "../components/AccountSetupInput";
 
 export default function AccountSetup() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [isAccountAvailable, setAvailableState] = useState(false)
   const isLoading = useSelector((state: AppState) => state.user.loading);
   const success = useSelector(
     (state: AppState) => state.user.accountSetupSuccess
@@ -22,9 +24,7 @@ export default function AccountSetup() {
   let location = useLocation();
 
   const formSchema = yup.object({
-    account_id: yup
-      .string()
-      .required("Please enter your username"),
+    account_id: yup.string().required("Please enter your username"),
   });
 
   const formik = useFormik({
@@ -34,16 +34,17 @@ export default function AccountSetup() {
   });
 
   useEffect(() => {
-    if (success)
-      navigate(`/explore`, { replace: true });
+    if (success) navigate(`/explore`, { replace: true });
   }, [navigate, success]);
 
-  const handleLaunchToken = async() => {
+  const handleLaunchToken = async () => {
     if (!formik.dirty) {
       return;
     } else if (!formik.isValid) {
       return;
     }
+
+    if (!isAccountAvailable) return;
 
     dispatch(accountSetup(formik.values));
   };
@@ -64,15 +65,15 @@ export default function AccountSetup() {
             including earning, streaming, sending, and receiving tokens.
           </span>
         </p>
-        <input
-          type="text"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          onFocus={() => formik.setFieldTouched("account_id", true, true)}
+        <AccountSetupInput
+          accountDomain={`.${MIXER_ACCOUNT}`}
           name="account_id"
-          className="px-7 py-4 text-muted placeholder:text-muted mb-3"
-          style={{ backgroundColor: "#12161F" }}
           placeholder="$YOUR_USERNAME"
+          value={formik.values.account_id}
+          setResult={(result) => setAvailableState(result)}
+          onChange={formik.handleChange}
+          onBlur={(e) => formik.handleBlur(e)}
+          onFocus={() => formik.setFieldTouched("account_id", true, true)}
         />
         <div className="w-full h-auto mb-1">
           {formik.touched.account_id && formik.errors.account_id && (
@@ -80,20 +81,21 @@ export default function AccountSetup() {
               initial={{ y: -100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               className="text-xs font-Inter-SemiBold text-[#F25341]"
-              style={{ marginTop: "-8px" }}
+              style={{ marginTop: "3px" }}
             >
               {formik.errors.account_id}
             </motion.div>
           )}
         </div>
         <p className="italic text-sm md:text-lg text-muted mb-8 md:mb-16">
-          Username: {formik.values.account_id}.{LOOZR_MIXER}
-          {NEAR_NETWORK_DOMAIN}
+          Username:{" "}
+          {formik.values.account_id ? formik.values.account_id : "examplename"}.
+          {MIXER_ACCOUNT}
         </p>
         <button
           className="py-4 text-white disabled:text-muted font-medium text-base bg-gradient-ld disabled:bg-dark-800 mb-11 w-full focus:outline-none h-[74px]"
           onClick={handleLaunchToken}
-          disabled={isLoading}
+          disabled={isLoading || !isAccountAvailable}
         >
           {isLoading ? "Reserving username..." : "Reserve My Name"}
         </button>
