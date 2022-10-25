@@ -1,4 +1,5 @@
 import { Model } from '../types';
+import { CREATOR_COIN_DOMAIN } from "..";
 import User from './user';
  
 export interface ArtistJsonProps {
@@ -37,6 +38,10 @@ export default class Artist implements Model {
     this.totalListens = totalListens;
     this.founderReward = founderReward;
     this.user = user;
+  }
+
+  get accountDomain() {
+    return `${this.creatorCoinId}.${CREATOR_COIN_DOMAIN}`;
   }
 
   fromJson(jsonData: ArtistJsonProps) {
