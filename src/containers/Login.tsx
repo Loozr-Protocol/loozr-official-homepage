@@ -27,7 +27,6 @@ const Login = () => {
     password: yup
       .string()
       .required("Your password is required")
-      .min(4, "A minimum of 6 characters"),
   });
 
   const formik = useFormik({
