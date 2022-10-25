@@ -24,6 +24,8 @@ import CoinHodlers from "../components/history/CoinHodlers";
 import { resetCoinPrice, resetHoldersList } from "../state/artist/artistReducer";
 import { decodedJWT } from "../utils";
 import Photo from "../components/Photo";
+import { toast } from "react-toastify";
+import { TOAST_OPTIONS } from "../config/constants";
 
 const Profile = () => {
   const push = useNavigate();
@@ -323,13 +325,13 @@ const Profile = () => {
               {currentProfile.isArtist ? (
                 <div className="flex items-center">
                   <button
-                    onClick={() => push(`/artistes/buy/${currentProfile.id}`)}
+                    onClick={() => toast.info('Coming soon!', TOAST_OPTIONS)}
                     className="py-3 px-16 text-sm font-medium bg-loozr-purple rounded-full"
                   >
                     Buy artiste coin
                   </button>
                   <button
-                    onClick={() => push(`/artistes/sell/${currentProfile.id}`)}
+                    onClick={() => toast.info('Coming soon!', TOAST_OPTIONS)}
                     className="py-3 px-16 text-sm font-medium bg-dark-700 rounded-full ml-6"
                   >
                     Sell artiste coin

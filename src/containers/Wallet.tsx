@@ -19,6 +19,8 @@ import {
 } from "../utils/formatBalance";
 import { useSelector } from "react-redux";
 import { copy } from "../utils";
+import { toast } from "react-toastify";
+import { TOAST_OPTIONS } from "../config/constants";
 
 const Wallet = () => {
   const push = useNavigate();
@@ -177,13 +179,13 @@ const Wallet = () => {
         </p>
         <div className="flex items-center mb-8 md:mb-11">
           <button
-            onClick={() => push("/lzr/send")}
+            onClick={() => toast.info("Coming soon!", TOAST_OPTIONS)}
             className="py-2.5 md:py-2.5 px-7 lg:px-auto lg:w-[130px] rounded-full bg-white text-black text-sm mr-4 font-semibold"
           >
             Send $LZR
           </button>
           <button
-            onClick={() => push("/lzr/buy")}
+            onClick={() => toast.info("Coming soon!", TOAST_OPTIONS)}
             className="py-2.5 md:py-2.5 px-7 lg:px-auto lg:w-[130px] rounded-full text-white text-sm font-semibold"
             style={{ border: "1.5px solid #222A3B" }}
           >
