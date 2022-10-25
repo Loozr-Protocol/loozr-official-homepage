@@ -6,7 +6,7 @@ const AccountVerificationSuccess = () => {
 
   setTimeout(() => {
     navigate("/login", { replace: true });
-  }, 5000);
+  }, 8000);
 
   return (
     <div className="min-h-screen w-full h-full grid pt-16">
