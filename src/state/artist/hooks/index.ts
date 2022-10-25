@@ -3,7 +3,7 @@ import HttpClient from "../../../utils/httpHelper";
 export function useGetArtistCallback() {
   const handleGetArtists = async (): Promise<any> => {
     const httpClient = new HttpClient();
-    const result = await httpClient.axiosInstance.get('/users/artists');
+    const result = await httpClient.axiosInstance.get('/artistes/');
     return result.data;
   }
   return { handleGetArtists }
@@ -12,7 +12,7 @@ export function useGetArtistCallback() {
 export function useGetArtistDetailsCallback() {
   const handleGetArtists = async (id: number): Promise<any> => {
     const httpClient = new HttpClient();
-    const result = await httpClient.axiosInstance.get(`/users/artists/${id}`);
+    const result = await httpClient.axiosInstance.get(`/artistes/artists/${id}`);
     return result.data;
   }
   return { handleGetArtists }
@@ -39,7 +39,7 @@ export function useSellArtistTokenCallback() {
 export function useBecomeArtisteCallback() {
   const handleBecomeArtiste = async (data: any): Promise<any> => {
     const httpClient = new HttpClient();
-    const result = await httpClient.axiosInstance.post(`/users/become-artist`, data);
+    const result = await httpClient.axiosInstance.post(`/artistes/become-artist`, data);
     return result.data;
   }
   return { handleBecomeArtiste }
@@ -48,7 +48,7 @@ export function useBecomeArtisteCallback() {
 export function useArtisteSetupCallback() {
   const handleArtisteSetup = async ({account_id, founder_reward}: {account_id: string, founder_reward: number}): Promise<any> => {
     const httpClient = new HttpClient();
-    const result = await httpClient.axiosInstance.post(`/users/artist-setup`, {creator_coin_id: account_id, founder_reward});
+    const result = await httpClient.axiosInstance.post(`/artistes/artist-setup`, {creator_coin_id: account_id, founder_reward});
     return result.data;
   }
   return { handleArtisteSetup }
