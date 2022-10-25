@@ -28,7 +28,7 @@ const Signup = () => {
     password: yup
       .string()
       .required("Your password is required")
-      .min(4, "A minimum of 6 characters"),
+      .min(8, "A minimum of 8 characters"),
     retyped_password: yup
       .string()
       .test(
@@ -128,7 +128,7 @@ const Signup = () => {
                 initial={{ y: -100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 className="text-xs font-Inter-SemiBold text-[#F25341]"
-                style={{ marginTop: "-44px" }}
+                style={{ marginTop: "-30px" }}
               >
                 {formik.errors.password}
               </motion.div>
