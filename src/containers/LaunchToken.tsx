@@ -4,6 +4,8 @@ import { CREATOR_COIN_DOMAIN } from "../config/constants";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { motion } from "framer-motion";
+import { toast } from "react-toastify";
+import { TOAST_OPTIONS } from "../config/constants";
 import { useArtisteSetupCallback } from "../state/artist/hooks";
 import { jsonToArtist } from "../utils";
 import { httpError } from "../utils/httpHelper";
@@ -22,6 +24,8 @@ const LaunchToken = () => {
     account_id: yup.string().required("Please enter coin name"),
     founder_reward: yup
       .number()
+      .max(100, 'Founder reward exceeded 100%')
+      .min(1, 'Minimum allowed value is 1 percent')
       .typeError("Founder percentage must be in number format"),
   });
 
@@ -48,6 +52,10 @@ const LaunchToken = () => {
       dispatch(updateProfile(artist.user));
       setLoader(false);
 
+      toast.success("HOORAY! You have been registered as an artiste!", {
+        ...TOAST_OPTIONS,
+        autoClose: 10000,
+      });
       navigate(`/explore`, { replace: true });
     } catch (err) {
       setLoader(false);
@@ -98,7 +106,7 @@ const LaunchToken = () => {
             Set Founder Reward:
           </p>
           <input
-            type="tel"
+            type="number"
             name="founder_reward"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}

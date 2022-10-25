@@ -22,7 +22,7 @@ import User from "../config/constants/models/user";
 import CreatorStatCard from "../components/CreatorStatCard";
 import CoinHodlers from "../components/history/CoinHodlers";
 import { resetCoinPrice, resetHoldersList } from "../state/artist/artistReducer";
-import { decodedJWT, parseJwt } from "../utils";
+import { decodedJWT } from "../utils";
 import Photo from "../components/Photo";
 
 const Profile = () => {

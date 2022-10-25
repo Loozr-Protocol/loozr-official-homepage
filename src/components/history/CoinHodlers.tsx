@@ -1,33 +1,17 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import User from "../../config/constants/models/user";
-import { getHodlers, getHodlersBalance } from "../../state/artist/actions";
-import Arlene from "../../assets/img/artists/arlene.png";
+import { getHodlers } from "../../state/artist/actions";
 import { AppState } from "../../state/store";
 import Photo from "../Photo";
 
 export default function CoinHodlers({ coin, user }: { coin: User; user: User }) {
   const dispatch = useDispatch();
   const holders = useSelector((state: AppState) => state.artist.holders);
-  const holderLoaded = useSelector(
-    (state: AppState) => state.artist.holderLoaded
-  );
 
   useEffect(() => {
     dispatch(getHodlers(coin.id));
   }, []);
-
-  useEffect(() => {
-    holders.map((_) => {
-      dispatch(
-        getHodlersBalance({
-          id: coin.id,
-          accountId: _.user.accountDomain,
-          userId: _.user.id,
-        })
-      );
-    });
-  }, [holderLoaded]);
 
   const coinName = <span className="uppercase">{coin.tokenName}</span>;
 
@@ -51,7 +35,7 @@ export default function CoinHodlers({ coin, user }: { coin: User; user: User }) 
               <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
                 {hodler.balance ? (
                   <>
-                    Owns {hodler.balance.balance} {coinName} coins
+                    Owns {hodler.balance.balance} ${coinName} coins
                   </>
                 ) : (
                   ""

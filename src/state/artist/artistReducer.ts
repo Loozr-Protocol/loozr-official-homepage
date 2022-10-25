@@ -117,7 +117,18 @@ const artistSlice = createSlice({
     builder.addCase(getHodlers.fulfilled, (state, action) => {
       state.holders = action.payload.results.map((res: any) => {
         const user = jsonToUser(res['user']);
-        return { user };
+
+        const piceInLzr = getFullDisplayBalance(res.balance);
+        let priceInUSD = '0';
+
+        if (state.coinInfo) {
+          priceInUSD = formatNumber(Number(piceInLzr) * Number(state.coinInfo.priceUSD), 2, 6);
+        }
+        return {
+          user, balance: {
+            balance: formatNumber(Number(piceInLzr), 2, 6),
+            balanceUSD: priceInUSD,
+          } };
       });
       state.holderLoaded = true;
     });
@@ -125,32 +136,6 @@ const artistSlice = createSlice({
     builder.addCase(getHodlers.rejected, (state, action) => {
       state.holders = [];
       state.holderLoaded = false;
-    });
-
-    builder.addCase(getHodlersBalance.fulfilled, (state, action) => {
-      const [userId, balance] = action.payload;
-      const holder = state.holders.find(e => e.user.id === userId);
-      const holderIndex = state.holders.indexOf(holder);
-
-      if (holderIndex > -1) {
-        const piceInLzr = getFullDisplayBalance(balance);
-        let priceInUSD = '0';
-        
-        if(state.coinInfo) {
-          priceInUSD = formatNumber(Number(piceInLzr) * Number(state.coinInfo.priceUSD), 2, 6);
-        }
-        const data: Hodler = {
-          ...holder,
-          balance: {
-            balance: formatNumber(Number(piceInLzr), 2, 6),
-            balanceUSD: priceInUSD,
-          }
-        }
-        const holders = state.holders;
-        holders[holderIndex] = data;
-
-        state.holders = holders;
-      }
     });
   }
 });

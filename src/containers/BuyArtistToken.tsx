@@ -19,6 +19,7 @@ const BuyArtistToken = () => {
   const [isSuccess, setSuccess] = useState(false);
   const { handleGetArtists } = useGetArtistDetailsCallback();
   const { handleBuyToken } = useBuyArtistTokenCallback();
+  const bpsDenominator = 100;
   let { id } = useParams();
 
   const [artistDetails, setArtistDetails] = useState<Artist>(null);
@@ -153,8 +154,8 @@ const BuyArtistToken = () => {
           )}
         </div>
         <p className="helper-text mb-2">
-          Artiste will receive {artistDetails.founderReward}% of your purchase
-          as a Founder Reward
+          Artiste will receive {artistDetails.founderReward / bpsDenominator}%
+          of your purchase as a Founder Reward
         </p>
         <div>
           <button

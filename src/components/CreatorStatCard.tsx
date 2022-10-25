@@ -27,6 +27,7 @@ import { AppState } from "../state/store";
 
 export default function CreatorStatCard({ user }: { user: User }) {
   const dispatch = useDispatch();
+  const bpsDenominator = 100;
   const coinInfo = useSelector((state: AppState) => state.artist.coinInfo);
 
   useEffect(() => {
@@ -64,7 +65,7 @@ export default function CreatorStatCard({ user }: { user: User }) {
             </div>
             <div className="text-center md:text-left">
               <p className="font-bold text-sm md:text-sm text-white text-left mb-1">
-                {coinInfo.founderReward}%
+                {coinInfo.founderReward / bpsDenominator}%
               </p>
               <p className="text-muted text-xs font-medium">% Reward</p>
             </div>
