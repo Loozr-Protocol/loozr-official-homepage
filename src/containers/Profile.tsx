@@ -277,7 +277,7 @@ const Profile = () => {
           {currentProfile.isArtist && currentProfile.tokenName && (
             <CreatorStatCard user={currentProfile} />
           )}
-          <div className="flex items-start mb-12">
+          <div className="flex items-start mb-7">
             <Photo
               alt={currentProfile.accountDomain}
               className="h-8 md:h-[170px] w-8 md:w-[170px] rounded-full mr-3"
@@ -322,22 +322,6 @@ const Profile = () => {
                   </p>
                 ) : null}
               </div>
-              {currentProfile.isArtist ? (
-                <div className="flex items-center">
-                  <button
-                    onClick={() => toast.info('Coming soon!', TOAST_OPTIONS)}
-                    className="py-3 px-16 text-sm font-medium bg-loozr-purple rounded-full"
-                  >
-                    Buy artiste coin
-                  </button>
-                  <button
-                    onClick={() => toast.info('Coming soon!', TOAST_OPTIONS)}
-                    className="py-3 px-16 text-sm font-medium bg-dark-700 rounded-full ml-6"
-                  >
-                    Sell artiste coin
-                  </button>
-                </div>
-              ) : null}
               {currentProfile.id === user.id ? (
                 <div className="flex items-center mt-4">
                   <button
@@ -353,6 +337,22 @@ const Profile = () => {
               ) : null}
             </div>
           </div>
+          {currentProfile.isArtist ? (
+            <div className="flex justify-content-end mb-9">
+              <button
+                onClick={() => toast.info("Coming soon!", TOAST_OPTIONS)}
+                className="py-3 px-3 sm:px-6 md:px-9 text-xs md:text-sm font-medium bg-loozr-purple rounded-full"
+              >
+                Buy artiste coin
+              </button>
+              <button
+                onClick={() => toast.info("Coming soon!", TOAST_OPTIONS)}
+                className="py-3 px-3 sm:px-6 md:px-9 text-xs md:text-sm font-medium bg-dark-700 rounded-full ml-6"
+              >
+                Sell artiste coin
+              </button>
+            </div>
+          ) : null}
           <div className="w-full pb-2 mb-9 border-b-2 border-muted-50 flex items-center text-sm font-medium text-muted">
             <p
               className={`mr-10 cursor-pointer ${
