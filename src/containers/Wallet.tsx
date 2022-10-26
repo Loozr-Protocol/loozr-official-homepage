@@ -8,7 +8,6 @@ import { capitalize } from "../functions";
 import Arrow45Deg from "../assets/icons/arrow-45deg.svg";
 import Arrow225Deg from "../assets/icons/arrow-225deg.svg";
 import Arlene from "../assets/img/artists/arlene.png";
-import { useNavigate } from "react-router-dom";
 import { usePollLZRBalance } from "../state/wallet/hooks/fetchBalance";
 import { LZR_IN_USD, MIXER_ACCOUNT } from "../config/constants";
 import { AppState } from "../state/store";
@@ -23,7 +22,6 @@ import { toast } from "react-toastify";
 import { TOAST_OPTIONS } from "../config/constants";
 
 const Wallet = () => {
-  const push = useNavigate();
   const [active, setActive] = useState(1);
   const user = useSelector((state: AppState) => state.user.userInfo);
   const lzrAccountId = `${user.accountId}.${MIXER_ACCOUNT}`;
