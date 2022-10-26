@@ -6,7 +6,7 @@ import { jsonToUser } from '../../utils';
 import { priceInLoozr } from '../../utils/creatorCoinFormater';
 import { formatBalanceUSD, formatNumber, getBalanceAmount, getFullDisplayBalance } from '../../utils/formatBalance';
 import { httpError } from '../../utils/httpHelper';
-import { getArtists, getCoinPrice, getHodlers, getHodlersBalance } from './actions';
+import { getArtists, getCoinPrice, getHodlers } from './actions';
 
 export interface CoinInfo {
   coinPrice: number;
