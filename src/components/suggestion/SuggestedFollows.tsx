@@ -42,7 +42,8 @@ const SuggestedFollows = () => {
                   </p>
                   <p className="flex items-center">
                     <span className="text-muted text-[11px] font-bold mr-1">
-                      {user.accountId}.{MIXER_ACCOUNT}
+                      <span className="coin-name-tag">{user.accountId}</span>.
+                      {MIXER_ACCOUNT}
                     </span>
                     <span className="bg-muted rounded-full h-1 w-1 mr-1" />{" "}
                     {/* <span className="text-[11px] text-muted font-medium">

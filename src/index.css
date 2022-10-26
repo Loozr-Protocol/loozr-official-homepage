@@ -57,3 +57,14 @@ button:disabled {
   -webkit-box-orient: vertical;
   word-break: break-all;
 }
+
+.coin-name-tag {
+  max-width: 80px;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+  position: relative;
+  top: 8px;
+}
