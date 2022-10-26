@@ -70,26 +70,26 @@ const tabs = [
 
 export const Left = () => {
   const { pathname } = useLocation();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const push = useNavigate();
   const xl = useMediaQuery("(min-width:1280px)");
   // const lg = useMediaQuery("(min-width:1024px)");
   const md = useMediaQuery("(min-width:768px)");
   const user = useSelector((state: AppState) => state.user.userInfo);
-  const {handleBecomeArtiste} = useBecomeArtisteCallback();
+  const { handleBecomeArtiste } = useBecomeArtisteCallback();
 
   const becomeArtist = async () => {
     dispatch(setPageLoaderStatus(true));
     try {
       await handleBecomeArtiste({});
       window.location.reload();
-    }catch(err) {
+    } catch (err) {
       dispatch(setPageLoaderStatus(false));
     }
   };
 
   const musicUpload = () => {
-    toast.info('Coming soon!', TOAST_OPTIONS);
+    toast.info("Coming soon!", TOAST_OPTIONS);
   };
 
   return (
