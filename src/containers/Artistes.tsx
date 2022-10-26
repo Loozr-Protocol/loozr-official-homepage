@@ -26,7 +26,8 @@ const Artistes = () => {
             key={i}
             className="flex flex-col items-center mr-4 min-w-full md:min-w-[140px]"
           >
-            <div className="relative">
+            <Link
+              to={`/profile/${_.user.id}`} className="relative">
               <Photo
                 alt=""
                 className="object-cover h-24 w-24 md:h-32 md:w-32 rounded-full border-[15px] border-dark-700 mb-[18px]"
@@ -41,10 +42,10 @@ const Artistes = () => {
                   className="absolute w-4 md:w-6 h-4 md:h-6 right-3 bottom-6"
                 />
               )}
-            </div>
+            </Link>
             <Link
               to={`/profile/${_.user.id}`}
-              className="font-normal mb-1.5 md:font-bold text-base md:text-base text-white text-center uppercase"
+              className="font-normal mb-1.5 md:font-bold text-base md:text-base text-white text-center uppercase name-tag"
             >
               ${_.creatorCoinId}
             </Link>

@@ -49,3 +49,11 @@ button:disabled {
   mix-blend-mode: difference;
   font-size: 21px;
 }
+
+.name-tag {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}

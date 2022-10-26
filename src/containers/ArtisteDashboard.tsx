@@ -126,7 +126,7 @@ const ArtisteDashboard = () => {
               key={i}
               className="flex flex-col items-center mr-4 min-w-max md:min-w-[145px] relative"
             >
-              <div className="relative">
+              <Link to={`/profile/${_.user.id}`} className="relative">
                 <Photo
                   alt=""
                   className="object-cover h-20 md:h-32 w-20 md:w-32 rounded-full border-[15px] border-dark-700 mb-[16px]"
@@ -141,10 +141,10 @@ const ArtisteDashboard = () => {
                     className="absolute w-4 md:w-8 h-4 md:h-8 right-3 bottom-6"
                   />
                 )}
-              </div>
+              </Link>
               <Link
                 to={`/profile/${_.user.id}`}
-                className="font-normal mb-px md:font-bold text-[15px] text-white text-center uppercase"
+                className="font-normal mb-px md:font-bold text-[15px] text-white text-center uppercase name-tag"
               >
                 ${_.creatorCoinId}
               </Link>
