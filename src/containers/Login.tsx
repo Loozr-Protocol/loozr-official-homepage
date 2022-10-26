@@ -93,7 +93,7 @@ const Login = () => {
                 initial={{ y: -100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 className="text-xs font-Inter-SemiBold text-[#F25341]"
-                style={{ marginTop: "-42px" }}
+                style={{ marginTop: "-30px" }}
               >
                 {formik.errors.email}
               </motion.div>
@@ -132,7 +132,7 @@ const Login = () => {
                 initial={{ y: -100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 className="text-xs font-Inter-SemiBold text-[#F25341]"
-                style={{ marginTop: "-56px" }}
+                style={{ marginTop: "-46px" }}
               >
                 {formik.errors.password}
               </motion.div>
