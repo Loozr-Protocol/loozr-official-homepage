@@ -5463,6 +5463,7 @@ iframe {
 .footer-half .cont .social-icon .social img {
   width: 16px;
   height: 13px;
+  display: inline-block;
 }
 .hero-head .social-icon a {
   width: 40px;
