@@ -10,7 +10,6 @@ import NFT from "../../../../assets/svg/NFT";
 import Wallet from "../../../../assets/svg/Wallet";
 import Notification from "../../../../assets/svg/Notification";
 import More from "../../../../assets/svg/More";
-import Memoji from "../../../../assets/img/memoji.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -127,6 +126,7 @@ export const Left = () => {
             className="hover:flex flex items-center text-sm font-medium text-[#536079] mt-2.5 xl:mt-auto mb-[22px]"
             to={tab.path || "#!"}
             key={tab.label}
+            onClick={() => tab.path ? null : toast.info("Coming soon!", TOAST_OPTIONS)}
           >
             <tab.icon
               className={`object-contain w-4 xl:w-3.5 h-4 xl:h-3.5 mr-3 xl:mr-4 ${
@@ -154,7 +154,7 @@ export const Left = () => {
             style={{ border: "6px solid #141922" }}
           />
           <div className="hidden xl:block w-full">
-            <p className="text-sm font-extrabold text-white">
+            <p className="text-sm font-extrabold text-white name-tag">
               {user.accountId}
             </p>
             <p className="text-[11px] font-medium flex items-center w-auto flex-nowrap whitespace-nowrap text-muted">

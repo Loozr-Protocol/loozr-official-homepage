@@ -4,6 +4,8 @@ import { TopBar } from "./topbar";
 import AppStore from "../../../assets/img/AppStore.png";
 import GooglePlay from "../../../assets/img/GooglePlay.png";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { toast } from "react-toastify";
+import { TOAST_OPTIONS } from "../../../config/constants";
 
 import Explore from "../../../assets/svg/Explore";
 import Artist from "../../../assets/svg/Artist";
@@ -133,6 +135,9 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
             className={`hover:flex flex flex-col items-center justify-center ${
               tabs.length !== index + 1 && "mr-4"
             }`}
+            onClick={() =>
+              tab.path ? null : toast.info("Coming soon!", TOAST_OPTIONS)
+            }
           >
             <tab.icon
               className={`object-contain w-3.5 h-3.5 mb-2 ${

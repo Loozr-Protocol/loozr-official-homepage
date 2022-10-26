@@ -68,3 +68,6 @@ button:disabled {
   position: relative;
   top: 8px;
 }
+.pointer-cursor {
+  cursor: pointer;
+}
