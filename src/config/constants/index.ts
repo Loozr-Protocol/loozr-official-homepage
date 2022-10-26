@@ -34,3 +34,8 @@ export const DEFAULT_TOKEN_DECIMAL = BIG_TEN.pow(24)
 
 export const PRICE_SLOPE = new BigNumber(0.003);
 export const PRICE_RATE_EXPONENT = 2; // the rate at which the price of tokens go up or down
+
+export const BASE_EXPLORER_URLS = {
+  mainnet: 'https://explorer.near.org',
+  testnet: 'https://explorer.testnet.near.org',
+}

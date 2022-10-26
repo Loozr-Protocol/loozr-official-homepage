@@ -19,6 +19,7 @@ import { useSelector } from "react-redux";
 import { AppState } from "../../../state/store";
 import { formatBalanceUSD, formatNumber, getFullDisplayBalance } from "../../../utils/formatBalance";
 import SuggestedFollows from "../../suggestion/SuggestedFollows";
+import { nearExplorerAccount } from "../../../utils";
 
 const tabs = [
   {
@@ -86,7 +87,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                 {children}
               </div>
               <div className="w-full md:w-[30%]">
-                <div className="bg-dark-800 w-full min-h-[210px] mb-7">
+                <div className="flex flex-col bg-dark-800 w-full min-h-[210px] mb-7">
                   <div className="py-8 px-6 border-dark-900 border-b">
                     <p className="text-muted text-xs font-medium mb-1.5">
                       Your Balance
@@ -101,6 +102,16 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                   </div>
                   <div className="py-4 px-6 text-xs font-medium text-muted">
                     ~ ${LZR_IN_USD} USD per LZR coin price
+                  </div>
+                  <div className="flex justify-content-center mb-8">
+                    <a
+                      target="_blank"
+                      rel="noreferrer"
+                      href={nearExplorerAccount(user.accountDomain)}
+                      className="py-3 px-3 sm:px-6 md:px-9 text-xs md:text-sm font-medium bg-muted-50 rounded-full"
+                    >
+                      View On Explorer
+                    </a>
                   </div>
                 </div>
                 <SuggestedFollows />

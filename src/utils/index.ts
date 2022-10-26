@@ -1,3 +1,4 @@
+import { BASE_EXPLORER_URLS, NEAR_NETWORK } from "../config/constants";
 import Artist, { ArtistJsonProps } from "../config/constants/models/artist";
 import User, { UserJsonProps } from "../config/constants/models/user";
 
@@ -41,4 +42,8 @@ export const jsonToArtist = (jsonData: ArtistJsonProps) => {
   const artist = new Artist({});
   artist.fromJson(jsonData);
   return artist;
+}
+
+export const nearExplorerAccount = (accountId: string) => {
+  return `${BASE_EXPLORER_URLS[NEAR_NETWORK]}/accounts/${accountId}`;
 }
