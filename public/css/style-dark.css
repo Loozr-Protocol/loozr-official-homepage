@@ -3382,6 +3382,7 @@ body {
 .audio-wrapper .play-butn .icon img {
   height: 16px;
   width: 16px;
+  display: inline-block;
 }
 
 .js-scroll__content {
