@@ -37,12 +37,12 @@ const SuggestedFollows = () => {
                   style={{ border: "6px solid #141922" }}
                 />
                 <Link to={`/profile/${user.id}`}>
-                  <p className="text-sm font-semibold text-white">
+                  <p className="text-sm font-semibold text-white name-tag">
                     {user.accountId}
                   </p>
                   <p className="flex items-center">
-                    <span className="text-muted text-[11px] font-bold mr-1">
-                      <span className="coin-name-tag">{user.accountId}</span>.
+                    <span className="text-muted text-[11px] font-bold mr-1 name-tag">
+                      {user.accountId}.
                       {MIXER_ACCOUNT}
                     </span>
                     <span className="bg-muted rounded-full h-1 w-1 mr-1" />{" "}
