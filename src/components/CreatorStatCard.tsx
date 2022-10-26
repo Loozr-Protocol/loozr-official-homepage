@@ -1,29 +1,28 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import {
-//   ResponsiveContainer,
-//   AreaChart,
-//   XAxis,
-//   YAxis,
-//   Tooltip,
-//   Area,
-// } from "recharts";
+import {
+  ResponsiveContainer,
+  AreaChart,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Area,
+} from "recharts";
 import User from "../config/constants/models/user";
 import { getCoinPrice } from "../state/artist/actions";
-import { resetCoinPrice } from "../state/artist/artistReducer";
 import { AppState } from "../state/store";
 
-// const data = [
-//   { name: "May", uv: 70000 },
-//   { name: "May", uv: 70000 },
-//   { name: "May", uv: 70000 },
-//   { name: "Feb", uv: 63000 },
-//   { name: "Jan", uv: 27000 },
-//   { name: "Mar", uv: 40000 },
-//   { name: "Apr", uv: 10000 },
-//   { name: "Jun", uv: 43000 },
-//   { name: "Dec", uv: 32000 },
-// ];
+const data = [
+  { name: "May", uv: 70000 },
+  { name: "May", uv: 70000 },
+  { name: "May", uv: 70000 },
+  { name: "Feb", uv: 63000 },
+  { name: "Jan", uv: 27000 },
+  { name: "Mar", uv: 40000 },
+  { name: "Apr", uv: 10000 },
+  { name: "Jun", uv: 43000 },
+  { name: "Dec", uv: 32000 },
+];
 
 export default function CreatorStatCard({ user }: { user: User }) {
   const dispatch = useDispatch();
@@ -73,14 +72,14 @@ export default function CreatorStatCard({ user }: { user: User }) {
         </div>
         <div className="flex justify-start">
           <div className="md:pl-24 flex md:flex-col kitems-center">
-            {/* <div>
+            <div>
               <p className="font-medium text-sm text-muted mb-6">
-                My coin chart
+                Coin chart
               </p>
               <p className="mb-1 font-semibold text-sm">87%</p>
               <p className="mb-3.5 font-medium text-sm text-[#15FFAB]">+4.5%</p>
-            </div> */}
-            {/* <ResponsiveContainer width={170} height={80}>
+            </div>
+            <ResponsiveContainer width={170} height={80}>
               <AreaChart
                 data={data}
                 margin={{ top: 20, right: 30, left: 0, bottom: 0 }}
@@ -105,7 +104,7 @@ export default function CreatorStatCard({ user }: { user: User }) {
                   fill="url(#colorUv)"
                 />
               </AreaChart>
-            </ResponsiveContainer> */}
+            </ResponsiveContainer>
           </div>
         </div>
       </div>
