@@ -14,6 +14,7 @@ import AuthVerify from "./containers/AuthVerify";
 import RequireAuth from "./containers/RequireAuth";
 import { parseJwt } from "./utils/index";
 import FullpageLoader from "./components/loaders/FullpageLoader";
+import Maintenance from "./containers/Maintenance";
 
 const NotFound = () => (
   <div className="main-content">
@@ -35,77 +36,32 @@ const App = () => {
 
   return (
     <>
-      <FullpageLoader/>
-      <ToastContainer />
-      <Router>
-        <div>
-          <div id="preloader"></div>
-          <div className="progress-wrap cursor-pointer">
-            <svg
-              className="progress-circle svg-content"
-              width="100%"
-              height="100%"
-              viewBox="-1 -1 102 102"
-            >
-              <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
-            </svg>
-          </div>
-          <div className="mouse-cursor cursor-outer"></div>
-          <div className="mouse-cursor cursor-inner"></div>
-
-          <div
-            className="dialog-off-canvas-main-canvas"
-            data-off-canvas-main-canvas
+      <div>
+        <div id="preloader"></div>
+        <div className="progress-wrap cursor-pointer">
+          <svg
+            className="progress-circle svg-content"
+            width="100%"
+            height="100%"
+            viewBox="-1 -1 102 102"
           >
-            <WaitlistModal />
-            <Routes>
-              {authRoutes.map((route) => (
-                <Route
-                  key={route.name}
-                  path={route.path}
-                  element={
-                    <>
-                      <route.component />
-                      <Footer />
-                    </>
-                  }
-                />
-              ))}
-              {routes.map((route) => (
-                <Route
-                  key={route.name}
-                  path={route.path}
-                  element={
-                    <AppLayout>
-                      <route.component />
-                      <Footer />
-                    </AppLayout>
-                  }
-                />
-              ))}
-              {dashboard.map((route) => (
-                <Route
-                  key={route.name}
-                  path={route.path}
-                  element={
-                    <RequireAuth>
-                      <Dashboard>
-                        <route.component />
-                      </Dashboard>
-                    </RequireAuth>
-                  }
-                />
-              ))}
-              <Route path="*" element={NotFound} />
-            </Routes>
-            <Player />
-            <a href="#focused" id="focus-link" hidden>
-              Go to playing element
-            </a>
-          </div>
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+          </svg>
         </div>
-        <AuthVerify />
-      </Router>
+        <div className="mouse-cursor cursor-outer"></div>
+        <div className="mouse-cursor cursor-inner"></div>
+
+        <div
+          className="dialog-off-canvas-main-canvas"
+          data-off-canvas-main-canvas
+        >
+          <Maintenance />
+          <Player />
+          <a href="#focused" id="focus-link" hidden>
+            Go to playing element
+          </a>
+        </div>
+      </div>
     </>
   );
 };
