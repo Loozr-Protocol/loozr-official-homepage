@@ -64,7 +64,7 @@ registerRoute(
     plugins: [
       // Ensure that once this runtime cache reaches a maximum size the
       // least-recently used images are removed.
-      new ExpirationPlugin({ maxEntries: 50, maxAgeSeconds: 7200 }),
+      new ExpirationPlugin({ maxEntries: 50, maxAgeSeconds: 180 }),
     ],
   })
 );
@@ -78,7 +78,7 @@ registerRoute(
     plugins: [
       // Ensure that once this runtime cache reaches a maximum size the
       // least-recently used images are removed.
-      new ExpirationPlugin({ maxEntries: 50, maxAgeSeconds: 259200 }),
+      new ExpirationPlugin({ maxEntries: 50, maxAgeSeconds: 180 }),
     ],
   })
 );
@@ -92,7 +92,7 @@ registerRoute(
     plugins: [
       // Ensure that once this runtime cache reaches a maximum size the
       // least-recently used javascript are removed.
-      new ExpirationPlugin({ maxEntries: 50, maxAgeSeconds: 7200 }),
+      new ExpirationPlugin({ maxEntries: 50, maxAgeSeconds: 180 }),
     ],
   })
 );
@@ -106,7 +106,7 @@ registerRoute(
     plugins: [
       // Ensure that once this runtime cache reaches a maximum size the
       // least-recently used javascript are removed.
-      new ExpirationPlugin({ maxEntries: 50, maxAgeSeconds: 7200 }),
+      new ExpirationPlugin({ maxEntries: 50, maxAgeSeconds: 180 }),
     ],
   })
 );
