@@ -156,7 +156,7 @@ const Wallet = () => {
 
   return (
     <div className="w-full">
-      <div className="w-full bg-dark-700 p-4 md:!py-8 md:!px-11 mb-12">
+      <div style={{ background: "linear-gradient(180deg, #12161F 0%, rgba(18, 22, 31, 0) 100%)" }} className="w-full  p-4 md:!py-8 md:!px-11 mb-12">
         <div className="flex items-center justify-between mb-9">
           <p className="text-[17px] leading-7 font-thin md:font-medium text-white">
             My Wallet

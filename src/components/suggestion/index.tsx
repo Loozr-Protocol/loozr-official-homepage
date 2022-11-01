@@ -4,6 +4,7 @@ import Goya from "../../assets/img/artists/goya.png";
 import ArrowLeft from "../../assets/icons/caret-left.svg";
 import ArrowRight from "../../assets/icons/caret-right.svg";
 import { Link } from "react-router-dom";
+import SlidesButton from "../SlidesButton";
 
 const Suggestion = () => {
   const handleMoveRight = (id: number) => {
@@ -21,21 +22,25 @@ const Suggestion = () => {
     document.getElementById(`carousel-${id}`).scrollLeft -= 800;
   };
 
+  const ref: any = React.useRef(null); 
+
   return (
     <div className="w-full">
       <div className="flex items-center justify-between mb-6">
         <p className="font-medium text-base md:text-[17px] text-white">
           Tracks you&apos;d love
         </p>
-        <div className="flex items-center">
+        {/* <div className="flex items-center">
           <Link to="/tracks" className="text-xs font-medium text-muted">
             View all
           </Link>
-        </div>
+        </div> */}
+          <SlidesButton position={ref} width={200} />
       </div>
       <div
         id={"carousel-1"}
-        className="max-w-full overflow-auto whitespace-nowrap mb-[74px]"
+        ref={ref}
+        className="max-w-full overflow-x-auto overflow-y-hidden  scroll_event whitespace-nowrap mb-[74px]"
       >
         <div className="flex">
           {Array(15)

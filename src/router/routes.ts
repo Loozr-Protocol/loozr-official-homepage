@@ -26,6 +26,8 @@ import NFTs from "../containers/Nfts";
 import Notifications from "../containers/Notifications";
 import BuyArtistToken from "../containers/BuyArtistToken";
 import SellArtistToken from "../containers/SellArtistToken";
+import SelectGenres from "../containers/SelectGenres";
+import SuggestedArtistes from "../containers/SuggestedArtistes";
 
 export const authRoutes = [
   {
@@ -33,6 +35,18 @@ export const authRoutes = [
     path: "login",
     private: false,
     component: Login,
+  },
+  {
+    name: "select-genres",
+    path: "select-genres",
+    private: false,
+    component: SelectGenres,
+  },
+  {
+    name: "suggested-artistes",
+    path: "suggested-artistes",
+    private: false,
+    component: SuggestedArtistes,
   },
   {
     name: "signup",

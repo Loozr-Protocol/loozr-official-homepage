@@ -28,7 +28,7 @@ export const TopBar = () => {
   };
 
   return (
-    <div className="w-full mb-6 px-3">
+    <div className="w-full  mb-6 px-3">
       <div className="flex justify-between items-center">
         <div className="hidden md:block relative">
           <input

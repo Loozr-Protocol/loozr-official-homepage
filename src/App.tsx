@@ -15,6 +15,7 @@ import RequireAuth from "./containers/RequireAuth";
 import { parseJwt } from "./utils/index";
 import FullpageLoader from "./components/loaders/FullpageLoader";
 import Maintenance from "./containers/Maintenance";
+import Login from "./containers/Login";
 
 const NotFound = () => (
   <div className="main-content">
@@ -36,7 +37,7 @@ const App = () => {
 
   return (
     <>
-      <div>
+      <Router>
         <div id="preloader"></div>
         <div className="progress-wrap cursor-pointer">
           <svg
@@ -54,14 +55,55 @@ const App = () => {
         <div
           className="dialog-off-canvas-main-canvas"
           data-off-canvas-main-canvas
-        >
-          <Maintenance />
+        > 
+          {/* <Maintenance /> */}
+          {/* <Login /> */}
+
+          <WaitlistModal />
+              <Routes>
+                {authRoutes.map((route) => (
+                  <Route
+                    key={route.name}
+                    path={route.path}
+                    element={
+                      <>
+                        <route.component />
+                        <Footer />
+                      </>
+                    }
+                  />
+                ))}
+                {routes.map((route) => (
+                  <Route
+                    key={route.name}
+                    path={route.path}
+                    element={
+                      <AppLayout>
+                        <route.component />
+                        <Footer />
+                      </AppLayout>
+                    }
+                  />
+                ))}
+                {dashboard.map((route) => (
+                  <Route
+                    key={route.name}
+                    path={route.path}
+                    element={
+                      <Dashboard>
+                        <route.component />
+                      </Dashboard>
+                    }
+                  />
+                ))}
+                <Route path="*" element={NotFound} />
+              </Routes>
           <Player />
           <a href="#focused" id="focus-link" hidden>
             Go to playing element
           </a>
         </div>
-      </div>
+      </Router>
     </>
   );
 };

@@ -62,10 +62,10 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
   const balanceUsd = formatBalanceUSD(Number(balanceBN));
 
   return (
-    <div className="flex justify-between w-full !overflow-x-hidden">
+    <div className="flex justify-between relative h-screen w-full !overflow-hidden">
       <Left />
       <div
-        className={`flex-1 pt-4 pb-10 px-3 md:px-0 md:pl-14 lg:pr-28 !overflow-x-hidden mb-24 md:mb-auto`}
+        className={`flex-1 pt-4 pb-10 px-3 md:px-0 md:pl-7 lg:pr-10 !overflow-x-hidden md:mb-auto`}
         style={{
           marginLeft: xl
             ? `calc(${drawerMaxWidth}vw)`
@@ -79,15 +79,15 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
           maxWidth: `100vw`,
         }}
       >
-        <div className="flex flex-col items-center w-full mx-auto">
-          <TopBar />
-          <div className="w-full">
-            <div className="w-full flex flex-col md:flex-row md:justify-between md:items-start">
-              <div className="w-full md:w-[70%] md:pl-3 md:pr-8">
+        <div className="flex flex-col relative h-screen overflow-y-hidden items-center w-full"> 
+          <TopBar /> 
+          <div className="w-full ">
+            <div className="w-full flex  flex-col md:flex-row md:justify-between md:items-start">
+              <div className="w-full md:w-[70%] md:pl-0 md:pr-7 h-[90vh] overflow-y-auto ">
                 {children}
               </div>
-              <div className="w-full md:w-[30%]">
-                <div className="flex flex-col bg-dark-800 w-full min-h-[210px] mb-7">
+              <div className="w-full md:w-[30%] ">
+                <div  style={{ background: "linear-gradient(180deg, #12161F 0%, rgba(18, 22, 31, 0) 100%)" }} className="flex flex-col w-full min-h-[210px] mb-7">
                   <div className="py-8 px-6 border-dark-900 border-b">
                     <p className="text-muted text-xs font-medium mb-1.5">
                       Your Balance
@@ -116,7 +116,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                 </div>
                 <SuggestedFollows />
 
-                <div className="mt-[67px] flex justify-between items-center mb-[18px]">
+                <div className="mt-[67px] flex justify-between items-center  mb-[18px]">
                   <p className="text-[13px] font-medium leading-5 text-muted">
                     Coming Soon
                   </p>

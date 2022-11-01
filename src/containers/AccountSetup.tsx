@@ -49,15 +49,16 @@ export default function AccountSetup() {
     dispatch(accountSetup(formik.values));
   };
 
-  if (!jwtToken) {
-    return <Navigate to="/login" state={{ from: location }} replace />;
-  }
+  // if (!jwtToken) {
+  //   return <Navigate to="/login" state={{ from: location }} replace />;
+  // }
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center ">
       <div className="px-4 max-w-[550px] mx-auto">
         <p className="font-bold text-4xl md:text-5xl text-white mb-4 md:mb-7">
-          Add username
+        Your Web3 identity
+          starts here.
         </p>
         <p className="text-base md:text-xl mb-7">
           <span className="mt-4">

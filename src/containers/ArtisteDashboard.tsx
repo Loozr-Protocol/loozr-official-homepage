@@ -23,6 +23,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../state/store";
 import { getArtists } from "../state/artist/actions";
 import Photo from "../components/Photo";
+import SlidesButton from "../components/SlidesButton";
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 4,
@@ -42,41 +43,111 @@ const ArtisteDashboard = () => {
   const [canPlay, setCanPlay] = useState(false);
   const { playing, setPlaying, duration, curTime } = useAudioPlayer(100);
 
+  const featuredRef: any = React.useRef(null); 
+  const musicDropRef: any = React.useRef(null); 
+
   useEffect(() => {
     dispatch(getArtists());
   }, []);
 
+  const FeaturedArtistes =()=>{ 
+
+    return( 
+      <> 
+        <div className="flex items-center justify-between mb-6">
+          <p className="font-medium text-base md:text-[17px] text-white">
+            Featured artistes
+          </p>
+          <SlidesButton position={featuredRef} width={200} />
+        </div>
+        <div
+          id={"carousel"}
+          className="max-w-full overflow-auto scroll_event whitespace-nowrap mb-16"
+          ref={featuredRef}
+        >
+          <div className="flex" >
+            {artists.map((_, i) => (
+              <div
+                key={i}
+                className="flex flex-col items-center mr-4 min-w-max md:min-w-[145px] relative"
+              >
+                <Link to={`/profile/${_.user.id}`} className="relative">
+                  <Photo
+                    alt=""
+                    className="object-cover h-20 md:h-32 w-20 md:w-32 rounded-full border-[15px] border-dark-700 mb-[16px]"
+                    style={{
+                      border: "14px solid #141922",
+                    }}
+                  />
+                  {_.isVerified && (
+                    <img
+                      src={VerifiedBadge}
+                      alt=""
+                      className="absolute w-4 md:w-8 h-4 md:h-8 right-3 bottom-6"
+                    />
+                  )}
+                </Link>
+                <Link
+                  to={`/profile/${_.user.id}`}
+                  className="font-normal mb-px md:font-bold text-[15px] text-white text-center uppercase name-tag"
+                >
+                  ${_.creatorCoinId}
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </> 
+    )
+  }
+
   const renderAudioPlayer = useMemo(() => {
     return (
       <div
-        className={`${!canPlay && "hidden"} fixed bottom-6 left-14 rounded-2xl`}
+        className={`${!canPlay && "hidden"} fixed lg:top-auto lg:right-auto bottom-20 left-0 right-0 z-50 lg:bottom-6 lg:left-14 rounded-[13px]`}
       >
         <audio id={`audio-100`} onCanPlay={() => setCanPlay(true)}>
           <source src={"/song.mp3"} />
           Your browser does not support the <code>audio</code> element.
         </audio>
-        <div className="flex rounded-2xl">
-          <img src={Goya} alt="" className="rounded-l-2xl w-14" />
+        <div className="flex w-full lg:w-auto lg:h-auto h-28 lg:rounded-[13px] lg:py-0 items-center " 
+          style={{
+            background: "rgba(20, 25, 34, 0.65)",
+            backdropFilter: "blur(12.5px)",
+          }}>
+            <div className=" w-12 lg:w-14 lg:ml-0 ml-3 " > 
+              <img src={Goya} alt="" className=" rounded-full lg:rounded-r-none lg:rounded-l-[13px] w-full" />
+            </div>
           <div
-            className="py-2 px-3 rounded-r-2xl flex items-center"
-            style={{
-              background: "rgba(20, 25, 34, 0.65)",
-              backdropFilter: "blur(25px)",
+            className="py-2 px-3 bg-transparent lg:w-auto w-full lg:rounded-r-[13px] flex items-center"
+            style={{  
+              // backdropFilter: "blur(12.5px)",
             }}
           >
-            <div>
-              <p className="mb-px font-medium text-[13px] leading-5 text-white">
-                Chiling good
-              </p>
-              <p className="text-muted text-xs font-normal md:font-normal">
-                Goya Menor
-              </p>
+            <div className=" flex flex-1 lg:flex-row flex-col pr-3 lg:pr-0 lg:items-center " > 
+              <div className=" w-fit " >
+                <p className="mb-px font-medium text-xs lg:text-[13px] leading-5 text-white">
+                  Chiling good
+                </p>
+                <p className="text-muted text-[10px] lg:mt-0 -mt-1 lg:text-xs font-normal md:font-normal">
+                  Goya Menor
+                </p>
+              </div>
+              <div className=" lg:flex hidden " >
+                <BorderLinearProgress
+                  variant="determinate"
+                  value={(curTime / duration) * 100}
+                  className="ml-6 mr-8 min-w-[180px]"
+                />
+              </div>
+              <div className=" lg:hidden flex " >
+                <BorderLinearProgress
+                  variant="determinate"
+                  value={(curTime / duration) * 100}
+                  className=" lg:hidden mt-2 w-full "
+                />
+              </div>
             </div>
-            <BorderLinearProgress
-              variant="determinate"
-              value={(curTime / duration) * 100}
-              className="ml-6 mr-8 min-w-[180px]"
-            />
             <div className="flex items-center mr-3">
               <img src={Rewind} alt="" className="cursor-pointer w-4 h-4" />
               {playing ? (
@@ -103,69 +174,26 @@ const ArtisteDashboard = () => {
   }, [canPlay, curTime, duration, playing, setPlaying]);
 
   return (
-    <div className="w-full relative">
+    <div className="w-full flex flex-col">
       <Carousel />
       {renderAudioPlayer}
-      <div className="flex items-center justify-between mb-6">
-        <p className="font-medium text-base md:text-[17px] text-white">
-          Featured artistes
-        </p>
-        <div className="flex items-center">
-          <Link to="/artistes" className="text-xs font-medium text-muted">
-            View all
-          </Link>
-        </div>
-      </div>
-      <div
-        id={"carousel"}
-        className="max-w-full overflow-auto whitespace-nowrap mb-16"
-      >
-        <div className="flex">
-          {artists.map((_, i) => (
-            <div
-              key={i}
-              className="flex flex-col items-center mr-4 min-w-max md:min-w-[145px] relative"
-            >
-              <Link to={`/profile/${_.user.id}`} className="relative">
-                <Photo
-                  alt=""
-                  className="object-cover h-20 md:h-32 w-20 md:w-32 rounded-full border-[15px] border-dark-700 mb-[16px]"
-                  style={{
-                    border: "14px solid #141922",
-                  }}
-                />
-                {_.isVerified && (
-                  <img
-                    src={VerifiedBadge}
-                    alt=""
-                    className="absolute w-4 md:w-8 h-4 md:h-8 right-3 bottom-6"
-                  />
-                )}
-              </Link>
-              <Link
-                to={`/profile/${_.user.id}`}
-                className="font-normal mb-px md:font-bold text-[15px] text-white text-center uppercase name-tag"
-              >
-                ${_.creatorCoinId}
-              </Link>
-            </div>
-          ))}
-        </div>
-      </div>
+      <FeaturedArtistes />
       <Suggestion />
       <div className="flex items-center justify-between mb-6">
         <p className="font-medium text-base md:text-[17px] text-white">
           Music NFT drops
         </p>
-        <div className="flex items-center">
+        {/* <div className="flex items-center">
           <Link to="/nfts" className="text-xs font-medium text-muted">
             View all
           </Link>
-        </div>
+        </div> */}
+          <SlidesButton position={musicDropRef} width={250} />
       </div>
       <div
         // className="grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-8 mb-16"
-        className="max-w-full overflow-auto whitespace-nowrap mb-16"
+        className="max-w-full overflow-auto scroll_event whitespace-nowrap mb-16"
+        ref={musicDropRef}
       >
         <div className="flex">
           {nfts.map(({ platform, price, liked, likes, token, img }, index) => (
@@ -180,7 +208,7 @@ const ArtisteDashboard = () => {
       <p className="font-medium text-base md:text-[17px] text-white mb-6">
         How does Loozr work?
       </p>
-      <div className="grid gap-5 lg:gap-10 mb-10">
+      <div className="grid gap-5 lg:gap-10 pb-28 ">
         <div className="grid md:grid-cols-2 gap-5 lg:gap-10">
           <div className="bg-dark-700 py-7 px-7">
             <img src={Arrow} alt="" className="w-10 h-10 mb-[19px]" />
