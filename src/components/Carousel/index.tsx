@@ -21,8 +21,7 @@ const Carousel = () => {
         </p>
         <p className="text-white font-semibold text-[17px] leading-7 max-w-[300px]">
           DISCOVER, BUY & SELL ARTISTE Coins.
-        </p>
-        {/* .flex.cols */}
+        </p> 
       </div>
     );
   });
