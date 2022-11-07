@@ -28,7 +28,7 @@ import BuyArtistToken from "../containers/BuyArtistToken";
 import SellArtistToken from "../containers/SellArtistToken";
 import SelectGenres from "../containers/SelectGenres";
 import SuggestedArtistes from "../containers/SuggestedArtistes";
-import MusicInfo from "../containers/MusicInfo";
+import MusicInfo from "../containers/MusicInfo"; 
 
 export const authRoutes = [
   {
@@ -95,7 +95,7 @@ export const authRoutes = [
     path: "/artists/music-info",
     private: false,
     component: MusicInfo,
-  },
+  }, 
 ];
 
 export const routes = [

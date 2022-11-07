@@ -39,7 +39,7 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 
 const ArtisteDashboard = () => {
   const dispatch = useDispatch();
-  const artists = useSelector((state: AppState) => state.artist.artists);
+  const artists = useSelector((state: AppState) => state?.artist?.artists);
   const [canPlay, setCanPlay] = useState(false);
   const { playing, setPlaying, duration, curTime } = useAudioPlayer(100);
 
