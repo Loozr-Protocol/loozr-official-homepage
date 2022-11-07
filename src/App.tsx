@@ -5,7 +5,7 @@ import Player from "./components/song/Player/Player";
 import Footer from "./components/Footer";
 import WaitlistModal from "./components/WaitlistModal";
 import AppLayout from "./components/Layout/App";
-import { authRoutes, dashboard, routes } from "./router/routes";
+import { authRoutes, dashboard, dashboardhome, routes } from "./router/routes";
 import Dashboard from "./components/Layout/dashboard";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserDetails } from "./state/user/userActions";
@@ -96,6 +96,19 @@ const App = () => {
                         <route.component />
                       </Dashboard>
                     </RequireAuth>
+                  }
+                />
+              ))}
+              {dashboardhome.map((route) => (
+                <Route
+                  key={route.name}
+                  path={route.path}
+                  element={
+                    // <RequireAuth>
+                      <Dashboard>
+                        <route.component />
+                      </Dashboard>
+                    // </RequireAuth>
                   }
                 />
               ))}

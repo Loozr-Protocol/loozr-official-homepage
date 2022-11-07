@@ -145,12 +145,6 @@ export const dashboard = [
     component: SellArtistToken,
   },
   {
-    name: "artiste dashboard",
-    path: "explore",
-    private: false,
-    component: ArtisteDashboard,
-  },
-  {
     name: "wallet",
     path: "wallet",
     private: true,
@@ -205,3 +199,13 @@ export const dashboard = [
     component: Notifications,
   },
 ];
+
+
+export const dashboardhome = [ 
+  {
+    name: "artiste dashboard",
+    path: "explore",
+    private: false,
+    component: ArtisteDashboard,
+  },
+]
