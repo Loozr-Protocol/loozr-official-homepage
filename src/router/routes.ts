@@ -147,7 +147,7 @@ export const dashboard = [
   {
     name: "artiste dashboard",
     path: "explore",
-    private: true,
+    private: false,
     component: ArtisteDashboard,
   },
   {
