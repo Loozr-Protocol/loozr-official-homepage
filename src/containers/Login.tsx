@@ -47,6 +47,7 @@ const Login = () => {
       setLoading(false);
       const jwtToken = result["access_token"];
       localStorage.setItem("jwtToken", jwtToken);
+      sessionStorage.setItem("isLoggedIn", "true");
       const user = jsonToUser(result["user"]);
       dispatch(login(user));
       push("/explore", { replace: true });

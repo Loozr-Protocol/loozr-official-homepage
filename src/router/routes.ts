@@ -122,7 +122,7 @@ export const routes = [
     path: "/artists/songs/:id",
     private: false,
     component: SongDashboard,
-  },
+  }, 
 ];
 
 export const dashboard = [

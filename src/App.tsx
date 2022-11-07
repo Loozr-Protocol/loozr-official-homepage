@@ -86,19 +86,6 @@ const App = () => {
                   }
                 />
               ))}
-              {dashboard.map((route) => (
-                <Route
-                  key={route.name}
-                  path={route.path}
-                  element={
-                    <RequireAuth>
-                      <Dashboard>
-                        <route.component />
-                      </Dashboard>
-                    </RequireAuth>
-                  }
-                />
-              ))}
               {dashboardhome.map((route) => (
                 <Route
                   key={route.name}
@@ -109,6 +96,19 @@ const App = () => {
                         <route.component />
                       </Dashboard>
                     // </RequireAuth>
+                  }
+                />
+              ))}
+              {dashboard.map((route) => (
+                <Route
+                  key={route.name}
+                  path={route.path}
+                  element={
+                    <RequireAuth>
+                      <Dashboard>
+                        <route.component />
+                      </Dashboard>
+                    </RequireAuth>
                   }
                 />
               ))}

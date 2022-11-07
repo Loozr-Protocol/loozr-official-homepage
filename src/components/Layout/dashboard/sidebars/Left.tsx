@@ -105,7 +105,7 @@ export const Left = () => {
       ) : (
         <img src={Loozr} alt="" className={`mb-6 h-6 w-6`} />
       )}
-      {!user.isArtist ? (
+      {!user?.isArtist ? (
         <button
           onClick={becomeArtist}
           className="hidden xl:block text-xs font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
@@ -155,12 +155,12 @@ export const Left = () => {
           />
           <div className="hidden xl:block w-full">
             <p className="text-sm font-extrabold text-white name-tag">
-              {user.accountId}
+              {user?.accountId}
             </p>
             <p className="text-[11px] font-medium flex items-center w-auto flex-nowrap whitespace-nowrap text-muted">
-              {user.isArtist ? (
+              {user?.isArtist ? (
                 <span>
-                  <span className="uppercase">${user.tokenName}</span>{" "}
+                  <span className="uppercase">${user?.tokenName}</span>{" "}
                   <span className="h-1 w-1 rounded-full bg-muted opacity-90 mb-[3px]" />{" "}
                   Artiste
                 </span>

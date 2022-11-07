@@ -54,7 +54,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
   const { pathname } = useLocation();
 
   const user = useSelector((state: AppState) => state.user.userInfo);
-  const lzrAccountId = `${user.accountId}.${MIXER_ACCOUNT}`;
+  const lzrAccountId = `${user?.accountId}.${MIXER_ACCOUNT}`;
   const balanceResult = usePollLZRBalance(lzrAccountId);
   const balanceBN = getFullDisplayBalance(balanceResult);
   
@@ -107,7 +107,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                     <a
                       target="_blank"
                       rel="noreferrer"
-                      href={nearExplorerAccount(user.accountDomain)}
+                      href={nearExplorerAccount(user?.accountDomain)}
                       className="py-3 px-3 sm:px-6 md:px-9 text-xs md:text-sm font-medium bg-muted-50 rounded-full"
                     >
                       View On Explorer
