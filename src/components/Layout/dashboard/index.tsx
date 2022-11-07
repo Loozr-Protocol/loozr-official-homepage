@@ -61,6 +61,8 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
   const balanceInLzr = formatNumber(Number(balanceBN));
   const balanceUsd = formatBalanceUSD(Number(balanceBN));
 
+  const isLoggedIn = sessionStorage.getItem("isLoggedIn") === "true"; 
+
   return (
     <div className="flex justify-between relative h-screen w-full !overflow-hidden">
       <Left />
@@ -86,7 +88,8 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
               <div className="w-full md:w-[70%] md:pl-0 md:pr-7 h-[90vh] overflow-y-auto ">
                 {children}
               </div>
-              <div className="w-full md:w-[30%] ">
+              {isLoggedIn && ( 
+                <div className="w-full md:w-[30%] ">
                 <div  style={{ background: "linear-gradient(180deg, #12161F 0%, rgba(18, 22, 31, 0) 100%)" }} className="flex flex-col w-full min-h-[210px] mb-7">
                   <div className="py-8 px-6 border-dark-900 border-b">
                     <p className="text-muted text-xs font-medium mb-1.5">
@@ -133,38 +136,41 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                     className="w-[45%] cursor-pointer"
                   />
                 </div>
-              </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-between md:hidden fixed bottom-0 py-4 px-7 bg-dark-900 w-full">
-        {tabs.map((tab, index) => (
-          <Link
-            to={tab.path || "#!"}
-            key={index}
-            className={`hover:flex flex flex-col items-center justify-center ${
-              tabs.length !== index + 1 && "mr-4"
-            }`}
-            onClick={() =>
-              tab.path ? null : toast.info("Coming soon!", TOAST_OPTIONS)
-            }
-          >
-            <tab.icon
-              className={`object-contain w-3.5 h-3.5 mb-2 ${
-                tab.path === pathname ? "text-white" : "text-[#536079]"
+      {isLoggedIn && ( 
+        <div className="flex items-center justify-between md:hidden fixed bottom-0 py-4 px-7 bg-dark-900 w-full">
+          {tabs.map((tab, index) => (
+            <Link
+              to={tab.path || "#!"}
+              key={index}
+              className={`hover:flex flex flex-col items-center justify-center ${
+                tabs.length !== index + 1 && "mr-4"
               }`}
-            />
-            <p
-              className={`text-xs font-medium ${
-                tab.path === pathname ? "text-white" : "text-[#536079]"
-              }`}
+              onClick={() =>
+                tab.path ? null : toast.info("Coming soon!", TOAST_OPTIONS)
+              }
             >
-              {tab.label}
-            </p>
-          </Link>
-        ))}
-      </div>
+              <tab.icon
+                className={`object-contain w-3.5 h-3.5 mb-2 ${
+                  tab.path === pathname ? "text-white" : "text-[#536079]"
+                }`}
+              />
+              <p
+                className={`text-xs font-medium ${
+                  tab.path === pathname ? "text-white" : "text-[#536079]"
+                }`}
+              >
+                {tab.label}
+              </p>
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
