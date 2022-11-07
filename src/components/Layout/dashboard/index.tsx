@@ -142,7 +142,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
           </div>
         </div>
       </div>
-      {isLoggedIn && ( 
+      {/* {isLoggedIn && (  */}
         <div className="flex items-center justify-between md:hidden fixed bottom-0 py-4 px-7 bg-dark-900 w-full">
           {tabs.map((tab, index) => (
             <Link
@@ -170,7 +170,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
             </Link>
           ))}
         </div>
-      )}
+      {/* )} */}
     </div>
   );
 };
