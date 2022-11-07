@@ -29,6 +29,7 @@ import SellArtistToken from "../containers/SellArtistToken";
 import SelectGenres from "../containers/SelectGenres";
 import SuggestedArtistes from "../containers/SuggestedArtistes";
 import MusicInfo from "../containers/MusicInfo"; 
+import ExploreDashboard from "../containers/ExploreDashboard";
 
 export const authRoutes = [
   {
@@ -96,6 +97,12 @@ export const authRoutes = [
     private: false,
     component: MusicInfo,
   }, 
+  {
+    name: "artiste dashboard",
+    path: "explore/check",
+    private: false,
+    component: ExploreDashboard,
+  },
 ];
 
 export const routes = [
