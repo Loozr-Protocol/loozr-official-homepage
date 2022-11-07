@@ -31,11 +31,11 @@ const AccountSetupInput = ({
   
   return (
     <div
-      className="flex flex-row w-fit between items-center"
+      className="flex flex-row w-full md:w-[450px] between items-center"
       style={{ backgroundColor: "#12161F" }}
     >
 
-      <div className=" relative w-fit " > 
+      <div className=" relative w-full " > 
       <input
         type="text"
         onKeyUp={() => onKeyUp()}
@@ -43,11 +43,12 @@ const AccountSetupInput = ({
         onChange={onChange}
         onBlur={onBlur}
         onFocus={onFocus}
-        className="px-7 py-4 text-muted placeholder:text-muted relative z-20 flex-auto bg-transparent"
+        style={{paddingLeft: "30px"}}
+        className="px-7 py-3 md:py-4 text-muted placeholder:text-muted relative z-20 h-[55px] md:h-[74px] flex-auto bg-transparent"
         {...rest}
       />
 
-      <div className=" absolute top-[23px] flex left-[18px] right-7 overflow-x-hidden "> 
+      <div className=" absolute top-[15px] md:top-[24px] flex left-[30px] right-7 overflow-x-hidden "> 
           <p className="text-[16.4px] text-transparent " >{value}</p>
           {value !== "" &&  
             <span className=" z-30 mt-[1px]  text-muted" >.lzr.testnet</span>

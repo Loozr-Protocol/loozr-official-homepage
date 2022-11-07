@@ -24,7 +24,7 @@ export default function AccountSetup() {
   let location = useLocation();
 
   const formSchema = yup.object({
-    account_id: yup.string().required("Please enter your username"),
+    account_id: yup.string().required("Please enter your domain name"),
   });
 
   const formik = useFormik({
@@ -55,50 +55,49 @@ export default function AccountSetup() {
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center ">
-      <div className="px-4 max-w-[550px] mx-auto">
-        <p className="font-bold text-4xl md:text-5xl text-white mb-4 md:mb-7">
+      <div className="md:px-4 px-10 max-w-[550px] mx-auto">
+        <p className=" font-extrabold text-[25px] w-full md:w-[450px] leading-snug md:leading-normal md:text-4xl text-white md:mb-7">
         Your Web3 identity
           starts here.
         </p>
-        <p className="text-base md:text-xl mb-7">
+        <p className="text-[15px] w-full md:w-[450px] md:text-xl leading-normal font-normal mb-7">
           <span className="mt-4">
-            Enter a custom username that you'll use for all transactions,
-            including earning, streaming, sending, and receiving tokens.
+          Reserve your <span className=" font-bold " >.lzr.testnet</span> domain name to represent your wallet, profile or brand. Stream, send and receive tokens via domain names.
           </span>
         </p>
         <AccountSetupInput
           accountDomain={`.${MIXER_ACCOUNT}`}
           name="account_id"
-          placeholder="$YOUR_USERNAME"
+          placeholder="username.lzr.testnet"
           value={formik.values.account_id}
           setResult={(result) => setAvailableState(result)}
           onChange={formik.handleChange}
           onBlur={(e) => formik.handleBlur(e)}
           onFocus={() => formik.setFieldTouched("account_id", true, true)}
         />
-        <div className="w-full h-auto mb-1">
+        <div className="w-full h-auto mt-2 mb-3">
           {formik.touched.account_id && formik.errors.account_id && (
             <motion.div
               initial={{ y: -100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              className="text-xs font-Inter-SemiBold text-[#F25341]"
+              className="text-xs font-normal text-[#F25341]"
               style={{ marginTop: "3px" }}
             >
               {formik.errors.account_id}
             </motion.div>
           )}
-        </div>
-        <p className="italic text-sm md:text-lg text-muted mb-8 md:mb-16">
-          Username:{" "}
-          {formik.values.account_id ? formik.values.account_id : "examplename"}.
-          {MIXER_ACCOUNT}
+        </div> 
+        <p className="italic text-[13px] font-normal md:text-lg text-muted mb-8 md:mb-16">
+          Domain name:{" "}
+          {formik.values.account_id ? formik.values.account_id : "example"}.lzr.testnet
+          {/* {MIXER_ACCOUNT} */}
         </p>
         <button
-          className="py-4 text-white disabled:text-muted font-medium text-base bg-gradient-ld disabled:bg-dark-800 mb-11 w-full focus:outline-none h-[74px]"
+          className="md:py-4 text-white disabled:text-muted font-medium text-base bg-gradient-ld disabled:bg-dark-800 mb-11 w-full md:w-[450px] focus:outline-none h-[55px] md:h-[74px]"
           onClick={handleLaunchToken}
           disabled={isLoading || !isAccountAvailable}
         >
-          {isLoading ? "Reserving username..." : "Reserve My Name"}
+          {isLoading ? "Reserving username..." : "Reserve name"}
         </button>
       </div>
     </div>

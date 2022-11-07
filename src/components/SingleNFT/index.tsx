@@ -3,6 +3,8 @@ import Selina from "../../assets/img/nfts/selina.png";
 import HeartIcon from "../../assets/icons/heart.svg";
 import HeartFilledIcon from "../../assets/icons/heart-filled.svg";
 import useAudioPlayer from "../../hooks/useAudioPlayer";
+import Play from "../../assets/svg/controls/play.svg";
+import Pause from "../../assets/svg/controls/pause.svg";
 
 type NFTProp = {
   platform: string;
@@ -25,20 +27,43 @@ const NFT = ({
   className = "",
   index = null,
 }) => {
-  const { setPlaying } = useAudioPlayer(index);
+  const { playing, setPlaying } = useAudioPlayer(100);
+  const [isShown, setIsShown] = useState(false)
   const [isLiked, setIsLiked] = useState<boolean>(liked);
 
   return (
     <div
       className={"bg-dark-900 " + className}
-      onMouseOver={() => setPlaying(true)}
-      onMouseOut={() => setPlaying(false)}
+      // onMouseOver={() => setPlaying(true)}
+      // onMouseOut={() => setPlaying(false)}
+      onMouseOver={()=> setIsShown(true)} onMouseOut={()=> setIsShown(false)} 
     >
       <audio id={`audio-${index}`}>
         <source src={"/song.mp3"} />
         Your browser does not support the <code>audio</code> element.
       </audio>
-      <img src={img} alt="" height={280} width={280} />
+      <div className=" w-[200px] h-[200px] relative "   > 
+        <img src={img} alt="" className={isShown ? " hidden " : " w-full h-full object-cover "} /> 
+          <div className={isShown ? " flex w-full h-full justify-center items-center " : " hidden "} > 
+          <div className="absolute z-10 inset-0 bg-black opacity-75  " />
+          <img src={img} alt="" className=" w-full absolute h-full object-cover " />
+              <button style={{ backgroundColor: "rgba(255, 255, 255, 0.4)" }} className=' w-16 h-16 relative z-20 rounded-full flex justify-center items-center ' onClick={() => setPlaying(prev => !prev)}>
+                  {playing ? (
+                      <img
+                      src={Pause}
+                      alt=""
+                      className=" cursor-pointer ml-1 w-7 h-8"
+                      />
+                  ) : (
+                      <img
+                      src={Play}
+                      alt="" 
+                      className="cursor-pointer  ml-1 w-7 h-9"
+                      />
+                  )}
+              </button>
+          </div> 
+      </div>
       <div className="bg-dark-700 py-3.5 px-[20px] mb-px">
         <p className="font-normal text-sm text-white mb-3">Happy everyday</p>
         <div className="flex items-center ">

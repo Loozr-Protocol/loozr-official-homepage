@@ -11,11 +11,13 @@ const Photo: React.FC<React.PropsWithChildren<PhotoProps>> = ({
 }) => {
   if (src) {
     return (
-      <img
-        {...rest}
-        alt={alt}
-        src={src}
-      />
+      <div className=" w-fit " >
+        <img
+          {...rest}
+          alt={alt}
+          src={src}
+        />
+      </div>
     );
   }
   

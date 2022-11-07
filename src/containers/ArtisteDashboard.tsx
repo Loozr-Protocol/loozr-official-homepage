@@ -52,9 +52,12 @@ const ArtisteDashboard = () => {
 
   const FeaturedArtistes =()=>{ 
 
+    const [isShown, setIsShown] = React.useState(-1)
+    
     return( 
       <> 
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between mb-6"
+          >
           <p className="font-medium text-base md:text-[17px] text-white">
             Featured artistes
           </p>
@@ -62,14 +65,16 @@ const ArtisteDashboard = () => {
         </div>
         <div
           id={"carousel"}
-          className="max-w-full overflow-auto scroll_event whitespace-nowrap mb-16"
+          className="max-w-full overflow-auto scroll_event whitespace-nowrap md:mb-0 mb-16"
           ref={featuredRef}
         >
-          <div className="flex" >
+          <div className="flex"  >
             {artists.map((_, i) => (
               <div
                 key={i}
-                className="flex flex-col items-center mr-4 min-w-max md:min-w-[145px] relative"
+                onMouseOver={()=> setIsShown(i)}
+                onMouseOut={()=> setIsShown(-1)}
+                className="flex flex-col items-center mr-4 md:h-72 min-w-max md:min-w-[145px]"
               >
                 <Link to={`/profile/${_.user.id}`} className="relative">
                   <Photo
@@ -89,10 +94,12 @@ const ArtisteDashboard = () => {
                 </Link>
                 <Link
                   to={`/profile/${_.user.id}`}
-                  className="font-normal mb-px md:font-bold text-[15px] text-white text-center uppercase name-tag"
+                  className="font-extrabold mb-px md:font-bold text-[15px] text-white text-center uppercase name-tag"
                 >
                   ${_.creatorCoinId}
-                </Link>
+                </Link> 
+                <p className=" font-semibold text-[#536079] " >2,474.14 LZR</p> 
+                <button className={isShown === i ? " bg-[#141922] h-12 md:flex justify-center items-center font-bold hidden rounded-full w-full mt-4  " : "hidden"} >Buy coin</button> 
               </div>
             ))}
           </div>
@@ -104,47 +111,47 @@ const ArtisteDashboard = () => {
   const renderAudioPlayer = useMemo(() => {
     return (
       <div
-        className={`${!canPlay && "hidden"} fixed lg:top-auto lg:right-auto bottom-20 left-0 right-0 z-50 lg:bottom-6 lg:left-14 rounded-[13px]`}
+        className={`${!canPlay && "hidden"} fixed md:top-auto md:right-auto bottom-20 left-0 right-0 z-50 md:bottom-6 md:left-14 rounded-[13px]`}
       >
         <audio id={`audio-100`} onCanPlay={() => setCanPlay(true)}>
           <source src={"/song.mp3"} />
           Your browser does not support the <code>audio</code> element.
         </audio>
-        <div className="flex w-full lg:w-auto lg:h-auto h-28 lg:rounded-[13px] lg:py-0 items-center " 
+        <div className="flex w-full md:w-auto md:h-auto h-[70px] md:rounded-[13px] md:py-0 items-center " 
           style={{
             background: "rgba(20, 25, 34, 0.65)",
             backdropFilter: "blur(12.5px)",
           }}>
-            <div className=" w-12 lg:w-14 lg:ml-0 ml-3 " > 
-              <img src={Goya} alt="" className=" rounded-full lg:rounded-r-none lg:rounded-l-[13px] w-full" />
+            <div className=" w-12 md:w-14 md:ml-0 ml-3 " > 
+              <img src={Goya} alt="" className=" rounded-full md:rounded-r-none md:rounded-l-[13px] w-full" />
             </div>
           <div
-            className="py-2 px-3 bg-transparent lg:w-auto w-full lg:rounded-r-[13px] flex items-center"
+            className="py-2 px-3 bg-transparent md:w-auto w-full md:rounded-r-[13px] flex items-center"
             style={{  
               // backdropFilter: "blur(12.5px)",
             }}
           >
-            <div className=" flex flex-1 lg:flex-row flex-col pr-3 lg:pr-0 lg:items-center " > 
+            <div className=" flex flex-1 md:flex-row flex-col pr-3 md:pr-0 md:items-center " > 
               <div className=" w-fit " >
-                <p className="mb-px font-medium text-xs lg:text-[13px] leading-5 text-white">
+                <p className="mb-px font-medium text-xs md:text-[13px] leading-5 text-white">
                   Chiling good
                 </p>
-                <p className="text-muted text-[10px] lg:mt-0 -mt-1 lg:text-xs font-normal md:font-normal">
+                <p className="text-muted text-[10px] md:mt-0 -mt-1 md:text-xs font-normal md:font-normal">
                   Goya Menor
                 </p>
               </div>
-              <div className=" lg:flex hidden " >
+              <div className=" md:flex hidden " >
                 <BorderLinearProgress
                   variant="determinate"
                   value={(curTime / duration) * 100}
                   className="ml-6 mr-8 min-w-[180px]"
                 />
               </div>
-              <div className=" lg:hidden flex " >
+              <div className=" md:hidden flex " >
                 <BorderLinearProgress
                   variant="determinate"
                   value={(curTime / duration) * 100}
-                  className=" lg:hidden mt-2 w-full "
+                  className=" md:hidden mt-2 w-full "
                 />
               </div>
             </div>
@@ -198,7 +205,7 @@ const ArtisteDashboard = () => {
         <div className="flex">
           {nfts.map(({ platform, price, liked, likes, token, img }, index) => (
             <NFT
-              className="min-w-[200px] mr-[16px]"
+              className="w-[200px] mr-[16px]"
               key={index}
               {...{ platform, price, likes, liked, token, img, index }}
             />
@@ -208,7 +215,7 @@ const ArtisteDashboard = () => {
       <p className="font-medium text-base md:text-[17px] text-white mb-6">
         How does Loozr work?
       </p>
-      <div className="grid gap-5 lg:gap-10 pb-28 ">
+      <div className="grid gap-5 lg:gap-10 pb-44 md:pb-28 ">
         <div className="grid md:grid-cols-2 gap-5 lg:gap-10">
           <div className="bg-dark-700 py-7 px-7">
             <img src={Arrow} alt="" className="w-10 h-10 mb-[19px]" />

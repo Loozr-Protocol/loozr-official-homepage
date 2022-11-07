@@ -3,6 +3,7 @@ import * as yup from "yup";
 import { useFormik } from "formik";
 import { motion } from "framer-motion";
 import { ReactComponent as HelpIcon } from "../assets/icons/help.svg";
+import Edit from "../assets/Edit.png";
 import ToolTip from "../components/Tooltip";
 import { AppState } from "../state/store";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,9 +14,12 @@ import { toast } from "react-toastify";
 import { updateProfile } from "../state/user/userReducer";
 import Photo from "../components/Photo";
 import { jsonToUser } from "../utils";
+import { MenuItem, Select } from "@mui/material";
 
 const EditProfile = () => {
   const [isLoading, setLoading] = useState(false);
+  const [image, setImage] = React.useState('');  
+  const [selectedImage, setSelectedImage] = React.useState('');  
   const dispatch = useDispatch();
   const { handleUpdateProfile } = useUpdateProfileCallback();
   const user = useSelector((state: AppState) => state.user.userInfo);
@@ -68,31 +72,56 @@ const EditProfile = () => {
     }
   };
 
+  const handleImageChange = (e: any ) => {
+
+    const selected = e.target.files[0]; 
+    const TYPES = ["image/png", "image/jpg", "image/jpeg" ];        
+    if (selected && TYPES.includes(selected.type)) {
+        setImage(selected)
+        const reader: any = new FileReader();
+        reader.onloadend= () => {  
+          setSelectedImage(reader.result)
+        }
+        reader.readAsDataURL(selected)
+    } else {
+        console.log('Error')
+    }  
+
+    // setSelectedImage(selected)
+  } 
+
   return (
     <div className="w-full mt-[70px] md:mt-0">
       <p className="font-medium text-base md:text-lg text-white mb-12">
         Update Profile
       </p>
-      <div className="flex items-center justify-between w-1/2 mb-12">
-        <div className="relative">
+      <div className="flex items-center mb-12">
+        <div className="relative  w-[113px] h-[113px] ">
           <Photo
             alt=""
             width={113}
             height={113}
+            src={selectedImage}
             className="rounded-full w-[113px] h-[113px] object-contain"
             style={{ border: "8px solid #141922" }}
           />
+          <label className=" w-[43px] cursor-pointer absolute -bottom-2 -right-1 rounded-full bg-[#141922] h-[43px] flex justify-center items-center " > 
+            <img src={Edit} className=" w-[15px] h-[15px] " alt="Edit" /> 
+            <input style={{display:'none'}} type="file" accept="image/*" id="input" onChange={handleImageChange} />
+          </label>
         </div>
-        <div>
+        <div className=" ml-3 " >
           <p className="text-xl text-white font-semibold mb-2">
             {lzrAccountId}
           </p>
-          {/* <p className="text-loozr-green text-base font-medium">
-            change profile picture</p> */}
+          <label className="text-loozr-green cursor-pointer text-base font-medium">
+            change profile picture
+            <input style={{display:'none'}} type="file" accept="image/*" id="input" onChange={handleImageChange} />
+          </label>
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 justify-start mb-10">
-        <div className="grid gap-6">
+        <div className=" flex flex-col ">
           <input
             type="text"
             className="px-7 py-3 text-muted text-sm placeholder:text-muted"
@@ -103,28 +132,33 @@ const EditProfile = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             onFocus={() => formik.setFieldTouched("username", true, true)}
-          />
-          <div className="w-full h-auto pt-2">
+          /> 
+          <div className=" w-full h-auto pt-2" >
             {formik.touched.username && formik.errors.username && (
               <motion.div
                 initial={{ y: -100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 className="text-xs font-Inter-SemiBold text-[#F25341]"
-                style={{ marginTop: "-32px" }}
+                // style={{ marginTop: "-32px" }}
               >
                 {formik.errors.username}
               </motion.div>
-            )}
+            )}  
           </div>
-          {/* <input
-            type="text"
-            className="px-7 py-3 text-muted text-sm placeholder:text-muted"
+          <select 
+            className="px-7 py-3 mt-4 text-muted text-sm placeholder:text-muted"
             style={{ backgroundColor: "#12161F" }}
-            placeholder="Genre"
-          /> */}
+            name="website" 
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            onFocus={() => formik.setFieldTouched("website", true, true)}
+            placeholder="Website link"
+          >
+            <option>Genre</option>
+          </select> 
           <input
             type="text"
-            className="px-7 py-3 text-muted text-sm placeholder:text-muted"
+            className="px-7 py-3 mt-4 text-muted text-sm placeholder:text-muted"
             style={{ backgroundColor: "#12161F" }}
             name="website"
             defaultValue={user.website ?? ""}
@@ -135,18 +169,29 @@ const EditProfile = () => {
           />
           <input
             type="text"
-            className="px-7 py-3 text-muted text-sm placeholder:text-muted"
+            className="px-7 py-3 mt-4 text-muted text-sm placeholder:text-muted"
             style={{ backgroundColor: "#12161F" }}
-            name="country"
-            defaultValue={user.country ?? ""}
+            name="website"
+            defaultValue={user.website ?? ""}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            onFocus={() => formik.setFieldTouched("website", true, true)}
+            placeholder="Twitter link"
+          />
+          <select 
+            className="px-7 py-3 mt-4 text-muted text-sm placeholder:text-muted"
+            style={{ backgroundColor: "#12161F" }}
+            name="country" 
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             onFocus={() => formik.setFieldTouched("country", true, true)}
             placeholder="Country"
-          />
+          >
+            <option>Country</option>
+          </select>
         </div>
         <div
-          className="grid gap-6"
+          className="flex flex-col"
           style={{
             gridTemplateRows: "auto minmax(0,1fr)",
           }}
@@ -158,9 +203,9 @@ const EditProfile = () => {
             placeholder="uneditable_input@email.com*"
             defaultValue={user.email}
             disabled
-          />
+          /> 
           <textarea
-            className="px-[18px] py-3 text-muted text-sm placeholder:text-muted resize-none"
+            className="px-[18px] h-40 py-3 mt-4 text-muted text-sm placeholder:text-muted resize-none"
             style={{ backgroundColor: "#12161F" }}
             placeholder="Bio"
             defaultValue={user.bio ?? ""}
@@ -169,7 +214,46 @@ const EditProfile = () => {
             onBlur={formik.handleBlur}
             onFocus={() => formik.setFieldTouched("bio", true, true)}
           ></textarea>
+          <input
+            type="text"
+            className="px-7 py-3 mt-4 text-muted text-sm placeholder:text-muted"
+            style={{ backgroundColor: "#12161F" }}
+            name="website"
+            defaultValue={user.website ?? ""}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            onFocus={() => formik.setFieldTouched("website", true, true)}
+            placeholder="Souncloud link"
+          />
         </div>
+      </div>
+      <div className=" w-full border-t border-[#222A3B] pt-4 pb-16 " >
+          <p className=" font-semibold text-xl " >Artiste Details</p>
+          <div className=" mt-4 flex w-full items-center " > 
+            <input
+              type="text"
+              className="px-7 w-full py-3 mr-4 text-muted text-sm placeholder:text-muted"
+              style={{ backgroundColor: "#12161F" }}
+              name="website"
+              defaultValue={user.website ?? ""}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              onFocus={() => formik.setFieldTouched("website", true, true)}
+              placeholder="Artist Name"
+            />
+            <input
+              type="text"
+              className="px-7 py-3 w-32 text-muted text-sm placeholder:text-muted"
+              style={{ backgroundColor: "#12161F" }}
+              name="website"
+              defaultValue={user.website ?? ""}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              onFocus={() => formik.setFieldTouched("website", true, true)}
+              placeholder=""
+            />
+            <HelpIcon className="w-16 ml-4" />
+          </div>
       </div>
       {/* {hasLaunchedToken && (
         <>
