@@ -96,15 +96,15 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                       Your Balance
                     </p>
                     <p className="text-white text-2xl font-extrabold mb-2">
-                      {balanceInLzr}{" "}
+                      {!balanceInLzr ? balanceInLzr : ""}{" "}
                       <span className="text-sm font-medium">LZR</span>
                     </p>
                     <div className="text-white text-xs">
-                      ≈ ${balanceUsd} USD
+                      ≈ ${!balanceUsd ? balanceUsd : ""} USD
                     </div>
                   </div>
                   <div className="py-4 px-6 text-xs font-medium text-muted">
-                    ~ ${LZR_IN_USD} USD per LZR coin price
+                    ~ ${!LZR_IN_USD ? LZR_IN_USD : ""} USD per LZR coin price
                   </div>
                   <div className="flex justify-content-center mb-8">
                     <a
