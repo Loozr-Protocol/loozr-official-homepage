@@ -54,13 +54,13 @@ export const TopBar = () => {
         {!isLoggedIn && (
           <div className="hidden lg:flex  items-center justify-end gap-x-4">
             <button
-              className="rounded-full py-[16px] w-[175px] bg-[#141922]  text-xs font-semibold outline-none focus:outline-none"
+              className="rounded-full py-[16px] w-[175px] bg-[#141922]  text-[12px] font-semibold outline-none focus:outline-none"
               onClick={() => navigate("/login")}
             >
               LOG IN
             </button>
             <button
-              className="rounded-full py-[16px] md:px-6 w-[175px] bg-s-gradient text-xs font-semibold outline-none focus:outline-none"
+              className="rounded-full py-[16px] md:px-6 w-[175px] bg-s-gradient text-[12px] font-semibold outline-none focus:outline-none"
               onClick={() => navigate("/signup")}
             >
               CREATE ACCOUNT
