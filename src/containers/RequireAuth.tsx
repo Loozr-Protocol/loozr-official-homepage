@@ -15,17 +15,17 @@ export default function RequireAuth({ children }: { children: JSX.Element }) {
   }
 
   if (user) {
-    if (!user.accountId) {
-      return (
-        <Navigate to="/account-setup" state={{ from: location }} replace />
-      );
-    }
+    // if (!user.accountId) {
+    //   return (
+    //     <Navigate to="/account-setup" state={{ from: location }} replace />
+    //   );
+    // }
 
-    if(user.isArtist && !user.tokenName) {
-      return (
-        <Navigate to="/artist-account-setup" state={{ from: location }} replace />
-      );
-    }
+    // if(user.isArtist && !user.tokenName) {
+    //   return (
+    //     <Navigate to="/artist-account-setup" state={{ from: location }} replace />
+    //   );
+    // }
   } else {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }

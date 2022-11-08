@@ -88,7 +88,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
               <div className="w-full md:w-[70%] md:pl-0 md:pr-7 h-[90vh] overflow-y-auto ">
                 {children}
               </div>
-              {isLoggedIn && ( 
+              {/* {isLoggedIn && (  */}
                 <div className="w-full md:w-[30%] ">
                 <div  style={{ background: "linear-gradient(180deg, #12161F 0%, rgba(18, 22, 31, 0) 100%)" }} className="flex flex-col w-full min-h-[210px] mb-7">
                   <div className="py-8 px-6 border-dark-900 border-b">
@@ -137,7 +137,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                   />
                 </div>
                 </div>
-              )}
+              {/* )} */}
             </div>
           </div>
         </div>

@@ -90,6 +90,8 @@ export const Left = () => {
   const musicUpload = () => {
     toast.info("Coming soon!", TOAST_OPTIONS);
   };
+  
+  const isLoggedIn = sessionStorage.getItem("isLoggedIn") === "true"; 
 
   return (
     <div
@@ -105,21 +107,25 @@ export const Left = () => {
       ) : (
         <img src={Loozr} alt="" className={`mb-6 h-6 w-6`} />
       )}
-      {!user?.isArtist ? (
-        <button
-          onClick={becomeArtist}
-          className="hidden xl:block text-xs font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
-        >
-          Become an artist
-        </button>
-      ) : (
-        <button
-          onClick={musicUpload}
-          className="hidden xl:block text-xs font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
-        >
-          Upload song
-        </button>
-      )}
+      {isLoggedIn && ( 
+        <>
+          {!user?.isArtist ? (
+                <button
+                  onClick={becomeArtist}
+                  className="hidden xl:block text-xs font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
+                >
+                  Become an artist
+                </button>
+          ) : (
+            <button
+              onClick={musicUpload}
+              className="hidden xl:block text-xs font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
+            >
+              Upload song
+            </button>
+          )}
+        </>
+        )}
       <div className="w-full  xl:h-[85%] flex flex-col items-end xl:block overflow-y-auto overflow-x-hidden">
         {tabs.map((tab: any) => (
           <Link
