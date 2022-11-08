@@ -58,7 +58,7 @@ export default function Header() {
                 <i className="fab fa-twitter"></i>
               </a>
               <a
-                href="https://discord.gg/M7S7DbTbfu"
+                href="https://discord.gg/loozr"
                 target="_blank"
                 rel="noopener noreferrer"
               >
