@@ -65,19 +65,19 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <div className=" w-full flex flex-col justify-center items-center " > 
-      <div className="flex justify-between relative h-screen w-full md:w-[768px] lg:w-full !overflow-hidden">
+      <div className="flex justify-between relative h-screen w-full md:w-[768px] px-6 lg:w-full !overflow-hidden">
         <Left />
         <div
-          className={`flex-1 pt-4 pb-10 px-3 md:px-0 md:pl-7 lg:pr-10 !overflow-x-hidden md:mb-auto`}
+          className={`flex-1 pt-4 pb-10 md:px-0 md:pl-7 lg:pr-0 !overflow-x-hidden md:mb-auto`}
           style={{
-            marginLeft: xl
-              ? `calc(${drawerMaxWidth}vw)`
-              : // : lg
-              // ? `200px`
-              md
-              ? "100px"
-              : "auto",
-            marginRight: "auto",
+            // marginLeft: xl
+            //   ? `calc(${drawerMaxWidth}vw)`
+            //   : // : lg
+            //   // ? `200px`
+            //   md
+            //   ? "100px"
+            //   : "auto",
+            // marginRight: "auto",
             // zoom: md ? "80%" : "100%",
             maxWidth: `100vw`,
           }}
@@ -89,7 +89,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                 <div className="w-full lg:w-[70%] md:pl-0 md:pr-7 h-[90vh] overflow-y-auto ">
                   {children}
                 </div> 
-                  <div className="w-full hidden lg:flex flex-col lg:w-[340px] xl:w-[440px]">
+                  <div className="w-full hidden lg:flex flex-col lg:w-[340px] xl:w-[350px]">
                   <div  style={{ background: "linear-gradient(180deg, #12161F 0%, rgba(18, 22, 31, 0) 100%)" }} className="flex flex-col w-full min-h-[210px] mb-7">
                     <div className="py-8 px-6 border-dark-900 border-b">
                       <p className="text-muted text-xs font-medium mb-1.5">
