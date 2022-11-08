@@ -88,9 +88,8 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
               <div className="w-full flex  flex-col md:flex-row md:justify-between md:items-start">
                 <div className="w-full lg:w-[70%] md:pl-0 md:pr-7 h-[90vh] overflow-y-auto ">
                   {children}
-                </div>
-                {/* {isLoggedIn && (  */}
-                  <div className="w-full hidden lg:flex flex-col md:w-[25%] lg:w-[30%]">
+                </div> 
+                  <div className="w-full hidden lg:flex flex-col lg:w-[340px] xl:w-[440px]">
                   <div  style={{ background: "linear-gradient(180deg, #12161F 0%, rgba(18, 22, 31, 0) 100%)" }} className="flex flex-col w-full min-h-[210px] mb-7">
                     <div className="py-8 px-6 border-dark-900 border-b">
                       <p className="text-muted text-xs font-medium mb-1.5">
@@ -137,8 +136,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                       className="w-[45%] cursor-pointer"
                     />
                   </div>
-                  </div>
-                {/* )} */}
+                  </div> 
               </div>
             </div>
           </div>
