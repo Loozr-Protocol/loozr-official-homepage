@@ -37,11 +37,10 @@ export const TopBar = () => {
           <input
             type="text"
             placeholder="Search artiste, fans… "
-            className="placeholder:text-[#536079] rounded-full py-[6px] text-xs"
+            className="placeholder:text-[#536079] md-[300px] lg:w-[400px] rounded-full py-[6px] text-xs"
             style={{
               paddingLeft: "3.5rem",
               paddingRight: 16,
-              width: 400,
               background: "#12161F",
               color: "#536079",
             }}
@@ -53,15 +52,15 @@ export const TopBar = () => {
           /> 
         </div>
         {!isLoggedIn && (
-          <div className="hidden md:flex items-center justify-end gap-x-4">
+          <div className="hidden lg:flex  items-center justify-end gap-x-4">
             <button
-              className="rounded-full py-[16px] px-[40px] bg-[#141922] min-w-[170px] text-xs font-semibold outline-none focus:outline-none"
+              className="rounded-full py-[16px] px-[40px] bg-[#141922] lg:min-w-[170px] text-xs font-semibold outline-none focus:outline-none"
               onClick={() => navigate("/login")}
             >
               LOG IN
             </button>
             <button
-              className="rounded-full py-[16px] px-[40px] bg-s-gradient min-w-[170px] text-xs font-semibold outline-none focus:outline-none"
+              className="rounded-full py-[16px] md:px-6 lg:px-[40px] bg-s-gradient lg:min-w-[170px] text-xs font-semibold outline-none focus:outline-none"
               onClick={() => navigate("/signup")}
             >
               CREATE ACCOUNT

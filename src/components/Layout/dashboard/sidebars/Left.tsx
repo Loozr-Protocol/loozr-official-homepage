@@ -95,7 +95,7 @@ export const Left = () => {
 
   return (
     <div
-      className={`bg-dark-800 fixed flex flex-col items-end lg:block left-0 h-screen md:pl-11 xl:pl-14 pr-auto md:pr-4 xl:pr-12 pt-8 pb-12 mb-5`}
+      className={`bg-dark-800 fixed flex flex-col items-end h-screen md:pl-11 xl:pl-14 pr-auto md:pr-4 xl:pr-12 pt-8 pb-12 mb-5`}
       style={{
         // minWidth: xl ? drawerMinWidth : "auto",
         // maxWidth: md ? `${drawerMaxWidth}vw` : 0,
@@ -105,7 +105,7 @@ export const Left = () => {
       {xl ? (
         <img src={LoozrBeta} alt="" className={`w-32 h-8 mb-7`} />
       ) : (
-        <img src={Loozr} alt="" className={`mb-6 h-6 w-6`} />
+        <img src={Loozr} alt="" className={`mb-6 mr-[12px] h-6 w-6`} />
       )}
       {isLoggedIn && ( 
         <>

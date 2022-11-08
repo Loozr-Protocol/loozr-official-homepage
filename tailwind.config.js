@@ -30,6 +30,13 @@ module.exports = {
       fontSize: {
         label: ["3.5rem", 1],
       },
+      // screens: {
+      //   sm: '640px',
+      //   md: '768px',
+      //   lg: '1024px',
+      //   xl: '1360px',
+      //   '2xl': '1536px',
+      // },
     },
   },
   plugins: [],
