@@ -37,7 +37,7 @@ export const TopBar = () => {
           <input
             type="text"
             placeholder="Search artiste, fans… "
-            className="placeholder:text-[#536079] md-[300px] lg:w-[400px] rounded-full py-[6px] text-xs"
+            className="placeholder:text-[#536079] md-[300px] lg:w-[400px] rounded-full h-[48px] text-xs"
             style={{
               paddingLeft: "3.5rem",
               paddingRight: 16,
@@ -54,13 +54,13 @@ export const TopBar = () => {
         {!isLoggedIn && (
           <div className="hidden lg:flex  items-center justify-end gap-x-4">
             <button
-              className="rounded-full py-[14px] w-[175px] bg-[#141922]  text-[11.5px] font-semibold outline-none focus:outline-none"
+              className="rounded-full h-[48px] w-[175px] bg-[#141922]  text-[11.5px] font-semibold outline-none focus:outline-none"
               onClick={() => navigate("/login")}
             >
               LOG IN
             </button>
             <button
-              className="rounded-full py-[14px] md:px-6 w-[175px] bg-s-gradient text-[11.5px] font-semibold outline-none focus:outline-none"
+              className="rounded-full h-[48px] md:px-6 w-[175px] bg-s-gradient text-[11.5px] font-semibold outline-none focus:outline-none"
               onClick={() => navigate("/signup")}
             >
               CREATE ACCOUNT
