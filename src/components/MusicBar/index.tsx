@@ -61,35 +61,27 @@ import React, {
       }
     ]);
   
-    // const plugins = useMemo(() => {
-    //   return [ 
-    //     {
-    //         plugin: RegionsPlugin,
-    //         options: { dragSelection: true }
-    //     },
-    //     {
-    //         plugin: TimelinePlugin,
-    //         options: {
-    //         container: "#timeline"
-    //         }
-    //     },
-    //   ].filter(Boolean);
-    // }, [timelineVis]);
-  
-
-    const plugins = [
+    const plugins = useMemo(() => {
+      return [ 
         // {
-        // plugin: RegionsPlugin,
-        // options: { dragSelection: true }
+        //   plugin: RegionsPlugin,
+        //   options: { dragSelection: true }
         // },
+        timelineVis && {
+          plugin: TimelinePlugin,
+          options: {
+            container: "#timeline"
+          }
+        },
         // {
-        //     plugin: TimelinePlugin,
-        //     options: {
-        //         container: "#timeline"
-        //     }
-        // }, 
-    ];
- 
+        //   plugin: MarkersPlugin,
+        //   options: {
+        //     markers: [{ draggable: true }]
+        //   }
+        // }
+      ].filter(Boolean);
+    }, [timelineVis]);
+   
 
     const toggleTimeline = useCallback(() => {
       setTimelineVis(!timelineVis);
@@ -289,31 +281,7 @@ import React, {
         <WaveSurfer plugins={plugins}
          onMount={handleWSMount}
          >
-          <WaveForm id="waveform">
-            {/* {regions.map((regionProps) => (
-              <Region
-                onUpdateEnd={handleRegionUpdate}
-                key={regionProps.id}
-                {...regionProps}
-              />
-            ))} */}
-            {/* {markers.map((marker, index) => {
-              return (
-                <Marker
-                  key={index}
-                  {...marker}
-                  onClick={(...args) => {
-                    console.log("onClick", ...args);
-                  }}
-                  onDrag={(...args) => {
-                    console.log("onDrag", ...args);
-                  }}
-                  onDrop={(...args) => {
-                    console.log("onDrop", ...args);
-                  }}
-                />
-              );
-            })} */}
+          <WaveForm id="waveform"> 
           </WaveForm>
           <div id="timeline" />
         </WaveSurfer>

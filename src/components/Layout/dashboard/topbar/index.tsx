@@ -37,7 +37,7 @@ export const TopBar = () => {
           <input
             type="text"
             placeholder="Search artiste, fans… "
-            className="placeholder:text-[#536079] md-[500px] rounded-full h-[48px] text-xs"
+            className="placeholder:text-[#536079]  w-full rounded-full h-[48px] text-xs"
             style={{
               paddingLeft: "3.5rem",
               paddingRight: 16,
