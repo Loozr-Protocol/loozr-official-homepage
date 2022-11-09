@@ -8,21 +8,24 @@ import slide4 from "../../assets/img/slider3.jpg";
 
 const Carousel = () => {
   let reactSwipeEl;
+  const directionOffset = 800;
 
   const boxAnimation = {
     key: "box",
     initial: { 
       opacity: 0,
-        scale: 0.5,
+      x: 400
+        // scale: 0.5,
     },
     animate: {
-        // x: 0,
+        x: 0,
         opacity: 1,
-        scale: 1,
+        // scale: 1,
     },
     exit: { 
-        opacity: 0, 
-        scale: 0.5,
+        opacity: 0,  
+        x: -400
+        // scale: 0.5,
     },
     transition: {
         duration: 1,
