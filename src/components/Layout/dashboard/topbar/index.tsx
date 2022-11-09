@@ -32,7 +32,7 @@ export const TopBar = () => {
 
   return (
     <div className="w-full mb-6 ">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between px-0 sm:px-4  items-center">
         <div className="hidden md:block relative">
           <input
             type="text"

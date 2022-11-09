@@ -20,6 +20,7 @@ import { AppState } from "../../../state/store";
 import { formatBalanceUSD, formatNumber, getFullDisplayBalance } from "../../../utils/formatBalance";
 import SuggestedFollows from "../../suggestion/SuggestedFollows";
 import { nearExplorerAccount } from "../../../utils";
+import LeftUpdate from "./sidebars/LeftUpdate";
 
 const tabs = [
   {
@@ -64,11 +65,11 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
   const isLoggedIn = sessionStorage.getItem("isLoggedIn") === "true"; 
 
   return (
-    <div className=" w-full flex flex-col justify-center items-center " > 
-      <div className="flex justify-between relative h-screen w-full md:w-[768px] max-w-[1366px] px-4 lg:w-full !overflow-hidden">
-        <Left />
+    <div className=" w-full flex md:bg-dark-800 flex-col justify-center items-center " > 
+      <div className="flex justify-between relative h-screen md:bg-[#0c0f16] w-full md:w-[768px] max-w-[1366px] lg:w-full !overflow-hidden"> 
+          <Left /> 
         <div
-          className={`flex-1 pt-4 pb-10 md:px-0 md:pl-7 lg:pr-0 !overflow-x-hidden md:mb-auto`}
+          className={`flex-1 pt-4 pb-10 md:px-0 md:pl-7 lg:pr-0 pr-4 !overflow-x-hidden md:mb-auto`}
           style={{
             // marginLeft: xl
             //   ? `calc(${drawerMaxWidth}vw)`
