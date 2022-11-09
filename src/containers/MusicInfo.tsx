@@ -12,6 +12,7 @@ import Pause from "../assets/svg/controls/pause.svg";
 import graph from "../assets/graph.png";
 import musicinfo from "../assets/musicinfo.png";
 import { useNavigate } from 'react-router-dom';
+import MusicBar from "../components/MusicBar/index"
 
 export default function MusicInfo() {
  
@@ -31,6 +32,8 @@ export default function MusicInfo() {
     }));
 
     const navigate = useNavigate()
+
+    const [play, setPlay] = React.useState("")
 
     return (
         <div className='flex flex-col w-full h-full md:px-[169px] py-10 md:py-24   '> 
@@ -76,11 +79,12 @@ export default function MusicInfo() {
                             </div>
                         </div>
                         <div className=' w-full md:pr-14 ' > 
-                            <BorderLinearProgress
+                            {/* <BorderLinearProgress
                             variant="determinate"
                             value={(curTime / duration) * 100}
                             className=" w-full "
-                            />
+                            /> */}
+                            <MusicBar play={play} />
                         </div>
                         <div className=' mt-4 w-full md:pr-8 md:mb-20 mb-10 flex items-center justify-between ' >
                             <div className=' w-full flex items-center ' >

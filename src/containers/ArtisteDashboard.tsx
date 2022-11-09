@@ -17,6 +17,7 @@ import { nfts } from "../components/dummy/nfts";
 import LinearProgress, {
   linearProgressClasses,
 } from "@mui/material/LinearProgress";
+import { useNavigate } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import useAudioPlayer from "../hooks/useAudioPlayer";
 import { useDispatch, useSelector } from "react-redux";
@@ -45,6 +46,8 @@ const ArtisteDashboard = () => {
 
   const featuredRef: any = React.useRef(null); 
   const musicDropRef: any = React.useRef(null); 
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     dispatch(getArtists());
@@ -132,14 +135,14 @@ const ArtisteDashboard = () => {
             }}
           >
             <div className=" flex flex-1 md:flex-row flex-col pr-3 md:pr-0 md:items-center " > 
-              <div className=" w-fit " >
+              <button onClick={()=> navigate("/artists/music-info")} className=" w-fit " >
                 <p className="mb-px font-medium text-xs md:text-[13px] leading-5 text-white">
                   Chiling good
                 </p>
                 <p className="text-muted text-[10px] md:mt-0 -mt-1 md:text-xs font-normal md:font-normal">
                   Goya Menor
                 </p>
-              </div>
+              </button>
               <div className=" md:flex hidden " >
                 <BorderLinearProgress
                   variant="determinate"
