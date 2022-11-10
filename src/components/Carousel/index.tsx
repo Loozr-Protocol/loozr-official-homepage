@@ -28,7 +28,7 @@ const Carousel = () => {
         // scale: 0.5,
     },
     transition: {
-        duration: 1,
+        duration: 0.5,
         ease: "easeOut",
     },
   }
@@ -65,7 +65,7 @@ const Carousel = () => {
       } else { 
         setIsShown(prev=>prev+1) 
       }
-    }, 5000); 
+    }, 8000); 
     return () => { 
       clearTimeout(t1); 
     }
