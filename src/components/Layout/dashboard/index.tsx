@@ -61,6 +61,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
   
   const balanceInLzr = formatNumber(Number(balanceBN));
   const balanceUsd = formatBalanceUSD(Number(balanceBN));
+  const [showModal, setShowModal] = React.useState(false)
 
   const isLoggedIn = sessionStorage.getItem("isLoggedIn") === "true"; 
 
@@ -69,7 +70,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
       <div className="flex justify-between relative h-screen md:bg-[#0c0f16] w-full md:w-[768px] max-w-[1366px] lg:w-full !overflow-hidden"> 
           <Left /> 
         <div
-          className={`flex-1 pt-4 pb-10 md:px-0 md:pl-7 lg:pr-0 pr-4 !overflow-x-hidden md:mb-auto`}
+          className={`flex-1 pt-4 pb-10 md:px-0 md:pl-7 lg:pr-0 !overflow-x-hidden md:mb-auto`}
           style={{
             // marginLeft: xl
             //   ? `calc(${drawerMaxWidth}vw)`
@@ -90,7 +91,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                 <div className="w-full lg:w-[70%] md:pl-0 md:pr-7 h-[90vh] overflow-y-auto ">
                   {children}
                 </div> 
-                  <div className="w-full hidden lg:flex flex-col lg:w-[310px] xl:w-[330px]">
+                  <div className="w-full hidden overflow-y-auto md:h-[90vh] pr-4 lg:flex flex-col lg:w-[310px] xl:w-[330px]">
                   <div  style={{ background: "linear-gradient(180deg, #12161F 0%, rgba(18, 22, 31, 0) 100%)" }} className="flex flex-col w-full min-h-[210px] mb-7">
                     <div className="py-8 px-6 border-dark-900 border-b">
                       <p className="text-muted text-xs font-medium mb-1.5">
@@ -118,14 +119,14 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                       </a> */}
                     </div>
                   </div>
-                  <SuggestedFollows />
+                  <SuggestedFollows modal={setShowModal} />
 
-                  <div className="mt-[67px] flex justify-between items-center  mb-[18px]">
+                  <div className="mt-[67px] flex justify-between items-center mb-[18px]">
                     <p className="text-[13px] font-medium leading-5 text-muted">
                       Coming Soon
                     </p>
                   </div>
-                  <div className="flex justify-between items-center w-full">
+                  <div className="flex justify-between items-center mb-20 w-full">
                     <img
                       src={AppStore}
                       alt=""
@@ -172,6 +173,49 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
           </div>
         {/* )} */}
       </div>
+      {showModal && (
+        <div className=" fixed inset-0 flex justify-center items-center bg-black bg-opacity-25 z-[70] " >
+
+            <div className=' w-[436px] h-[80vh] rounded-2xl bg-[#12161F]' >
+                <div className=' w-full flex items-center border-b border-[#222A3B] justify-between py-8 px-9 ' >
+                    <p className="font-bold text-xl text-white">
+                        Select your genres
+                    </p> 
+                    <button onClick={()=> setShowModal(false)} className=' font-semibold bg-[#8369F4] w-[99px] h-9 rounded-lg ' >Done</button>
+                </div>
+                <div className=' w-full px-9 py-10 h-[650px] overflow-y-auto ' >
+                    <div className=' w-full flex justify-between my-3 items-center ' > 
+                        <div className=' w-16 h-16 rounded-full bg-red-600 border-[6px] border-[#222A3B] ' />
+                        <div className=' ml-6 ' >
+                            <div className=' flex -mt-1 items-center ' > 
+                                <p className=' text-[17px] font-semibold ' >Nathan Jose</p>
+                            </div>
+                            <div className=' flex -mt-1 items-center ' > 
+                                <p className=' text-[12px] font-semibold text-[#536079] ' >$HARTY</p>
+                                <div className=' w-1 h-1 rounded-full bg-[#536079] mx-3 ' />
+                                <p className=' text-[12px] font-semibold text-[#536079] ' >$3,001.99</p>
+                            </div>
+                        </div> 
+                        <p className=' text-[14px] ml-auto font-bold text-[#8369F4] cursor-pointer ' >Follow</p>
+                    </div>
+                    <div className=' w-full flex justify-between my-3 items-center ' > 
+                        <div className=' w-16 h-16 rounded-full bg-red-600 border-[6px] border-[#222A3B] ' />
+                        <div className=' ml-6 ' >
+                            <div className=' flex -mt-1 items-center ' > 
+                                <p className=' text-[17px] font-semibold ' >Nathan Jose</p>
+                            </div>
+                            <div className=' flex -mt-1 items-center ' > 
+                                <p className=' text-[12px] font-semibold text-[#536079] ' >$HARTY</p>
+                                <div className=' w-1 h-1 rounded-full bg-[#536079] mx-3 ' />
+                                <p className=' text-[12px] font-semibold text-[#536079] ' >$3,001.99</p>
+                            </div>
+                        </div> 
+                        <p className=' text-[14px] ml-auto font-bold text-[#536079] cursor-pointer ' >Following</p>
+                    </div>
+                </div>
+            </div> 
+        </div>
+      )}
     </div>
   );
 };

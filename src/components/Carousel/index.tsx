@@ -97,13 +97,13 @@ const Carousel = () => {
               }
             </AnimatePresence> 
           )})} 
-          <div className=" w-full flex justify-center absolute bottom-4 " >
+          {/* <div className=" w-full flex justify-center absolute bottom-4 " >
             {images.map((item: any, index: any) => { 
               return(
                 <div onClick={()=> setIsShown(index) } key={item} className={isShown === index ? " w-2 h-2 bg-loozr-purple rounded-full mx-1 cursor-pointer " : " w-2 h-2 bg-white rounded-full mx-1 cursor-pointer "} /> 
               )
             })}
-          </div>
+          </div> */}
     </div>
   )
 };
