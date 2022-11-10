@@ -44,14 +44,13 @@ const SuggestedFollows = (props: any) => {
                   Nathan Jose
                 </p>
                 <p className="flex items-center">
-                  <span className="text-muted text-[11px] font-bold mr-1 name-tag">
-                    $HARTY.
-                    $3,001.99
+                  <span className="text-muted text-[11px] font-regular mr-1 name-tag">
+                    $HARTY
                   </span>
                   <span className="bg-muted rounded-full h-1 w-1 mr-1" />{" "}
-                  {/* <span className="text-[11px] text-muted font-medium">
+                  <span className="text-[11px] text-muted font-regular">
                 $3,001.99
-              </span> */}
+              </span>
                 </p>
               </Link>
             </div>
