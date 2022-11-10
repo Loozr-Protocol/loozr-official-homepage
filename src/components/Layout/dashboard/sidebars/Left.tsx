@@ -105,7 +105,7 @@ export const Left = () => {
       {xl ? (
         <img src={LoozrBeta} alt="" className={`w-32 h-8 mb-7`} />
       ) : (
-        <img src={Loozr} alt="" className={`mb-6 mr-[12px] h-6 w-6`} />
+        <img src={Loozr} alt="" className={`mb-6 ml-[12px] h-6 w-6`} />
       )}
       {isLoggedIn && ( 
         <>
