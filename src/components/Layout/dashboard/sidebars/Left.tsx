@@ -156,8 +156,8 @@ export const Left = () => {
         >
           <Photo
             alt=""
-            className="object-contain w-8 h-8 xl:w-14 xl:h-10 rounded-full xl:mr-3"
-            style={{ border: "6px solid #141922" }}
+            className="object-contain w-12 h-12 xl:w-14 xl:h-14 rounded-full xl:mr-3"
+            style={{ border: "2px solid #141922" }}
           />
           <div className="hidden xl:block w-full">
             <p className="text-sm font-extrabold text-white name-tag">
