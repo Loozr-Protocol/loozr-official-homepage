@@ -174,21 +174,21 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
         {/* )} */}
       </div>
       {showModal && (
-        <div className=" fixed inset-0 flex justify-center items-center overflow-y-hidden bg-black bg-opacity-25 z-[70] " >
+        <div className=" fixed inset-0 flex justify-center items-center md:overflow-y-hidden bg-black bg-opacity-25 z-[70] " >
 
-            <div className=' w-[436px] rounded-2xl bg-[#12161F]' >
+            <div className=' w-full md:w-[436px] md:h-auto h-screen rounded-2xl bg-[#12161F]' >
                 <div className=' w-full flex items-center border-b border-[#222A3B] justify-between py-8 px-9 ' >
                     <p className="  font-medium text-white">
                         Select your genres
                     </p> 
                     <button onClick={()=> setShowModal(false)} className=' font-medium text-sm bg-[#8369F4] w-[99px] h-9 rounded-lg ' >Done</button>
                 </div>
-                <div className=' w-full px-9 py-10 h-[60vh]  overflow-y-auto ' >
+                <div className=' w-full px-9 md:py-10 md:h-[60vh] h-full flex flex-1 flex-col overflow-y-auto ' >
                     <div className=' w-full flex justify-between my-3 items-center ' > 
                         <div className=' w-16 h-16 rounded-full bg-red-600 border-[6px] border-[#222A3B] ' />
                         <div className=' ml-6 ' >
                             <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[16px] font-semibold ' >Nathan Jose</p>
+                                <p className=' text-[15px] font-semibold ' >Nathan Jose</p>
                             </div>
                             <div className=' flex -mt-1 items-center ' > 
                                 <p className=' text-[12px] font-semibold text-[#536079] ' >$HARTY</p>
@@ -202,7 +202,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                         <div className=' w-16 h-16 rounded-full bg-red-600 border-[6px] border-[#222A3B] ' />
                         <div className=' ml-6 ' >
                             <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[16px] font-semibold ' >Nathan Jose</p>
+                                <p className=' text-[15px] font-semibold ' >Nathan Jose</p>
                             </div>
                             <div className=' flex -mt-1 items-center ' > 
                                 <p className=' text-[12px] font-semibold text-[#536079] ' >$HARTY</p>
@@ -210,13 +210,13 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                                 <p className=' text-[12px] font-semibold text-[#536079] ' >$3,001.99</p>
                             </div>
                         </div> 
-                        <p className=' text-[14px] ml-auto font-bold text-[#536079] cursor-pointer ' >Following</p>
+                        <p className=' text-[14px] ml-auto font-semibold text-[#536079] cursor-pointer ' >Following</p>
                     </div>
                     <div className=' w-full flex justify-between my-3 items-center ' > 
                         <div className=' w-16 h-16 rounded-full bg-red-600 border-[6px] border-[#222A3B] ' />
                         <div className=' ml-6 ' >
                             <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[16px] font-semibold ' >Nathan Jose</p>
+                                <p className=' text-[15px] font-semibold ' >Nathan Jose</p>
                             </div>
                             <div className=' flex -mt-1 items-center ' > 
                                 <p className=' text-[12px] font-semibold text-[#536079] ' >$HARTY</p>
@@ -224,13 +224,13 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                                 <p className=' text-[12px] font-semibold text-[#536079] ' >$3,001.99</p>
                             </div>
                         </div> 
-                        <p className=' text-[14px] ml-auto font-bold text-[#536079] cursor-pointer ' >Following</p>
+                        <p className=' text-[14px] ml-auto font-semibold text-[#536079] cursor-pointer ' >Following</p>
                     </div>
                     <div className=' w-full flex justify-between my-3 items-center ' > 
                         <div className=' w-16 h-16 rounded-full bg-red-600 border-[6px] border-[#222A3B] ' />
                         <div className=' ml-6 ' >
                             <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[16px] font-semibold ' >Nathan Jose</p>
+                                <p className=' text-[15px] font-semibold ' >Nathan Jose</p>
                             </div>
                             <div className=' flex -mt-1 items-center ' > 
                                 <p className=' text-[12px] font-semibold text-[#536079] ' >$HARTY</p>
@@ -238,13 +238,13 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                                 <p className=' text-[12px] font-semibold text-[#536079] ' >$3,001.99</p>
                             </div>
                         </div> 
-                        <p className=' text-[14px] ml-auto font-bold text-[#536079] cursor-pointer ' >Following</p>
+                        <p className=' text-[14px] ml-auto font-semibold text-[#536079] cursor-pointer ' >Following</p>
                     </div>
                     <div className=' w-full flex justify-between my-3 items-center ' > 
                         <div className=' w-16 h-16 rounded-full bg-red-600 border-[6px] border-[#222A3B] ' />
                         <div className=' ml-6 ' >
                             <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[16px] font-semibold ' >Nathan Jose</p>
+                                <p className=' text-[15px] font-semibold ' >Nathan Jose</p>
                             </div>
                             <div className=' flex -mt-1 items-center ' > 
                                 <p className=' text-[12px] font-semibold text-[#536079] ' >$HARTY</p>
@@ -252,13 +252,13 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                                 <p className=' text-[12px] font-semibold text-[#536079] ' >$3,001.99</p>
                             </div>
                         </div> 
-                        <p className=' text-[14px] ml-auto font-bold text-[#536079] cursor-pointer ' >Following</p>
+                        <p className=' text-[14px] ml-auto font-semibold text-[#536079] cursor-pointer ' >Following</p>
                     </div>
                     <div className=' w-full flex justify-between my-3 items-center ' > 
                         <div className=' w-16 h-16 rounded-full bg-red-600 border-[6px] border-[#222A3B] ' />
                         <div className=' ml-6 ' >
                             <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[16px] font-semibold ' >Nathan Jose</p>
+                                <p className=' text-[15px] font-semibold ' >Nathan Jose</p>
                             </div>
                             <div className=' flex -mt-1 items-center ' > 
                                 <p className=' text-[12px] font-semibold text-[#536079] ' >$HARTY</p>
@@ -266,13 +266,13 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                                 <p className=' text-[12px] font-semibold text-[#536079] ' >$3,001.99</p>
                             </div>
                         </div> 
-                        <p className=' text-[14px] ml-auto font-bold text-[#536079] cursor-pointer ' >Following</p>
+                        <p className=' text-[14px] ml-auto font-semibold text-[#536079] cursor-pointer ' >Following</p>
                     </div>
                     <div className=' w-full flex justify-between my-3 items-center ' > 
                         <div className=' w-16 h-16 rounded-full bg-red-600 border-[6px] border-[#222A3B] ' />
                         <div className=' ml-6 ' >
                             <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[16px] font-semibold ' >Nathan Jose</p>
+                                <p className=' text-[15px] font-semibold ' >Nathan Jose</p>
                             </div>
                             <div className=' flex -mt-1 items-center ' > 
                                 <p className=' text-[12px] font-semibold text-[#536079] ' >$HARTY</p>
@@ -280,13 +280,13 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                                 <p className=' text-[12px] font-semibold text-[#536079] ' >$3,001.99</p>
                             </div>
                         </div> 
-                        <p className=' text-[14px] ml-auto font-bold text-[#536079] cursor-pointer ' >Following</p>
+                        <p className=' text-[14px] ml-auto font-semibold text-[#536079] cursor-pointer ' >Following</p>
                     </div>
                     <div className=' w-full flex justify-between my-3 items-center ' > 
                         <div className=' w-16 h-16 rounded-full bg-red-600 border-[6px] border-[#222A3B] ' />
                         <div className=' ml-6 ' >
                             <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[16px] font-semibold ' >Nathan Jose</p>
+                                <p className=' text-[15px] font-semibold ' >Nathan Jose</p>
                             </div>
                             <div className=' flex -mt-1 items-center ' > 
                                 <p className=' text-[12px] font-semibold text-[#536079] ' >$HARTY</p>
@@ -294,7 +294,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                                 <p className=' text-[12px] font-semibold text-[#536079] ' >$3,001.99</p>
                             </div>
                         </div> 
-                        <p className=' text-[14px] ml-auto font-bold text-[#536079] cursor-pointer ' >Following</p>
+                        <p className=' text-[14px] ml-auto font-semibold text-[#536079] cursor-pointer ' >Following</p>
                     </div>
                 </div>
             </div> 
