@@ -37,7 +37,7 @@ const SuggestedFollows = (props: any) => {
               <Photo
                 alt=""
                 className="h-[45px] w-[45px] rounded-full mr-2"
-                style={{ border: "6px solid #141922" }}
+                // style={{ border: "6px solid #141922" }}
               />
               <Link to={`/profile`}>
                 <p className="text-sm font-semibold text-white name-tag">
