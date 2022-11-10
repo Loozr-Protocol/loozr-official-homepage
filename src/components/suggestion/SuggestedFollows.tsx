@@ -37,18 +37,18 @@ const SuggestedFollows = (props: any) => {
               <Photo
                 alt=""
                 className="h-[45px] w-[45px] rounded-full mr-2"
-                // style={{ border: "6px solid #141922" }}
+                style={{ border: "5px solid #141922" }}
               />
               <Link to={`/profile`}>
                 <p className="text-sm font-semibold text-white name-tag">
                   Nathan Jose
                 </p>
                 <p className="flex items-center">
-                  <span className="text-muted text-[11px] font-regular mr-1 name-tag">
+                  <span className="text-muted text-[11px] font-medium mr-1 name-tag">
                     $HARTY
                   </span>
                   <span className="bg-muted rounded-full h-1 w-1 mr-1" />{" "}
-                  <span className="text-[11px] text-muted font-regular">
+                  <span className="text-[11px] text-muted font-medium">
                 $3,001.99
               </span>
                 </p>
