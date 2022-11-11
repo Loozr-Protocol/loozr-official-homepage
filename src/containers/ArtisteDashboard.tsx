@@ -84,7 +84,7 @@ const ArtisteDashboard = () => {
                     alt=""
                     className="object-cover h-20 md:h-32 w-20 md:w-32 rounded-full border-[15px] border-dark-700 mb-[16px]"
                     style={{
-                      border: "14px solid #141922",
+                      border: "7px solid #141922",
                     }}
                   />
                   {_.isVerified && (
@@ -202,10 +202,10 @@ const ArtisteDashboard = () => {
       </div>
       <div
         // className="grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-8 mb-16"
-        className="max-w-full overflow-auto scroll_event whitespace-nowrap mb-16"
+        className="max-w-full overflow-auto scroll_event whitespace-nowrap pb-16"
         ref={musicDropRef}
       >
-        <div className="flex">
+        <div className="flex h-full py-3 ">
           {nfts.map(({ platform, price, liked, likes, token, img }, index) => (
             <NFT
               className="w-[200px] mr-[16px]"

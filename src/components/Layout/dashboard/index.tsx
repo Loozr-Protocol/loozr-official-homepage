@@ -91,7 +91,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                 <div className="w-full lg:w-[70%] md:pl-0 md:pr-7 h-[90vh] overflow-y-auto ">
                   {children}
                 </div> 
-                  <div className="w-full hidden overflow-y-auto md:h-[90vh] pr-4 lg:flex flex-col lg:w-[310px] xl:w-[330px]">
+                  <div className="w-full hidden overflow-y-auto md:h-[90vh] pr-4 lg:flex flex-col lg:w-[330px] xl:w-[330px]">
                   <div  style={{ background: "linear-gradient(180deg, #12161F 0%, rgba(18, 22, 31, 0) 100%)" }} className="flex flex-col w-full min-h-[210px] mb-7">
                     <div className="py-8 px-6 border-dark-900 border-b">
                       <p className="text-muted text-xs font-medium mb-1.5">

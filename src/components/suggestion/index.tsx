@@ -30,7 +30,7 @@ const Suggestion = () => {
 
   return (
     <div className="w-full ">
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between pb-6">
         <p className="font-medium text-base md:text-[17px] text-white">
           Tracks you&apos;d love
         </p>
@@ -44,7 +44,7 @@ const Suggestion = () => {
       <div
         // id={"carousel-1"}
         ref={ref}
-        className="max-w-full overflow-x-auto  overflow-y-hidden  scroll_event whitespace-nowrap mb-[74px]"
+        className="max-w-full overflow-x-auto  overflow-y-hidden  scroll_event whitespace-nowrap pt-3 px-2 pb-[74px]"
       >
         <div
         
@@ -53,9 +53,13 @@ const Suggestion = () => {
             .fill(1)
             .map((_, index) => (
               <motion.div  
-              onMouseOver={()=> setIsShown(index+"")}
-              onMouseOut={()=> setIsShown("false")}
-              key={index} className="flex flex-col h-auto mr-4 min-w-[150px]">
+                whileHover={{
+                  scale: 1.1, 
+                  transition: { duration: 1 },
+                }}
+                onMouseOver={()=> setIsShown(index+"")}
+                onMouseOut={()=> setIsShown("false")}
+                key={index} className="flex flex-col h-auto mr-4 min-w-[150px]">
                 <img
                   src={Goya}
                   alt=""
