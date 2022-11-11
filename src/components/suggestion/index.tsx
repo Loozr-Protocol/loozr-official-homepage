@@ -5,8 +5,12 @@ import ArrowLeft from "../../assets/icons/caret-left.svg";
 import ArrowRight from "../../assets/icons/caret-right.svg";
 import { Link } from "react-router-dom";
 import SlidesButton from "../SlidesButton";
+import Marquee from "react-fast-marquee";
+import { motion } from "framer-motion";
 
 const Suggestion = () => {
+
+  const [isShown, setIsShown] = React.useState("")
   const handleMoveRight = (id: number) => {
     console.log("courosel", document.getElementById(`carousel`));
     if (
@@ -25,7 +29,7 @@ const Suggestion = () => {
   const ref: any = React.useRef(null); 
 
   return (
-    <div className="w-full">
+    <div className="w-full ">
       <div className="flex items-center justify-between mb-6">
         <p className="font-medium text-base md:text-[17px] text-white">
           Tracks you&apos;d love
@@ -38,27 +42,34 @@ const Suggestion = () => {
           <SlidesButton position={ref} width={200} />
       </div>
       <div
-        id={"carousel-1"}
+        // id={"carousel-1"}
         ref={ref}
-        className="max-w-full overflow-x-auto overflow-y-hidden  scroll_event whitespace-nowrap mb-[74px]"
+        className="max-w-full overflow-x-auto  overflow-y-hidden  scroll_event whitespace-nowrap mb-[74px]"
       >
-        <div className="flex">
+        <div
+        
+        className="flex">
           {Array(15)
             .fill(1)
             .map((_, index) => (
-              <div key={index} className="flex flex-col mr-4 min-w-[150px]">
+              <motion.div  
+              onMouseOver={()=> setIsShown(index+"")}
+              onMouseOut={()=> setIsShown("false")}
+              key={index} className="flex flex-col h-auto mr-4 min-w-[150px]">
                 <img
                   src={Goya}
                   alt=""
                   className="object-cover h-36 w-h-36 mb-[18px]"
                 />
-                <p className="mb-[3px] font-medium text-sm text-white">
-                  Chiling good
-                </p>
+                <div className={isShown === index+"" ? "example1" : " h-[20px] "} >
+                  <p className="mb-[3px] font-medium text-sm text-white">
+                  Chiling good 
+                  </p>
+                </div> 
                 <p className="text-muted text-xs font-normal md:text-[13px] md:font-normal">
                   Goya Menor
                 </p>
-              </div>
+              </motion.div>
             ))}
         </div>
       </div>

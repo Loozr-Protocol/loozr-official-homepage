@@ -5,6 +5,7 @@ import HeartFilledIcon from "../../assets/icons/heart-filled.svg";
 import useAudioPlayer from "../../hooks/useAudioPlayer";
 import Play from "../../assets/svg/controls/play.svg";
 import Pause from "../../assets/svg/controls/pause.svg";
+import { motion } from "framer-motion";
 
 type NFTProp = {
   platform: string;
@@ -32,7 +33,12 @@ const NFT = ({
   const [isLiked, setIsLiked] = useState<boolean>(liked);
 
   return (
-    <div
+    <motion.div
+      whileHover={{
+        scale: 1.1, 
+        transition: { duration: 1 },
+      }}
+      whileTap={{ scale: 0.9 }}
       className={"bg-dark-900 " + className}
       // onMouseOver={() => setPlaying(true)}
       // onMouseOut={() => setPlaying(false)}
@@ -101,7 +107,7 @@ const NFT = ({
           </p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
