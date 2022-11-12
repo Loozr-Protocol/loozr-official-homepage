@@ -8,29 +8,48 @@ import Pause from "../../assets/svg/controls/pause.svg";
 import { motion } from "framer-motion";
 
 type NFTProp = {
+  album: any,
+  artist: any;
+  song: any;
   platform: string;
   price: string | number;
   liked: boolean;
   likes: number | string;
   token: string;
   img: string;
+  active: any,
+  playing: any,
+  setPlaying: any;
+  setActive: any;
   className?: string;
   index?: null | number;
-};
+}; 
 
-const NFT = ({
+const NFT = ({ 
+  album,
+  artist,
+  song,
   platform,
   price,
   liked,
   likes,
   token,
   img,
+  active,
+  setActive,
+  playing,
+  setPlaying,
   className = "",
-  index = null,
+  index,
 }) => {
-  const { playing, setPlaying } = useAudioPlayer(100);
+  // const { playing, setPlaying } = useAudioPlayer(100);
   const [isShown, setIsShown] = useState(false)
-  const [isLiked, setIsLiked] = useState<boolean>(liked);
+  const [isLiked, setIsLiked] = useState<boolean>(liked); 
+
+  const ClickHandler =(item: any)=>{ 
+    setActive(item)
+    setPlaying(prev=> !prev)
+  } 
 
   return (
     <motion.div
@@ -53,7 +72,8 @@ const NFT = ({
           <div className={isShown ? " flex w-full h-full justify-center items-center " : " hidden "} > 
           <div className="absolute z-10 inset-0 bg-black opacity-75  " />
           <img src={img} alt="" className=" w-full absolute h-full object-cover " />
-              <button style={{ backgroundColor: "rgba(255, 255, 255, 0.4)" }} className=' w-16 h-16 relative z-20 rounded-full flex justify-center items-center ' onClick={() => setPlaying(prev => !prev)}>
+              {active === index && (
+                <button style={{ backgroundColor: "rgba(255, 255, 255, 0.4)" }} className=' w-16 h-16 relative z-20 rounded-full flex justify-center items-center ' onClick={() => ClickHandler(index)}>
                   {playing ? (
                       <img
                       src={Pause}
@@ -67,14 +87,27 @@ const NFT = ({
                       className="cursor-pointer  ml-1 w-7 h-9"
                       />
                   )}
-              </button>
+                </button>
+              )}
+              {active !== index && (
+                <button style={{ backgroundColor: "rgba(255, 255, 255, 0.4)" }} className=' w-16 h-16 relative z-20 rounded-full flex justify-center items-center ' onClick={() => ClickHandler(index)}>
+                  {/* {playing && 
+                    ( */}
+                      <img
+                      src={Play}
+                      alt="" 
+                      className="cursor-pointer  ml-1 w-7 h-9"
+                      />
+                  {/* )} */}
+                </button>
+              )}
           </div> 
       </div>
       <div className="bg-dark-700 py-3.5 px-[20px] mb-px">
-        <p className="font-normal text-sm text-white mb-3">Happy everyday</p>
+        <p className="font-normal text-sm text-white mb-3">{album}</p>
         <div className="flex items-center ">
           <img src={Selina} alt="" className="w-4 h-4 rounded-full" />
-          <p className="text-muted text-xs font-medium ml-2">Selina Amber</p>
+          <p className="text-muted text-xs font-medium ml-2">{artist}</p>
         </div>
       </div>
       <div className="bg-dark-700 py-3.5 px-[20px]">

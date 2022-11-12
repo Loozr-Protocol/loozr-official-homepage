@@ -48,6 +48,7 @@ const ArtisteDashboard = () => {
   const musicDropRef: any = React.useRef(null); 
 
   const navigate = useNavigate()
+  const [active, setActive] = React.useState(null)
 
   useEffect(() => {
     dispatch(getArtists());
@@ -109,15 +110,28 @@ const ArtisteDashboard = () => {
         </div>
       </> 
     )
-  }
+  } 
 
+  const[music, setMusic] = React.useState("/song.mp3")
+
+  React.useEffect(() => { 
+    if(active){ 
+      setMusic(nfts[active].song)
+    }
+  }, [active])
+  
+  const ClickHandler =()=>{
+    sessionStorage.setItem("music", active)
+    navigate("/artists/music-info")
+  }
+  
   const renderAudioPlayer = useMemo(() => {
     return (
       <div
         className={`${!canPlay && "hidden"} fixed md:top-auto md:right-auto bottom-20 left-0 right-0 z-50 md:bottom-6 md:left-14 rounded-[13px]`}
       >
         <audio id={`audio-100`} onCanPlay={() => setCanPlay(true)}>
-          <source src={"/song.mp3"} />
+          <source src={music} />
           Your browser does not support the <code>audio</code> element.
         </audio>
         <div className="flex w-full md:w-auto md:h-auto h-[70px] md:rounded-[13px] md:py-0 items-center " 
@@ -126,7 +140,7 @@ const ArtisteDashboard = () => {
             backdropFilter: "blur(12.5px)",
           }}>
             <div className=" w-12 md:w-14 md:ml-0 ml-3 " > 
-              <img src={Goya} alt="" className=" rounded-full md:rounded-r-none md:rounded-l-[13px] w-full" />
+              <img src={!active ? Goya: nfts[active].img} alt="" className=" rounded-full md:rounded-r-none md:rounded-l-[13px] w-full" />
             </div>
           <div
             className="py-2 px-3 bg-transparent md:w-auto w-full md:rounded-r-[13px] flex items-center"
@@ -135,12 +149,12 @@ const ArtisteDashboard = () => {
             }}
           >
             <div className=" flex flex-1 md:flex-row flex-col pr-3 md:pr-0 md:items-center " > 
-              <button onClick={()=> navigate("/artists/music-info")} className=" w-fit " >
+              <button onClick={()=> ClickHandler()} className=" w-fit " >
                 <p className="mb-px font-medium text-xs md:text-[13px] leading-5 text-white">
-                  Chiling good
+                  {!active ? "Chiling good" : nfts[active].album}
                 </p>
                 <p className="text-muted text-[10px] md:mt-0 -mt-1 md:text-xs font-normal md:font-normal">
-                  Goya Menor
+                  {!active ? "Goya Menor" : nfts[active].album}   
                 </p>
               </button>
               <div className=" md:flex hidden " >
@@ -206,11 +220,11 @@ const ArtisteDashboard = () => {
         ref={musicDropRef}
       >
         <div className="flex h-full py-3 ">
-          {nfts.map(({ platform, price, liked, likes, token, img }, index) => (
+          {nfts.map(({ album, artist, song, platform, price, liked, likes, token, img }, index) => (
             <NFT
               className="w-[200px] mr-[16px]"
               key={index}
-              {...{ platform, price, likes, liked, token, img, index }}
+              {...{ album, artist, song, platform, price, likes, liked, token, img, active, setActive, playing, setPlaying,  index }}
             />
           ))}
         </div>

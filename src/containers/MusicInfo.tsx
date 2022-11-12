@@ -5,6 +5,7 @@ import Hearts from "../assets/Hearts.svg";
 import Headphone from "../assets/headphone.svg"; 
 import share from "../assets/share.svg"; 
 import { styled } from "@mui/material/styles";
+import Goya from "../assets/img/artists/goya.png";
 import LinearProgress, {
   linearProgressClasses,
 } from "@mui/material/LinearProgress";
@@ -13,11 +14,14 @@ import graph from "../assets/graph.png";
 import musicinfo from "../assets/musicinfo.png";
 import { useNavigate } from 'react-router-dom';
 import MusicBar from "../components/MusicBar/index"
+import { nfts } from "../components/dummy/nfts";
 
 export default function MusicInfo() {
  
     const [canPlay, setCanPlay] = useState(false);
     const { playing, setPlaying, duration, curTime } = useAudioPlayer(100);
+
+    const [index, setIndex] = React.useState(null)
 
     const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
         height: 4,
@@ -30,6 +34,12 @@ export default function MusicInfo() {
         backgroundColor: "#D9D9D9",
         },
     }));
+
+    React.useEffect(() => { 
+        let value = sessionStorage.getItem("music")+""
+        setIndex(Number(value))
+    }, [])
+    
 
     const navigate = useNavigate()
 
@@ -48,15 +58,15 @@ export default function MusicInfo() {
                 <div className=' flex-1 h-full flex md:flex-row flex-col md:pr-8 ' >
                     <div className=' w-screen md:w-fit md:pr-10 flex flex-col items-center px-6' > 
                         <div className=' w-[250px] md:w-[250px] h-[250px] bg-orange-500 rounded-md ' >
-
+                            <img src={!index ? Goya : nfts[index].img} alt="img" className=' w-full h-full object-cover  rounded-md  ' />
                         </div>
                     </div>
                     <div className=' w-full h-full md:mt-0 mt-6 px-6 md:px-0 ' > 
                         <audio id={`audio-100`} onCanPlay={() => setCanPlay(true)}>
-                        <source src={"/song.mp3"} />
+                        <source src={!index ? "/song.mp3" : nfts[index].song} />
                         Your browser does not support the <code>audio</code> element.
                         </audio>
-                        <div className=' flex w-fit mb-4 ' >
+                        <div className=' flex items-center w-full mb-4 ' >
                             <button className=' w-16 h-16 rounded-full border-2 border-[#FFFFFF1A] flex justify-center items-center ' onClick={() => setPlaying(prev => !prev)}>
                                 {playing ? (
                                     <img
@@ -73,9 +83,9 @@ export default function MusicInfo() {
                                 )}
                             </button>
                             <div className=' pl-6  ' >
-                                <p className=' text-white text-sm font-medium  ' >Your Song Coin Name</p>
-                                <p className=' text-white text-2xl md:text-[45px] font-bold md:my-2 ' >$CENTURION</p> 
-                                <p className=' text-[#536079] font-medium  ' >Your Song Coin Name</p>
+                                <p className=' text-white text-sm font-medium  ' >{!index ? "Chiling good" : nfts[index].album}</p>
+                                <p className=' text-white text-xl md:text-[35px] font-bold md:my-2 ' >{!index ? "Goya Menor" : nfts[index].artist}</p> 
+                                <p className=' text-[#536079] font-medium  ' >≈ $0.2343 USD coin price</p>
                             </div>
                         </div>
                         <div className=' w-full md:pr-14 ' > 
@@ -100,7 +110,7 @@ export default function MusicInfo() {
                             <button style={{  background: "linear-gradient(180deg, #8369F4 27.69%, #F039E2 178.46%)" }} className=' font-semibold w-[170px] h-[52px] flex justify-center items-center rounded-full text-white ' >Buy song coin</button>
                             <div className=' ml-7 w-20 flex items-center ' >
                                 <img src={Hearts} alt="Hearts" className=' w-4 ' />
-                                <p className=' text-[#536079] text-xs w-40 font-medium ml-2 ' >1.2k</p>
+                                <p className=' text-[#536079] text-xs w-40 font-medium ml-2 ' >{!index ? '12.3' : nfts[index].likes}k</p>
                             </div>
                             <div className='  flex w-20 items-center ' >
                                 <img src={Headphone} alt="Headphone" className=' w-4 ' />
