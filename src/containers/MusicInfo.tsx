@@ -15,7 +15,21 @@ import musicinfo from "../assets/musicinfo.png";
 import { useNavigate } from 'react-router-dom';
 import MusicBar from "../components/MusicBar/index"
 import { nfts } from "../components/dummy/nfts";
+import { WaveformVisualizer, WaveformVisualizerTheme } from 'react-audio-visualizers';
+import { ResponsiveContainer, AreaChart, XAxis, YAxis, Tooltip, Area } from 'recharts';
 
+const data = [
+    { name: "May", uv: 70000 },
+    { name: "May", uv: 70000 },
+    { name: "May", uv: 70000 },
+    { name: "Feb", uv: 63000 },
+    { name: "Jan", uv: 27000 },
+    { name: "Mar", uv: 40000 },
+    { name: "Apr", uv: 10000 },
+    { name: "Jun", uv: 43000 },
+    { name: "Dec", uv: 32000 },
+  ];
+  
 export default function MusicInfo() {
  
     const [canPlay, setCanPlay] = useState(false);
@@ -95,6 +109,10 @@ export default function MusicInfo() {
                             className=" w-full "
                             /> */}
                             <MusicBar play={play} />
+                            <WaveformVisualizer
+                                audio="/song.mp3"
+                                theme={WaveformVisualizerTheme.squaredBars}
+                            />
                         </div>
                         <div className=' mt-4 w-full md:pr-8 md:mb-20 mb-10 flex items-center justify-between ' >
                             <div className=' w-full flex items-center ' >
@@ -125,7 +143,7 @@ export default function MusicInfo() {
                 <div className=' w-full md:w-fit md:mt-0 mt-16  ' >
                     <div className=' w-full flex flex-col md:w-[300px] ' >
                         <p className=' text-[#536079] text-xl text-center font-medium' >$CENTURION Coin Chart</p>
-                        <p className=' text-[#fff] text-lg text-center font-bold mt-4 ' >80%</p>
+                        {/* <p className=' text-[#fff] text-lg text-center font-bold mt-4 ' >80%</p>
                         <p className=' text-[#15FFAB] text-sm text-center font-bold' >80%</p>
                         <div className=' mt-8 md:mt-4 pr-10 '>  
                             <div className=' -mb-4 ' > 
@@ -133,7 +151,34 @@ export default function MusicInfo() {
                                 <p className=' text-[#70707C] text-xs text-right font-medium' >$39</p>
                             </div>
                             <img src={graph} alt="graph" className='w-full md:w-[300px] object-cover' />
-                        </div>
+                        </div> */}
+
+                        <ResponsiveContainer width={300} height={120}>
+                            <AreaChart
+                                data={data}
+                                margin={{ top: 20, right: 30, left: 30, bottom: 0 }}
+                            >
+                                <defs>
+                                <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="5%" stopColor="#15FFAB" stopOpacity={0.1} />
+                                    <stop offset="95%" stopColor="#15FFAB" stopOpacity={0} />
+                                </linearGradient>
+                                </defs>
+                                <XAxis dataKey="name" hide={true} />
+                                <YAxis hide={true} />
+
+                                <Tooltip />
+
+                                <Area
+                                type="monotone"
+                                dataKey="uv"
+                                stroke="#15FFAB"
+                                // fill="#15FFAB"
+                                fillOpacity={1}
+                                fill="url(#colorUv)"
+                                />
+                            </AreaChart>
+                        </ResponsiveContainer>
                         <div className=' flex justify-between px-8 my-10 md:my-4 ' >
                             <div>
                                 <p className=' font-bold text-white ' >$11.32</p>

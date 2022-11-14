@@ -1,3 +1,4 @@
+import { number } from "yup";
 import HttpClient from "../../../utils/httpHelper";
 
 export function useLoginCallback() {
@@ -37,7 +38,7 @@ export function useCheckPasswordResetDataCallback() {
 }
 
 export function useGetUserCallback() {
-  const handleGetUser = async (userId: number): Promise<any> => {
+  const handleGetUser = async (userId: string | number): Promise<any> => {
     const httpClient = new HttpClient();
     const result = await httpClient.axiosInstance.get(`/users/${userId}`);
     return result.data;

@@ -159,7 +159,7 @@ export const dashboard = [
   },
   {
     name: "profile",
-    path: "profile/:id",
+    path: "profile/:accountDomain",
     private: true,
     component: Profile,
   },

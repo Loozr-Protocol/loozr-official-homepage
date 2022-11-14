@@ -72,6 +72,7 @@ const artistSlice = createSlice({
       state.artists = action.payload.results.map((res: any) => {
         const artist = new Artist({});
         artist.fromJson(res);
+        console.log(artist.user.accountDomain)
         return artist;
       });
     });

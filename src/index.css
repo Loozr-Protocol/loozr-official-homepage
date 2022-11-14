@@ -115,7 +115,7 @@ html{
 }
 
 div:hover::-webkit-scrollbar-thumb {
-  background-color: #10141C;
+  background-color: transparent;
 } 
 
 .example1 {

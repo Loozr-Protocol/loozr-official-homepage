@@ -16,7 +16,7 @@ const Photo: React.FC<React.PropsWithChildren<PhotoProps>> = ({
           {...rest}
           alt={alt}
           src={src}
-        />
+        /> 
       </div>
     );
   }

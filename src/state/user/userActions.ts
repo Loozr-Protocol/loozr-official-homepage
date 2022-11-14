@@ -18,10 +18,10 @@ export const getUserDetails = createAsyncThunk(
 
 export const getIndividualProfile = createAsyncThunk(
   'user/getIndividualProfile',
-  async (userId: number, { rejectWithValue }) => {
+  async (accountDomain: string, { rejectWithValue }) => {
     const { handleGetUser } = useGetUserCallback();
     try {
-      const result = await handleGetUser(userId);
+      const result = await handleGetUser(accountDomain);
       const user = jsonToUser(result);
       return user;
     } catch (error) {

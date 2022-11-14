@@ -57,6 +57,8 @@ const ArtisteDashboard = () => {
   const FeaturedArtistes =()=>{ 
 
     const [isShown, setIsShown] = React.useState(-1)
+
+    console.log(artists)
     
     return( 
       <> 
@@ -80,7 +82,7 @@ const ArtisteDashboard = () => {
                 onMouseOut={()=> setIsShown(-1)}
                 className="flex flex-col items-center mr-4 md:h-72 min-w-max md:min-w-[145px]"
               >
-                <Link to={`/profile/${_.user.id}`} className="relative">
+                <Link to={`/profile/${_.user.accountDomain}`} className="relative">
                   <Photo
                     alt=""
                     className="object-cover h-20 md:h-32 w-20 md:w-32 rounded-full border-[15px] border-dark-700 mb-[16px]"
