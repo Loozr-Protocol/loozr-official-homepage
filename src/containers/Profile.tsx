@@ -332,9 +332,7 @@ const Profile = () => {
 
   if (currentProfile && !currentProfile.accountId) {
     return <div className="text-center">Profile Not Found!</div>;
-  } 
-
-  console.log(currentProfile)
+  }  
 
   return (
     <div className="w-full">
@@ -373,10 +371,10 @@ const Profile = () => {
                 )}
               </p>
               <div className=" w-full py-6 flex items-center " >
-                  <img src={soundcloud} alt="" className=" w-[23.93px] h-[11.43px] mx-2 " />
-                  <img src={spotify} alt="" className=" w-[15.24px] mx-2  " /> 
-                  <img src={instagram} alt="" className=" w-[16px] mx-2  " />
-                  <img src={twitter} alt="" className=" w-[18.76px] mx-2  " />
+                  <img src={soundcloud} alt="" className=" w-[23.93px] h-[11.43px] mx-[9px] " />
+                  <img src={spotify} alt="" className=" w-[15.24px] mx-[9px]  " /> 
+                  <img src={instagram} alt="" className=" w-[16px] mx-[9px]  " />
+                  <img src={twitter} alt="" className=" w-[18.76px] mx-[9px]  " />
                   <div className=" relative  mx-2  " > 
                     <img onClick={()=> setIsShown(prev => !prev)} src={share} alt="" className=" w-[12.67px] cursor-pointer " />
                     {isShown && (
@@ -417,7 +415,7 @@ const Profile = () => {
                 ) : null}
               </div> 
               {currentProfile.isArtist ? (
-                <div className="flex items-start mb-4">
+                <div className="flex items-start mb-[15px]">
                   <button
                     onClick={() => toast.info("Coming soon!", TOAST_OPTIONS)}
                     className="py-[14.1px] px-3 sm:px-6 md:px-7 text-xs md:text-sm font-medium bg-loozr-purple rounded-full"
@@ -436,7 +434,7 @@ const Profile = () => {
                 <div className="flex items-center mb-4">
                   <button
                     onClick={() => push("/profile/edit")}
-                    className="py-[14.1px] px-7 text-sm font-medium  bg-dark-700 rounded-full"
+                    className="py-[14.1px] px-[27px] text-sm font-medium  bg-dark-700 rounded-full"
                   >
                     Update profile
                   </button>
@@ -477,7 +475,7 @@ const Profile = () => {
               Transactions
             </p>
           </div>
-          {coinInfo ? renderHistory : null}
+          {coinInfo ? renderHistory : renderHistory}
         </>
       ) : errorLoadingProfile ? (
         <div className="text-center">Profile Not Found!</div>
