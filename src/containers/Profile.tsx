@@ -39,6 +39,7 @@ const Profile = () => {
   const push = useNavigate();
   let { accountDomain } = useParams();
   const [active, setActive] = useState(1);
+  const [isShown, setIsShown] = useState(false)
   const dispatch = useDispatch();
   const user = useSelector((state: AppState) => state.user.userInfo);
   const errorLoadingProfile = useSelector(
@@ -54,9 +55,9 @@ const Profile = () => {
   const [copySuccess, setCopySuccess] = React.useState('');
   const textAreaRef: any = React.useRef(null);
 
-  function copyToClipboard(item: any) { 
+  function copyToClipboard(item: any, text: any) { 
       navigator.clipboard.writeText(item)
-      setCopySuccess('Copied!');
+      setCopySuccess(text);
       const t1 = setTimeout(() => {
           setCopySuccess('');
           clearTimeout(t1); 
@@ -203,85 +204,127 @@ const Profile = () => {
   //   }
   // }, [active]);
 
+
+  const CoinBought =()=>{ 
+    return(
+      <>
+      {coinsBought.length === 0 ? ( 
+          <div className=" w-full py-5 rounded-lg bg-[#10141C]  mb-12 " > 
+            <p className=" font-medium text-[13px] text-center " >No information avaliable 👋</p>
+          </div>  
+        ): 
+        (
+          <>
+            {coinsBought ?  
+              <div className=" w-full py-5 rounded-lg bg-[#10141C]  mb-12 " > 
+                <p className=" font-medium text-[13px] text-center " >No information avaliable 👋</p>
+              </div>:
+              <>
+                {coinsBought.map((item, index) => (
+                    <div
+                      className="w-full flex items-center justify-between mb-6"
+                      key={index}
+                    >
+                      <div className="flex items-center">
+                        <Photo
+                          alt=""
+                          className="h-12 md:h-12 w-12 md:w-12 rounded-full mr-3"
+                          style={{ border: "6px solid #141922" }}
+                        />
+                        <div>
+                          <p className="text-xs md:text-sm font-bold text-white mb-0.5">
+                            {item.name}
+                          </p>
+                          <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
+                            You own 0.735 LZR
+                          </p>
+                        </div>
+                      </div>
+                      <div>
+                        <p className="text-xs md:text-sm font-semibold text-white mb-0.5">
+                          {capitalize(item.type)}
+                        </p>
+                        <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
+                          Type of user
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-xs md:text-sm font-semibold text-white mb-0.5">
+                          ~${item.price}
+                        </p>
+                        <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
+                          USD value
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+              </>
+            }
+          </>) 
+        }
+      </>
+    ) 
+  }
+
+  const Transaction =()=>{
+    return(
+      <>
+        {transactions.length === 0 ? ( 
+            <div className=" w-full py-5 rounded-lg bg-opacity-50 bg-[#10141C]  mb-12 " > 
+              <p className=" font-medium text-[13px] text-center " >No information avaliable 👋</p>
+            </div>  
+          ): (
+            <>
+              {transactions.map((item, index) => (
+                <div
+                  className="w-full flex items-center justify-between text-white mb-6"
+                  key={index}
+                >
+                  <div className="flex items-start">
+                    <div className="rounded-full h-[44px] w-[44px] bg-dark-700 mr-4 flex items-center justify-center">
+                      <img
+                        src={item.type === "cr" ? Arrow225Deg : Arrow45Deg}
+                        alt=""
+                        className="object-cover w-3 h-4"
+                      />
+                    </div>
+                    <div>
+                      <p className="text-xs md:text-sm font-bold text-white mb-0.5">
+                        {item.type === "dr" ? "Sent" : "Received"}
+                        <span className="font-extrabold px-1">{item.token}</span>
+                        coin
+                      </p>
+                      <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
+                        {item.type === "dr" ? "to" : "from"}{" "}
+                        {item.type === "dr" ? item.to : item.from}
+                      </p>
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-xs md:text-sm font-semibold text-white mb-0.5">
+                      ~${item.price}
+                    </p>
+                    <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
+                      USD value
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </>
+          )
+        }
+      </>
+    )
+  }
+
   const renderHistory = useMemo(() => {
     switch (active) {
       case 1:
         return <CoinHodlers coin={currentProfile} user={user} />;
       case 2:
-        return coinsBought.map((item, index) => (
-          <div
-            className="w-full flex items-center justify-between mb-6"
-            key={index}
-          >
-            <div className="flex items-center">
-              <Photo
-                alt=""
-                className="h-12 md:h-12 w-12 md:w-12 rounded-full mr-3"
-                style={{ border: "6px solid #141922" }}
-              />
-              <div>
-                <p className="text-xs md:text-sm font-bold text-white mb-0.5">
-                  {item.name}
-                </p>
-                <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
-                  You own 0.735 LZR
-                </p>
-              </div>
-            </div>
-            <div>
-              <p className="text-xs md:text-sm font-semibold text-white mb-0.5">
-                {capitalize(item.type)}
-              </p>
-              <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
-                Type of user
-              </p>
-            </div>
-            <div>
-              <p className="text-xs md:text-sm font-semibold text-white mb-0.5">
-                ~${item.price}
-              </p>
-              <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
-                USD value
-              </p>
-            </div>
-          </div>
-        ));
+        return <CoinBought/>
       case 3:
-        return transactions.map((item, index) => (
-          <div
-            className="w-full flex items-center justify-between text-white mb-6"
-            key={index}
-          >
-            <div className="flex items-start">
-              <div className="rounded-full h-[44px] w-[44px] bg-dark-700 mr-4 flex items-center justify-center">
-                <img
-                  src={item.type === "cr" ? Arrow225Deg : Arrow45Deg}
-                  alt=""
-                  className="object-cover w-3 h-4"
-                />
-              </div>
-              <div>
-                <p className="text-xs md:text-sm font-bold text-white mb-0.5">
-                  {item.type === "dr" ? "Sent" : "Received"}
-                  <span className="font-extrabold px-1">{item.token}</span>
-                  coin
-                </p>
-                <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
-                  {item.type === "dr" ? "to" : "from"}{" "}
-                  {item.type === "dr" ? item.to : item.from}
-                </p>
-              </div>
-            </div>
-            <div>
-              <p className="text-xs md:text-sm font-semibold text-white mb-0.5">
-                ~${item.price}
-              </p>
-              <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
-                USD value
-              </p>
-            </div>
-          </div>
-        ));
+        return <Transaction />
       default:
         return "";
     }
@@ -289,10 +332,9 @@ const Profile = () => {
 
   if (currentProfile && !currentProfile.accountId) {
     return <div className="text-center">Profile Not Found!</div>;
-  }
+  } 
 
-  console.log(currentProfile);
-  
+  console.log(currentProfile)
 
   return (
     <div className="w-full">
@@ -301,7 +343,7 @@ const Profile = () => {
           {currentProfile.isArtist && currentProfile.tokenName && (
             <CreatorStatCard user={currentProfile} />
           )}
-          <div className="flex md:flex-row flex-col items-start mb-7">
+          <div className="flex md:flex-row flex-col mt-[32px] items-start mb-7">
             <div className=" relative " >
               <Photo
                 alt={currentProfile.accountDomain}
@@ -315,15 +357,15 @@ const Profile = () => {
                 <p className="text-xl md:text-xl font-medium text-white mb-1.5">
                   {currentProfile.accountDomain}
                 </p>
-                <button onClick={()=>copyToClipboard(currentProfile.accountDomain)} className=" w-[30px] ml-2 h-[30px] rounded-full bg-[#141922] flex justify-center items-center mr-2  " > 
+                <button onClick={()=>copyToClipboard(currentProfile.accountDomain, "Copied!")} className=" w-[30px] ml-2 h-[30px] rounded-full bg-[#141922] flex justify-center items-center mr-2  " > 
                   <img src={copy} alt="copy" className=" w-[12.17px] " />
                 </button>
-                {copySuccess}
+                {copySuccess === "Copied!" && copySuccess}
               </div>
-              <p className="text-muted font-medium text-xs md:text-xs mb-[10px]">
+              <p className="text-muted font-medium mt-[2px] text-xs md:text-xs mb-[10px]">
                 <span>{currentProfile.username ? currentProfile.username : currentProfile.accountId}</span>
                 {currentProfile.isArtist ? (
-                  <span className="pointer ml-1.5 pl-2 before:top-2">
+                  <span className="pointer ml-2 pl-2 before:top-[6px]">
                     Artiste
                   </span>
                 ) : (
@@ -335,7 +377,19 @@ const Profile = () => {
                   <img src={spotify} alt="" className=" w-[15.24px] mx-2  " /> 
                   <img src={instagram} alt="" className=" w-[16px] mx-2  " />
                   <img src={twitter} alt="" className=" w-[18.76px] mx-2  " />
-                  <img src={share} alt="" className=" w-[12.67px] mx-2  " />
+                  <div className=" relative  mx-2  " > 
+                    <img onClick={()=> setIsShown(prev => !prev)} src={share} alt="" className=" w-[12.67px] cursor-pointer " />
+                    {isShown && (
+                      <div  className=" absolute w-[200px] bg-[#12161F] z-20 top-7 px-4 py-3 rounded-lg  shadow-xl " > 
+                        <a target="_blank" href={"https://explorer.testnet.near.org/accounts/"+currentProfile.accountDomain} className=" font-medium text-[13px] cursor-pointer  " >View user on explorer</a>
+                        {currentProfile.isArtist && (<p className=" font-medium text-[13px] cursor-pointer mt-1  " >View artist on explorer</p>)}
+                        <p onClick={()=>copyToClipboard(currentProfile.accountDomain, "Copied")} className=" font-medium text-[13px] mt-1 cursor-pointer  " >{copySuccess === "Copied" ? copySuccess : "Copy profile link" }</p> 
+                      </div>
+                    )}
+                    {isShown && (
+                      <div  onClick={()=> setIsShown(false)} className=" fixed cursor-pointer z-10 inset-0 " />
+                    )}
+                  </div>
               </div>
               <p className="text-white max-w-[435px] font-medium text-xs md:text-[13px] mb-[20px]">
                 {currentProfile.bio}
@@ -362,21 +416,8 @@ const Profile = () => {
                   </p>
                 ) : null}
               </div> 
-              {currentProfile.id === user.id ? (
-                <div className="flex items-center mt-4">
-                  <button
-                    onClick={() => push("/profile/edit")}
-                    className="py-3 px-16 text-sm font-medium bg-loozr-purple rounded-full"
-                  >
-                    Update
-                  </button>
-                  <div className="w-[50px] h-[50px] rounded-full bg-dark-700 flex items-center justify-center ml-6">
-                    <MoreIcon />
-                  </div>
-                </div>
-              ) : null}
               {currentProfile.isArtist ? (
-                <div className="flex items-start mb-9">
+                <div className="flex items-start mb-4">
                   <button
                     onClick={() => toast.info("Coming soon!", TOAST_OPTIONS)}
                     className="py-[14.1px] px-3 sm:px-6 md:px-7 text-xs md:text-sm font-medium bg-loozr-purple rounded-full"
@@ -391,9 +432,22 @@ const Profile = () => {
                   </button>
                 </div>
               ) : null}
+              {currentProfile.id === user.id ? (
+                <div className="flex items-center mb-4">
+                  <button
+                    onClick={() => push("/profile/edit")}
+                    className="py-[14.1px] px-7 text-sm font-medium  bg-dark-700 rounded-full"
+                  >
+                    Update profile
+                  </button>
+                  {/* <div className="w-[50px] h-[50px] rounded-full bg-dark-700 flex items-center justify-center ml-6">
+                    <MoreIcon />
+                  </div> */}
+                </div>
+              ) : null}
               <div className=" flex items-center py-2 " >
                 <img src={chain} alt="chain" className=" w-[12.39px] " />
-                <p className=" font-medium text-sm ml-2 " >https://yourweblink.com</p>
+                <a target="_blank" href="https://yourweblink.com" className=" font-medium text-sm ml-2 " >https://yourweblink.com</a>
               </div>
             </div>
           </div>

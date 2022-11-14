@@ -151,7 +151,7 @@ export const Left = () => {
         ))}
         <div className="h-px w-full lg:w-full bg-muted-50 mt-8 mb-7" />
         <div
-          onClick={() => push("/profile")}
+          onClick={() => push("/"+user.accountDomain)}
           className="flex items-center justify-center w-full mt-6 cursor-pointer"
         >
           <Photo

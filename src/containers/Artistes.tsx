@@ -27,7 +27,7 @@ const Artistes = () => {
             className="flex flex-col items-center mr-4 min-w-full md:min-w-[140px]"
           >
             <Link
-              to={`/profile/${_.user.id}`} className="relative">
+              to={`/${_.user.accountDomain}`} className="relative">
               <Photo
                 alt=""
                 className="object-cover h-24 w-24 md:h-32 md:w-32 rounded-full border-[15px] border-dark-700 mb-[18px]"

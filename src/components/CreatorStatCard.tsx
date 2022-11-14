@@ -24,6 +24,8 @@ const data = [
   { name: "Dec", uv: 32000 },
 ];
 
+
+
 export default function CreatorStatCard({ user }: { user: User }) {
   const dispatch = useDispatch();
   const bpsDenominator = 100;
@@ -33,8 +35,22 @@ export default function CreatorStatCard({ user }: { user: User }) {
     dispatch(getCoinPrice(user.id));
   }, [user])
 
+  const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="custom-tooltip">
+          <p className="label">{`${label} : ${payload[0].value}`}</p>
+          {/* <p className="intro">{getIntroOfPage(label)}</p> */}
+          {/* <p className="desc">Anything you want can be displayed here.</p> */}
+        </div>
+      );
+    }
+
+    return null;
+  };
+
   return coinInfo ? (
-    <div style={{ background: "linear-gradient(180deg, #12161F 0%, rgba(18, 22, 31, 0) 100%)" }}  className="w-full px-3 md:!pl-10 pt-7 pb- mb-[32px] min-h-[210px]">
+    <div style={{ background: "linear-gradient(180deg, #12161F 0%, rgba(18, 22, 31, 0) 100%)" }}  className="w-full px-3 md:!pl-10 pt-7 min-h-[210px]">
       <div className="grid grid-cols-1 md:flex">
         <div className="flex-1">
           <p className="font-medium text-xs text-muted mb-2 md:mb-[22px]">
@@ -92,9 +108,7 @@ export default function CreatorStatCard({ user }: { user: User }) {
                 </defs>
                 <XAxis dataKey="name" hide={true} />
                 <YAxis hide={true} />
-
-                <Tooltip />
-
+                <Tooltip content={<CustomTooltip active={undefined} payload={undefined} label={undefined} />} />
                 <Area
                   type="monotone"
                   dataKey="uv"
