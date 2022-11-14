@@ -291,6 +291,9 @@ const Profile = () => {
     return <div className="text-center">Profile Not Found!</div>;
   }
 
+  console.log(currentProfile);
+  
+
   return (
     <div className="w-full">
       {currentProfile ? (
@@ -318,7 +321,7 @@ const Profile = () => {
                 {copySuccess}
               </div>
               <p className="text-muted font-medium text-xs md:text-xs mb-[10px]">
-                <span>{currentProfile.accountId}</span>
+                <span>{currentProfile.username ? currentProfile.username : currentProfile.accountId}</span>
                 {currentProfile.isArtist ? (
                   <span className="pointer ml-1.5 pl-2 before:top-2">
                     Artiste
