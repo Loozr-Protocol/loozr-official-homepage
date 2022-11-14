@@ -30,7 +30,7 @@ const Suggestion = () => {
 
   return (
     <div className="w-full ">
-      <div className="flex items-center justify-between pb-6">
+      <div className="flex items-center justify-between pb-2">
         <p className="font-medium text-base md:text-[17px] text-white">
           Tracks you&apos;d love
         </p>
@@ -55,7 +55,7 @@ const Suggestion = () => {
               <motion.div  
                 whileHover={{
                   scale: 1.1, 
-                  transition: { duration: 1 },
+                  transition: { duration: 0.5 },
                 }}
                 onMouseOver={()=> setIsShown(index+"")}
                 onMouseOut={()=> setIsShown("false")}

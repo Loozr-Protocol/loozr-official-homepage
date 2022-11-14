@@ -62,10 +62,10 @@ const ArtisteDashboard = () => {
     
     return( 
       <> 
-        <div className="flex items-center justify-between mb-6"
+        <div className="flex items-center justify-between mb-4"
           >
           <p className="font-medium text-base md:text-[17px] text-white">
-            Featured artistes
+            Recent artist coins
           </p>
           <SlidesButton position={featuredRef} width={200} />
         </div>
@@ -74,20 +74,20 @@ const ArtisteDashboard = () => {
           className="max-w-full overflow-auto scroll_event whitespace-nowrap md:mb-0 mb-16"
           ref={featuredRef}
         >
-          <div className="flex"  >
+          <div className="flex "  >
             {artists.map((_, i) => (
               <div
                 key={i}
                 onMouseOver={()=> setIsShown(i)}
                 onMouseOut={()=> setIsShown(-1)}
-                className="flex flex-col items-center mr-4 md:h-72 min-w-max md:min-w-[145px]"
+                className="flex flex-col items-center mr-4 md:h-64 min-w-max md:w-[105px]"
               >
                 <Link to={`/${_.user.accountDomain}`} className="relative">
                   <Photo
                     alt=""
-                    className="object-cover h-20 md:h-32 w-20 md:w-32 rounded-full border-[15px] border-dark-700 mb-[16px]"
+                    className="object-cover h-20 md:h-[105px] w-20 md:w-[105px] rounded-full border-[15px] border-dark-700 mb-[16px]"
                     style={{
-                      border: "7px solid #141922",
+                      border: "8px solid #141922",
                     }}
                   />
                   {_.isVerified && (
@@ -99,13 +99,15 @@ const ArtisteDashboard = () => {
                   )}
                 </Link>
                 <Link
-                  to={`/profile/${_.user.id}`}
-                  className="font-extrabold mb-px md:font-bold text-[15px] text-white text-center uppercase name-tag"
+                  to={`/${_.user.accountDomain}`}
+                  className="font-extrabold mb-px w-[105px] md:font-bold text-[15px] text-white text-center uppercase name-tag"
                 >
-                  ${_.creatorCoinId}
+                  ${_.creatorCoinId.slice(0, 5)}
                 </Link> 
-                <p className=" font-semibold text-[#536079] " >2,474.14 LZR</p> 
-                <button className={isShown === i ? " bg-[#141922] h-12 md:flex justify-center items-center font-bold hidden rounded-full w-full mt-4  " : "hidden"} >Buy coin</button> 
+                <p className=" font-medium text-[11.5px] text-[#536079] " >2,474.14 LZR</p> 
+                <div className=" w-full px-[2px] " >
+                  <button className={isShown === i ? " bg-[#8369F4] h-[38px] md:flex justify-center items-center font-medium hidden rounded-full w-[105px] mt-[12px] text-xs  " : "bg-[#141922] text-xs  h-[38px] md:flex justify-center items-center font-medium hidden rounded-full w-[105px] mt-[12px] "} >Buy coin</button> 
+                </div>
               </div>
             ))}
           </div>

@@ -73,7 +73,7 @@ const Carousel = () => {
   
 
   return(
-    <div className="h-[250px] w-full relative  " > 
+    <div className="h-[230px] w-full relative  " > 
       {images.map((item: any, index: any) => {
           return( 
             <AnimatePresence  key={item} >

@@ -8,6 +8,7 @@ import { capitalize } from "../functions";
 import Arrow45Deg from "../assets/icons/arrow-45deg.svg";
 import Arrow225Deg from "../assets/icons/arrow-225deg.svg";
 import Arlene from "../assets/img/artists/arlene.png";
+import copyimg from "../assets/icons/copy.png";
 import { usePollLZRBalance } from "../state/wallet/hooks/fetchBalance";
 import { LZR_IN_USD, MIXER_ACCOUNT } from "../config/constants";
 import { AppState } from "../state/store";
@@ -27,6 +28,19 @@ const Wallet = () => {
   const lzrAccountId = `${user.accountId}.${MIXER_ACCOUNT}`;
   const balanceResult = usePollLZRBalance(lzrAccountId);
   const balanceBN = getFullDisplayBalance(balanceResult);
+
+
+  const [copySuccess, setCopySuccess] = React.useState('');
+  const textAreaRef: any = React.useRef(null);
+
+  function copyToClipboard(item: any, text: any) { 
+      navigator.clipboard.writeText(item)
+      setCopySuccess(text);
+      const t1 = setTimeout(() => {
+          setCopySuccess('');
+          clearTimeout(t1); 
+      }, 2000); 
+  }; 
 
   const balanceInLzr = formatNumber(Number(balanceBN));
   const balanceUsd = formatBalanceUSD(Number(balanceBN));
@@ -156,12 +170,12 @@ const Wallet = () => {
 
   return (
     <div className="w-full">
-      <div style={{ background: "linear-gradient(180deg, #12161F 0%, rgba(18, 22, 31, 0) 100%)" }} className="w-full  p-4 md:!py-8 md:!px-11 mb-12">
-        <div className="flex items-center justify-between mb-9">
+      <div style={{ background: "linear-gradient(180deg, #12161F 0%, rgba(18, 22, 31, 0) 100%)" }} className="w-full  p-4 md:!py-8 rounded-t-[14px] md:!px-11 mb-7">
+        <div className="flex items-center rounded-t-[14px] justify-between mb-9">
           <p className="text-[17px] leading-7 font-thin md:font-medium text-white">
             My Wallet
           </p>
-          <p className="text-xs md:text-sm leading-5 font-thin md:font-normal text-white">
+          <p className="text-xs md:text-xs leading-5 font-thin md:font-normal text-white">
             ~ ${LZR_IN_USD} USD per LZR coin
           </p>
         </div>
@@ -175,7 +189,7 @@ const Wallet = () => {
         <p className="font-light text-sm md:font-medium text-white mb-4 md:mb-8">
           ≈ ${balanceUsd} USD
         </p>
-        <div className="flex items-center mb-8 md:mb-11">
+        <div className="flex items-center mb-8 md:mb-9">
           <button
             onClick={() => toast.info("Coming soon!", TOAST_OPTIONS)}
             className="py-2.5 md:py-2.5 px-7 lg:px-auto lg:w-[130px] rounded-full bg-white text-black text-sm mr-4 font-semibold"
@@ -190,15 +204,17 @@ const Wallet = () => {
             Buy $LZR
           </button>
         </div>
-        <p className="text-white font-medium text-sm md:text-sm">
-          <span className="text-muted">Your Token ID:</span> {lzrAccountId}
-          <span
-            className="text-[#00FFFF] cursor-pointer"
-            onClick={() => copy(lzrAccountId)}
-          >
-            copy
-          </span>
-        </p>
+        <div className=" flex items-center " >
+
+          <p className="text-white font-medium text-sm md:text-sm">
+            <span className="text-muted">Your domain name:</span> {lzrAccountId}
+            
+          </p>
+          <button onClick={()=>copyToClipboard(lzrAccountId, "Copied!")} className=" w-[30px] ml-2 h-[30px] rounded-full bg-[#141922] flex justify-center items-center mr-2  " > 
+            <img src={copyimg} alt="copy" className=" w-[12.17px] " />
+          </button>
+          {copySuccess === "Copied!" && copySuccess}
+        </div>
       </div>
       <div className="w-full pb-2 mb-9 border-b-2 border-muted-50 flex items-center text-sm font-medium text-muted">
         <p

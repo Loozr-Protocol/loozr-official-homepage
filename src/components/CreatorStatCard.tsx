@@ -50,7 +50,7 @@ export default function CreatorStatCard({ user }: { user: User }) {
   };
 
   return coinInfo ? (
-    <div style={{ background: "linear-gradient(180deg, #12161F 0%, rgba(18, 22, 31, 0) 100%)" }}  className="w-full px-3 md:!pl-10 pt-7 min-h-[210px]">
+    <div style={{ background: "linear-gradient(180deg, #12161F 0%, rgba(18, 22, 31, 0) 100%)" }}  className="w-full px-3 md:!pl-10 rounded-t-[14px] pt-7 min-h-[210px]">
       <div className="grid grid-cols-1 md:flex">
         <div className="flex-1">
           <p className="font-medium text-xs text-muted mb-2 md:mb-[22px]">

@@ -18,7 +18,7 @@ export default function CoinHodlers({ coin, user }: { coin: User; user: User }) 
   return (
     <>
     {holders.length === 0 ? 
-      <div className=" w-full py-5 rounded-lg bg-[#10141C]  mb-12 " > 
+      <div className=" w-full py-5 rounded-lg bg-[#10141C] bg-opacity-50 mb-12 " > 
         <p className=" font-medium text-[13px] text-center " >No information avaliable 👋</p>
       </div>:
       <>
