@@ -10,7 +10,7 @@ import Dashboard from "./components/Layout/dashboard";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserDetails } from "./state/user/userActions";
 import { AppState } from "./state/store";
-import RequireAuth from "./containers/RequireAuth";
+import RequireAuth, { AccountSetupCheckOnly } from "./containers/RequireAuth";
 import { parseJwt } from "./utils/index";
 import FullpageLoader from "./components/loaders/FullpageLoader";
 
@@ -86,11 +86,11 @@ const App = () => {
                 key={route.name}
                 path={route.path}
                 element={
-                  // <RequireAuth>
-                  <Dashboard>
-                    <route.component />
-                  </Dashboard>
-                  // </RequireAuth>
+                  <AccountSetupCheckOnly>
+                    <Dashboard>
+                      <route.component />
+                    </Dashboard>
+                  </AccountSetupCheckOnly>
                 }
               />
             ))}
