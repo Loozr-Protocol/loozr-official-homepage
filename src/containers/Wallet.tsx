@@ -18,7 +18,6 @@ import {
   getFullDisplayBalance,
 } from "../utils/formatBalance";
 import { useSelector } from "react-redux";
-import { copy } from "../utils";
 import { toast } from "react-toastify";
 import { TOAST_OPTIONS } from "../config/constants";
 
@@ -31,7 +30,7 @@ const Wallet = () => {
 
 
   const [copySuccess, setCopySuccess] = React.useState('');
-  const textAreaRef: any = React.useRef(null);
+  
 
   function copyToClipboard(item: any, text: any) { 
       navigator.clipboard.writeText(item)
