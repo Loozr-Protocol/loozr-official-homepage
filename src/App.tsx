@@ -86,11 +86,11 @@ const App = () => {
                 key={route.name}
                 path={route.path}
                 element={
-                  <AccountSetupCheckOnly>
+                  // <AccountSetupCheckOnly>
                     <Dashboard>
                       <route.component />
                     </Dashboard>
-                  </AccountSetupCheckOnly>
+                  // </AccountSetupCheckOnly>
                 }
               />
             ))}

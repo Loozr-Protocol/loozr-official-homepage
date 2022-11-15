@@ -53,14 +53,14 @@ const AccountSetupInput = ({
         onBlur={onBlur}
         onFocus={onFocus}
         style={{paddingLeft: "30px"}}
-        className="px-7 py-3 md:py-4 text-muted upper placeholder:text-muted relative z-20 h-[55px] md:h-[60px] flex-auto bg-transparent"
+        className="px-7 py-3 md:py-4 text-muted lower placeholder:text-muted relative z-20 h-[55px] md:h-[60px] flex-auto bg-transparent"
         {...rest}
       />
 
-      <div className=" absolute top-[15px] md:top-[18px] flex left-[30px] right-7 overflow-x-hidden "> 
-          <p className="text-[16.26px] text-transparent " >{(text).toLowerCase()}</p>
+      <div className=" absolute top-[15px] md:top-[18px] flex left-[16px] right-7 overflow-x-hidden "> 
+          {/* <p className="text-[16.26px] text-transparent " >{(text).toUpperCase()}</p> */}
           {text !== "" &&  
-            <span className=" z-30 mt-[1px]  text-muted" >.lzr.testnet</span>
+            <span className=" z-30 mt-[1px]  text-muted" >$</span>
           }
         </div>  
       </div>

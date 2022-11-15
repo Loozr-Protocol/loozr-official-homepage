@@ -13,6 +13,7 @@ export default function AccountSetup() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isAccountAvailable, setAvailableState] = useState(false)
+  const [text, setText] = useState("")
   const isLoading = useSelector((state: AppState) => state.user.loading);
   const success = useSelector(
     (state: AppState) => state.user.accountSetupSuccess
@@ -46,13 +47,21 @@ export default function AccountSetup() {
 
     if (!isAccountAvailable) return;
 
-    dispatch(accountSetup(formik.values));
+    dispatch(accountSetup({
+      account_id: text
+    }));
   };
 
   // if (!jwtToken) {
   //   return <Navigate to="/login" state={{ from: location }} replace />;
-  // }
+  // } 
 
+  useEffect(() => {  
+    formik.setFieldValue("account_id", text) 
+  }, [text])
+  
+
+    console.log(text);
   return (
     <div className="min-h-screen flex flex-col justify-center items-center ">
       <div className="md:px-4 px-10 max-w-[500px] mx-auto">
@@ -69,9 +78,9 @@ export default function AccountSetup() {
           accountDomain={`.${MIXER_ACCOUNT}`}
           name="account_id"
           placeholder="username.lzr.testnet"
-          value={formik.values.account_id}
+          // value={text}
           setResult={(result) => setAvailableState(result)}
-          onChange={formik.handleChange}
+          onChange={setText}
           onBlur={(e) => formik.handleBlur(e)}
           onFocus={() => formik.setFieldTouched("account_id", true, true)}
         />
@@ -89,11 +98,11 @@ export default function AccountSetup() {
         </div> 
         <p className="italic text-[13px] font-normal md:text-[15px] text-muted mb-8 md:mb-16">
           Domain name:{" "}
-          {formik.values.account_id ? formik.values.account_id : "example"}.lzr.testnet
+          {formik.values.account_id ? text : "example"}.lzr.testnet
           {/* {MIXER_ACCOUNT} */}
         </p>
         <button
-          className="md:py-4 text-white disabled:text-muted font-medium text-base bg-gradient-ld disabled:bg-dark-800 bg-opacity-50 mb-11 w-full md:w-[450px] focus:outline-none h-[55px] md:h-[74px]"
+          className="md:py-4 text-white disabled:text-muted font-medium text-base bg-gradient-ld disabled:bg-dark-800 bg-opacity-50 mb-11 w-full md:w-[450px] focus:outline-none h-[55px] md:h-[63px]"
           onClick={handleLaunchToken}
           disabled={isLoading || !isAccountAvailable}
         >

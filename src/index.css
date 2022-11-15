@@ -124,6 +124,9 @@ div:hover::-webkit-scrollbar-thumb {
   position: relative;
 }
 
+input.upper { text-transform: lowercase; }
+input.lower { text-transform: uppercase; }
+
 .example1 p {
   position: absolute;
   width: 100%; 

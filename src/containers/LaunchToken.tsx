@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CREATOR_COIN_DOMAIN } from "../config/constants";
 import * as yup from "yup";
@@ -12,10 +12,12 @@ import { httpError } from "../utils/httpHelper";
 import { useDispatch } from "react-redux";
 import { updateProfile } from "../state/user/userReducer";
 import AccountSetupInput from "../components/AccountSetupInput";
+import AccountSetupInputCoin from "../components/AccountSetupInputCoin";
 
 const LaunchToken = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [text, setText] = useState("")
   const { handleArtisteSetup } = useArtisteSetupCallback();
   const [isAccountAvailable, setAvailableState] = useState(false);
   const [isLoading, setLoader] = useState<boolean>(false);
@@ -34,6 +36,10 @@ const LaunchToken = () => {
     validationSchema: formSchema,
     onSubmit: () => {},
   });
+  
+  useEffect(() => {  
+    formik.setFieldValue("account_id", text) 
+  }, [text])
 
   const handleLaunchToken = async () => {
     if (!formik.dirty) {
@@ -69,24 +75,24 @@ const LaunchToken = () => {
         <p className="font-bold text-4xl md:text-4xl text-white mb-4 md:mb-4">
           Add Artiste Coin
         </p>
-        <p className="text-sm md:text-base mb-7">
+        <p className="text-sm md:text-[15px] mb-7">
           Launch you own cryptocurrency.
           <span className="mt-2.5">
             Enter a custom Artiste Token Symbol that will act as your currency
             that can be held, traded and exchanged for goods and services.
           </span>
         </p>
-        <AccountSetupInput
+        <AccountSetupInputCoin
           accountDomain={`.${CREATOR_COIN_DOMAIN}`}
           name="account_id"
           placeholder="$YOUR_COIN_NAME"
           value={formik.values.account_id}
           setResult={(result) => setAvailableState(result)}
-          onChange={formik.handleChange}
+          onChange={setText}
           onBlur={(e) => formik.handleBlur(e)}
           onFocus={() => formik.setFieldTouched("account_id", true, true)}
         />
-        <div className="w-full h-auto mb-1">
+        <div className="w-full h-auto mt-4 mb-1">
           {formik.touched.account_id && formik.errors.account_id && (
             <motion.div
               initial={{ y: -100, opacity: 0 }}
@@ -111,7 +117,7 @@ const LaunchToken = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             onFocus={() => formik.setFieldTouched("founder_reward", true, true)}
-            className="py-4 px-11 bg-dark-800 text-sm placeholder:text-muted text-white"
+            className=" px-7 py-3 md:py-4 h-[55px] md:h-[60px]  w-full md:w-[450px] bg-dark-800 text-sm placeholder:text-muted text-white"
             placeholder="100%"
             style={{ background: "#12161F" }}
           />
@@ -129,7 +135,7 @@ const LaunchToken = () => {
           )}
         </div>
         <button
-          className="py-4 text-white disabled:text-muted font-medium md:text-base bg-gradient-ld disabled:bg-dark-800 mb-11 w-full focus:outline-none"
+          className=" md:w-[450px] h-[55px] md:h-[60px] text-white disabled:text-muted font-medium md:text-base bg-gradient-ld disabled:bg-dark-800 mb-11 w-full focus:outline-none"
           onClick={handleLaunchToken}
           disabled={isLoading || !isAccountAvailable}
         >
