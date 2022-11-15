@@ -98,12 +98,12 @@ const Tracks = () => {
   const [active, setActive] = useState(filters[0]);
   return (
     <div className="pb-32">
-      <div className="w-full overflow-x-auto flex mb-9">
+      <div className="w-full overflow-x-auto flex mb-7">
         {filters.map((filter, index) => (
           <div
             key={index}
             onClick={() => setActive(filter)}
-            className={`py-2.5 px-6 bg-dark-700 font-normal text-xs mr-3 min-w-max ${
+            className={`py-[7px] px-6 bg-dark-700 font-normal text-[11.5px] mr-3 min-w-max ${
               active === filter ? "text-white" : "text-muted cursor-pointer"
             }`}
           >

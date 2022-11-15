@@ -28,8 +28,16 @@ const Suggestion = () => {
 
   const ref: any = React.useRef(null); 
 
+  const Checking =(item: any, text: any)=> {
+    if(item.length > 20){ 
+      setIsShown(item)
+    } else { 
+      setIsShown("false")
+    }
+  }
+
   return (
-    <div className="w-full ">
+    <div className="w-full mt-[2px] ">
       <div className="flex items-center justify-between pb-2">
         <p className="font-medium text-base md:text-[17px] text-white">
           Tracks you&apos;d love
@@ -54,23 +62,23 @@ const Suggestion = () => {
             .map((_, index) => (
               <motion.div  
                 whileHover={{
-                  scale: 1.1, 
-                  transition: { duration: 0.5 },
+                  scale: 1.02, 
+                  transition: { duration: 0.3 },
                 }}
-                onMouseOver={()=> setIsShown(index+"")}
-                onMouseOut={()=> setIsShown("false")}
+                onMouseOver={()=> Checking(index+"", "Chiling good" )}
+                onMouseOut={()=> Checking("false", "Chiling good" )}
                 key={index} className="flex flex-col h-auto mr-4 min-w-[150px]">
                 <img
                   src={Goya}
                   alt=""
-                  className="object-cover h-36 w-h-36 mb-[18px]"
+                  className="object-cover h-36 w-h-36 mb-[15px]"
                 />
                 <div className={isShown === index+"" ? "example1" : " h-[20px] "} >
                   <p className="mb-[3px] font-medium text-sm text-white">
                   Chiling good 
                   </p>
                 </div> 
-                <p className="text-muted text-xs font-normal md:text-[13px] md:font-normal">
+                <p className="text-muted text-xs font-normal md:text-[13px] mt-[2px] md:font-normal">
                   Goya Menor
                 </p>
               </motion.div>

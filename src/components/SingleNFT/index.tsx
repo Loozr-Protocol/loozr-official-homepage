@@ -54,8 +54,8 @@ const NFT = ({
   return (
     <motion.div
       whileHover={{
-        scale: 1.1, 
-        transition: { duration: 1 },
+        scale: 1.02, 
+        transition: { duration: 0.3 },
       }}
       whileTap={{ scale: 0.9 }}
       className={"bg-dark-900 " + className}
@@ -70,33 +70,33 @@ const NFT = ({
       <div className=" w-[200px] h-[200px] relative "   > 
         <img src={img} alt="" className={isShown ? " hidden " : " w-full h-full object-cover "} /> 
           <div className={isShown ? " flex w-full h-full justify-center items-center " : " hidden "} > 
-          <div className="absolute z-10 inset-0 bg-black opacity-75  " />
+          <div className="absolute z-10 inset-0 bg-black opacity-50  " />
           <img src={img} alt="" className=" w-full absolute h-full object-cover " />
               {active === index && (
-                <button style={{ backgroundColor: "rgba(255, 255, 255, 0.4)" }} className=' w-16 h-16 relative z-20 rounded-full flex justify-center items-center ' onClick={() => ClickHandler(index)}>
+                <button style={{ backgroundColor: "rgba(255, 255, 255, 0.4)" }} className=' w-[50px] h-[50px] relative z-20 rounded-full flex justify-center items-center ' onClick={() => ClickHandler(index)}>
                   {playing ? (
                       <img
                       src={Pause}
                       alt=""
-                      className=" cursor-pointer ml-1 w-7 h-8"
+                      className=" cursor-pointer w-4 h-5"
                       />
                   ) : (
                       <img
                       src={Play}
                       alt="" 
-                      className="cursor-pointer  ml-1 w-7 h-9"
+                      className="cursor-pointer  w-4 h-6"
                       />
                   )}
                 </button>
               )}
               {active !== index && (
-                <button style={{ backgroundColor: "rgba(255, 255, 255, 0.4)" }} className=' w-16 h-16 relative z-20 rounded-full flex justify-center items-center ' onClick={() => ClickHandler(index)}>
+                <button style={{ backgroundColor: "rgba(255, 255, 255, 0.4)" }} className=' w-[50px] h-[50px] relative z-20 rounded-full flex justify-center items-center ' onClick={() => ClickHandler(index)}>
                   {/* {playing && 
                     ( */}
                       <img
                       src={Play}
                       alt="" 
-                      className="cursor-pointer  ml-1 w-7 h-9"
+                      className="cursor-pointer  w-4 h-6"
                       />
                   {/* )} */}
                 </button>
