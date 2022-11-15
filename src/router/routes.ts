@@ -175,12 +175,12 @@ export const dashboard = [
     private: true,
     component: Tracks,
   },
-  {
-    name: "buy lzr",
-    path: "lzr/buy",
-    private: true,
-    component: BuyLzr,
-  },
+  // {
+  //   name: "buy lzr",
+  //   path: "lzr/buy",
+  //   private: true,
+  //   component: BuyLzr,
+  // },
   {
     name: "send lzr",
     path: "lzr/send",
