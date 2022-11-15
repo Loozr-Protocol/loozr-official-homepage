@@ -10,7 +10,6 @@ import Pause from "../assets/svg/controls/pause.svg";
 import Suggestion from "../components/suggestion";
 import Carousel from "../components/Carousel";
 import VerifiedBadge from "../assets/icons/verified_badge.svg";
-import { featured } from "../components/dummy/featuredArtist";
 import { Link } from "react-router-dom";
 import NFT from "../components/SingleNFT";
 import { nfts } from "../components/dummy/nfts";
@@ -57,8 +56,6 @@ const ArtisteDashboard = () => {
   const FeaturedArtistes =()=>{ 
 
     const [isShown, setIsShown] = React.useState(-1)
-
-    console.log(artists)
     
     return( 
       <> 

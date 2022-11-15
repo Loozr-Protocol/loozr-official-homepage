@@ -46,7 +46,6 @@ const userSlice = createSlice({
     },
     login: (state, action) => {
       state.userInfo = action.payload;
-      console.log(state.userInfo);
       localStorage.setItem("accountId", state.userInfo.accountId);
     },
     updateProfile: (state, action) => {
