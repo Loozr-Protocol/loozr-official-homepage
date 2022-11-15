@@ -57,10 +57,10 @@ const AccountSetupInput = ({
         {...rest}
       />
 
-      <div className=" absolute top-[15px] md:top-[18px] flex left-[16px] right-7 overflow-x-hidden "> 
+      <div className=" absolute top-[15px] md:top-[18px] flex left-[19px] right-7 overflow-x-hidden "> 
           {/* <p className="text-[16.26px] text-transparent " >{(text).toUpperCase()}</p> */}
           {text !== "" &&  
-            <span className=" z-30 mt-[1px]  text-muted" >$</span>
+            <span className=" z-30 mt-[1px]  text-white" >$</span>
           }
         </div>  
       </div>
