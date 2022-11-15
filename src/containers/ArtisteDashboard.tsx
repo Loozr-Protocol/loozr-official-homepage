@@ -52,6 +52,8 @@ const ArtisteDashboard = () => {
   const navigate = useNavigate()
   const [active, setActive] = React.useState(null)
 
+  const nftype = "scroll"
+
   useEffect(() => {
     dispatch(getArtists());
   }, []);
@@ -75,7 +77,7 @@ const ArtisteDashboard = () => {
     
     return( 
       <> 
-        <div className="flex items-center mt-[3px] justify-between mb-[15px]"
+        <div className="flex items-center mt-[3px] md:px-0 px-6 justify-between mb-[15px]"
           >
           <p className="font-medium text-base md:text-[17px] text-white">
             Recent artist coins
@@ -93,13 +95,13 @@ const ArtisteDashboard = () => {
                 key={i}
                 onMouseOver={()=> Checking(i, _.creatorCoinId)}
                 onMouseOut={()=> Checking(-1, _.creatorCoinId)}
-                className="flex flex-col items-center mr-[22px] md:h-64 min-w-max md:w-[105px]"
+                className="flex flex-col items-center mr-[25px] md:h-64 min-w-max md:w-[105px]"
               >
                 <Link to={`/${_.user.accountDomain}`} className="relative">
                   <div className=" relative " >
                     <Photo
                       alt=""
-                      className="object-cover h-20 md:h-[105px] w-20 md:w-[105px] rounded-full  mb-[16px]"
+                      className="object-cover h-[100px] md:h-[105px] w-[100px] md:w-[105px] rounded-full  mb-[16px]"
                       style={{
                         border: "8.7px solid #141922",
                       }}
@@ -122,7 +124,7 @@ const ArtisteDashboard = () => {
                 >
                   ${_.creatorCoinId.slice(0, 7)}
                 </Link>  */}
-                  <div className=" w-[105px]" > 
+                  <div className=" w-[105px] mt-1" > 
                     <div className={isShownText === i ? "example1" : " h-[20px] w-full flex justify-center "} >
                       <p onClick={()=> navigate(`/${_.user.accountDomain}`)} className=" cursor-pointer mb-[3px] font-medium text-sm text-white"> 
                         ${isShownText === i ?  _.creatorCoinId.toUpperCase() : _.creatorCoinId.slice(0, 7).toUpperCase()}
@@ -239,74 +241,76 @@ const ArtisteDashboard = () => {
   }, [canPlay, curTime, duration, playing, setPlaying]);
 
   return (
-    <div className="w-full flex flex-col">
+    <div className="w-full flex flex-col ">
       <Carousel />  
       {renderAudioPlayer}  
       <FeaturedArtistes />
-      <Suggestion />
-      <div className="flex items-center justify-between  pb-2 ">
-        <p className="font-medium text-base md:text-[17px] text-white">
-          Music NFT drops
+      <Suggestion /> 
+      <div className=" w-full  md:px-0 px-6 " > 
+        <div className="flex items-center justify-between pb-2 ">
+          <p className="font-medium text-base md:text-[17px] text-white">
+            Music NFT drops
+          </p>
+          {/* <div className="flex items-center">
+            <Link to="/nfts" className="text-xs font-medium text-muted">
+              View all
+            </Link>
+          </div> */}
+            <SlidesButton position={musicDropRef} width={250} />
+        </div>
+        <div
+          // className="grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-8 mb-16"
+          className="max-w-full overflow-auto scroll_event whitespace-nowrap pb-16"
+          ref={musicDropRef}
+        >
+          <div className="flex h-full py-3 ">
+            {nfts.map(({ album, artist, song, platform, price, liked, likes, token, img }, index) => (
+              <NFT
+                className="w-[200px] mr-[16px]"
+                key={index}
+                {...{ album, artist, song, platform, price, likes, liked, token, img, active, setActive, playing, setPlaying,  index, nftype }}
+              />
+            ))}
+          </div>
+        </div>
+        <p className="font-medium text-base md:text-[17px] text-white mb-6">
+          How does Loozr work?
         </p>
-        {/* <div className="flex items-center">
-          <Link to="/nfts" className="text-xs font-medium text-muted">
-            View all
-          </Link>
-        </div> */}
-          <SlidesButton position={musicDropRef} width={250} />
-      </div>
-      <div
-        // className="grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-8 mb-16"
-        className="max-w-full overflow-auto scroll_event whitespace-nowrap pb-16"
-        ref={musicDropRef}
-      >
-        <div className="flex h-full py-3 ">
-          {nfts.map(({ album, artist, song, platform, price, liked, likes, token, img }, index) => (
-            <NFT
-              className="w-[200px] mr-[16px]"
-              key={index}
-              {...{ album, artist, song, platform, price, likes, liked, token, img, active, setActive, playing, setPlaying,  index }}
-            />
-          ))}
-        </div>
-      </div>
-      <p className="font-medium text-base md:text-[17px] text-white mb-6">
-        How does Loozr work?
-      </p>
-      <div className="grid gap-5 lg:gap-10 pb-44 md:pb-28 ">
-        <div className="grid md:grid-cols-2 gap-5 lg:gap-10">
-          <div className="bg-dark-700 py-7 px-7">
-            <img src={Arrow} alt="" className="w-10 h-10 mb-[19px]" />
+        <div className="grid gap-5 lg:gap-10 pb-44 md:pb-28 ">
+          <div className="grid md:grid-cols-2 gap-5 lg:gap-10">
+            <div className="bg-dark-700 py-7 px-7">
+              <img src={Arrow} alt="" className="w-10 h-10 mb-[19px]" />
+              <p className="font-medium text-sm text-white mb-2.5">
+                Launch Your Own Coin
+              </p>
+              <p className="text-muted text-xs font-normal">
+                Get tokenised by creating your Profile, adding your Songs &
+                Playlists, EPs, Albums, etc.
+              </p>
+            </div>
+            <div className="bg-dark-700 py-7 px-7">
+              <img src={Chart} alt="" className="w-10 h-10 mb-[19px]" />
+              <p className="font-medium text-sm text-white mb-2.5">
+                Buy, Sell & Trade
+              </p>
+              <p className="text-muted text-xs font-normal">
+                Fans can stream and trade artiste profiles & songs with Loozr
+                coins & explore the Metaverse music world.
+              </p>
+            </div>
+          </div>
+          <div className="bg-dark-700 py-7 px-7 md:w-[85%]">
+            <img src={Heart} alt="" className="w-10 h-10 mb-[19px]" />
             <p className="font-medium text-sm text-white mb-2.5">
-              Launch Your Own Coin
+              Collective Wins!
             </p>
             <p className="text-muted text-xs font-normal">
-              Get tokenised by creating your Profile, adding your Songs &
-              Playlists, EPs, Albums, etc.
+              When fans invest in a token, like Bitcoin, the price of that token
+              price rises. Artistes receive a percentage incentive from these
+              trades in addition to their streaming money which they split with
+              their token holders.
             </p>
           </div>
-          <div className="bg-dark-700 py-7 px-7">
-            <img src={Chart} alt="" className="w-10 h-10 mb-[19px]" />
-            <p className="font-medium text-sm text-white mb-2.5">
-              Buy, Sell & Trade
-            </p>
-            <p className="text-muted text-xs font-normal">
-              Fans can stream and trade artiste profiles & songs with Loozr
-              coins & explore the Metaverse music world.
-            </p>
-          </div>
-        </div>
-        <div className="bg-dark-700 py-7 px-7 md:w-[85%]">
-          <img src={Heart} alt="" className="w-10 h-10 mb-[19px]" />
-          <p className="font-medium text-sm text-white mb-2.5">
-            Collective Wins!
-          </p>
-          <p className="text-muted text-xs font-normal">
-            When fans invest in a token, like Bitcoin, the price of that token
-            price rises. Artistes receive a percentage incentive from these
-            trades in addition to their streaming money which they split with
-            their token holders.
-          </p>
         </div>
       </div>
     </div>

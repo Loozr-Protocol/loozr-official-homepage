@@ -80,7 +80,7 @@ const Carousel = () => {
               {index === isShown &&
                 <motion.div 
                   key={item} 
-                    className="w-full  min-h-[210px] absolute top-0 bg-no-repeat bg-cover bg-center pl-8 py-7 flex flex-col justify-end "
+                    className="w-full  min-h-[210px] absolute inset-x-0 top-0 bg-no-repeat bg-cover bg-center pl-8 py-7 flex flex-col justify-end "
                     style={{ background: `url(${item})`, backgroundColor: "#000", backgroundPosition: "cover" }}
                     {...boxAnimation}
                   >

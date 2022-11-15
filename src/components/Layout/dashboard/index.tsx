@@ -89,22 +89,22 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                 <div className="w-full lg:w-[70%] md:pl-0 md:pr-7 h-[90vh] overflow-y-auto ">
                   {children}
                 </div> 
-                  <div className="w-full hidden overflow-y-auto md:h-[90vh] rounded-t-[14px] pr-4 lg:flex flex-col lg:w-[330px] xl:w-[330px]">
+                  <div className="w-full hidden overflow-y-auto md:h-[90vh] rounded-t-[14px] md:pr-4 lg:flex flex-col lg:w-[330px] xl:w-[330px]">
                   <div  style={{ background: "linear-gradient(180deg, #12161F 0%, rgba(18, 22, 31, 0) 100%)" }} className="flex flex-col w-full min-h-[210px] rounded-t-[14px] mb-7">
                     <div className="py-8 px-6 border-dark-900 rounded-t-[14px]  border-b">
                       <p className="text-muted text-xs font-medium mb-1.5">
                         Your Balance
                       </p>
                       <p className="text-white text-2xl font-extrabold mb-2">
-                        {balanceInLzr ? balanceInLzr : "0.00"}{" "}
+                        {!balanceInLzr ? balanceInLzr : "0.00"}{" "}
                         <span className="text-sm font-medium">LZR</span>
                       </p>
                       <div className="text-white text-xs">
-                        ≈ ${balanceUsd ? balanceUsd : "0.00"} USD
+                        ≈ ${!balanceUsd ? balanceUsd : "0.00"} USD
                       </div>
                     </div>
                     <div className="py-4 px-6 text-xs font-medium text-muted">
-                      ~ ${LZR_IN_USD ? LZR_IN_USD : "0.00"} USD per LZR coin price
+                      ~ ${!LZR_IN_USD ? LZR_IN_USD : "0.00"} USD per LZR coin price
                     </div>
                     <div className="flex justify-content-center mb-8">
                       {/* <a

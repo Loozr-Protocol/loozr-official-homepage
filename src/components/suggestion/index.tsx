@@ -37,7 +37,7 @@ const Suggestion = () => {
   }
 
   return (
-    <div className="w-full mt-[2px] ">
+    <div className="w-full mt-[2px] md:px-0 px-6 ">
       <div className="flex items-center justify-between pb-2">
         <p className="font-medium text-base md:text-[17px] text-white">
           Tracks you&apos;d love

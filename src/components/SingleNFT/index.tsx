@@ -22,10 +22,11 @@ type NFTProp = {
   setPlaying: any;
   setActive: any;
   className?: string;
+  nftype: string;
   index?: null | number;
 }; 
 
-const NFT = ({ 
+const NFT = ({  
   album,
   artist,
   song,
@@ -39,6 +40,7 @@ const NFT = ({
   setActive,
   playing,
   setPlaying,
+  nftype,
   className = "",
   index,
 }) => {
@@ -67,7 +69,7 @@ const NFT = ({
         <source src={"/song.mp3"} />
         Your browser does not support the <code>audio</code> element.
       </audio>
-      <div className=" w-[200px] h-[200px] relative "   > 
+      <div className={nftype === "scroll" ? " w-[200px] h-[200px] relative " : " w-[200px] md:w-full h-[200px] relative "}   > 
         <img src={img} alt="" className={isShown ? " hidden " : " w-full h-full object-cover "} /> 
           <div className={isShown ? " flex w-full h-full justify-center items-center " : " hidden "} > 
           <div className="absolute z-10 inset-0 bg-black opacity-50  " />

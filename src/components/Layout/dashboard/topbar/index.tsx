@@ -31,7 +31,7 @@ export const TopBar = () => {
   };
 
   return (
-    <div className="w-full mb-6 pr-4 ">
+    <div className="w-full mb-6 md:px-0 px-6 md:pr-4 ">
       <div className="flex justify-between px-0 sm:px-4  items-center">
         <div className="hidden md:flex relative">
           <input
@@ -68,7 +68,7 @@ export const TopBar = () => {
           </div>
         )}
         <div className="md:hidden flex items-center">
-          <p className="text-xl text-white pr-0.5 font-bold">~${LZR_IN_USD}/</p>
+          <p className="text-white pr-0.5 font-bold">~${LZR_IN_USD}/</p>
           <img
             src={LoozrGradient}
             alt=""
