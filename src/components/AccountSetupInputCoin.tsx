@@ -39,7 +39,7 @@ const AccountSetupInput = ({
   
   return (
     <div
-      className="flex flex-row w-full md:w-[450px] between items-center"
+      className="flex flex-row w-full md:w-[400px] between items-center"
       style={{ backgroundColor: "#12161F" }}
     >
 

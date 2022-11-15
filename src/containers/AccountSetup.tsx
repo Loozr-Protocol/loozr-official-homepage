@@ -65,11 +65,11 @@ export default function AccountSetup() {
   return (
     <div className="min-h-screen flex flex-col justify-center items-center ">
       <div className="md:px-4 px-10 max-w-[500px] mx-auto">
-        <p className=" font-extrabold text-[25px] w-full md:w-[450px] leading-snug md:leading-normal md:text-[30px] text-white md:mb-5">
+        <p className=" font-extrabold text-[25px] w-full  md:w-[400px]  leading-snug md:leading-normal md:text-[30px] text-white md:mb-5">
         Your Web3 identity
           starts here.
         </p>
-        <p className="text-[15px] w-full md:w-[450px] md:text-[16px] text-white leading-normal font-normal mb-7">
+        <p className="text-[15px] w-full  md:w-[400px]  md:text-[16px] text-white leading-normal font-normal mb-7">
           <span className="mt-4">
           Reserve your <span className=" font-bold " >.lzr.testnet</span> domain name to represent your wallet, profile or brand. Stream, send and receive tokens via domain names.
           </span>
@@ -102,7 +102,7 @@ export default function AccountSetup() {
           {/* {MIXER_ACCOUNT} */}
         </p>
         <button
-          className="md:py-4 text-white disabled:text-muted font-medium text-base bg-gradient-ld disabled:bg-dark-800 bg-opacity-50 mb-11 w-full md:w-[450px] focus:outline-none h-[55px] md:h-[63px]"
+          className="md:py-4 text-white disabled:text-muted font-medium text-base bg-gradient-ld disabled:bg-dark-800 bg-opacity-50 mb-11 w-full  md:w-[400px]  focus:outline-none h-[55px] md:h-[63px]"
           onClick={handleLaunchToken}
           disabled={isLoading || !isAccountAvailable}
         >
