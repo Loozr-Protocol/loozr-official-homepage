@@ -3,16 +3,7 @@ import { transactions, coinsBought } from "../components/dummy/wallet";
 import { capitalize } from "../functions";
 import Arrow45Deg from "../assets/icons/arrow-45deg.svg";
 import Arrow225Deg from "../assets/icons/arrow-225deg.svg";
-import { ReactComponent as MoreIcon } from "../assets/icons/more-white.svg";
 
-import {
-  ResponsiveContainer,
-  AreaChart,
-  XAxis,
-  YAxis,
-  Tooltip,
-  Area,
-} from "recharts";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../state/store";
@@ -54,7 +45,6 @@ const Profile = () => {
 
   const [showModal, setShowModal] = React.useState(false)
   const [copySuccess, setCopySuccess] = React.useState('');
-  const textAreaRef: any = React.useRef(null);
 
   function copyToClipboard(item: any, text: any) { 
       navigator.clipboard.writeText(item)
@@ -343,26 +333,39 @@ const Profile = () => {
             <CreatorStatCard user={currentProfile} />
           )}
           <div className="flex md:flex-row flex-col mt-[32px] items-start mb-7">
-            <div className=" relative " >
+            <div className=" relative ">
               <Photo
                 alt={currentProfile.accountDomain}
                 className="h-8 md:h-[130px] w-8 md:w-[130px] object-cover rounded-full md:mr-3"
                 style={{ border: "10px solid #141922" }}
               />
-              <img src={verified} alt="verified" className=" absolute bottom-2 right-4 w-[31.03px] " />
+              <img
+                src={verified}
+                alt="verified"
+                className=" absolute bottom-2 right-4 w-[31.03px] "
+              />
             </div>
             <div className="md:ml-10">
-              <div className=" flex " > 
+              <div className=" flex ">
                 <p className="text-xl md:text-xl font-medium text-white mb-1.5">
                   {currentProfile.accountDomain}
                 </p>
-                <button onClick={()=>copyToClipboard(currentProfile.accountDomain, "Copied!")} className=" w-[30px] ml-2 h-[30px] rounded-full bg-[#141922] flex justify-center items-center mr-2  " > 
+                <button
+                  onClick={() =>
+                    copyToClipboard(currentProfile.accountDomain, "Copied!")
+                  }
+                  className=" w-[30px] ml-2 h-[30px] rounded-full bg-[#141922] flex justify-center items-center mr-2  "
+                >
                   <img src={copy} alt="copy" className=" w-[12.17px] " />
                 </button>
                 {copySuccess === "Copied!" && copySuccess}
               </div>
               <p className="text-muted font-medium mt-[2px] text-xs md:text-xs mb-[10px]">
-                <span>{currentProfile.username ? currentProfile.username : currentProfile.accountId}</span>
+                <span>
+                  {currentProfile.username
+                    ? currentProfile.username
+                    : currentProfile.accountId}
+                </span>
                 {currentProfile.isArtist ? (
                   <span className="pointer ml-2 pl-2 before:top-[6px]">
                     Artiste
@@ -371,36 +374,79 @@ const Profile = () => {
                   ""
                 )}
               </p>
-              <div className=" w-full py-6 flex items-center " >
-                  <img src={soundcloud} alt="" className=" w-[23.93px] h-[11.43px] mx-[9px] " />
-                  <img src={spotify} alt="" className=" w-[15.24px] mx-[9px]  " /> 
-                  <img src={instagram} alt="" className=" w-[16px] mx-[9px]  " />
-                  <img src={twitter} alt="" className=" w-[18.76px] mx-[9px]  " />
-                  <div className=" relative  mx-2  " > 
-                    <img onClick={()=> setIsShown(prev => !prev)} src={share} alt="" className=" w-[12.67px] cursor-pointer " />
-                    {isShown && (
-                      <div  className=" absolute w-[200px] bg-[#12161F] z-20 top-7 px-4 py-3 rounded-lg  shadow-xl " > 
-                        <a target="_blank" href={"https://explorer.testnet.near.org/accounts/"+currentProfile.accountDomain} className=" font-medium text-[13px] cursor-pointer  " >View user on explorer</a>
-                        {currentProfile.isArtist && (<p className=" font-medium text-[13px] cursor-pointer mt-1  " >View artist on explorer</p>)}
-                        <p onClick={()=>copyToClipboard(currentProfile.accountDomain, "Copied")} className=" font-medium text-[13px] mt-1 cursor-pointer  " >{copySuccess === "Copied" ? copySuccess : "Copy profile link" }</p> 
-                      </div>
-                    )}
-                    {isShown && (
-                      <div  onClick={()=> setIsShown(false)} className=" fixed cursor-pointer z-10 inset-0 " />
-                    )}
-                  </div>
+              <div className=" w-full py-6 flex items-center ">
+                <img
+                  src={soundcloud}
+                  alt=""
+                  className=" w-[23.93px] h-[11.43px] mx-[9px] "
+                />
+                <img src={spotify} alt="" className=" w-[15.24px] mx-[9px]  " />
+                <img src={instagram} alt="" className=" w-[16px] mx-[9px]  " />
+                <img src={twitter} alt="" className=" w-[18.76px] mx-[9px]  " />
+                <div className=" relative  mx-2  ">
+                  <img
+                    onClick={() => setIsShown((prev) => !prev)}
+                    src={share}
+                    alt=""
+                    className=" w-[12.67px] cursor-pointer "
+                  />
+                  {isShown && (
+                    <div className=" absolute w-[200px] bg-[#12161F] z-20 top-7 px-4 py-3 rounded-lg  shadow-xl ">
+                      <a
+                        target="_blank"
+                        href={
+                          "https://explorer.testnet.near.org/accounts/" +
+                          currentProfile.accountDomain
+                        }
+                        className=" font-medium text-[13px] cursor-pointer  "
+                      >
+                        View user on explorer
+                      </a>
+                      {currentProfile.isArtist && (
+                        <p className=" font-medium text-[13px] cursor-pointer mt-1  ">
+                          View artist on explorer
+                        </p>
+                      )}
+                      <p
+                        onClick={() =>
+                          copyToClipboard(
+                            currentProfile.accountDomain,
+                            "Copied"
+                          )
+                        }
+                        className=" font-medium text-[13px] mt-1 cursor-pointer  "
+                      >
+                        {copySuccess === "Copied"
+                          ? copySuccess
+                          : "Copy profile link"}
+                      </p>
+                    </div>
+                  )}
+                  {isShown && (
+                    <div
+                      onClick={() => setIsShown(false)}
+                      className=" fixed cursor-pointer z-10 inset-0 "
+                    />
+                  )}
+                </div>
               </div>
               <p className="text-white max-w-[435px] font-medium text-xs md:text-[13px] mb-[20px]">
                 {currentProfile.bio}
               </p>
               <div className="flex items-center mb-9">
-                <p onClick={()=> setShowModal(true)} className="text-xs md:text-sm cursor-pointer font-bold mr-6">
+                <p
+                  onClick={() => setShowModal(true)}
+                  className="text-xs md:text-sm cursor-pointer font-bold mr-6"
+                >
                   {abbrevNumber(currentProfile.followersCount)}
                   <span className="ml-2 text-sm text-muted font-medium">
                     Followers
                   </span>
                 </p>
-                <p onClick={()=> setShowModal(true)} className="text-xs md:text-sm cursor-pointer font-bold mr-6">
+                <p
+                  onClick={() => setShowModal(true)}
+                  className="text-xs md:text-sm cursor-pointer font-bold mr-6"
+                >
                   {abbrevNumber(currentProfile.followingsCount)}
                   <span className="ml-2 text-sm text-muted font-medium">
                     Following
@@ -414,17 +460,17 @@ const Profile = () => {
                     </span>
                   </p>
                 ) : null}
-              </div> 
+              </div>
               {currentProfile.isArtist ? (
                 <div className="flex items-start mb-[15px]">
                   <button
-                    onClick={() => toast.info("Coming soon!", TOAST_OPTIONS)}
+                    onClick={() => push(`/artistes/buy/${currentProfile.id}`)}
                     className="py-[14.1px] px-3 sm:px-6 md:px-7 text-xs md:text-sm font-medium bg-loozr-purple rounded-full"
                   >
                     Buy artiste coin
                   </button>
                   <button
-                    onClick={() => toast.info("Coming soon!", TOAST_OPTIONS)}
+                    onClick={() => push(`/artistes/sell/${currentProfile.id}`)}
                     className="py-[14.1px] px-3 sm:px-6 md:px-7 text-xs md:text-sm font-medium bg-dark-700 rounded-full ml-6"
                   >
                     Sell artiste coin
@@ -444,9 +490,15 @@ const Profile = () => {
                   </div> */}
                 </div>
               ) : null}
-              <div className=" flex items-center py-2 " >
+              <div className=" flex items-center py-2 ">
                 <img src={chain} alt="chain" className=" w-[12.39px] " />
-                <a target="_blank" href="https://yourweblink.com" className=" font-medium text-sm ml-2 " >https://yourweblink.com</a>
+                <a
+                  target="_blank"
+                  href="https://yourweblink.com"
+                  className=" font-medium text-sm ml-2 "
+                >
+                  https://yourweblink.com
+                </a>
               </div>
             </div>
           </div>
@@ -476,7 +528,7 @@ const Profile = () => {
               Transactions
             </p>
           </div>
-          {coinInfo ? renderHistory : renderHistory}
+          {coinInfo ? renderHistory : null}
         </>
       ) : errorLoadingProfile ? (
         <div className="text-center">Profile Not Found!</div>
@@ -485,129 +537,183 @@ const Profile = () => {
       )}
 
       {showModal && (
-        <div onClick={()=> setShowModal(false)} className=" fixed inset-0 flex justify-center items-center md:overflow-y-hidden bg-black bg-opacity-40 z-[70] " > 
-            <div className=' w-full md:w-[360px] md:h-auto relative z-[80] h-screen rounded-2xl bg-[#12161F]' >
-                <div className=' w-full flex items-center border-b border-[#222A3B] justify-between py-4 px-9 ' >
-                    <p className="  font-medium text-white">
-                        Select your genres
-                    </p> 
-                    <button onClick={()=> setShowModal(false)} className=' font-medium text-xs bg-[#8369F4] w-[65px] h-7 rounded-lg ' >Done</button>
+        <div
+          onClick={() => setShowModal(false)}
+          className=" fixed inset-0 flex justify-center items-center md:overflow-y-hidden bg-black bg-opacity-40 z-[70] "
+        >
+          <div className=" w-full md:w-[360px] md:h-auto relative z-[80] h-screen rounded-2xl bg-[#12161F]">
+            <div className=" w-full flex items-center border-b border-[#222A3B] justify-between py-4 px-9 ">
+              <p className="  font-medium text-white">Select your genres</p>
+              <button
+                onClick={() => setShowModal(false)}
+                className=" font-medium text-xs bg-[#8369F4] w-[65px] h-7 rounded-lg "
+              >
+                Done
+              </button>
+            </div>
+            <div className=" w-full px-6 md:py-4 md:h-[60vh] h-full flex flex-1 flex-col overflow-y-auto ">
+              <div className=" w-full flex justify-between my-2 items-center ">
+                <div className=" w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] " />
+                <div className=" ml-3 ">
+                  <div className=" flex -mt-1 items-center ">
+                    <p className=" text-[13px] font-semibold ">Nathan Jose</p>
+                  </div>
+                  <div className=" flex -mt-1 items-center ">
+                    <p className=" text-[11px] font-semibold text-[#536079] ">
+                      $HARTY
+                    </p>
+                    <div className=" w-1 h-1 rounded-full bg-[#536079] mx-1 " />
+                    <p className=" text-[11px] font-semibold text-[#536079] ">
+                      $3,001.99
+                    </p>
+                  </div>
                 </div>
-                <div className=' w-full px-6 md:py-4 md:h-[60vh] h-full flex flex-1 flex-col overflow-y-auto ' >
-                    <div className=' w-full flex justify-between my-2 items-center ' > 
-                        <div className=' w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] ' />
-                        <div className=' ml-3 ' >
-                            <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[13px] font-semibold ' >Nathan Jose</p>
-                            </div>
-                            <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[11px] font-semibold text-[#536079] ' >$HARTY</p>
-                                <div className=' w-1 h-1 rounded-full bg-[#536079] mx-1 ' />
-                                <p className=' text-[11px] font-semibold text-[#536079] ' >$3,001.99</p>
-                            </div>
-                        </div> 
-                        <p className=' text-[12px] ml-auto font-bold text-[#8369F4] cursor-pointer ' >Follow</p>
-                    </div>
-                    <div className=' w-full flex justify-between my-2 items-center ' > 
-                        <div className=' w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] ' />
-                        <div className=' ml-3 ' >
-                            <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[13px] font-semibold ' >Nathan Jose</p>
-                            </div>
-                            <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[11px] font-semibold text-[#536079] ' >$HARTY</p>
-                                <div className=' w-1 h-1 rounded-full bg-[#536079] mx-1 ' />
-                                <p className=' text-[11px] font-semibold text-[#536079] ' >$3,001.99</p>
-                            </div>
-                        </div> 
-                        <p className=' text-[12px] ml-auto font-medium text-[#536079] cursor-pointer ' >Following</p>
-                    </div>
-                    <div className=' w-full flex justify-between my-2 items-center ' > 
-                        <div className=' w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] ' />
-                        <div className=' ml-3 ' >
-                            <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[13px] font-semibold ' >Nathan Jose</p>
-                            </div>
-                            <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[11px] font-semibold text-[#536079] ' >$HARTY</p>
-                                <div className=' w-1 h-1 rounded-full bg-[#536079] mx-1 ' />
-                                <p className=' text-[11px] font-semibold text-[#536079] ' >$3,001.99</p>
-                            </div>
-                        </div> 
-                        <p className=' text-[12px] ml-auto font-medium text-[#536079] cursor-pointer ' >Following</p>
-                    </div>
-                    <div className=' w-full flex justify-between my-2 items-center ' > 
-                        <div className=' w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] ' />
-                        <div className=' ml-3 ' >
-                            <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[13px] font-semibold ' >Nathan Jose</p>
-                            </div>
-                            <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[11px] font-semibold text-[#536079] ' >$HARTY</p>
-                                <div className=' w-1 h-1 rounded-full bg-[#536079] mx-1 ' />
-                                <p className=' text-[11px] font-semibold text-[#536079] ' >$3,001.99</p>
-                            </div>
-                        </div> 
-                        <p className=' text-[12px] ml-auto font-medium text-[#536079] cursor-pointer ' >Following</p>
-                    </div>
-                    <div className=' w-full flex justify-between my-2 items-center ' > 
-                        <div className=' w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] ' />
-                        <div className=' ml-3 ' >
-                            <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[13px] font-semibold ' >Nathan Jose</p>
-                            </div>
-                            <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[11px] font-semibold text-[#536079] ' >$HARTY</p>
-                                <div className=' w-1 h-1 rounded-full bg-[#536079] mx-1 ' />
-                                <p className=' text-[11px] font-semibold text-[#536079] ' >$3,001.99</p>
-                            </div>
-                        </div> 
-                        <p className=' text-[12px] ml-auto font-medium text-[#536079] cursor-pointer ' >Following</p>
-                    </div>
-                    <div className=' w-full flex justify-between my-2 items-center ' > 
-                        <div className=' w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] ' />
-                        <div className=' ml-3 ' >
-                            <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[13px] font-semibold ' >Nathan Jose</p>
-                            </div>
-                            <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[11px] font-semibold text-[#536079] ' >$HARTY</p>
-                                <div className=' w-1 h-1 rounded-full bg-[#536079] mx-1 ' />
-                                <p className=' text-[11px] font-semibold text-[#536079] ' >$3,001.99</p>
-                            </div>
-                        </div> 
-                        <p className=' text-[12px] ml-auto font-medium text-[#536079] cursor-pointer ' >Following</p>
-                    </div>
-                    <div className=' w-full flex justify-between my-2 items-center ' > 
-                        <div className=' w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] ' />
-                        <div className=' ml-3 ' >
-                            <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[13px] font-semibold ' >Nathan Jose</p>
-                            </div>
-                            <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[11px] font-semibold text-[#536079] ' >$HARTY</p>
-                                <div className=' w-1 h-1 rounded-full bg-[#536079] mx-1 ' />
-                                <p className=' text-[11px] font-semibold text-[#536079] ' >$3,001.99</p>
-                            </div>
-                        </div> 
-                        <p className=' text-[12px] ml-auto font-medium text-[#536079] cursor-pointer ' >Following</p>
-                    </div>
-                    <div className=' w-full flex justify-between my-2 items-center ' > 
-                        <div className=' w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] ' />
-                        <div className=' ml-3 ' >
-                            <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[13px] font-semibold ' >Nathan Jose</p>
-                            </div>
-                            <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[11px] font-semibold text-[#536079] ' >$HARTY</p>
-                                <div className=' w-1 h-1 rounded-full bg-[#536079] mx-1 ' />
-                                <p className=' text-[11px] font-semibold text-[#536079] ' >$3,001.99</p>
-                            </div>
-                        </div> 
-                        <p className=' text-[12px] ml-auto font-medium text-[#536079] cursor-pointer ' >Following</p>
-                    </div>
+                <p className=" text-[12px] ml-auto font-bold text-[#8369F4] cursor-pointer ">
+                  Follow
+                </p>
+              </div>
+              <div className=" w-full flex justify-between my-2 items-center ">
+                <div className=" w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] " />
+                <div className=" ml-3 ">
+                  <div className=" flex -mt-1 items-center ">
+                    <p className=" text-[13px] font-semibold ">Nathan Jose</p>
+                  </div>
+                  <div className=" flex -mt-1 items-center ">
+                    <p className=" text-[11px] font-semibold text-[#536079] ">
+                      $HARTY
+                    </p>
+                    <div className=" w-1 h-1 rounded-full bg-[#536079] mx-1 " />
+                    <p className=" text-[11px] font-semibold text-[#536079] ">
+                      $3,001.99
+                    </p>
+                  </div>
                 </div>
-            </div> 
+                <p className=" text-[12px] ml-auto font-medium text-[#536079] cursor-pointer ">
+                  Following
+                </p>
+              </div>
+              <div className=" w-full flex justify-between my-2 items-center ">
+                <div className=" w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] " />
+                <div className=" ml-3 ">
+                  <div className=" flex -mt-1 items-center ">
+                    <p className=" text-[13px] font-semibold ">Nathan Jose</p>
+                  </div>
+                  <div className=" flex -mt-1 items-center ">
+                    <p className=" text-[11px] font-semibold text-[#536079] ">
+                      $HARTY
+                    </p>
+                    <div className=" w-1 h-1 rounded-full bg-[#536079] mx-1 " />
+                    <p className=" text-[11px] font-semibold text-[#536079] ">
+                      $3,001.99
+                    </p>
+                  </div>
+                </div>
+                <p className=" text-[12px] ml-auto font-medium text-[#536079] cursor-pointer ">
+                  Following
+                </p>
+              </div>
+              <div className=" w-full flex justify-between my-2 items-center ">
+                <div className=" w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] " />
+                <div className=" ml-3 ">
+                  <div className=" flex -mt-1 items-center ">
+                    <p className=" text-[13px] font-semibold ">Nathan Jose</p>
+                  </div>
+                  <div className=" flex -mt-1 items-center ">
+                    <p className=" text-[11px] font-semibold text-[#536079] ">
+                      $HARTY
+                    </p>
+                    <div className=" w-1 h-1 rounded-full bg-[#536079] mx-1 " />
+                    <p className=" text-[11px] font-semibold text-[#536079] ">
+                      $3,001.99
+                    </p>
+                  </div>
+                </div>
+                <p className=" text-[12px] ml-auto font-medium text-[#536079] cursor-pointer ">
+                  Following
+                </p>
+              </div>
+              <div className=" w-full flex justify-between my-2 items-center ">
+                <div className=" w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] " />
+                <div className=" ml-3 ">
+                  <div className=" flex -mt-1 items-center ">
+                    <p className=" text-[13px] font-semibold ">Nathan Jose</p>
+                  </div>
+                  <div className=" flex -mt-1 items-center ">
+                    <p className=" text-[11px] font-semibold text-[#536079] ">
+                      $HARTY
+                    </p>
+                    <div className=" w-1 h-1 rounded-full bg-[#536079] mx-1 " />
+                    <p className=" text-[11px] font-semibold text-[#536079] ">
+                      $3,001.99
+                    </p>
+                  </div>
+                </div>
+                <p className=" text-[12px] ml-auto font-medium text-[#536079] cursor-pointer ">
+                  Following
+                </p>
+              </div>
+              <div className=" w-full flex justify-between my-2 items-center ">
+                <div className=" w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] " />
+                <div className=" ml-3 ">
+                  <div className=" flex -mt-1 items-center ">
+                    <p className=" text-[13px] font-semibold ">Nathan Jose</p>
+                  </div>
+                  <div className=" flex -mt-1 items-center ">
+                    <p className=" text-[11px] font-semibold text-[#536079] ">
+                      $HARTY
+                    </p>
+                    <div className=" w-1 h-1 rounded-full bg-[#536079] mx-1 " />
+                    <p className=" text-[11px] font-semibold text-[#536079] ">
+                      $3,001.99
+                    </p>
+                  </div>
+                </div>
+                <p className=" text-[12px] ml-auto font-medium text-[#536079] cursor-pointer ">
+                  Following
+                </p>
+              </div>
+              <div className=" w-full flex justify-between my-2 items-center ">
+                <div className=" w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] " />
+                <div className=" ml-3 ">
+                  <div className=" flex -mt-1 items-center ">
+                    <p className=" text-[13px] font-semibold ">Nathan Jose</p>
+                  </div>
+                  <div className=" flex -mt-1 items-center ">
+                    <p className=" text-[11px] font-semibold text-[#536079] ">
+                      $HARTY
+                    </p>
+                    <div className=" w-1 h-1 rounded-full bg-[#536079] mx-1 " />
+                    <p className=" text-[11px] font-semibold text-[#536079] ">
+                      $3,001.99
+                    </p>
+                  </div>
+                </div>
+                <p className=" text-[12px] ml-auto font-medium text-[#536079] cursor-pointer ">
+                  Following
+                </p>
+              </div>
+              <div className=" w-full flex justify-between my-2 items-center ">
+                <div className=" w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] " />
+                <div className=" ml-3 ">
+                  <div className=" flex -mt-1 items-center ">
+                    <p className=" text-[13px] font-semibold ">Nathan Jose</p>
+                  </div>
+                  <div className=" flex -mt-1 items-center ">
+                    <p className=" text-[11px] font-semibold text-[#536079] ">
+                      $HARTY
+                    </p>
+                    <div className=" w-1 h-1 rounded-full bg-[#536079] mx-1 " />
+                    <p className=" text-[11px] font-semibold text-[#536079] ">
+                      $3,001.99
+                    </p>
+                  </div>
+                </div>
+                <p className=" text-[12px] ml-auto font-medium text-[#536079] cursor-pointer ">
+                  Following
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>

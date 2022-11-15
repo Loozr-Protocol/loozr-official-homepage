@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   transactions,
   tokenHolder,
@@ -18,11 +19,11 @@ import {
   getFullDisplayBalance,
 } from "../utils/formatBalance";
 import { useSelector } from "react-redux";
-import { copy } from "../utils";
 import { toast } from "react-toastify";
 import { TOAST_OPTIONS } from "../config/constants";
 
 const Wallet = () => {
+  const navigate = useNavigate();
   const [active, setActive] = useState(1);
   const user = useSelector((state: AppState) => state.user.userInfo);
   const lzrAccountId = `${user.accountId}.${MIXER_ACCOUNT}`;
@@ -31,7 +32,7 @@ const Wallet = () => {
 
 
   const [copySuccess, setCopySuccess] = React.useState('');
-  const textAreaRef: any = React.useRef(null);
+  
 
   function copyToClipboard(item: any, text: any) { 
       navigator.clipboard.writeText(item)
@@ -170,7 +171,13 @@ const Wallet = () => {
 
   return (
     <div className="w-full">
-      <div style={{ background: "linear-gradient(180deg, #12161F 0%, rgba(18, 22, 31, 0) 100%)" }} className="w-full  p-4 md:!py-8 rounded-t-[14px] md:!px-11 mb-7">
+      <div
+        style={{
+          background:
+            "linear-gradient(180deg, #12161F 0%, rgba(18, 22, 31, 0) 100%)",
+        }}
+        className="w-full  p-4 md:!py-8 rounded-t-[14px] md:!px-11 mb-7"
+      >
         <div className="flex items-center rounded-t-[14px] justify-between mb-9">
           <p className="text-[17px] leading-7 font-thin md:font-medium text-white">
             My Wallet
@@ -191,7 +198,7 @@ const Wallet = () => {
         </p>
         <div className="flex items-center mb-8 md:mb-9">
           <button
-            onClick={() => toast.info("Coming soon!", TOAST_OPTIONS)}
+            onClick={() => navigate("/lzr/send")}
             className="py-2.5 md:py-2.5 px-7 lg:px-auto lg:w-[130px] rounded-full bg-white text-black text-sm mr-4 font-semibold"
           >
             Send $LZR
@@ -204,13 +211,14 @@ const Wallet = () => {
             Buy $LZR
           </button>
         </div>
-        <div className=" flex items-center " >
-
+        <div className=" flex items-center ">
           <p className="text-white font-medium text-sm md:text-sm">
             <span className="text-muted">Your domain name:</span> {lzrAccountId}
-            
           </p>
-          <button onClick={()=>copyToClipboard(lzrAccountId, "Copied!")} className=" w-[30px] ml-2 h-[30px] rounded-full bg-[#141922] flex justify-center items-center mr-2  " > 
+          <button
+            onClick={() => copyToClipboard(lzrAccountId, "Copied!")}
+            className=" w-[30px] ml-2 h-[30px] rounded-full bg-[#141922] flex justify-center items-center mr-2  "
+          >
             <img src={copyimg} alt="copy" className=" w-[12.17px] " />
           </button>
           {copySuccess === "Copied!" && copySuccess}
