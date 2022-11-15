@@ -76,7 +76,7 @@ const userSlice = createSlice({
 
     builder.addCase(getIndividualProfile.rejected, (state, action) => {
       state.errorLoadingProfile = true;
-      httpError(action.payload);
+      // httpError(action.payload);
     });
 
     builder.addCase(signUp.pending, (state) => {
