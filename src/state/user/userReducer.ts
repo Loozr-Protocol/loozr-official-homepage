@@ -46,7 +46,6 @@ const userSlice = createSlice({
     },
     login: (state, action) => {
       state.userInfo = action.payload;
-      console.log(state.userInfo);
       localStorage.setItem("accountId", state.userInfo.accountId);
     },
     updateProfile: (state, action) => {
@@ -77,7 +76,7 @@ const userSlice = createSlice({
 
     builder.addCase(getIndividualProfile.rejected, (state, action) => {
       state.errorLoadingProfile = true;
-      httpError(action.payload);
+      // httpError(action.payload);
     });
 
     builder.addCase(signUp.pending, (state) => {

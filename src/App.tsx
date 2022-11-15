@@ -10,13 +10,9 @@ import Dashboard from "./components/Layout/dashboard";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserDetails } from "./state/user/userActions";
 import { AppState } from "./state/store";
-import AuthVerify from "./containers/AuthVerify";
-import RequireAuth from "./containers/RequireAuth";
+import RequireAuth, { AccountSetupCheckOnly } from "./containers/RequireAuth";
 import { parseJwt } from "./utils/index";
 import FullpageLoader from "./components/loaders/FullpageLoader";
-import Maintenance from "./containers/Maintenance";
-import Login from "./containers/Login";
-import MusicInfo from "./containers/MusicInfo";
 
 const NotFound = () => (
   <div className="main-content">
@@ -38,6 +34,8 @@ const App = () => {
 
   return (
     <>
+      <FullpageLoader />
+      <ToastContainer />
       <Router>
         <div id="preloader"></div>
         <div className="progress-wrap cursor-pointer">
@@ -56,65 +54,62 @@ const App = () => {
         <div
           className="dialog-off-canvas-main-canvas"
           data-off-canvas-main-canvas
-        > 
-          {/* <Maintenance /> */}
-          {/* <Login /> */}
-
+        >
           <WaitlistModal />
-            <Routes>
-              {authRoutes.map((route) => (
-                <Route
-                  key={route.name}
-                  path={route.path}
-                  element={
-                    <>
+          <Routes>
+            {authRoutes.map((route) => (
+              <Route
+                key={route.name}
+                path={route.path}
+                element={
+                  <>
+                    <route.component />
+                    <Footer />
+                  </>
+                }
+              />
+            ))}
+            {routes.map((route) => (
+              <Route
+                key={route.name}
+                path={route.path}
+                element={
+                  <AppLayout>
+                    <route.component />
+                    <Footer />
+                  </AppLayout>
+                }
+              />
+            ))}
+            {dashboardhome.map((route) => (
+              <Route
+                key={route.name}
+                path={route.path}
+                element={
+                  <AccountSetupCheckOnly>
+                    <Dashboard>
                       <route.component />
-                      <Footer />
-                    </>
-                  }
-                />
-              ))}
-              {routes.map((route) => (
-                <Route
-                  key={route.name}
-                  path={route.path}
-                  element={
-                    <AppLayout>
+                    </Dashboard>
+                  </AccountSetupCheckOnly>
+                }
+              />
+            ))}
+            {dashboard.map((route) => (
+              <Route
+                key={route.name}
+                path={route.path}
+                element={
+                  <RequireAuth>
+                    <Dashboard>
                       <route.component />
-                      <Footer />
-                    </AppLayout>
-                  }
-                />
-              ))}
-              {dashboardhome.map((route) => (
-                <Route
-                  key={route.name}
-                  path={route.path}
-                  element={
-                    // <RequireAuth>
-                      <Dashboard>
-                        <route.component />
-                      </Dashboard>
-                    // </RequireAuth>
-                  }
-                />
-              ))}
-              {dashboard.map((route) => (
-                <Route
-                  key={route.name}
-                  path={route.path}
-                  element={
-                    <RequireAuth>
-                      <Dashboard>
-                        <route.component />
-                      </Dashboard>
-                    </RequireAuth>
-                  }
-                />
-              ))}
-              <Route path="*" element={NotFound} />
-            </Routes>
-            <Player />
+                    </Dashboard>
+                  </RequireAuth>
+                }
+              />
+            ))}
+            <Route path="*" element={NotFound} />
+          </Routes>
+          <Player />
           <a href="#focused" id="focus-link" hidden>
             Go to playing element
           </a>
