@@ -44,11 +44,11 @@ const AccountSetupInput = ({
         onBlur={onBlur}
         onFocus={onFocus}
         style={{paddingLeft: "30px"}}
-        className="px-7 py-3 md:py-4 text-muted placeholder:text-muted relative z-20 h-[55px] md:h-[74px] flex-auto bg-transparent"
+        className="px-7 py-3 md:py-4 text-muted placeholder:text-muted relative z-20 h-[55px] md:h-[63px] flex-auto bg-transparent"
         {...rest}
       />
 
-      <div className=" absolute top-[15px] md:top-[24px] flex left-[30px] right-7 overflow-x-hidden "> 
+      <div className=" absolute top-[15px] md:top-[20px] flex left-[30px] right-7 overflow-x-hidden "> 
           <p className="text-[16.4px] text-transparent " >{value}</p>
           {value !== "" &&  
             <span className=" z-30 mt-[1px]  text-muted" >.lzr.testnet</span>
