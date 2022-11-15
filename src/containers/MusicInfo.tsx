@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
+import MusicBar from '../components/MusicBar';
 import useAudioPlayer from '../hooks/useAudioPlayer';
 import Play from "../assets/svg/controls/play.svg"; 
 import Hearts from "../assets/Hearts.svg"; 
@@ -12,10 +13,9 @@ import LinearProgress, {
 import Pause from "../assets/svg/controls/pause.svg";
 import graph from "../assets/graph.png";
 import musicinfo from "../assets/musicinfo.png";
-import { useNavigate } from 'react-router-dom';
-import MusicBar from "../components/MusicBar/index"
-import { nfts } from "../components/dummy/nfts";
-import { WaveformVisualizer, WaveformVisualizerTheme } from 'react-audio-visualizers';
+import Wavesurfer from "wavesurfer.js";
+import { useNavigate } from 'react-router-dom'; 
+import { nfts } from "../components/dummy/nfts"; 
 import { ResponsiveContainer, AreaChart, XAxis, YAxis, Tooltip, Area } from 'recharts';
 
 const data = [
@@ -32,37 +32,44 @@ const data = [
   
 export default function MusicInfo() {
  
-    const [canPlay, setCanPlay] = useState(false);
-    const { playing, setPlaying, duration, curTime } = useAudioPlayer(100);
+    const [canPlay, setCanPlay]: any = useState();
+    const [playing, setPlaying]= useState(false);;
 
-    const [index, setIndex] = React.useState(null)
 
-    const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
-        height: 4,
-        borderRadius: 5,
-        [`&.${linearProgressClasses.colorPrimary}`]: {
-        backgroundColor: "#536079",
-        },
-        [`& .${linearProgressClasses.bar}`]: {
-        borderRadius: 5,
-        backgroundColor: "#D9D9D9",
-        },
-    }));
+  const waveform = useRef(null);
 
-    React.useEffect(() => { 
-        let value = sessionStorage.getItem("music")+""
-        setIndex(Number(value))
-    }, [])
-    
+  const [index, setIndex] = React.useState(null)
 
-    const navigate = useNavigate()
+  React.useEffect(() => { 
+      let value = sessionStorage.getItem("music")+""
+      setIndex(Number(value))
+  }, []) 
 
-    const [play, setPlay] = React.useState("")
+  const playAudio = () => {
+    // Check if the audio is already playing
+    if (canPlay.isPlaying()) {
+        canPlay.pause();
+    } else {
+        canPlay.play();
+    }
+  };  
+
+    const navigate = useNavigate() 
+
+    const ClickHandler =()=> {
+        setPlaying(prev => !prev)
+        playAudio()
+    }
+
+    const GoBack =()=> { 
+        canPlay.stop();
+        navigate("/explore")
+    }
 
     return (
         <div className='flex flex-col w-full h-full md:px-[169px] py-10 md:py-24   '> 
             <img src={musicinfo} alt="musicinfo" className=' absolute top-0 md:w-[600px] left-0 -z-10 ' />
-            <button className=' w-10 h-10 md:w-16 md:h-16 rounded-full border-2 mb-6 ml-6 md:-mt-10 md:-ml-10 border-[#536079] flex justify-center items-center ' onClick={() => navigate("/explore")}>
+            <button className=' w-10 h-10 md:w-16 md:h-16 rounded-full border-2 mb-6 ml-6 md:-mt-10 md:-ml-10 border-[#536079] flex justify-center items-center ' onClick={() => GoBack()}>
                 <svg className=' w-[14px] h-[19px] ' width="14" height="19" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7.33838 1.37012C7.33838 1.37012 1.68541 5.24904 1.68541 7.00039C1.68541 8.75174 7.33838 12.6274 7.33838 12.6274" stroke="#536079" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
@@ -71,17 +78,13 @@ export default function MusicInfo() {
                 
                 <div className=' flex-1 h-full flex md:flex-row flex-col md:pr-8 ' >
                     <div className=' w-screen md:w-fit md:pr-10 flex flex-col items-center px-6' > 
-                        <div className=' w-[250px] md:w-[250px] h-[250px] bg-orange-500 rounded-md ' >
+                        <div className=' w-[250px] md:w-[250px] h-[250px] rounded-md ' >
                             <img src={!index ? Goya : nfts[index].img} alt="img" className=' w-full h-full object-cover  rounded-md  ' />
                         </div>
                     </div>
-                    <div className=' w-full h-full md:mt-0 mt-6 px-6 md:px-0 ' > 
-                        <audio id={`audio-100`} onCanPlay={() => setCanPlay(true)}>
-                        <source src={!index ? "/song.mp3" : nfts[index].song} />
-                        Your browser does not support the <code>audio</code> element.
-                        </audio>
+                    <div className=' w-full h-full md:mt-0 mt-6 px-6 md:px-0 ' >  
                         <div className=' flex items-center w-full mb-4 ' >
-                            <button className=' w-16 h-16 rounded-full border-2 border-[#FFFFFF1A] flex justify-center items-center ' onClick={() => setPlaying(prev => !prev)}>
+                            <button className=' w-16 h-16 rounded-full border-2 border-[#FFFFFF1A] flex justify-center items-center ' onClick={ClickHandler}> 
                                 {playing ? (
                                     <img
                                     src={Pause}
@@ -94,7 +97,7 @@ export default function MusicInfo() {
                                     alt="" 
                                     className="cursor-pointer ml-1 w-7 h-9"
                                     />
-                                )}
+                                )} 
                             </button>
                             <div className=' pl-6  ' >
                                 <p className=' text-white text-sm font-medium  ' >{!index ? "Chiling good" : nfts[index].album}</p>
@@ -102,17 +105,9 @@ export default function MusicInfo() {
                                 <p className=' text-[#536079] font-medium  ' >≈ $0.2343 USD coin price</p>
                             </div>
                         </div>
-                        <div className=' w-full md:pr-14 ' > 
-                            {/* <BorderLinearProgress
-                            variant="determinate"
-                            value={(curTime / duration) * 100}
-                            className=" w-full "
-                            /> */}
-                            <MusicBar play={play} />
-                            <WaveformVisualizer
-                                audio="/song.mp3"
-                                theme={WaveformVisualizerTheme.squaredBars}
-                            />
+                        <div className=' w-full md:pr-14 ' >  
+		                    {/* <div id="waveform" />  */}
+                            <MusicBar play={setCanPlay} song={"/song.mp3"} />
                         </div>
                         <div className=' mt-4 w-full md:pr-8 md:mb-20 mb-10 flex items-center justify-between ' >
                             <div className=' w-full flex items-center ' >

@@ -25,6 +25,8 @@ import { AppState } from "../state/store";
 import { getArtists } from "../state/artist/actions";
 import Photo from "../components/Photo";
 import SlidesButton from "../components/SlidesButton";
+import MusicInfo from "./MusicInfo";
+import verified from "../assets/icons/verified.svg"
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 4,
@@ -43,6 +45,7 @@ const ArtisteDashboard = () => {
   const artists = useSelector((state: AppState) => state?.artist?.artists);
   const [canPlay, setCanPlay] = useState(false);
   const { playing, setPlaying, duration, curTime } = useAudioPlayer(100);
+  const [isPlaying, setIsPlaying]: any = useState(null);
 
   const featuredRef: any = React.useRef(null); 
   const musicDropRef: any = React.useRef(null); 
@@ -54,15 +57,16 @@ const ArtisteDashboard = () => {
     dispatch(getArtists());
   }, []);
 
+  console.log(artists);
+  
+
   const FeaturedArtistes =()=>{ 
 
     const [isShown, setIsShown] = React.useState(-1)
-
-    console.log(artists)
     
     return( 
       <> 
-        <div className="flex items-center justify-between mb-4"
+        <div className="flex items-center mt-[2px] justify-between mb-4"
           >
           <p className="font-medium text-base md:text-[17px] text-white">
             Recent artist coins
@@ -71,7 +75,7 @@ const ArtisteDashboard = () => {
         </div>
         <div
           id={"carousel"}
-          className="max-w-full overflow-auto scroll_event whitespace-nowrap md:mb-0 mb-16"
+          className="max-w-full overflow-auto scroll_event whitespace-nowrap md:mb-[2px] mb-16"
           ref={featuredRef}
         >
           <div className="flex "  >
@@ -80,16 +84,21 @@ const ArtisteDashboard = () => {
                 key={i}
                 onMouseOver={()=> setIsShown(i)}
                 onMouseOut={()=> setIsShown(-1)}
-                className="flex flex-col items-center mr-4 md:h-64 min-w-max md:w-[105px]"
+                className="flex flex-col items-center mr-[18px] md:h-64 min-w-max md:w-[105px]"
               >
                 <Link to={`/${_.user.accountDomain}`} className="relative">
-                  <Photo
-                    alt=""
-                    className="object-cover h-20 md:h-[105px] w-20 md:w-[105px] rounded-full border-[15px] border-dark-700 mb-[16px]"
-                    style={{
-                      border: "8px solid #141922",
-                    }}
-                  />
+                  <div className=" relative " >
+                    <Photo
+                      alt=""
+                      className="object-cover h-20 md:h-[105px] w-20 md:w-[105px] rounded-full  mb-[16px]"
+                      style={{
+                        border: "8.7px solid #141922",
+                      }}
+                    />
+                    {_.isVerified && (
+                      <img src={verified} alt="verified" className=" absolute bottom-1 right-0 w-[28px] " />
+                    )}
+                  </div>
                   {_.isVerified && (
                     <img
                       src={VerifiedBadge}
@@ -100,13 +109,13 @@ const ArtisteDashboard = () => {
                 </Link>
                 <Link
                   to={`/${_.user.accountDomain}`}
-                  className="font-extrabold mb-px w-[105px] md:font-bold text-[15px] text-white text-center uppercase name-tag"
+                  className="font-extrabold mb-px w-[105px] md:font-bold text-[13px] text-white text-center uppercase name-tag"
                 >
                   ${_.creatorCoinId.slice(0, 5)}
                 </Link> 
                 <p className=" font-medium text-[11.5px] text-[#536079] " >2,474.14 LZR</p> 
                 <div className=" w-full px-[2px] " >
-                  <button className={isShown === i ? " bg-[#8369F4] h-[38px] md:flex justify-center items-center font-medium hidden rounded-full w-[105px] mt-[12px] text-xs  " : "bg-[#141922] text-xs  h-[38px] md:flex justify-center items-center font-medium hidden rounded-full w-[105px] mt-[12px] "} >Buy coin</button> 
+                  <button className={isShown === i ? " bg-[#8369F4] h-[35px] md:flex justify-center items-center font-medium hidden rounded-full w-[105px] mt-[12px] text-[11.5px]  " : "bg-[#141922] text-[11.5px]  h-[35px] md:flex justify-center items-center font-medium hidden rounded-full w-[105px] mt-[12px] "} >Buy coin</button> 
                 </div>
               </div>
             ))}
@@ -117,13 +126,23 @@ const ArtisteDashboard = () => {
   } 
 
   const[music, setMusic] = React.useState("/song.mp3")
+  const[loading, setLoading] = React.useState(false) 
 
-  React.useEffect(() => { 
+  React.useEffect(() => {
+    
+    setLoading(true)
     if(active){ 
       setMusic(nfts[active].song)
     }
-  }, [active])
-  
+    const t1 = setTimeout(() => {   
+      setLoading(false)
+      clearTimeout(t1); 
+    }, 2000);
+    // return () => {
+    //   clearTimeout(t1); 
+    // }
+  }, [active]) 
+   
   const ClickHandler =()=>{
     sessionStorage.setItem("music", active)
     navigate("/artists/music-info")
@@ -132,12 +151,11 @@ const ArtisteDashboard = () => {
   const renderAudioPlayer = useMemo(() => {
     return (
       <div
-        className={`${!canPlay && "hidden"} fixed md:top-auto md:right-auto bottom-20 left-0 right-0 z-50 md:bottom-6 md:left-14 rounded-[13px]`}
-      >
-        <audio id={`audio-100`} onCanPlay={() => setCanPlay(true)}>
-          <source src={music} />
-          Your browser does not support the <code>audio</code> element.
-        </audio>
+        className={`${!canPlay && "hidden"} fixed md:top-auto md:right-auto bottom-20 left-0 right-0 z-50 md:bottom-6 md:left-14 rounded-[13px]`} >   
+          <audio id={`audio-100`} onCanPlay={() => setCanPlay(true)}>
+            <source src={music} />
+            Your browser does not support the <code>audio</code> element.
+          </audio>   
         <div className="flex w-full md:w-auto md:h-auto h-[70px] md:rounded-[13px] md:py-0 items-center " 
           style={{
             background: "rgba(20, 25, 34, 0.65)",
@@ -152,7 +170,7 @@ const ArtisteDashboard = () => {
               // backdropFilter: "blur(12.5px)",
             }}
           >
-            <div className=" flex flex-1 md:flex-row flex-col pr-3 md:pr-0 md:items-center " > 
+            <div className=" flex flex-1 md:flex-row flex-col pr-3 md:pr-0 md:items-center " >  
               <button onClick={()=> ClickHandler()} className=" w-fit " >
                 <p className="mb-px font-medium text-xs md:text-[13px] leading-5 text-white">
                   {!active ? "Chiling good" : nfts[active].album}
@@ -160,7 +178,7 @@ const ArtisteDashboard = () => {
                 <p className="text-muted text-[10px] md:mt-0 -mt-1 md:text-xs font-normal md:font-normal">
                   {!active ? "Goya Menor" : nfts[active].album}   
                 </p>
-              </button>
+              </button> 
               <div className=" md:flex hidden " >
                 <BorderLinearProgress
                   variant="determinate"
@@ -174,6 +192,9 @@ const ArtisteDashboard = () => {
                   value={(curTime / duration) * 100}
                   className=" md:hidden mt-2 w-full "
                 />
+              </div>
+                {/* <MusicInfo play={setIsPlaying} song={"/song.mp3"}/> */}
+              <div> 
               </div>
             </div>
             <div className="flex items-center mr-3">
@@ -203,11 +224,11 @@ const ArtisteDashboard = () => {
 
   return (
     <div className="w-full flex flex-col">
-      <Carousel />
-      {renderAudioPlayer}
+      <Carousel />  
+      {renderAudioPlayer}  
       <FeaturedArtistes />
       <Suggestion />
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between  pb-2 ">
         <p className="font-medium text-base md:text-[17px] text-white">
           Music NFT drops
         </p>

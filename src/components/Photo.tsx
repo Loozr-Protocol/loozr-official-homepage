@@ -14,6 +14,7 @@ const Photo: React.FC<React.PropsWithChildren<PhotoProps>> = ({
       <div className=" w-fit " >
         <img
           {...rest}
+          className=" object-cover"
           alt={alt}
           src={src}
         /> 
@@ -22,7 +23,7 @@ const Photo: React.FC<React.PropsWithChildren<PhotoProps>> = ({
   }
   
 
-  return <img {...rest} alt={alt} src={memoji} />;
+  return <img {...rest} alt={alt} src={memoji}  />;
 };
 
 export default Photo;
