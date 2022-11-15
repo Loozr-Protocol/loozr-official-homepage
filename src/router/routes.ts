@@ -163,12 +163,6 @@ export const dashboard = [
     private: true,
     component: Profile,
   },
-  // {
-  //   name: "profile",
-  //   path: "profile",
-  //   private: true,
-  //   component: Profile,
-  // },
   {
     name: "edit profile",
     path: "profile/edit",
