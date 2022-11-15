@@ -62,7 +62,6 @@ export function AccountSetupCheckOnly({ children }: { children: JSX.Element }) {
         );
       }
     }
-
-    return children;
   }
+  return children;
 }
