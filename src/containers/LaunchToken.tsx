@@ -18,9 +18,10 @@ const LaunchToken = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [text, setText] = useState("")
+  const [number, setNumber] = useState()
   const { handleArtisteSetup } = useArtisteSetupCallback();
   const [isAccountAvailable, setAvailableState] = useState(false);
-  const [isLoading, setLoader] = useState<boolean>(false);
+  const [isLoading, setLoader] = useState<boolean>(false);  
 
   const formSchema = yup.object({
     account_id: yup.string().required("Please enter coin name"),
@@ -40,7 +41,7 @@ const LaunchToken = () => {
   useEffect(() => {  
     formik.setFieldValue("account_id", text) 
   }, [text])
-
+ 
   const handleLaunchToken = async () => {
     if (!formik.dirty) {
       return;
@@ -68,6 +69,13 @@ const LaunchToken = () => {
       httpError(err);
     }
   };
+
+  const OnChangeHandler =(item: any)=>{
+
+    let NewValue = item.replace(/[^0-9]/g,'')
+    setNumber(NewValue)
+    formik.setFieldValue("founder_reward", NewValue)
+  }
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center ">
@@ -114,7 +122,8 @@ const LaunchToken = () => {
           <input
             type="number"
             name="founder_reward"
-            onChange={formik.handleChange}
+            value={number}
+            onChange={(e)=> OnChangeHandler(e.target.value)}
             onBlur={formik.handleBlur}
             onFocus={() => formik.setFieldTouched("founder_reward", true, true)}
             className=" px-7 py-3 md:py-4 h-[55px] md:h-[60px]  w-full md:w-[450px] bg-dark-800 text-sm placeholder:text-muted text-white"
