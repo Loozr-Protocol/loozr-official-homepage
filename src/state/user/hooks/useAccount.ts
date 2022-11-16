@@ -33,6 +33,26 @@ export function useSearchUserCallback() {
     return result.data.results;
   }
   return { getSearchUser }
+}    
+
+
+
+export function useFollowerCallback() {
+  const getFollower = async (data: any): Promise<UserJsonProps[]> => {
+    const httpClient = new HttpClient();
+    const result = await httpClient.axiosInstance.get('/users/followers/'+data);
+    return result.data.results;
+  }
+  return { getFollower }
+}   
+
+export function useFollowingCallback() {
+  const getFollowing = async (data: any): Promise<UserJsonProps[]> => {
+    const httpClient = new HttpClient();
+    const result = await httpClient.axiosInstance.get('/users/followings/'+data);
+    return result.data.results;
+  }
+  return { getFollowing }
 }   
 
 export function useSelectGenreCallback() {

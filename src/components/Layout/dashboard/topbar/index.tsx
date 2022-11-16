@@ -30,6 +30,7 @@ export const TopBar = () => {
     const result = await getSearchUser(item); 
     setData(result)
   } 
+  
   const becomeArtist = async () => {
     dispatch(setPageLoaderStatus(true));
     try {

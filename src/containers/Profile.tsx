@@ -23,6 +23,8 @@ import { resetCoinPrice, resetHoldersList } from "../state/artist/artistReducer"
 import { decodedJWT } from "../utils";
 import Photo from "../components/Photo";
 import verified from "../assets/icons/verified.svg"
+import { useFollowerCallback, useFollowingCallback } from "../state/user/hooks/useAccount";
+import { MIXER_ACCOUNT } from "../config/constants";
 
 const Profile = () => {
   const push = useNavigate();
@@ -30,6 +32,7 @@ const Profile = () => {
   const [active, setActive] = useState(1);
   const [isShown, setIsShown] = useState(false)
   const [showBio, setShowBio] = useState(false)
+  const [data, setData] = useState([] as any)
   const dispatch = useDispatch();
   const user = useSelector((state: AppState) => state.user.userInfo);
   const errorLoadingProfile = useSelector(
@@ -39,11 +42,31 @@ const Profile = () => {
     (state: AppState) => state.user.currentProfile
   );
   const [currentProfile, setCurrentProfile] = useState<User>();
-  const coinInfo = useSelector((state: AppState) => state.artist.coinInfo);
-
+  const coinInfo = useSelector((state: AppState) => state.artist.coinInfo); 
+  
+  const { getFollower } = useFollowerCallback(); 
+  const { getFollowing } = useFollowingCallback(); 
 
   const [showModal, setShowModal] = React.useState(false)
   const [copySuccess, setCopySuccess] = React.useState('');
+
+  const navigate = useNavigate()
+
+
+  const ClickFollwer = async ()=>{ 
+    const result = await getFollower(currentProfile.id); 
+    setData(result) 
+    setShowModal(true)
+    console.log(result);
+  } 
+
+  const ClickFollwing = async ()=>{  
+    const result = await getFollowing(currentProfile.id); 
+    setData(result)
+    setShowModal(true)
+    console.log(result);
+    
+  } 
 
   function copyToClipboard(item: any, text: any) { 
       navigator.clipboard.writeText(item)
@@ -432,16 +455,20 @@ const Profile = () => {
                   )}
                 </div>
               </div>
-              {!showBio ? (
-                <p className="text-white max-w-[435px] leading-normal font-medium text-xs md:text-[13px] mb-[20px]">
-                  {currentProfile.bio.slice(0, 100)}<span onClick={()=> setShowBio(true)} className=" text-[#FFCD43] cursor-pointer " >...See More</span>
-                </p>): 
-                <p className="text-white max-w-[435px] font-medium text-xs md:text-[13px] mb-[20px]">
-                  {currentProfile.bio}<span onClick={()=> setShowBio(false)} className=" text-[#FFCD43] cursor-pointer ml-2 " > See Less</span>
-                </p> }
+              {currentProfile?.bio &&
+                <>
+                  {!showBio ? (
+                    <p className="text-white max-w-[435px] leading-normal font-medium text-xs md:text-[13px] mb-[20px]">
+                      {(currentProfile?.bio).slice(0, 100)}<span onClick={()=> setShowBio(true)} className=" text-[#FFCD43] cursor-pointer " >...See More</span>
+                    </p>): 
+                    <p className="text-white max-w-[435px] font-medium text-xs md:text-[13px] mb-[20px]">
+                      {currentProfile.bio}<span onClick={()=> setShowBio(false)} className=" text-[#FFCD43] cursor-pointer ml-2 " > See Less</span>
+                    </p> }
+                </>
+              }
               <div className="flex items-center mb-9">
                 <p
-                  // onClick={() => setShowModal(true)}
+                  onClick={() => ClickFollwer()}
                   className="text-xs md:text-sm cursor-pointer font-bold mr-6"
                 >
                   {abbrevNumber(currentProfile.followersCount)}
@@ -450,7 +477,7 @@ const Profile = () => {
                   </span>
                 </p>
                 <p
-                  // onClick={() => setShowModal(true)}
+                  onClick={() => ClickFollwing()}
                   className="text-xs md:text-sm cursor-pointer font-bold mr-6"
                 >
                   {abbrevNumber(currentProfile.followingsCount)}
@@ -548,7 +575,7 @@ const Profile = () => {
           className=" fixed inset-0 flex justify-center items-center md:overflow-y-hidden bg-black bg-opacity-40 z-[70] "
         >
           <div className=" w-full md:w-[360px] md:h-auto relative z-[80] h-screen rounded-2xl bg-[#12161F]">
-            <div className=" w-full flex items-center border-b border-[#222A3B] justify-between py-4 px-9 ">
+            <div className=" w-full flex items-center border-b border-[#222A3B] justify-between py-4 px-6 ">
               <p className="  font-medium text-white">Select your genres</p>
               <button
                 onClick={() => setShowModal(false)}
@@ -558,166 +585,31 @@ const Profile = () => {
               </button>
             </div>
             <div className=" w-full px-6 md:py-4 md:h-[60vh] h-full flex flex-1 flex-col overflow-y-auto ">
-              <div className=" w-full flex justify-between my-2 items-center ">
-                <div className=" w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] " />
-                <div className=" ml-3 ">
-                  <div className=" flex -mt-1 items-center ">
-                    <p className=" text-[13px] font-semibold ">Nathan Jose</p>
-                  </div>
-                  <div className=" flex -mt-1 items-center ">
-                    <p className=" text-[11px] font-semibold text-[#536079] ">
-                      $HARTY
-                    </p>
-                    <div className=" w-1 h-1 rounded-full bg-[#536079] mx-1 " />
-                    <p className=" text-[11px] font-semibold text-[#536079] ">
-                      $3,001.99
-                    </p>
-                  </div>
-                </div>
-                <p className=" text-[12px] ml-auto font-bold text-[#8369F4] cursor-pointer ">
-                  Follow
-                </p>
-              </div>
-              <div className=" w-full flex justify-between my-2 items-center ">
-                <div className=" w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] " />
-                <div className=" ml-3 ">
-                  <div className=" flex -mt-1 items-center ">
-                    <p className=" text-[13px] font-semibold ">Nathan Jose</p>
-                  </div>
-                  <div className=" flex -mt-1 items-center ">
-                    <p className=" text-[11px] font-semibold text-[#536079] ">
-                      $HARTY
-                    </p>
-                    <div className=" w-1 h-1 rounded-full bg-[#536079] mx-1 " />
-                    <p className=" text-[11px] font-semibold text-[#536079] ">
-                      $3,001.99
-                    </p>
-                  </div>
-                </div>
-                <p className=" text-[12px] ml-auto font-medium text-[#536079] cursor-pointer ">
-                  Following
-                </p>
-              </div>
-              <div className=" w-full flex justify-between my-2 items-center ">
-                <div className=" w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] " />
-                <div className=" ml-3 ">
-                  <div className=" flex -mt-1 items-center ">
-                    <p className=" text-[13px] font-semibold ">Nathan Jose</p>
-                  </div>
-                  <div className=" flex -mt-1 items-center ">
-                    <p className=" text-[11px] font-semibold text-[#536079] ">
-                      $HARTY
-                    </p>
-                    <div className=" w-1 h-1 rounded-full bg-[#536079] mx-1 " />
-                    <p className=" text-[11px] font-semibold text-[#536079] ">
-                      $3,001.99
-                    </p>
-                  </div>
-                </div>
-                <p className=" text-[12px] ml-auto font-medium text-[#536079] cursor-pointer ">
-                  Following
-                </p>
-              </div>
-              <div className=" w-full flex justify-between my-2 items-center ">
-                <div className=" w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] " />
-                <div className=" ml-3 ">
-                  <div className=" flex -mt-1 items-center ">
-                    <p className=" text-[13px] font-semibold ">Nathan Jose</p>
-                  </div>
-                  <div className=" flex -mt-1 items-center ">
-                    <p className=" text-[11px] font-semibold text-[#536079] ">
-                      $HARTY
-                    </p>
-                    <div className=" w-1 h-1 rounded-full bg-[#536079] mx-1 " />
-                    <p className=" text-[11px] font-semibold text-[#536079] ">
-                      $3,001.99
-                    </p>
-                  </div>
-                </div>
-                <p className=" text-[12px] ml-auto font-medium text-[#536079] cursor-pointer ">
-                  Following
-                </p>
-              </div>
-              <div className=" w-full flex justify-between my-2 items-center ">
-                <div className=" w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] " />
-                <div className=" ml-3 ">
-                  <div className=" flex -mt-1 items-center ">
-                    <p className=" text-[13px] font-semibold ">Nathan Jose</p>
-                  </div>
-                  <div className=" flex -mt-1 items-center ">
-                    <p className=" text-[11px] font-semibold text-[#536079] ">
-                      $HARTY
-                    </p>
-                    <div className=" w-1 h-1 rounded-full bg-[#536079] mx-1 " />
-                    <p className=" text-[11px] font-semibold text-[#536079] ">
-                      $3,001.99
-                    </p>
-                  </div>
-                </div>
-                <p className=" text-[12px] ml-auto font-medium text-[#536079] cursor-pointer ">
-                  Following
-                </p>
-              </div>
-              <div className=" w-full flex justify-between my-2 items-center ">
-                <div className=" w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] " />
-                <div className=" ml-3 ">
-                  <div className=" flex -mt-1 items-center ">
-                    <p className=" text-[13px] font-semibold ">Nathan Jose</p>
-                  </div>
-                  <div className=" flex -mt-1 items-center ">
-                    <p className=" text-[11px] font-semibold text-[#536079] ">
-                      $HARTY
-                    </p>
-                    <div className=" w-1 h-1 rounded-full bg-[#536079] mx-1 " />
-                    <p className=" text-[11px] font-semibold text-[#536079] ">
-                      $3,001.99
-                    </p>
-                  </div>
-                </div>
-                <p className=" text-[12px] ml-auto font-medium text-[#536079] cursor-pointer ">
-                  Following
-                </p>
-              </div>
-              <div className=" w-full flex justify-between my-2 items-center ">
-                <div className=" w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] " />
-                <div className=" ml-3 ">
-                  <div className=" flex -mt-1 items-center ">
-                    <p className=" text-[13px] font-semibold ">Nathan Jose</p>
-                  </div>
-                  <div className=" flex -mt-1 items-center ">
-                    <p className=" text-[11px] font-semibold text-[#536079] ">
-                      $HARTY
-                    </p>
-                    <div className=" w-1 h-1 rounded-full bg-[#536079] mx-1 " />
-                    <p className=" text-[11px] font-semibold text-[#536079] ">
-                      $3,001.99
-                    </p>
-                  </div>
-                </div>
-                <p className=" text-[12px] ml-auto font-medium text-[#536079] cursor-pointer ">
-                  Following
-                </p>
-              </div>
-              <div className=" w-full flex justify-between my-2 items-center ">
-                <div className=" w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] " />
-                <div className=" ml-3 ">
-                  <div className=" flex -mt-1 items-center ">
-                    <p className=" text-[13px] font-semibold ">Nathan Jose</p>
-                  </div>
-                  <div className=" flex -mt-1 items-center ">
-                    <p className=" text-[11px] font-semibold text-[#536079] ">
-                      $HARTY
-                    </p>
-                    <div className=" w-1 h-1 rounded-full bg-[#536079] mx-1 " />
-                    <p className=" text-[11px] font-semibold text-[#536079] ">
-                      $3,001.99
-                    </p>
-                  </div>
-                </div>
-                <p className=" text-[12px] ml-auto font-medium text-[#536079] cursor-pointer ">
-                  Following
-                </p>
-              </div>
+              {data.map((item: any, index: any) => { 
+
+                const domainName = item.account_id+"."+MIXER_ACCOUNT 
+                return(
+                  <div key={index} onClick={() => navigate(`/${domainName}`)} className=' w-full cursor-pointer flex my-3 items-center ' > 
+                    <Photo
+                      alt=""
+                      className="object-contain w-10 h-10 rounded-full "
+                      style={{ border: "3px solid #141922" }}
+                    />
+                    {/* <div className=' w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] ' /> */}
+                    <div className=' ml-3 ' >
+                      <div className=' flex -mt-1 items-center ' >
+                        <p className=' text-[13px] font-semibold ' > {item?.account_id}</p>
+                      </div>
+                      <div className=' flex -mt-1 items-center ' >
+                        <p className=' text-[11px] font-semibold text-[#536079] ' >{item?.email}</p> 
+                      </div>
+                    </div> 
+                  </div> 
+                )
+              })}
+              {data.length === 0 && (
+                <p className=" mt-4 font-medium text-center " >No information avaliable</p>
+              )}
             </div>
           </div>
         </div>
