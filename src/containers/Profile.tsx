@@ -337,11 +337,6 @@ const Profile = () => {
                 className="h-8 md:h-[130px] w-8 md:w-[130px] object-cover rounded-full md:mr-3"
                 style={{ border: "10px solid #141922" }}
               />
-              <img
-                src={verified}
-                alt="verified"
-                className=" absolute bottom-2 right-4 w-[31.03px] "
-              />
             </div>
             <div className="md:ml-10">
               <div className=" flex ">
