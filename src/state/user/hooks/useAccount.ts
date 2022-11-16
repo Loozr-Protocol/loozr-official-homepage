@@ -24,4 +24,13 @@ export function useGetSuggestedFollowsCallback() {
     return result.data.results;
   }
   return { getSuggestedFollows }
+}  
+
+export function useSelectGenreCallback() {
+  const handleSelectGenre = async (postData: { genres: any }): Promise<any> => {
+    const httpClient = new HttpClient();
+    const result = await httpClient.axiosInstance.post('/users/set-genre', { postData });
+    return result.data;
+  }
+  return { handleSelectGenre }
 }

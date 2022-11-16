@@ -35,7 +35,7 @@ export default function AccountSetup() {
   });
 
   useEffect(() => {
-    if (success) navigate(`/explore`, { replace: true });
+    if (success) navigate(`/account-setup`, { replace: true });
   }, [navigate, success]);
 
   const handleLaunchToken = async () => {
