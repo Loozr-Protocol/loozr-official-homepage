@@ -64,7 +64,7 @@ export default function AccountSetup() {
     console.log(text);
   return (
     <div className="min-h-screen flex flex-col justify-center items-center ">
-      <div className="md:px-4 px-10 max-w-[500px] mx-auto">
+      <div className="md:px-4 px-10 max-w-[400px] mx-auto">
         <p className=" font-extrabold text-[25px] w-full  md:w-[400px]  leading-snug md:leading-normal md:text-[30px] text-white md:mb-5">
         Your Web3 identity
           starts here.

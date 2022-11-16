@@ -10,7 +10,7 @@ import NFT from "../../../../assets/svg/NFT";
 import Wallet from "../../../../assets/svg/Wallet";
 import Notification from "../../../../assets/svg/Notification";
 import More from "../../../../assets/svg/More";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { AppState } from "../../../../state/store";
@@ -76,8 +76,17 @@ export const Left = () => {
   const md = useMediaQuery("(min-width:768px)");
   const user = useSelector((state: AppState) => state.user.userInfo);
   const { handleBecomeArtiste } = useBecomeArtisteCallback();
+  let location = useLocation();
 
   const becomeArtist = async () => {
+ 
+    if (user) {
+      if (!user.accountId) {
+        return (
+          <Navigate to="/account-setup" state={{ from: location }} replace />
+        );
+      }
+    } 
     dispatch(setPageLoaderStatus(true));
     try {
       await handleBecomeArtiste({});
