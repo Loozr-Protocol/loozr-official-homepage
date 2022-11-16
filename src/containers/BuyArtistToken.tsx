@@ -95,7 +95,7 @@ const BuyArtistToken = () => {
 
           <p className="text-xl md:text-2xl font-medium text-muted">
             You exchanged {formik.values.amount} LZR for{" "}
-            <strong className="uppercase">
+            <strong className=" font-extrabold uppercase">
               ${artistDetails.creatorCoinId}
             </strong>{" "}
             coin
@@ -136,7 +136,7 @@ const BuyArtistToken = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             onFocus={() => formik.setFieldTouched("amount", true, true)}
-            className=" h-[60px] px-11 w-[350px] bg-dark-800 text-sm placeholder:text-muted text-white"
+            className=" h-[60px] px-11 md:w-[350px] bg-dark-800 text-sm placeholder:text-muted text-white"
             placeholder="0.00"
             style={{ background: "#12161F" }}
           />
@@ -159,7 +159,7 @@ const BuyArtistToken = () => {
         </p>
         <div className="  " >
           <button
-            className=" h-[60px] text-white disabled:text-muted font-medium text-sm bg-gradient-ld disabled:bg-dark-800 mb-11 w-full sm:w-80 focus:outline-none"
+            className=" h-[60px] text-white disabled:text-muted font-medium md:w-[350px] text-sm bg-gradient-ld disabled:bg-dark-800 mb-11 w-full sm:w-80 focus:outline-none"
             onClick={handleSubmit}
             disabled={isLoading}
           >

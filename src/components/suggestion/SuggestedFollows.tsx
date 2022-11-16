@@ -24,7 +24,13 @@ const SuggestedFollows = (props: any) => {
 
   const Loop = ({ user }: { user: User }) => (
     <div className=' w-full flex justify-between my-2 items-center ' >
-      <div className=' w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] ' />
+
+      <Photo
+        alt=""
+        className="object-contain w-10 h-10 rounded-full "
+        style={{ border: "3px solid #141922" }}
+      />
+      {/* <div className=' w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] ' /> */}
       <div onClick={() => navigate(`/${user.accountDomain}`)} className=' ml-3 ' >
         <div className=' flex -mt-1 items-center ' >
           <p className=' text-[13px] font-semibold ' > {user.accountId}</p>
