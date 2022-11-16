@@ -1,5 +1,5 @@
 import React from "react";
-import { Left, drawerMaxWidth } from "./sidebars";
+import { Left } from "./sidebars";
 import { TopBar } from "./topbar";
 import AppStore from "../../../assets/img/AppStore.png";
 import GooglePlay from "../../../assets/img/GooglePlay.png";
@@ -19,8 +19,6 @@ import { useSelector } from "react-redux";
 import { AppState } from "../../../state/store";
 import { formatBalanceUSD, formatNumber, getFullDisplayBalance } from "../../../utils/formatBalance";
 import SuggestedFollows from "../../suggestion/SuggestedFollows";
-import { nearExplorerAccount } from "../../../utils";
-import LeftUpdate from "./sidebars/LeftUpdate";
 
 const tabs = [
   {
@@ -96,25 +94,15 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                         Your Balance
                       </p>
                       <p className="text-white text-2xl font-extrabold mb-2">
-                        {!balanceInLzr ? balanceInLzr : "0.00"}{" "}
+                        {balanceInLzr ? balanceInLzr : "0.00"}{" "}
                         <span className="text-sm font-medium">LZR</span>
                       </p>
                       <div className="text-white text-xs">
-                        ≈ ${!balanceUsd ? balanceUsd : "0.00"} USD
+                        ≈ ${balanceUsd ? balanceUsd : "0.00"} USD
                       </div>
                     </div>
                     <div className="py-4 px-6 text-xs font-medium text-muted">
-                      ~ ${!LZR_IN_USD ? LZR_IN_USD : "0.00"} USD per LZR coin price
-                    </div>
-                    <div className="flex justify-content-center mb-8">
-                      {/* <a
-                        target="_blank"
-                        rel="noreferrer"
-                        href={nearExplorerAccount(user?.accountDomain)}
-                        className="py-3 px-3 sm:px-6 md:px-9 text-xs md:text-sm font-medium bg-muted-50 rounded-full"
-                      >
-                        View On Explorer
-                      </a> */}
+                      ~ ${LZR_IN_USD ? LZR_IN_USD : "0.00"} USD per LZR coin price
                     </div>
                   </div>
                   <SuggestedFollows modal={setShowModal} />
