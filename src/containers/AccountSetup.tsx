@@ -35,7 +35,7 @@ export default function AccountSetup() {
   });
 
   useEffect(() => {
-    if (success) navigate(`/explore`, { replace: true });
+    if (success) navigate(`/select-genres`, { replace: true });
   }, [navigate, success]);
 
   const handleLaunchToken = async () => {
