@@ -46,6 +46,7 @@ export const TopBar = () => {
         <div className="hidden md:flex md:w-[300px] relative">
           <input
             type="text"
+            value={searchValue}
             placeholder="Search artiste, fans… "
             onChange={(e)=> OnchangeHandler(e.target.value)}
             className="placeholder:text-[#536079]  w-full rounded-full h-[48px] text-xs"
@@ -86,6 +87,9 @@ export const TopBar = () => {
                     </div> 
                   )
                 })}
+                {searchValue && (
+                  <div className=" fixed inset-0 z-[110] " onClick={()=> setSearchValue("")} />  
+                )}
               </div>
             )}
         </div>

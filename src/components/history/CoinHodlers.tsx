@@ -18,14 +18,14 @@ export default function CoinHodlers({ coin, user }: { coin: User; user: User }) 
   return (
     <>
     {holders.length === 0 ? 
-      <div className=" w-full py-5 rounded-lg bg-[#10141C] bg-opacity-50 mb-12 " > 
+      <div className=" w-full py-5 rounded-lg mb-32 bg-[#10141C] bg-opacity-50 md:backdrop:mb-12 " > 
         <p className=" font-medium text-[13px] text-center " >No information avaliable 👋</p>
       </div>:
       <>
         
         {holders.map((hodler, index) => (
           <div
-            className="w-full flex items-center justify-between text-white mb-6"
+            className="w-full flex items-center justify-between text-white mb-32 md:mb-6"
             key={index}
           >
             <div className="flex items-center">

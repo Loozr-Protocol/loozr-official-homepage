@@ -29,6 +29,7 @@ const Profile = () => {
   let { accountDomain } = useParams();
   const [active, setActive] = useState(1);
   const [isShown, setIsShown] = useState(false)
+  const [showBio, setShowBio] = useState(false)
   const dispatch = useDispatch();
   const user = useSelector((state: AppState) => state.user.userInfo);
   const errorLoadingProfile = useSelector(
@@ -198,14 +199,14 @@ const Profile = () => {
     return(
       <>
       {coinsBought.length === 0 ? ( 
-          <div className=" w-full py-5 rounded-lg bg-[#10141C] bg-opacity-50 mb-12 " > 
+          <div className=" w-full py-5 rounded-lg bg-[#10141C] bg-opacity-50 mb-32 md:mb-12 " > 
             <p className=" font-medium text-[13px] text-center " >No information avaliable 👋</p>
           </div>  
         ): 
         (
           <>
             {coinsBought ?  
-              <div className=" w-full py-5 rounded-lg bg-[#10141C]  mb-12 " > 
+              <div className=" w-full py-5 rounded-lg bg-[#10141C]  mb-32 md:mb-12 " > 
                 <p className=" font-medium text-[13px] text-center " >No information avaliable 👋</p>
               </div>:
               <>
@@ -259,14 +260,14 @@ const Profile = () => {
     return(
       <>
         {transactions.length === 0 ? ( 
-            <div className=" w-full py-5 rounded-lg bg-opacity-50 bg-[#10141C]  mb-12 " > 
+            <div className=" w-full py-5 rounded-lg bg-opacity-50 bg-[#10141C] mb-32 md:mb-12 " > 
               <p className=" font-medium text-[13px] text-center " >No information avaliable 👋</p>
             </div>  
           ): (
             <>
               {transactions.map((item, index) => (
                 <div
-                  className="w-full flex items-center justify-between text-white mb-6"
+                  className="w-full flex items-center justify-between text-white mb-32 md:mb-6"
                   key={index}
                 >
                   <div className="flex items-start">
@@ -320,32 +321,34 @@ const Profile = () => {
   }, [active, currentProfile]);
 
   if (currentProfile && !currentProfile.accountId) {
-    return <div className="text-center">Profile Not Found!</div>;
+    return <div className="text-center mb-32">Profile Not Found!</div>;
   }  
 
   return (
-    <div className="w-full">
+    <div className="w-full px-6 ">
       {currentProfile ? (
         <>
           {currentProfile.isArtist && currentProfile.tokenName && (
             <CreatorStatCard user={currentProfile} />
           )}
           <div className="flex md:flex-row flex-col mt-[32px] items-start mb-7">
-            <div className=" relative ">
+            <div className=" relative md:w-auto w-full flex md:justify-start justify-start md:mb-0 mb-8 ">
               <Photo
                 alt={currentProfile.accountDomain}
-                className="h-8 md:h-[130px] w-8 md:w-[130px] object-cover rounded-full md:mr-3"
+                className="h-[170px] md:h-[130px] w-[170px] md:w-[130px] object-cover rounded-full md:mr-3"
                 style={{ border: "10px solid #141922" }}
               />
+              {/* {currentProfile.isVerified &&
+
               <img
                 src={verified}
                 alt="verified"
                 className=" absolute bottom-2 right-4 w-[31.03px] "
-              />
+              /> */}
             </div>
             <div className="md:ml-10">
               <div className=" flex ">
-                <p className="text-xl md:text-xl font-medium text-white mb-1.5">
+                <p className="text-[17px] md:text-xl font-medium text-white mb-1.5">
                   {currentProfile.accountDomain}
                 </p>
                 <button
@@ -428,9 +431,13 @@ const Profile = () => {
                   )}
                 </div>
               </div>
-              <p className="text-white max-w-[435px] font-medium text-xs md:text-[13px] mb-[20px]">
-                {currentProfile.bio}
-              </p>
+              {!showBio ? (
+                <p className="text-white max-w-[435px] leading-normal font-medium text-xs md:text-[13px] mb-[20px]">
+                  {currentProfile.bio.slice(0, 100)}<span onClick={()=> setShowBio(true)} className=" text-[#FFCD43] cursor-pointer " >...See More</span>
+                </p>): 
+                <p className="text-white max-w-[435px] font-medium text-xs md:text-[13px] mb-[20px]">
+                  {currentProfile.bio}<span onClick={()=> setShowBio(false)} className=" text-[#FFCD43] cursor-pointer ml-2 " > See Less</span>
+                </p> }
               <div className="flex items-center mb-9">
                 <p
                   onClick={() => setShowModal(true)}
@@ -503,7 +510,7 @@ const Profile = () => {
           <div className="w-full pb-2 mb-9 border-b-2 border-muted-50 flex items-center text-sm font-medium text-muted">
             <p
               className={`mr-10 cursor-pointer ${
-                active === 1 ? "active-tab-bottom" : "text-muted font-medium"
+                active === 1 ? "active-tab-bottom " : "text-muted font-medium"
               }`}
               onClick={() => setActive(1)}
             >
@@ -511,7 +518,7 @@ const Profile = () => {
             </p>
             <p
               className={`mr-10 cursor-pointer ${
-                active === 2 ? "active-tab-bottom" : "text-muted font-medium"
+                active === 2 ? "active-tab-bottom " : "text-muted font-medium"
               }`}
               onClick={() => setActive(2)}
             >
@@ -519,7 +526,7 @@ const Profile = () => {
             </p>
             <p
               className={`cursor-pointer ${
-                active === 3 ? "active-tab-bottom" : "text-muted font-medium"
+                active === 3 ? "active-tab-bottom " : "text-muted font-medium"
               }`}
               onClick={() => setActive(3)}
             >

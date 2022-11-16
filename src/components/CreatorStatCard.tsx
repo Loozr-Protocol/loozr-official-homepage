@@ -87,7 +87,7 @@ export default function CreatorStatCard({ user }: { user: User }) {
           </div>
         </div>
         <div className="flex justify-start">
-          <div className="md:pl-24 flex md:flex-col kitems-center">
+          <div className="md:pl-24 flex md:flex-col items-center">
             <div>
               <p className="font-medium text-xs text-muted mb-6">
               Artist Coin chart
@@ -95,7 +95,7 @@ export default function CreatorStatCard({ user }: { user: User }) {
               <p className="mb-1 font-semibold text-[13px]">87%</p>
               <p className="mb-2 font-medium text-[13px] text-[#15FFAB]">+4.5%</p>
             </div>
-            <ResponsiveContainer width={170} height={80}>
+            <ResponsiveContainer className="pl-2" width={170} height={80}>
               <AreaChart
                 data={data}
                 margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
