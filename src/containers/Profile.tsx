@@ -395,11 +395,12 @@ const Profile = () => {
                     <div className=" absolute w-[200px] bg-[#12161F] z-20 top-7 px-4 py-3 rounded-lg  shadow-xl ">
                       <a
                         target="_blank"
+                        rel="noreferrer"
                         href={
                           "https://explorer.testnet.near.org/accounts/" +
                           currentProfile.accountDomain
                         }
-                        className=" font-medium text-[13px] cursor-pointer  "
+                        className="font-medium text-[13px] cursor-pointer  "
                       >
                         View user on explorer
                       </a>
@@ -440,7 +441,7 @@ const Profile = () => {
                 </p> }
               <div className="flex items-center mb-9">
                 <p
-                  onClick={() => setShowModal(true)}
+                  // onClick={() => setShowModal(true)}
                   className="text-xs md:text-sm cursor-pointer font-bold mr-6"
                 >
                   {abbrevNumber(currentProfile.followersCount)}
@@ -449,7 +450,7 @@ const Profile = () => {
                   </span>
                 </p>
                 <p
-                  onClick={() => setShowModal(true)}
+                  // onClick={() => setShowModal(true)}
                   className="text-xs md:text-sm cursor-pointer font-bold mr-6"
                 >
                   {abbrevNumber(currentProfile.followingsCount)}
