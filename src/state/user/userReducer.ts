@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
+import User from '../../config/constants/models/user';
 import { UserState } from '../../config/constants/types';
 import { jsonToUser, parseJwt } from '../../utils';
 import { httpError } from '../../utils/httpHelper';
-import { getUserDetails, signUp, resendVerificationMail, accountSetup, getIndividualProfile } from './userActions';
+import { getUserDetails, signUp, resendVerificationMail, accountSetup, getIndividualProfile, getSuggestedUsers } from './userActions';
 
 const jwtToken = localStorage.getItem('jwtToken')
   ? localStorage.getItem('jwtToken')
@@ -20,6 +21,15 @@ if (jwtToken) {
 
 const initialState: UserState = {
   userInfo: precachedUser,
+  suggestedUsers: {
+    users: [],
+    pagination: {
+      total: 0,
+      current: 1,
+      prevPage: 0,
+      reachMaxLimit: false
+    }
+  },
   jwtToken,
   currentProfile: null,
   errorLoadingProfile: false,
@@ -50,6 +60,13 @@ const userSlice = createSlice({
     },
     updateProfile: (state, action) => {
       state.userInfo = action.payload;
+    },
+    changeSuggestedPage(state, action) {
+      state.suggestedUsers.pagination.current = action.payload;
+    },
+    removeSuggestedUser(state, action) {
+      const indexOfUser = state.suggestedUsers.users.findIndex(user => user.id === action.payload);
+      state.suggestedUsers.users.splice(indexOfUser, 1);
     }
   },
   extraReducers: (builder) => {
@@ -122,8 +139,25 @@ const userSlice = createSlice({
       state.accountSetupSuccess = false;
       httpError(action.payload);
     });
+
+    builder.addCase(getSuggestedUsers.fulfilled, (state, action) => {
+      if (state.suggestedUsers.pagination.current === state.suggestedUsers.pagination.prevPage) return;
+
+      const users: User[] = action.payload.results.map((res: any) => {
+        const user = new User({});
+        user.fromJson(res);
+        return user;
+      })
+      if (!users.length) {
+        state.suggestedUsers.pagination.reachMaxLimit = true;
+        return;
+      }
+      state.suggestedUsers.users = [...state.suggestedUsers.users, ...users];
+      state.suggestedUsers.pagination.total = action.payload.pagination.to;
+      state.suggestedUsers.pagination.prevPage = action.payload.pagination.current_page;
+    });
   }
 });
 
-export const { logout, login, updateProfile } = userSlice.actions
+export const { logout, login, updateProfile, changeSuggestedPage, removeSuggestedUser } = userSlice.actions
 export default userSlice.reducer
