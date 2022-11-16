@@ -101,11 +101,11 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                         <span className="text-sm font-medium">LZR</span>
                       </p>
                       <div className="text-white text-xs">
-                        ≈ ${balanceUsd ? balanceUsd : "0.00"} USD
+                        ${balanceUsd ? balanceUsd : "0.00"} USD
                       </div>
                     </div>
                     <div className="py-4 px-6 text-xs font-medium text-muted">
-                      ~ ${LZR_IN_USD ? LZR_IN_USD : "0.00"} USD per LZR coin price
+                      ${LZR_IN_USD ? LZR_IN_USD : "0.00"} USD per LZR coin price
                     </div>
                   </div>
                   <SuggestedFollows modal={setShowModal} />
