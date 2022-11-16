@@ -1,28 +1,31 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Memoji from "../../assets/img/memoji.png";
-import { MIXER_ACCOUNT } from "../../config/constants";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import User from "../../config/constants/models/user";
+import { AppState } from "../../state/store";
 import {
   useFollowCallback,
-  usePollSuggestedFollows,
 } from "../../state/user/hooks/follows";
+import { getSuggestedUsers } from "../../state/user/userActions";
+import { removeSuggestedUser } from "../../state/user/userReducer";
 import Photo from "../Photo";
 
 const SuggestedFollows = (props: any) => {
-  const users = usePollSuggestedFollows();
+  const dispatch = useDispatch();
+  const users = useSelector((state: AppState) => state.user.suggestedUsers.users);
   const { handleFollow } = useFollowCallback();
   const navigate = useNavigate()
 
+  useEffect(() => {
+    dispatch(getSuggestedUsers(1));
+  }, []);
+
   const onFollow = async (user: User) => {
+    dispatch(removeSuggestedUser(user.id));
     await handleFollow(user.id);
-    const userIndex = users.indexOf(user);
-    if (userIndex > -1) {
-      users.splice(userIndex, 1);
-    }
   }; 
 
-  const Loop = ({ user }: { user: User }) => (
+  const SuggestedUserTable = ({ user }: { user: User }) => (
     <div className=' w-full flex justify-between my-2 items-center ' >
 
       <Photo
@@ -30,7 +33,6 @@ const SuggestedFollows = (props: any) => {
         className="object-contain w-10 h-10 rounded-full "
         style={{ border: "3px solid #141922" }}
       />
-      {/* <div className=' w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] ' /> */}
       <div onClick={() => navigate(`/${user.accountDomain}`)} className=' ml-3 ' >
         <div className=' flex -mt-1 items-center ' >
           <p className=' text-[13px] font-semibold ' > {user.accountId}</p>
@@ -46,8 +48,8 @@ const SuggestedFollows = (props: any) => {
   const renderUsers = (users: User[]) => {
     const shortenedUserList = users.slice(0, 3);
     return shortenedUserList.map((user: User, index) => (
-      <Loop user={user} key={index} />
-    ))
+      <SuggestedUserTable user={user} key={index} />
+    ));
   }
 
   return (

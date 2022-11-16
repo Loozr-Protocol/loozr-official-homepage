@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import { motion } from "framer-motion";
 import { httpError } from "../utils/httpHelper";
 import { toast } from "react-toastify";
-import { TOAST_OPTIONS } from "../config/constants";
+import { MIXER_ACCOUNT, TOAST_OPTIONS } from "../config/constants";
 import { useLZRTransferCallback } from "../utils/calls/useLZRTransferCallback";
 
 const SendLzr = () => {
@@ -61,7 +61,7 @@ const SendLzr = () => {
             style={{ background: "#12161F" }}
           />
           <p className="helper-text">
-            Example account id is <strong>example.loozr.near</strong>
+            Example account id is <strong>example.{MIXER_ACCOUNT}</strong>
           </p>
         </div>
         <div className="w-full h-auto pt-2">

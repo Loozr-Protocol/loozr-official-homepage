@@ -18,10 +18,10 @@ export function useUpdateProfileCallback() {
 }
 
 export function useGetSuggestedFollowsCallback() {
-  const getSuggestedFollows = async (): Promise<UserJsonProps[]> => {
+  const getSuggestedFollows = async (currentPage: number): Promise<any> => {
     const httpClient = new HttpClient();
-    const result = await httpClient.axiosInstance.get('/users/suggested-follows');
-    return result.data.results;
+    const result = await httpClient.axiosInstance.get(`/users/suggested-follows?page=${currentPage}`);
+    return result.data;
   }
   return { getSuggestedFollows }
 }   
