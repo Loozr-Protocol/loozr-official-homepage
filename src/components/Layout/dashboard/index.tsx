@@ -166,7 +166,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
             <div className=' w-full md:w-[360px] md:h-auto relative z-[80] h-screen rounded-2xl bg-[#12161F]' >
                 <div className=' w-full flex items-center border-b border-[#222A3B] justify-between py-4 px-6 ' >
                     <p className="  font-medium text-white">
-                        Select your genres
+                        Suggested For You
                     </p> 
                     <button onClick={()=> setShowModal(false)} className=' font-medium text-xs bg-[#8369F4] w-[65px] h-7 rounded-lg ' >Done</button>
                 </div> 
