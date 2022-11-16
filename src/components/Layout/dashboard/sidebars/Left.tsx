@@ -182,13 +182,17 @@ export const Left = () => {
           />
           <div className="hidden xl:block w-full "> 
             <div className={isShown ? "example1 " : " h-[20px] "} >
-              {isShown ? 
-                <p className=" text-sm font-extrabold text-white name-tag"> 
-                  {user?.accountId}
-                </p> :
-                <p className=" text-sm font-extrabold text-white name-tag"> 
-                  {user?.accountId.slice(0,16)}
-                </p>  
+              {user?.accountId && 
+                <>
+                  {isShown ? 
+                    <p className=" text-sm font-extrabold text-white name-tag"> 
+                      {user?.accountId}
+                    </p> :
+                    <p className=" text-sm font-extrabold text-white name-tag"> 
+                      {user?.accountId.slice(0,16)}
+                    </p>  
+                  }
+                </>
               }
             </div>   
             <div className={shown ? "example1 " : " h-[20px] "} >
