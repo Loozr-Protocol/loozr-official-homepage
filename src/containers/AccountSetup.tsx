@@ -35,7 +35,7 @@ export default function AccountSetup() {
   });
 
   useEffect(() => {
-    if (success) navigate(`/account-setup`, { replace: true });
+    if (success) navigate(`/explore`, { replace: true });
   }, [navigate, success]);
 
   const handleLaunchToken = async () => {
@@ -49,7 +49,7 @@ export default function AccountSetup() {
 
     dispatch(accountSetup({
       account_id: text
-    }));
+    })); 
   };
 
   // if (!jwtToken) {
@@ -60,8 +60,7 @@ export default function AccountSetup() {
     formik.setFieldValue("account_id", text) 
   }, [text])
   
-
-    console.log(text);
+ 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center ">
       <div className="md:px-4 px-10 max-w-[400px] mx-auto">
