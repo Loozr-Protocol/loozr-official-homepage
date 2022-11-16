@@ -154,7 +154,12 @@ Setting this value too high will discourage buyers from ever purchasing your coi
           </div>
           <input
             type="number"
-            name="founder_reward"
+            name="founder_reward" 
+            onKeyPress={(e) => {
+              if (e.key === "e" || e.key === "-" || e.key === "+") {
+                e.preventDefault();
+              }
+            }}
             value={number}
             onChange={(e)=> OnChangeHandler(e.target.value)}
             onBlur={formik.handleBlur}

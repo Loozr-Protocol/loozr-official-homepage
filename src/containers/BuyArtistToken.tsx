@@ -88,8 +88,8 @@ const BuyArtistToken = () => {
     }
   };
 
-  const OnchangeHandler =(item: any)=> { 
-    if( Number(balanceInLzr) > Number(item) ){ 
+  const OnchangeHandler =(item: any)=> {   
+    if( Number(balanceInLzr) > Number(item) ){  
       formik.setFieldValue("amount", item)
     }else{
       setMax(true)
@@ -160,6 +160,11 @@ const BuyArtistToken = () => {
           <input
             type="number"
             name="amount"
+            onKeyPress={(e) => {
+              if (e.key === "e" || e.key === "-" || e.key === "+") {
+                e.preventDefault();
+              }
+            }}
             value={formik.values.amount}
             onChange={(e)=> OnchangeHandler(e.target.value)}
             onBlur={formik.handleBlur}
