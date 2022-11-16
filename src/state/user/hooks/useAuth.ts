@@ -71,4 +71,4 @@ export function useAccountSetupCallback() {
     return result.data;
   }
   return { handleAccountSetup }
-}
+} 

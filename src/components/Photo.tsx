@@ -11,10 +11,10 @@ const Photo: React.FC<React.PropsWithChildren<PhotoProps>> = ({
 }) => {
   if (src) {
     return (
-      <div className=" w-fit " >
+      <div className="   " >
         <img
           {...rest}
-          className=" object-cover"
+          className=" rounded-full object-cover"
           alt={alt}
           src={src}
         /> 

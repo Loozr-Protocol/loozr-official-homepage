@@ -24,4 +24,22 @@ export function useGetSuggestedFollowsCallback() {
     return result.data.results;
   }
   return { getSuggestedFollows }
+}   
+ 
+export function useSearchUserCallback() {
+  const getSearchUser = async (data: any): Promise<UserJsonProps[]> => {
+    const httpClient = new HttpClient();
+    const result = await httpClient.axiosInstance.get('/search?query='+data);
+    return result.data.results;
+  }
+  return { getSearchUser }
+}   
+
+export function useSelectGenreCallback() {
+  const handleSelectGenre = async (postData: { genres: any }): Promise<any> => {
+    const httpClient = new HttpClient();
+    const result = await httpClient.axiosInstance.post('/users/set-genre', { postData });
+    return result.data;
+  }
+  return { handleSelectGenre }
 }

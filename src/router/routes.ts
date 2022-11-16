@@ -30,6 +30,7 @@ import SelectGenres from "../containers/SelectGenres";
 import SuggestedArtistes from "../containers/SuggestedArtistes";
 import MusicInfo from "../containers/MusicInfo"; 
 import ExploreDashboard from "../containers/ExploreDashboard";
+import UpdateProfile from "../containers/UpdateProfile";
 
 export const authRoutes = [
   {
@@ -44,12 +45,12 @@ export const authRoutes = [
     private: false,
     component: SelectGenres,
   },
-  {
-    name: "suggested-artistes",
-    path: "suggested-artistes",
-    private: false,
-    component: SuggestedArtistes,
-  },
+  // {
+  //   name: "suggested-artistes",
+  //   path: "suggested-artistes",
+  //   private: false,
+  //   component: SuggestedArtistes,
+  // },
   {
     name: "signup",
     path: "signup",
@@ -98,11 +99,11 @@ export const authRoutes = [
     component: MusicInfo,
   }, 
   {
-    name: "artiste dashboard",
-    path: "explore/check",
-    private: false,
-    component: ExploreDashboard,
-  },
+    name: "updateprofile",
+    path: "updateprofile",
+    private: true,
+    component: UpdateProfile,
+  }, 
 ];
 
 export const routes = [
