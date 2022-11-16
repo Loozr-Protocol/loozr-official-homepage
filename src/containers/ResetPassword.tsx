@@ -98,11 +98,16 @@ const ResetPassword = () => {
               onBlur={formik.handleBlur}
               onFocus={() => formik.setFieldTouched("password", true, true)}
               placeholder="New password"
-              className="py-8 px-11 text-muted placeholder:text-muted font-medium md:text-xl bg-dark-800 mb-11"
-              style={{ backgroundColor: "#12161F" }}
+              className="py-8 !px-[39px] text-muted placeholder:text-muted text-base font-medium bg-dark-800 w-full"
+              style={{
+                backgroundColor: "#12161F",
+                marginBottom: 43,
+                height: 74,
+                padding: "auto 40px",
+              }}
             />
             <span
-              className="absolute right-4 inset-y-4 cursor-pointer"
+              className="absolute right-10 inset-y-6 cursor-pointer"
               onClick={() => setPasswordVisible(!passwordVisible)}
             >
               {passwordVisible ? (
@@ -110,7 +115,7 @@ const ResetPassword = () => {
               ) : (
                 <VisibilityOffIcon style={{ color: "#536079" }} />
               )}
-            </span>
+            </span> 
           </div>
           <div className="w-full h-auto pt-2">
             {formik.touched.password && formik.errors.password && (
@@ -134,11 +139,16 @@ const ResetPassword = () => {
                 formik.setFieldTouched("retyped_password", true, true)
               }
               placeholder="Re-type Password"
-              className="py-8 px-11 text-muted placeholder:text-muted font-medium md:text-xl bg-dark-800 "
-              style={{ backgroundColor: "#12161F" }}
+              className="py-8 !px-[39px] text-muted placeholder:text-muted text-base font-medium bg-dark-800 w-full"
+              style={{
+                backgroundColor: "#12161F",
+                marginBottom: 43,
+                height: 74,
+                padding: "auto 40px",
+              }}
             />
             <span
-              className="absolute right-4 inset-y-4 cursor-pointer"
+              className="absolute right-10 inset-y-6 cursor-pointer"
               onClick={() => setPasswordVisible(!passwordVisible)}
             >
               {passwordVisible ? (
