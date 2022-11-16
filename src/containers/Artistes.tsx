@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../state/store";
 import { Link, useNavigate } from "react-router-dom";
 import Photo from "../components/Photo";
+import { loadCoinPrices } from "../utils";
+import { setArtistCoinInfo } from "../state/artist/artistReducer";
 
 const Artistes = () => {
   const dispatch = useDispatch();
@@ -15,7 +17,12 @@ const Artistes = () => {
     dispatch(getArtists());
   }, []);
 
-  console.log(artists);
+  useEffect(() => {
+    artists.forEach(async (artist) => {
+      const payload = await loadCoinPrices(artist);
+      dispatch(setArtistCoinInfo(payload));
+    });
+  }, [artists]);
   
   const [isShownText, setIsShownText] = React.useState(-1)
   const [isShown, setIsShown] = React.useState(-1)
@@ -38,9 +45,10 @@ const Artistes = () => {
         {artists.map((_, i) => (
           <div
             key={i}
-            onMouseOver={()=> Checking(i, _.creatorCoinId)}
-            onMouseOut={()=> Checking(-1, _.creatorCoinId)}
-            className="flex flex-col items-center mr-4 min-w-full md:min-w-[140px]">
+            onMouseOver={() => Checking(i, _.creatorCoinId)}
+            onMouseOut={() => Checking(-1, _.creatorCoinId)}
+            className="flex flex-col items-center mr-4 min-w-full md:min-w-[140px]"
+          >
             <Link to={`/${_.user.accountDomain}`} className="relative">
               <Photo
                 alt=""
@@ -50,20 +58,47 @@ const Artistes = () => {
                 }}
               />
               {_.isVerified && (
-                <img src={verified} alt="verified" className=" absolute bottom-1 right-0 w-[28px] " />
+                <img
+                  src={verified}
+                  alt="verified"
+                  className=" absolute bottom-1 right-0 w-[28px] "
+                />
               )}
             </Link>
 
-            <div className=" w-[105px] mt-1" > 
-              <div className={isShownText === i ? "example1" : " h-[20px] w-full flex justify-center "} >
-                <p onClick={()=> navigate(`/${_.user.accountDomain}`)} className=" cursor-pointer mb-[3px] font-medium text-sm text-white"> 
-                  ${isShownText === i ?  _.creatorCoinId.toUpperCase() : _.creatorCoinId.slice(0, 7).toUpperCase()}
+            <div className=" w-[105px] mt-1">
+              <div
+                className={
+                  isShownText === i
+                    ? "example1"
+                    : " h-[20px] w-full flex justify-center "
+                }
+              >
+                <p
+                  onClick={() => navigate(`/${_.user.accountDomain}`)}
+                  className=" cursor-pointer mb-[3px] font-medium text-sm text-white"
+                >
+                  $
+                  {isShownText === i
+                    ? _.creatorCoinId.toUpperCase()
+                    : _.creatorCoinId.slice(0, 7).toUpperCase()}
                 </p>
-              </div> 
-            </div> 
-            <p className=" font-medium text-[11.5px] text-[#536079] " >2,474.14 LZR</p> 
-            <div className=" w-full px-[2px] flex justify-center " >
-              <button onClick={() => navigate(`/artistes/buy/${_.user.id}`)} className={isShown === i ? " bg-[#8369F4] h-[35px] md:flex justify-center items-center font-medium hidden rounded-full w-[105px] mt-[12px] text-[11.5px]  " : "bg-[#141922] text-[11.5px]  h-[35px] md:flex justify-center items-center font-medium hidden rounded-full w-[105px] mt-[12px] "} >Buy coin</button> 
+              </div>
+            </div>
+            <p className=" font-medium text-[11.5px] text-[#536079] ">
+              ~{_.coinInfo ? _.coinInfo.coinPrice.toFixed(5) : "__"} LZR
+            </p>
+            <div className=" w-full px-[2px] flex justify-center ">
+              <button
+                onClick={() => navigate(`/artistes/buy/${_.user.id}`)}
+                className={
+                  isShown === i
+                    ? " bg-[#8369F4] h-[35px] md:flex justify-center items-center font-medium hidden rounded-full w-[105px] mt-[12px] text-[11.5px]  "
+                    : "bg-[#141922] text-[11.5px]  h-[35px] md:flex justify-center items-center font-medium hidden rounded-full w-[105px] mt-[12px] "
+                }
+              >
+                Buy coin
+              </button>
             </div>
           </div>
         ))}
