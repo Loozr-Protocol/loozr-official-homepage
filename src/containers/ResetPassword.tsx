@@ -82,12 +82,12 @@ const ResetPassword = () => {
     <FullPageError errorMsg={pageError} />
   ) : (
     <div className="min-h-screen w-full h-full grid">
-      <div className="flex flex-col items-center justify-center px-8 md:px-auto h-full w-full max-w-[558px] mx-auto">
+      <div className="flex flex-col items-center justify-center pt-6 px-8 md:px-auto h-full w-full  md:w-[400px] mx-auto">
         <div style={{ zoom: "85%", width: "100%" }}>
-          <p className="text-4xl md:text-5xl lg:text-label mb-6 md:mb-10 font-bold">
+          <p className="text-[20px]  md:text-[35px]  mb-6 font-bold">
             Reset password
           </p>
-          <p className="md:text-xl font-normal mb-10 md:mb-20">
+          <p className="md:text-xl font-normal mb-10 md:mb-10">
             Enter a new login password below.
           </p>
           <div className="w-full relative">
@@ -129,7 +129,7 @@ const ResetPassword = () => {
               </motion.div>
             )}
           </div>
-          <div className="w-full relative mb-12 md:mb-24">
+          <div className="w-full relative mb-10 md:mb-10">
             <input
               type={passwordVisible ? "text" : "password"}
               name="retyped_password"
