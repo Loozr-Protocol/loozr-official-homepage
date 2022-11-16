@@ -63,7 +63,7 @@ const Artistes = () => {
             </div> 
             <p className=" font-medium text-[11.5px] text-[#536079] " >2,474.14 LZR</p> 
             <div className=" w-full px-[2px] flex justify-center " >
-              <button className={isShown === i ? " bg-[#8369F4] h-[35px] md:flex justify-center items-center font-medium hidden rounded-full w-[105px] mt-[12px] text-[11.5px]  " : "bg-[#141922] text-[11.5px]  h-[35px] md:flex justify-center items-center font-medium hidden rounded-full w-[105px] mt-[12px] "} >Buy coin</button> 
+              <button onClick={() => navigate(`/artistes/buy/${_.user.id}`)} className={isShown === i ? " bg-[#8369F4] h-[35px] md:flex justify-center items-center font-medium hidden rounded-full w-[105px] mt-[12px] text-[11.5px]  " : "bg-[#141922] text-[11.5px]  h-[35px] md:flex justify-center items-center font-medium hidden rounded-full w-[105px] mt-[12px] "} >Buy coin</button> 
             </div>
           </div>
         ))}

@@ -103,7 +103,7 @@ export default function SelectGenres() {
             {showModal && (
                 <div onClick={()=> setShowModal(false)} className=" fixed inset-0 flex justify-center items-center md:overflow-y-hidden bg-black bg-opacity-90 z-[70] " > 
                     <div className=' w-full md:w-[360px] md:h-auto relative z-[80] h-screen rounded-2xl bg-[#12161F]' >
-                        <div className=' w-full flex items-center border-b border-[#222A3B] justify-between py-4 px-9 ' >
+                        <div className=' w-full flex items-center border-b border-[#222A3B] justify-between py-4 px-6 ' >
                             <p className="  font-medium text-white">
                                 Select your genres
                             </p> 

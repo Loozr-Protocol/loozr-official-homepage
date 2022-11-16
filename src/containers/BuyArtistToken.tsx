@@ -111,7 +111,7 @@ const BuyArtistToken = () => {
       <p className="text-white text-2xl font-semibold mb-12">
         Buy Artiste Token
       </p>
-      <div className="max-w-[490px]">
+      <div className="md:w-[350px] w-full ">
         <div className="w-30 mb-8">
           <div className="relative mb-2">
             <Photo
@@ -136,7 +136,7 @@ const BuyArtistToken = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             onFocus={() => formik.setFieldTouched("amount", true, true)}
-            className="py-8 px-11 bg-dark-800 text-sm placeholder:text-muted text-white"
+            className=" h-[60px] px-11 w-[350px] bg-dark-800 text-sm placeholder:text-muted text-white"
             placeholder="0.00"
             style={{ background: "#12161F" }}
           />
@@ -157,9 +157,9 @@ const BuyArtistToken = () => {
           Artiste will receive {artistDetails.founderReward / bpsDenominator}%
           of your purchase as a Founder Reward
         </p>
-        <div>
+        <div className="  " >
           <button
-            className="py-4 text-white disabled:text-muted font-medium text-sm bg-gradient-ld disabled:bg-dark-800 mb-11 w-full sm:w-80 focus:outline-none"
+            className=" h-[60px] text-white disabled:text-muted font-medium text-sm bg-gradient-ld disabled:bg-dark-800 mb-11 w-full sm:w-80 focus:outline-none"
             onClick={handleSubmit}
             disabled={isLoading}
           >
