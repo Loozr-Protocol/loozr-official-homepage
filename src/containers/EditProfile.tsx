@@ -243,7 +243,7 @@ const EditProfile = () => {
             />
             <input
               type="text"
-              className="px-7 py-3 w-32 text-muted text-sm placeholder:text-muted"
+              className="px-7 py-3 w-32 mr-2 text-muted text-sm placeholder:text-muted"
               style={{ backgroundColor: "#12161F" }}
               name="website"
               defaultValue={user.website ?? ""}
@@ -251,8 +251,30 @@ const EditProfile = () => {
               onBlur={formik.handleBlur}
               onFocus={() => formik.setFieldTouched("website", true, true)}
               placeholder=""
-            />
-            <HelpIcon className="w-16 ml-4" />
+            /> 
+              <ToolTip 
+                title={
+                  <p className="text-base font-medium">
+                    <span className="mb-3">
+                      When someone purchases your coin, a percentage of that
+                      gets allocated to you as a founder reward.
+                    </span>
+                    <span className="mb-3">
+                      A value of 0% means you get no money when someone buys,
+                      whereas a value of 100% means that no one else can ever
+                      get coins because 100% of every purchase goes to you.
+                    </span>
+                    <span>
+                      Setting this value too high will discourage buyers from
+                      ever purchasing your coin. It's a delicate balance, so
+                      tread carefully or stick with the default.
+                    </span>
+                  </p>
+                }
+              >
+                <HelpIcon className="cursor-pointer" />
+              </ToolTip>
+            {/* <HelpIcon className="w-16 ml-4" /> */}
           </div>
       </div>
       {/* {hasLaunchedToken && (

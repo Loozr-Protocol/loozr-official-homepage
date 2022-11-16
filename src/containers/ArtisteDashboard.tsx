@@ -110,20 +110,14 @@ const ArtisteDashboard = () => {
                       <img src={verified} alt="verified" className=" absolute bottom-1 right-0 w-[28px] " />
                     )}
                   </div>
-                  {_.isVerified && (
+                  {/* {_.isVerified && (
                     <img
                       src={VerifiedBadge}
                       alt=""
                       className="absolute w-4 md:w-8 h-4 md:h-8 right-3 bottom-6"
                     />
-                  )}
-                </Link>
-                {/* <Link
-                  to={`/${_.user.accountDomain}`}
-                  className="font-extrabold mb-px w-[105px] md:font-bold text-[13px] text-white text-center uppercase name-tag"
-                >
-                  ${_.creatorCoinId.slice(0, 7)}
-                </Link>  */}
+                  )} */}
+                </Link> 
                   <div className=" w-[105px] mt-1" > 
                     <div className={isShownText === i ? "example1" : " h-[20px] w-full flex justify-center "} >
                       <p onClick={()=> navigate(`/${_.user.accountDomain}`)} className=" cursor-pointer mb-[3px] font-medium text-sm text-white"> 

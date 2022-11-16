@@ -21,6 +21,7 @@ import { formatBalanceUSD, formatNumber, getFullDisplayBalance } from "../../../
 import SuggestedFollows from "../../suggestion/SuggestedFollows";
 import { nearExplorerAccount } from "../../../utils";
 import LeftUpdate from "./sidebars/LeftUpdate";
+import SuggestedUser from "../../SuggestedUser";
 
 const tabs = [
   {
@@ -179,121 +180,8 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                         Select your genres
                     </p> 
                     <button onClick={()=> setShowModal(false)} className=' font-medium text-xs bg-[#8369F4] w-[65px] h-7 rounded-lg ' >Done</button>
-                </div>
-                <div className=' w-full px-6 md:py-4 md:h-[60vh] h-full flex flex-1 flex-col overflow-y-auto ' >
-                    <div className=' w-full flex justify-between my-2 items-center ' > 
-                        <div className=' w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] ' />
-                        <div className=' ml-3 ' >
-                            <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[13px] font-semibold ' >Nathan Jose</p>
-                            </div>
-                            <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[11px] font-semibold text-[#536079] ' >$HARTY</p>
-                                <div className=' w-1 h-1 rounded-full bg-[#536079] mx-1 ' />
-                                <p className=' text-[11px] font-semibold text-[#536079] ' >$3,001.99</p>
-                            </div>
-                        </div> 
-                        <p className=' text-[12px] ml-auto font-bold text-[#8369F4] cursor-pointer ' >Follow</p>
-                    </div>
-                    <div className=' w-full flex justify-between my-2 items-center ' > 
-                        <div className=' w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] ' />
-                        <div className=' ml-3 ' >
-                            <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[13px] font-semibold ' >Nathan Jose</p>
-                            </div>
-                            <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[11px] font-semibold text-[#536079] ' >$HARTY</p>
-                                <div className=' w-1 h-1 rounded-full bg-[#536079] mx-1 ' />
-                                <p className=' text-[11px] font-semibold text-[#536079] ' >$3,001.99</p>
-                            </div>
-                        </div> 
-                        <p className=' text-[12px] ml-auto font-medium text-[#536079] cursor-pointer ' >Following</p>
-                    </div>
-                    <div className=' w-full flex justify-between my-2 items-center ' > 
-                        <div className=' w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] ' />
-                        <div className=' ml-3 ' >
-                            <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[13px] font-semibold ' >Nathan Jose</p>
-                            </div>
-                            <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[11px] font-semibold text-[#536079] ' >$HARTY</p>
-                                <div className=' w-1 h-1 rounded-full bg-[#536079] mx-1 ' />
-                                <p className=' text-[11px] font-semibold text-[#536079] ' >$3,001.99</p>
-                            </div>
-                        </div> 
-                        <p className=' text-[12px] ml-auto font-medium text-[#536079] cursor-pointer ' >Following</p>
-                    </div>
-                    <div className=' w-full flex justify-between my-2 items-center ' > 
-                        <div className=' w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] ' />
-                        <div className=' ml-3 ' >
-                            <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[13px] font-semibold ' >Nathan Jose</p>
-                            </div>
-                            <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[11px] font-semibold text-[#536079] ' >$HARTY</p>
-                                <div className=' w-1 h-1 rounded-full bg-[#536079] mx-1 ' />
-                                <p className=' text-[11px] font-semibold text-[#536079] ' >$3,001.99</p>
-                            </div>
-                        </div> 
-                        <p className=' text-[12px] ml-auto font-medium text-[#536079] cursor-pointer ' >Following</p>
-                    </div>
-                    <div className=' w-full flex justify-between my-2 items-center ' > 
-                        <div className=' w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] ' />
-                        <div className=' ml-3 ' >
-                            <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[13px] font-semibold ' >Nathan Jose</p>
-                            </div>
-                            <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[11px] font-semibold text-[#536079] ' >$HARTY</p>
-                                <div className=' w-1 h-1 rounded-full bg-[#536079] mx-1 ' />
-                                <p className=' text-[11px] font-semibold text-[#536079] ' >$3,001.99</p>
-                            </div>
-                        </div> 
-                        <p className=' text-[12px] ml-auto font-medium text-[#536079] cursor-pointer ' >Following</p>
-                    </div>
-                    <div className=' w-full flex justify-between my-2 items-center ' > 
-                        <div className=' w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] ' />
-                        <div className=' ml-3 ' >
-                            <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[13px] font-semibold ' >Nathan Jose</p>
-                            </div>
-                            <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[11px] font-semibold text-[#536079] ' >$HARTY</p>
-                                <div className=' w-1 h-1 rounded-full bg-[#536079] mx-1 ' />
-                                <p className=' text-[11px] font-semibold text-[#536079] ' >$3,001.99</p>
-                            </div>
-                        </div> 
-                        <p className=' text-[12px] ml-auto font-medium text-[#536079] cursor-pointer ' >Following</p>
-                    </div>
-                    <div className=' w-full flex justify-between my-2 items-center ' > 
-                        <div className=' w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] ' />
-                        <div className=' ml-3 ' >
-                            <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[13px] font-semibold ' >Nathan Jose</p>
-                            </div>
-                            <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[11px] font-semibold text-[#536079] ' >$HARTY</p>
-                                <div className=' w-1 h-1 rounded-full bg-[#536079] mx-1 ' />
-                                <p className=' text-[11px] font-semibold text-[#536079] ' >$3,001.99</p>
-                            </div>
-                        </div> 
-                        <p className=' text-[12px] ml-auto font-medium text-[#536079] cursor-pointer ' >Following</p>
-                    </div>
-                    <div className=' w-full flex justify-between my-2 items-center ' > 
-                        <div className=' w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] ' />
-                        <div className=' ml-3 ' >
-                            <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[13px] font-semibold ' >Nathan Jose</p>
-                            </div>
-                            <div className=' flex -mt-1 items-center ' > 
-                                <p className=' text-[11px] font-semibold text-[#536079] ' >$HARTY</p>
-                                <div className=' w-1 h-1 rounded-full bg-[#536079] mx-1 ' />
-                                <p className=' text-[11px] font-semibold text-[#536079] ' >$3,001.99</p>
-                            </div>
-                        </div> 
-                        <p className=' text-[12px] ml-auto font-medium text-[#536079] cursor-pointer ' >Following</p>
-                    </div>
-                </div>
+                </div> 
+                <SuggestedUser />
             </div> 
         </div>
       )}
