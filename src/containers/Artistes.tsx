@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import verified from "../assets/icons/verified.svg"
+import verified from "../assets/icons/verified.svg";
 
 import { getArtists } from "../state/artist/actions";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,42 +7,31 @@ import { AppState } from "../state/store";
 import { Link, useNavigate } from "react-router-dom";
 import Photo from "../components/Photo";
 import { loadCoinPrices } from "../utils";
-import { setArtistCoinInfo } from "../state/artist/artistReducer";
+import { changePage, setArtistCoinInfo } from "../state/artist/artistReducer";
+import Pagination from "../components/Pagination";
 
-const Artistes = () => {
-  const dispatch = useDispatch();
-  const artists = useSelector((state: AppState) => state.artist.artists);
+const ArtisteRenderer = (props) => {
+  const [isShownText, setIsShownText] = React.useState(-1);
+  const [isShown, setIsShown] = React.useState(-1);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    dispatch(getArtists());
-  }, []);
-
-  useEffect(() => {
-    artists.forEach(async (artist) => {
-      const payload = await loadCoinPrices(artist);
-      dispatch(setArtistCoinInfo(payload));
-    });
-  }, [artists]);
-  
-  const [isShownText, setIsShownText] = React.useState(-1)
-  const [isShown, setIsShown] = React.useState(-1)
-  const navigate = useNavigate() 
-
-  const Checking =(item: any, text: any)=> {
-    setIsShown(item)
-    if(text.length > 7){
-      setIsShownText(item)
+  const Checking = (item: any, text: any) => {
+    setIsShown(item);
+    if (text.length > 7) {
+      setIsShownText(item);
     } else {
-      setIsShownText(-1)
+      setIsShownText(-1);
     }
-  }
+  };
+
   return (
-    <div className="w-full mt-8 md:mt-0 pb-28">
-      <p className="text-white text-[17px] leading-7 font-thin md:font-medium mb-7">
-        Artistes
-      </p>
+    <div
+      onScroll={props.onScroll}
+      ref={props.listInnerRef}
+      style={{ height: "100vh", overflowY: "auto" }}
+    >
       <div className="grid grid-cols-3 md:grid-cols-4 gap-y-6">
-        {artists.map((_, i) => (
+        {props.dataList.map((_, i) => (
           <div
             key={i}
             onMouseOver={() => Checking(i, _.creatorCoinId)}
@@ -103,6 +92,39 @@ const Artistes = () => {
           </div>
         ))}
       </div>
+    </div>
+  );
+};
+
+const Artistes = () => {
+  const dispatch = useDispatch();
+  const pagination = useSelector(
+    (state: AppState) => state.artist.pagination
+  );
+  const artists = useSelector((state: AppState) => state.artist.artists);
+
+  useEffect(() => {
+    artists.forEach(async (artist) => {
+      const payload = await loadCoinPrices(artist);
+      dispatch(setArtistCoinInfo(payload));
+    });
+  }, [artists]);
+
+  return (
+    <div className="w-full mt-8 md:mt-0 pb-28">
+      <p className="text-white text-[17px] leading-7 font-thin md:font-medium mb-7">
+        Artistes
+      </p>
+      <Pagination
+        reachMaxLimit={pagination.reachMaxLimit}
+        dataList={artists}
+        prevPage={pagination.prevPage}
+        onFetchData={() => dispatch(getArtists(pagination.current))}
+        currentPage={pagination.current}
+        onSetCurrentPage={(page: number) => dispatch(changePage(page))}
+      >
+        <ArtisteRenderer />
+      </Pagination>
     </div>
   );
 };
