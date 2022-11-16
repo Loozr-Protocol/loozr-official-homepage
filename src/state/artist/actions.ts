@@ -3,10 +3,10 @@ import { useGetArtistCallback, useGetArtistHodlersCallback, useGetArtistStatCall
 
 export const getArtists = createAsyncThunk(
   'artist/getArtists',
-  async (any, { rejectWithValue }) => {
+  async (currentPage: number, { rejectWithValue }) => {
     const { handleGetArtists } = useGetArtistCallback();
     try {
-      const result = await handleGetArtists();
+      const result = await handleGetArtists(currentPage);
       return result;
     } catch (error) {
       return rejectWithValue(error);

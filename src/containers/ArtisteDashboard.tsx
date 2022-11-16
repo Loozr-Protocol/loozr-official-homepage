@@ -54,7 +54,8 @@ const ArtisteDashboard = () => {
   const nftype = "scroll"
 
   useEffect(() => {
-    dispatch(getArtists());
+    const initialPage = 1;
+    dispatch(getArtists(initialPage));
   }, []);
 
   useEffect(() => {
