@@ -24,8 +24,9 @@ import { AppState } from "../state/store";
 import { getArtists } from "../state/artist/actions";
 import Photo from "../components/Photo";
 import SlidesButton from "../components/SlidesButton";
-import MusicInfo from "./MusicInfo";
 import verified from "../assets/icons/verified.svg"
+import { loadCoinPrices } from "../utils";
+import { setArtistCoinInfo } from "../state/artist/artistReducer";
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 4,
@@ -44,8 +45,6 @@ const ArtisteDashboard = () => {
   const artists = useSelector((state: AppState) => state?.artist?.artists);
   const [canPlay, setCanPlay] = useState(false);
   const { playing, setPlaying, duration, curTime } = useAudioPlayer(100);
-  const [isPlaying, setIsPlaying]: any = useState(null);
-
   const featuredRef: any = React.useRef(null); 
   const musicDropRef: any = React.useRef(null); 
 
@@ -58,9 +57,13 @@ const ArtisteDashboard = () => {
     dispatch(getArtists());
   }, []);
 
-  console.log(artists);
+  useEffect(() => {
+    artists.forEach(async (artist) => {
+      const payload = await loadCoinPrices(artist);
+      dispatch(setArtistCoinInfo(payload));
+    });
+  }, [artists])
   
-
   const FeaturedArtistes =()=>{ 
 
     const [isShownText, setIsShownText] = React.useState(-1)
@@ -75,10 +78,9 @@ const ArtisteDashboard = () => {
       }
     }
     
-    return( 
-      <> 
-        <div className="flex items-center mt-[3px] md:px-0 px-6 justify-between mb-[15px]"
-          >
+    return (
+      <>
+        <div className="flex items-center mt-[3px] justify-between mb-[15px]">
           <p className="font-medium text-base md:text-[17px] text-white">
             Recent artist coins
           </p>
@@ -89,16 +91,16 @@ const ArtisteDashboard = () => {
           className="max-w-full overflow-auto scroll_event whitespace-nowrap md:mb-[2px] mb-16"
           ref={featuredRef}
         >
-          <div className="flex "  >
+          <div className="flex ">
             {artists.map((_, i) => (
               <div
                 key={i}
-                onMouseOver={()=> Checking(i, _.creatorCoinId)}
-                onMouseOut={()=> Checking(-1, _.creatorCoinId)}
-                className="flex flex-col items-center mr-[25px] md:h-64 min-w-max md:w-[105px]"
+                onMouseOver={() => Checking(i, _.creatorCoinId)}
+                onMouseOut={() => Checking(-1, _.creatorCoinId)}
+                className="flex flex-col items-center mr-[22px] md:h-64 min-w-max md:w-[105px]"
               >
                 <Link to={`/${_.user.accountDomain}`} className="relative">
-                  <div className=" relative " >
+                  <div className=" relative ">
                     <Photo
                       alt=""
                       className="object-cover h-[100px] md:h-[105px] w-[100px] md:w-[105px] rounded-full  mb-[16px]"
@@ -107,7 +109,11 @@ const ArtisteDashboard = () => {
                       }}
                     />
                     {_.isVerified && (
-                      <img src={verified} alt="verified" className=" absolute bottom-1 right-0 w-[28px] " />
+                      <img
+                        src={verified}
+                        alt="verified"
+                        className=" absolute bottom-1 right-0 w-[28px] "
+                      />
                     )}
                   </div>
                   {_.isVerified && (
@@ -118,29 +124,46 @@ const ArtisteDashboard = () => {
                     />
                   )}
                 </Link>
-                {/* <Link
-                  to={`/${_.user.accountDomain}`}
-                  className="font-extrabold mb-px w-[105px] md:font-bold text-[13px] text-white text-center uppercase name-tag"
-                >
-                  ${_.creatorCoinId.slice(0, 7)}
-                </Link>  */}
-                  <div className=" w-[105px] mt-1" > 
-                    <div className={isShownText === i ? "example1" : " h-[20px] w-full flex justify-center "} >
-                      <p onClick={()=> navigate(`/${_.user.accountDomain}`)} className=" cursor-pointer mb-[3px] font-medium text-sm text-white"> 
-                        ${isShownText === i ?  _.creatorCoinId.toUpperCase() : _.creatorCoinId.slice(0, 7).toUpperCase()}
-                      </p>
-                    </div> 
+                <div className=" w-[105px]">
+                  <div
+                    className={
+                      isShownText === i
+                        ? "example1"
+                        : " h-[20px] w-full flex justify-center "
+                    }
+                  >
+                    <p
+                      onClick={() => navigate(`/${_.user.accountDomain}`)}
+                      className=" cursor-pointer mb-[3px] font-medium text-sm text-white"
+                    >
+                      $
+                      {isShownText === i
+                        ? _.creatorCoinId.toUpperCase()
+                        : _.creatorCoinId.slice(0, 7).toUpperCase()}
+                    </p>
                   </div>
-                <p className=" font-medium text-[11.5px] text-[#536079] " >2,474.14 LZR</p> 
-                <div className=" w-full px-[2px] " >
-                  <button className={isShown === i ? " bg-[#8369F4] h-[35px] md:flex justify-center items-center font-medium hidden rounded-full w-[105px] mt-[12px] text-[11.5px]  " : "bg-[#141922] text-[11.5px]  h-[35px] md:flex justify-center items-center font-medium hidden rounded-full w-[105px] mt-[12px] "} >Buy coin</button> 
+                </div>
+                <p className=" font-medium text-[11.5px] text-[#536079] ">
+                  ~{_.coinInfo ? _.coinInfo.coinPrice.toFixed(5): '__'} LZR
+                </p>
+                <div className=" w-full px-[2px] ">
+                  <button
+                    onClick={() => navigate(`/artistes/buy/${_.user.id}`)}
+                    className={
+                      isShown === i
+                        ? " bg-[#8369F4] h-[35px] md:flex justify-center items-center font-medium hidden rounded-full w-[105px] mt-[12px] text-[11.5px]  "
+                        : "bg-[#141922] text-[11.5px]  h-[35px] md:flex justify-center items-center font-medium hidden rounded-full w-[105px] mt-[12px] "
+                    }
+                  >
+                    Buy coin
+                  </button>
                 </div>
               </div>
             ))}
           </div>
         </div>
-      </> 
-    )
+      </>
+    );
   } 
 
   const[music, setMusic] = React.useState("/song.mp3")
