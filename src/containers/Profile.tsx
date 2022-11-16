@@ -23,8 +23,6 @@ import { resetCoinPrice, resetHoldersList } from "../state/artist/artistReducer"
 import { decodedJWT } from "../utils";
 import Photo from "../components/Photo";
 import verified from "../assets/icons/verified.svg"
-import { toast } from "react-toastify";
-import { TOAST_OPTIONS } from "../config/constants";
 
 const Profile = () => {
   const push = useNavigate();
