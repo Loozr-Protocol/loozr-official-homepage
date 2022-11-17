@@ -79,7 +79,7 @@ const Profile = () => {
 
   const loadProfile = () => {
     if (accountDomain) {
-      if (accountDomain !== user.accountDomain) {
+      if (accountDomain !== user?.accountDomain) {
         dispatch(getIndividualProfile(accountDomain));
         return;
       }
@@ -348,7 +348,7 @@ const Profile = () => {
   }  
 
   return (
-    <div className="w-full md:px-0 px-6 ">
+    <div className="w-full md:px-0 px-6 mb-20 ">
       {currentProfile ? (
         <>
           {currentProfile.isArtist && currentProfile.tokenName && (
@@ -526,23 +526,23 @@ const Profile = () => {
                   </p>
                 ) : null}
               </div>
-              {currentProfile.isArtist ? (
+              {currentProfile?.isArtist ? (
                 <div className="flex items-start mb-[15px]">
                   <button
-                    onClick={() => push(`/artistes/buy/${currentProfile.id}`)}
+                    onClick={() => push(`/artistes/buy/${currentProfile?.id}`)}
                     className="py-[14.1px] px-3 sm:px-6 md:px-7 text-xs md:text-sm font-medium bg-loozr-purple rounded-full"
                   >
                     Buy artiste coin
                   </button>
                   <button
-                    onClick={() => push(`/artistes/sell/${currentProfile.id}`)}
+                    onClick={() => push(`/artistes/sell/${currentProfile?.id}`)}
                     className="py-[14.1px] px-3 sm:px-6 md:px-7 text-xs md:text-sm font-medium bg-dark-700 rounded-full ml-6"
                   >
                     Sell artiste coin
                   </button>
                 </div>
               ) : null}
-              {currentProfile.id === user.id ? (
+              {currentProfile?.id === user?.id ? (
                 <div className="flex items-center mb-4">
                   <button
                     onClick={() => push("/profile/edit")}

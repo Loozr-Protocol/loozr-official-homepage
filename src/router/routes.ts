@@ -159,12 +159,6 @@ export const dashboard = [
     component: Wallet,
   },
   {
-    name: "profile",
-    path: "/:accountDomain",
-    private: true,
-    component: Profile,
-  },
-  {
     name: "edit profile",
     path: "profile/edit",
     private: true,
@@ -209,5 +203,11 @@ export const dashboardhome = [
     path: "explore",
     private: false,
     component: ArtisteDashboard,
+  },
+  {
+    name: "profile",
+    path: "/:accountDomain",
+    private: true,
+    component: Profile,
   },
 ]
