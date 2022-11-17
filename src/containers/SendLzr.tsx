@@ -168,7 +168,19 @@ const SendLzr = () => {
             placeholder="0.00"
             style={{ background: "#12161F" }}
           />
-        </div>
+        </div> 
+        {max && ( 
+          <div className="w-full h-auto pt-2"> 
+            <motion.div
+              initial={{ y: -100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              className="text-xs font-Inter-SemiBold text-[#F25341]"
+              style={{ marginTop: "-35px" }}
+            >
+              Amount must be less than your balance
+            </motion.div> 
+          </div>
+        )}
         <div className="w-full h-auto pt-2">
           {formik.touched.amount && formik.errors.amount && (
             <motion.div
