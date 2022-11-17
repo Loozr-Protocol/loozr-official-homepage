@@ -89,6 +89,7 @@ const SellArtistToken = () => {
     try {
       await handleSellToken(artistDetails.id, formik.values.amount);
       setLoading(false);
+      setShowModal(false)
       setSuccess(true);
     } catch (err: any) {
       setSuccess(false);

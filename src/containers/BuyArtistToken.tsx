@@ -80,6 +80,7 @@ const BuyArtistToken = () => {
     try {
       await handleBuyToken(artistDetails.id, formik.values.amount);
       setLoading(false);
+      setShowModal(false)
       setSuccess(true);
     } catch (err: any) {
       setSuccess(false);
