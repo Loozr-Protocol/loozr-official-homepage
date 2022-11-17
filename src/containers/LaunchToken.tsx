@@ -106,7 +106,7 @@ Setting this value too high will discourage buyers from ever purchasing your coi
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center ">
-      <div className="px-4 max-w-[520px] mx-auto">
+      <div className="px-6 max-w-[520px] mx-auto">
         <p className="font-bold md:w-[400px] text-4xl md:text-4xl text-white mb-4 md:mb-4">
           Create Artiste Coin
         </p>
