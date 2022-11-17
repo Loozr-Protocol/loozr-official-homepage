@@ -2,9 +2,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import React from "react";
 import ReactSwipe from "react-swipe";
 import slide1 from "../../assets/img/dashboard-banner.png";
-import slide2 from "../../assets/img/slider.jpg";
+import slide2 from "../../assets/img/slider3.jpg";
 import slide3 from "../../assets/img/slider2.jpeg";
-import slide4 from "../../assets/img/slider3.jpg";
+// import slide4 from "../../assets/img/slider3.jpg";
 
 const Carousel = () => {
   let reactSwipeEl;
@@ -34,8 +34,28 @@ const Carousel = () => {
   }
 
   const [isShown, setIsShown] = React.useState(0)
-  const images: any = [ slide1, slide2, slide3, slide4 ] 
+  const images: any = [ slide1, slide2, slide3 ] 
 
+  const image: any = [ 
+    {
+      img: slide1,
+      details: 'Introducing the Loozr Name Service (LNS) on Testnet: ',
+      link: "https://medium.com/@officialloozr/introducing-the-loozr-name-service-lns-on-testnet-22e9799cd753",
+      month:"Nov 16"
+    }, 
+    {
+      img: slide2,
+      details: 'Loozr Incentivized Testnet Roadmap: ',
+      link: "https://medium.com/@officialloozr/loozr-incentivized-testnet-roadmap-bd80c133b6f3",
+      month:"Oct"
+    },
+    {
+      img: slide3,
+      details: 'Loozr is bringing decentralized Music Investing and Streaming to the NEAR Protocol: ',
+      link: "https://medium.com/@officialloozr/loozr-is-bringing-music-investing-and-streaming-to-the-near-protocol-5c8688b07c3",
+      month:"Jun"
+    },
+  ] 
   // const numberOfSlides = 3;
   // const paneNodes = Array.apply(null, Array(numberOfSlides)).map((_, i) => {
   //   return (
@@ -74,26 +94,29 @@ const Carousel = () => {
 
   return(
     <div className="h-[230px] w-full relative  " > 
-      {images.map((item: any, index: any) => {
+      {image.map((item: any, index: any) => {
           return( 
             <AnimatePresence  key={item} >
-              {index === isShown &&
-                <motion.div 
-                  key={item} 
-                    className="w-full  min-h-[210px] absolute inset-x-0 top-0 bg-no-repeat bg-cover bg-center pl-8 py-7 flex flex-col justify-end "
-                    style={{ background: `url(${item})`, backgroundColor: "#000", backgroundPosition: "cover" }}
-                    {...boxAnimation}
-                  >
-                    <p>
-                      <span className="text-loozr-purple font-medium text-[13px]">
-                        MUSIC
-                      </span>{" "}
-                      <span className="text-xs">/ 2 months ago</span>
-                    </p>
-                    <p className="text-white font-semibold text-[17px] leading-7 max-w-[300px]">
-                      DISCOVER, BUY & SELL ARTISTE Coins.
-                    </p> 
-                </motion.div> 
+              {index === isShown && 
+                <a target="_blank" href={item.link} > 
+                  <motion.div  
+                    key={item} 
+                      className="w-full  min-h-[210px] absolute inset-x-0 top-0 bg-no-repeat bg-cover bg-center pl-8 py-7 flex flex-col justify-end "
+                      style={{ background: `url(${item.img})`, backgroundColor: "#000", backgroundPosition: "cover" }}
+                      {...boxAnimation}
+                    >
+                    <div className=" bg-black bg-opacity-40 z-10 absolute inset-0 " />
+                      <p className=" relative z-20 text-white " >
+                        <span className="text-loozr-purple relative z-20 font-medium text-[13px]">
+                          MUSIC
+                        </span>{" "}
+                        <span className="text-xs relative z-20">/{item.month}</span>
+                      </p>
+                      <p className="text-white relative z-20 font-semibold text-[17px] leading-7 max-w-[450px]">
+                        {item.details}
+                      </p> 
+                  </motion.div>  
+                </a>
               }
             </AnimatePresence> 
           )})} 
