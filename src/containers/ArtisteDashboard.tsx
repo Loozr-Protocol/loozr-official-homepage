@@ -81,7 +81,7 @@ const ArtisteDashboard = () => {
     
     return (
       <>
-        <div className="flex items-center mt-[3px] justify-between mb-[15px]">
+        <div className="flex items-center md:px-0 px-6 mt-[3px] justify-between mb-[15px]">
           <p className="font-medium text-base md:text-[17px] text-white">
             Recent artist coins
           </p>
@@ -89,7 +89,7 @@ const ArtisteDashboard = () => {
         </div>
         <div
           id={"carousel"}
-          className="max-w-full overflow-auto scroll_event whitespace-nowrap md:mb-[2px] mb-16"
+          className="max-w-full md:px-0 px-6 overflow-auto scroll_event whitespace-nowrap md:mb-[2px] mb-16"
           ref={featuredRef}
         >
           <div className="flex ">

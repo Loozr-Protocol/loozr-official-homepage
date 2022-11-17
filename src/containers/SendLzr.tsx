@@ -112,7 +112,7 @@ const SendLzr = () => {
               <div className=" absolute bg-[#12161F] top-[61px] overflow-y-auto max-h-[250px] z-[120] py-2 mt-2 rounded-lg px-4 w-full  " > 
                 {data.map((item: any, index: any) => { 
 
-                  const domainName = item.account_id+".lzrmixr.testnet"
+                  const domainName = item.account_id+"."+MIXER_ACCOUNT
 
                   return(
                     <div key={index} onClick={() => ClickHandler(domainName, domainName)} className=' w-full cursor-pointer flex my-3 items-center ' > 
