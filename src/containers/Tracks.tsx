@@ -14,6 +14,7 @@ import Monalisa from "../assets/img/artists/suaa.png";
 import useAudioPlayer from "../hooks/useAudioPlayer";
 import Play from "../components/Play";
 import Pause from "../components/Pause";
+import { motion } from "framer-motion";
 
 const tracks = [
   {
@@ -96,14 +97,16 @@ const filters = [
 
 const Tracks = () => {
   const [active, setActive] = useState(filters[0]);
+  const [isShown, setIsShown] = React.useState("")
+
   return (
     <div className="pb-32">
-      <div className="w-full overflow-x-auto flex mb-9">
+      <div className="w-full overflow-x-auto flex mb-7">
         {filters.map((filter, index) => (
           <div
             key={index}
             onClick={() => setActive(filter)}
-            className={`py-2.5 px-6 bg-dark-700 font-normal text-xs mr-3 min-w-max ${
+            className={`py-[7px] px-6 bg-dark-700 font-normal text-[11.5px] mr-3 min-w-max ${
               active === filter ? "text-white" : "text-muted cursor-pointer"
             }`}
           >
@@ -120,19 +123,34 @@ const Tracks = () => {
           const { setPlaying, playing } = useAudioPlayer(index);
           // eslint-disable-next-line react-hooks/rules-of-hooks
           const [show, setShow] = useState(false);
+
+          const Checking =(item: any, text: any, shown: any)=> {
+            setShow(shown)
+            if(text.length > 19){ 
+              setIsShown(item+"")
+            } else { 
+              setIsShown("false")
+            }
+          }
           return (
-            <div key={index}>
+            <motion.div  
+              whileHover={{
+                scale: 1.02, 
+                transition: { duration: 0.3 },
+              }} key={index} className="w-full relative"  >
+                <div className=" absolute inset-0 z-10 cursor-pointer "
+                  onMouseOver={() => {
+                    // setPlaying(true);
+                    // setShow(true);
+                    Checking(index, track.title, true)
+                  }}
+                  onMouseOut={() => {
+                    // setPlaying(false);
+                    Checking(index, track.title, false)
+                    // setShow(false);
+                  }}  onClick={() => setPlaying(!playing)} />
               <div
                 className="relative"
-                onMouseOver={() => {
-                  setPlaying(true);
-                  setShow(true);
-                }}
-                onMouseOut={() => {
-                  setPlaying(false);
-                  setShow(false);
-                }}
-                onClick={() => setPlaying(!playing)}
               >
                 <img src={track.img} alt="" width={"100%"} height={203} />
                 <div
@@ -153,11 +171,14 @@ const Tracks = () => {
                 <source src={"/song.mp3"} />
                 Your browser does not support the <code>audio</code> element.
               </audio>
-              <p className="font-normal text-sm mt-3 mb-0.5 text-white">
-                {track.title}
-              </p>
+
+              <div className={isShown === index+"" ? "example1 mt-3" : " h-[20px] mt-3 "} >
+                <p className="mb-[3px] font-medium text-sm text-white"> 
+                    {track.title} 
+                </p> 
+              </div>  
               <p className="text-muted text-xs font-normal">{track.artist}</p>
-            </div>
+            </motion.div>
           );
         })}
       </div>

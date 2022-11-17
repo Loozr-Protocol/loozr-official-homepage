@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { jsonToUser } from "../../utils";
+import { useGetSuggestedFollowsCallback } from "./hooks/useAccount";
 import { useGetUserCallback, useResendVerificationLinkCallback, useSignUpCallback, useAccountSetupCallback } from "./hooks/useAuth"
 
 export const getUserDetails = createAsyncThunk(
@@ -18,10 +19,10 @@ export const getUserDetails = createAsyncThunk(
 
 export const getIndividualProfile = createAsyncThunk(
   'user/getIndividualProfile',
-  async (userId: number, { rejectWithValue }) => {
+  async (accountDomain: string, { rejectWithValue }) => {
     const { handleGetUser } = useGetUserCallback();
     try {
-      const result = await handleGetUser(userId);
+      const result = await handleGetUser(accountDomain);
       const user = jsonToUser(result);
       return user;
     } catch (error) {
@@ -63,3 +64,16 @@ export const accountSetup = createAsyncThunk('user/accountSetup', async ({ accou
     return rejectWithValue(error);
   }
 });
+
+export const getSuggestedUsers = createAsyncThunk(
+  'users/getSuggestedUsers',
+  async (currentPage: number, { rejectWithValue }) => {
+    const { getSuggestedFollows } = useGetSuggestedFollowsCallback();
+    try {
+      const result = await getSuggestedFollows(currentPage);
+      return result;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+)

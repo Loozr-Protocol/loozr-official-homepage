@@ -1,68 +1,68 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Memoji from "../../assets/img/memoji.png";
-import { MIXER_ACCOUNT } from "../../config/constants";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import User from "../../config/constants/models/user";
+import { AppState } from "../../state/store";
 import {
   useFollowCallback,
-  usePollSuggestedFollows,
 } from "../../state/user/hooks/follows";
+import { getSuggestedUsers } from "../../state/user/userActions";
+import { removeSuggestedUser } from "../../state/user/userReducer";
 import Photo from "../Photo";
 
-const SuggestedFollows = () => {
-  const users = usePollSuggestedFollows();
+const SuggestedFollows = (props: any) => {
+  const dispatch = useDispatch();
+  const users = useSelector((state: AppState) => state.user.suggestedUsers.users);
   const { handleFollow } = useFollowCallback();
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    dispatch(getSuggestedUsers(1));
+  }, []);
 
   const onFollow = async (user: User) => {
+    dispatch(removeSuggestedUser(user.id));
     await handleFollow(user.id);
-    const userIndex = users.indexOf(user);
-    if (userIndex > -1) {
-      users.splice(userIndex, 1);
-    }
-  };
+  }; 
+
+  const SuggestedUserTable = ({ user }: { user: User }) => (
+    <div className=' w-full flex justify-between my-2 items-center ' >
+
+      <Photo
+        alt=""
+        className="object-contain flex justify-center items-center w-10 h-10 rounded-full "
+        style={{ border: "3px solid #141922" }}
+      />
+      <div onClick={() => navigate(`/${user.accountDomain}`)} className=' ml-3 ' >
+        <div className=' flex -mt-1 items-center ' >
+          <p className=' text-[13px] font-semibold ' > {user.accountId}</p>
+        </div>
+        <div className=' flex -mt-1 items-center ' >
+          <p className=' text-[11px] font-semibold text-[#536079] ' >{user.accountDomain}</p> 
+        </div>
+      </div>
+      <p onClick={() => onFollow(user)} className=' text-[12px] ml-auto font-bold text-[#8369F4] cursor-pointer ' >Follow</p>
+    </div>
+  )
+
+  const renderUsers = (users: User[]) => {
+    const shortenedUserList = users.slice(0, 3);
+    return shortenedUserList.map((user: User, index) => (
+      <SuggestedUserTable user={user} key={index} />
+    ));
+  }
 
   return (
     <>
       <div className="flex justify-between items-center mb-10">
         <p className="text-sm font-semibold text-white">Suggested For You</p>
-        {/* <p className="text-xs font-medium text-muted">View all</p> */}
+        <p onClick={() => props.modal(true)} className="text-xs cursor-pointer font-medium text-muted">View all</p>
       </div>
       {users
-        ? users.map((user, index) => (
-            <div key={index} className="flex justify-between items-center mb-9">
-              <div className="flex items-center text-muted">
-                <Photo
-                  alt=""
-                  className="h-[45px] w-[45px] rounded-full mr-2"
-                  style={{ border: "6px solid #141922" }}
-                />
-                <Link to={`/profile/${user.id}`}>
-                  <p className="text-sm font-semibold text-white name-tag">
-                    {user.accountId}
-                  </p>
-                  <p className="flex items-center">
-                    <span className="text-muted text-[11px] font-bold mr-1 name-tag">
-                      {user.accountId}.
-                      {MIXER_ACCOUNT}
-                    </span>
-                    <span className="bg-muted rounded-full h-1 w-1 mr-1" />{" "}
-                    {/* <span className="text-[11px] text-muted font-medium">
-                  $3,001.99
-                </span> */}
-                  </p>
-                </Link>
-              </div>
-              <p
-                className="text-[11px] font-medium text-loozr-purple"
-                onClick={() => onFollow(user)}
-              >
-                Follow
-              </p>
-            </div>
-          ))
+        ? renderUsers(users)
         : null}
     </>
   );
 };
 
-export default SuggestedFollows;
+export default SuggestedFollows; 

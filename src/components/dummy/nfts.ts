@@ -12,14 +12,20 @@ import Six from "../../assets/img/nfts/6.png";
 
 export const nfts = [
   {
+    album: "Happy Times", 
+    artist: "James Kelvin",
+    song: "/song.mp3",
     platform: "Mintbase.id",
     price: 0.24,
-    likes: "104",
+    likes: "104", 
     liked: true,
     token: Near,
     img: One,
   },
   {
+    album: "Already Dead", 
+    artist: "Selina Amber",
+    song: "/songtwo.mp3",
     platform: "Mintbase.id",
     price: 0.24,
     likes: 0,
@@ -28,6 +34,9 @@ export const nfts = [
     img: Two,
   },
   {
+    album: "Country Home", 
+    artist: "John Jones",
+    song: "/song3.mp3",
     platform: "Mintbase.id",
     price: 0.24,
     likes: "1.24k",
@@ -36,6 +45,9 @@ export const nfts = [
     img: Three,
   },
   {
+    album: "Heart", 
+    artist: "Chris Walker",
+    song: "/song4.mp3",
     platform: "Mintbase.id",
     price: 0.24,
     likes: 104,
@@ -44,6 +56,9 @@ export const nfts = [
     img: Four,
   },
   {
+    album: "Bay", 
+    artist: "Peace J",
+    song: "/song.mp3",
     platform: "Mintbase.id",
     price: 0.24,
     likes: "1.2k",
@@ -52,6 +67,9 @@ export const nfts = [
     img: Five,
   },
   {
+    album: "Jazz Blues", 
+    artist: "Doe Joe",
+    song: "/song3.mp3",
     platform: "Mintbase.id",
     price: 0.24,
     likes: 102,

@@ -82,12 +82,12 @@ const ResetPassword = () => {
     <FullPageError errorMsg={pageError} />
   ) : (
     <div className="min-h-screen w-full h-full grid">
-      <div className="flex flex-col items-center justify-center px-8 md:px-auto h-full w-full max-w-[558px] mx-auto">
+      <div className="flex flex-col items-center justify-center pt-6 px-8 md:px-auto h-full w-full  md:w-[400px] mx-auto">
         <div style={{ zoom: "85%", width: "100%" }}>
-          <p className="text-4xl md:text-5xl lg:text-label mb-6 md:mb-10 font-bold">
+          <p className="text-[20px]  md:text-[35px]  mb-6 font-bold">
             Reset password
           </p>
-          <p className="md:text-xl font-normal mb-10 md:mb-20">
+          <p className="md:text-xl font-normal mb-10 md:mb-10">
             Enter a new login password below.
           </p>
           <div className="w-full relative">
@@ -98,11 +98,16 @@ const ResetPassword = () => {
               onBlur={formik.handleBlur}
               onFocus={() => formik.setFieldTouched("password", true, true)}
               placeholder="New password"
-              className="py-8 px-11 text-muted placeholder:text-muted font-medium md:text-xl bg-dark-800 mb-11"
-              style={{ backgroundColor: "#12161F" }}
+              className="py-8 !px-[39px] text-muted placeholder:text-muted text-base font-medium bg-dark-800 w-full"
+              style={{
+                backgroundColor: "#12161F",
+                marginBottom: 43,
+                height: 74,
+                padding: "auto 40px",
+              }}
             />
             <span
-              className="absolute right-4 inset-y-4 cursor-pointer"
+              className="absolute right-10 inset-y-6 cursor-pointer"
               onClick={() => setPasswordVisible(!passwordVisible)}
             >
               {passwordVisible ? (
@@ -110,7 +115,7 @@ const ResetPassword = () => {
               ) : (
                 <VisibilityOffIcon style={{ color: "#536079" }} />
               )}
-            </span>
+            </span> 
           </div>
           <div className="w-full h-auto pt-2">
             {formik.touched.password && formik.errors.password && (
@@ -124,7 +129,7 @@ const ResetPassword = () => {
               </motion.div>
             )}
           </div>
-          <div className="w-full relative mb-12 md:mb-24">
+          <div className="w-full relative mb-10 md:mb-10">
             <input
               type={passwordVisible ? "text" : "password"}
               name="retyped_password"
@@ -134,11 +139,16 @@ const ResetPassword = () => {
                 formik.setFieldTouched("retyped_password", true, true)
               }
               placeholder="Re-type Password"
-              className="py-8 px-11 text-muted placeholder:text-muted font-medium md:text-xl bg-dark-800 "
-              style={{ backgroundColor: "#12161F" }}
+              className="py-8 !px-[39px] text-muted placeholder:text-muted text-base font-medium bg-dark-800 w-full"
+              style={{
+                backgroundColor: "#12161F",
+                marginBottom: 43,
+                height: 74,
+                padding: "auto 40px",
+              }}
             />
             <span
-              className="absolute right-4 inset-y-4 cursor-pointer"
+              className="absolute right-10 inset-y-6 cursor-pointer"
               onClick={() => setPasswordVisible(!passwordVisible)}
             >
               {passwordVisible ? (

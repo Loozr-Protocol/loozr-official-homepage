@@ -21,14 +21,47 @@ export default function RequireAuth({ children }: { children: JSX.Element }) {
       );
     }
 
-    if(user.isArtist && !user.tokenName) {
+    if (user.isArtist && !user.tokenName) {
       return (
-        <Navigate to="/artist-account-setup" state={{ from: location }} replace />
+        <Navigate
+          to="/artist-account-setup"
+          state={{ from: location }}
+          replace
+        />
       );
     }
   } else {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
+  return children;
+}
+
+export function AccountSetupCheckOnly({ children }: { children: JSX.Element }) {
+  const user = useSelector((state: AppState) => state.user.userInfo);
+  const jwtToken = localStorage.getItem("jwtToken")
+    ? localStorage.getItem("jwtToken")
+    : null;
+  let location = useLocation();
+
+  if (jwtToken) {
+    if (user) {
+      if (!user.accountId) {
+        return (
+          <Navigate to="/account-setup" state={{ from: location }} replace />
+        );
+      }
+
+      if (user.isArtist && !user.tokenName) {
+        return (
+          <Navigate
+            to="/artist-account-setup"
+            state={{ from: location }}
+            replace
+          />
+        );
+      }
+    }
+  }
   return children;
 }

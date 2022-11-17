@@ -1,6 +1,7 @@
 import { BASE_EXPLORER_URLS, NEAR_NETWORK } from "../config/constants";
 import Artist, { ArtistJsonProps } from "../config/constants/models/artist";
 import User, { UserJsonProps } from "../config/constants/models/user";
+import { getArtistCoinStat } from './calls/getArtistCoinState';
 
 export function copy(content: string) {
   if (!!content) {
@@ -46,4 +47,14 @@ export const jsonToArtist = (jsonData: ArtistJsonProps) => {
 
 export const nearExplorerAccount = (accountId: string) => {
   return `${BASE_EXPLORER_URLS[NEAR_NETWORK]}/accounts/${accountId}`;
+}
+
+export const loadCoinPrices = async (artist: Artist) => {
+  try {
+    const result = await getArtistCoinStat(artist.user.id);
+      const payload = { artist, rawCoinInfo: result};
+      return payload;
+    } catch (error) {
+      console.log(error);
+    }
 }

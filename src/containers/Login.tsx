@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
@@ -13,11 +13,11 @@ import { login } from "../state/user/userReducer";
 import { jsonToUser } from "../utils";
 
 const Login = () => {
-  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false); 
   const [isLoading, setLoading] = useState(false);
   const push = useNavigate();
   const dispatch = useDispatch();
-  const { handleLogin } = useLoginCallback();
+  const { handleLogin } = useLoginCallback(); 
 
   const loginSchema = yup.object({
     email: yup
@@ -33,7 +33,7 @@ const Login = () => {
     initialValues: { email: "", password: "" },
     validationSchema: loginSchema,
     onSubmit: () => {},
-  });
+  }); 
 
   const handleLoginSubmit = async () => {
     if (!formik.dirty) {
@@ -47,6 +47,7 @@ const Login = () => {
       setLoading(false);
       const jwtToken = result["access_token"];
       localStorage.setItem("jwtToken", jwtToken);
+      sessionStorage.setItem("isLoggedIn", "true");
       const user = jsonToUser(result["user"]);
       dispatch(login(user));
       push("/explore", { replace: true });
@@ -54,7 +55,7 @@ const Login = () => {
       setLoading(false);
        httpError(err);
     }
-  };
+  };  
 
   return (
     <div className="min-h-screen w-full grid md:grid-cols-2 lg:grid-cols-3">
@@ -73,20 +74,21 @@ const Login = () => {
               Create account
             </Link>
           </p>
-          <input
-            type="email"
-            name="email"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            onFocus={() => formik.setFieldTouched("email", true, true)}
-            placeholder="Enter email"
-            className="py-8 !px-[39px] text-muted placeholder:text-muted text-base font-medium bg-dark-800 mb-7"
-            style={{
-              backgroundColor: "#12161F",
-              height: 74,
-              padding: "auto 40px",
-            }}
-          />
+            <input
+              type="email" 
+              name="email" 
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              onFocus={() => formik.setFieldTouched("email", true, true)}
+              
+              placeholder="Enter email"
+              className="input-name py-8 relative z-10 !px-[39px] text-muted placeholder:text-muted text-base font-medium bg-dark-800 mb-7"
+              style={{
+                backgroundColor: "#12161F",
+                height: 74,
+                padding: "auto 40px",
+              }}
+            />  
           <div className="w-full h-auto pt-2">
             {formik.touched.email && formik.errors.email && (
               <motion.div
@@ -124,7 +126,7 @@ const Login = () => {
               ) : (
                 <VisibilityOffIcon style={{ color: "#536079" }} />
               )}
-            </span>
+            </span> 
           </div>
           <div className="w-full h-auto pt-2">
             {formik.touched.password && formik.errors.password && (

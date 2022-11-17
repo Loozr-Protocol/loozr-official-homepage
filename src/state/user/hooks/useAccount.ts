@@ -18,10 +18,48 @@ export function useUpdateProfileCallback() {
 }
 
 export function useGetSuggestedFollowsCallback() {
-  const getSuggestedFollows = async (): Promise<UserJsonProps[]> => {
+  const getSuggestedFollows = async (currentPage: number): Promise<any> => {
     const httpClient = new HttpClient();
-    const result = await httpClient.axiosInstance.get('/users/suggested-follows');
-    return result.data.results;
+    const result = await httpClient.axiosInstance.get(`/users/suggested-follows?page=${currentPage}`);
+    return result.data;
   }
   return { getSuggestedFollows }
+}   
+ 
+export function useSearchUserCallback() {
+  const getSearchUser = async (data: any): Promise<UserJsonProps[]> => {
+    const httpClient = new HttpClient();
+    const result = await httpClient.axiosInstance.get('/search?query='+data);
+    return result.data.results;
+  }
+  return { getSearchUser }
+}    
+
+
+
+export function useFollowerCallback() {
+  const getFollower = async (data: any): Promise<UserJsonProps[]> => {
+    const httpClient = new HttpClient();
+    const result = await httpClient.axiosInstance.get('/users/followers/'+data);
+    return result.data.results;
+  }
+  return { getFollower }
+}   
+
+export function useFollowingCallback() {
+  const getFollowing = async (data: any): Promise<UserJsonProps[]> => {
+    const httpClient = new HttpClient();
+    const result = await httpClient.axiosInstance.get('/users/followings/'+data);
+    return result.data.results;
+  }
+  return { getFollowing }
+}   
+
+export function useSelectGenreCallback() {
+  const handleSelectGenre = async (postData: { genres: any }): Promise<any> => {
+    const httpClient = new HttpClient();
+    const result = await httpClient.axiosInstance.post('/users/set-genre', { postData });
+    return result.data;
+  }
+  return { handleSelectGenre }
 }

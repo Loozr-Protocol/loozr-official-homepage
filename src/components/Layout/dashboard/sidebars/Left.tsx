@@ -10,7 +10,7 @@ import NFT from "../../../../assets/svg/NFT";
 import Wallet from "../../../../assets/svg/Wallet";
 import Notification from "../../../../assets/svg/Notification";
 import More from "../../../../assets/svg/More";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { AppState } from "../../../../state/store";
@@ -76,8 +76,9 @@ export const Left = () => {
   const md = useMediaQuery("(min-width:768px)");
   const user = useSelector((state: AppState) => state.user.userInfo);
   const { handleBecomeArtiste } = useBecomeArtisteCallback();
+  let location = useLocation();
 
-  const becomeArtist = async () => {
+  const becomeArtist = async () => { 
     dispatch(setPageLoaderStatus(true));
     try {
       await handleBecomeArtiste({});
@@ -90,10 +91,27 @@ export const Left = () => {
   const musicUpload = () => {
     toast.info("Coming soon!", TOAST_OPTIONS);
   };
+  
+  const isLoggedIn = sessionStorage.getItem("isLoggedIn") === "true"; 
+  const [isShown, setIsShown] = React.useState(false)
+  const [shown, setShown] = React.useState(false)
+
+  const Checking =(item: any)=> { 
+    if(user.accountId.length > 16){ 
+      setIsShown(item)
+    } else { 
+      setIsShown(false)
+    }
+    if(user?.tokenName.length > 5){ 
+      setShown(item)
+    } else { 
+      setShown(false)
+    }
+  }
 
   return (
     <div
-      className={`bg-dark-800 fixed flex flex-col items-end lg:block left-0 h-screen md:pl-11 xl:pl-14 pr-auto md:pr-4 xl:pr-12 pt-8 pb-12 mb-5`}
+      className={`bg-dark-800 flex flex-col items-start h-screen md:pl-11 xl:pl-14 pr-auto md:pr-4 xl:pr-12 pt-8 pb-12 mb-5`}
       style={{
         // minWidth: xl ? drawerMinWidth : "auto",
         // maxWidth: md ? `${drawerMaxWidth}vw` : 0,
@@ -103,23 +121,27 @@ export const Left = () => {
       {xl ? (
         <img src={LoozrBeta} alt="" className={`w-32 h-8 mb-7`} />
       ) : (
-        <img src={Loozr} alt="" className={`mb-6 h-6 w-6`} />
+        <img src={Loozr} alt="" className={`mb-6 ml-[12px] h-6 w-6`} />
       )}
-      {!user.isArtist ? (
-        <button
-          onClick={becomeArtist}
-          className="hidden xl:block text-xs font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
-        >
-          Become an artist
-        </button>
-      ) : (
-        <button
-          onClick={musicUpload}
-          className="hidden xl:block text-xs font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
-        >
-          Upload song
-        </button>
-      )}
+      {isLoggedIn && ( 
+        <>
+          {!user?.isArtist ? (
+                <button
+                  onClick={becomeArtist}
+                  className="hidden xl:block text-xs font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
+                >
+                  Become an artist
+                </button>
+          ) : (
+            <button
+              onClick={musicUpload}
+              className="hidden xl:block text-xs font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
+            >
+              Upload song
+            </button>
+          )}
+        </>
+        )}
       <div className="w-full  xl:h-[85%] flex flex-col items-end xl:block overflow-y-auto overflow-x-hidden">
         {tabs.map((tab: any) => (
           <Link
@@ -145,29 +167,62 @@ export const Left = () => {
         ))}
         <div className="h-px w-full lg:w-full bg-muted-50 mt-8 mb-7" />
         <div
-          onClick={() => push("/profile")}
-          className="flex items-center justify-center w-full mt-6 cursor-pointer"
+          onClick={() => push("/"+user.accountDomain)}
+          className=" flex w-full items-center mt-6 cursor-pointer"
+          onMouseOver={() => { 
+            Checking(true)
+          }}
+          onMouseOut={() => { 
+            Checking(false) 
+          }}
         >
+        <div className=" w-fit " > 
           <Photo
             alt=""
-            className="object-contain w-8 h-8 xl:w-14 xl:h-10 rounded-full xl:mr-3"
-            style={{ border: "6px solid #141922" }}
+            className="object-cover w-12 h-12 xl:w-14 xl:h-14 flex justify-center items-center rounded-full  "
+            style={{ border: "5px solid #141922" }}
           />
-          <div className="hidden xl:block w-full">
-            <p className="text-sm font-extrabold text-white name-tag">
-              {user.accountId}
-            </p>
-            <p className="text-[11px] font-medium flex items-center w-auto flex-nowrap whitespace-nowrap text-muted">
-              {user.isArtist ? (
-                <span>
-                  <span className="uppercase">${user.tokenName}</span>{" "}
-                  <span className="h-1 w-1 rounded-full bg-muted opacity-90 mb-[3px]" />{" "}
-                  Artiste
-                </span>
-              ) : (
-                "Listener"
-              )}
-            </p>
+        </div>
+          <div className="hidden xl:block w-full pl-2 "> 
+            <div className={isShown ? "example1 " : " h-[20px] "} >
+              {user?.accountId && 
+                <>
+                  {isShown ? 
+                    <p className=" text-sm font-extrabold text-white name-tag"> 
+                      {user?.accountId}
+                    </p> :
+                    <p className=" text-sm font-extrabold text-white name-tag"> 
+                      {user?.accountId.slice(0,16)}
+                    </p>  
+                  }
+                </>
+              }
+            </div>   
+            <div className={shown ? "example1 " : " h-[20px] "} >
+              {shown ? 
+                <p className="text-[11px] font-medium flex items-center w-auto flex-nowrap whitespace-nowrap text-muted">
+                  {user?.isArtist ? (
+                    <span>
+                      <span className="uppercase">${user?.tokenName}</span>{" "}
+                      <span className="h-1 w-1 rounded-full bg-muted opacity-90 mb-[3px]" />{" "}
+                      Artiste
+                    </span>
+                  ) : (
+                    "Listener"
+                  )}
+                </p> :
+                <p className="text-[11px] font-medium flex items-center flex-nowrap whitespace-nowrap text-muted">
+                  {user?.isArtist ? (
+                    <span>
+                      <span className="uppercase">${user?.tokenName.slice(0,5)}</span>{" "}
+                      <span className="h-1 w-1 rounded-full bg-muted opacity-90 mb-[3px]" />{" "}
+                      Artiste
+                    </span>
+                  ) : (
+                    "Listener"
+                  )}
+                </p>}
+            </div>
           </div>
         </div>
       </div>

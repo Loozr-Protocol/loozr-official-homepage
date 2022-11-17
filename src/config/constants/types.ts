@@ -36,6 +36,15 @@ export interface Artist {
 
 export interface UserState {
   userInfo: User;
+  suggestedUsers: {
+    users: User[];
+    pagination: {
+      total: number;
+      current: number;
+      prevPage: number;
+      reachMaxLimit: boolean;
+    }
+  }
   currentProfile: User;
   jwtToken: string;
   loading: boolean;

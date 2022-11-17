@@ -1,6 +1,7 @@
 import { Model } from '../types';
 import { CREATOR_COIN_DOMAIN } from "..";
 import User from './user';
+import BigNumber from 'bignumber.js';
  
 export interface ArtistJsonProps {
   id: number;
@@ -21,6 +22,15 @@ export interface ArtistProps {
   user?: User
 }
 
+export interface CoinInfo {
+  coinPrice: number;
+  priceUSD: string;
+  coinHolders: number;
+  marketCap: string;
+  founderReward: number;
+  totalSupply: BigNumber;
+}
+
 export default class Artist implements Model {
   id: number;
   isVerified: boolean;
@@ -29,6 +39,7 @@ export default class Artist implements Model {
   totalListens: number;
   founderReward: number;
   user: User;
+  coinInfo: CoinInfo;
 
   constructor({ id, isVerified, approved, creatorCoinId, totalListens, founderReward, user }: ArtistProps) {
     this.id = id;
@@ -42,6 +53,10 @@ export default class Artist implements Model {
 
   get accountDomain() {
     return `${this.creatorCoinId}.${CREATOR_COIN_DOMAIN}`;
+  }
+
+  set setCoinInfo(coinInfo: CoinInfo) {
+    this.coinInfo = coinInfo;
   }
 
   fromJson(jsonData: ArtistJsonProps) {

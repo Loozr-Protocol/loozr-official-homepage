@@ -4,8 +4,13 @@ import Goya from "../../assets/img/artists/goya.png";
 import ArrowLeft from "../../assets/icons/caret-left.svg";
 import ArrowRight from "../../assets/icons/caret-right.svg";
 import { Link } from "react-router-dom";
+import SlidesButton from "../SlidesButton";
+import Marquee from "react-fast-marquee";
+import { motion } from "framer-motion";
 
 const Suggestion = () => {
+
+  const [isShown, setIsShown] = React.useState("")
   const handleMoveRight = (id: number) => {
     console.log("courosel", document.getElementById(`carousel`));
     if (
@@ -21,39 +26,62 @@ const Suggestion = () => {
     document.getElementById(`carousel-${id}`).scrollLeft -= 800;
   };
 
+  const ref: any = React.useRef(null); 
+
+  const Checking =(item: any, text: any)=> {
+    if(item.length > 20){ 
+      setIsShown(item)
+    } else { 
+      setIsShown("false")
+    }
+  }
+
   return (
-    <div className="w-full">
-      <div className="flex items-center justify-between mb-6">
+    <div className="w-full mt-[2px] md:px-0 px-6 ">
+      <div className="flex items-center justify-between pb-2">
         <p className="font-medium text-base md:text-[17px] text-white">
           Tracks you&apos;d love
         </p>
-        <div className="flex items-center">
+        {/* <div className="flex items-center">
           <Link to="/tracks" className="text-xs font-medium text-muted">
             View all
           </Link>
-        </div>
+        </div> */}
+          <SlidesButton position={ref} width={200} />
       </div>
       <div
-        id={"carousel-1"}
-        className="max-w-full overflow-auto whitespace-nowrap mb-[74px]"
+        // id={"carousel-1"}
+        ref={ref}
+        className="max-w-full overflow-x-auto  overflow-y-hidden  scroll_event whitespace-nowrap pt-3 px-2 pb-[74px]"
       >
-        <div className="flex">
+        <div
+        
+        className="flex">
           {Array(15)
             .fill(1)
             .map((_, index) => (
-              <div key={index} className="flex flex-col mr-4 min-w-[150px]">
+              <motion.div  
+                whileHover={{
+                  scale: 1.02, 
+                  transition: { duration: 0.3 },
+                }}
+                onMouseOver={()=> Checking(index+"", "Chiling good" )}
+                onMouseOut={()=> Checking("false", "Chiling good" )}
+                key={index} className="flex flex-col h-auto mr-4 min-w-[150px]">
                 <img
                   src={Goya}
                   alt=""
-                  className="object-cover h-36 w-h-36 mb-[18px]"
+                  className="object-cover h-36 w-h-36 mb-[15px]"
                 />
-                <p className="mb-[3px] font-medium text-sm text-white">
-                  Chiling good
-                </p>
-                <p className="text-muted text-xs font-normal md:text-[13px] md:font-normal">
+                <div className={isShown === index+"" ? "example1" : " h-[20px] "} >
+                  <p className="mb-[3px] font-medium text-sm text-white">
+                  Chiling good 
+                  </p>
+                </div> 
+                <p className="text-muted text-xs font-normal md:text-[13px] mt-[2px] md:font-normal">
                   Goya Menor
                 </p>
-              </div>
+              </motion.div>
             ))}
         </div>
       </div>

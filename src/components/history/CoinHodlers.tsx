@@ -17,50 +17,58 @@ export default function CoinHodlers({ coin, user }: { coin: User; user: User }) 
 
   return (
     <>
-      {holders.map((hodler, index) => (
-        <div
-          className="w-full flex items-center justify-between text-white mb-6"
-          key={index}
-        >
-          <div className="flex items-center">
-            <Photo
-              alt=""
-              className="h-12 w-12 rounded-full mr-3"
-              style={{ border: "6px solid #141922" }}
-            />
+    {holders.length === 0 ? 
+      <div className=" w-full py-5 rounded-lg mb-32 bg-[#10141C] bg-opacity-50 md:backdrop:mb-12 " > 
+        <p className=" font-medium text-[13px] text-center " >No information avaliable 👋</p>
+      </div>:
+      <>
+        
+        {holders.map((hodler, index) => (
+          <div
+            className="w-full flex items-center justify-between text-white mb-32 md:mb-6"
+            key={index}
+          >
+            <div className="flex items-center">
+              <Photo
+                alt=""
+                className="h-12 w-12 rounded-full mr-3"
+                style={{ border: "6px solid #141922" }}
+              />
+              <div>
+                <p className="text-xs md:text-sm font-bold text-white mb-0.5">
+                  {hodler.user.accountId}
+                </p>
+                <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
+                  {hodler.balance ? (
+                    <>
+                      Owns {hodler.balance.balance} ${coinName} coins
+                    </>
+                  ) : (
+                    ""
+                  )}
+                </p>
+              </div>
+            </div>
             <div>
-              <p className="text-xs md:text-sm font-bold text-white mb-0.5">
-                {hodler.user.accountId}
+              <p className="text-xs md:text-sm font-semibold text-white mb-0.5">
+                {hodler.user.accountType}
               </p>
               <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
-                {hodler.balance ? (
-                  <>
-                    Owns {hodler.balance.balance} ${coinName} coins
-                  </>
-                ) : (
-                  ""
-                )}
+                Type of user
+              </p>
+            </div>
+            <div>
+              <p className="text-xs md:text-sm font-semibold text-white mb-0.5">
+                {hodler.balance ? `~$${hodler.balance.balanceUSD}` : ""}
+              </p>
+              <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
+                USD value
               </p>
             </div>
           </div>
-          <div>
-            <p className="text-xs md:text-sm font-semibold text-white mb-0.5">
-              {hodler.user.accountType}
-            </p>
-            <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
-              Type of user
-            </p>
-          </div>
-          <div>
-            <p className="text-xs md:text-sm font-semibold text-white mb-0.5">
-              {hodler.balance ? `~$${hodler.balance.balanceUSD}` : ""}
-            </p>
-            <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
-              USD value
-            </p>
-          </div>
-        </div>
-      ))}
+        ))}
+      </>
+      }
     </>
   );
 }

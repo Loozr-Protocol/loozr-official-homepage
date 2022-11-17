@@ -26,6 +26,11 @@ import NFTs from "../containers/Nfts";
 import Notifications from "../containers/Notifications";
 import BuyArtistToken from "../containers/BuyArtistToken";
 import SellArtistToken from "../containers/SellArtistToken";
+import SelectGenres from "../containers/SelectGenres";
+import SuggestedArtistes from "../containers/SuggestedArtistes";
+import MusicInfo from "../containers/MusicInfo"; 
+import ExploreDashboard from "../containers/ExploreDashboard";
+import UpdateProfile from "../containers/UpdateProfile";
 
 export const authRoutes = [
   {
@@ -34,6 +39,18 @@ export const authRoutes = [
     private: false,
     component: Login,
   },
+  {
+    name: "select-genres",
+    path: "select-genres",
+    private: false,
+    component: SelectGenres,
+  },
+  // {
+  //   name: "suggested-artistes",
+  //   path: "suggested-artistes",
+  //   private: false,
+  //   component: SuggestedArtistes,
+  // },
   {
     name: "signup",
     path: "signup",
@@ -75,6 +92,18 @@ export const authRoutes = [
     private: true,
     component: LaunchToken,
   },
+  {
+    name: "song info",
+    path: "/artists/music-info",
+    private: false,
+    component: MusicInfo,
+  }, 
+  // {
+  //   name: "updateprofile",
+  //   path: "updateprofile",
+  //   private: true,
+  //   component: UpdateProfile,
+  // }, 
 ];
 
 export const routes = [
@@ -101,7 +130,7 @@ export const routes = [
     path: "/artists/songs/:id",
     private: false,
     component: SongDashboard,
-  },
+  }, 
 ];
 
 export const dashboard = [
@@ -124,12 +153,6 @@ export const dashboard = [
     component: SellArtistToken,
   },
   {
-    name: "artiste dashboard",
-    path: "explore",
-    private: true,
-    component: ArtisteDashboard,
-  },
-  {
     name: "wallet",
     path: "wallet",
     private: true,
@@ -137,13 +160,7 @@ export const dashboard = [
   },
   {
     name: "profile",
-    path: "profile/:id",
-    private: true,
-    component: Profile,
-  },
-  {
-    name: "profile",
-    path: "profile",
+    path: "/:accountDomain",
     private: true,
     component: Profile,
   },
@@ -159,12 +176,12 @@ export const dashboard = [
     private: true,
     component: Tracks,
   },
-  {
-    name: "buy lzr",
-    path: "lzr/buy",
-    private: true,
-    component: BuyLzr,
-  },
+  // {
+  //   name: "buy lzr",
+  //   path: "lzr/buy",
+  //   private: true,
+  //   component: BuyLzr,
+  // },
   {
     name: "send lzr",
     path: "lzr/send",
@@ -184,3 +201,13 @@ export const dashboard = [
     component: Notifications,
   },
 ];
+
+
+export const dashboardhome = [ 
+  {
+    name: "artiste dashboard",
+    path: "explore",
+    private: false,
+    component: ArtisteDashboard,
+  },
+]

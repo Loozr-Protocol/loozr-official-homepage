@@ -1,60 +1,131 @@
 import React, { useEffect } from "react";
-import VerifiedBadge from "../assets/icons/verified_badge.svg";
+import verified from "../assets/icons/verified.svg";
 
 import { getArtists } from "../state/artist/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../state/store";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Photo from "../components/Photo";
+import { loadCoinPrices } from "../utils";
+import { changePage, setArtistCoinInfo } from "../state/artist/artistReducer";
+import Pagination from "../components/Pagination";
 
-const Artistes = () => {
-  const dispatch = useDispatch();
-  const artists = useSelector((state: AppState) => state.artist.artists);
+const ArtisteRenderer = (props) => {
+  const [isShownText, setIsShownText] = React.useState(-1);
+  const [isShown, setIsShown] = React.useState(-1);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    dispatch(getArtists());
-  }, []);
+  const Checking = (item: any, text: any) => {
+    setIsShown(item);
+    if (text.length > 7) {
+      setIsShownText(item);
+    } else {
+      setIsShownText(-1);
+    }
+  };
 
   return (
-    <div className="w-full mt-8 md:mt-0 pb-28">
-      <p className="text-white text-[17px] leading-7 font-thin md:font-medium mb-7">
-        Artistes
-      </p>
-      <div className="grid grid-cols-3 md:grid-cols-4 gap-y-16">
-        {artists.map((_, i) => (
+    <div
+      onScroll={props.onScroll}
+      ref={props.listInnerRef}
+      style={{ height: "100vh", overflowY: "auto" }}
+    >
+      <div className="grid grid-cols-3 md:grid-cols-4 gap-y-8">
+        {props.dataList.map((_, i) => (
           <div
             key={i}
+            onMouseOver={() => Checking(i, _.creatorCoinId)}
+            onMouseOut={() => Checking(-1, _.creatorCoinId)}
             className="flex flex-col items-center mr-4 min-w-full md:min-w-[140px]"
           >
-            <Link
-              to={`/profile/${_.user.id}`} className="relative">
+            <Link to={`/${_.user.accountDomain}`} className="relative">
               <Photo
+              // photoColor={_.user.profileColor}
                 alt=""
-                className="object-cover h-24 w-24 md:h-32 md:w-32 rounded-full border-[15px] border-dark-700 mb-[18px]"
+                className="object-cover flex justify-center items-center h-[100px] md:h-[105px] w-[100px] md:w-[105px] rounded-full mb-[16px]"
                 style={{
                   border: "10px solid #141922",
                 }}
               />
               {_.isVerified && (
                 <img
-                  src={VerifiedBadge}
-                  alt=""
-                  className="absolute w-4 md:w-6 h-4 md:h-6 right-3 bottom-6"
+                  src={verified}
+                  alt="verified"
+                  className=" absolute bottom-1 right-0 w-[28px] "
                 />
               )}
             </Link>
-            <Link
-              to={`/profile/${_.user.id}`}
-              className="font-normal mb-1.5 md:font-bold text-base md:text-base text-white text-center uppercase name-tag"
-            >
-              ${_.creatorCoinId}
-            </Link>
-            {/* <p className="text-muted text-xs font-medium md:text-xs md:font-medium text-center">
-              474.14 LZR
-            </p> */}
+
+            <div className=" w-[105px] mt-1">
+              <div
+                className={
+                  isShownText === i
+                    ? "example1"
+                    : " h-[20px] w-full flex justify-center "
+                }
+              >
+                <p
+                  onClick={() => navigate(`/${_.user.accountDomain}`)}
+                  className=" cursor-pointer mb-[3px] font-medium text-sm text-white"
+                >
+                  $
+                  {isShownText === i
+                    ? _.creatorCoinId.toUpperCase()
+                    : _.creatorCoinId.slice(0, 7).toUpperCase()}
+                </p>
+              </div>
+            </div>
+            <p className=" font-medium text-[11.5px] text-[#536079] ">
+              ~{_.coinInfo ? _.coinInfo.coinPrice.toFixed(5) : "__"} LZR
+            </p>
+            <div className=" w-full px-[2px] flex justify-center ">
+              <button
+                onClick={() => navigate(`/artistes/buy/${_.user.id}`)}
+                className={
+                  isShown === i
+                    ? " bg-[#8369F4] h-[35px] md:flex justify-center items-center font-medium hidden rounded-full w-[105px] mt-[12px] text-[11.5px]  "
+                    : "bg-[#141922] text-[11.5px]  h-[35px] md:flex justify-center items-center font-medium hidden rounded-full w-[105px] mt-[12px] "
+                }
+              >
+                Buy coin
+              </button>
+            </div>
           </div>
         ))}
       </div>
+    </div>
+  );
+};
+
+const Artistes = () => {
+  const dispatch = useDispatch();
+  const pagination = useSelector(
+    (state: AppState) => state.artist.pagination
+  );
+  const artists = useSelector((state: AppState) => state.artist.artists);
+
+  useEffect(() => {
+    artists.forEach(async (artist) => {
+      const payload = await loadCoinPrices(artist);
+      dispatch(setArtistCoinInfo(payload));
+    });
+  }, [artists]);
+
+  return (
+    <div className="w-full mt-8 md:mt-0 pb-28">
+      <p className="text-white text-[17px] leading-7 font-thin md:font-medium mb-7">
+        Artistes
+      </p>
+      <Pagination
+        reachMaxLimit={pagination.reachMaxLimit}
+        dataList={artists}
+        prevPage={pagination.prevPage}
+        onFetchData={() => dispatch(getArtists(pagination.current))}
+        currentPage={pagination.current}
+        onSetCurrentPage={(page: number) => dispatch(changePage(page))}
+      >
+        <ArtisteRenderer />
+      </Pagination>
     </div>
   );
 };
