@@ -399,14 +399,46 @@ const Profile = () => {
                 )}
               </p>
               <div className=" w-full py-6 flex items-center ">
-                <img
-                  src={soundcloud}
-                  alt=""
-                  className=" w-[23.93px] h-[11.43px] mx-[9px] "
-                />
-                <img src={spotify} alt="" className=" w-[15.24px] mx-[9px]  " />
-                <img src={instagram} alt="" className=" w-[16px] mx-[9px]  " />
-                <img src={twitter} alt="" className=" w-[18.76px] mx-[9px]  " />
+                <div className=" mx-[9px] " >  
+                  {currentProfile.soundCloudLink ?
+                    <a href={currentProfile.soundCloudLink} >
+                      <img
+                        src={soundcloud}
+                        alt=""
+                        className=" w-[23.93px] h-[11.43px] "
+                      />
+                    </a>: 
+                    <img
+                      src={soundcloud}
+                      alt=""
+                      className=" w-[23.93px] h-[11.43px] "
+                    />
+                  } 
+                </div>
+                <div className=" mx-[9px] " >  
+                  {currentProfile.spotifyLink ?
+                    <a href={currentProfile.spotifyLink} >
+                      <img src={spotify} alt="" className=" w-[15.24px]  " />
+                    </a>: 
+                    <img src={spotify} alt="" className=" w-[15.24px]  " />
+                  } 
+                </div>
+                <div className=" mx-[9px] " >  
+                  {currentProfile.instagramLink ?
+                    <a href={currentProfile.instagramLink} >
+                      <img src={instagram} alt="" className=" w-[16px]  " />
+                    </a>: 
+                    <img src={instagram} alt="" className=" w-[16px]  " />
+                  } 
+                </div>
+                <div className=" mx-[9px] mt-1 " > 
+                  {currentProfile.twitterLink ?
+                    <a href={currentProfile.twitterLink} >
+                      <img src={twitter} alt="" className=" w-[18.76px]  " />
+                    </a>: 
+                    <img src={twitter} alt="" className=" w-[18.76px]  " />
+                  }
+                </div>
                 <div className=" relative  mx-2  ">
                   <img
                     onClick={() => setIsShown((prev) => !prev)}

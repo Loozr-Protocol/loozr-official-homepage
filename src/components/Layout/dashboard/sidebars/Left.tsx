@@ -78,15 +78,7 @@ export const Left = () => {
   const { handleBecomeArtiste } = useBecomeArtisteCallback();
   let location = useLocation();
 
-  const becomeArtist = async () => {
- 
-    if (user) {
-      if (!user.accountId) {
-        return (
-          <Navigate to="/account-setup" state={{ from: location }} replace />
-        );
-      }
-    } 
+  const becomeArtist = async () => { 
     dispatch(setPageLoaderStatus(true));
     try {
       await handleBecomeArtiste({});
@@ -176,7 +168,7 @@ export const Left = () => {
         <div className="h-px w-full lg:w-full bg-muted-50 mt-8 mb-7" />
         <div
           onClick={() => push("/"+user.accountDomain)}
-          className="flex items-center justify-center w-full mt-6 cursor-pointer"
+          className=" flex w-full items-center mt-6 cursor-pointer"
           onMouseOver={() => { 
             Checking(true)
           }}
@@ -184,12 +176,14 @@ export const Left = () => {
             Checking(false) 
           }}
         >
+        <div className=" w-fit " > 
           <Photo
             alt=""
-            className="object-contain w-12 h-12 xl:w-14 xl:h-14 rounded-full xl:mr-3"
+            className="object-cover w-12 h-12 xl:w-14 xl:h-14 flex justify-center items-center rounded-full  "
             style={{ border: "5px solid #141922" }}
           />
-          <div className="hidden xl:block w-full "> 
+        </div>
+          <div className="hidden xl:block w-full pl-2 "> 
             <div className={isShown ? "example1 " : " h-[20px] "} >
               {user?.accountId && 
                 <>

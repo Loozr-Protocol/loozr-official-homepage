@@ -30,7 +30,7 @@ const ArtisteRenderer = (props) => {
       ref={props.listInnerRef}
       style={{ height: "100vh", overflowY: "auto" }}
     >
-      <div className="grid grid-cols-3 md:grid-cols-4 gap-y-6">
+      <div className="grid grid-cols-3 md:grid-cols-4 gap-y-8">
         {props.dataList.map((_, i) => (
           <div
             key={i}
@@ -40,8 +40,9 @@ const ArtisteRenderer = (props) => {
           >
             <Link to={`/${_.user.accountDomain}`} className="relative">
               <Photo
+              // photoColor={_.user.profileColor}
                 alt=""
-                className="object-cover h-[100px] md:h-[105px] w-[100px] md:w-[105px] rounded-full mb-[16px]"
+                className="object-cover flex justify-center items-center h-[100px] md:h-[105px] w-[100px] md:w-[105px] rounded-full mb-[16px]"
                 style={{
                   border: "10px solid #141922",
                 }}

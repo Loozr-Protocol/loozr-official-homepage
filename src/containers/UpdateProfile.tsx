@@ -36,9 +36,12 @@ export default function UpdateProfile() {
     const formik = useFormik({
       initialValues: {
         username: user.username ?? "",
+        email: user.email ?? "",
         website: user.website ?? "",
         twitterLink: user.twitterLink ?? "", 
         soundCloudLink: user.soundCloudLink ?? "",
+        instagramLink: user.instagramLink ?? "",
+        spotifyLink: user.spotifyLink ?? "",   
         country: user.country ?? "",
         bio: user.bio ?? "",
       },
@@ -71,6 +74,7 @@ export default function UpdateProfile() {
         setLoading(false);
         dispatch(updateProfile(user));
         toast.success("Profile updated!", TOAST_OPTIONS);
+        setShowModal(true)
       } catch (err: any) {
         setLoading(false);
         httpError(err);
@@ -106,7 +110,7 @@ export default function UpdateProfile() {
                 Update your artist profile
             </p>
             <p className=" text-[13px] text-[#536079] font-medium mt-[4px] leading-tight md:w-[429px] mb-4" >Provide proof of your musical background to validate
-your status as an official musician.</p>
+                your status as an official musician.</p>
             <div className="flex items-center mb-8">
                 <div className="relative  w-[90px] h-[90px] ">
                 {!selectedImage && ( 
@@ -173,14 +177,14 @@ your status as an official musician.</p>
                         placeholder="Website link"
                     />
                     <div className=" w-full h-auto pt-2" >
-                        {formik.touched.username && formik.errors.username && (
+                        {formik.touched.website && formik.errors.website && (
                         <motion.div
                             initial={{ y: -100, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             className="text-xs font-Inter-SemiBold text-[#F25341]"
                             // style={{ marginTop: "-32px" }}
                         >
-                            {formik.errors.username}
+                            {formik.errors.website}
                         </motion.div>
                         )}  
                     </div>
@@ -188,22 +192,22 @@ your status as an official musician.</p>
                         type="text"
                         className="px-7 py-2 h-11 mt-2 text-muted text-[13px] placeholder:text-muted"
                         style={{ backgroundColor: "#12161F" }}
-                        name="website"
-                        defaultValue={user.website ?? ""}
+                        name="twitterLink"
+                        defaultValue={user.twitterLink ?? ""}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
-                        onFocus={() => formik.setFieldTouched("website", true, true)}
+                        onFocus={() => formik.setFieldTouched("twitterLink", true, true)}
                         placeholder="Twitter link"
                     />
                     <div className=" w-full h-auto pt-2" >
-                        {formik.touched.username && formik.errors.username && (
+                        {formik.touched.twitterLink && formik.errors.twitterLink && (
                         <motion.div
                             initial={{ y: -100, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             className="text-xs font-Inter-SemiBold text-[#F25341]"
                             // style={{ marginTop: "-32px" }}
                         >
-                            {formik.errors.username}
+                            {formik.errors.twitterLink}
                         </motion.div>
                         )}  
                     </div>
@@ -211,22 +215,22 @@ your status as an official musician.</p>
                         type="text"
                         className="px-7 py-2 h-11 mt-2 text-muted text-[13px] placeholder:text-muted"
                         style={{ backgroundColor: "#12161F" }}
-                        name="website"
-                        defaultValue={user.website ?? ""}
+                        name="spotifyLink"
+                        defaultValue={user.spotifyLink ?? ""}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
-                        onFocus={() => formik.setFieldTouched("website", true, true)}
+                        onFocus={() => formik.setFieldTouched("spotifyLink", true, true)}
                         placeholder="Spotify link"
                     />
                     <div className=" w-full h-auto pt-2" >
-                        {formik.touched.username && formik.errors.username && (
+                        {formik.touched.spotifyLink && formik.errors.spotifyLink && (
                         <motion.div
                             initial={{ y: -100, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             className="text-xs font-Inter-SemiBold text-[#F25341]"
                             // style={{ marginTop: "-32px" }}
                         >
-                            {formik.errors.username}
+                            {formik.errors.spotifyLink}
                         </motion.div>
                         )}  
                     </div> 
@@ -246,14 +250,14 @@ your status as an official musician.</p>
                         disabled
                     /> 
                     <div className=" w-full h-auto pt-2" >
-                        {formik.touched.username && formik.errors.username && (
+                        {formik.touched.email && formik.errors.email && (
                         <motion.div
                             initial={{ y: -100, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             className="text-xs font-Inter-SemiBold text-[#F25341]"
                             // style={{ marginTop: "-32px" }}
                         >
-                            {formik.errors.username}
+                            {formik.errors.email}
                         </motion.div>
                         )}  
                     </div>
@@ -268,14 +272,14 @@ your status as an official musician.</p>
                         onFocus={() => formik.setFieldTouched("bio", true, true)}
                     ></textarea>
                     <div className=" w-full h-auto pt-2" >
-                        {formik.touched.username && formik.errors.username && (
+                        {formik.touched.bio && formik.errors.bio && (
                         <motion.div
                             initial={{ y: -100, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             className="text-xs font-Inter-SemiBold text-[#F25341]"
                             // style={{ marginTop: "-32px" }}
                         >
-                            {formik.errors.username}
+                            {formik.errors.bio}
                         </motion.div>
                         )}  
                     </div>
@@ -283,22 +287,22 @@ your status as an official musician.</p>
                         type="text"
                         className="px-7 py-2 h-11 mt-2 text-muted text-[13px] placeholder:text-muted"
                         style={{ backgroundColor: "#12161F" }}
-                        name="website"
-                        defaultValue={user.website ?? ""}
+                        name="instagramLink"
+                        defaultValue={user.instagramLink ?? ""}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
-                        onFocus={() => formik.setFieldTouched("website", true, true)}
+                        onFocus={() => formik.setFieldTouched("instagramLink", true, true)}
                         placeholder="Instagram link"
                     />
                     <div className=" w-full h-auto pt-2" >
-                        {formik.touched.username && formik.errors.username && (
+                        {formik.touched.instagramLink && formik.errors.instagramLink && (
                         <motion.div
                             initial={{ y: -100, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             className="text-xs font-Inter-SemiBold text-[#F25341]"
                             // style={{ marginTop: "-32px" }}
                         >
-                            {formik.errors.username}
+                            {formik.errors.instagramLink}
                         </motion.div>
                         )}  
                     </div>
@@ -306,22 +310,22 @@ your status as an official musician.</p>
                         type="text"
                         className="px-7 py-2 h-11 mt-2 text-muted text-[13px] placeholder:text-muted"
                         style={{ backgroundColor: "#12161F" }}
-                        name="website"
-                        defaultValue={user.website ?? ""}
+                        name="soundCloudLink"
+                        defaultValue={user.soundCloudLink ?? ""}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
-                        onFocus={() => formik.setFieldTouched("website", true, true)}
+                        onFocus={() => formik.setFieldTouched("soundCloudLink", true, true)}
                         placeholder="Souncloud link"
                     />
                     <div className=" w-full h-auto pt-2" >
-                        {formik.touched.username && formik.errors.username && (
+                        {formik.touched.soundCloudLink && formik.errors.soundCloudLink && (
                         <motion.div
                             initial={{ y: -100, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             className="text-xs font-Inter-SemiBold text-[#F25341]"
                             // style={{ marginTop: "-32px" }}
                         >
-                            {formik.errors.username}
+                            {formik.errors.soundCloudLink}
                         </motion.div>
                         )}  
                     </div>
@@ -329,8 +333,8 @@ your status as an official musician.</p>
             </div> 
             <button
                 className="py-[17px] text-white disabled:text-muted font-medium md:text-[13px] bg-gradient-ld disabled:bg-dark-800 mb-11 w-[48%] focus:outline-none"
-                // onClick={handleSubmit}
-                onClick={()=> setShowModal(true)}
+                onClick={handleSubmit}
+                // onClick={()=> setShowModal(true)}
                 disabled={isLoading}
             >
                 {isLoading ? " Updating..." : " Update profile"}

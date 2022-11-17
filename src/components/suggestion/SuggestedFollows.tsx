@@ -30,7 +30,7 @@ const SuggestedFollows = (props: any) => {
 
       <Photo
         alt=""
-        className="object-contain w-10 h-10 rounded-full "
+        className="object-contain flex justify-center items-center w-10 h-10 rounded-full "
         style={{ border: "3px solid #141922" }}
       />
       <div onClick={() => navigate(`/${user.accountDomain}`)} className=' ml-3 ' >

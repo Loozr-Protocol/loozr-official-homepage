@@ -98,12 +98,12 @@ export const authRoutes = [
     private: false,
     component: MusicInfo,
   }, 
-  {
-    name: "updateprofile",
-    path: "updateprofile",
-    private: true,
-    component: UpdateProfile,
-  }, 
+  // {
+  //   name: "updateprofile",
+  //   path: "updateprofile",
+  //   private: true,
+  //   component: UpdateProfile,
+  // }, 
 ];
 
 export const routes = [

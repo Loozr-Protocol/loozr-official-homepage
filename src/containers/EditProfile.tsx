@@ -28,14 +28,19 @@ const EditProfile = () => {
   const profileEditSchema = yup.object({
     username: yup.string().required("Please enter full name").nullable(),
     website: yup.string(),
-    country: yup.string(),
+    // country: yup.string(),
     bio: yup.string(),
   });
 
   const formik = useFormik({
     initialValues: {
       username: user.username ?? "",
+      email: user.email ?? "",
       website: user.website ?? "",
+      twitter_link: user.twitterLink ?? "", 
+      soundcloud_link: user.soundCloudLink ?? "",
+      instagram_link: user.instagramLink ?? "",
+      spotify_link: user.spotifyLink ?? "",   
       country: user.country ?? "",
       bio: user.bio ?? "",
     },
@@ -43,20 +48,29 @@ const EditProfile = () => {
     onSubmit: () => {},
   });
 
+  console.log(user);
+  
+
   useEffect(() => {
     formik.setValues({
       ...formik.values,
       username: user.username,
       website: user.website,
       bio: user.bio,
-      country: user.country,
+      country: user.country, 
+      email: user.email, 
+      twitter_link: user.twitterLink, 
+      soundcloud_link: user.soundCloudLink,
+      instagram_link: user.instagramLink,
+      spotify_link: user.spotifyLink, 
     });
-  }, [user.username, user.country, user.bio, user.website]);
+  }, [user.username, user.country, user.bio, user.website, user.country, user.email, user.twitterLink, user.soundCloudLink, user.instagramLink, user.spotifyLink]);
 
-  const handleSubmit = async () => {
-    if (!formik.dirty) {
+  const handleSubmit = async () => { 
+
+    if (!formik.dirty) { 
       return;
-    } else if (!formik.isValid) {
+    } else if (!formik.isValid) { 
       return;
     }
     setLoading(true);
@@ -120,163 +134,197 @@ const EditProfile = () => {
           </label>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 justify-start mb-10">
-        <div className=" flex flex-col ">
-          <input
-            type="text"
-            className="px-7 py-3 text-muted text-sm placeholder:text-muted"
-            style={{ backgroundColor: "#12161F" }}
-            placeholder="Enter full name"
-            name="username"
-            defaultValue={user.username ?? ""}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            onFocus={() => formik.setFieldTouched("username", true, true)}
-          /> 
-          <div className=" w-full h-auto pt-2" >
-            {formik.touched.username && formik.errors.username && (
-              <motion.div
-                initial={{ y: -100, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                className="text-xs font-Inter-SemiBold text-[#F25341]"
-                // style={{ marginTop: "-32px" }}
-              >
-                {formik.errors.username}
-              </motion.div>
-            )}  
-          </div>
-          <select 
-            className="px-7 py-3 mt-4 text-muted text-sm placeholder:text-muted"
-            style={{ backgroundColor: "#12161F" }}
-            name="website" 
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            onFocus={() => formik.setFieldTouched("website", true, true)}
-            placeholder="Website link"
-          >
-            <option>Genre</option>
-          </select> 
-          <input
-            type="text"
-            className="px-7 py-3 mt-4 text-muted text-sm placeholder:text-muted"
-            style={{ backgroundColor: "#12161F" }}
-            name="website"
-            defaultValue={user.website ?? ""}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            onFocus={() => formik.setFieldTouched("website", true, true)}
-            placeholder="Website link"
-          />
-          <input
-            type="text"
-            className="px-7 py-3 mt-4 text-muted text-sm placeholder:text-muted"
-            style={{ backgroundColor: "#12161F" }}
-            name="website"
-            defaultValue={user.website ?? ""}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            onFocus={() => formik.setFieldTouched("website", true, true)}
-            placeholder="Twitter link"
-          />
-          <select 
-            className="px-7 py-3 mt-4 text-muted text-sm placeholder:text-muted"
-            style={{ backgroundColor: "#12161F" }}
-            name="country" 
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            onFocus={() => formik.setFieldTouched("country", true, true)}
-            placeholder="Country"
-          >
-            <option>Country</option>
-          </select>
-        </div>
-        <div
-          className="flex flex-col"
-          style={{
-            gridTemplateRows: "auto minmax(0,1fr)",
-          }}
-        >
-          <input
-            type="text"
-            className="px-7 py-3 text-white text-sm placeholder:text-muted"
-            style={{ backgroundColor: "#12161F" }}
-            placeholder="uneditable_input@email.com*"
-            defaultValue={user.email}
-            disabled
-          /> 
-          <textarea
-            className="px-[18px] h-40 py-3 mt-4 text-muted text-sm placeholder:text-muted resize-none"
-            style={{ backgroundColor: "#12161F" }}
-            placeholder="Bio"
-            defaultValue={user.bio ?? ""}
-            name="bio"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            onFocus={() => formik.setFieldTouched("bio", true, true)}
-          ></textarea>
-          <input
-            type="text"
-            className="px-7 py-3 mt-4 text-muted text-sm placeholder:text-muted"
-            style={{ backgroundColor: "#12161F" }}
-            name="website"
-            defaultValue={user.website ?? ""}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            onFocus={() => formik.setFieldTouched("website", true, true)}
-            placeholder="Souncloud link"
-          />
-        </div>
-      </div>
-      <div className=" w-full border-t border-[#222A3B] pt-4 pb-16 " >
-          <p className=" font-semibold text-xl " >Artiste Details</p>
-          <div className=" mt-4 flex w-full items-center " > 
-            <input
-              type="text"
-              className="px-7 w-full py-3 mr-4 text-muted text-sm placeholder:text-muted"
-              style={{ backgroundColor: "#12161F" }}
-              name="website"
-              defaultValue={user.website ?? ""}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              onFocus={() => formik.setFieldTouched("website", true, true)}
-              placeholder="Artist Name"
-            />
-            <input
-              type="text"
-              className="px-7 py-3 w-32 mr-2 text-muted text-sm placeholder:text-muted"
-              style={{ backgroundColor: "#12161F" }}
-              name="website"
-              defaultValue={user.website ?? ""}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              onFocus={() => formik.setFieldTouched("website", true, true)}
-              placeholder=""
-            /> 
-              <ToolTip 
-                title={
-                  <p className="text-base font-medium">
-                    <span className="mb-3">
-                      When someone purchases your coin, a percentage of that
-                      gets allocated to you as a founder reward.
-                    </span>
-                    <span className="mb-3">
-                      A value of 0% means you get no money when someone buys,
-                      whereas a value of 100% means that no one else can ever
-                      get coins because 100% of every purchase goes to you.
-                    </span>
-                    <span>
-                      Setting this value too high will discourage buyers from
-                      ever purchasing your coin. It's a delicate balance, so
-                      tread carefully or stick with the default.
-                    </span>
-                  </p>
-                }
-              >
-                <HelpIcon className="cursor-pointer" />
-              </ToolTip>
-            {/* <HelpIcon className="w-16 ml-4" /> */}
-          </div>
-      </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 justify-start mb-10">
+                <div className=" flex flex-col ">
+                    <input
+                        type="text"
+                        className="px-7 py-2 h-11 text-muted text-[13px] placeholder:text-muted"
+                        style={{ backgroundColor: "#12161F" }}
+                        placeholder="Enter full name"
+                        name="username"
+                        defaultValue={user.username ?? ""}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        onFocus={() => formik.setFieldTouched("username", true, true)}
+                    /> 
+                    <div className=" w-full h-auto pt-2" >
+                        {formik.touched.username && formik.errors.username && (
+                        <motion.div
+                            initial={{ y: -100, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            className="text-xs font-Inter-SemiBold text-[#F25341]"
+                            // style={{ marginTop: "-32px" }}
+                        >
+                            {formik.errors.username}
+                        </motion.div>
+                        )}  
+                    </div> 
+                    <input
+                        type="text"
+                        className="px-7 py-2 h-11 mt-2 text-muted text-[13px] placeholder:text-muted"
+                        style={{ backgroundColor: "#12161F" }}
+                        name="website"
+                        defaultValue={user.website ?? ""}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        onFocus={() => formik.setFieldTouched("website", true, true)}
+                        placeholder="Website link"
+                    />
+                    {/* <div className=" w-full h-auto pt-2" >
+                        {formik.touched.website && formik.errors.website && (
+                        <motion.div
+                            initial={{ y: -100, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            className="text-xs font-Inter-SemiBold text-[#F25341]"
+                            // style={{ marginTop: "-32px" }}
+                        >
+                            {formik.errors.website}
+                        </motion.div>
+                        )}  
+                    </div> */}
+                    <input
+                        type="text"
+                        className="px-7 py-2 h-11 mt-2 text-muted text-[13px] placeholder:text-muted"
+                        style={{ backgroundColor: "#12161F" }}
+                        name="twitter_link"
+                        defaultValue={user.twitterLink ?? ""}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        onFocus={() => formik.setFieldTouched("twitter_link", true, true)}
+                        placeholder="Twitter link"
+                    />
+                    {/* <div className=" w-full h-auto pt-2" >
+                        {formik.touched.twitter_link && formik.errors.twitter_link && (
+                        <motion.div
+                            initial={{ y: -100, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            className="text-xs font-Inter-SemiBold text-[#F25341]"
+                            // style={{ marginTop: "-32px" }}
+                        >
+                            {formik.errors.twitter_link}
+                        </motion.div>
+                        )}  
+                    </div> */}
+                    <input
+                        type="text"
+                        className="px-7 py-2 h-11 mt-2 text-muted text-[13px] placeholder:text-muted"
+                        style={{ backgroundColor: "#12161F" }}
+                        name="spotify_Link"
+                        defaultValue={user.spotifyLink ?? ""}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        onFocus={() => formik.setFieldTouched("spotify_Link", true, true)}
+                        placeholder="Spotify link"
+                    />
+                    {/* <div className=" w-full h-auto pt-2" >
+                        {formik.touched.spotify_Link && formik.errors.spotify_Link && (
+                        <motion.div
+                            initial={{ y: -100, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            className="text-xs font-Inter-SemiBold text-[#F25341]"
+                            // style={{ marginTop: "-32px" }}
+                        >
+                            {formik.errors.spotify_Link}
+                        </motion.div>
+                        )}  
+                    </div>  */}
+                </div>
+                <div
+                    className="flex flex-col"
+                    style={{
+                        gridTemplateRows: "auto minmax(0,1fr)",
+                    }}
+                    >
+                    <input
+                        type="text"
+                        className="px-7 py-2 h-11 text-white text-[13px] placeholder:text-muted"
+                        style={{ backgroundColor: "#12161F" }}
+                        placeholder="uneditable_input@email.com*"
+                        defaultValue={user.email}
+                        disabled
+                    /> 
+                    {/* <div className=" w-full h-auto pt-2" >
+                        {formik.touched.email && formik.errors.email && (
+                        <motion.div
+                            initial={{ y: -100, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            className="text-xs font-Inter-SemiBold text-[#F25341]"
+                            // style={{ marginTop: "-32px" }}
+                        >
+                            {formik.errors.email}
+                        </motion.div>
+                        )}  
+                    </div> */}
+                    <textarea
+                        className="px-[18px] h-[105px] py-3 mt-2 text-[13px] placeholder:text-muted resize-none text-white"
+                        style={{ backgroundColor: "#12161F" }}
+                        placeholder="Bio"
+                        defaultValue={user.bio ?? ""}
+                        name="bio"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        onFocus={() => formik.setFieldTouched("bio", true, true)}
+                    ></textarea>
+                    {/* <div className=" w-full h-auto pt-2" >
+                        {formik.touched.bio && formik.errors.bio && (
+                        <motion.div
+                            initial={{ y: -100, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            className="text-xs font-Inter-SemiBold text-[#F25341]"
+                            // style={{ marginTop: "-32px" }}
+                        >
+                            {formik.errors.bio}
+                        </motion.div>
+                        )}  
+                    </div> */}
+                    <input
+                        type="text"
+                        className="px-7 py-2 h-11 mt-2 text-muted text-[13px] placeholder:text-muted"
+                        style={{ backgroundColor: "#12161F" }}
+                        name="instagram_Link"
+                        defaultValue={user.instagramLink ?? ""}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        onFocus={() => formik.setFieldTouched("instagram_Link", true, true)}
+                        placeholder="Instagram link"
+                    />
+                    {/* <div className=" w-full h-auto pt-2" >
+                        {formik.touched.instagram_Link && formik.errors.instagram_Link && (
+                        <motion.div
+                            initial={{ y: -100, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            className="text-xs font-Inter-SemiBold text-[#F25341]"
+                            // style={{ marginTop: "-32px" }}
+                        >
+                            {formik.errors.instagram_Link}
+                        </motion.div>
+                        )}  
+                    </div> */}
+                    <input
+                        type="text"
+                        className="px-7 py-2 h-11 mt-2 text-muted text-[13px] placeholder:text-muted"
+                        style={{ backgroundColor: "#12161F" }}
+                        name="soundCloud_Link"
+                        defaultValue={user.soundCloudLink ?? ""}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        onFocus={() => formik.setFieldTouched("soundCloud_Link", true, true)}
+                        placeholder="Souncloud link"
+                    />
+                    {/* <div className=" w-full h-auto pt-2" >
+                        {formik.touched.soundCloud_Link && formik.errors.soundCloud_Link && (
+                        <motion.div
+                            initial={{ y: -100, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            className="text-xs font-Inter-SemiBold text-[#F25341]"
+                            // style={{ marginTop: "-32px" }}
+                        >
+                            {formik.errors.soundCloud_Link}
+                        </motion.div>
+                        )}  
+                    </div> */}
+                </div>
+            </div> 
       {/* {hasLaunchedToken && (
         <>
           <div className="h-px bg-muted-50 mb-11" />
@@ -339,8 +387,8 @@ const EditProfile = () => {
       )} */}
       <button
         className="py-[17px] text-white disabled:text-muted font-medium md:text-sm bg-gradient-ld disabled:bg-dark-800 mb-11 w-[48%] focus:outline-none"
-        onClick={handleSubmit}
-        disabled={isLoading}
+        onClick={()=> handleSubmit()}
+        // disabled={isLoading}
       >
         {isLoading ? " Updating..." : " Update profile"}
       </button>
@@ -349,3 +397,56 @@ const EditProfile = () => {
 };
 
 export default EditProfile;
+
+
+
+{/* <div className=" w-full border-t border-[#222A3B] pt-4 pb-16 " >
+<p className=" font-semibold text-xl " >Artiste Details</p>
+<div className=" mt-4 flex w-full items-center " > 
+  <input
+    type="text"
+    className="px-7 w-full py-3 mr-4 text-muted text-sm placeholder:text-muted"
+    style={{ backgroundColor: "#12161F" }}
+    name="website"
+    defaultValue={user.website ?? ""}
+    onChange={formik.handleChange}
+    onBlur={formik.handleBlur}
+    onFocus={() => formik.setFieldTouched("website", true, true)}
+    placeholder="Artist Name"
+  />
+  <input
+    type="text"
+    className="px-7 py-3 w-32 mr-2 text-muted text-sm placeholder:text-muted"
+    style={{ backgroundColor: "#12161F" }}
+    name="website"
+    defaultValue={user.website ?? ""}
+    onChange={formik.handleChange}
+    onBlur={formik.handleBlur}
+    onFocus={() => formik.setFieldTouched("website", true, true)}
+    placeholder=""
+  /> 
+    <ToolTip 
+      title={
+        <p className="text-base font-medium">
+          <span className="mb-3">
+            When someone purchases your coin, a percentage of that
+            gets allocated to you as a founder reward.
+          </span>
+          <span className="mb-3">
+            A value of 0% means you get no money when someone buys,
+            whereas a value of 100% means that no one else can ever
+            get coins because 100% of every purchase goes to you.
+          </span>
+          <span>
+            Setting this value too high will discourage buyers from
+            ever purchasing your coin. It's a delicate balance, so
+            tread carefully or stick with the default.
+          </span>
+        </p>
+      }
+    >
+      <HelpIcon className="cursor-pointer" />
+    </ToolTip>
+  {/* <HelpIcon className="w-16 ml-4" /> */}
+// </div>
+// </div> */}
