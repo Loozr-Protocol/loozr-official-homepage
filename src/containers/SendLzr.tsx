@@ -34,6 +34,7 @@ const SendLzr = () => {
   
   const user = useSelector((state: AppState) => state.user.userInfo);
   const lzrAccountId = `${user?.accountId}.${MIXER_ACCOUNT}`;
+  const [showModal, setShowModal] = React.useState(false)
   const balanceResult = usePollLZRBalance(lzrAccountId);
   const balanceBN = getFullDisplayBalance(balanceResult);
   
@@ -41,10 +42,12 @@ const SendLzr = () => {
   const [data, setData] = React.useState([] as any)
   const { getSearchUser } = useSearchUserCallback(); 
   const [searchValue, setSearchValue] = React.useState("")
+  const [name, setName] = React.useState("")
 
   const OnchangeAcount = async (item: any)=>{  
     setSearchValue(item) 
-    formik.setFieldValue("account_id", item)
+    setName(item) 
+    // formik.setFieldValue("account_id", item)
     const result = await getSearchUser(item); 
     setData(result)
   } 
@@ -78,8 +81,9 @@ const SendLzr = () => {
     }
   };
   
-  const ClickHandler =(item: any)=> {
-    formik.setFieldValue("account_id", item)
+  const ClickHandler =(item: any, index: any)=> {
+    formik.setFieldValue("account_id", index)
+    setName(item)
     setSearchValue("")
   }
 
@@ -96,7 +100,7 @@ const SendLzr = () => {
               type="text"
               name="account_id"
               autoComplete="off"
-              value={formik.values.account_id}
+              value={name}
               onChange={(e)=> OnchangeAcount(e.target.value)}
               onBlur={formik.handleBlur}
               onFocus={() => formik.setFieldTouched("account_id", true, true)}
@@ -111,7 +115,7 @@ const SendLzr = () => {
                   const domainName = item.account_id+"."+MIXER_ACCOUNT
 
                   return(
-                    <div key={index} onClick={() => ClickHandler(item.account_id)} className=' w-full cursor-pointer flex my-3 items-center ' > 
+                    <div key={index} onClick={() => ClickHandler(domainName, item.account_id)} className=' w-full cursor-pointer flex my-3 items-center ' > 
                       <Photo
                         alt=""
                         className="object-contain w-10 h-10 rounded-full "
@@ -128,7 +132,10 @@ const SendLzr = () => {
                       </div> 
                     </div> 
                   )
-                })} 
+                })}  
+                {data.length === 0 &&
+                  <p className=" font-medium my-1 " >No record found</p>
+                }
               </div>
             )}
           </div>  
@@ -195,12 +202,41 @@ const SendLzr = () => {
         </div>
         <button
           className=" h-[60px] text-white disabled:text-muted font-medium md:w-[350px] text-sm bg-gradient-ld disabled:bg-dark-800 mb-24 md:mb-11 w-full sm:w-80 focus:outline-none"
-          onClick={handleSubmit}
-          disabled={isLoading}
+          onClick={()=> setShowModal(true)} 
+          disabled={formik.values.amount ? false: true}
         >
-          {isLoading ? "Sending..." : "Send Lzr"}
+          {"Send Lzr"}
         </button>
-      </div>
+      </div> 
+      {showModal && (
+        <div className=" fixed inset-0 flex justify-center items-center md:overflow-y-hidden bg-black bg-opacity-90 z-[70] " > 
+          <div className=' w-full h-screen flex flex-col justify-center  md:w-[360px] md:h-auto relative z-[80]  md:rounded-2xl bg-[#12161F]' >
+              <div className=" w-full flex justify-between items-center py-4 px-6  border-b border-[#222A3B] " >
+                  <p className=" font-semibold text-[17px] text-white " >Preview</p>
+                  <svg onClick={()=> setShowModal(false)} className=" cursor-pointer " width="17" height="17" viewBox="0 0 17 17" fill="none">
+                      <path d="M15.7898 1.13965L1.13867 15.7908" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M1.13867 1.13965L15.7898 15.7908" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+              </div>
+              <div className=" w-full pt-8 flex flex-col items-center px-8 " > 
+                  <p className=" font-medium text-[14px] w-[230px] " >You are sending {formik.values.amount} LZR <span className=" text-[#536079] " >(≈${(formik.values.amount * LZR_IN_USD).toFixed(2)})</span> to {name}:</p>
+                   
+                  <div className=" w-[230px] mt-4 " > 
+                    <p className=" text-xs text-[#536079] font-normal " >Network fee</p>
+                    <p className=" font-medium text-[14px] " >0.00 LZR <span className=" text-[#536079] " >(≈ $0.00)</span></p>
+                  </div>
+                  <div className=" w-[230px] my-4 " > 
+                    <p className=" text-xs text-[#536079] font-normal " >Total required to send</p>
+                    <p className=" font-medium text-[14px] " >{formik.values.amount} LZR <span className=" text-[#536079] " >(≈ ${(formik.values.amount * LZR_IN_USD).toFixed(2)})</span></p>
+                  </div> 
+                  <button disabled={isLoading} onClick={handleSubmit} className=" h-[50px] mt-6 flex justify-center items-center text-white  disabled:text-muted font-medium md:text-[13px] bg-gradient-ld disabled:bg-dark-800 mb-11 w-full" >
+                    
+                    {isLoading ? "Sending..." : "Confirm"}
+                  </button>
+              </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

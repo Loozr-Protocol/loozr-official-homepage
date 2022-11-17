@@ -169,7 +169,7 @@ const BuyArtistToken = () => {
             onChange={(e)=> OnchangeHandler(e.target.value)}
             onBlur={formik.handleBlur}
             onFocus={() => formik.setFieldTouched("amount", true, true)}
-            className=" h-[60px] w-full px-6 md:w-[350px] bg-dark-800 text-sm placeholder:text-muted text-white"
+            className=" h-[58px] w-full px-6 md:w-[350px] bg-dark-800 text-sm placeholder:text-muted text-white"
             placeholder="0.00"
             style={{ background: "#12161F" }}
           />
