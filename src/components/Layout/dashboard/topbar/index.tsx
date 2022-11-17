@@ -82,7 +82,7 @@ export const TopBar = () => {
                           <p className=' text-[13px] font-semibold ' > {item?.account_id}</p>
                         </div>
                         <div className=' flex -mt-1 items-center ' >
-                          <p className=' text-[11px] font-semibold text-[#536079] ' >{item?.email}</p> 
+                          <p className=' text-[11px] font-semibold text-[#536079] ' >{domainName.slice(0, 30)}</p> 
                         </div>
                       </div> 
                     </div> 
