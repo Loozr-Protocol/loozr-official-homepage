@@ -41,6 +41,11 @@ export const TopBar = () => {
     }
   };
 
+  const ClickHandler =(item: any)=>{
+    navigate(item)
+    setSearchValue("")
+  }
+
   return (
     <div className="w-full mb-6 md:px-0 px-6 md:pr-4 ">
       <div className="flex justify-between px-0 sm:px-4  items-center">
@@ -70,7 +75,7 @@ export const TopBar = () => {
                   const domainName = item.account_id+"."+MIXER_ACCOUNT
 
                   return(
-                    <div key={index} onClick={() => navigate(`/${domainName}`)} className=' w-full cursor-pointer flex my-3 items-center ' > 
+                    <div key={index} onClick={() => ClickHandler(`/${domainName}`)} className=' w-full cursor-pointer relative z-[120] flex my-3 items-center ' > 
                       <Photo
                         alt=""
                         className="object-contain w-10 h-10 rounded-full "
@@ -89,7 +94,7 @@ export const TopBar = () => {
                   )
                 })}
                 {searchValue && (
-                  <div className=" fixed inset-0 z-[110] " onClick={()=> setSearchValue("")} />  
+                  <div className=" fixed inset-0 z-[90] " onClick={()=> setSearchValue("")} />  
                 )}
               </div>
             )}
