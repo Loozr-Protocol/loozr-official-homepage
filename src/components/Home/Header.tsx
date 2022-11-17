@@ -37,12 +37,10 @@ export default function Header() {
                     <span>Learn more</span>
                   </a>
                   <a
-                    role="button"
-                    data-toggle="modal"
-                    data-target="#waitlistDialog"
+                    href="https://testnet.loozr.io/explore"
                     className="button btn-primary btn-lit"
                   >
-                    <span>Join Waitlist</span>
+                    <span>Join Testnet</span>
                   </a>
                 </div>
               </div>
@@ -58,7 +56,7 @@ export default function Header() {
                 <i className="fab fa-twitter"></i>
               </a>
               <a
-                href="https://discord.gg/mm5mV8PHpq"
+                href="https://discord.gg/loozr"
                 target="_blank"
                 rel="noopener noreferrer"
               >
