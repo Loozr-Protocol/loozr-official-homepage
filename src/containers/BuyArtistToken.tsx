@@ -45,7 +45,7 @@ const BuyArtistToken = () => {
   });
 
   const formik = useFormik({
-    initialValues: { amount: 0 },
+    initialValues: { amount: null },
     validationSchema: formSchema,
     onSubmit: () => {},
   });
@@ -224,7 +224,7 @@ const BuyArtistToken = () => {
                     </svg>
                 </div>
                 <div className=" w-full pt-8 flex flex-col items-center px-8 " > 
-                    <p className=" font-medium text-[14px] w-[230px] " >You are exchanging {formik.values.amount} LZR <span className=" text-[#536079] " >(≈${(formik.values.amount * LZR_IN_USD).toFixed(2)})</span> for ${artistDetails.creatorCoinId} to:</p>
+                    <p className=" font-medium text-[14px] w-[230px] " >You are exchanging {formik.values.amount} LZR <span className=" text-[#536079] " >(≈${(formik.values.amount * LZR_IN_USD).toFixed(2)})</span> for <span className=" uppercase " >${artistDetails.creatorCoinId} </span> coins:</p>
                     <div className=' w-[230px] cursor-pointer flex my-4 items-center ' > 
                       <Photo
                         alt=""
@@ -249,8 +249,9 @@ const BuyArtistToken = () => {
                       <p className=" text-xs text-[#536079] font-normal " >Total required to send</p>
                       <p className=" font-medium text-[14px] " >{formik.values.amount} LZR <span className=" text-[#536079] " >(≈ ${(formik.values.amount * LZR_IN_USD).toFixed(2)})</span></p>
                     </div> 
-                    <button onClick={handleSubmit} className=" h-[50px] mt-6 flex justify-center items-center text-white  disabled:text-muted font-medium md:text-[13px] bg-gradient-ld disabled:bg-dark-800 mb-11 w-full" >
-                      Confirm
+                    <button disabled={isLoading ? true : false} onClick={handleSubmit} className=" h-[50px] mt-6 flex justify-center items-center text-white  disabled:text-muted font-medium md:text-[13px] bg-gradient-ld disabled:bg-dark-800 mb-11 w-full" >
+                      
+                      {isLoading ? "Purchase in progress..." : "Confirm"}
                     </button>
                 </div>
             </div>
