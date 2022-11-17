@@ -21,7 +21,7 @@ export default function Community() {
             </div>
             <div className="col-md-4 col-lg-3 valign">
               <a
-                href="https://discord.gg/mm5mV8PHpq"
+                href="https://discord.gg/loozr"
                 target="_blank"
                 className="btn-curve btn-lit nv-btn-l wow fadeInUp"
                 data-wow-delay=".5s" rel="noreferrer"
