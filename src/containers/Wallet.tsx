@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   transactions,
@@ -10,7 +10,7 @@ import Arrow45Deg from "../assets/icons/arrow-45deg.svg";
 import Arrow225Deg from "../assets/icons/arrow-225deg.svg";
 import Arlene from "../assets/img/artists/arlene.png";
 import copyimg from "../assets/icons/copy.png";
-import { usePollLZRBalance } from "../state/wallet/hooks/fetchBalance";
+import { getLZRBalanceCallback } from "../state/wallet/hooks/fetchBalance";
 import { LZR_IN_USD, MIXER_ACCOUNT } from "../config/constants";
 import { AppState } from "../state/store";
 import {
@@ -27,12 +27,28 @@ const Wallet = () => {
   const [active, setActive] = useState(1);
   const user = useSelector((state: AppState) => state.user.userInfo);
   const lzrAccountId = `${user.accountId}.${MIXER_ACCOUNT}`;
-  const balanceResult = usePollLZRBalance(lzrAccountId);
-  const balanceBN = getFullDisplayBalance(balanceResult);
-
+  const [balanceInLzr, setLZRBalance] = useState("_");
+  const [balanceUsd, setBalanceUSD] = useState("_.__");
 
   const [copySuccess, setCopySuccess] = React.useState('');
   
+  useEffect(() => {
+    const loadLZRBalance = async (accountId: string) => {
+      const { handleGetLZRBalanace } = getLZRBalanceCallback();
+      try {
+        const result = await handleGetLZRBalanace(accountId);
+        const balanceResult = result;
+        const balanceBN = getFullDisplayBalance(balanceResult);
+
+        setLZRBalance(formatNumber(Number(balanceBN)));
+        setBalanceUSD(formatBalanceUSD(Number(balanceBN)));
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    loadLZRBalance(lzrAccountId);
+  }, []);
 
   function copyToClipboard(item: any, text: any) { 
       navigator.clipboard.writeText(item)
@@ -42,9 +58,6 @@ const Wallet = () => {
           clearTimeout(t1); 
       }, 2000); 
   }; 
-
-  const balanceInLzr = formatNumber(Number(balanceBN));
-  const balanceUsd = formatBalanceUSD(Number(balanceBN));
 
   const renderHistory = useMemo(() => {
     switch (active) {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { motion } from "framer-motion";
@@ -7,10 +7,10 @@ import { toast } from "react-toastify";
 import { MIXER_ACCOUNT, TOAST_OPTIONS, LZR_IN_USD } from "../config/constants";
 import { useLZRTransferCallback } from "../utils/calls/useLZRTransferCallback";
 import { useSearchUserCallback } from "../state/user/hooks/useAccount"; 
-import { usePollLZRBalance } from "../state/wallet/hooks/fetchBalance";
+import { getLZRBalanceCallback } from "../state/wallet/hooks/fetchBalance";
 import { useSelector } from "react-redux";
 import { AppState } from "../state/store";
-import { formatNumber, getFullDisplayBalance } from "../utils/formatBalance";
+import { formatBalanceUSD, formatNumber, getFullDisplayBalance } from "../utils/formatBalance";
 import Photo from "../components/Photo";
 
 const SendLzr = () => {
@@ -35,14 +35,31 @@ const SendLzr = () => {
   const user = useSelector((state: AppState) => state.user.userInfo);
   const lzrAccountId = `${user?.accountId}.${MIXER_ACCOUNT}`;
   const [showModal, setShowModal] = React.useState(false)
-  const balanceResult = usePollLZRBalance(lzrAccountId);
-  const balanceBN = getFullDisplayBalance(balanceResult);
+  const [balanceInLzr, setLZRBalance] = useState("0.00");
+  const [balanceUsd, setBalanceUSD] = useState("0.00");
   
-  const balanceInLzr = formatNumber(Number(balanceBN));
   const [data, setData] = React.useState([] as any)
   const { getSearchUser } = useSearchUserCallback(); 
   const [searchValue, setSearchValue] = React.useState("")
   const [name, setName] = React.useState("")
+
+  useEffect(() => {
+    const loadLZRBalance = async (accountId: string) => {
+      const { handleGetLZRBalanace } = getLZRBalanceCallback();
+      try {
+        const result = await handleGetLZRBalanace(accountId);
+        const balanceResult = result;
+        const balanceBN = getFullDisplayBalance(balanceResult);
+
+        setLZRBalance(formatNumber(Number(balanceBN)));
+        setBalanceUSD(formatBalanceUSD(Number(balanceBN)));
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    loadLZRBalance(lzrAccountId);
+  }, []);
 
   const OnchangeAcount = async (item: any)=>{  
     setSearchValue(item) 

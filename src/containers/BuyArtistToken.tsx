@@ -13,10 +13,10 @@ import { httpError } from "../utils/httpHelper";
 import { Link } from "react-router-dom";
 import Photo from "../components/Photo";
 import { LZR_IN_USD, MIXER_ACCOUNT } from "../config/constants";
-import { usePollLZRBalance } from "../state/wallet/hooks/fetchBalance";
+import { getLZRBalanceCallback } from "../state/wallet/hooks/fetchBalance";
 import { useSelector } from "react-redux";
 import { AppState } from "../state/store";
-import { formatNumber, getFullDisplayBalance } from "../utils/formatBalance";
+import { formatBalanceUSD, formatNumber, getFullDisplayBalance } from "../utils/formatBalance";
 
 const BuyArtistToken = () => {
   const navigate = useNavigate();
@@ -27,10 +27,8 @@ const BuyArtistToken = () => {
 
   const user = useSelector((state: AppState) => state.user.userInfo);
   const lzrAccountId = `${user?.accountId}.${MIXER_ACCOUNT}`;
-  const balanceResult = usePollLZRBalance(lzrAccountId);
-  const balanceBN = getFullDisplayBalance(balanceResult);
-  
-  const balanceInLzr = formatNumber(Number(balanceBN));
+  const [balanceInLzr, setLZRBalance] = useState("0.00");
+  const [balanceUsd, setBalanceUSD] = useState("0.00");
   const [showModal, setShowModal] = React.useState(false)
 
   const { handleBuyToken } = useBuyArtistTokenCallback();
@@ -39,6 +37,24 @@ const BuyArtistToken = () => {
 
   const [artistDetails, setArtistDetails] = useState<Artist>(null);
   const [pageLoading, setPageLoadingStatus] = useState(true);
+
+  useEffect(() => {
+    const loadLZRBalance = async (accountId: string) => {
+      const { handleGetLZRBalanace } = getLZRBalanceCallback();
+      try {
+        const result = await handleGetLZRBalanace(accountId);
+        const balanceResult = result;
+        const balanceBN = getFullDisplayBalance(balanceResult);
+
+        setLZRBalance(formatNumber(Number(balanceBN)));
+        setBalanceUSD(formatBalanceUSD(Number(balanceBN)));
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    loadLZRBalance(lzrAccountId);
+  }, []);
 
   const formSchema = yup.object({
     amount: yup.number().typeError("Amount to send must be in number format"),
