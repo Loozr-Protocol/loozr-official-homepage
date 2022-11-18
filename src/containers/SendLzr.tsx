@@ -75,6 +75,7 @@ const SendLzr = () => {
       await handleLZRTransfer(formik.values);
       setLoading(false);
       toast.success("Funds sent!", TOAST_OPTIONS);
+      setShowModal(false)
     } catch (err: any) {
       setLoading(false);
       httpError(err);
