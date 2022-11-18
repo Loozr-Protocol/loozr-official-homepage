@@ -26,7 +26,7 @@ import verified from "../assets/icons/verified.svg"
 import { useFollowerCallback, useFollowingCallback } from "../state/user/hooks/useAccount";
 import { MIXER_ACCOUNT } from "../config/constants";
 
-const Profile = () => {
+const Profile = (props) => {
   const push = useNavigate();
   let { accountDomain } = useParams();
   const [active, setActive] = useState(1);
@@ -51,7 +51,6 @@ const Profile = () => {
   const [copySuccess, setCopySuccess] = React.useState('');
 
   const navigate = useNavigate()
-
 
   const ClickFollwer = async ()=>{ 
     const result = await getFollower(currentProfile.id); 
@@ -399,45 +398,49 @@ const Profile = () => {
                 )}
               </p>
               <div className=" w-full py-6 flex items-center ">
-                <div className=" mx-[9px] " >  
-                  {currentProfile.soundCloudLink ?
-                    <a href={currentProfile.soundCloudLink} >
+                <div className=" mx-[9px] ">
+                  {currentProfile.soundCloudLink ? (
+                    <a href={currentProfile.soundCloudLink}>
                       <img
                         src={soundcloud}
                         alt=""
                         className=" w-[23.93px] h-[11.43px] "
                       />
-                    </a>: 
+                    </a>
+                  ) : (
                     <img
                       src={soundcloud}
                       alt=""
                       className=" w-[23.93px] h-[11.43px] "
                     />
-                  } 
+                  )}
                 </div>
-                <div className=" mx-[9px] " >  
-                  {currentProfile.spotifyLink ?
-                    <a href={currentProfile.spotifyLink} >
+                <div className=" mx-[9px] ">
+                  {currentProfile.spotifyLink ? (
+                    <a href={currentProfile.spotifyLink}>
                       <img src={spotify} alt="" className=" w-[15.24px]  " />
-                    </a>: 
+                    </a>
+                  ) : (
                     <img src={spotify} alt="" className=" w-[15.24px]  " />
-                  } 
+                  )}
                 </div>
-                <div className=" mx-[9px] " >  
-                  {currentProfile.instagramLink ?
-                    <a href={currentProfile.instagramLink} >
+                <div className=" mx-[9px] ">
+                  {currentProfile.instagramLink ? (
+                    <a href={currentProfile.instagramLink}>
                       <img src={instagram} alt="" className=" w-[16px]  " />
-                    </a>: 
+                    </a>
+                  ) : (
                     <img src={instagram} alt="" className=" w-[16px]  " />
-                  } 
+                  )}
                 </div>
-                <div className=" mx-[9px] mt-1 " > 
-                  {currentProfile.twitterLink ?
-                    <a href={currentProfile.twitterLink} >
+                <div className=" mx-[9px] mt-1 ">
+                  {currentProfile.twitterLink ? (
+                    <a href={currentProfile.twitterLink}>
                       <img src={twitter} alt="" className=" w-[18.76px]  " />
-                    </a>: 
+                    </a>
+                  ) : (
                     <img src={twitter} alt="" className=" w-[18.76px]  " />
-                  }
+                  )}
                 </div>
                 <div className=" relative  mx-2  ">
                   <img
@@ -466,10 +469,7 @@ const Profile = () => {
                       )}
                       <p
                         onClick={() =>
-                          copyToClipboard(
-                            currentProfile.accountDomain,
-                            "Copied"
-                          )
+                          copyToClipboard(window.location.href, "Copied")
                         }
                         className=" font-medium text-[13px] mt-1 cursor-pointer  "
                       >
@@ -487,17 +487,32 @@ const Profile = () => {
                   )}
                 </div>
               </div>
-              {currentProfile?.bio &&
+              {currentProfile?.bio && (
                 <>
                   {!showBio ? (
                     <p className="text-white max-w-[435px] leading-normal font-medium text-xs md:text-[13px] mb-[20px]">
-                      {(currentProfile?.bio).slice(0, 100)}<span onClick={()=> setShowBio(true)} className=" text-[#FFCD43] cursor-pointer " >...See More</span>
-                    </p>): 
+                      {(currentProfile?.bio).slice(0, 100)}
+                      <span
+                        onClick={() => setShowBio(true)}
+                        className=" text-[#FFCD43] cursor-pointer "
+                      >
+                        ...See More
+                      </span>
+                    </p>
+                  ) : (
                     <p className="text-white max-w-[435px] font-medium text-xs md:text-[13px] mb-[20px]">
-                      {currentProfile.bio}<span onClick={()=> setShowBio(false)} className=" text-[#FFCD43] cursor-pointer ml-2 " > See Less</span>
-                    </p> }
+                      {currentProfile.bio}
+                      <span
+                        onClick={() => setShowBio(false)}
+                        className=" text-[#FFCD43] cursor-pointer ml-2 "
+                      >
+                        {" "}
+                        See Less
+                      </span>
+                    </p>
+                  )}
                 </>
-              }
+              )}
               <div className="flex items-center mb-9">
                 <p
                   onClick={() => ClickFollwer()}
@@ -617,30 +632,40 @@ const Profile = () => {
               </button>
             </div>
             <div className=" w-full px-6 md:py-4 md:h-[60vh] h-full flex flex-1 flex-col overflow-y-auto ">
-              {data.map((item: any, index: any) => { 
-
-                const domainName = item.account_id+"."+MIXER_ACCOUNT 
-                return(
-                  <div key={index} onClick={() => navigate(`/${domainName}`)} className=' w-full cursor-pointer flex my-3 items-center ' > 
+              {data.map((item: any, index: any) => {
+                const domainName = item.account_id + "." + MIXER_ACCOUNT;
+                return (
+                  <div
+                    key={index}
+                    onClick={() => navigate(`/${domainName}`)}
+                    className=" w-full cursor-pointer flex my-3 items-center "
+                  >
                     <Photo
                       alt=""
                       className="object-contain w-10 h-10 rounded-full "
                       style={{ border: "3px solid #141922" }}
                     />
                     {/* <div className=' w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] ' /> */}
-                    <div className=' ml-3 ' >
-                      <div className=' flex -mt-1 items-center ' >
-                        <p className=' text-[13px] font-semibold ' > {item?.account_id}</p>
+                    <div className=" ml-3 ">
+                      <div className=" flex -mt-1 items-center ">
+                        <p className=" text-[13px] font-semibold ">
+                          {" "}
+                          {item?.account_id}
+                        </p>
                       </div>
-                      <div className=' flex -mt-1 items-center ' >
-                        <p className=' text-[11px] font-semibold text-[#536079] ' >{item?.email}</p> 
+                      <div className=" flex -mt-1 items-center ">
+                        <p className=" text-[11px] font-semibold text-[#536079] ">
+                          {item?.email}
+                        </p>
                       </div>
-                    </div> 
-                  </div> 
-                )
+                    </div>
+                  </div>
+                );
               })}
               {data.length === 0 && (
-                <p className=" mt-4 font-medium text-center " >No information avaliable</p>
+                <p className=" mt-4 font-medium text-center ">
+                  No information avaliable
+                </p>
               )}
             </div>
           </div>
