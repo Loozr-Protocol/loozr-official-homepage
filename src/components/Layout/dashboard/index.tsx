@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Left } from "./sidebars";
 import { TopBar } from "./topbar";
 import AppStore from "../../../assets/img/AppStore.png";
@@ -14,12 +14,17 @@ import More from "../../../assets/svg/More";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { LZR_IN_USD, MIXER_ACCOUNT } from "../../../config/constants";
-import { usePollLZRBalance } from "../../../state/wallet/hooks/fetchBalance";
+import {
+  getLZRBalanceCallback
+} from "../../../state/wallet/hooks/fetchBalance";
 import { useSelector } from "react-redux";
 import { AppState } from "../../../state/store";
-import { formatBalanceUSD, formatNumber, getFullDisplayBalance } from "../../../utils/formatBalance";
+import {
+  formatBalanceUSD,
+  formatNumber,
+  getFullDisplayBalance,
+} from "../../../utils/formatBalance";
 import SuggestedFollows from "../../suggestion/SuggestedFollows";
-import { nearExplorerAccount } from "../../../utils"; 
 import SuggestedUser from "../../SuggestedUser";
 
 const tabs = [
@@ -56,17 +61,33 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
 
   const user = useSelector((state: AppState) => state.user.userInfo);
   const lzrAccountId = `${user?.accountId}.${MIXER_ACCOUNT}`;
-  const balanceResult = usePollLZRBalance(lzrAccountId);
-  const balanceBN = getFullDisplayBalance(balanceResult);
-  
-  const balanceInLzr = formatNumber(Number(balanceBN));
-  const balanceUsd = formatBalanceUSD(Number(balanceBN));
-  const [showModal, setShowModal] = React.useState(false)
+
+  const [balanceInLzr, setLZRBalance] = useState('_');
+  const [balanceUsd, setBalanceUSD] = useState('_.__');
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    const loadLZRBalance = async (accountId: string) => {
+      const { handleGetLZRBalanace } = getLZRBalanceCallback();
+      try {
+        const result = await handleGetLZRBalanace(accountId);
+        const balanceResult = result;
+        const balanceBN = getFullDisplayBalance(balanceResult);
+
+        setLZRBalance(formatNumber(Number(balanceBN)));
+        setBalanceUSD(formatBalanceUSD(Number(balanceBN)));
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    loadLZRBalance(lzrAccountId);
+  }, []);
 
   return (
-    <div className=" w-full flex md:bg-dark-800 flex-col justify-center items-center " > 
-      <div className="flex justify-between relative h-screen md:bg-[#0c0f16] w-full md:w-[768px] lg:w-full !overflow-hidden"> 
-          <Left /> 
+    <div className=" w-full flex md:bg-dark-800 flex-col justify-center items-center ">
+      <div className="flex justify-between relative h-screen md:bg-[#0c0f16] w-full md:w-[768px] lg:w-full !overflow-hidden">
+        <Left />
         <div
           className={`flex-1 pt-4 pb-10 md:px-0 md:pl-7 lg:pr-0 !overflow-x-hidden md:mb-auto`}
           style={{
@@ -82,15 +103,21 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
             maxWidth: `100vw`,
           }}
         >
-          <div className="flex flex-col relative h-screen overflow-y-hidden items-center w-full"> 
-            <TopBar /> 
+          <div className="flex flex-col relative h-screen overflow-y-hidden items-center w-full">
+            <TopBar />
             <div className="w-full md:-mt-2 ">
               <div className="w-full flex  flex-col md:flex-row md:justify-between md:items-start">
                 <div className="w-full lg:w-[70%] md:pl-0 md:pr-7 h-[90vh] overflow-y-auto ">
                   {children}
-                </div> 
-                  <div className="w-full hidden overflow-y-auto md:h-[90vh] rounded-t-[14px] md:pr-4 lg:flex flex-col lg:w-[330px] xl:w-[330px]">
-                  <div  style={{ background: "linear-gradient(180deg, #12161F 0%, rgba(18, 22, 31, 0) 100%)" }} className="flex flex-col w-full min-h-[210px] rounded-t-[14px] mb-7">
+                </div>
+                <div className="w-full hidden overflow-y-auto md:h-[90vh] rounded-t-[14px] md:pr-4 lg:flex flex-col lg:w-[330px] xl:w-[330px]">
+                  <div
+                    style={{
+                      background:
+                        "linear-gradient(180deg, #12161F 0%, rgba(18, 22, 31, 0) 100%)",
+                    }}
+                    className="flex flex-col w-full min-h-[210px] rounded-t-[14px] mb-7"
+                  >
                     <div className="py-8 px-6 border-dark-900 rounded-t-[14px]  border-b">
                       <p className="text-muted text-xs font-medium mb-1.5">
                         Your Balance
@@ -126,52 +153,58 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                       className="w-[45%] cursor-pointer"
                     />
                   </div>
-                  </div> 
+                </div>
               </div>
             </div>
           </div>
         </div>
         {/* {isLoggedIn && (  */}
-          <div className="flex items-center justify-between md:hidden fixed bottom-0 py-4 px-7 bg-dark-900 w-full">
-            {tabs.map((tab, index) => (
-              <Link
-                to={tab.path || "#!"}
-                key={index}
-                className={`hover:flex flex flex-col items-center justify-center ${
-                  tabs.length !== index + 1 && "mr-4"
+        <div className="flex items-center justify-between md:hidden fixed bottom-0 py-4 px-7 bg-dark-900 w-full">
+          {tabs.map((tab, index) => (
+            <Link
+              to={tab.path || "#!"}
+              key={index}
+              className={`hover:flex flex flex-col items-center justify-center ${
+                tabs.length !== index + 1 && "mr-4"
+              }`}
+              onClick={() =>
+                tab.path ? null : toast.info("Coming soon!", TOAST_OPTIONS)
+              }
+            >
+              <tab.icon
+                className={`object-contain w-3.5 h-3.5 mb-2 ${
+                  tab.path === pathname ? "text-white" : "text-[#536079]"
                 }`}
-                onClick={() =>
-                  tab.path ? null : toast.info("Coming soon!", TOAST_OPTIONS)
-                }
+              />
+              <p
+                className={`text-xs font-medium ${
+                  tab.path === pathname ? "text-white" : "text-[#536079]"
+                }`}
               >
-                <tab.icon
-                  className={`object-contain w-3.5 h-3.5 mb-2 ${
-                    tab.path === pathname ? "text-white" : "text-[#536079]"
-                  }`}
-                />
-                <p
-                  className={`text-xs font-medium ${
-                    tab.path === pathname ? "text-white" : "text-[#536079]"
-                  }`}
-                >
-                  {tab.label}
-                </p>
-              </Link>
-            ))}
-          </div>
+                {tab.label}
+              </p>
+            </Link>
+          ))}
+        </div>
         {/* )} */}
       </div>
       {showModal && (
-        <div onClick={()=> setShowModal(false)} className=" fixed inset-0 flex justify-center items-center md:overflow-y-hidden bg-black bg-opacity-40 z-[70] " > 
-            <div className=' w-full md:w-[360px] md:h-auto relative z-[80] h-screen rounded-2xl bg-[#12161F]' >
-                <div className=' w-full flex items-center border-b border-[#222A3B] justify-between py-4 px-6 ' >
-                    <p className="  font-medium text-white">
-                        Suggested For You
-                    </p> 
-                    <button onClick={()=> setShowModal(false)} className=' font-medium text-xs bg-[#8369F4] w-[65px] h-7 rounded-lg ' >Done</button>
-                </div> 
-                <SuggestedUser />
-            </div> 
+        <div
+          onClick={() => setShowModal(false)}
+          className=" fixed inset-0 flex justify-center items-center md:overflow-y-hidden bg-black bg-opacity-40 z-[70] "
+        >
+          <div className=" w-full md:w-[360px] md:h-auto relative z-[80] h-screen rounded-2xl bg-[#12161F]">
+            <div className=" w-full flex items-center border-b border-[#222A3B] justify-between py-4 px-6 ">
+              <p className="  font-medium text-white">Suggested For You</p>
+              <button
+                onClick={() => setShowModal(false)}
+                className=" font-medium text-xs bg-[#8369F4] w-[65px] h-7 rounded-lg "
+              >
+                Done
+              </button>
+            </div>
+            <SuggestedUser />
+          </div>
         </div>
       )}
     </div>
