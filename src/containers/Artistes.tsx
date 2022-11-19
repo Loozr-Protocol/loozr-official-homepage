@@ -6,8 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../state/store";
 import { Link, useNavigate } from "react-router-dom";
 import Photo from "../components/Photo";
-import { loadCoinPrices } from "../utils";
-import { changePage, setArtistCoinInfo } from "../state/artist/artistReducer";
+import { changePage } from "../state/artist/artistReducer";
 import Pagination from "../components/Pagination";
 
 const ArtisteRenderer = (props) => {
@@ -75,9 +74,6 @@ const ArtisteRenderer = (props) => {
                 </p>
               </div>
             </div>
-            <p className=" font-medium text-[11.5px] text-[#536079] ">
-              ~{_.coinInfo ? _.coinInfo.coinPrice.toFixed(5) : "__"} LZR
-            </p>
             <div className=" w-full px-[2px] flex justify-center ">
               <button
                 onClick={() => navigate(`/artistes/buy/${_.user.id}`)}
@@ -103,13 +99,6 @@ const Artistes = () => {
     (state: AppState) => state.artist.pagination
   );
   const artists = useSelector((state: AppState) => state.artist.artists);
-
-  useEffect(() => {
-    artists.forEach(async (artist) => {
-      const payload = await loadCoinPrices(artist);
-      dispatch(setArtistCoinInfo(payload));
-    });
-  }, [artists]);
 
   return (
     <div className="w-full mt-8 md:mt-0 pb-28">
