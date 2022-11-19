@@ -25,8 +25,6 @@ import { getArtists } from "../state/artist/actions";
 import Photo from "../components/Photo";
 import SlidesButton from "../components/SlidesButton";
 import verified from "../assets/icons/verified.svg"
-import { loadCoinPrices } from "../utils";
-import { setArtistCoinInfo } from "../state/artist/artistReducer";
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 4,
@@ -57,13 +55,6 @@ const ArtisteDashboard = () => {
     const initialPage = 1;
     dispatch(getArtists(initialPage));
   }, []);
-
-  useEffect(() => {
-    artists.forEach(async (artist) => {
-      const payload = await loadCoinPrices(artist);
-      dispatch(setArtistCoinInfo(payload));
-    });
-  }, [artists])
   
   const FeaturedArtistes =()=>{ 
 
@@ -144,9 +135,6 @@ const ArtisteDashboard = () => {
                     </p>
                   </div>
                 </div>
-                <p className=" font-medium text-[11.5px] text-[#536079] ">
-                  ~{_.coinInfo ? _.coinInfo.coinPrice.toFixed(5): '__'} LZR
-                </p>
                 <div className=" w-full px-[2px] ">
                   <button
                     onClick={() => navigate(`/artistes/buy/${_.user.id}`)}
