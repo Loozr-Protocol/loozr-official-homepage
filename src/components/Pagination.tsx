@@ -1,19 +1,19 @@
 import React, { useEffect, useRef } from "react";
 
 interface CustomProps {
-  onSetCurrentPage: (page: number) => void;
+  onSetCurrentCursor: () => void;
   onFetchData: () => void;
-  currentPage: number;
-  prevPage: number;
+  currentCursor: string;
+  nextCursor: string;
   dataList: any[];
   reachMaxLimit: boolean;
 }
 
 const Pagination = ({
-  onSetCurrentPage,
+  onSetCurrentCursor,
   onFetchData,
-  currentPage,
-  prevPage,
+  currentCursor,
+  nextCursor,
   dataList,
   reachMaxLimit,
   children,
@@ -24,16 +24,17 @@ const Pagination = ({
     if (listInnerRef.current) {
       const { scrollTop, scrollHeight, clientHeight } = listInnerRef.current;
       if (scrollTop + clientHeight === scrollHeight) {
-        onSetCurrentPage(currentPage + 1);
+        onSetCurrentCursor();
       }
     }
   };
   useEffect(() => {
-    if (!reachMaxLimit && prevPage !== currentPage) {
+    console.log('Getting recalled');
+    if (!reachMaxLimit && nextCursor === currentCursor) {
       onFetchData();
     }
-  }, [currentPage, reachMaxLimit, prevPage]);
-  
+  }, [currentCursor, reachMaxLimit, nextCursor]);
+
   const childrenWithProps = React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
       return React.cloneElement(child, { onScroll, listInnerRef, dataList });

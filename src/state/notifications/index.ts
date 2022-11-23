@@ -1,16 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getNotifications } from './actions';
 import NotificationAlert from '../../config/constants/models/notifications';
+import { Pagination } from '../../config/constants/types';
 
 
 export interface NotificationsState {
   notifications: NotificationAlert[];
-  pagination: {
-    total: number;
-    current: number;
-    prevPage: number;
-    reachMaxLimit: boolean;
-  };
+  pagination: Pagination;
   loading: boolean;
   success: boolean;
   error: string;
@@ -19,9 +15,8 @@ export interface NotificationsState {
 const initialState: NotificationsState = {
   notifications: [],
   pagination: {
-    total: 0,
-    current: 1,
-    prevPage: 0,
+    nextCursor: '',
+    currentCursor: '',
     reachMaxLimit: false
   },
   loading: false,
@@ -33,8 +28,9 @@ const notificationsSlice = createSlice({
   name: 'notifications',
   initialState,
   reducers: {
-    changePage(state, action) {
-      state.pagination.current = action.payload;
+    changePage(state) {
+      if (!state.pagination.nextCursor)return;
+      state.pagination.currentCursor = state.pagination.nextCursor;
     },
   },
   extraReducers: (builder) => {
@@ -47,7 +43,8 @@ const notificationsSlice = createSlice({
       state.loading = false;
       state.success = true;
       state.error = null;
-      if (state.pagination.current === state.pagination.prevPage) return;
+
+      if (state.pagination.currentCursor !== state.pagination.nextCursor) return;
 
       const notifications: NotificationAlert[] = action.payload.results.map((res: any) => {
         const notification = new NotificationAlert({});
@@ -59,8 +56,7 @@ const notificationsSlice = createSlice({
         return;
       }
       state.notifications = [...state.notifications, ...notifications];
-      state.pagination.total = action.payload.pagination.to;
-      state.pagination.prevPage = action.payload.pagination.current_page;
+      state.pagination.nextCursor = action.payload.next_cursor;
     });
 
     builder.addCase(getNotifications.rejected, (state, action) => {

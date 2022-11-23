@@ -24,9 +24,8 @@ const initialState: UserState = {
   suggestedUsers: {
     users: [],
     pagination: {
-      total: 0,
-      current: 1,
-      prevPage: 0,
+      nextCursor: '',
+      currentCursor: '',
       reachMaxLimit: false
     }
   },
@@ -61,8 +60,9 @@ const userSlice = createSlice({
     updateProfile: (state, action) => {
       state.userInfo = action.payload;
     },
-    changeSuggestedPage(state, action) {
-      state.suggestedUsers.pagination.current = action.payload;
+    changeSuggestedPage(state) {
+      if (!state.suggestedUsers.pagination.nextCursor) return;
+      state.suggestedUsers.pagination.currentCursor = state.suggestedUsers.pagination.nextCursor;
     },
     removeSuggestedUser(state, action) {
       const indexOfUser = state.suggestedUsers.users.findIndex(user => user.id === action.payload);
@@ -141,7 +141,7 @@ const userSlice = createSlice({
     });
 
     builder.addCase(getSuggestedUsers.fulfilled, (state, action) => {
-      if (state.suggestedUsers.pagination.current === state.suggestedUsers.pagination.prevPage) return;
+      if (state.suggestedUsers.pagination.currentCursor !== state.suggestedUsers.pagination.nextCursor) return;
 
       const users: User[] = action.payload.results.map((res: any) => {
         const user = new User({});
@@ -153,8 +153,7 @@ const userSlice = createSlice({
         return;
       }
       state.suggestedUsers.users = [...state.suggestedUsers.users, ...users];
-      state.suggestedUsers.pagination.total = action.payload.pagination.to;
-      state.suggestedUsers.pagination.prevPage = action.payload.pagination.current_page;
+      state.suggestedUsers.pagination.nextCursor = action.payload.next_cursor;
     });
   }
 });

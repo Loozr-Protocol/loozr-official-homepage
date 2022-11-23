@@ -17,7 +17,7 @@ const SuggestedFollows = (props: any) => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    dispatch(getSuggestedUsers(1));
+    dispatch(getSuggestedUsers(''));
   }, []);
 
   const onFollow = async (user: User) => {

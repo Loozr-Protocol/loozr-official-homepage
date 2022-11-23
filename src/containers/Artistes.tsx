@@ -108,10 +108,10 @@ const Artistes = () => {
       <Pagination
         reachMaxLimit={pagination.reachMaxLimit}
         dataList={artists}
-        prevPage={pagination.prevPage}
-        onFetchData={() => dispatch(getArtists(pagination.current))}
-        currentPage={pagination.current}
-        onSetCurrentPage={(page: number) => dispatch(changePage(page))}
+        onFetchData={() => dispatch(getArtists(pagination.nextCursor))}
+        currentCursor={pagination.currentCursor}
+        nextCursor={pagination.nextCursor}
+        onSetCurrentCursor={() => dispatch(changePage())}
       >
         <ArtisteRenderer />
       </Pagination>
