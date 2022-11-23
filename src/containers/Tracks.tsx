@@ -18,64 +18,64 @@ import { motion } from "framer-motion";
 
 const tracks = [
   {
-    title: "Chiling good",
-    artist: "Goya Menor",
-    img: Goya,
+    title: "Password Infinity",
+    artist: "EvgenyBardyuzha",
+    img: "https://cdn.pixabay.com/audio/2022/10/18/12-55-08-891_200x200.jpg",
   },
   {
-    title: "First night out ",
-    artist: "Andrew Thomas",
-    img: AT,
+    title: "Inspiring Cinematic Ambien",
+    artist: "Lexin Music",
+    img: "https://cdn.pixabay.com/audio/2022/08/02/19-23-38-897_200x200.jpg",
   },
   {
-    title: "Heart bleeding ",
-    artist: "Sunsha Merit",
-    img: SM,
+    title: "Leonell Cassio - The Blackest Bouquet",
+    artist: "LeonellCassio",
+    img: "https://cdn.pixabay.com/audio/2022/08/31/19-48-37-847_200x200.jpg",
   },
   {
-    title: "Stepping up again",
-    artist: "Sandra Alex",
-    img: SUA,
+    title: "Motivational Epic Music / Inspiring Cinematic Background Music",
+    artist: "SoulProdMusic",
+    img: "https://cdn.pixabay.com/audio/2022/10/28/13-40-40-910_200x200.jpg",
   },
   {
-    title: "Chiling good",
-    artist: "Goya Menor",
-    img: Cloud,
+    title: "Lofi Study",
+    artist: "FASSounds",
+    img: "https://cdn.pixabay.com/audio/2022/05/27/23-51-43-941_200x200.jpg",
   },
   {
-    title: "First night out",
-    artist: "Andrew Thomas",
-    img: Nons,
+    title: "Happy Day",
+    artist: "Stockaudios",
+    img: "https://cdn.pixabay.com/audio/2022/11/18/00-18-44-918_200x200.jpg",
   },
   {
-    title: "Heart bleeding",
-    artist: "Sunsha Merit",
-    img: HB,
+    title: "Weeknds",
+    artist: "DayFox",
+    img: "https://cdn.pixabay.com/audio/2022/10/12/09-28-04-865_200x200.jpg",
   },
   {
-    title: "Stepping up again",
-    artist: "Sandra Alex",
-    img: SA,
+    title: "Stomping Rock (Four Shots)",
+    artist: "AlexGrohl",
+    img: "https://cdn.pixabay.com/audio/2022/05/17/19-32-35-334_200x200.jpg",
   },
   {
-    title: "Chilling good",
-    artist: "Goya Menor",
-    img: Circle,
+    title: "Price of Freedom",
+    artist: "Daddy s Music",
+    img: "https://cdn.pixabay.com/audio/2022/04/19/14-43-14-304_200x200.png",
   },
   {
-    title: "First night out",
-    artist: "Andrew Thomas",
-    img: HeartBleeding,
+    title: "Relaxing Music Vol.1",
+    artist: "RelaxingTime",
+    img: "https://cdn.pixabay.com/audio/2022/10/30/16-30-47-204_200x200.jpg",
   },
   {
-    title: "First night out",
-    artist: "Andrew Thomas",
-    img: FNA,
+    title: "Space",
+    artist: "Music Unlimited",
+    img: "https://cdn.pixabay.com/audio/2022/09/17/20-13-39-414_200x200.jpg",
   },
   {
-    title: "First night out",
-    artist: "Andrew Thomas",
-    img: Monalisa,
+    title: "Whip",
+    artist: "prazkhanal",
+    img: "https://cdn.pixabay.com/audio/2022/08/12/09-43-51-852_200x200.png",
   },
 ];
 
@@ -171,10 +171,16 @@ const Tracks = () => {
                 <source src={"/song.mp3"} />
                 Your browser does not support the <code>audio</code> element.
               </audio>
-
-              <div className={isShown === index+"" ? "example1 mt-3" : " h-[20px] mt-3 "} >
+ 
+              <div className={isShown === index+"" ? "example1 mt-3" : " h-[20px] hidden mt-3 "} >
                 <p className="mb-[3px] font-medium text-sm text-white"> 
                     {track.title} 
+                </p> 
+              </div>  
+
+              <div className={isShown === index+"" ? "hidden" : " h-[20px] mt-3 "} >
+                <p className="mb-[3px] font-medium text-sm text-white"> 
+                    {track.title.slice(0, 12)} 
                 </p> 
               </div>  
               <p className="text-muted text-xs font-normal">{track.artist}</p>
