@@ -56,15 +56,12 @@ const Profile = (props) => {
     const result = await getFollower(currentProfile.id); 
     setData(result) 
     setShowModal(true)
-    console.log(result);
   } 
 
   const ClickFollwing = async ()=>{  
     const result = await getFollowing(currentProfile.id); 
     setData(result)
     setShowModal(true)
-    console.log(result);
-    
   } 
 
   function copyToClipboard(item: any, text: any) { 
@@ -275,7 +272,7 @@ const Profile = (props) => {
                     ? currentProfile.username
                     : currentProfile.accountId}
                 </span>
-                {currentProfile.isArtist ? (
+                {currentProfile.isArtist && currentProfile.tokenName ? (
                   <span className="pointer ml-2 pl-2 before:top-[6px]">
                     Artiste
                   </span>
@@ -348,7 +345,7 @@ const Profile = (props) => {
                       >
                         View user on explorer
                       </a>
-                      {currentProfile.isArtist && (
+                      {currentProfile.isArtist && currentProfile.tokenName && (
                         <p className=" font-medium text-[13px] cursor-pointer mt-1  ">
                           View artist on explorer
                         </p>
@@ -418,7 +415,7 @@ const Profile = (props) => {
                     Following
                   </span>
                 </p>
-                {currentProfile.isArtist ? (
+                {currentProfile?.isArtist && currentProfile.tokenName ? (
                   <p className="text-xs md:text-sm font-bold">
                     0
                     <span className="ml-2 text-sm text-muted font-medium">
@@ -427,7 +424,7 @@ const Profile = (props) => {
                   </p>
                 ) : null}
               </div>
-              {currentProfile?.isArtist ? (
+              {currentProfile?.isArtist && currentProfile?.tokenName ? (
                 <div className="flex items-start mb-[15px]">
                   <button
                     onClick={() => push(`/artistes/buy/${currentProfile?.id}`)}
@@ -509,7 +506,7 @@ const Profile = (props) => {
         >
           <div className=" w-full md:w-[360px] md:h-auto relative z-[80] h-screen rounded-2xl bg-[#12161F]">
             <div className=" w-full flex items-center border-b border-[#222A3B] justify-between py-4 px-6 ">
-              <p className="  font-medium text-white">Select your genres</p>
+              <p className="  font-medium text-white">Follows</p>
               <button
                 onClick={() => setShowModal(false)}
                 className=" font-medium text-xs bg-[#8369F4] w-[65px] h-7 rounded-lg "
