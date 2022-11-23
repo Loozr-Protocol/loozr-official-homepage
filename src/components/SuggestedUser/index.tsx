@@ -79,10 +79,10 @@ export default function Index(props: any) {
       <Pagination
         reachMaxLimit={pagination.reachMaxLimit}
         dataList={users}
-        prevPage={pagination.prevPage}
-        onFetchData={() => dispatch(getSuggestedUsers(pagination.current))}
-        currentPage={pagination.current}
-        onSetCurrentPage={(page: number) => dispatch(changeSuggestedPage(page))}
+        onFetchData={() => dispatch(getSuggestedUsers(pagination.nextCursor))}
+        currentCursor={pagination.currentCursor}
+        nextCursor={pagination.nextCursor}
+        onSetCurrentCursor={() => dispatch(changeSuggestedPage())}
       >
         <SuggestUsersTable />
       </Pagination>

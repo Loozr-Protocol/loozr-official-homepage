@@ -3,10 +3,10 @@ import { useGetNotificationsCallback } from "../hooks";
 
 export const getNotifications = createAsyncThunk(
   'notifications/getNotifications',
-  async (currentPage: number, { rejectWithValue }) => {
+  async (nextCursor: string = '', { rejectWithValue }) => {
     const { handleNotifications } = useGetNotificationsCallback();
     try {
-      const result = await handleNotifications(currentPage);
+      const result = await handleNotifications(nextCursor);
       return result;
     } catch (error) {
       return rejectWithValue(error);

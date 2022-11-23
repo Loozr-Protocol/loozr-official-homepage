@@ -34,16 +34,17 @@ export interface Artist {
   songs: Song[]
 }
 
+export interface Pagination {
+  currentCursor: string;
+  nextCursor: string;
+  reachMaxLimit: boolean;
+}
+
 export interface UserState {
   userInfo: User;
   suggestedUsers: {
     users: User[];
-    pagination: {
-      total: number;
-      current: number;
-      prevPage: number;
-      reachMaxLimit: boolean;
-    }
+    pagination: Pagination;
   }
   currentProfile: User;
   jwtToken: string;

@@ -67,10 +67,10 @@ export const accountSetup = createAsyncThunk('user/accountSetup', async ({ accou
 
 export const getSuggestedUsers = createAsyncThunk(
   'users/getSuggestedUsers',
-  async (currentPage: number, { rejectWithValue }) => {
+  async (nextCursor: string = '', { rejectWithValue }) => {
     const { getSuggestedFollows } = useGetSuggestedFollowsCallback();
     try {
-      const result = await getSuggestedFollows(currentPage);
+      const result = await getSuggestedFollows(nextCursor);
       return result;
     } catch (error) {
       return rejectWithValue(error);

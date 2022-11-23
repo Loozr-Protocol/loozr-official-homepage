@@ -108,10 +108,10 @@ const Notifications = () => {
       <Pagination
         reachMaxLimit={pagination.reachMaxLimit}
         dataList={notifications}
-        prevPage={pagination.prevPage}
-        onFetchData={() => dispatch(getNotifications(pagination.current))}
-        currentPage={pagination.current}
-        onSetCurrentPage={(page: number) => dispatch(changePage(page))}
+        onFetchData={() => dispatch(getNotifications(pagination.nextCursor))}
+        currentCursor={pagination.currentCursor}
+        nextCursor={pagination.nextCursor}
+        onSetCurrentCursor={() => dispatch(changePage())}
       >
         <NotificationContent />
       </Pagination>
