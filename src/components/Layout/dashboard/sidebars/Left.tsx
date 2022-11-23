@@ -128,7 +128,7 @@ export const Left = () => {
         <>
           {!user?.isArtist ? (
             <button
-              onClick={()=> setIsShown(true)}
+              onClick={()=> setShowModal(true)}
               className="hidden xl:block text-xs font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
             >
               Become an artist

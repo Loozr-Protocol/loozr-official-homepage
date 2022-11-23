@@ -93,7 +93,7 @@ const Carousel = () => {
   
 
   return(
-    <div className="h-[230px] w-full relative  " > 
+    <div className="h-[230px] w-screen md:w-full relative  " > 
       {image.map((item: any, index: any) => {
           return( 
             <AnimatePresence  key={item} >
@@ -101,7 +101,7 @@ const Carousel = () => {
                 <a target="_blank" href={item.link} > 
                   <motion.div  
                     key={item} 
-                      className="w-full  min-h-[210px] absolute inset-x-0 top-0 bg-no-repeat bg-cover bg-center pl-8 py-7 flex flex-col justify-end "
+                      className=" w-screen md:w-full  min-h-[210px] absolute inset-x-0 top-0 bg-no-repeat bg-cover bg-center pl-8 py-7 flex flex-col justify-end "
                       style={{ background: `url(${item.img})`, backgroundColor: "#000", backgroundPosition: "cover" }}
                       {...boxAnimation}
                     >

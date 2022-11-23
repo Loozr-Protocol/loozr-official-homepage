@@ -253,7 +253,7 @@ const ArtisteDashboard = () => {
   }, [canPlay, curTime, duration, playing, setPlaying]);
 
   return (
-    <div className="w-full flex flex-col ">
+    <div className=" w-screen md:w-full flex flex-col ">
       <Carousel />  
       {renderAudioPlayer}  
       <FeaturedArtistes />

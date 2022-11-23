@@ -106,14 +106,14 @@ const SendLzr = () => {
   }
 
   return (
-    <div className="w-full mt-16 md:mt-0">
+    <div className="w-full px-6 md:px-0 mt-16 md:mt-0">
       <p className="text-white text-2xl font-semibold mb-12">Send LZR</p>
       <div className="flex flex-col items-center justify-center md:justify-start md:items-start max-w-[490px]">
         <div className=" md:w-[350px] mb-8">
           <p className="text-sm font-medium text-muted mb-5">
             Enter account_id to send LZR to:
           </p>
-          <div className=" w-[350px] relative " > 
+          <div className=" w-full md:w-[350px] relative " > 
             <input
               type="text"
               name="account_id"
@@ -180,11 +180,11 @@ const SendLzr = () => {
           <input
             type="number"
             name="amount"
-            onKeyPress={(e) => {
-              if (e.key === "e" || e.key === "-" || e.key === "+") {
-                e.preventDefault();
-              }
-            }}
+            // onKeyPress={(e) => {
+            //   if (e.key === "e" || e.key === "-" || e.key === "+") {
+            //     e.preventDefault();
+            //   }
+            // }}
             value={formik.values.amount}
             onChange={(e)=> OnchangeHandler(e.target.value)}
             onBlur={formik.handleBlur}
