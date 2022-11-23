@@ -1,5 +1,5 @@
 
-import memoji from "../assets/img/Intersect.png";  
+// import memoji from "../assets/img/Intersect.png";  
 
 export interface PhotoProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   src?: string;
@@ -32,7 +32,7 @@ const Photo: React.FC<React.PropsWithChildren<PhotoProps>> = ({
         {userId ? (
           <p className=" font-semibold " >{userId.slice(0,2).toUpperCase()}</p>
         ): (
-          <p className=" font-semibold " >{}</p>
+          <p className=" font-semibold " >UK</p>
         )}
       </div> 
   </div>;
