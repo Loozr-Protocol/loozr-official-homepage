@@ -97,13 +97,6 @@ Setting this value too high will discourage buyers from ever purchasing your coi
     }
   };
 
-  const OnChangeHandler =(item: any)=>{
-
-    let NewValue = item.replace(/[^0-9]/g,'')
-    setNumber(NewValue)
-    formik.setFieldValue("founder_reward", NewValue)
-  }
-
   return (
     <div className="min-h-screen flex flex-col justify-center items-center ">
       <div className="px-6 max-w-[520px] mx-auto">
@@ -123,7 +116,7 @@ Setting this value too high will discourage buyers from ever purchasing your coi
           placeholder="$YOUR_COIN_NAME"
           value={formik.values.account_id}
           setResult={(result) => setAvailableState(result)}
-          onChange={setText}
+          onChange={formik.handleChange}
           onBlur={(e) => formik.handleBlur(e)}
           onFocus={() => formik.setFieldTouched("account_id", true, true)}
         />
@@ -155,13 +148,12 @@ Setting this value too high will discourage buyers from ever purchasing your coi
           <input
             type="number"
             name="founder_reward" 
-            onKeyPress={(e) => {
-              if (e.key === "e" || e.key === "-" || e.key === "+") {
-                e.preventDefault();
-              }
-            }}
-            value={number}
-            onChange={(e)=> OnChangeHandler(e.target.value)}
+            // onKeyPress={(e) => {
+            //   if (e.key === "e" || e.key === "-" || e.key === "+") {
+            //     e.preventDefault();
+            //   }
+            // }} 
+            onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             onFocus={() => formik.setFieldTouched("founder_reward", true, true)}
             className=" px-7 py-3 md:py-4 h-[55px] mt-2 md:h-[60px]  w-full md:w-[176px] bg-dark-800 text-sm placeholder:text-muted text-white"

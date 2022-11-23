@@ -46,10 +46,7 @@ export default function AccountSetup() {
     }
 
     if (!isAccountAvailable) return;
-
-    dispatch(accountSetup({
-      account_id: text
-    })); 
+    dispatch(accountSetup(formik.values));
   };
 
   // if (!jwtToken) {
@@ -77,9 +74,9 @@ export default function AccountSetup() {
           accountDomain={`.${MIXER_ACCOUNT}`}
           name="account_id"
           placeholder="username.lzr.testnet"
-          // value={text}
+          value={formik.values.account_id}
           setResult={(result) => setAvailableState(result)}
-          onChange={setText}
+          onChange={formik.handleChange}
           onBlur={(e) => formik.handleBlur(e)}
           onFocus={() => formik.setFieldTouched("account_id", true, true)}
         />
