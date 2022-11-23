@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import Artist, { CoinInfo } from '../../config/constants/models/artist';
 import User from '../../config/constants/models/user';
+import { Pagination } from '../../config/constants/types';
 import { jsonToUser } from '../../utils';
 import { priceInLoozr } from '../../utils/creatorCoinFormater';
 import { formatBalanceUSD, formatNumber, getBalanceAmount, getFullDisplayBalance } from '../../utils/formatBalance';
@@ -17,12 +18,7 @@ interface Hodler {
 
 export interface ArtistState {
   artists: Artist[];
-  pagination: {
-    total: number;
-    current: number;
-    prevPage: number;
-    reachMaxLimit: boolean;
-  };
+  pagination: Pagination;
   artistInfo?: Artist;
   coinInfo: CoinInfo;
   holders: Hodler[];
@@ -35,9 +31,8 @@ export interface ArtistState {
 const initialState: ArtistState = {
   artists: [],
   pagination: {
-    total: 0,
-    current: 1,
-    prevPage: 0,
+    nextCursor: '',
+    currentCursor: '',
     reachMaxLimit: false
   },
   artistInfo: null,
@@ -80,8 +75,9 @@ const artistSlice = createSlice({
       };
       state.artists.find(a => a.id === artist.id).setCoinInfo = coinInfo;
     },
-    changePage(state, action) {
-      state.pagination.current = action.payload;
+    changePage(state) {
+      if (!state.pagination.nextCursor) return;
+      state.pagination.currentCursor = state.pagination.nextCursor;
     },
   },
   extraReducers: (builder) => {
@@ -95,7 +91,7 @@ const artistSlice = createSlice({
       state.success = true;
       state.error = null;
 
-      if (state.pagination.current === state.pagination.prevPage) return;
+      if (state.pagination.currentCursor !== state.pagination.nextCursor) return;
 
       const artists = action.payload.results.map((res: any) => {
         const artist = new Artist({});
@@ -109,8 +105,7 @@ const artistSlice = createSlice({
       }
 
       state.artists = [...state.artists, ...artists];
-      state.pagination.total = action.payload.pagination.to;
-      state.pagination.prevPage = action.payload.pagination.current_page;
+      state.pagination.nextCursor = action.payload.next_cursor;
     });
 
     builder.addCase(getArtists.rejected, (state, action) => {

@@ -1,9 +1,9 @@
 import HttpClient from "../../../utils/httpHelper";
 
 export function useGetArtistCallback() {
-  const handleGetArtists = async (currentPage: number): Promise<any> => {
+  const handleGetArtists = async (nextCursor: string): Promise<any> => {
     const httpClient = new HttpClient();
-    const result = await httpClient.axiosInstance.get(`/artistes?page=${currentPage}`);
+    const result = await httpClient.axiosInstance.get(`/artistes?cursor=${nextCursor}`);
     return result.data;
   }
   return { handleGetArtists }
