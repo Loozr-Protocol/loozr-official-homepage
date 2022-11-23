@@ -15,6 +15,7 @@ import useAudioPlayer from "../hooks/useAudioPlayer";
 import Play from "../components/Play";
 import Pause from "../components/Pause";
 import { motion } from "framer-motion";
+import Marquee from "react-fast-marquee";
 
 const tracks = [
   {
@@ -170,19 +171,14 @@ const Tracks = () => {
               <audio id={`audio-${index}`}>
                 <source src={"/song.mp3"} />
                 Your browser does not support the <code>audio</code> element.
-              </audio>
- 
-              <div className={isShown === index+"" ? "example1 mt-3" : " h-[20px] hidden mt-3 "} >
-                <p className="mb-[3px] font-medium text-sm text-white"> 
-                    {track.title} 
-                </p> 
-              </div>  
-
-              <div className={isShown === index+"" ? "hidden" : " h-[20px] mt-3 "} >
-                <p className="mb-[3px] font-medium text-sm text-white"> 
-                    {track.title.slice(0, 12)} 
-                </p> 
-              </div>  
+              </audio> 
+              <div className=" mt-3 w-full " >
+                <Marquee speed={50} loop={isShown === index+"" ? 0 : -1} gradient={false} >
+                  <p className="mb-[3px] font-medium text-sm text-white">
+                    {track.title+" "}
+                  </p> 
+                </Marquee> 
+              </div> 
               <p className="text-muted text-xs font-normal">{track.artist}</p>
             </motion.div>
           );

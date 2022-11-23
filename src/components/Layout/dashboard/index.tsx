@@ -89,7 +89,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
       <div className="flex justify-between relative h-screen md:bg-[#0c0f16] w-full md:w-[768px] lg:w-full !overflow-hidden">
         <Left />
         <div
-          className={`flex-1 pt-4 pb-10 md:px-0 md:pl-7 lg:pr-0 !overflow-x-hidden md:mb-auto`}
+          className={`flex-1 pt-4 pb-10 md:px-0 md:pl-7 max-w-full lg:pr-0 !overflow-x-hidden md:mb-auto`}
           style={{
             // marginLeft: xl
             //   ? `calc(${drawerMaxWidth}vw)`
@@ -100,14 +100,14 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
             //   : "auto",
             // marginRight: "auto",
             // zoom: md ? "80%" : "100%",
-            maxWidth: `100vw`,
+            // maxWidth: `100vw`,
           }}
         >
           <div className="flex flex-col relative h-screen overflow-y-hidden items-center w-full">
             <TopBar />
             <div className="w-full md:-mt-2 ">
               <div className="w-full flex  flex-col md:flex-row md:justify-between md:items-start">
-                <div className="w-full lg:w-[70%] md:pl-0 md:pr-7 h-[90vh] overflow-y-auto ">
+                <div className="w-screen lg:w-[70%] md:pl-0 md:pr-7 h-[90vh] overflow-y-auto ">
                   {children}
                 </div>
                 <div className="w-full hidden overflow-y-auto md:h-[90vh] rounded-t-[14px] md:pr-4 lg:flex flex-col lg:w-[330px] xl:w-[330px]">
