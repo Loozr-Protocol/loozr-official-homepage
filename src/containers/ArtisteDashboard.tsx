@@ -67,7 +67,7 @@ const ArtisteDashboard = () => {
       } else {
         setIsShownText(-1)
       }
-    }
+    } 
     
     return (
       <>
@@ -94,7 +94,8 @@ const ArtisteDashboard = () => {
                   <div className=" relative ">
                     <Photo
                       alt=""
-                      className="object-cover h-[100px] md:h-[105px] flex justify-center items-center w-[100px] md:w-[105px] rounded-full  mb-[16px]"
+                      userId={_.user.email}
+                      className="object-cover h-[100px] text-4xl md:h-[105px] flex justify-center items-center w-[100px] md:w-[105px] rounded-full  mb-[16px]"
                       style={{
                         border: "8.7px solid #141922",
                       }}

@@ -7,14 +7,13 @@ const AccountSetupInput = ({
   onBlur,
   onFocus,
   setResult,
-  // value,
+  value,
   accountDomain,
   ...rest
 }) => {
   const timerRef = useRef(null);
 
-  const { nameCheckCallback } = useAccountNameCheckCallback();
-  const [text, setText] = useState("")
+  const { nameCheckCallback } = useAccountNameCheckCallback(); 
 
   useEffect(() => {
     return () => clearTimeout(timerRef.current);
@@ -22,21 +21,14 @@ const AccountSetupInput = ({
 
   const onKeyUp = async () => { 
     clearTimeout(timerRef.current);
-    if(text.length < 1) return;
-    const accountId = `${text}.${MIXER_ACCOUNT}`;
+    if(value.length < 1) return;
+    const accountId = `${value}.${MIXER_ACCOUNT}`;
     timerRef.current = setTimeout(async () => {
       const isAvailable = await nameCheckCallback(accountId);
       setResult(isAvailable);
     }, 3000);
-  };
+  }; 
 
-  const OnChangeHandler =(item: any)=>{
-
-    let NewValue = item.replace(/[^a-zA-Z0-9_]/g,'') 
-    setText(NewValue)
-    onChange(NewValue)
-  }
-  
   return (
     <div
       className="flex flex-row w-full md:w-[400px] between items-center"
@@ -46,10 +38,9 @@ const AccountSetupInput = ({
       <div className=" relative w-full " > 
       <input 
         type="text" 
-        onKeyUp={() => onKeyUp()}
-        value={text}
+        onKeyUp={() => onKeyUp()} 
         onKeyDown={() => clearTimeout(timerRef.current)}
-        onChange={(e)=>OnChangeHandler(e.target.value)}
+        onChange={onChange}
         onBlur={onBlur}
         onFocus={onFocus}
         style={{paddingLeft: "30px"}}
@@ -58,8 +49,8 @@ const AccountSetupInput = ({
       />
 
       <div className=" absolute top-[15px] md:top-[18px] flex left-[30px] right-7 overflow-x-hidden "> 
-          <p className="text-[16.26px] text-transparent " >{(text).toLowerCase()}</p>
-          {text !== "" &&  
+          <p className="text-[16.26px] text-transparent " >{(value).toLowerCase()}</p>
+          {value !== "" &&  
             <span className=" z-30 mt-[1px]  text-muted" >.lzr.testnet</span>
           }
         </div>  

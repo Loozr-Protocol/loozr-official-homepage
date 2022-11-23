@@ -1,14 +1,17 @@
-import memoji from "../assets/img/Intersect.png";
+
+// import memoji from "../assets/img/Intersect.png";  
 
 export interface PhotoProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   src?: string;
   photoColor?: string
+  userId?: string
 }
 
 const Photo: React.FC<React.PropsWithChildren<PhotoProps>> = ({
   src,
   alt,
   photoColor='transparent',
+  userId,
   ...rest
 }) => {
   if (src) {
@@ -22,10 +25,16 @@ const Photo: React.FC<React.PropsWithChildren<PhotoProps>> = ({
         /> 
       </div>
     );
-  }
+  } 
 
   return <div {...rest}   >  
-      <img src={memoji} alt="avatar"  className=" w-full rounded-full "  />
+      <div className=" w-full h-full flex justify-center items-center bg-blue-600 rounded-full " >
+        {userId ? (
+          <p className=" font-semibold " >{userId.slice(0,2).toUpperCase()}</p>
+        ): (
+          <p className=" font-semibold " >UK</p>
+        )}
+      </div> 
   </div>;
 };
 
