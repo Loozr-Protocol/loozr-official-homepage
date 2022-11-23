@@ -20,9 +20,6 @@ export const TopBar = () => {
   const [searchValue, setSearchValue] = React.useState("")
   const [data, setData] = React.useState([] as any)
   const user = useSelector((state: AppState) => state.user.userInfo);
-  
-  const isLoggedIn = sessionStorage.getItem("isLoggedIn") === "true"; 
-  
   const { getSearchUser } = useSearchUserCallback(); 
 
   const OnchangeHandler = async (item: any)=>{ 
@@ -110,7 +107,7 @@ export const TopBar = () => {
             </div>
           )}
         </div>
-        {!isLoggedIn && (
+        {!user && (
           <div className=" flex  items-center justify-end gap-x-4">
             <button
               className="rounded-full h-[48px] w-[170px] bg-[#141922]  text-[11.5px] font-semibold outline-none focus:outline-none"
