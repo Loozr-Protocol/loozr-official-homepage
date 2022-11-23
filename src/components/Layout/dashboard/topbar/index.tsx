@@ -54,7 +54,7 @@ export const TopBar = () => {
             type="text"
             value={searchValue}
             placeholder="Search artiste, fans… "
-            onChange={(e)=> OnchangeHandler(e.target.value)}
+            onChange={(e) => OnchangeHandler(e.target.value)}
             className="placeholder:text-[#536079]  w-full rounded-full h-[48px] text-xs"
             style={{
               paddingLeft: "3.5rem",
@@ -67,37 +67,48 @@ export const TopBar = () => {
             src={SearchIcon}
             alt=""
             className="absolute w-4 h-4 object-contain inset-y-[16px] left-7"
-          /> 
-            {searchValue && ( 
-              <div className=" absolute bg-[#12161F] top-[50px] overflow-y-auto max-h-[250px] z-[120] py-2 mt-2 rounded-lg px-4 w-full  " > 
-                {data.map((item: any, index: any) => { 
+          />
+          {searchValue && (
+            <div className=" absolute bg-[#12161F] top-[50px] overflow-y-auto max-h-[250px] z-[120] py-2 mt-2 rounded-lg px-4 w-full  ">
+              {data.map((item: any, index: any) => {
+                const domainName = item.account_id + "." + MIXER_ACCOUNT;
 
-                  const domainName = item.account_id+"."+MIXER_ACCOUNT
-
-                  return(
-                    <div key={index} onClick={() => ClickHandler(`/${domainName}`)} className=' w-full cursor-pointer relative z-[120] flex my-3 items-center ' > 
-                      <Photo
-                        alt=""
-                        className="object-contain w-10 h-10 rounded-full "
-                        style={{ border: "3px solid #141922" }}
-                      />
-                      {/* <div className=' w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] ' /> */}
-                      <div className=' ml-3 ' >
-                        <div className=' flex -mt-1 items-center ' >
-                          <p className=' text-[13px] font-semibold ' > {item?.account_id}</p>
-                        </div>
-                        <div className=' flex -mt-1 items-center ' >
-                          <p className=' text-[11px] font-semibold text-[#536079] ' >{domainName.slice(0, 30)}</p> 
-                        </div>
-                      </div> 
-                    </div> 
-                  )
-                })}
-                {searchValue && (
-                  <div className=" fixed inset-0 z-[90] " onClick={()=> setSearchValue("")} />  
-                )}
-              </div>
-            )}
+                return (
+                  <div
+                    key={index}
+                    onClick={() => ClickHandler(`/${domainName}`)}
+                    className=" w-full cursor-pointer relative z-[120] flex my-3 items-center "
+                  >
+                    <Photo
+                      alt=""
+                      className="object-contain w-10 h-10 rounded-full "
+                      style={{ border: "3px solid #141922" }}
+                    />
+                    {/* <div className=' w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] ' /> */}
+                    <div className=" ml-3 ">
+                      <div className=" flex -mt-1 items-center ">
+                        <p className=" text-[13px] font-semibold ">
+                          {" "}
+                          {item?.account_id}
+                        </p>
+                      </div>
+                      <div className=" flex -mt-1 items-center ">
+                        <p className=" text-[11px] font-semibold text-[#536079] ">
+                          {domainName.slice(0, 30)}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+              {searchValue && (
+                <div
+                  className=" fixed inset-0 z-[90] "
+                  onClick={() => setSearchValue("")}
+                />
+              )}
+            </div>
+          )}
         </div>
         {!isLoggedIn && (
           <div className=" flex  items-center justify-end gap-x-4">
@@ -134,23 +145,25 @@ export const TopBar = () => {
             height={17}
           /> */}
           {!user?.isArtist ? (
-          <img
-            src={PlusIcon}
-            onClick={becomeArtist}
-            alt=""
-            className="pointer-cursor"
-            width={17}
-            height={17}
-          />
+            <img
+              src={PlusIcon}
+              onClick={becomeArtist}
+              alt=""
+              className="pointer-cursor"
+              width={17}
+              height={17}
+            />
           ) : null}
-          <img
-            src={UserIcon}
-            alt=""
-            className="ml-8 pointer-cursor"
-            onClick={() => navigate("/profile")}
-            width={17}
-            height={17}
-          />
+          {user ? (
+            <img
+              src={UserIcon}
+              alt=""
+              className="ml-8 pointer-cursor"
+              onClick={() => navigate("/" + user.accountDomain)}
+              width={17}
+              height={17}
+            />
+          ) : null}
         </div>
       </div>
     </div>
