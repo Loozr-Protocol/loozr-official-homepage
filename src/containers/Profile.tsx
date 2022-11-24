@@ -121,11 +121,14 @@ const Profile = (props) => {
                       key={index}
                     >
                       <div className="flex items-center">
-                        <Photo
-                          alt=""
-                          className="h-12 md:h-12 w-12 md:w-12 rounded-full mr-3"
-                          style={{ border: "6px solid #141922" }}
-                        />
+                        <div className=" w-fit " >
+                          <Photo
+                            alt=""
+                            userId={user.accountId}
+                            className="h-12 md:h-12 w-12 md:w-12 rounded-full mr-3"
+                            style={{ border: "6px solid #141922" }}
+                          />
+                        </div>
                         <div>
                           <p className="text-xs md:text-sm font-bold text-white mb-0.5">
                             {item.name}
@@ -240,7 +243,8 @@ const Profile = (props) => {
             <div className=" relative md:w-auto w-full flex md:justify-start justify-start md:mb-0 mb-8 ">
               <Photo
                 alt={currentProfile.accountDomain}
-                className="h-[170px] md:h-[130px] w-[170px] md:w-[130px] object-cover rounded-full md:mr-3"
+                userId={currentProfile.accountId}
+                className="h-[170px] md:h-[130px] text-4xl w-[170px] md:w-[130px] object-cover rounded-full md:mr-3"
                 style={{ border: "10px solid #141922" }}
               />
               {/* {currentProfile.isVerified &&
@@ -525,6 +529,7 @@ const Profile = (props) => {
                   >
                     <Photo
                       alt=""
+                      userId={item.account_id}
                       className="object-contain w-10 h-10 rounded-full "
                       style={{ border: "3px solid #141922" }}
                     />

@@ -33,6 +33,7 @@ const SuggestUsersTable = (props) => {
             >
               <Photo
                 alt=""
+                userId={user.accountId}
                 className="object-contain w-10 h-10 flex justify-center items-center rounded-full "
                 style={{ border: "3px solid #141922" }}
               />

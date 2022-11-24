@@ -28,7 +28,7 @@ const Photo: React.FC<React.PropsWithChildren<PhotoProps>> = ({
   } 
 
   return <div {...rest}   >  
-      <div className=" w-full h-full flex justify-center items-center bg-blue-600 rounded-full " >
+      <div className=" w-full h-full flex justify-center items-center bg-[#222A3B] rounded-full " >
         {userId ? (
           <p className=" font-semibold " >{userId.slice(0,2).toUpperCase()}</p>
         ): (

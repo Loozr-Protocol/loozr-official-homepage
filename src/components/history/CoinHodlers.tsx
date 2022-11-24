@@ -25,15 +25,18 @@ export default function CoinHodlers({ coin, user }: { coin: User; user: User }) 
         
         {holders.map((hodler, index) => (
           <div
-            className="w-full flex items-center justify-between text-white mb-32 md:mb-6"
+            className="w-full flex items-center justify-between text-white mb-10 md:mb-6"
             key={index}
           >
             <div className="flex items-center">
-              <Photo
-                alt=""
-                className="h-12 w-12 rounded-full mr-3"
-                style={{ border: "6px solid #141922" }}
-              />
+              <div className=" w-fit " > 
+                <Photo
+                  alt="" 
+                  userId={user.email}
+                  className="h-12 w-12 rounded-full mr-3"
+                  style={{ border: "6px solid #141922" }}
+                />
+              </div>
               <div>
                 <p className="text-xs md:text-sm font-bold text-white mb-0.5">
                   {hodler.user.accountId}
