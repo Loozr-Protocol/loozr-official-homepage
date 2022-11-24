@@ -39,9 +39,10 @@ const ArtisteRenderer = (props) => {
           >
             <Link to={`/${_.user.accountDomain}`} className="relative">
               <Photo
-              // photoColor={_.user.profileColor}
+              // photoColor={_.user.profileColor}(`/${_.user.accountDomain}`)}
                 alt=""
-                className="object-cover flex justify-center items-center h-[100px] md:h-[105px] w-[100px] md:w-[105px] rounded-full mb-[16px]"
+                userId={_.user.accountId}
+                className="object-cover text-4xl flex justify-center items-center h-[100px] md:h-[105px] w-[100px] md:w-[105px] rounded-full mb-[16px]"
                 style={{
                   border: "10px solid #141922",
                 }}
