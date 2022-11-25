@@ -20,7 +20,7 @@ export default function CoinHodlers({ coin, user }: { coin: User; user: User }) 
       {holders.length === 0 ? (
         <div className=" w-full py-5 rounded-lg mb-32 bg-[#10141C] bg-opacity-50 md:backdrop:mb-12 ">
           <p className=" font-medium text-[13px] text-center ">
-            No information avalaible 👋
+            No information available 👋
           </p>
         </div>
       ) : (
