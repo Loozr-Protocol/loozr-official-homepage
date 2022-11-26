@@ -54,11 +54,11 @@ const SellArtistToken = () => {
   }, []);
 
   const formSchema = yup.object({
-    amount: yup.number().typeError("Amount must be in number format"),
+    amount: yup.string().required("Required"),
   });
 
   const formik = useFormik({
-    initialValues: { amount: null },
+    initialValues: { amount: 0 },
     validationSchema: formSchema,
     onSubmit: () => {},
   });
@@ -177,11 +177,11 @@ const SellArtistToken = () => {
           <input
             type="number"
             name="amount"
-            // onKeyPress={(e) => {
-            //   if (e.key === "e" || e.key === "-" || e.key === "+") {
-            //     e.preventDefault();
-            //   }
-            // }}
+            onKeyPress={(e) => {
+              if (e.key === "e" || e.key === "-" || e.key === "+") {
+                e.preventDefault();
+              }
+            }}
             value={formik.values.amount}
             onChange={(e)=> OnchangeHandler(e.target.value)}
             onBlur={formik.handleBlur}
