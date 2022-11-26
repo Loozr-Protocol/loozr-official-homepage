@@ -57,7 +57,7 @@ const BuyArtistToken = () => {
   }, []);
 
   const formSchema = yup.object({
-    amount: yup.number().required("Required"),
+    amount: yup.string().required("Required"),
   });
 
   const formik = useFormik({

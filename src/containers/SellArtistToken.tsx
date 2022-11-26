@@ -54,7 +54,7 @@ const SellArtistToken = () => {
   }, []);
 
   const formSchema = yup.object({
-    amount: yup.number().required("Required"),
+    amount: yup.string().required("Required"),
   });
 
   const formik = useFormik({
@@ -177,11 +177,11 @@ const SellArtistToken = () => {
           <input
             type="number"
             name="amount"
-            // onKeyPress={(e) => {
-            //   if (e.key === "e" || e.key === "-" || e.key === "+") {
-            //     e.preventDefault();
-            //   }
-            // }}
+            onKeyPress={(e) => {
+              if (e.key === "e" || e.key === "-" || e.key === "+") {
+                e.preventDefault();
+              }
+            }}
             value={formik.values.amount}
             onChange={(e)=> OnchangeHandler(e.target.value)}
             onBlur={formik.handleBlur}

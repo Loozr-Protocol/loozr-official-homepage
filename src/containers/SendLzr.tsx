@@ -20,7 +20,7 @@ const SendLzr = () => {
 
   const formSchema = yup.object({
     amount: yup
-      .number().required("Required"),
+      .string().required("Required"),
     account_id: yup
       .string()
       .required("Enter account id")
