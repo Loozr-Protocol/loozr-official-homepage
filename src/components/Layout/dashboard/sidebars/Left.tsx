@@ -70,13 +70,12 @@ const tabs = [
 export const Left = () => {
   const { pathname } = useLocation();
   const dispatch = useDispatch();
-  const push = useNavigate();
+  const navigate = useNavigate();
   const xl = useMediaQuery("(min-width:1280px)");
   // const lg = useMediaQuery("(min-width:1024px)");
   const md = useMediaQuery("(min-width:768px)");
   const user = useSelector((state: AppState) => state.user.userInfo);
   const { handleBecomeArtiste } = useBecomeArtisteCallback();
-  let location = useLocation();
 
   const becomeArtist = async () => { 
     dispatch(setPageLoaderStatus(true));
@@ -93,7 +92,6 @@ export const Left = () => {
     toast.info("Coming soon!", TOAST_OPTIONS);
   };
   
-  const isLoggedIn = sessionStorage.getItem("isLoggedIn") === "true"; 
   const [isShown, setIsShown] = React.useState(false)
   const [shown, setShown] = React.useState(false)
 
@@ -125,7 +123,7 @@ export const Left = () => {
       ) : (
         <img src={Loozr} alt="" className={`mb-6 ml-[12px] h-6 w-6`} />
       )}
-      {isLoggedIn && (
+      {user && (
         <>
           {!user?.isArtist ? (
             <button
@@ -171,7 +169,7 @@ export const Left = () => {
         ))}
         <div className="h-px w-full lg:w-full bg-muted-50 mt-8 mb-7" />
         <div
-          onClick={() => push("/" + user.accountDomain)}
+          onClick={() => navigate("/" + user.accountDomain)}
           className=" flex w-full items-center mt-6 cursor-pointer"
           onMouseOver={() => {
             Checking(true);
@@ -183,7 +181,7 @@ export const Left = () => {
           <div className=" w-fit ">
             <Photo
               alt=""
-              userId={user.accountId}
+              userId={user?.accountId}
               className="object-cover w-12 h-12 xl:w-14 xl:h-14 flex justify-center items-center rounded-full  "
               style={{ border: "5px solid #141922" }}
             />
