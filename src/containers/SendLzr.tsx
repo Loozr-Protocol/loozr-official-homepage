@@ -20,14 +20,14 @@ const SendLzr = () => {
 
   const formSchema = yup.object({
     amount: yup
-      .number(),
+      .number().required("Required"),
     account_id: yup
       .string()
       .required("Enter account id")
   });
 
   const formik = useFormik({
-    initialValues: { account_id: "", amount: null },
+    initialValues: { account_id: "", amount: 0 },
     validationSchema: formSchema,
     onSubmit: () => {},
   }); 

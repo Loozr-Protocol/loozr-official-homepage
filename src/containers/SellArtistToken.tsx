@@ -54,11 +54,11 @@ const SellArtistToken = () => {
   }, []);
 
   const formSchema = yup.object({
-    amount: yup.number().typeError("Amount must be in number format"),
+    amount: yup.number().required("Required"),
   });
 
   const formik = useFormik({
-    initialValues: { amount: null },
+    initialValues: { amount: 0 },
     validationSchema: formSchema,
     onSubmit: () => {},
   });
