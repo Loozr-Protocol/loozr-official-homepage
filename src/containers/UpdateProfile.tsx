@@ -105,7 +105,7 @@ export default function UpdateProfile() {
   
   return (
     <div className=" w-full flex flex-col items-center pt-8 md:pt-14 md:px-0 px-6 " > 
-        <div className=" max-w-[550px] mt-[70px] md:mt-0">
+        <div className=" max-w-full md:max-w-[550px] mt-[70px] md:px-0 md:mt-0">
             <p className="font-medium text-base md:text-2xl text-white">
                 Update your artist profile
             </p>
@@ -140,7 +140,7 @@ export default function UpdateProfile() {
                     </label>
                 </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 justify-start mb-10">
+            <div className="grid md:px-0 px-6 grid-cols-1 md:grid-cols-2 gap-6 justify-start mb-10">
                 <div className=" flex flex-col ">
                     <input
                         type="text"

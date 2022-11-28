@@ -105,7 +105,7 @@ const EditProfile = () => {
   } 
 
   return (
-    <div className="w-full mt-[70px] md:mt-0">
+    <div className="w-full mt-[70px] md:px-0 px-6 md:mt-0">
       <p className="font-medium text-base md:text-lg text-white mb-12">
         Update Profile
       </p>
@@ -386,7 +386,7 @@ const EditProfile = () => {
         </>
       )} */}
       <button
-        className="py-[17px] text-white disabled:text-muted font-medium md:text-sm bg-gradient-ld disabled:bg-dark-800 mb-11 w-[48%] focus:outline-none"
+        className="py-[17px] text-white mb-20 disabled:text-muted font-medium md:text-sm bg-gradient-ld disabled:bg-dark-800 md:mb-11 w-[48%] focus:outline-none"
         onClick={()=> handleSubmit()}
         // disabled={isLoading}
       >

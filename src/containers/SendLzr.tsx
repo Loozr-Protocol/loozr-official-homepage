@@ -108,8 +108,8 @@ const SendLzr = () => {
   return (
     <div className="w-full px-6 md:px-0 mt-16 md:mt-0">
       <p className="text-white text-2xl font-semibold mb-12">Send LZR</p>
-      <div className="flex flex-col items-center justify-center md:justify-start md:items-start max-w-[490px]">
-        <div className=" md:w-[350px] mb-8">
+      <div className="flex flex-col items-center justify-center md:justify-start md:items-start md:max-w-[490px]">
+        <div className=" md:w-[350px] w-full mb-8">
           <p className="text-sm font-medium text-muted mb-5">
             Enter account_id to send LZR to:
           </p>
@@ -219,7 +219,7 @@ const SendLzr = () => {
           )}
         </div>
         <button
-          className=" h-[60px] text-white disabled:text-muted font-medium md:w-[350px] text-sm bg-gradient-ld disabled:bg-dark-800 mb-24 md:mb-11 w-full sm:w-80 focus:outline-none"
+          className=" h-[60px] text-white disabled:text-muted font-medium md:w-[350px] text-sm bg-gradient-ld disabled:bg-dark-800 mb-24 md:mb-11 w-full focus:outline-none"
           onClick={()=> setShowModal(true)} 
           disabled={formik.values.amount ? false: true}
         >
