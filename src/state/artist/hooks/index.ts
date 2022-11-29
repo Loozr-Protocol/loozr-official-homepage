@@ -65,12 +65,21 @@ export function useGetArtistStatCallback() {
 }
 
 export function useGetArtistHodlersCallback() {
-  const handleGetHodlers = async (id: number): Promise<any> => {
+  const handleGetHodlers = async (id: number, nextCursor: string): Promise<any> => {
     const httpClient = new HttpClient();
-    const result = await httpClient.axiosInstance.get(`/transactions/coin-holders/${id}`);
+    const result = await httpClient.axiosInstance.get(`/transactions/coin-holders/${id}?cursor=${nextCursor}`);
     return result.data;
   }
   return { handleGetHodlers }
+}
+
+export function useCoinsBoughtCallback() {
+  const getCoinsBought = async (id: number, nextCursor: string): Promise<any> => {
+    const httpClient = new HttpClient();
+    const result = await httpClient.axiosInstance.get(`/transactions/coins-bought/${id}?cursor=${nextCursor}`);
+    return result.data;
+  }
+  return { getCoinsBought }
 }
 
 export function useGetHodlersBalanceCallback() {

@@ -1,14 +1,8 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  transactions,
-  tokenHolder,
-  coinsBought,
-} from "../components/dummy/wallet";
-import { capitalize } from "../functions";
+import { transactions } from "../components/dummy/wallet";
 import Arrow45Deg from "../assets/icons/arrow-45deg.svg";
 import Arrow225Deg from "../assets/icons/arrow-225deg.svg";
-import Arlene from "../assets/img/artists/arlene.png";
 import copyimg from "../assets/icons/copy.png";
 import { getLZRBalanceCallback } from "../state/wallet/hooks/fetchBalance";
 import { LZR_IN_USD, MIXER_ACCOUNT } from "../config/constants";
@@ -21,6 +15,7 @@ import {
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { TOAST_OPTIONS } from "../config/constants";
+import CoinsBought from "../components/history/CoinsBought";
 
 const Wallet = () => {
   const navigate = useNavigate();
@@ -62,86 +57,8 @@ const Wallet = () => {
   const renderHistory = useMemo(() => {
     switch (active) {
       case 1:
-        return coinsBought.map((item, index) => (
-          <div
-            className="w-full flex items-center justify-between mb-6"
-            key={index}
-          >
-            <div className="flex items-center">
-              <img
-                src={Arlene}
-                alt=""
-                className="h-12 md:h-12 w-12 md:w-12 rounded-full mr-3"
-                style={{ border: "6px solid #141922" }}
-              />
-              <div>
-                <p className="text-xs md:text-sm font-bold text-white mb-0.5">
-                  {item.name}
-                </p>
-                <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
-                  You own 0.735 LZR
-                </p>
-              </div>
-            </div>
-            <div>
-              <p className="text-xs md:text-sm font-semibold text-white mb-0.5">
-                {capitalize(item.type)}
-              </p>
-              <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
-                Type of user
-              </p>
-            </div>
-            <div>
-              <p className="text-xs md:text-sm font-semibold text-white mb-0.5">
-                ~${item.price}
-              </p>
-              <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
-                USD value
-              </p>
-            </div>
-          </div>
-        ));
+        return user ? <CoinsBought user={user} /> : null;
       case 2:
-        return tokenHolder.map((item, index) => (
-          <div
-            className="w-full flex items-center justify-between text-white mb-6"
-            key={index}
-          >
-            <div className="flex items-center">
-              <img
-                src={Arlene}
-                alt=""
-                className="h-12 w-12 rounded-full mr-3"
-                style={{ border: "6px solid #141922" }}
-              />
-              <div>
-                <p className="text-xs md:text-sm font-bold text-white mb-0.5">
-                  {item.name}
-                </p>
-                <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
-                  Owns {item.owns} LZR of your artiste token
-                </p>
-              </div>
-            </div>
-            <div>
-              <p className="text-xs md:text-sm font-semibold text-white mb-0.5">
-                {capitalize(item.type)}
-              </p>
-              <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
-                Type of user
-              </p>
-            </div>
-            <div>
-              <p className="text-xs md:text-sm font-semibold text-white mb-0.5">
-                ~${item.price}
-              </p>
-              <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
-                USD value
-              </p>
-            </div>
-          </div>
-        ));
-      case 3:
         return transactions.map((item, index) => (
           <div
             className="w-full flex items-center justify-between text-white mb-6"
@@ -247,18 +164,10 @@ const Wallet = () => {
           Coins bought
         </p>
         <p
-          className={`mr-10 cursor-pointer ${
+          className={`cursor-pointer ${
             active === 2 ? "active-tab-bottom" : "text-muted font-medium"
           }`}
           onClick={() => setActive(2)}
-        >
-          Coin holders
-        </p>
-        <p
-          className={`cursor-pointer ${
-            active === 3 ? "active-tab-bottom" : "text-muted font-medium"
-          }`}
-          onClick={() => setActive(3)}
         >
           Transactions
         </p>

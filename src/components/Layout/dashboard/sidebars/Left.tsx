@@ -95,17 +95,19 @@ export const Left = () => {
   const [isShown, setIsShown] = React.useState(false)
   const [shown, setShown] = React.useState(false)
 
-  const Checking =(item: any)=> { 
-    if(user.accountId.length > 16){ 
-      setIsShown(item)
-    } else { 
-      setIsShown(false)
-    }
-    if(user?.tokenName.length > 5){ 
+  const Checking =(item: any)=> {
+    if (user) {
+      if (user.accountId.length > 16) {
+        setIsShown(item);
+      } else {
+        setIsShown(false);
+      }
+    if(user.tokenName && user.tokenName.length > 5){ 
       setShown(item)
     } else { 
       setShown(false)
     }
+  }
   } 
   
 

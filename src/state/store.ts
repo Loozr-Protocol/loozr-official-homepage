@@ -4,9 +4,11 @@ import userReducer from './user/userReducer';
 import artistReducer from './artist/artistReducer';
 import miscReducer from './misc/index';
 import notificationsReducer from './notifications/index';
+import coinsStatReducer from './coinStat/index';
 
 const store = configureStore({
   reducer: {
+    coinsStat: coinsStatReducer,
     song: songReducer,
     user: userReducer,
     artist: artistReducer,

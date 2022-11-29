@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { transactions, coinsBought } from "../components/dummy/wallet";
-import { capitalize } from "../functions";
+import { transactions } from "../components/dummy/wallet";
 import Arrow45Deg from "../assets/icons/arrow-45deg.svg";
 import Arrow225Deg from "../assets/icons/arrow-225deg.svg";
 
@@ -25,6 +24,7 @@ import Photo from "../components/Photo";
 import verified from "../assets/icons/verified.svg"
 import { useFollowerCallback, useFollowingCallback } from "../state/user/hooks/useAccount";
 import { MIXER_ACCOUNT } from "../config/constants";
+import CoinsBought from "../components/history/CoinsBought";
 
 const Profile = (props) => {
   const push = useNavigate();
@@ -100,69 +100,6 @@ const Profile = (props) => {
     setCurrentProfile(currentProfileFromState);
   }, [currentProfileFromState]);
 
-  const CoinBought =()=>{ 
-    return(
-      <>
-      {coinsBought.length === 0 ? ( 
-          <div className=" w-full py-5 rounded-lg bg-[#10141C] bg-opacity-50 mb-32 md:mb-12 " > 
-            <p className=" font-medium text-[13px] text-center " >No information avaliable 👋</p>
-          </div>  
-        ): 
-        (
-          <>
-            {coinsBought ?  
-              <div className=" w-full py-5 rounded-lg bg-[#10141C]  mb-32 md:mb-12 " > 
-                <p className=" font-medium text-[13px] text-center " >No information avaliable 👋</p>
-              </div>:
-              <>
-                {coinsBought.map((item, index) => (
-                    <div
-                      className="w-full flex items-center justify-between mb-6"
-                      key={index}
-                    >
-                      <div className="flex items-center">
-                        <div className=" w-fit " >
-                          <Photo
-                            alt=""
-                            userId={user.accountId}
-                            className="h-12 md:h-12 w-12 md:w-12 rounded-full mr-3"
-                            style={{ border: "6px solid #141922" }}
-                          />
-                        </div>
-                        <div>
-                          <p className="text-xs md:text-sm font-bold text-white mb-0.5">
-                            {item.name}
-                          </p>
-                          <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
-                            You own 0.735 LZR
-                          </p>
-                        </div>
-                      </div>
-                      <div>
-                        <p className="text-xs md:text-sm font-semibold text-white mb-0.5">
-                          {capitalize(item.type)}
-                        </p>
-                        <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
-                          Type of user
-                        </p>
-                      </div>
-                      <div>
-                        <p className="text-xs md:text-sm font-semibold text-white mb-0.5">
-                          ~${item.price}
-                        </p>
-                        <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
-                          USD value
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-              </>
-            }
-          </>) 
-        }
-      </>
-    ) 
-  }
 
   const Transaction =()=>{
     return(
@@ -218,15 +155,15 @@ const Profile = (props) => {
   const renderHistory = useMemo(() => {
     switch (active) {
       case 1:
-        return <CoinHodlers coin={currentProfile} user={user} />;
+        return coinInfo ? <CoinHodlers coin={currentProfile} user={user} />: null;
       case 2:
-        return <CoinBought/>
+        return <CoinsBought user={currentProfile} />;
       case 3:
         return <Transaction />
       default:
         return "";
     }
-  }, [active, currentProfile]);
+  }, [active, currentProfile, coinInfo]);
 
   if (currentProfile && !currentProfile.accountId) {
     return <div className="text-center mb-32">Profile Not Found!</div>;
@@ -495,7 +432,7 @@ const Profile = (props) => {
               Transactions
             </p>
           </div>
-          {coinInfo ? renderHistory : null}
+          {renderHistory}
         </>
       ) : errorLoadingProfile ? (
         <div className="text-center">Profile Not Found!</div>

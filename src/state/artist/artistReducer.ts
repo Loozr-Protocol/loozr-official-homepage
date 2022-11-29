@@ -1,27 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit';
 import Artist, { CoinInfo } from '../../config/constants/models/artist';
-import User from '../../config/constants/models/user';
-import { Pagination } from '../../config/constants/types';
+import { Pagination, HodlerState } from '../../config/constants/types';
 import { jsonToUser } from '../../utils';
 import { priceInLoozr } from '../../utils/creatorCoinFormater';
 import { formatBalanceUSD, formatNumber, getBalanceAmount, getFullDisplayBalance } from '../../utils/formatBalance';
 import { httpError } from '../../utils/httpHelper';
 import { getArtists, getCoinPrice, getHodlers } from './actions';
 
-interface Hodler {
-  user: User;
-  balance?: {
-    balance: string;
-    balanceUSD: string;
-  }
-}
-
 export interface ArtistState {
   artists: Artist[];
   pagination: Pagination;
   artistInfo?: Artist;
   coinInfo: CoinInfo;
-  holders: Hodler[];
+  coinHodlers: {
+    hodlers: HodlerState[],
+    pagination: Pagination;
+  };
   holderLoaded: boolean;
   loading: boolean;
   success: boolean;
@@ -37,7 +31,14 @@ const initialState: ArtistState = {
   },
   artistInfo: null,
   coinInfo: null,
-  holders: [],
+  coinHodlers: {
+    hodlers: [],
+    pagination: {
+      nextCursor: '',
+      currentCursor: '',
+      reachMaxLimit: false
+    }
+  },
   holderLoaded: false,
   loading: false,
   success: false,
@@ -52,10 +53,15 @@ const artistSlice = createSlice({
       state.coinInfo = null;
     },
     resetHoldersList(state) {
-      state.holders = [];
+      state.coinHodlers.hodlers = [];
       state.holderLoaded = false;
+      state.coinHodlers.pagination = {
+        nextCursor: '',
+        currentCursor: '',
+        reachMaxLimit: false
+      };
     },
-    setArtistCoinInfo(state, action: { payload: {artist: Artist, rawCoinInfo: any} }) {
+    setArtistCoinInfo(state, action: { payload: { artist: Artist, rawCoinInfo: any } }) {
       const artist = action.payload.artist;
 
       const totalSupply = getBalanceAmount(action.payload.rawCoinInfo["total_supply"]);
@@ -78,6 +84,10 @@ const artistSlice = createSlice({
     changePage(state) {
       if (!state.pagination.nextCursor) return;
       state.pagination.currentCursor = state.pagination.nextCursor;
+    },
+    changePageForCoinHodlers(state) {
+      if (!state.coinHodlers.pagination.nextCursor) return;
+      state.coinHodlers.pagination.currentCursor = state.coinHodlers.pagination.nextCursor;
     },
   },
   extraReducers: (builder) => {
@@ -141,13 +151,10 @@ const artistSlice = createSlice({
       state.coinInfo = null;
     });
 
-    builder.addCase(getHodlers.pending, (state) => {
-      state.holders = [];
-      state.holderLoaded = false;
-    });
-
     builder.addCase(getHodlers.fulfilled, (state, action) => {
-      state.holders = action.payload.results.map((res: any) => {
+      if (state.coinHodlers.pagination.currentCursor !== state.coinHodlers.pagination.nextCursor) return;
+
+      const holders = action.payload.results.map((res: any) => {
         const user = jsonToUser(res['user']);
 
         const piceInLzr = getFullDisplayBalance(res.balance);
@@ -160,17 +167,21 @@ const artistSlice = createSlice({
           user, balance: {
             balance: formatNumber(Number(piceInLzr), 2, 6),
             balanceUSD: priceInUSD,
-          } };
+          }
+        };
       });
-      state.holderLoaded = true;
-    });
 
-    builder.addCase(getHodlers.rejected, (state, action) => {
-      state.holders = [];
-      state.holderLoaded = false;
+      if (!holders.length) {
+        state.coinHodlers.pagination.reachMaxLimit = true;
+        return;
+      }
+
+      state.coinHodlers.hodlers = [...state.coinHodlers.hodlers, ...holders];
+      state.coinHodlers.pagination.nextCursor = action.payload.next_cursor;
+      state.holderLoaded = true;
     });
   }
 });
 
-export const { resetCoinPrice, resetHoldersList, setArtistCoinInfo, changePage } = artistSlice.actions
+export const { resetCoinPrice, resetHoldersList, setArtistCoinInfo, changePage, changePageForCoinHodlers } = artistSlice.actions
 export default artistSlice.reducer
