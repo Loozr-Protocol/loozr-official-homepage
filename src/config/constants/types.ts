@@ -40,6 +40,18 @@ export interface Pagination {
   reachMaxLimit: boolean;
 }
 
+export interface Balance {
+  balance: string;
+  balanceUSD: string;
+}
+
+export interface HodlerState {
+  user: User;
+  coin: string;
+  coinId: number;
+  balance?: Balance
+}
+
 export interface UserState {
   userInfo: User;
   suggestedUsers: {
