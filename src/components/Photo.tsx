@@ -19,7 +19,7 @@ const Photo: React.FC<React.PropsWithChildren<PhotoProps>> = ({
       <div className="   " >
         <img
           {...rest}
-          className=" rounded-full object-cover"
+          // className=" rounded-full object-cover"
           alt={alt}
           src={src}
         /> 

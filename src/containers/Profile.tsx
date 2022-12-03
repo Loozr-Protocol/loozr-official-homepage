@@ -125,6 +125,7 @@ const Profile = (props) => {
                           <Photo
                             alt=""
                             userId={user.accountId}
+                            src={user?.photo}
                             className="h-12 md:h-12 w-12 md:w-12 rounded-full mr-3"
                             style={{ border: "6px solid #141922" }}
                           />
@@ -244,6 +245,7 @@ const Profile = (props) => {
               <Photo
                 alt={currentProfile.accountDomain}
                 userId={currentProfile.accountId}
+                src={currentProfile?.photo}
                 className="h-[170px] md:h-[130px] text-4xl w-[170px] md:w-[130px] object-cover rounded-full md:mr-3"
                 style={{ border: "10px solid #141922" }}
               />
@@ -530,6 +532,7 @@ const Profile = (props) => {
                     <Photo
                       alt=""
                       userId={item.account_id}
+                      src={item?.photo}
                       className="object-contain w-10 h-10 rounded-full "
                       style={{ border: "3px solid #141922" }}
                     />

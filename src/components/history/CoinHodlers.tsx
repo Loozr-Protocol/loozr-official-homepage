@@ -34,6 +34,7 @@ export default function CoinHodlers({ coin, user }: { coin: User; user: User }) 
                 <div className=" w-fit ">
                   <Photo
                     alt=""
+                    src={hodler?.user?.photo}
                     userId={hodler.user.accountId}
                     className="h-12 w-12 rounded-full mr-3"
                     style={{ border: "6px solid #141922" }}
