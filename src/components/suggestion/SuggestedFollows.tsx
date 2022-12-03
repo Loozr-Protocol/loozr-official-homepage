@@ -31,6 +31,7 @@ const SuggestedFollows = (props: any) => {
       <Photo
         alt=""
         userId={user.accountId}
+        src={user?.photo}
         className="object-contain flex justify-center items-center w-10 h-10 rounded-full "
         style={{ border: "3px solid #141922" }}
       />
