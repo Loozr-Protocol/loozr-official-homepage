@@ -26,10 +26,10 @@ export const getCoinPrice = createAsyncThunk('artist/getCoinPrice', async (id: n
 
 export const getHodlers = createAsyncThunk(
   'artist/getHodlers',
-  async (id: number, { rejectWithValue }) => {
+  async ({ id, nextCursor = '' }: { id: number; nextCursor: string }, { rejectWithValue }) => {
     const { handleGetHodlers } = useGetArtistHodlersCallback();
     try {
-      const result = await handleGetHodlers(id);
+      const result = await handleGetHodlers(id, nextCursor);
       return result;
     } catch (error) {
       return rejectWithValue(error);
