@@ -16,6 +16,7 @@ export interface UserJsonProps {
   country?: string;
   is_artist?: boolean;
   email?: string;
+  photo?: any; 
 }
 
 export interface UserProps {
@@ -34,6 +35,7 @@ export interface UserProps {
   country?: string;
   isArtist?: boolean;
   email?: string;
+  photo?: any; 
 }
 
 export default class User implements Model {
@@ -52,8 +54,9 @@ export default class User implements Model {
   country: string;  
   isArtist: boolean;
   email: string;
+  photo: any
 
-  constructor({ username, accountId, followingsCount, id, followersCount, tokenName, bio, website, soundCloudLink, twitterLink, instagramLink, spotifyLink, country, isArtist, email }: UserProps) {
+  constructor({ username, accountId, followingsCount, id, followersCount, tokenName, bio, website, soundCloudLink, twitterLink, instagramLink, spotifyLink, country, isArtist, email, photo }: UserProps) {
     this.username = username;
     this.accountId = accountId;
     this.followingsCount = followingsCount;
@@ -69,6 +72,7 @@ export default class User implements Model {
     this.country = country;
     this.isArtist = isArtist;
     this.email = email;
+    this.photo = photo;
   }
 
   get accountType() {
@@ -95,6 +99,7 @@ export default class User implements Model {
     this.country = jsonData['country'];
     this.isArtist = jsonData['is_artist'];
     this.email = jsonData['email'];
+    this.photo = jsonData['photo'];
   }
 
   get profileColor() {
@@ -120,7 +125,8 @@ export default class User implements Model {
       'spotify_link': this.spotifyLink, 
       'country': this.country,
       'is_artist': this.isArtist,
-      'email': this.email
+      'email': this.email,
+      'photo': this.photo
     }
 
     return map;

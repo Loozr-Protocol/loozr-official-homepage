@@ -17,6 +17,19 @@ export function useUpdateProfileCallback() {
   return { handleUpdateProfile }
 }
 
+
+
+export function useUpdateProfilePicCallback() {
+  const handleUpdateProfilePic = async (postData: any): Promise<any> => {
+    const httpClient = new HttpClient();
+    let formData = new FormData(); 
+    formData.append('photo', postData) 
+    const result = await httpClient.axiosInstance.post('/users/upload-photo', formData);
+    return result.data;
+  }
+  return { handleUpdateProfilePic }
+}
+
 export function useGetSuggestedFollowsCallback() {
   const getSuggestedFollows = async (nextCursor: string): Promise<any> => {
     const httpClient = new HttpClient();
