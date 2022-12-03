@@ -9,7 +9,7 @@ import { AppState } from "../state/store";
 import { useDispatch, useSelector } from "react-redux";
 import { MIXER_ACCOUNT, TOAST_OPTIONS } from "../config/constants";
 import { httpError } from "../utils/httpHelper";
-import { useUpdateProfileCallback } from "../state/user/hooks/useAccount";
+import { useUpdateProfileCallback, useUpdateProfilePicCallback } from "../state/user/hooks/useAccount";
 import { toast } from "react-toastify";
 import { updateProfile } from "../state/user/userReducer";
 import Photo from "../components/Photo";
@@ -18,10 +18,12 @@ import { MenuItem, Select } from "@mui/material";
 
 const EditProfile = () => {
   const [isLoading, setLoading] = useState(false);
+  const [isPhotoLoading, setPhotoLoading] = useState(false);
   const [image, setImage] = React.useState('');  
-  const [selectedImage, setSelectedImage] = React.useState('');  
+  const [selectedImage, setSelectedImage] = React.useState('');   
   const dispatch = useDispatch();
   const { handleUpdateProfile } = useUpdateProfileCallback();
+  const { handleUpdateProfilePic } = useUpdateProfilePicCallback();
   const user = useSelector((state: AppState) => state.user.userInfo);
   const lzrAccountId = `${user.accountId}.${MIXER_ACCOUNT}`;
 
@@ -84,6 +86,20 @@ const EditProfile = () => {
       setLoading(false);
       httpError(err);
     }
+  }; 
+
+  const handlePhotoSubmit = async () => {  
+    setPhotoLoading(true);
+    try { 
+      const result = await handleUpdateProfilePic(image);
+      const user = jsonToUser(result);
+      setPhotoLoading(false); 
+      setSelectedImage("")
+      toast.success("Photo updated!", TOAST_OPTIONS);
+    } catch (err: any) {
+      setLoading(false);
+      httpError(err);
+    }
   };
 
   const handleImageChange = (e: any ) => {
@@ -110,19 +126,22 @@ const EditProfile = () => {
         Update Profile
       </p>
       <div className="flex items-center mb-12">
-        <div className="relative  w-[113px] h-[113px] ">
-          <Photo
-            alt=""
-            width={113}
-            height={113}
-            src={selectedImage}
-            className="rounded-full w-[113px] h-[113px] object-contain"
-            style={{ border: "8px solid #141922" }}
-          />
-          <label className=" w-[43px] cursor-pointer absolute -bottom-2 -right-1 rounded-full bg-[#141922] h-[43px] flex justify-center items-center " > 
-            <img src={Edit} className=" w-[15px] h-[15px] " alt="Edit" /> 
-            <input style={{display:'none'}} type="file" accept="image/*" id="input" onChange={handleImageChange} />
-          </label>
+        <div> 
+          <div className="relative  w-[113px] h-[113px] ">
+            <Photo
+              alt=""
+              width={113}
+              height={113} 
+              userId={user.accountId}
+              src={user?.photo ? user?.photo : selectedImage}
+              className="rounded-full w-[113px] h-[113px] object-cover"
+              style={{ border: "8px solid #141922" }}
+            />
+            <label className=" w-[43px] cursor-pointer absolute -bottom-2 -right-1 rounded-full bg-[#141922] h-[43px] flex justify-center items-center " > 
+              <img src={Edit} className=" w-[15px] h-[15px] " alt="Edit" /> 
+              <input style={{display:'none'}} type="file" accept="image/*" id="input" onChange={handleImageChange} />
+            </label>
+          </div> 
         </div>
         <div className=" ml-3 " >
           <p className="text-xl text-white font-semibold mb-2">
@@ -134,6 +153,16 @@ const EditProfile = () => {
           </label>
         </div>
       </div>
+
+      {selectedImage && (
+        <button
+              className="py-[17px] text-white mb-20 disabled:text-muted font-medium md:text-sm bg-gradient-ld disabled:bg-dark-800 md:mb-11 w-[48%] focus:outline-none"
+              onClick={()=> handlePhotoSubmit()}
+              // disabled={isLoading}
+            >
+              {isPhotoLoading ? " Uploading..." : " Upload Photo"}
+        </button>
+      ) }
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 justify-start mb-10">
                 <div className=" flex flex-col ">
                     <input
@@ -169,19 +198,7 @@ const EditProfile = () => {
                         onBlur={formik.handleBlur}
                         onFocus={() => formik.setFieldTouched("website", true, true)}
                         placeholder="Website link"
-                    />
-                    {/* <div className=" w-full h-auto pt-2" >
-                        {formik.touched.website && formik.errors.website && (
-                        <motion.div
-                            initial={{ y: -100, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            className="text-xs font-Inter-SemiBold text-[#F25341]"
-                            // style={{ marginTop: "-32px" }}
-                        >
-                            {formik.errors.website}
-                        </motion.div>
-                        )}  
-                    </div> */}
+                    /> 
                     <input
                         type="text"
                         className="px-7 py-2 h-11 mt-2 text-muted text-[13px] placeholder:text-muted"
@@ -192,42 +209,18 @@ const EditProfile = () => {
                         onBlur={formik.handleBlur}
                         onFocus={() => formik.setFieldTouched("twitter_link", true, true)}
                         placeholder="Twitter link"
-                    />
-                    {/* <div className=" w-full h-auto pt-2" >
-                        {formik.touched.twitter_link && formik.errors.twitter_link && (
-                        <motion.div
-                            initial={{ y: -100, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            className="text-xs font-Inter-SemiBold text-[#F25341]"
-                            // style={{ marginTop: "-32px" }}
-                        >
-                            {formik.errors.twitter_link}
-                        </motion.div>
-                        )}  
-                    </div> */}
+                    /> 
                     <input
                         type="text"
                         className="px-7 py-2 h-11 mt-2 text-muted text-[13px] placeholder:text-muted"
                         style={{ backgroundColor: "#12161F" }}
-                        name="spotify_Link"
+                        name="spotify_link"
                         defaultValue={user.spotifyLink ?? ""}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
-                        onFocus={() => formik.setFieldTouched("spotify_Link", true, true)}
+                        onFocus={() => formik.setFieldTouched("spotify_link", true, true)}
                         placeholder="Spotify link"
-                    />
-                    {/* <div className=" w-full h-auto pt-2" >
-                        {formik.touched.spotify_Link && formik.errors.spotify_Link && (
-                        <motion.div
-                            initial={{ y: -100, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            className="text-xs font-Inter-SemiBold text-[#F25341]"
-                            // style={{ marginTop: "-32px" }}
-                        >
-                            {formik.errors.spotify_Link}
-                        </motion.div>
-                        )}  
-                    </div>  */}
+                    /> 
                 </div>
                 <div
                     className="flex flex-col"
@@ -281,48 +274,24 @@ const EditProfile = () => {
                         type="text"
                         className="px-7 py-2 h-11 mt-2 text-muted text-[13px] placeholder:text-muted"
                         style={{ backgroundColor: "#12161F" }}
-                        name="instagram_Link"
+                        name="instagram_link"
                         defaultValue={user.instagramLink ?? ""}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
-                        onFocus={() => formik.setFieldTouched("instagram_Link", true, true)}
+                        onFocus={() => formik.setFieldTouched("instagram_link", true, true)}
                         placeholder="Instagram link"
-                    />
-                    {/* <div className=" w-full h-auto pt-2" >
-                        {formik.touched.instagram_Link && formik.errors.instagram_Link && (
-                        <motion.div
-                            initial={{ y: -100, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            className="text-xs font-Inter-SemiBold text-[#F25341]"
-                            // style={{ marginTop: "-32px" }}
-                        >
-                            {formik.errors.instagram_Link}
-                        </motion.div>
-                        )}  
-                    </div> */}
+                    /> 
                     <input
                         type="text"
                         className="px-7 py-2 h-11 mt-2 text-muted text-[13px] placeholder:text-muted"
                         style={{ backgroundColor: "#12161F" }}
-                        name="soundCloud_Link"
+                        name="soundcloud_link"
                         defaultValue={user.soundCloudLink ?? ""}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
-                        onFocus={() => formik.setFieldTouched("soundCloud_Link", true, true)}
+                        onFocus={() => formik.setFieldTouched("soundcloud_link", true, true)}
                         placeholder="Souncloud link"
-                    />
-                    {/* <div className=" w-full h-auto pt-2" >
-                        {formik.touched.soundCloud_Link && formik.errors.soundCloud_Link && (
-                        <motion.div
-                            initial={{ y: -100, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            className="text-xs font-Inter-SemiBold text-[#F25341]"
-                            // style={{ marginTop: "-32px" }}
-                        >
-                            {formik.errors.soundCloud_Link}
-                        </motion.div>
-                        )}  
-                    </div> */}
+                    /> 
                 </div>
             </div> 
       {/* {hasLaunchedToken && (

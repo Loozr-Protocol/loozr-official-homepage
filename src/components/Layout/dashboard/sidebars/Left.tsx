@@ -180,9 +180,10 @@ export const Left = () => {
             Checking(false);
           }}
         >
-          <div className=" w-fit ">
+          <div className=" w-full ">
             <Photo
               alt=""
+              src={user?.photo}
               userId={user?.accountId}
               className="object-cover w-12 h-12 xl:w-14 xl:h-14 flex justify-center items-center rounded-full  "
               style={{ border: "5px solid #141922" }}
