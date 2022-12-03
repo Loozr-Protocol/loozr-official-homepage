@@ -15,10 +15,12 @@ import { updateProfile } from "../state/user/userReducer";
 import Photo from "../components/Photo";
 import { jsonToUser } from "../utils";
 import { MenuItem, Select } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const EditProfile = () => {
   const [isLoading, setLoading] = useState(false);
   const [isPhotoLoading, setPhotoLoading] = useState(false);
+  const navigate = useNavigate()
   const [image, setImage] = React.useState('');  
   const [selectedImage, setSelectedImage] = React.useState('');   
   const dispatch = useDispatch();
@@ -93,9 +95,10 @@ const EditProfile = () => {
     try { 
       const result = await handleUpdateProfilePic(image);
       const user = jsonToUser(result);
+      toast.success("Photo updated!", TOAST_OPTIONS);
+      navigate(0)
       setPhotoLoading(false); 
       setSelectedImage("")
-      toast.success("Photo updated!", TOAST_OPTIONS);
     } catch (err: any) {
       setLoading(false);
       httpError(err);
@@ -115,9 +118,7 @@ const EditProfile = () => {
         reader.readAsDataURL(selected)
     } else {
         console.log('Error')
-    }  
-
-    // setSelectedImage(selected)
+    }   
   } 
 
   return (
@@ -133,7 +134,7 @@ const EditProfile = () => {
               width={113}
               height={113} 
               userId={user.accountId}
-              src={user?.photo ? user?.photo : selectedImage}
+              src={!selectedImage ? user?.photo : selectedImage}
               className="rounded-full w-[113px] h-[113px] object-cover"
               style={{ border: "8px solid #141922" }}
             />
@@ -149,7 +150,7 @@ const EditProfile = () => {
           </p>
           <label className="text-loozr-green cursor-pointer text-base font-medium">
             change profile picture
-            <input style={{display:'none'}} type="file" accept="image/*" id="input" onChange={handleImageChange} />
+            <input style={{display:'none'}} type="file"  data-max-size="2048" accept="image/*" id="input" onChange={handleImageChange} />
           </label>
         </div>
       </div>
