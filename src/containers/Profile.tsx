@@ -22,15 +22,20 @@ import { resetCoinPrice, resetHoldersList } from "../state/artist/artistReducer"
 import { decodedJWT } from "../utils";
 import Photo from "../components/Photo";
 import verified from "../assets/icons/verified.svg"
-import { useFollowerCallback, useFollowingCallback } from "../state/user/hooks/useAccount";
+import { useFollowerCallback, useFollowingCallback, useCheckFollowerCallback } from "../state/user/hooks/useAccount";
 import { MIXER_ACCOUNT } from "../config/constants";
 import CoinsBought from "../components/history/CoinsBought";
+import { removeSuggestedUser } from "../state/user/userReducer";
+import { useFollowCallback, useUnFollowCallback } from "../state/user/hooks/follows";
+import CheckFollower from "../components/CheckFollower";
 
 const Profile = (props) => {
   const push = useNavigate();
   let { accountDomain } = useParams();
   const [active, setActive] = useState(1);
   const [isShown, setIsShown] = useState(false)
+  const [checkData, setCheckData] = useState(false)
+  const [checkFollower, setCheckFollower] = useState("")
   const [showBio, setShowBio] = useState(false)
   const [data, setData] = useState([] as any)
   const dispatch = useDispatch();
@@ -46,11 +51,26 @@ const Profile = (props) => {
   
   const { getFollower } = useFollowerCallback(); 
   const { getFollowing } = useFollowingCallback(); 
+  const { getCheckFollower } = useCheckFollowerCallback()
+  const { handleFollow } = useFollowCallback();
+  const { handleUnFollow } = useUnFollowCallback();
 
   const [showModal, setShowModal] = React.useState(false)
   const [copySuccess, setCopySuccess] = React.useState('');
 
   const navigate = useNavigate()
+
+  const CheckFollowers =async () => { 
+    if(currentProfile?.id){ 
+      const result: any = await getCheckFollower(currentProfile?.id); 
+      setCheckFollower(result) 
+      console.log(result); 
+    }
+  }
+
+  React.useEffect(() => { 
+    CheckFollowers()
+  },[]) 
 
   const ClickFollwer = async ()=>{ 
     const result = await getFollower(currentProfile.id); 
@@ -62,7 +82,7 @@ const Profile = (props) => {
     const result = await getFollowing(currentProfile.id); 
     setData(result)
     setShowModal(true)
-  } 
+  }  
 
   function copyToClipboard(item: any, text: any) { 
       navigator.clipboard.writeText(item)
@@ -84,6 +104,22 @@ const Profile = (props) => {
     dispatch(getIndividualProfile(decodedJWT()["id"]));
     setCurrentProfile(user);
   };
+ 
+  const onFollow = async (user: User) => {
+    dispatch(removeSuggestedUser(user.id));
+    await handleFollow(user.id);
+    CheckFollowers()
+  };
+ 
+  const onUnFollow = async (user: User) => { 
+    await handleUnFollow(user.id);
+    CheckFollowers()
+  };
+
+  const CloseModal = async() => {
+    loadProfile()
+    setShowModal(false)
+  }
 
   useEffect(() => {
     dispatch(resetCoinPrice());
@@ -98,8 +134,7 @@ const Profile = (props) => {
 
   useEffect(() => {
     setCurrentProfile(currentProfileFromState);
-  }, [currentProfileFromState]);
-
+  }, [currentProfileFromState]); 
 
   const Transaction =()=>{
     return(
@@ -382,6 +417,25 @@ const Profile = (props) => {
                   </button>
                 </div>
               ) : null}
+              {currentProfile?.id !== user?.id && (
+                <>
+                  {!checkFollower ? ( 
+                    <button
+                      onClick={() => onFollow(currentProfile)}
+                      className="py-[14.1px] px-3 w-40 sm:px-6 md:px-7 text-xs md:text-sm font-medium bg-dark-700 rounded-full mb-4 my-2"
+                    >
+                      Follow
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => onUnFollow(currentProfile)}
+                      className="py-[14.1px] px-3 w-40 sm:px-6 md:px-7 text-xs md:text-sm font-medium bg-dark-700 rounded-full mb-4 my-2"
+                    >
+                      UnFollow
+                    </button>
+                  )}
+                </>
+              )}
               {currentProfile?.id === user?.id ? (
                 <div className="flex items-center mb-4">
                   <button
@@ -442,58 +496,67 @@ const Profile = (props) => {
       )}
 
       {showModal && (
-        <div
-          onClick={() => setShowModal(false)}
+        <div 
           className=" fixed inset-0 flex justify-center items-center md:overflow-y-hidden bg-black bg-opacity-40 z-[70] "
         >
-          <div className=" w-full md:w-[360px] md:h-auto relative z-[80] h-screen rounded-2xl bg-[#12161F]">
+          <div className=" w-full md:w-[360px] md:h-auto relative z-[120] h-screen rounded-2xl bg-[#12161F]">
             <div className=" w-full flex items-center border-b border-[#222A3B] justify-between py-4 px-6 ">
               <p className="  font-medium text-white">Follows</p>
               <button
-                onClick={() => setShowModal(false)}
+                onClick={() => CloseModal()}
                 className=" font-medium text-xs bg-[#8369F4] w-[65px] h-7 rounded-lg "
               >
                 Done
               </button>
             </div>
             <div className=" w-full px-6 md:py-4 md:h-[60vh] h-full flex flex-1 flex-col overflow-y-auto ">
-              {data.map((item: any, index: any) => {
-                const domainName = item.account_id + "." + MIXER_ACCOUNT;
-                return (
-                  <div
-                    key={index}
-                    onClick={() => navigate(`/${domainName}`)}
-                    className=" w-full cursor-pointer flex my-3 items-center "
-                  >
-                    <Photo
-                      alt=""
-                      userId={item.account_id}
-                      src={item?.photo}
-                      className="object-contain w-10 h-10 rounded-full "
-                      style={{ border: "3px solid #141922" }}
-                    />
-                    {/* <div className=' w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] ' /> */}
-                    <div className=" ml-3 ">
-                      <div className=" flex -mt-1 items-center ">
-                        <p className=" text-[13px] font-semibold ">
-                          {" "}
-                          {item?.account_id}
-                        </p>
+              {/* {data && ( */}
+                <>
+                  {data.map((item: any, index: any) => {
+                    const domainName = item.account_id + "." + MIXER_ACCOUNT;
+                    return (
+                      <div
+                        key={index}
+                        className=" w-full cursor-pointer flex my-3 relative items-center "
+                      >
+                        <div
+                          onClick={() => navigate(`/${domainName}`)}
+                          className=" w-fit cursor-pointer " > 
+                          <Photo
+                            alt=""
+                            userId={item.account_id}
+                            src={item?.photo}
+                            className="object-contain w-10 h-10 rounded-full "
+                            style={{ border: "3px solid #141922" }}
+                          />
+                        </div>
+                        {/* <div className=' w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] ' /> */}
+                        <div 
+                          onClick={() => navigate(`/${domainName}`)}
+                          className=" ml-3  cursor-pointer ">
+                          <div className=" flex -mt-1 items-center ">
+                            <p className=" text-[13px] font-semibold ">
+                              {" "}
+                              {item?.account_id}
+                            </p>
+                          </div>
+                          <div className=" flex -mt-1 items-center ">
+                            <p className=" text-[11px] font-semibold text-[#536079] ">
+                              {item?.email.slice(0,7)}
+                            </p>
+                          </div>
+                        </div> 
+                        <CheckFollower current={currentProfile} otheruser={item} check={data} user={user} />
                       </div>
-                      <div className=" flex -mt-1 items-center ">
-                        <p className=" text-[11px] font-semibold text-[#536079] ">
-                          {item?.email}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-              {data.length === 0 && (
-                <p className=" mt-4 font-medium text-center ">
-                  No information avaliable
-                </p>
-              )}
+                    );
+                  })}
+                  {data.length === 0 && (
+                    <p className=" mt-4 font-medium text-center ">
+                      No information avaliable
+                    </p>
+                  )}
+                </>
+              {/* )} */}
             </div>
           </div>
         </div>
