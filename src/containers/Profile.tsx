@@ -105,8 +105,7 @@ const Profile = (props) => {
     setCurrentProfile(user);
   };
  
-  const onFollow = async (user: User) => {
-    dispatch(removeSuggestedUser(user.id));
+  const onFollow = async (user: User) => { 
     await handleFollow(user.id);
     CheckFollowers()
   };
