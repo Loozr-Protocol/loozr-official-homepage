@@ -2,8 +2,7 @@ import React from "react";
 import Goya from "../../assets/img/artists/goya.png";
 
 import ArrowLeft from "../../assets/icons/caret-left.svg";
-import ArrowRight from "../../assets/icons/caret-right.svg";
-import { Link } from "react-router-dom";
+import ArrowRight from "../../assets/icons/caret-right.svg"; 
 import SlidesButton from "../SlidesButton";
 import Marquee from "react-fast-marquee";
 import { motion } from "framer-motion";
