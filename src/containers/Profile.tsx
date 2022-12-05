@@ -116,8 +116,7 @@ const Profile = (props) => {
     CheckFollowers()
   };
 
-  const CloseModal = async() => {
-    loadProfile()
+  const CloseModal = () => { 
     setShowModal(false)
   }
 
