@@ -29,7 +29,7 @@ const SuggestUsersTable = (props) => {
         ? props.dataList.map((user: User, index: number) => (
             <div
               key={index}
-              className=" w-full flex justify-between my-2 items-center "
+              className=" w-full cursor-pointer flex my-3 relative items-center  "
             >
               <Photo
                 alt=""
