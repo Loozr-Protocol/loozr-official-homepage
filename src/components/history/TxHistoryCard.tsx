@@ -30,28 +30,54 @@ export default function TxHistoryCard(props: TxHistoryProps) {
             style={{ border: "6px solid #141922" }}
           />
         </div>
-        <div>
-          <p className="text-xs md:text-sm font-bold text-white mb-0.5">
-            {props.hodler.user.accountId}
-          </p>
-          <p className="text-[10px] md:text-xs md:w-[200px] font-medium  text-muted">
-            {props.hodler.balance ? (
-              <>
-                Owns {props.hodler.balance.balance} $ 
-                {props.txType === TXTYPES[1] ? 
-                  <>
-                    {renderCoinName(props.coin)}
-                  </> :
-                  <>
-                    {renderCoinName(props.hodler.coin)} 
-                  </>}
-                {" "}coins
-              </>
-            ) : (
-              ""
-            )}
-          </p>
-        </div>
+        {props.txType === TXTYPES[0] ?
+          <div> 
+            <p className="text-xs md:text-sm font-bold text-white mb-0.5"> 
+              ${renderCoinName(props.hodler.coin)} 
+            </p>
+            <p className="text-[10px] md:text-xs md:w-[200px] font-medium  text-muted">
+              {props.hodler.balance ? (
+                <> 
+                  {props.hodler.user.accountId+" "}
+                  Owns {props.hodler.balance.balance} $ 
+                  {props.txType === TXTYPES[1] ? 
+                    <>
+                      {renderCoinName(props.coin)}
+                    </> :
+                    <>
+                      {renderCoinName(props.hodler.coin)} 
+                    </>}
+                  {" "}coins
+                </>
+              ) : (
+                ""
+              )}
+            </p>
+          </div>:
+
+          <div>
+            <p className="text-xs md:text-sm font-bold text-white mb-0.5">
+              {props.hodler.user.accountId}
+            </p>
+            <p className="text-[10px] md:text-xs md:w-[200px] font-medium  text-muted">
+              {props.hodler.balance ? (
+                <>
+                  Owns {props.hodler.balance.balance} $ 
+                  {props.txType === TXTYPES[1] ? 
+                    <>
+                      {renderCoinName(props.coin)}
+                    </> :
+                    <>
+                      {renderCoinName(props.hodler.coin)} 
+                    </>}
+                  {" "}coins
+                </>
+              ) : (
+                ""
+              )}
+            </p>
+          </div>
+        }
       </div>
       {props.txType === TXTYPES[1] ? (
         <div>
@@ -73,4 +99,4 @@ export default function TxHistoryCard(props: TxHistoryProps) {
       </div>
     </div>
   );
-}
+} 
