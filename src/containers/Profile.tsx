@@ -116,6 +116,7 @@ const Profile = (props) => {
   };
 
   const CloseModal = () => { 
+    navigate(0)
     setShowModal(false)
   }
 

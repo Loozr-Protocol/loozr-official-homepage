@@ -131,7 +131,7 @@ const Suggestion = () => {
                 <div className=" w-full " > 
                   <Marquee speed={50} loop={isShown === index+"" ? 0 : -1} gradient={false} >
                     <p className="mb-[3px] font-medium text-sm text-white">
-                      {_.title+" "}
+                      {_.title+" "+""}
                     </p> 
                   </Marquee> 
                 </div>
