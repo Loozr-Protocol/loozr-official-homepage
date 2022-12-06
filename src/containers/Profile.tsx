@@ -52,9 +52,7 @@ const Profile = (props) => {
   
   const { getFollower } = useFollowerCallback(); 
   const { getFollowing } = useFollowingCallback(); 
-  const { getCheckFollower } = useCheckFollowerCallback()
-  const { handleFollow } = useFollowCallback();
-  const { handleUnFollow } = useUnFollowCallback();
+  const { getCheckFollower } = useCheckFollowerCallback() 
 
   const [showModal, setShowModal] = React.useState(false)
   const [copySuccess, setCopySuccess] = React.useState('');
@@ -104,20 +102,10 @@ const Profile = (props) => {
     }
     dispatch(getIndividualProfile(decodedJWT()["id"]));
     setCurrentProfile(user);
-  };
- 
-  const onFollow = async (user: User) => { 
-    await handleFollow(user.id);
-    CheckFollowers()
-  };
- 
-  const onUnFollow = async (user: User) => { 
-    await handleUnFollow(user.id);
-    CheckFollowers()
-  };
+  }; 
 
   const CloseModal = () => { 
-    // navigate(0)
+    dispatch(getIndividualProfile(accountDomain));
     setShowModal(false)
   }
 
@@ -224,14 +212,7 @@ const Profile = (props) => {
                 src={currentProfile?.photo}
                 className="h-[170px] md:h-[130px] text-4xl w-[170px] md:w-[130px] object-cover rounded-full md:mr-3"
                 style={{ border: "10px solid #141922" }}
-              />
-              {/* {currentProfile.isVerified &&
-
-              <img
-                src={verified}
-                alt="verified"
-                className=" absolute bottom-2 right-4 w-[31.03px] "
-              /> */}
+              /> 
             </div>
             <div className="md:ml-10">
               <div className=" flex ">
@@ -354,7 +335,7 @@ const Profile = (props) => {
               </div>
               {currentProfile?.bio && (
                 <>
-                  {currentProfile?.bio.length > 100 || !showBio ? (
+                  {currentProfile?.bio.length >= 100 || !showBio ? (
                     <p className="text-white max-w-[435px] leading-normal font-medium text-xs md:text-[13px] mb-[20px]">
                       {(currentProfile?.bio).slice(0, 100)}
                       <span
@@ -367,7 +348,7 @@ const Profile = (props) => {
                   ) : (
                     <p className="text-white max-w-[435px] font-medium text-xs md:text-[13px] mb-[20px]">
                       {currentProfile.bio}
-                      {currentProfile?.bio.length > 100 && ( 
+                      {currentProfile?.bio.length <= 100 && ( 
                         <span
                         onClick={() => setShowBio(false)}
                         className=" text-[#FFCD43] cursor-pointer ml-2 "
@@ -423,26 +404,7 @@ const Profile = (props) => {
                     Sell artiste coin
                   </button>
                 </div>
-              ) : null}
-              {/* {currentProfile?.id !== user?.id && (
-                <>
-                  {!checkFollower ? ( 
-                    <button
-                      onClick={() => onFollow(currentProfile)}
-                      className="py-[14.1px] px-3 w-40 sm:px-6 md:px-7 text-xs md:text-sm font-medium bg-dark-700 rounded-full mb-4 my-2"
-                    >
-                      Follow
-                    </button>
-                  ) : (
-                    <button
-                      onClick={() => onUnFollow(currentProfile)}
-                      className="py-[14.1px] px-3 w-40 sm:px-6 md:px-7 text-xs md:text-sm font-medium bg-dark-700 rounded-full mb-4 my-2"
-                    >
-                      UnFollow
-                    </button>
-                  )}
-                </>
-              )} */}
+              ) : null} 
               <CheckFollowerButton otheruser={currentProfile} user={user} />
               {currentProfile?.id === user?.id ? (
                 <div className="flex items-center mb-4">

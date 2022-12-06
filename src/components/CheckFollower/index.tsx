@@ -37,7 +37,7 @@ export default function Index(props: any) {
 
     return ( 
         <div className=" text-[11px] ml-auto relative z-[100] " >      
-            {props.current?.id === props.user?.id && (
+            {/* {props.current?.id === props.user?.id && ( */}
                 <>
                     {!checkFollower && ( 
                         <button
@@ -56,7 +56,7 @@ export default function Index(props: any) {
                         </button>
                     )}
                 </>
-            )}
+            {/* )} */}
         </div>
     )
 }  
