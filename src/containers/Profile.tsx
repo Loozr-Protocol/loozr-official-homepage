@@ -116,7 +116,7 @@ const Profile = (props) => {
   };
 
   const CloseModal = () => { 
-    navigate(0)
+    // navigate(0)
     setShowModal(false)
   }
 
@@ -348,7 +348,7 @@ const Profile = (props) => {
               </div>
               {currentProfile?.bio && (
                 <>
-                  {!showBio ? (
+                  {currentProfile?.bio.length > 100 || !showBio ? (
                     <p className="text-white max-w-[435px] leading-normal font-medium text-xs md:text-[13px] mb-[20px]">
                       {(currentProfile?.bio).slice(0, 100)}
                       <span
@@ -361,13 +361,15 @@ const Profile = (props) => {
                   ) : (
                     <p className="text-white max-w-[435px] font-medium text-xs md:text-[13px] mb-[20px]">
                       {currentProfile.bio}
-                      <span
+                      {currentProfile?.bio.length > 100 && ( 
+                        <span
                         onClick={() => setShowBio(false)}
                         className=" text-[#FFCD43] cursor-pointer ml-2 "
-                      >
+                        >
                         {" "}
                         See Less
                       </span>
+                      )}
                     </p>
                   )}
                 </>
@@ -452,10 +454,10 @@ const Profile = (props) => {
                 <img src={chain} alt="chain" className=" w-[12.39px] " />
                 <a
                   target="_blank"
-                  href="https://yourweblink.com"
+                  href={"http://"+currentProfile?.website+""}
                   className=" font-medium text-sm ml-2 "
                 >
-                  https://yourweblink.com
+                  {currentProfile?.website}
                 </a>
               </div>
             </div>
