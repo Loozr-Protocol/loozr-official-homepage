@@ -1,4 +1,5 @@
 import { HodlerState } from "../../config/constants/types";
+import { loadCoinPrices } from "../../utils";
 import Photo from "../Photo";
 
 export const TXTYPES = {
@@ -9,12 +10,14 @@ export const TXTYPES = {
 interface TxHistoryProps {
   txType: string;
   hodler: HodlerState;
+  coin: any
 }
 
 export default function TxHistoryCard(props: TxHistoryProps) {
   const renderCoinName = (coinName: string) => {
-    return <span className="uppercase">{coinName}</span>;
-  };
+    return <span className="uppercase">{coinName+" "}</span>;
+  }; 
+  
 
   return (
     <div className="w-full flex items-center justify-between text-white mb-10 md:mb-6">
@@ -31,12 +34,18 @@ export default function TxHistoryCard(props: TxHistoryProps) {
           <p className="text-xs md:text-sm font-bold text-white mb-0.5">
             {props.hodler.user.accountId}
           </p>
-          <p className="text-[10px] md:text-xs md:w-[200px] md:font-medium font-light text-muted">
+          <p className="text-[10px] md:text-xs md:w-[200px] font-medium  text-muted">
             {props.hodler.balance ? (
               <>
-                Owns {props.hodler.balance.balance} $ {props.hodler.user.tokenName+" "}
-                {/* {renderCoinName(props.hodler.coin)}  */}
-                coins
+                Owns {props.hodler.balance.balance} $ 
+                {props.txType === TXTYPES[1] ? 
+                  <>
+                    {renderCoinName(props.coin)}
+                  </> :
+                  <>
+                    {renderCoinName(props.hodler.coin)} 
+                  </>}
+                {" "}coins
               </>
             ) : (
               ""

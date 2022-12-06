@@ -21,7 +21,7 @@ const RenderTxHistory = (props) => {
           </p>
         </div>
       ) : props.dataList.map((hodler, index) => (
-        <TxHistoryCard key={index} hodler={hodler} txType="COINSBOUGHT" />
+        <TxHistoryCard key={index} hodler={hodler} coin="" txType="COINSBOUGHT" />
       ))}
     </div>
   );
