@@ -35,7 +35,8 @@ export default function TxHistoryCard(props: TxHistoryProps) {
             {props.hodler.balance ? (
               <>
                 Owns {props.hodler.balance.balance} $ {props.hodler.user.tokenName+" "}
-                {renderCoinName(props.hodler.coin)} coins
+                {/* {renderCoinName(props.hodler.coin)}  */}
+                coins
               </>
             ) : (
               ""
