@@ -58,7 +58,7 @@ export default function TxHistoryCard(props: TxHistoryProps) {
           <p className="text-xs md:text-sm font-semibold text-white mb-0.5">
             {props.hodler.user.accountType}
           </p>
-          <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
+          <p className="text-[10px] md:text-xs font-medium  text-muted">
             Type of user
           </p>
         </div>
@@ -67,7 +67,7 @@ export default function TxHistoryCard(props: TxHistoryProps) {
         <p className="text-xs md:text-sm font-semibold text-white mb-0.5">
           {props.hodler.balance ? `~$${props.hodler.balance.balanceUSD}` : ""}
         </p>
-        <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
+        <p className="text-[10px] md:text-xs font-medium  text-muted">
           USD value
         </p>
       </div>
