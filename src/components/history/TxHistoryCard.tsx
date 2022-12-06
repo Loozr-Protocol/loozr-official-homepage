@@ -31,10 +31,10 @@ export default function TxHistoryCard(props: TxHistoryProps) {
           <p className="text-xs md:text-sm font-bold text-white mb-0.5">
             {props.hodler.user.accountId}
           </p>
-          <p className="text-[10px] md:text-xs md:font-medium font-light text-muted">
+          <p className="text-[10px] md:text-xs md:w-[200px] md:font-medium font-light text-muted">
             {props.hodler.balance ? (
               <>
-                Owns {props.hodler.balance.balance} $
+                Owns {props.hodler.balance.balance} $ {props.hodler.user.tokenName+" "}
                 {renderCoinName(props.hodler.coin)} coins
               </>
             ) : (
