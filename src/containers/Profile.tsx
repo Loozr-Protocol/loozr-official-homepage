@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { transactions } from "../components/dummy/wallet";
 import Arrow45Deg from "../assets/icons/arrow-45deg.svg";
 import Arrow225Deg from "../assets/icons/arrow-225deg.svg";
-
+ 
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../state/store";
@@ -21,7 +21,7 @@ import CoinHodlers from "../components/history/CoinHodlers";
 import { resetCoinPrice, resetHoldersList } from "../state/artist/artistReducer";
 import { decodedJWT } from "../utils";
 import Photo from "../components/Photo";
-import verified from "../assets/icons/verified.svg"
+import VerifiedBadge from "../assets/icons/verified.svg"
 import { useFollowerCallback, useFollowingCallback, useCheckFollowerCallback } from "../state/user/hooks/useAccount";
 import { MIXER_ACCOUNT } from "../config/constants";
 import CoinsBought from "../components/history/CoinsBought";
@@ -205,14 +205,22 @@ const Profile = (props) => {
             <CreatorStatCard user={currentProfile} />
           )}
           <div className="flex md:flex-row flex-col mt-[32px] items-start mb-7">
-            <div className=" relative md:w-auto w-full flex md:justify-start justify-start md:mb-0 mb-8 ">
+            <div className=" relative md:w-auto w-fit flex md:justify-start justify-start md:mb-0 mb-8 ">
               <Photo
                 alt={currentProfile.accountDomain}
                 userId={currentProfile.accountId}
                 src={currentProfile?.photo}
                 className="h-[170px] md:h-[130px] text-4xl w-[170px] md:w-[130px] object-cover rounded-full md:mr-3"
-                style={{ border: "10px solid #141922" }}
+                style={{ border: "8px solid #141922" }}
               /> 
+
+              {/* {!currentProfile && (
+                <img
+                  src={VerifiedBadge}
+                  alt=""
+                  className="absolute md:w-9 w-12 md:h-9 h-12 md:right-3 md:bottom-2 right-0 bottom-4"
+                />
+              )} */}
             </div>
             <div className="md:ml-10">
               <div className=" flex ">
@@ -486,6 +494,8 @@ const Profile = (props) => {
                 <>
                   {data.map((item: any, index: any) => {
                     const domainName = item.account_id + "." + MIXER_ACCOUNT;
+                    console.log(item);
+                    
                     return (
                       <div
                         key={index}
@@ -493,14 +503,21 @@ const Profile = (props) => {
                       >
                         <div
                           onClick={() => GotoDomain(domainName)}
-                          className=" w-fit cursor-pointer " > 
+                          className=" w-fit relative cursor-pointer " > 
                           <Photo
                             alt=""
                             userId={item.account_id}
                             src={item?.photo}
                             className="object-contain w-10 h-10 rounded-full "
                             style={{ border: "3px solid #141922" }}
-                          />
+                          /> 
+                          {item?.isVerified && (
+                            <img
+                              src={VerifiedBadge}
+                              alt=""
+                              className="absolute w-4 h-4 right-0 bottom-0"
+                            />
+                          )}
                         </div>
                         {/* <div className=' w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] ' /> */}
                         <div 

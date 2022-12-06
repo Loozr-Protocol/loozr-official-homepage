@@ -9,6 +9,7 @@ import {
 import { getSuggestedUsers } from "../../state/user/userActions";
 import { removeSuggestedUser } from "../../state/user/userReducer";
 import Photo from "../Photo";
+import VerifiedBadge from "../../assets/icons/verified.svg"
 
 const SuggestedFollows = (props: any) => {
   const dispatch = useDispatch();
@@ -25,16 +26,25 @@ const SuggestedFollows = (props: any) => {
     await handleFollow(user.id);
   }; 
 
-  const SuggestedUserTable = ({ user }: { user: User }) => (
+  const SuggestedUserTable = ({ user }: { user: any }) => (
     <div className=' w-full flex justify-between my-2 items-center ' >
+      <div className=" relative " > 
+        <Photo
+          alt=""
+          userId={user.accountId}
+          src={user?.photo}
+          className="object-contain flex justify-center items-center w-10 h-10 rounded-full "
+          style={{ border: "3px solid #141922" }}
+        />
 
-      <Photo
-        alt=""
-        userId={user.accountId}
-        src={user?.photo}
-        className="object-contain flex justify-center items-center w-10 h-10 rounded-full "
-        style={{ border: "3px solid #141922" }}
-      />
+        {user?.isVerified && (
+          <img
+            src={VerifiedBadge}
+            alt=""
+            className="absolute w-4 h-4 right-0 bottom-0"
+          />
+        )}
+      </div>
       <div onClick={() => navigate(`/${user.accountDomain}`)} className=' ml-3 ' >
         <div className=' flex -mt-1 items-center ' >
           <p className=' text-[13px] font-semibold ' > {user.accountId}</p>
