@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from "react-redux";
 import User from '../../config/constants/models/user';
+import { getIndividualProfile } from "../../state/user/userActions";
 import { useFollowCallback, useUnFollowCallback } from '../../state/user/hooks/follows';
-import { useFollowerCallback, useFollowingCallback, useCheckFollowerCallback } from '../../state/user/hooks/useAccount';
+import { useCheckFollowerCallback } from '../../state/user/hooks/useAccount';
 
 export default function Index(props: any) { 
-
+    const dispatch = useDispatch();
     const [checkFollower, setCheckFollower] = useState("") 
     const { getCheckFollower } = useCheckFollowerCallback()
     const { handleFollow } = useFollowCallback();
@@ -24,12 +26,12 @@ export default function Index(props: any) {
 
     const onFollow = async (user: User) => { 
         await handleFollow(user.id);
-        CheckFollowers()
+        dispatch(getIndividualProfile(props.otheruser.accountDomain));
     };
     
     const onUnFollow = async (user: User) => { 
         await handleUnFollow(user.id);
-        CheckFollowers()
+        dispatch(getIndividualProfile(props.otheruser.accountDomain));
     }; 
 
     return (
