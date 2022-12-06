@@ -28,6 +28,7 @@ import CoinsBought from "../components/history/CoinsBought";
 import { removeSuggestedUser } from "../state/user/userReducer";
 import { useFollowCallback, useUnFollowCallback } from "../state/user/hooks/follows";
 import CheckFollower from "../components/CheckFollower";
+import CheckFollowerButton from "../components/CheckFollowerButton";
 
 const Profile = (props) => {
   const push = useNavigate();
@@ -134,6 +135,11 @@ const Profile = (props) => {
   useEffect(() => {
     setCurrentProfile(currentProfileFromState);
   }, [currentProfileFromState]); 
+
+  const GotoDomain =(item)=> {
+    setShowModal(false)
+    navigate(`/${item}`)
+  }
 
   const Transaction =()=>{
     return(
@@ -418,7 +424,7 @@ const Profile = (props) => {
                   </button>
                 </div>
               ) : null}
-              {currentProfile?.id !== user?.id && (
+              {/* {currentProfile?.id !== user?.id && (
                 <>
                   {!checkFollower ? ( 
                     <button
@@ -436,7 +442,8 @@ const Profile = (props) => {
                     </button>
                   )}
                 </>
-              )}
+              )} */}
+              <CheckFollowerButton otheruser={currentProfile} user={user} />
               {currentProfile?.id === user?.id ? (
                 <div className="flex items-center mb-4">
                   <button
@@ -450,16 +457,18 @@ const Profile = (props) => {
                   </div> */}
                 </div>
               ) : null}
-              <div className=" flex items-center py-2 ">
-                <img src={chain} alt="chain" className=" w-[12.39px] " />
-                <a
-                  target="_blank"
-                  href={"http://"+currentProfile?.website+""}
-                  className=" font-medium text-sm ml-2 "
-                >
-                  {currentProfile?.website}
-                </a>
-              </div>
+              {currentProfile?.website && (
+                <div className=" flex items-center py-2 ">
+                  <img src={chain} alt="chain" className=" w-[12.39px] " />
+                  <a
+                    target="_blank"
+                    href={"http://"+currentProfile?.website+""}
+                    className=" font-medium text-sm ml-2 "
+                  >
+                    {currentProfile?.website}
+                  </a>
+                </div>
+              )}
             </div>
           </div>
           <div className="w-full pb-2 mb-9 border-b-2 border-muted-50 flex items-center text-sm font-medium text-muted">
@@ -521,7 +530,7 @@ const Profile = (props) => {
                         className=" w-full cursor-pointer flex my-3 relative items-center "
                       >
                         <div
-                          onClick={() => navigate(`/${domainName}`)}
+                          onClick={() => GotoDomain(domainName)}
                           className=" w-fit cursor-pointer " > 
                           <Photo
                             alt=""
@@ -533,7 +542,7 @@ const Profile = (props) => {
                         </div>
                         {/* <div className=' w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] ' /> */}
                         <div 
-                          onClick={() => navigate(`/${domainName}`)}
+                          onClick={() => GotoDomain(domainName)}
                           className=" ml-3  cursor-pointer ">
                           <div className=" flex -mt-1 items-center ">
                             <p className=" text-[13px] font-semibold ">

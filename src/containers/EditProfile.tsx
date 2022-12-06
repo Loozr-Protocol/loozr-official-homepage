@@ -52,9 +52,6 @@ const EditProfile = () => {
     onSubmit: () => {},
   });
 
-  console.log(user);
-  
-
   useEffect(() => {
     formik.setValues({
       ...formik.values,
