@@ -450,14 +450,14 @@ const Profile = (props) => {
             >
               Coins bought
             </p>
-            <p
+            {/* <p
               className={`cursor-pointer ${
                 active === 3 ? "active-tab-bottom " : "text-muted font-medium"
               }`}
               onClick={() => setActive(3)}
             >
               Transactions
-            </p>
+            </p> */}
           </div>
           {renderHistory}
         </>
