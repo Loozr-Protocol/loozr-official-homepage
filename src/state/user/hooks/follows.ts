@@ -8,3 +8,12 @@ export function useFollowCallback() {
   }
   return { handleFollow }
 }
+
+export function useUnFollowCallback() { 
+  const handleUnFollow = async (userId: number): Promise<any> => {
+    const httpClient = new HttpClient();
+    const result = await httpClient.axiosInstance.post(`/users/unfollow/${userId}`);
+    return result.data;
+  }
+  return { handleUnFollow }
+}

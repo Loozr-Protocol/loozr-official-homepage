@@ -8,6 +8,7 @@ import { getSuggestedUsers } from "../../state/user/userActions";
 import { changeSuggestedPage, removeSuggestedUser } from "../../state/user/userReducer";
 import Pagination from "../Pagination";
 import Photo from "../Photo";
+import VerifiedBadge from "../../assets/icons/verified.svg"
 
 const SuggestUsersTable = (props) => {
   const navigate = useNavigate();
@@ -26,18 +27,29 @@ const SuggestUsersTable = (props) => {
       style={{ height: "100vh", overflowY: "auto" }}
     >
       {props.dataList
-        ? props.dataList.map((user: User, index: number) => (
+        ? props.dataList.map((user: any, index: number) => (
             <div
               key={index}
-              className=" w-full flex justify-between my-2 items-center "
+              className=" w-full cursor-pointer flex my-3 relative items-center  "
             >
-              <Photo
-                alt=""
-                userId={user.accountId}
-                src={user?.photo}
-                className="object-contain w-10 h-10 flex justify-center items-center rounded-full "
-                style={{ border: "3px solid #141922" }}
-              />
+              <div className=" relative " >
+
+                <Photo
+                  alt=""
+                  userId={user.accountId}
+                  src={user?.photo}
+                  className="object-contain w-10 h-10 flex justify-center items-center rounded-full "
+                  style={{ border: "3px solid #141922" }}
+                />
+
+                {user?.isVerified && (
+                  <img
+                    src={VerifiedBadge}
+                    alt=""
+                    className="absolute w-4 h-4 right-0 bottom-0"
+                  />
+                )}
+              </div>
               <div
                 onClick={() => navigate(`/${user.accountDomain}`)}
                 className=" ml-3 "

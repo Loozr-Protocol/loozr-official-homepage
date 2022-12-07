@@ -19,6 +19,7 @@ import { TOAST_OPTIONS } from "../../../../config/constants";
 import { useBecomeArtisteCallback } from "../../../../state/artist/hooks";
 import { setPageLoaderStatus } from "../../../../state/misc";
 import Photo from "../../../Photo";
+import Marquee from "react-fast-marquee";
 
 export const drawerMinWidth = 280;
 export const drawerMaxWidth = 20;
@@ -113,7 +114,7 @@ export const Left = () => {
 
   return (
     <div
-      className={`bg-dark-800 flex flex-col items-start h-screen md:pl-11 xl:pl-14 pr-auto md:pr-4 xl:pr-12 pt-8 pb-12 mb-5`}
+      className={`bg-dark-800 flex flex-col items-start h-screen md:pl-11 xl:pl-14 pr-auto md:pr-4 xl:pr-4 pt-8 pb-12 mb-5`}
       style={{
         // minWidth: xl ? drawerMinWidth : "auto",
         // maxWidth: md ? `${drawerMaxWidth}vw` : 0,
@@ -144,10 +145,10 @@ export const Left = () => {
           )}
         </>
       )}
-      <div className="w-full  xl:h-[85%] flex flex-col items-end xl:block overflow-y-auto overflow-x-hidden">
+      <div className="w-full  xl:h-[85%] flex flex-col items-end xl:block  overflow-y-auto overflow-x-hidden">
         {tabs.map((tab: any) => (
           <Link
-            className="hover:flex flex items-center text-sm font-medium text-[#536079] mt-2.5 xl:mt-auto mb-[22px]"
+            className="hover:flex flex items-center text-sm font-medium relative text-[#536079] mt-2.5 xl:mt-auto mb-[22px]"
             to={tab.path || "#!"}
             key={tab.label}
             onClick={() =>
@@ -162,11 +163,17 @@ export const Left = () => {
 
             <span
               className={`${
-                tab.path === pathname && "font-bold text-white"
+                tab.path === pathname && "font-bold text-sm text-white"
               } cursor-pointer hidden xl:inline`}
             >
               {tab.label}
-            </span>
+            </span> 
+              {tab.label === "Tracks"  && ( 
+                <div className=" text-[10px] text-[#141922] bg-[#FFCD43] rounded-[50px] md:hidden xl:flex font-semibold flex justify-center items-center ml-auto h-[24px] w-[84px] " >coming soon</div>
+              )} 
+            {tab.label === "Music NFT"  && ( 
+              <div className=" text-[10px] text-[#141922] bg-[#FFCD43] rounded-[50px] md:hidden xl:flex font-semibold flex justify-center items-center ml-auto h-[24px] w-[84px] " >coming soon</div>
+            )}
           </Link>
         ))}
         <div className="h-px w-full lg:w-full bg-muted-50 mt-8 mb-7" />
@@ -180,23 +187,28 @@ export const Left = () => {
             Checking(false);
           }}
         >
-          <div className=" w-full ">
-            <Photo
-              alt=""
-              src={user?.photo}
-              userId={user?.accountId}
-              className="object-cover w-12 h-12 xl:w-14 xl:h-14 flex justify-center items-center rounded-full  "
-              style={{ border: "5px solid #141922" }}
-            />
+          <div className=" w-fit ">
+            <div className=" w-12 h-12 xl:w-14 xl:h-14 flex" >
+
+              <Photo
+                alt=""
+                src={user?.photo}
+                userId={user?.accountId}
+                className="object-cover w-12 h-12 xl:w-14 xl:h-14 flex justify-center items-center rounded-full  "
+                style={{ border: "5px solid #141922" }}
+              />
+            </div>
           </div>
           <div className="hidden xl:block w-full pl-2 ">
-            <div className={isShown ? "example1 " : " h-[20px] "}>
+            {/* <div className={isShown ? "example1 " : " h-[20px] "}> */}
               {user?.accountId && (
                 <>
-                  {isShown ? (
-                    <p className=" text-sm font-extrabold text-white name-tag">
-                      {user?.accountId}
-                    </p>
+                  {isShown ? ( 
+                    <Marquee speed={50} gradient={false} >
+                      <p className=" text-sm font-extrabold text-white name-tag">
+                        {user?.accountId}
+                      </p>
+                    </Marquee>
                   ) : (
                     <p className=" text-sm font-extrabold text-white name-tag">
                       {user?.accountId.slice(0, 16)}
@@ -204,20 +216,22 @@ export const Left = () => {
                   )}
                 </>
               )}
-            </div>
-            <div className={shown ? "example1 " : " h-[20px] "}>
-              {shown ? (
-                <p className="text-[11px] font-medium flex items-center w-auto flex-nowrap whitespace-nowrap text-muted">
-                  {user?.isArtist ? (
-                    <span>
-                      <span className="uppercase">${user?.tokenName}</span>{" "}
-                      <span className="h-1 w-1 rounded-full bg-muted opacity-90 mb-[3px]" />{" "}
-                      Artiste
-                    </span>
-                  ) : (
-                    "Listener"
-                  )}
-                </p>
+            {/* </div> */}
+            <div className={shown ? "h-[20px] " : " h-[20px] "}>
+              {shown ? ( 
+                <Marquee speed={50} gradient={false} >
+                  <p className="text-[11px] font-medium flex items-center w-auto flex-nowrap whitespace-nowrap text-muted">
+                    {user?.isArtist ? (
+                      <span>
+                        <span className="uppercase">${user?.tokenName}</span>{" "}
+                        <span className="h-1 w-1 rounded-full bg-muted opacity-90 mb-[3px]" />{" "}
+                        Artiste
+                      </span>
+                    ) : (
+                      "Listener"
+                    )}
+                  </p>
+                </Marquee>
               ) : (
                 <p className="text-[11px] font-medium flex items-center flex-nowrap whitespace-nowrap text-muted">
                   {user?.isArtist ? (

@@ -13,8 +13,7 @@ import { useUpdateProfileCallback, useUpdateProfilePicCallback } from "../state/
 import { toast } from "react-toastify";
 import { updateProfile } from "../state/user/userReducer";
 import Photo from "../components/Photo";
-import { jsonToUser } from "../utils";
-import { MenuItem, Select } from "@mui/material";
+import { jsonToUser } from "../utils"; 
 import { useNavigate } from "react-router-dom";
 
 const EditProfile = () => {
@@ -51,9 +50,6 @@ const EditProfile = () => {
     validationSchema: profileEditSchema,
     onSubmit: () => {},
   });
-
-  console.log(user);
-  
 
   useEffect(() => {
     formik.setValues({

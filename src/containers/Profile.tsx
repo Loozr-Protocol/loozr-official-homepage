@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { transactions } from "../components/dummy/wallet";
 import Arrow45Deg from "../assets/icons/arrow-45deg.svg";
 import Arrow225Deg from "../assets/icons/arrow-225deg.svg";
-
+ 
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../state/store";
@@ -21,16 +21,22 @@ import CoinHodlers from "../components/history/CoinHodlers";
 import { resetCoinPrice, resetHoldersList } from "../state/artist/artistReducer";
 import { decodedJWT } from "../utils";
 import Photo from "../components/Photo";
-import verified from "../assets/icons/verified.svg"
-import { useFollowerCallback, useFollowingCallback } from "../state/user/hooks/useAccount";
+import VerifiedBadge from "../assets/icons/verified.svg"
+import { useFollowerCallback, useFollowingCallback, useCheckFollowerCallback } from "../state/user/hooks/useAccount";
 import { MIXER_ACCOUNT } from "../config/constants";
 import CoinsBought from "../components/history/CoinsBought";
+import { removeSuggestedUser } from "../state/user/userReducer";
+import { useFollowCallback, useUnFollowCallback } from "../state/user/hooks/follows";
+import CheckFollower from "../components/CheckFollower";
+import CheckFollowerButton from "../components/CheckFollowerButton";
 
 const Profile = (props) => {
   const push = useNavigate();
   let { accountDomain } = useParams();
   const [active, setActive] = useState(1);
   const [isShown, setIsShown] = useState(false)
+  const [checkData, setCheckData] = useState(false)
+  const [checkFollower, setCheckFollower] = useState("")
   const [showBio, setShowBio] = useState(false)
   const [data, setData] = useState([] as any)
   const dispatch = useDispatch();
@@ -46,11 +52,24 @@ const Profile = (props) => {
   
   const { getFollower } = useFollowerCallback(); 
   const { getFollowing } = useFollowingCallback(); 
+  const { getCheckFollower } = useCheckFollowerCallback() 
 
   const [showModal, setShowModal] = React.useState(false)
   const [copySuccess, setCopySuccess] = React.useState('');
 
   const navigate = useNavigate()
+
+  const CheckFollowers =async () => { 
+    if(currentProfile?.id){ 
+      const result: any = await getCheckFollower(currentProfile?.id); 
+      setCheckFollower(result) 
+      console.log(result); 
+    }
+  }
+
+  React.useEffect(() => { 
+    CheckFollowers()
+  },[]) 
 
   const ClickFollwer = async ()=>{ 
     const result = await getFollower(currentProfile.id); 
@@ -62,7 +81,7 @@ const Profile = (props) => {
     const result = await getFollowing(currentProfile.id); 
     setData(result)
     setShowModal(true)
-  } 
+  }  
 
   function copyToClipboard(item: any, text: any) { 
       navigator.clipboard.writeText(item)
@@ -83,7 +102,12 @@ const Profile = (props) => {
     }
     dispatch(getIndividualProfile(decodedJWT()["id"]));
     setCurrentProfile(user);
-  };
+  }; 
+
+  const CloseModal = () => { 
+    dispatch(getIndividualProfile(accountDomain));
+    setShowModal(false)
+  }
 
   useEffect(() => {
     dispatch(resetCoinPrice());
@@ -98,8 +122,12 @@ const Profile = (props) => {
 
   useEffect(() => {
     setCurrentProfile(currentProfileFromState);
-  }, [currentProfileFromState]);
+  }, [currentProfileFromState]); 
 
+  const GotoDomain =(item)=> {
+    setShowModal(false)
+    navigate(`/${item}`)
+  }
 
   const Transaction =()=>{
     return(
@@ -177,21 +205,22 @@ const Profile = (props) => {
             <CreatorStatCard user={currentProfile} />
           )}
           <div className="flex md:flex-row flex-col mt-[32px] items-start mb-7">
-            <div className=" relative md:w-auto w-full flex md:justify-start justify-start md:mb-0 mb-8 ">
+            <div className=" relative md:w-auto w-fit flex md:justify-start justify-start md:mb-0 mb-8 ">
               <Photo
                 alt={currentProfile.accountDomain}
                 userId={currentProfile.accountId}
                 src={currentProfile?.photo}
                 className="h-[170px] md:h-[130px] text-4xl w-[170px] md:w-[130px] object-cover rounded-full md:mr-3"
-                style={{ border: "10px solid #141922" }}
-              />
-              {/* {currentProfile.isVerified &&
+                style={{ border: "8px solid #141922" }}
+              /> 
 
-              <img
-                src={verified}
-                alt="verified"
-                className=" absolute bottom-2 right-4 w-[31.03px] "
-              /> */}
+              {/* {!currentProfile && (
+                <img
+                  src={VerifiedBadge}
+                  alt=""
+                  className="absolute md:w-9 w-12 md:h-9 h-12 md:right-3 md:bottom-2 right-0 bottom-4"
+                />
+              )} */}
             </div>
             <div className="md:ml-10">
               <div className=" flex ">
@@ -314,7 +343,7 @@ const Profile = (props) => {
               </div>
               {currentProfile?.bio && (
                 <>
-                  {!showBio ? (
+                  {currentProfile?.bio.length >= 100 || !showBio ? (
                     <p className="text-white max-w-[435px] leading-normal font-medium text-xs md:text-[13px] mb-[20px]">
                       {(currentProfile?.bio).slice(0, 100)}
                       <span
@@ -327,13 +356,15 @@ const Profile = (props) => {
                   ) : (
                     <p className="text-white max-w-[435px] font-medium text-xs md:text-[13px] mb-[20px]">
                       {currentProfile.bio}
-                      <span
+                      {currentProfile?.bio.length <= 100 && ( 
+                        <span
                         onClick={() => setShowBio(false)}
                         className=" text-[#FFCD43] cursor-pointer ml-2 "
-                      >
+                        >
                         {" "}
                         See Less
                       </span>
+                      )}
                     </p>
                   )}
                 </>
@@ -381,7 +412,8 @@ const Profile = (props) => {
                     Sell artiste coin
                   </button>
                 </div>
-              ) : null}
+              ) : null} 
+              <CheckFollowerButton otheruser={currentProfile} user={user} />
               {currentProfile?.id === user?.id ? (
                 <div className="flex items-center mb-4">
                   <button
@@ -395,16 +427,18 @@ const Profile = (props) => {
                   </div> */}
                 </div>
               ) : null}
-              <div className=" flex items-center py-2 ">
-                <img src={chain} alt="chain" className=" w-[12.39px] " />
-                <a
-                  target="_blank"
-                  href="https://yourweblink.com"
-                  className=" font-medium text-sm ml-2 "
-                >
-                  https://yourweblink.com
-                </a>
-              </div>
+              {currentProfile?.website && (
+                <div className=" flex items-center py-2 ">
+                  <img src={chain} alt="chain" className=" w-[12.39px] " />
+                  <a
+                    target="_blank"
+                    href={"http://"+currentProfile?.website+""}
+                    className=" font-medium text-sm ml-2 "
+                  >
+                    {currentProfile?.website}
+                  </a>
+                </div>
+              )}
             </div>
           </div>
           <div className="w-full pb-2 mb-9 border-b-2 border-muted-50 flex items-center text-sm font-medium text-muted">
@@ -424,14 +458,14 @@ const Profile = (props) => {
             >
               Coins bought
             </p>
-            <p
+            {/* <p
               className={`cursor-pointer ${
                 active === 3 ? "active-tab-bottom " : "text-muted font-medium"
               }`}
               onClick={() => setActive(3)}
             >
               Transactions
-            </p>
+            </p> */}
           </div>
           {renderHistory}
         </>
@@ -442,58 +476,76 @@ const Profile = (props) => {
       )}
 
       {showModal && (
-        <div
-          onClick={() => setShowModal(false)}
+        <div 
           className=" fixed inset-0 flex justify-center items-center md:overflow-y-hidden bg-black bg-opacity-40 z-[70] "
         >
-          <div className=" w-full md:w-[360px] md:h-auto relative z-[80] h-screen rounded-2xl bg-[#12161F]">
+          <div className=" w-full md:w-[360px] md:h-auto relative z-[120] h-screen rounded-2xl bg-[#12161F]">
             <div className=" w-full flex items-center border-b border-[#222A3B] justify-between py-4 px-6 ">
               <p className="  font-medium text-white">Follows</p>
               <button
-                onClick={() => setShowModal(false)}
+                onClick={() => CloseModal()}
                 className=" font-medium text-xs bg-[#8369F4] w-[65px] h-7 rounded-lg "
               >
                 Done
               </button>
             </div>
             <div className=" w-full px-6 md:py-4 md:h-[60vh] h-full flex flex-1 flex-col overflow-y-auto ">
-              {data.map((item: any, index: any) => {
-                const domainName = item.account_id + "." + MIXER_ACCOUNT;
-                return (
-                  <div
-                    key={index}
-                    onClick={() => navigate(`/${domainName}`)}
-                    className=" w-full cursor-pointer flex my-3 items-center "
-                  >
-                    <Photo
-                      alt=""
-                      userId={item.account_id}
-                      src={item?.photo}
-                      className="object-contain w-10 h-10 rounded-full "
-                      style={{ border: "3px solid #141922" }}
-                    />
-                    {/* <div className=' w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] ' /> */}
-                    <div className=" ml-3 ">
-                      <div className=" flex -mt-1 items-center ">
-                        <p className=" text-[13px] font-semibold ">
-                          {" "}
-                          {item?.account_id}
-                        </p>
+              {/* {data && ( */}
+                <>
+                  {data.map((item: any, index: any) => {
+                    const domainName = item.account_id + "." + MIXER_ACCOUNT;
+                    console.log(item);
+                    
+                    return (
+                      <div
+                        key={index}
+                        className=" w-full cursor-pointer flex my-3 relative items-center "
+                      >
+                        <div
+                          onClick={() => GotoDomain(domainName)}
+                          className=" w-fit relative cursor-pointer " > 
+                          <Photo
+                            alt=""
+                            userId={item.account_id}
+                            src={item?.photo}
+                            className="object-contain w-10 h-10 rounded-full "
+                            style={{ border: "3px solid #141922" }}
+                          /> 
+                          {item?.isVerified && (
+                            <img
+                              src={VerifiedBadge}
+                              alt=""
+                              className="absolute w-4 h-4 right-0 bottom-0"
+                            />
+                          )}
+                        </div>
+                        {/* <div className=' w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] ' /> */}
+                        <div 
+                          onClick={() => GotoDomain(domainName)}
+                          className=" ml-3  cursor-pointer ">
+                          <div className=" flex -mt-1 items-center ">
+                            <p className=" text-[13px] font-semibold ">
+                              {" "}
+                              {item?.account_id}
+                            </p>
+                          </div>
+                          <div className=" flex -mt-1 items-center ">
+                            <p className=" text-[11px] font-semibold text-[#536079] ">
+                              {item?.email.slice(0,7)}
+                            </p>
+                          </div>
+                        </div> 
+                        <CheckFollower current={currentProfile} otheruser={item} check={data} user={user} />
                       </div>
-                      <div className=" flex -mt-1 items-center ">
-                        <p className=" text-[11px] font-semibold text-[#536079] ">
-                          {item?.email}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-              {data.length === 0 && (
-                <p className=" mt-4 font-medium text-center ">
-                  No information avaliable
-                </p>
-              )}
+                    );
+                  })}
+                  {data.length === 0 && (
+                    <p className=" mt-4 font-medium text-center ">
+                      No information avaliable
+                    </p>
+                  )}
+                </>
+              {/* )} */}
             </div>
           </div>
         </div>

@@ -189,8 +189,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
         {/* )} */}
       </div>
       {showModal && (
-        <div
-          onClick={() => setShowModal(false)}
+        <div 
           className=" fixed inset-0 flex justify-center items-center md:overflow-y-hidden bg-black bg-opacity-40 z-[70] "
         >
           <div className=" w-full md:w-[360px] md:h-auto relative z-[80] h-screen rounded-2xl bg-[#12161F]">

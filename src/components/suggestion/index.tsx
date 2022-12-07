@@ -2,8 +2,7 @@ import React from "react";
 import Goya from "../../assets/img/artists/goya.png";
 
 import ArrowLeft from "../../assets/icons/caret-left.svg";
-import ArrowRight from "../../assets/icons/caret-right.svg";
-import { Link } from "react-router-dom";
+import ArrowRight from "../../assets/icons/caret-right.svg"; 
 import SlidesButton from "../SlidesButton";
 import Marquee from "react-fast-marquee";
 import { motion } from "framer-motion";
@@ -132,7 +131,7 @@ const Suggestion = () => {
                 <div className=" w-full " > 
                   <Marquee speed={50} loop={isShown === index+"" ? 0 : -1} gradient={false} >
                     <p className="mb-[3px] font-medium text-sm text-white">
-                      {_.title+" "}
+                      {_.title+" "+""}
                     </p> 
                   </Marquee> 
                 </div>

@@ -163,14 +163,14 @@ const Wallet = () => {
         >
           Coins bought
         </p>
-        <p
+        {/* <p
           className={`cursor-pointer ${
             active === 2 ? "active-tab-bottom" : "text-muted font-medium"
           }`}
           onClick={() => setActive(2)}
         >
           Transactions
-        </p>
+        </p> */}
       </div>
       {renderHistory}
     </div>
