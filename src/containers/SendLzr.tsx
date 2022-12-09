@@ -67,19 +67,7 @@ const SendLzr = () => {
     // formik.setFieldValue("account_id", item)
     const result = await getSearchUser(item); 
     setData(result)
-  } 
-
-  const OnchangeHandler =(item: any)=> {   
-    if( Number(balanceInLzr) > Number(item) ){  
-      formik.setFieldValue("amount", item)
-    }else{
-      setMax(true)
-      const t1 = setTimeout(() => { 
-        setMax(false)
-        clearTimeout(t1); 
-    }, 2000); 
-    }
-  }
+  }  
 
   const handleSubmit = async () => {
     if (!formik.dirty) {
@@ -179,14 +167,9 @@ const SendLzr = () => {
           </p>
           <input
             type="number"
-            name="amount"
-            // onKeyPress={(e) => {
-            //   if (e.key === "e" || e.key === "-" || e.key === "+") {
-            //     e.preventDefault();
-            //   }
-            // }}
+            name="amount" 
             value={formik.values.amount}
-            onChange={(e)=> OnchangeHandler(e.target.value)}
+            onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             onFocus={() => formik.setFieldTouched("amount", true, true)}
             className=" h-[60px] w-full px-6 md:w-[350px] bg-dark-800 text-sm placeholder:text-muted text-white"
