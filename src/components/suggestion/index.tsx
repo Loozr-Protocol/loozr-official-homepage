@@ -111,9 +111,7 @@ const Suggestion = () => {
         ref={ref}
         className="max-w-full overflow-x-auto  overflow-y-hidden  scroll_event whitespace-nowrap pt-3 px-2 pb-[74px]"
       >
-        <div
-        
-        className="flex">
+        <div className="flex">
           {tracks.map((_, index) => (
               <motion.div  
                 whileHover={{
