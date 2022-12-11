@@ -183,7 +183,7 @@ const BuyArtistToken = () => {
             //   }
             // }}
             value={formik.values.amount}
-            onChange={(e)=> OnchangeHandler(e.target.value)}
+            onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             onFocus={() => formik.setFieldTouched("amount", true, true)}
             className=" h-[58px] w-full px-6 md:w-[350px] bg-dark-800 text-sm placeholder:text-muted text-white"
