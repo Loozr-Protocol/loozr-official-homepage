@@ -167,8 +167,7 @@ const SendLzr = () => {
           </p>
           <input
             type="number"
-            name="amount" 
-            value={formik.values.amount}
+            name="amount"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             onFocus={() => formik.setFieldTouched("amount", true, true)}
