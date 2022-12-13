@@ -13,7 +13,9 @@ export default class HttpClient {
 
     this.axiosInstance.interceptors.request.use(function (config) {
       const jwtToken = localStorage.getItem('jwtToken');
-      config.headers.Authorization = jwtToken ? `Bearer ${jwtToken}` : '';
+      if(jwtToken) {
+        config.headers.Authorization = `Bearer ${jwtToken}`;
+      }
 
       return config;
     }, function (error) {

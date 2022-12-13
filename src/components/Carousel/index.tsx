@@ -96,7 +96,7 @@ const Carousel = () => {
     <div className="h-[230px] w-screen md:w-full relative  " > 
       {image.map((item: any, index: any) => {
           return( 
-            <AnimatePresence  key={item} >
+            <AnimatePresence  key={index} >
               {index === isShown && 
                 <a target="_blank" href={item.link} > 
                   <motion.div  
