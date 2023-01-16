@@ -3,6 +3,10 @@ import CloseIcon from "../../assets/img/close.svg"
 import QrReader from 'react-qr-scanner'
 import Photo from '../Photo' 
 import { getIndividualProfile } from '../../state/user/userActions'
+import { useDispatch, useSelector } from 'react-redux' 
+import User from '../../config/constants/models/user'
+import { AppState } from '../../state/store'
+import { useLinkClickHandler, useNavigate } from 'react-router-dom'
 
 type props ={
     close: Function, 
@@ -15,25 +19,40 @@ export default function QrcodeScanner({close}: props) {
         width: 320,
     }
 
+    const currentProfileFromState = useSelector(
+        (state: AppState) => state.user.currentProfile
+      );
+    const dispatch = useDispatch();
     const [data, setData] = React.useState("")
+    const push = useNavigate();
     const [userInfo, setUserInfo] = React.useState({ } as any)
+    const [currentProfile, setCurrentProfile] = React.useState<User>();
+    const user = useSelector((state: AppState) => state.user.userInfo);
 
-    const handleScan =(item: any)=> {
-        console.log(item); 
-        setData(item)
+    const handleScan =(item: any)=> { 
+        setData(item?.text)
     }
 
-    const GetUserInformation =async()=> {
-        const request = await getIndividualProfile(data)
-        console.log(request)
-        setUserInfo(request)
+    const GetUserInformation =async()=> { 
+        dispatch(getIndividualProfile(data));
+        setCurrentProfile(user);
     }
 
     React.useEffect(()=> {
         if(data){ 
            GetUserInformation()
         }
-    }, [data])
+    }, [data]) 
+
+    React.useEffect(() => {
+        setCurrentProfile(currentProfileFromState);
+    }, [currentProfileFromState]); 
+
+    const closeHandler =()=> {
+        push("/"+currentProfile?.accountDomain)
+        close(false)
+    }
+    
 
     return (
         <div 
@@ -77,16 +96,16 @@ export default function QrcodeScanner({close}: props) {
                     </div>
                     <div className=' w-full flex flex-col h-full items-center py-8 px-4 ' > 
                         <Photo
-                            // alt={userInfo?.accountDomain}
-                            // userId={userInfo?.accountId}
-                            // src={userInfo?.photo}
+                            alt={currentProfile?.accountDomain}
+                            userId={currentProfile?.accountId}
+                            src={currentProfile?.photo}
                             className="h-[120px] md:h-[120px] text-4xl w-[120px] md:w-[120px] object-cover rounded-full "
                             style={{ border: "8px solid #141922" }}
                         /> 
-                        <p className=' mt-4 font-semibold text-white ' >{userInfo?.username}</p>
+                        <p className=' mt-4 font-semibold text-white ' >{currentProfile?.username}</p>
                         <p className=' font-medium text-[#536079] ' >Select what you’d want</p>
                         <button style={{background: "linear-gradient(180.44deg, #8369F4 27.17%, #F039E2 156.68%)"}} className=' font-semibold mt-12 text-white h-[55px] w-full ' >Send $LZR Coin</button>
-                        <button className=' bg-[#141922] font-semibold mt-4 text-white h-[55px] w-full ' >Send $LZR Coin</button>
+                        <button onClick={()=> closeHandler()} className=' bg-[#141922] font-semibold mt-4 text-white h-[55px] w-full ' >View profile</button>
                     </div>
                 </div>
             )}

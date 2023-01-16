@@ -354,20 +354,22 @@ const Profile = (props) => {
                   />
                 </div> */}
               </div>
-              <div className=" w-full py-6 flex items-center " >
-                <button
-                    onClick={() => setQrCodeModal(true)}
-                    className="py-[14.1px] px-3 sm:px-6 md:px-7 text-xs md:text-sm font-medium bg-loozr-purple mr-2 rounded-full"
-                  >
-                  Qr Code
-                </button>
-                <button
-                    onClick={() => setQrCodeScannerModal(true)}
-                    className="py-[14.1px] px-3 sm:px-6 md:px-7 text-xs md:text-sm font-medium bg-loozr-purple ml-2 rounded-full"
-                  >
-                   Scan Qr Code
-                </button>
-              </div>
+              {currentProfile?.id === user?.id && (
+                <div className=" w-full py-6 flex items-center " >
+                  <button
+                      onClick={() => setQrCodeModal(true)}
+                      className="py-[14.1px] px-3 sm:px-6 md:px-7 text-xs md:text-sm font-medium bg-loozr-purple mr-2 rounded-full"
+                    >
+                    Qr Code
+                  </button>
+                  <button
+                      onClick={() => setQrCodeScannerModal(true)}
+                      className="py-[14.1px] px-3 sm:px-6 md:px-7 text-xs md:text-sm font-medium bg-loozr-purple ml-2 rounded-full"
+                    >
+                    Scan Qr Code
+                  </button>
+                </div>
+              )}
               {currentProfile?.bio && (
                 <>
                   {currentProfile?.bio.length >= 100 || !showBio ? (
