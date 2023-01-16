@@ -1,12 +1,13 @@
 import React from 'react'
 import CloseIcon from "../../assets/img/close.svg"
-import QrReader from 'react-qr-scanner'
+// import QrReader from 'react-qr-scanner'
 import Photo from '../Photo' 
 import { getIndividualProfile } from '../../state/user/userActions'
 import { useDispatch, useSelector } from 'react-redux' 
 import User from '../../config/constants/models/user'
 import { AppState } from '../../state/store'
 import { useLinkClickHandler, useNavigate } from 'react-router-dom'
+import { QrReader } from 'react-qr-reader';
 
 type props ={
     close: Function, 
@@ -79,14 +80,28 @@ export default function QrcodeScanner({close}: props) {
                     </div>
                     <div className=' w-full flex flex-col h-full items-center py-8 px-4 ' > 
 
-                        <QrReader
+                        {/* <QrReader
                             delay={ 50 } 
                             facingMode="rear"
                             legacyMode={true}
-                            style={previewStyle}
+                            // style={previewStyle}
                             onError={handleError}
                             onScan={handleScan}
-                            />
+                            /> */}
+
+                        <QrReader
+                            onResult={(result: any, error) => {
+                                if (!!result) {
+                                    setData(result?.text)
+                                    console.log(result?.text)
+                                }
+
+                                if (!!error) {
+                                    console.info(error)
+                                }
+                            } }
+                            className='w-full' constraints={undefined}                            // style={{ width: '100%' }}
+                        />
                             <p className=' font-medium text-sm mt-1 ' >{result}</p>
                     </div>
                 </div>
