@@ -7,7 +7,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../state/store";
 import soundcloud from "../assets/icons/soundcloud.svg";
-import spotify from "../assets/icons/spotify.svg";
+import spotify from "../assets/icons/spotify.svg"; 
 import instagram from "../assets/icons/instagram.svg";
 import twitter from "../assets/icons/twitter.svg";
 import share from "../assets/icons/share.svg";
@@ -29,6 +29,9 @@ import { removeSuggestedUser } from "../state/user/userReducer";
 import { useFollowCallback, useUnFollowCallback } from "../state/user/hooks/follows";
 import CheckFollower from "../components/CheckFollower";
 import CheckFollowerButton from "../components/CheckFollowerButton";
+import QRCode from "react-qr-code";
+import QrcodeModal from "../components/QrcodeModal";
+import QrcodeScanner from "../components/QrcodeScanner";
 
 const Profile = (props) => {
   const push = useNavigate();
@@ -55,6 +58,8 @@ const Profile = (props) => {
   const { getCheckFollower } = useCheckFollowerCallback() 
 
   const [showModal, setShowModal] = React.useState(false)
+  const [qrCodeModal, setQrCodeModal] = React.useState(false)
+  const [qrCodeScanerModal, setQrCodeScannerModal] = React.useState(false)
   const [copySuccess, setCopySuccess] = React.useState('');
 
   const navigate = useNavigate()
@@ -340,6 +345,28 @@ const Profile = (props) => {
                     />
                   )}
                 </div>
+                {/* <div className=" relative  mx-2  ">
+                  <img
+                    onClick={() => setIsShown((prev) => !prev)}
+                    src={qr}
+                    alt=""
+                    className=" w-[12.67px] cursor-pointer "
+                  />
+                </div> */}
+              </div>
+              <div className=" w-full py-6 flex items-center " >
+                <button
+                    onClick={() => setQrCodeModal(true)}
+                    className="py-[14.1px] px-3 sm:px-6 md:px-7 text-xs md:text-sm font-medium bg-loozr-purple mr-2 rounded-full"
+                  >
+                  Qr Code
+                </button>
+                <button
+                    onClick={() => setQrCodeScannerModal(true)}
+                    className="py-[14.1px] px-3 sm:px-6 md:px-7 text-xs md:text-sm font-medium bg-loozr-purple ml-2 rounded-full"
+                  >
+                   Scan Qr Code
+                </button>
               </div>
               {currentProfile?.bio && (
                 <>
@@ -474,7 +501,12 @@ const Profile = (props) => {
       ) : (
         <div className="text-center">Loading Profile...</div>
       )}
-
+      {qrCodeModal && ( 
+        <QrcodeModal close={setQrCodeModal} userInfo={currentProfile} />
+      )}
+      {qrCodeScanerModal && ( 
+        <QrcodeScanner close={setQrCodeScannerModal}  />
+      )}
       {showModal && (
         <div 
           className=" fixed inset-0 flex justify-center items-center md:overflow-y-hidden bg-black bg-opacity-40 z-[70] "

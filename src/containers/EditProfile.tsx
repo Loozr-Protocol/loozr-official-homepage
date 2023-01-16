@@ -92,7 +92,7 @@ const EditProfile = () => {
       const result = await handleUpdateProfilePic(image);
       const user = jsonToUser(result);
       toast.success("Photo updated!", TOAST_OPTIONS);
-      navigate(0)
+      // navigate(0)
       setPhotoLoading(false); 
       setSelectedImage("")
     } catch (err: any) {
@@ -107,6 +107,8 @@ const EditProfile = () => {
     const TYPES = ["image/png", "image/jpg", "image/jpeg" ];        
     if (selected && TYPES.includes(selected.type)) {
         setImage(selected)
+        console.log(selected);
+        
         const reader: any = new FileReader();
         reader.onloadend= () => {  
           setSelectedImage(reader.result)
