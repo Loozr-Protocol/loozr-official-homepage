@@ -100,7 +100,9 @@ export default function QrcodeScanner({close}: props) {
                                     console.info(error)
                                 }
                             } }
-                            className='w-full' constraints={undefined}                            // style={{ width: '100%' }}
+                            className='w-full' constraints={{
+                                facingMode:"environment"
+                            }}                            // style={{ width: '100%' }}
                         />
                             <p className=' font-medium text-sm mt-1 ' >{result}</p>
                     </div>
