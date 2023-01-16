@@ -81,7 +81,7 @@ export default function QrcodeScanner({close}: props) {
 
                         <QrReader
                             delay={ 50 } 
-                            facingMode="front"
+                            facingMode="rear"
                             legacyMode={true}
                             style={previewStyle}
                             onError={handleError}
