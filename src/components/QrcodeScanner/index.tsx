@@ -89,7 +89,9 @@ export default function QrcodeScanner({close}: props) {
                             onScan={handleScan}
                             /> */}
 
-                        <QrReader
+                        <QrReader  
+                            scanDelay={10}
+                            containerStyle={{width: '90vw' }}
                             onResult={(result: any, error) => {
                                 if (!!result) {
                                     setData(result?.text)
@@ -100,9 +102,9 @@ export default function QrcodeScanner({close}: props) {
                                     console.info(error)
                                 }
                             } }
-                            className='w-full' constraints={{
+                            className=' w-[90vw] md:w-full' constraints={{
                                 facingMode:"environment"
-                            }}                            // style={{ width: '100%' }}
+                            }}                          
                         />
                             <p className=' font-medium text-sm mt-1 ' >{result}</p>
                     </div>
