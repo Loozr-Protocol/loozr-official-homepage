@@ -178,7 +178,7 @@ export const Left = () => {
         ))}
         <div className="h-px w-full lg:w-full bg-muted-50 mt-8 mb-7" />
         <div
-          onClick={() => navigate("/" + user.accountDomain)}
+          onClick={() => user ? navigate("/" + user.accountDomain) : null}
           className=" flex w-full items-center mt-6 cursor-pointer"
           onMouseOver={() => {
             Checking(true);

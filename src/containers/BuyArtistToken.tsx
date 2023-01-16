@@ -105,18 +105,6 @@ const BuyArtistToken = () => {
     }
   };
 
-  const OnchangeHandler =(item: any)=> {   
-    if( Number(balanceInLzr) > Number(item) ){  
-      formik.setFieldValue("amount", item)
-    }else{
-      setMax(true)
-      const t1 = setTimeout(() => { 
-        setMax(false)
-        clearTimeout(t1); 
-    }, 2000); 
-    }
-  }
-
   if (pageLoading) {
     return <div className="text-center"> Fetching artiste information...</div>;
   }
@@ -144,7 +132,10 @@ const BuyArtistToken = () => {
             </strong>{" "}
             coin
           </p>
-          <Link to={"/"+artistDetails.accountDomain} className="mt-2 text-loozr-purple">
+          <Link
+            to={"/" + artistDetails.accountDomain}
+            className="mt-2 text-loozr-purple"
+          >
             Continue
           </Link>
         </div>
@@ -153,7 +144,8 @@ const BuyArtistToken = () => {
   ) : (
     <div className="w-full mt-16 md:px-0 px-6  md:mt-0">
       <p className="text-white text-2xl font-semibold mb-12">
-        Buy $<span className=" uppercase " >{artistDetails.creatorCoinId}</span> Artiste Token
+        Buy $<span className=" uppercase ">{artistDetails.creatorCoinId}</span>{" "}
+        Artiste Token
       </p>
       <div className="md:w-[350px] w-full ">
         <div className="w-30 mb-8">
@@ -172,7 +164,8 @@ const BuyArtistToken = () => {
         </div>
         <div className="w-full mb-8">
           <p className="text-sm font-medium text-muted mb-5">
-            Amount of LZR to exchange for $<span className=" uppercase " >{artistDetails.creatorCoinId}</span>:
+            Amount of LZR to exchange for $
+            <span className=" uppercase ">{artistDetails.creatorCoinId}</span>:
           </p>
           <input
             type="number"
@@ -182,7 +175,6 @@ const BuyArtistToken = () => {
             //     e.preventDefault();
             //   }
             // }}
-            value={formik.values.amount}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             onFocus={() => formik.setFieldTouched("amount", true, true)}
@@ -191,8 +183,8 @@ const BuyArtistToken = () => {
             style={{ background: "#12161F" }}
           />
         </div>
-        {max && ( 
-          <div className="w-full h-auto pt-2"> 
+        {max && (
+          <div className="w-full h-auto pt-2">
             <motion.div
               initial={{ y: -100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -200,7 +192,7 @@ const BuyArtistToken = () => {
               style={{ marginTop: "-35px" }}
             >
               Amount must be less than your balance
-            </motion.div> 
+            </motion.div>
           </div>
         )}
         <div className="w-full h-auto pt-2">
@@ -219,11 +211,11 @@ const BuyArtistToken = () => {
           Artiste will receive {artistDetails.founderReward / bpsDenominator}%
           of your purchase as a Founder Reward
         </p>
-        <div className="  " >
+        <div className="  ">
           <button
             className=" h-[60px] text-white disabled:text-muted font-medium md:w-[350px] text-sm bg-gradient-ld disabled:bg-dark-800 mb-24 md:mb-11 w-full sm:w-80 focus:outline-none"
-            onClick={()=> setShowModal(true)}
-            disabled={formik.values.amount ? false: true}
+            onClick={() => setShowModal(true)}
+            disabled={formik.values.amount ? false : true}
           >
             {isLoading ? "Purchase in progress..." : "Purchase"}
           </button>
@@ -231,49 +223,97 @@ const BuyArtistToken = () => {
       </div>
 
       {showModal && (
-          <div className=" fixed inset-0 flex justify-center items-center md:overflow-y-hidden bg-black bg-opacity-90 z-[70] " > 
-            <div className=' w-full h-screen flex flex-col justify-center  md:w-[360px] md:h-auto relative z-[80]  md:rounded-2xl bg-[#12161F]' >
-                <div className=" w-full flex justify-between items-center py-4 px-6  border-b border-[#222A3B] " >
-                    <p className=" font-semibold text-[17px] text-white " >Preview</p>
-                    <svg onClick={()=> setShowModal(false)} className=" cursor-pointer " width="17" height="17" viewBox="0 0 17 17" fill="none">
-                        <path d="M15.7898 1.13965L1.13867 15.7908" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M1.13867 1.13965L15.7898 15.7908" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+        <div className=" fixed inset-0 flex justify-center items-center md:overflow-y-hidden bg-black bg-opacity-90 z-[70] ">
+          <div className=" w-full h-screen flex flex-col justify-center  md:w-[360px] md:h-auto relative z-[80]  md:rounded-2xl bg-[#12161F]">
+            <div className=" w-full flex justify-between items-center py-4 px-6  border-b border-[#222A3B] ">
+              <p className=" font-semibold text-[17px] text-white ">Preview</p>
+              <svg
+                onClick={() => setShowModal(false)}
+                className=" cursor-pointer "
+                width="17"
+                height="17"
+                viewBox="0 0 17 17"
+                fill="none"
+              >
+                <path
+                  d="M15.7898 1.13965L1.13867 15.7908"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M1.13867 1.13965L15.7898 15.7908"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <div className=" w-full pt-8 flex flex-col items-center px-8 ">
+              <p className=" font-medium text-[14px] w-[230px] ">
+                You are exchanging {formik.values.amount} LZR{" "}
+                <span className=" text-[#536079] ">
+                  (≈${(formik.values.amount * LZR_IN_USD).toFixed(2)})
+                </span>{" "}
+                for{" "}
+                <span className=" uppercase ">
+                  ${artistDetails.creatorCoinId}{" "}
+                </span>{" "}
+                coins:
+              </p>
+              <div className=" w-[230px] cursor-pointer flex my-4 items-center ">
+                <Photo
+                  alt=""
+                  className="object-contain w-10 h-10 rounded-full "
+                  style={{ border: "3px solid #141922" }}
+                />
+                {/* <div className=' w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] ' /> */}
+                <div className=" ml-3 ">
+                  <div className=" flex -mt-1 items-center ">
+                    <p className=" text-[13px] font-semibold ">
+                      {" "}
+                      {artistDetails?.user.accountId}
+                    </p>
+                  </div>
+                  <div className=" flex -mt-1 items-center ">
+                    <p className=" text-[11px] font-semibold text-[#536079] ">
+                      {artistDetails?.user.tokenName} - Artist
+                    </p>
+                  </div>
                 </div>
-                <div className=" w-full pt-8 flex flex-col items-center px-8 " > 
-                    <p className=" font-medium text-[14px] w-[230px] " >You are exchanging {formik.values.amount} LZR <span className=" text-[#536079] " >(≈${(formik.values.amount * LZR_IN_USD).toFixed(2)})</span> for <span className=" uppercase " >${artistDetails.creatorCoinId} </span> coins:</p>
-                    <div className=' w-[230px] cursor-pointer flex my-4 items-center ' > 
-                      <Photo
-                        alt=""
-                        className="object-contain w-10 h-10 rounded-full "
-                        style={{ border: "3px solid #141922" }}
-                      />
-                      {/* <div className=' w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] ' /> */}
-                      <div className=' ml-3 ' >
-                        <div className=' flex -mt-1 items-center ' >
-                          <p className=' text-[13px] font-semibold ' > {artistDetails?.user.accountId}</p>
-                        </div>
-                        <div className=' flex -mt-1 items-center ' >
-                          <p className=' text-[11px] font-semibold text-[#536079] ' >{artistDetails?.user.tokenName} - Artist</p> 
-                        </div>
-                      </div> 
-                    </div> 
-                    <div className=" w-[230px] " > 
-                      <p className=" text-xs text-[#536079] font-normal " >Network fee</p>
-                      <p className=" font-medium text-[14px] " >0.00 LZR <span className=" text-[#536079] " >(≈ $0.00)</span></p>
-                    </div>
-                    <div className=" w-[230px] my-4 " > 
-                      <p className=" text-xs text-[#536079] font-normal " >Total required to send</p>
-                      <p className=" font-medium text-[14px] " >{formik.values.amount} LZR <span className=" text-[#536079] " >(≈ ${(formik.values.amount * LZR_IN_USD).toFixed(2)})</span></p>
-                    </div> 
-                    <button disabled={isLoading ? true : false} onClick={handleSubmit} className=" h-[50px] mt-6 flex justify-center items-center text-white  disabled:text-muted font-medium md:text-[13px] bg-gradient-ld disabled:bg-dark-800 mb-11 w-full" >
-                      
-                      {isLoading ? "Purchase in progress..." : "Confirm"}
-                    </button>
-                </div>
+              </div>
+              <div className=" w-[230px] ">
+                <p className=" text-xs text-[#536079] font-normal ">
+                  Network fee
+                </p>
+                <p className=" font-medium text-[14px] ">
+                  0.00 LZR <span className=" text-[#536079] ">(≈ $0.00)</span>
+                </p>
+              </div>
+              <div className=" w-[230px] my-4 ">
+                <p className=" text-xs text-[#536079] font-normal ">
+                  Total required to send
+                </p>
+                <p className=" font-medium text-[14px] ">
+                  {formik.values.amount} LZR{" "}
+                  <span className=" text-[#536079] ">
+                    (≈ ${(formik.values.amount * LZR_IN_USD).toFixed(2)})
+                  </span>
+                </p>
+              </div>
+              <button
+                disabled={isLoading ? true : false}
+                onClick={handleSubmit}
+                className=" h-[50px] mt-6 flex justify-center items-center text-white  disabled:text-muted font-medium md:text-[13px] bg-gradient-ld disabled:bg-dark-800 mb-11 w-full"
+              >
+                {isLoading ? "Purchase in progress..." : "Confirm"}
+              </button>
             </div>
           </div>
-        )}
+        </div>
+      )}
     </div>
   );
 }; 
