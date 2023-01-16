@@ -16,7 +16,7 @@ export default function QrcodeScanner({close}: props) {
 
     const previewStyle = {
         height: 240,
-        width: 240,
+        width: 900,
     }
 
     const currentProfileFromState = useSelector(
