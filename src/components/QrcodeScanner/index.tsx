@@ -16,7 +16,7 @@ export default function QrcodeScanner({close}: props) {
 
     const previewStyle = {
         height: 240,
-        width: 320,
+        width: 240,
     }
 
     const currentProfileFromState = useSelector(
@@ -24,13 +24,17 @@ export default function QrcodeScanner({close}: props) {
       );
     const dispatch = useDispatch();
     const [data, setData] = React.useState("")
-    const push = useNavigate();
-    const [userInfo, setUserInfo] = React.useState({ } as any)
+    const [result, setResult] = React.useState("Scanning...")
+    const push = useNavigate(); 
     const [currentProfile, setCurrentProfile] = React.useState<User>();
     const user = useSelector((state: AppState) => state.user.userInfo);
 
     const handleScan =(item: any)=> { 
-        setData(item?.text)
+        console.log(item);
+        if(item){ 
+            setData(item?.text)
+            setResult(item?.result)
+        }
     }
 
     const GetUserInformation =async()=> { 
@@ -72,14 +76,14 @@ export default function QrcodeScanner({close}: props) {
                     <div className=' w-full flex flex-col h-full items-center py-8 px-4 ' > 
 
                         <QrReader
-                            // delay={
-                            //     delay: 100,
-                            //     result: 'No result',
-                            // } 
+                            delay={ 50 } 
+                            facingMode="rear"
+                            legacyMode={true}
                             style={previewStyle}
                             // onError={this.handleError}
                             onScan={handleScan}
                             />
+                            <p className=' font-medium text-sm mt-1 ' >{result}</p>
                     </div>
                 </div>
             )}
