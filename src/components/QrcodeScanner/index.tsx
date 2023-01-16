@@ -37,6 +37,10 @@ export default function QrcodeScanner({close}: props) {
         }
     }
 
+    const handleError =(err: any)=> { 
+        console.log(err); 
+    }
+
     const GetUserInformation =async()=> { 
         dispatch(getIndividualProfile(data));
         setCurrentProfile(user);
@@ -60,7 +64,7 @@ export default function QrcodeScanner({close}: props) {
 
     return (
         <div 
-          className=" fixed inset-0 flex justify-center items-center md:overflow-y-hidden bg-black bg-opacity-40 z-[70] "
+          className=" fixed inset-0 flex justify-center md:items-center md:overflow-y-hidden bg-black bg-opacity-40 z-[70] "
         >
             {!data && ( 
                 <div className=" w-full md:w-[360px] md:h-auto relative z-[120] h-screen rounded-2xl bg-[#12161F]">
@@ -80,7 +84,7 @@ export default function QrcodeScanner({close}: props) {
                             facingMode="front"
                             legacyMode={true}
                             style={previewStyle}
-                            // onError={this.handleError}
+                            onError={handleError}
                             onScan={handleScan}
                             />
                             <p className=' font-medium text-sm mt-1 ' >{result}</p>

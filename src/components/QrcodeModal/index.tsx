@@ -11,7 +11,7 @@ type props ={
 export default function QrcodeModal({close, userInfo}: props) {
     return (
         <div 
-          className=" fixed inset-0 flex justify-center items-center md:overflow-y-hidden bg-black bg-opacity-40 z-[70] "
+          className=" fixed inset-0 flex justify-center md:items-center md:overflow-y-hidden bg-black bg-opacity-40 z-[70] "
         >
             <div className=" w-full md:w-[360px] md:h-auto relative z-[120] h-screen rounded-2xl bg-[#12161F]">
                 <div className=" w-full flex items-center border-b border-[#222A3B] justify-between py-4 px-6 ">
