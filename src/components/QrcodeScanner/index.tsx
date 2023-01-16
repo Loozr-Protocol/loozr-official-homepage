@@ -90,7 +90,7 @@ export default function QrcodeScanner({close}: props) {
                             /> */}
 
                         <QrReader  
-                            scanDelay={10}
+                            scanDelay={0}
                             containerStyle={{width: '90vw' }}
                             onResult={(result: any, error) => {
                                 if (!!result) {
