@@ -40,7 +40,7 @@ export default function QrcodeModal({close, userInfo}: props) {
                             viewBox={`0 0 256 256`}
                             />
                     </div>
-                    <p className=' text-center font-medium px-[12px] leading-[20px] text-[14px] mt-2 text-[#536079] ' >Your friends cab scan this code to visit your profile on Loozr and send your $LZR coins.</p>
+                    <p className=' text-center font-medium px-[12px] leading-[20px] text-[14px] mt-2 text-[#536079] ' >Your friends can scan this code to visit your Loozr profile and send you $LZR coins.</p>
                     <button style={{background: "linear-gradient(180.44deg, #8369F4 27.17%, #F039E2 156.68%)"}} className=' font-semibold mt-8 mb-4 text-white h-[55px] w-full ' >Save QR Code</button>
                 </div>
             </div>
