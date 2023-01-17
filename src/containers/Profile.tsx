@@ -341,12 +341,14 @@ const Profile = (props) => {
                           ? copySuccess
                           : "Copy profile link"}
                       </p>
-                      <p
-                        onClick={() => qrHandler()}
-                        className=" font-medium text-[13px] mt-1 cursor-pointer  "
-                      >
-                        My Qr Code
-                      </p>
+                      {currentProfile?.id === user?.id && ( 
+                        <p
+                          onClick={() => qrHandler()}
+                          className=" font-medium text-[13px] mt-1 cursor-pointer  "
+                        >
+                          My Qr Code
+                        </p>
+                      )}
                     </div>
                   )}
                   {isShown && (
