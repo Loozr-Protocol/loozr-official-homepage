@@ -14,7 +14,7 @@ export default function QrcodeModal({close, userInfo}: props) {
           className=" fixed inset-0 flex justify-center md:items-center md:overflow-y-hidden bg-black bg-opacity-40 z-[70] "
         >
             <div className=" w-full md:w-[360px] md:h-auto relative z-[120] h-screen rounded-2xl bg-[#12161F]">
-                <div className=" w-full flex items-center border-b border-[#222A3B] justify-between py-4 px-6 ">
+                <div className=" w-full flex items-center border-b border-[#222A3B] justify-between py-3  px-6 ">
                     <p className="  font-medium text-white">QR Code</p>
                     <button
                         onClick={() => close(false)}
@@ -23,17 +23,17 @@ export default function QrcodeModal({close, userInfo}: props) {
                         <img src={CloseIcon} className=' object-contain ' alt="close" />
                     </button>
                 </div>
-                <div className=' w-full flex flex-col items-center py-8 px-4 ' > 
+                <div className=' w-full flex flex-col items-center py-4 md:py-8 px-4 ' > 
                     <Photo
                         alt={userInfo?.accountDomain}
                         userId={userInfo?.accountId}
                         src={userInfo?.photo}
-                        className="h-[80px] md:h-[80px] text-4xl w-[80px] md:w-[80px] object-cover rounded-full "
+                        className="h-[50px] md:h-[50px] text-4xl w-[50px] md:w-[50px] object-cover rounded-full "
                         style={{ border: "8px solid #141922" }}
                     /> 
-                    <p className=' mt-4 font-semibold text-xl text-white ' >{userInfo?.username}</p>
-                    <p className=' font-medium text-[#536079] ' >Web3 QR Account</p>
-                    <div className=' w-fit h-fit p-[12px] my-2 bg-white rounded-lg ' > 
+                    <p className=' mt-3 font-semibold text-xl text-white ' >{userInfo?.username}</p>
+                    <p className=' font-medium md:text-base text-sm text-[#536079] ' >Web3 QR Account</p>
+                    <div className=' w-fit h-fit p-[12px] my-[15px] bg-white rounded-lg ' > 
                         <QRCode 
                             className=' w-full h-[184px] '
                             value={userInfo?.accountDomain+""}
