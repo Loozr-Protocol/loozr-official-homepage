@@ -202,6 +202,11 @@ const Profile = (props) => {
     return <div className="text-center mb-32">Profile Not Found!</div>;
   }  
 
+  const qrHandler =()=> {
+    setQrCodeModal(true)
+    setIsShown(false)
+  }
+
   return (
     <div className="w-full md:px-0 px-6 mb-20 ">
       {currentProfile ? (
@@ -336,6 +341,12 @@ const Profile = (props) => {
                           ? copySuccess
                           : "Copy profile link"}
                       </p>
+                      <p
+                        onClick={() => qrHandler()}
+                        className=" font-medium text-[13px] mt-1 cursor-pointer  "
+                      >
+                        My Qr Code
+                      </p>
                     </div>
                   )}
                   {isShown && (
@@ -354,7 +365,7 @@ const Profile = (props) => {
                   />
                 </div> */}
               </div>
-              {currentProfile?.id === user?.id && (
+              {/* {currentProfile?.id === user?.id && (
                 <div className=" w-full py-6 flex items-center " >
                   <button
                       onClick={() => setQrCodeModal(true)}
@@ -369,7 +380,7 @@ const Profile = (props) => {
                     Scan Qr Code
                   </button>
                 </div>
-              )}
+              )} */}
               {currentProfile?.bio && (
                 <>
                   {currentProfile?.bio.length >= 100 || !showBio ? (
