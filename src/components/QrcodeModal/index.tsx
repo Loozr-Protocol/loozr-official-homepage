@@ -33,9 +33,9 @@ export default function QrcodeModal({close, userInfo}: props) {
                     /> 
                     <p className=' mt-4 font-semibold text-xl text-white ' >{userInfo?.username}</p>
                     <p className=' font-medium text-[#536079] ' >Web3 QR Account</p>
-                    <div className='  p-[12px] my-2 bg-white rounded-lg ' > 
+                    <div className=' w-fit h-fit p-[12px] my-2 bg-white rounded-lg ' > 
                         <QRCode 
-                        className=' w-full h-[184px] '
+                            className=' w-full h-[184px] '
                             value={userInfo?.accountDomain+""}
                             viewBox={`0 0 256 256`}
                             />
