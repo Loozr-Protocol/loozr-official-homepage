@@ -1,7 +1,9 @@
-import React from 'react'
-import QRCode from 'react-qr-code'
+import React from 'react'  
+import QRCode from 'react-qr-code' 
+import { useScreenshot } from "use-screenshot-hook";
 import CloseIcon from "../../assets/img/close.svg"
 import Photo from '../Photo'
+import { saveAs } from 'file-saver';
 
 type props ={
     close: Function,
@@ -9,11 +11,23 @@ type props ={
 }
 
 export default function QrcodeModal({close, userInfo}: props) {
+
+    const imageRef = React.useRef(null); 
+    const { image, takeScreenshot, isLoading, clear } = useScreenshot({ref:imageRef});
+    
+    const SaveImage = async ()=> {
+        await takeScreenshot()
+        saveAs(image, "loozrQrcode.jpg");
+        console.log("hello");
+        
+    }
+
     return (
         <div 
-          className=" fixed inset-0 flex justify-center md:items-center md:overflow-y-hidden bg-black bg-opacity-40 z-[70] "
+        ref={imageRef}
+          className=" fixed inset-0 flex justify-center md:items-center overflow-y-auto md:overflow-y-hidden bg-black bg-opacity-40 z-[70] "
         >
-            <div className=" w-full md:w-[360px] md:h-auto relative z-[120] h-screen rounded-2xl bg-[#12161F]">
+            <div className=" w-full md:w-[360px] md:h-auto relative z-[120] h-screen md:rounded-2xl bg-[#12161F]">
                 <div className=" w-full flex items-center border-b border-[#222A3B] justify-between py-3  px-6 ">
                     <p className="  font-medium text-white">QR Code</p>
                     <button
@@ -27,8 +41,8 @@ export default function QrcodeModal({close, userInfo}: props) {
                     <Photo
                         alt={userInfo?.accountDomain}
                         userId={userInfo?.accountId}
-                        src={userInfo?.photo}
-                        className="h-[50px] md:h-[50px] text-4xl w-[50px] md:w-[50px] object-cover rounded-full "
+                        // src={userInfo?.photo}
+                        className="h-[60px] md:h-[60px] w-[60px] md:w-[60px] object-cover rounded-full "
                         style={{ border: "8px solid #141922" }}
                     /> 
                     <p className=' mt-3 font-semibold text-xl text-white ' >{userInfo?.username}</p>
@@ -41,7 +55,10 @@ export default function QrcodeModal({close, userInfo}: props) {
                             />
                     </div>
                     <p className=' text-center font-medium px-[12px] leading-[20px] text-[14px] mt-2 text-[#536079] ' >Your friends can scan this code to visit your Loozr profile and send you $LZR coins.</p>
-                    <button style={{background: "linear-gradient(180.44deg, #8369F4 27.17%, #F039E2 156.68%)"}} className=' font-semibold mt-8 mb-4 text-white h-[55px] w-full ' >Save QR Code</button>
+                    <button onClick={SaveImage} style={{background: "linear-gradient(180.44deg, #8369F4 27.17%, #F039E2 156.68%)"}} className=' font-semibold mt-8 mb-4 text-white h-[55px] w-full ' >
+                        {isLoading ? "Loading": "Save QR Code" }
+                    </button>
+                    
                 </div>
             </div>
         </div>
