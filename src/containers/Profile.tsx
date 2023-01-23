@@ -207,6 +207,11 @@ const Profile = (props) => {
     setIsShown(false)
   }
 
+  const qrScanHandler =()=> {
+    setQrCodeScannerModal(true)
+    setIsShown(false)
+  }
+
   return (
     <div className="w-full md:px-0 px-6 mb-20 ">
       {currentProfile ? (
@@ -347,6 +352,14 @@ const Profile = (props) => {
                           className=" font-medium text-[13px] mt-1 cursor-pointer  "
                         >
                           My Qr Code
+                        </p>
+                      )}
+                      {currentProfile?.id === user?.id && ( 
+                        <p
+                          onClick={() => qrScanHandler()}
+                          className=" font-medium text-[13px] mt-1 cursor-pointer  "
+                        >
+                          Scan Qr Code
                         </p>
                       )}
                     </div>
