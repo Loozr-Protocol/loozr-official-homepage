@@ -7,7 +7,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import User from '../../config/constants/models/user'
 import { AppState } from '../../state/store'
 import { useLinkClickHandler, useNavigate } from 'react-router-dom'
-import { QrReader } from 'react-qr-reader';
+import { QrReader } from 'react-qr-reader'; 
+import { addCase } from '../../state/sendLoozr/sendLzr'
 
 type props ={
     close: Function, 
@@ -61,6 +62,11 @@ export default function QrcodeScanner({close}: props) {
         push("/"+currentProfile?.accountDomain)
         close(false)
     }
+
+    const clickHandler =()=> {
+        dispatch(addCase(data))
+        push("/lzr/send")
+    }
     
 
     return (
@@ -91,7 +97,7 @@ export default function QrcodeScanner({close}: props) {
 
                         <QrReader  
                             scanDelay={0}
-                            containerStyle={{width: '90vw' }}
+                            containerStyle={{width: '100%' }}
                             onResult={(result: any, error) => {
                                 if (!!result) {
                                     setData(result?.text)
@@ -102,7 +108,7 @@ export default function QrcodeScanner({close}: props) {
                                     console.info(error)
                                 }
                             } }
-                            className=' w-[90vw] md:w-full' constraints={{
+                            className=' w-[100%] md:w-full' constraints={{
                                 facingMode:"environment"
                             }}                          
                         />
@@ -131,7 +137,7 @@ export default function QrcodeScanner({close}: props) {
                         /> 
                         <p className=' mt-4 font-semibold text-white ' >{currentProfile?.username}</p>
                         <p className=' font-medium text-[#536079] ' >Select what you’d want</p>
-                        <button style={{background: "linear-gradient(180.44deg, #8369F4 27.17%, #F039E2 156.68%)"}} className=' font-semibold mt-12 text-white h-[55px] w-full ' >Send $LZR Coin</button>
+                        <button onClick={()=> clickHandler()} style={{background: "linear-gradient(180.44deg, #8369F4 27.17%, #F039E2 156.68%)"}} className=' font-semibold mt-12 text-white h-[55px] w-full ' >Send $LZR Coin</button>
                         <button onClick={()=> closeHandler()} className=' bg-[#141922] font-semibold mt-4 text-white h-[55px] w-full ' >View profile</button>
                     </div>
                 </div>

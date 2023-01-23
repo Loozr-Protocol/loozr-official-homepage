@@ -37,7 +37,7 @@ const initialState: UserState = {
   signUpSuccess: false,
   verifySuccess: false,
   accountSetupSuccess: false,
-  error: null
+  error: null,
 }
 
 const userSlice = createSlice({
