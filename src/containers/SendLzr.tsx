@@ -94,9 +94,7 @@ const SendLzr = () => {
   };
   
   const ClickHandler =(item: any, index: any)=> {
-    formik.setFieldValue("account_id", index)
-    console.log(index, item);
-    
+    formik.setFieldValue("account_id", index) 
     setName(item)
     setSearchValue("")
   }
@@ -104,10 +102,7 @@ const SendLzr = () => {
   React.useEffect(()=> { 
     if(senduser){ 
       formik.setFieldValue("account_id", senduser)
-      setName(senduser)
-      console.log(senduser);
-      // const result = await getSearchUser(item); 
-      // setData(result)
+      setName(senduser) 
     }
   },[])
 
