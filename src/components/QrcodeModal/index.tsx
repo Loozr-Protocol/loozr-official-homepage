@@ -50,7 +50,7 @@ export default function QrcodeModal({close, userInfo}: props) {
                     <div className=' w-fit h-fit p-[12px] my-[15px] bg-white rounded-lg ' > 
                         <QRCode 
                             className=' w-full h-[184px] '
-                            value={userInfo?.accountDomain+""}
+                            value={`https://gorgeous-parfait-0bce2f.netlify.app/scan/${userInfo?.accountDomain}`}
                             viewBox={`0 0 256 256`}
                             />
                     </div>

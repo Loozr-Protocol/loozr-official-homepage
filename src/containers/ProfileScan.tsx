@@ -59,7 +59,7 @@ const Profile = (props) => {
 
   const [showModal, setShowModal] = React.useState(false)
   const [qrCodeModal, setQrCodeModal] = React.useState(false)
-  const [qrCodeScanerModal, setQrCodeScannerModal] = React.useState(false)
+  const [qrCodeScanerModal, setQrCodeScannerModal] = React.useState(true)
   const [copySuccess, setCopySuccess] = React.useState('');
 
   const navigate = useNavigate()
@@ -532,9 +532,9 @@ const Profile = (props) => {
       {qrCodeModal && ( 
         <QrcodeModal close={setQrCodeModal} userInfo={currentProfile} />
       )}
-      {/* {qrCodeScanerModal && ( 
-        <QrcodeScanner close={setQrCodeScannerModal}  />
-      )} */}
+      {qrCodeScanerModal && ( 
+        <QrcodeScanner userinfo={currentProfile} close={setQrCodeScannerModal}  />
+      )}
       {showModal && (
         <div 
           className=" fixed inset-0 flex justify-center items-center md:overflow-y-hidden bg-black bg-opacity-40 z-[70] "

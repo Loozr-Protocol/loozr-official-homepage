@@ -31,6 +31,7 @@ import SuggestedArtistes from "../containers/SuggestedArtistes";
 import MusicInfo from "../containers/MusicInfo"; 
 import ExploreDashboard from "../containers/ExploreDashboard";
 import UpdateProfile from "../containers/UpdateProfile";
+import ProfileScan from "../containers/ProfileScan";
 
 export const authRoutes = [
   {
@@ -209,5 +210,11 @@ export const dashboardhome = [
     path: "/:accountDomain",
     private: true,
     component: Profile,
+  },
+  {
+    name: "profile",
+    path: "/scan/:accountDomain",
+    private: true,
+    component: ProfileScan,
   },
 ]
