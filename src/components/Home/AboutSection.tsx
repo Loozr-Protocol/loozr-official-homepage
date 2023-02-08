@@ -5,34 +5,34 @@ export default function AboutSection() {
   };
   return (
     <div>
-      <div id="block-nvblockaboutindex" className="about section-padding mt-30">
+      <div id="block-nvblockaboutindex" className="about flex items-center mt-30">
         <div className="container">
           <div className="sec-head mb-3 custom-font d-flex flex-column align-items-center">
-            <div className="content col-md-6 px-remove">
-              <h6 className="wow fadeIn" data-wow-delay=".5s">
-                WHAT’S LOOZR?
+            <div className=" pl-8 max-w-[600px] ">
+              <h6 id="gradenttext" className="wow fadeIn !font-bold " data-wow-delay=".5s">
+                THE FIRST SOCIAL MUSIC LAYER OF WEB3.0
               </h6>
-              <h3 className="main-title wow">
-                The decentralized trading & music streaming platform on Web 3.0
-              </h3>
-              <p className="wow txt">
-                Loozr brings DeFi and trading to the music industry. It enables
-                creators to tokenize their name/brand, content, and songs;
-                allowing fans to buy, sell, trade and promote these tokens
-                directly in real time on the blockchain while also sharing
-                streaming earnings.
+              <p className="main-title !font-bold mt-3 !text-5xl leading-[80px] wow">
+                Where DeFi, GameFi & SocialFi Meet Content Creators.
+              </p>
+              <p className="wow txt !font-semibold ">
+                It enables creators to tokenize their name/brand, content, and songs; allowing fans to buy, sell, trade and promote these tokens directly in real time on the blockchain while also sharing streaming earnings.
+                <br/>
+                <span className="mt-2" >
+                Loozr is currently paving the way for the new creator market and setting the pace for global adoption of Web3, through the love of music.
+                </span>
               </p>
             </div>
             <span className="tbg" style={tbgStyle}>
-              About
+              Welcome
             </span>
           </div>
         </div>
         <div className="clearfix"></div>
-        <div className="container d-flex flex-column align-items-center">
-          <div className="mx-auto col-md-6 img-mons">
+        <div className=" lg:w-[60%]  ">
+          <div className="mx-auto  ">
             <div className="img1 wow imago" data-wow-delay=".5s">
-              <img src="/img/intro.png" alt="" />
+              <img src="/img/aboutus.png" className=" h-[500px] object-contain "  alt="" />
             </div>
           </div>
         </div>

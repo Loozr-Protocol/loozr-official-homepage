@@ -13,12 +13,12 @@ export default function ArtistShowcase() {
   return (
     <>
       <div
-        className="views-element-container work-carousel section-padding pt-0 metro position-re mb-80"
+        className="views-element-container work-carousel mt-5 section-padding metro position-re mb-80"
         id="block-views-block-nv-section-content-block-service"
       >
         <div className="container">
           <div className="sec-head custom-font text-center">
-            <h6 className="wow fadeIn" data-wow-delay=".5s">
+            <h6 id="gradenttext" className="wow fadeIn !font-bold " data-wow-delay=".5s">
               CREATOR ECOSYSTEM
             </h6>
             <h3 className="wow" data-splitting>

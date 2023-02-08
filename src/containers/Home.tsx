@@ -7,6 +7,8 @@ import Services from "../components/Home/Services";
 import RoadMap from "../components/Home/Roadmap";
 import Tokenomics from "../components/Home/Tokenomics";
 import Team from "../components/Home/Team";
+import FlagShip from "../components/Home/FlagShip";
+import FeatureSection from "../components/Home/FeatureSection";
 
 export default function Home() {
   return (
@@ -16,6 +18,8 @@ export default function Home() {
         <AboutSection />
         <ArtistShowcase />
         <WhySection />
+        <FlagShip />
+        <FeatureSection />
         <Services />
         <RoadMap />
         <Tokenomics />
