@@ -36,7 +36,7 @@ export default function ShowcaseCard({ artist, id }: ShowcaseCardProps) {
 
   return (
     <div
-      className="d-flex flex-column content wow noraidus fadeInUp"
+      className="  wow noraidus fadeInUp"
       data-wow-delay=".3s"
     >
       <div

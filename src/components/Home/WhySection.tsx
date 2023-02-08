@@ -8,7 +8,7 @@ export default function WhySection() {
   return (
     <>
       <div
-        className="views-element-container services"
+        className="views-element-container px-20 services"
         id="block-views-block-nv-section-content-block-service"
       >
         <div className="container">

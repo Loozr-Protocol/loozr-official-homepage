@@ -4,22 +4,18 @@ export default function AboutSection() {
     "fontSize": "14vw",
   };
   return (
-    <div>
+    <div className=" px-20 " >
       <div id="block-nvblockaboutindex" className="about flex items-center mt-30">
-        <div className="container">
+        <div className="container pt-32 ">
           <div className="sec-head mb-3 custom-font d-flex flex-column align-items-center">
-            <div className=" pl-8 max-w-[600px] ">
-              <h6 id="gradenttext" className="wow fadeIn " data-wow-delay=".5s">
+            <div className=" pl-8 max-w-[545px] ">
+              <h6 id="gradenttext" className="wow fadeIn leading-[1.8] !font-medium !text-[15px] " data-wow-delay=".5s">
                 THE FIRST SOCIAL MUSIC LAYER OF WEB3.0
               </h6> 
-              <p className="main-title !font-bold mt-3 !text-5xl leading-[80px] wow">
-                Where DeFi, GameFi & SocialFi Meet Content Creators.
-              </p>
-              {/* <h3 className="main-title wow">
-                The decentralized trading & music streaming platform on Web 3.0
-              </h3>
-              <p className="wow txt"> */}
-              <p className="wow txt !font-semibold ">
+              <p className="main-title !font-bold !text-white mt-8 !leading-[1.1] !text-4xl  wow">
+                Where DeFi, GameFi & SocialFi Meet <br/>Content Creators.
+              </p> 
+              <p className="wow txt text-xl !font-medium ">
                 It enables creators to tokenize their name/brand, content, and songs; allowing fans to buy, sell, trade and promote these tokens directly in real time on the blockchain while also sharing streaming earnings.
                 <br/>
                 <span className="mt-2" >
@@ -36,7 +32,7 @@ export default function AboutSection() {
         <div className=" lg:w-[60%]  ">
           <div className="mx-auto  ">
             <div className="img1 wow imago" data-wow-delay=".5s">
-              <img src="/img/aboutus.png" className=" h-[500px] object-contain "  alt="" />
+              <img src="/img/aboutus.png" className=" w-[80%] object-contain "  alt="" />
             </div>
           </div>
         </div>

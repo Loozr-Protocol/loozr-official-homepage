@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function FlagShip() {
     return (
-        <div className=' w-full lg:px-12 py-8 lg:py-20 relative ' > 
+        <div className=' w-full px-20 py-8 lg:py-20 relative ' > 
             <div className="sec-head custom-font ">
                 <h6 id="gradenttext" className="wow fadeIn !font-bold " data-wow-delay=".5s">
                     5 FLAGSHIP SOLUTIONS

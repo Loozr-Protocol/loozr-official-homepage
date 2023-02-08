@@ -28,9 +28,9 @@ export default function ArtistShowcase() {
           </div>
         </div>
         <div className="clearfix"></div>
-        <div className="container ontop">
-          <div className="row">
-            <div className="col-lg-12 no-padding">
+        <div className="container !px-0 ontop">
+          <div className="">
+            <div className=" w-full flex ">
               <Swiper
                 autoplay={{ delay: 5000 }}
                 loop={true}

@@ -14,7 +14,7 @@ export default function FAQ() {
     }
 
     return (
-        <div className=' w-full px-12 flex pb-40 flex-col items-center ' >
+        <div className=' w-full px-20 flex pb-40 flex-col items-center ' >
             <div className="sec-head custom-font text-center">
                 <h6 id="gradenttext" className="wow fadeIn !font-bold " data-wow-delay=".5s">
                     NEED HELP WITH ANSWERS?

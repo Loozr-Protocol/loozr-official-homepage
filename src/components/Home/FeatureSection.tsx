@@ -3,7 +3,7 @@ import React from 'react'
 export default function FeatureSection() {
     return ( 
         <> 
-            <div className=' w-full bg-[#8369F4] !text-[#0C0F15] lg:pl-12 py-8 lg:py-0 lg:pt-20 relative ' > 
+            <div className=' w-full bg-[#8369F4] !text-[#0C0F15] px-20 py-8 lg:py-0 lg:pt-20 relative ' > 
                 <div className=" ">
                     <p className="wow fadeIn !text-[#0C0F15] !text-5xl !font-bold " data-wow-delay=".5s">
                         FEATURES 
@@ -55,7 +55,7 @@ export default function FeatureSection() {
                     <img className='  w-[80%] ' src='/img/Feature.png' alt='' />
                 </div>
             </div>
-            <div className=' px-12 my-28  ' > 
+            <div className='!px-20 my-28  ' > 
                 <div className=' bg-[#11151D] h-[140px] flex lg:justify-start justify-center pl-[140px] items-center ' >
                     <p className=' font-medium text-xl text-white ' >ROADMAP WORKING PERFECTLY </p>
                 </div>
