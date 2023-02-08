@@ -52,10 +52,10 @@ export default function FeatureSection() {
                     </div>
                 </div> 
                 <div className=' w-full flex justify-end ' > 
-                    <img className=' lg:h-[550px] ' src='/img/Feature.png' alt='' />
+                    <img className='  w-[80%] ' src='/img/Feature.png' alt='' />
                 </div>
             </div>
-            <div className=' px-12 mt-28  ' > 
+            <div className=' px-12 my-28  ' > 
                 <div className=' bg-[#11151D] h-[140px] flex lg:justify-start justify-center pl-[140px] items-center ' >
                     <p className=' font-medium text-xl text-white ' >ROADMAP WORKING PERFECTLY </p>
                 </div>

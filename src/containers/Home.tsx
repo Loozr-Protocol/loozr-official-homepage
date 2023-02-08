@@ -9,6 +9,7 @@ import Tokenomics from "../components/Home/Tokenomics";
 import Team from "../components/Home/Team";
 import FlagShip from "../components/Home/FlagShip";
 import FeatureSection from "../components/Home/FeatureSection";
+import FAQ from "../components/Home/FAQ";
 
 export default function Home() {
   return (
@@ -20,11 +21,12 @@ export default function Home() {
         <WhySection />
         <FlagShip />
         <FeatureSection />
-        <Services />
+        <FAQ />
+        {/* <Services />
         <RoadMap />
         <Tokenomics />
         <Team />
-        <Community />
+        <Community /> */}
       </div>
     </>
   );

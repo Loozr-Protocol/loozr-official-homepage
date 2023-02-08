@@ -9,12 +9,16 @@ export default function AboutSection() {
         <div className="container">
           <div className="sec-head mb-3 custom-font d-flex flex-column align-items-center">
             <div className=" pl-8 max-w-[600px] ">
-              <h6 id="gradenttext" className="wow fadeIn !font-bold " data-wow-delay=".5s">
+              <h6 id="gradenttext" className="wow fadeIn " data-wow-delay=".5s">
                 THE FIRST SOCIAL MUSIC LAYER OF WEB3.0
-              </h6>
+              </h6> 
               <p className="main-title !font-bold mt-3 !text-5xl leading-[80px] wow">
                 Where DeFi, GameFi & SocialFi Meet Content Creators.
               </p>
+              {/* <h3 className="main-title wow">
+                The decentralized trading & music streaming platform on Web 3.0
+              </h3>
+              <p className="wow txt"> */}
               <p className="wow txt !font-semibold ">
                 It enables creators to tokenize their name/brand, content, and songs; allowing fans to buy, sell, trade and promote these tokens directly in real time on the blockchain while also sharing streaming earnings.
                 <br/>
