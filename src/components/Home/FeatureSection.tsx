@@ -5,10 +5,10 @@ export default function FeatureSection() {
         <> 
             <div className=' w-full bg-[#8369F4] !text-[#0C0F15] px-20 py-8 lg:py-0 lg:pt-20 relative ' > 
                 <div className=" ">
-                    <p className="wow fadeIn !text-[#0C0F15] !text-5xl !font-bold " data-wow-delay=".5s">
+                    <p className="wow fadeIn !text-[#0C0F15] !font-bold !leading-[1.1] !text-4xl " data-wow-delay=".5s">
                         FEATURES 
                     </p>
-                <p className=" font-medium !text-[#0C0F15] text-lg" >Loozr empowers creators through various services, which they can utilize via the following features:</p>
+                <p className="  text-[15px] !font-medium text-[#0C0F15] lg:max-w-3xl" >Loozr empowers creators through various services, which they can utilize via the following features:</p>
                     {/* <h3 className="wow text-[#53607940]" data-splitting>
                         Features!
                     </h3> */}
@@ -51,8 +51,10 @@ export default function FeatureSection() {
                         <p className=' font-medium mt-2 !leading-normal !text-[#0C0F15] ' >Loozr's <span className=' text-white ' >#Listen2Earn</span> model allows music lovers to earn tokens whenever their favourite music is played.</p>
                     </div>
                 </div> 
-                <div className=' w-full flex justify-end ' > 
-                    <img className='  w-[80%] ' src='/img/Feature.png' alt='' />
+                <div className=' w-full h-[400px] ' > 
+                    <div className=' w-full flex absolute right-0 bottom-0 justify-end ' > 
+                        <img className=' w-[75%] ' src='/img/Feature.png' alt='' />
+                    </div>
                 </div>
             </div>
             <div className='!px-20 my-28  ' > 

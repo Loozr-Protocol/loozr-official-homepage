@@ -6,7 +6,7 @@ export default function Header() {
   const style = { position: "relative" } as React.CSSProperties;
   return (
     <>
-      <div className="d-flex align-items-center hero-head">
+      <div className="d-flex align-items-center relative hero-head">
         <div className="overlay"></div>
         <video
           poster="/img/vid-thumbnail.jpg"
@@ -20,7 +20,7 @@ export default function Header() {
         <div className="container">
           <div className="mt-100 hero-content">
             <div className="d-flex">
-              <div className="col-12 col-md-7 px-remove-all">
+              <div className="col-12 col-md-7 !pl-10 px-remove-all">
                 <h1>
                   <TextSlides /> Music
                   <br />

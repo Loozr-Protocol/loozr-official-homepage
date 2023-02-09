@@ -4,15 +4,15 @@ export default function FlagShip() {
     return (
         <div className=' w-full px-20 py-8 lg:py-20 relative ' > 
             <div className="sec-head custom-font ">
-                <h6 id="gradenttext" className="wow fadeIn !font-bold " data-wow-delay=".5s">
+                <h6 id="gradenttext" className="wow fadeIn leading-[1.8] !font-medium !text-[15px] " data-wow-delay=".5s">
                     5 FLAGSHIP SOLUTIONS
                 </h6>
-                <h3 className="wow" data-splitting>
+                <h3 className="wow !font-bold !text-white mt-8 !leading-[1.1] !text-4xl" data-splitting>
                     LOOZR PRODUCTS!
                 </h3>
                 <span className="tbg lg:first-letter:absolute right-0">Product!</span>
             </div>
-            <p className=" font-medium text-lg -mt-14 mb-10 text-white lg:max-w-3xl " >Revolutionizing the music industry with 5 self-sustaining standalone solutions that bridge economic and entertainment services in the music industry.</p>
+            <p className="  text-[15px] !font-medium -mt-14 mb-10 text-white lg:max-w-3xl " >Revolutionizing the music industry with 5 self-sustaining standalone solutions that bridge economic and entertainment services in the music industry.</p>
             <button className=' h-[50px] px-9 rounded-full border !border-[#12161e] text-white mt-5 ' >Learn more</button>
             <div className=' w-full grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8 mb-20 ' >
                 <div className=' w-full ' >

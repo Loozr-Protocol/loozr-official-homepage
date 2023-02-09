@@ -15,7 +15,7 @@ export default function AboutSection() {
               <p className="main-title !font-bold !text-white mt-8 !leading-[1.1] !text-4xl  wow">
                 Where DeFi, GameFi & SocialFi Meet <br/>Content Creators.
               </p> 
-              <p className="wow txt text-xl !font-medium ">
+              <p className="wow txt text-[15px] !font-medium ">
                 It enables creators to tokenize their name/brand, content, and songs; allowing fans to buy, sell, trade and promote these tokens directly in real time on the blockchain while also sharing streaming earnings.
                 <br/>
                 <span className="mt-2" >
