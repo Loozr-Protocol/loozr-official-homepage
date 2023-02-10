@@ -36,27 +36,27 @@ function Nav() {
               </a>
             </li> */}
             <li className="nav-item">
-              <a className="nav-link !font-medium " href="/product">
+              <a className="nav-link " href="/product">
                 Products
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link !font-medium  " href="">
+              <a className="nav-link  " href="">
                 Ecosystem
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link !font-medium " href="">
+              <a className="nav-link " href="">
                 Features
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link !font-medium " href="">
+              <a className="nav-link " href="">
                 About
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link !font-medium " href="https://medium.com/@officialloozr">
+              <a className="nav-link " href="https://medium.com/@officialloozr">
                 Blog
               </a>
             </li>
@@ -64,7 +64,7 @@ function Nav() {
               <div 
                 role="button"
                 onClick={()=> setTab((prev) => !prev)}
-                className="nav-link !font-medium   flex items-center " 
+                className="nav-link   flex items-center " 
               >
                 Join community
                 <svg className={tab ? " ml-2 rotate-180 ": " ml-2 " } width="8" height="4" viewBox="0 0 8 4" fill="none" xmlns="http://www.w3.org/2000/svg">
