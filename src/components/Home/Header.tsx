@@ -41,7 +41,7 @@ export default function Header() {
       } else { 
         setIsShown(prev=>prev+1) 
       }
-    }, 1500); 
+    }, 3000); 
     return () => { 
       clearTimeout(t1); 
     }
@@ -143,7 +143,7 @@ export default function Header() {
       <div className="clearfix"></div>
       <div className="container">
         <div className="d-flex flex-wrap align-items-center mt-50 !pl-10 powered-section">
-          <span className=" !font-medium " >Powered by </span>
+          <span className=" txt !font-medium " >Powered by </span>
           <img src="/img/unity.png" alt="unity" />
           <img src="/img/near.png" alt="near" />
           {/* <img src="/img/MAPBOX.png" className=" " alt="unity" />
