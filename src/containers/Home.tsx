@@ -13,8 +13,8 @@ import FAQ from "../components/Home/FAQ";
 
 export default function Home() {
   return (
-    <>
-      <Header />
+    <> 
+      <Header />  
       <div className="main-content">
         <AboutSection />
         <ArtistShowcase />

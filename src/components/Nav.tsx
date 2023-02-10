@@ -31,32 +31,32 @@ function Nav() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ml-auto">
             {/* <li className="nav-item">
-              <a className="nav-link" href="https://loozr-1.gitbook.io/docs/">
+              <a className="nav-link !font-medium " href="https://loozr-1.gitbook.io/docs/">
                 LiteDoc
               </a>
             </li> */}
             <li className="nav-item">
-              <a className="nav-link" href="/product">
+              <a className="nav-link !font-medium " href="/product">
                 Products
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="">
+              <a className="nav-link !font-medium  " href="">
                 Ecosystem
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="">
+              <a className="nav-link !font-medium " href="">
                 Features
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="">
+              <a className="nav-link !font-medium " href="">
                 About
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="https://medium.com/@officialloozr">
+              <a className="nav-link !font-medium " href="https://medium.com/@officialloozr">
                 Blog
               </a>
             </li>
@@ -64,7 +64,7 @@ function Nav() {
               <div 
                 role="button"
                 onClick={()=> setTab((prev) => !prev)}
-                className="nav-link  flex items-center " 
+                className="nav-link !font-medium   flex items-center " 
               >
                 Join community
                 <svg className={tab ? " ml-2 rotate-180 ": " ml-2 " } width="8" height="4" viewBox="0 0 8 4" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -86,7 +86,7 @@ function Nav() {
               )}
             </li>
             {/* <li className="nav-item">
-              <Link className="nav-link nav-btn mr-0" to="/artistes/ecosystem">
+              <Link className="nav-link !font-medium  nav-btn mr-0" to="/artistes/ecosystem">
                 View Ecosystem
               </Link>
             </li> */}
