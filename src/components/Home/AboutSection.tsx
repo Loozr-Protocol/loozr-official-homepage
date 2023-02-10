@@ -52,20 +52,20 @@ export default function AboutSection() {
     <div className=" px-20 " >
       <div id="block-nvblockaboutindex" className="about flex items-center mt-30">
         <div className="container pt-32 ">
-          <div className="sec-head mb-3 custom-font d-flex flex-column align-items-center">
-            <div className=" pl-8 max-w-[545px] ">
-              <h6 id="gradenttext" className="wow fadeIn leading-[1.8] !font-medium !text-[15px] " data-wow-delay=".5s">
+          <div className="sec-head mb-3 custom-font d-flex flex-column">
+            <div className=" pl-8 max-w-[500px] ">
+              <h6 id="gradenttext" className="wow fadeIn leading-[1.8] !font-medium !text-[13px] " data-wow-delay=".5s">
                 THE FIRST SOCIAL MUSIC LAYER OF WEB3.0
               </h6> 
               <p className="main-title !font-bold !text-white mt-8 !leading-[1.1] !text-[43px]  wow">
                 Where DeFi, GameFi & SocialFi Meet <br/>
-                <div className=" w-full relative -mt-3 " >
+                <div className=" w-full relative -mt-1 " >
                   {array.map((item: any, index: any) => {
                     return( 
                       <AnimatePresence  key={index} >
                         {index === isShown && 
                           <motion.div {...boxAnimation} className=" absolute " > 
-                            <span className=" main-title !font-bold !text-white !text-[43px]  wow " >{item}.</span>
+                            <span  id="gradenttext" className=" main-title !font-bold !text-[43px]  wow " >{item}.</span>
                           </motion.div> 
                         }
                       </AnimatePresence> 
@@ -74,7 +74,7 @@ export default function AboutSection() {
                 </div>
                 <p className=" text-transparent " >{array[isShown]}</p>
               </p> 
-              <p className="wow txt text-[15px] !font-medium ">
+              <p className="wow txt text-[14px] pr-8 text-white !font-normal ">
                 It enables creators to tokenize their name/brand, content, and songs; allowing fans to buy, sell, trade and promote these tokens directly in real time on the blockchain while also sharing streaming earnings.
                 <br/>
                 <span className="mt-2" >
