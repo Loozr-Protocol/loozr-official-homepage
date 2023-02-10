@@ -1,8 +1,53 @@
+import { motion, AnimatePresence } from "framer-motion";
+import React from "react";
+
 export default function AboutSection() {
+
   const tbgStyle = {
     bottom: "100px",
     "fontSize": "14vw",
   };
+  
+  const [isShown, setIsShown] = React.useState(0)
+
+  const boxAnimation = {
+    key: "box",
+    initial: { 
+      opacity: 0,
+      y: 20
+        // scale: 0.5,
+    },
+    animate: {
+        y: 0,
+        opacity: 1,
+        // scale: 1,
+    },
+    exit: { 
+        opacity: 0,  
+        y: -20
+        // scale: 0.5,
+    },
+    transition: {
+        duration: 0.2,
+        ease: "easeOut",
+    },
+  }
+
+  const array = ["Musicians", "Content creators", "Fans", "Record labels", "Small businesses", "Podcasters", "Poets", "DJs", "SpaceHosts", "Producers", "Music distributor", "Comedians"] 
+
+  React.useEffect(() => { 
+    const t1 = setTimeout(() => {  
+      if(isShown === array.length-1){ 
+        setIsShown(0) 
+      } else { 
+        setIsShown(prev=>prev+1) 
+      }
+    }, 1500); 
+    return () => { 
+      clearTimeout(t1); 
+    }
+  },[isShown]) 
+  
   return (
     <div className=" px-20 " >
       <div id="block-nvblockaboutindex" className="about flex items-center mt-30">
@@ -13,8 +58,21 @@ export default function AboutSection() {
                 THE FIRST SOCIAL MUSIC LAYER OF WEB3.0
               </h6> 
               <p className="main-title !font-bold !text-white mt-8 !leading-[1.1] !text-4xl  wow">
-                Where DeFi, GameFi & SocialFi Meet <br/>Content Creators.
+                Where DeFi, GameFi & SocialFi Meet <br/>
               </p> 
+              <div className=" w-full relative h-[45px] -mt-4  " >
+                {array.map((item: any, index: any) => {
+                  return( 
+                    <AnimatePresence  key={index} >
+                      {index === isShown && 
+                        <motion.div {...boxAnimation} className=" absolute " > 
+                          <span className=" main-title !font-bold !text-white !text-4xl  wow " >{item}.</span>
+                        </motion.div> 
+                      }
+                    </AnimatePresence> 
+                  )
+                })}  
+              </div>
               <p className="wow txt text-[15px] !font-medium ">
                 It enables creators to tokenize their name/brand, content, and songs; allowing fans to buy, sell, trade and promote these tokens directly in real time on the blockchain while also sharing streaming earnings.
                 <br/>

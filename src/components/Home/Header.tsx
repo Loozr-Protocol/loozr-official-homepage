@@ -1,9 +1,53 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/jsx-no-comment-textnodes */
+import React from "react";
 import TextSlides from "./TextSlides";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function Header() {
-  const style = { position: "relative" } as React.CSSProperties;
+  const style = { position: "relative" } as React.CSSProperties; 
+
+  const [isShown, setIsShown] = React.useState(0)
+
+  const boxAnimation = {
+    key: "box",
+    initial: { 
+      opacity: 0,
+      y: 20
+        // scale: 0.5,
+    },
+    animate: {
+        y: 0,
+        opacity: 1,
+        // scale: 1,
+    },
+    exit: { 
+        opacity: 0,  
+        y: -20
+        // scale: 0.5,
+    },
+    transition: {
+        duration: 0.2,
+        ease: "easeOut",
+    },
+  }
+
+  const array = ["Create", "Buy", "Sell"] 
+
+  React.useEffect(() => { 
+    const t1 = setTimeout(() => {  
+      if(isShown === array.length-1){ 
+        setIsShown(0) 
+      } else { 
+        setIsShown(prev=>prev+1) 
+      }
+    }, 1500); 
+    return () => { 
+      clearTimeout(t1); 
+    }
+  },[isShown]) 
+  
+
   return (
     <>
       <div className="d-flex align-items-center relative hero-head">
@@ -20,12 +64,28 @@ export default function Header() {
         <div className="container">
           <div className="mt-100 hero-content">
             <div className="d-flex">
-              <div className="col-12 col-md-7 !pl-10 px-remove-all">
-                <h1>
-                  <TextSlides /> Music
-                  <br />
+              <div className="col-12 col-md-7 !pl-10 px-remove-all"> 
+                <div className=" w-full mb-14 relative !text-5xl !font-bold  h-[45px]  " > 
+                <p className=" flex mb-1 !font-bold !text-5xl" >
+                  <p className={isShown === 0 ? " w-[170px] " : isShown === 0 ? "w-[100px] ":" w-[90px] "} >
+                    {array.map((item: any, index: any) => {
+                      return( 
+                        <AnimatePresence  key={index} >
+                          {index === isShown && 
+                            <motion.div {...boxAnimation} className=" absolute " > 
+                              <span className=" main-title !font-normal !text-5xl !text-white  wow " >{item}</span>
+                            </motion.div> 
+                          }
+                        </AnimatePresence> 
+                      )
+                    })}
+                  </p> Music 
+                  </p>
                   Tokens.
-                </h1>
+                </div>
+                {/* <h1>
+                  <TextSlides /> 
+                </h1> */}
                 <p className="mt-10">
                   Don’t just stream, earn, and succeed with artistes.
                 </p>
