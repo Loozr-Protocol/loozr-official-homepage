@@ -65,15 +65,15 @@ export default function Header() {
           <div className="mt-100 hero-content">
             <div className="d-flex">
               <div className="col-12 col-md-7 !pl-10 px-remove-all"> 
-                <div className=" w-full mb-14 relative !text-5xl !font-bold  h-[45px]  " > 
-                <p className=" flex mb-1 !font-bold !text-5xl" >
-                  <p className={isShown === 0 ? " w-[170px] " : isShown === 0 ? "w-[100px] ":" w-[90px] "} >
+                <div className=" w-full  relative !text-[68px] !font-bold " > 
+                <p className=" main-title -mb-7 flex !font-bold !text-[68px] !text-white  wow" >
+                  <p className={isShown === 0 ? " w-[240px] " : isShown === 1 ? "w-[122px] ":" w-[112px] "} >
                     {array.map((item: any, index: any) => {
                       return( 
                         <AnimatePresence  key={index} >
                           {index === isShown && 
                             <motion.div {...boxAnimation} className=" absolute " > 
-                              <span className=" main-title !font-normal !text-5xl !text-white  wow " >{item}</span>
+                              <span className=" main-title !font-thin !text-[68px] !text-white  wow " >{item}</span>
                             </motion.div> 
                           }
                         </AnimatePresence> 
