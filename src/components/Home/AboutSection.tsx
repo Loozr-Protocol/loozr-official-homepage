@@ -57,22 +57,23 @@ export default function AboutSection() {
               <h6 id="gradenttext" className="wow fadeIn leading-[1.8] !font-medium !text-[15px] " data-wow-delay=".5s">
                 THE FIRST SOCIAL MUSIC LAYER OF WEB3.0
               </h6> 
-              <p className="main-title !font-bold !text-white mt-8 !leading-[1.1] !text-4xl  wow">
+              <p className="main-title !font-bold !text-white mt-8 !leading-[1.1] !text-[43px]  wow">
                 Where DeFi, GameFi & SocialFi Meet <br/>
+                <div className=" w-full relative -mt-3 " >
+                  {array.map((item: any, index: any) => {
+                    return( 
+                      <AnimatePresence  key={index} >
+                        {index === isShown && 
+                          <motion.div {...boxAnimation} className=" absolute " > 
+                            <span className=" main-title !font-bold !text-white !text-[43px]  wow " >{item}.</span>
+                          </motion.div> 
+                        }
+                      </AnimatePresence> 
+                    )
+                  })}  
+                </div>
+                <p className=" text-transparent " >{array[isShown]}</p>
               </p> 
-              <div className=" w-full relative h-[45px] -mt-4  " >
-                {array.map((item: any, index: any) => {
-                  return( 
-                    <AnimatePresence  key={index} >
-                      {index === isShown && 
-                        <motion.div {...boxAnimation} className=" absolute " > 
-                          <span className=" main-title !font-bold !text-white !text-4xl  wow " >{item}.</span>
-                        </motion.div> 
-                      }
-                    </AnimatePresence> 
-                  )
-                })}  
-              </div>
               <p className="wow txt text-[15px] !font-medium ">
                 It enables creators to tokenize their name/brand, content, and songs; allowing fans to buy, sell, trade and promote these tokens directly in real time on the blockchain while also sharing streaming earnings.
                 <br/>
