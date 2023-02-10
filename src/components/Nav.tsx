@@ -29,7 +29,7 @@ function Nav() {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className=" flex items-center gap-6 ml-auto">
+          <ul className=" flex items-center gap-7 ml-auto">
             {/* <li className="nav-item">
               <a className="nav-link !font-medium " href="https://loozr-1.gitbook.io/docs/">
                 LiteDoc
