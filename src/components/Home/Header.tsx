@@ -66,8 +66,8 @@ export default function Header() {
             <div className="d-flex">
               <div className="col-12 col-md-7 !pl-10 px-remove-all"> 
                 <div className=" w-full  relative !text-[68px] !font-bold " > 
-                <p className=" main-title -mb-7 flex !font-bold !text-[68px] !text-white  wow" >
-                  <p className={isShown === 0 ? " w-[240px] " : isShown === 1 ? "w-[122px] ":" w-[112px] "} >
+                <p className=" main-title -mb-6 flex !font-bold !text-[68px] !text-white  wow" >
+                  <p >
                     {array.map((item: any, index: any) => {
                       return( 
                         <AnimatePresence  key={index} >
@@ -79,7 +79,7 @@ export default function Header() {
                         </AnimatePresence> 
                       )
                     })}
-                  </p> Music 
+                  </p> <span className=" text-transparent " >{array[isShown]}</span> Music 
                   </p>
                   Tokens.
                 </div>
