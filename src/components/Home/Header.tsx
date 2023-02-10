@@ -86,7 +86,7 @@ export default function Header() {
                 {/* <h1>
                   <TextSlides /> 
                 </h1> */}
-                <p className="mt-10">
+                <p className="mt-10 txt text-[14px] !font-medium  ">
                   Don’t just stream, earn, and succeed with artistes.
                 </p>
                 <div className="mt-20">

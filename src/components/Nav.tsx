@@ -29,34 +29,34 @@ function Nav() {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav ml-auto">
+          <ul className=" flex items-center gap-4 ml-auto">
             {/* <li className="nav-item">
               <a className="nav-link !font-medium " href="https://loozr-1.gitbook.io/docs/">
                 LiteDoc
               </a>
             </li> */}
             <li className="nav-item">
-              <a className="nav-link " href="/product">
+              <a className="txt text-[14px] !font-medium  " href="/product">
                 Products
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link  " href="">
+              <a className="txt text-[14px] !font-medium   " href="">
                 Ecosystem
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link " href="">
+              <a className="txt text-[14px] !font-medium  " href="">
                 Features
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link " href="">
+              <a className="txt text-[14px] !font-medium  " href="">
                 About
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link " href="https://medium.com/@officialloozr">
+              <a className="txt text-[14px] !font-medium  " href="https://medium.com/@officialloozr">
                 Blog
               </a>
             </li>
@@ -64,7 +64,7 @@ function Nav() {
               <div 
                 role="button"
                 onClick={()=> setTab((prev) => !prev)}
-                className="nav-link   flex items-center " 
+                className="txt text-[14px] !font-medium mt-[3px]  flex items-center " 
               >
                 Join community
                 <svg className={tab ? " ml-2 rotate-180 ": " ml-2 " } width="8" height="4" viewBox="0 0 8 4" fill="none" xmlns="http://www.w3.org/2000/svg">
