@@ -33,7 +33,7 @@ export default function AboutSection() {
     },
   }
 
-  const array = ["Musicians", "Content creators", "Fans", "Record labels", "Small businesses", "Podcasters", "Poets", "DJs", "SpaceHosts", "Producers", "Music distributor", "Comedians"] 
+  const array = ["Musicians", "Content creators", "Fans", "Record labels", "Small businesses", "Podcasters", "Poets", "DJs", "SpaceHosts", "Producers", "Music distributors", "Comedians"] 
 
   React.useEffect(() => { 
     const t1 = setTimeout(() => {  
@@ -54,7 +54,7 @@ export default function AboutSection() {
         <div className="container pt-32 ">
           <div className="sec-head mb-3  d-flex flex-column">
             <div className=" pl-8 max-w-[500px] ">
-              <h6 className="wow fadeIn !tracking-widest !text-[#536079] txt leading-[1.8] !font-medium !text-[13px] " data-wow-delay=".5s">
+              <h6 className="wow fadeIn !tracking-widest !text-[#536079] txt leading-[1.8] !font-medium !text-[14px] " data-wow-delay=".5s">
                 THE FIRST SOCIAL MUSIC LAYER OF WEB3.0
               </h6> 
               <p className="main-title !font-bold !text-white mt-8 !leading-[1.1] !text-[43px]  wow">
