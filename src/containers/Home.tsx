@@ -10,18 +10,27 @@ import Team from "../components/Home/Team";
 import FlagShip from "../components/Home/FlagShip";
 import FeatureSection from "../components/Home/FeatureSection";
 import FAQ from "../components/Home/FAQ";
+import { Parallax, Background } from 'react-parallax';
 
 export default function Home() {
   return (
     <> 
-      <Header />  
-      <div className="main-content">
-        <AboutSection />
-        <ArtistShowcase />
-        <WhySection />
-        <FlagShip />
-        <FeatureSection />
-        <FAQ />
+      <div className=" relative w-full z-10 !bg-[#0c0f16] h-screen " >
+        <Header />  
+      </div>
+      <div className="main-content relative ">  
+        <div className=" w-full h-[100vh] overflow-y-auto relative " >
+          <div className=" fixed -z-10 overflow-y-auto inset-0 " >
+            <AboutSection /> 
+          </div>
+        </div>
+          <div className=" relative w-full z-10 !bg-[#11151D]  " > 
+            <ArtistShowcase />
+            <WhySection />
+            <FlagShip />
+            <FeatureSection />
+            <FAQ />  
+          </div>
         {/* <Services />
         <RoadMap />
         <Tokenomics />

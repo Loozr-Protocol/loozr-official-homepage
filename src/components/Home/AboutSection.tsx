@@ -89,9 +89,9 @@ export default function AboutSection() {
         </div>
         <div className="clearfix"></div>
         <div className=" lg:w-[60%]  ">
-          <div className="mx-auto  ">
+          <div className="mx-auto mt-auto  ">
             <div className="img1 wow imago" data-wow-delay=".5s">
-              <img src="/img/aboutus.png" className=" w-[80%] object-contain "  alt="" />
+              <img src="/img/aboutus.png" className=" h-[80vh] object-contain "  alt="" />
             </div>
           </div>
         </div>
