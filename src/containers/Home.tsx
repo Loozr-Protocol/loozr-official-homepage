@@ -24,7 +24,7 @@ export default function Home() {
             <AboutSection /> 
           </div>
         </div>
-        <div className=" relative w-full z-10 !bg-[#11151D]  " > 
+        <div className=" relative w-full z-10  !bg-[#0c0f15]   " > 
           <ArtistShowcase />
           <WhySection />
           <FlagShip />

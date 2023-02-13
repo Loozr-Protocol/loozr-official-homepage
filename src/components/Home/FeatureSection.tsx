@@ -3,7 +3,7 @@ import React from 'react'
 export default function FeatureSection() {
     return ( 
         <> 
-            <div className=' w-full bg-[#8369F4] !text-[#0C0F15] px-20 py-8 lg:py-0 lg:pt-20 relative ' > 
+            <div className=' w-full bg-[#8369F4] !text-[#0C0F15]  px-20 py-8 lg:py-0 lg:pt-20 relative ' > 
                 <div className=" ">
                     <p className="wow fadeIn !text-[#0C0F15] txt !font-extrabold !leading-[1.1] !text-4xl " data-wow-delay=".5s">
                         FEATURES 

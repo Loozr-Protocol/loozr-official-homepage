@@ -14,7 +14,7 @@ export default function FAQ() {
     }
 
     return (
-        <div className=' w-full px-20 flex pb-40 flex-col items-center ' >
+        <div className=' w-full px-20 flex pb-40 flex-col !bg-[#0c0f15] items-center ' >
             <div className="sec-head custom-font text-center">
                 <h6 id="gradenttext" className="wow fadeIn leading-[1.8] !font-medium !text-[15px] " data-wow-delay=".5s">
                     NEED HELP WITH ANSWERS?
@@ -24,7 +24,7 @@ export default function FAQ() {
                 </h3>
                 <span className="tbg">Answers</span>
             </div>
-            <div className=' w-full flex mt-6 ' >
+            <div className=' w-full flex mt-6 mb-20 ' >
                 <div className=' w-full flex justify-center pr-10 ' >
                     <p className=' max-w-[450px] text-white wow txt !text-[14.7px] !font-normal  ' >Haven’t found what you’re looking for?
                         Try emailing <span  id="gradenttext" >support@loozr.io</span> — we’re here to help.</p>
