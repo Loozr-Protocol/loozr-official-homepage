@@ -58,7 +58,7 @@ export default function AboutSection() {
                 THE FIRST SOCIAL MUSIC LAYER OF WEB3.0
               </h6> 
               <p className="main-title !font-bold !text-white mt-8 !leading-[1.2] !text-[43px]  wow">
-                Where DeFi, GameFi & SocialFi Meet <br/>
+                Where DeFi, AR & SocialFi Meets <br/>
                 <div className=" w-full h-[52px] mt-1 relative" > 
                     {array.map((item: any, index: any) => {
                       return( 
