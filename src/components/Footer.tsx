@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function Footer() {
   return (
     <>
-      <footer className=" w-full !bg-[#11151D] relative px-12 z-30 pb-0">
+      <footer className=" w-full !bg-[#11151D] relative px-20 z-30 pb-0">
         <div className=" w-full grid grid-cols-4 gap-12 pb-4 !pt-12" >
           <div className=" w-full " >
             <Link to="/" className="logo ">

@@ -9,9 +9,7 @@ export default function FeatureSection() {
                         FEATURES 
                     </p>
                 <p className="wow txt !text-[14.6px] !leading-normal  mt-4 !font-normal text-[#0C0F15] lg:max-w-2xl" >Loozr empowers creators through various services, which they can utilize via the following features:</p>
-                    {/* <h3 className="wow text-[#53607940]" data-splitting>
-                        Features!
-                    </h3> */}
+                     
                 </div>
                 <div className=' w-full  grid grid-cols-1 lg:grid-cols-3 gap-9 mt-8 mb-20 ' >
                     <div className=' w-full ' > 
@@ -59,10 +57,10 @@ export default function FeatureSection() {
             </div>
             <div className='!px-20 my-28  ' > 
                 <div className=' bg-[#11151D] h-[140px] flex lg:justify-start justify-center pl-[140px] items-center ' >
-                    <p className=' font-medium text-xl text-white ' >ROADMAP WORKING PERFECTLY </p>
+                    <p className=' txt !font-medium text-xl text-white ' >ROADMAP WORKING PERFECTLY </p>
                 </div>
                 <div className=' bg-[#11151D] mt-4 h-[140px] flex lg:justify-start justify-center pl-[140px] items-center ' >
-                    <p className=' font-medium text-xl text-white ' >“TEAM”  WORKING PERFECTLY </p>
+                    <p className=' txt !font-medium text-xl text-white ' >“TEAM”  WORKING PERFECTLY </p>
                 </div>
             </div>
         </>

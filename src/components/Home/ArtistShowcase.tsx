@@ -21,7 +21,7 @@ export default function ArtistShowcase() {
             <h6 id="gradenttext" className="wow fadeIn leading-[1.8] !font-medium !text-[15px] " data-wow-delay=".5s">
               CREATOR ECOSYSTEM 
             </h6>
-            <h3 className="wow !font-bold txt !text-white mt-8 !leading-[1.1] !text-[40px] " data-splitting>
+            <h3 className="wow !font-black txt !text-white mt-8 !leading-[1.1] !text-[40px] " data-splitting>
               TOP ARTISTES
             </h3>
             <span className="tbg">TOP ARTISTES</span>
