@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 export default function Footer() {
   return (
     <>
-      <footer className=" w-full !bg-[#11151D] relative px-12 z-30 pb-0 pt-20">
-        <div className=" w-full grid grid-cols-4 gap-12 pb-4 " >
+      <footer className=" w-full !bg-[#11151D] relative px-12 z-30 pb-0">
+        <div className=" w-full grid grid-cols-4 gap-12 pb-4 !pt-12" >
           <div className=" w-full " >
             <Link to="/" className="logo ">
               <img className="logo-light h-10 " src="/img/logo-light.png" alt="Home" />
@@ -12,7 +12,7 @@ export default function Footer() {
             <p className=" font-medium mt-6 text-base txt text-[#536079] " >Social music streaming and DeFi platform for creators and music lovers. </p>
           </div>
           <div className=" w-full flex flex-col items-center  " > 
-            <p className=" font-bold text-white text-xl h-10 " >COMPANY</p>
+            <p className=" font-bold text-white text-lg h-10 " >COMPANY</p>
             <div className=" font-medium mt-6 text-sm txt text-[#536079]  " >
               <div className=" flex items-center mt-2 " >
                 <div className=" w-1 h-1 rounded-full bg-[#536079] mr-3 " />
@@ -29,7 +29,7 @@ export default function Footer() {
             </div>
           </div> 
           <div className=" w-full flex flex-col items-center  " > 
-            <p className=" font-bold text-white text-xl h-10 " >QUICK LINKS</p>
+            <p className=" font-bold text-white text-lg h-10 " >QUICK LINKS</p>
             <div className=" font-medium mt-6 text-sm txt text-[#536079]  " >
               <div className=" flex items-center mt-2 " >
                 <div className=" w-1 h-1 rounded-full bg-[#536079] mr-3 " />
@@ -58,7 +58,7 @@ export default function Footer() {
             </div>
           </div> 
           <div className=" w-full flex flex-col items-center " > 
-            <p className=" font-bold text-white text-xl h-10 " >SOCIALS</p>
+            <p className=" font-bold text-white text-lg h-10 " >SOCIALS</p>
             <div className=" font-medium mt-6 text-sm txt text-[#536079]  " >
               <div className=" flex items-center mt-2 " >
                 <div className=" w-1 h-1 rounded-full bg-[#536079] mr-3 " />
@@ -96,11 +96,11 @@ export default function Footer() {
           <p className=" font-semibold text-base text-white ml-2 txt " >mail@loozr.io</p>
         </div>
         <div className=" w-full border-t border-[#536079] mt-4 py-4 flex justify-between  "  >
-          <p className=" font-medium text-base txt text-[#536079]  " >© 2023 Loozr - All Rights Reserved.</p>
+          <p className=" font-medium !text-sm txt text-[#536079]  " >© 2023 Loozr - All Rights Reserved.</p>
           <div className=" flex items-center gap-5 " >
-            <p className=" font-medium text-base txt text-[#536079]  " >Cookie policy</p>
-            <p className=" font-medium text-base txt text-[#536079]  " >Privacy policy</p>
-            <p className=" font-medium text-base txt text-[#536079]  " >Terms of service</p>
+            <p className=" font-medium !text-sm txt text-[#536079]  " >Cookie policy</p>
+            <p className=" font-medium !text-sm txt text-[#536079]  " >Privacy policy</p>
+            <p className=" font-medium !text-sm txt text-[#536079]  " >Terms of service</p>
           </div>
         </div>
         {/* <div className="container">
