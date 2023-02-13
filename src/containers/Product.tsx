@@ -3,9 +3,9 @@ import "../mystyle.scss";
 
 export default function Product() {
     return (
-        <div className=' w-full h-full flex justify-center flex-col px-20 py-8 lg:py-32 relative ' >
-            <div className="sec-head  ">
-                <h6 id="gradenttext" className="wow fadeIn !mx-auto !text-center leading-[1.8] !font-medium !text-[15px] " data-wow-delay=".5s">
+        <div className=' w-full  flex flex-col py-32 !bg-[#0c0f15] items-center ' > 
+            <div className="sec-head text-center "> 
+                <h6 id="gradenttext" className="wow !tracking-[0.4em] fadeIn txt !font-medium !text-[14px] " data-wow-delay=".5s">
                     FLAGSHIP SOLUTIONS
                 </h6>
                 <h3 className="wow !font-bold !text-white mt-8 !leading-[1.1] !text-4xl" data-splitting>
@@ -19,8 +19,8 @@ export default function Product() {
                 <li className="timeline-event">
                     <label className="timeline-event-icon"></label>
                     <div className="timeline-event-copy">
-                        <p className="timeline-event-thumbnail !text-xl !font-semibold !px-12 flex justify-center items-center ">1. MUSIC TOKEN LAUNCHPAD</p>
-                        <p className='txt font-bold text-[20px] text-white  ' >World’s first tokenized, collaborative and investible songs.</p>
+                        <p className="timeline-event-thumbnail !text-base rounded-[8px] !font-semibold !px-12 flex justify-center items-center ">1. MUSIC TOKEN LAUNCHPAD</p>
+                        <p className='txt font-bold text-[20px] text-white !leading-normal ' >World’s first tokenized, collaborative and investible songs.</p>
                         <div className=' flex  ' >
                             <div className=' w-fit mr-3 mt-[11px] ' >
                                 <div className=' w-[5px] h-[5px] rounded-full bg-white ' />
