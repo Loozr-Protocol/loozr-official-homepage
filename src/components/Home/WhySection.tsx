@@ -77,6 +77,19 @@ export default function WhySection() {
             </div>   
             </SwiperSlide>
           <SwiperSlide>
+
+            <div className="container">
+              <div className="sec-head custom-font text-center">
+                <h6 id="gradenttext" className="wow fadeIn leading-[1.8] !font-medium !text-[15px] " data-wow-delay=".5s">
+                  WHO ARE WE
+                </h6>
+                <h3 className="wow !font-bold !text-white mt-8 !leading-[1.1] !text-4xl" data-splitting>
+                  BUILDING FOR?
+                </h3>
+                <span className="tbg">BUILDING FOR?</span>
+              </div>
+              <p className=" font-medium text-center -mt-14 mb-10 mx-auto text-white lg:max-w-2xl " >Open web democratizing music industry participation, investible talents, community-driven ownership, better monetization, incentivized social interactions, and growth.</p>
+            </div> 
             <div className=" w-full flex items-center " >
               <div className=" w-full overflow-y-auto max-h-[47vh] pr-6 pl-14 " > 
                 <div  className=" flex h-auto " > 
