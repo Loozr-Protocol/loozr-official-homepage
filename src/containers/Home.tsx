@@ -19,18 +19,18 @@ export default function Home() {
         <Header />  
       </div>
       <div className="main-content relative ">  
-        <div className=" w-full h-[100vh] overflow-y-auto relative " >
-          <div className=" fixed -z-10 overflow-y-auto inset-0 " >
+        <div className=" w-full h-[100vh] relative " >
+          <div className=" fixed -z-10 inset-0 " >
             <AboutSection /> 
           </div>
         </div>
-          <div className=" relative w-full z-10 !bg-[#11151D]  " > 
-            <ArtistShowcase />
-            <WhySection />
-            <FlagShip />
-            <FeatureSection />
-            <FAQ />  
-          </div>
+        <div className=" relative w-full z-10 !bg-[#11151D]  " > 
+          <ArtistShowcase />
+          <WhySection />
+          <FlagShip />
+          <FeatureSection />
+          <FAQ />  
+        </div>
         {/* <Services />
         <RoadMap />
         <Tokenomics />

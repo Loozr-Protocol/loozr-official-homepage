@@ -24,7 +24,7 @@ export default function AboutSection() {
     },
     exit: { 
         opacity: 0,  
-        y: -20
+        y: -2,
         // scale: 0.5,
     },
     transition: {
@@ -49,9 +49,9 @@ export default function AboutSection() {
   },[isShown]) 
   
   return (
-    <div className=" px-20 pt-10 " >
-      <div id="block-nvblockaboutindex" className="about flex items-center mt-30">
-        <div className="container pt-32 ">
+    <div className=" px-20 pt-10 relative  " >
+      <div id="block-nvblockaboutindex" className="about flex pt-32 ">
+        <div className="container my-auto  ">
           <div className="sec-head mb-3  d-flex flex-column">
             <div className=" pl-8 max-w-[500px] ">
               <h6 className="wow fadeIn !tracking-widest !text-[#536079] txt leading-[1.8] !font-medium !text-[14px] " data-wow-delay=".5s">
@@ -59,20 +59,19 @@ export default function AboutSection() {
               </h6> 
               <p className="main-title !font-bold !text-white mt-8 !leading-[1.1] !text-[43px]  wow">
                 Where DeFi, GameFi & SocialFi Meet <br/>
-                <div className=" w-full relative -mt-1 " >
-                  {array.map((item: any, index: any) => {
-                    return( 
-                      <AnimatePresence  key={index} >
-                        {index === isShown && 
-                          <motion.div {...boxAnimation} className=" absolute " > 
-                            <span  id="gradenttext" className=" main-title !font-bold !text-[43px]  wow " >{item}.</span>
-                          </motion.div> 
-                        }
-                      </AnimatePresence> 
-                    )
-                  })}  
-                </div>
-                <p className=" text-transparent " >{array[isShown]}</p>
+                <div className=" w-full h-[52px] relative" > 
+                    {array.map((item: any, index: any) => {
+                      return( 
+                        <AnimatePresence  key={index} >
+                          {index === isShown && 
+                            <motion.div  id="gradenttext" {...boxAnimation} className="   w-full absolute top-0 bg-slate-500 h-full " > 
+                              {item}.
+                            </motion.div> 
+                          }
+                        </AnimatePresence> 
+                      )
+                    })}  
+                  </div> 
               </p> 
               <p className="wow txt !text-[14.7px] pr-8 text-white !font-normal ">
                 It enables creators to tokenize their name/brand, content, and songs; allowing fans to buy, sell, trade and promote these tokens directly in real time on the blockchain while also sharing streaming earnings.
@@ -88,10 +87,10 @@ export default function AboutSection() {
           </div>
         </div>
         <div className="clearfix"></div>
-        <div className=" lg:w-[60%]  ">
-          <div className="mx-auto mt-auto  ">
+        <div className=" lg:w-[60%] relative ">
+          <div className="mx-auto   ">
             <div className="img1 wow imago" data-wow-delay=".5s">
-              <img src="/img/aboutus.png" className=" h-[80vh] object-contain "  alt="" />
+              <img src="/img/aboutus.png" className=" h-[80vh] object-contain   "  alt="" />
             </div>
           </div>
         </div>

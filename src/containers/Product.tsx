@@ -13,37 +13,37 @@ export default function Product() {
                 </h3>
                 <span className="tbg !absolute !left-auto !right-auto ">Product!</span>
             </div>
-            <p className="  text-[15px] mx-auto text-center !font-medium -mt-14 mb-10 text-white lg:max-w-3xl " >Revolutionizing the music industry with 5 self-sustaining standalone solutions that bridge economic and entertainment services in the music industry.</p>
+            <p className="  wow txt !text-[14.7px] mx-auto text-center !font-normal !leading-normal  -mt-14 mb-10 text-white lg:max-w-3xl " >Revolutionizing the music industry with 5 self-sustaining standalone solutions that bridge economic and entertainment services in the music industry.</p>
             <button className=' h-[50px] w-fit mx-auto px-9 rounded-full border !border-[#12161e] text-white mt-5 ' >Learn more</button>
             <ul className="timeline">
                 <li className="timeline-event">
                     <label className="timeline-event-icon"></label>
                     <div className="timeline-event-copy">
                         <p className="timeline-event-thumbnail !text-xl !font-semibold !px-12 flex justify-center items-center ">1. MUSIC TOKEN LAUNCHPAD</p>
-                        <p className=' text-2xl !font-bold ' >World’s first tokenized, collaborative and investible songs.</p>
+                        <p className='txt font-bold text-[20px] text-white  ' >World’s first tokenized, collaborative and investible songs.</p>
                         <div className=' flex  ' >
                             <div className=' w-fit mr-3 mt-[11px] ' >
                                 <div className=' w-[5px] h-[5px] rounded-full bg-white ' />
                             </div>
-                            <p className=' !font-medium text-base ' >Trade2Earn music tokens you love.</p>
+                            <p className=' wow txt !text-[14.7px] text-white !font-normal mt-1 !leading-normal ' >Trade2Earn music tokens you love.</p>
                         </div>
                         <div className=' flex -mt-3  ' >
                             <div className=' w-fit mr-3 mt-[11px] ' >
                                 <div className=' w-[5px] h-[5px] rounded-full bg-white ' />
                             </div>
-                            <p className=' !font-medium text-base ' >Realtime fractional ownership of royalty shares on-chain.</p>
+                            <p className=' wow txt !text-[14.7px] text-white !font-normal mt-1 !leading-normal ' >Realtime fractional ownership of royalty shares on-chain.</p>
                         </div>
                         <div className=' flex -mt-3  ' >
                             <div className=' w-fit mr-3 mt-[11px] ' >
                                 <div className=' w-[5px] h-[5px] rounded-full bg-white ' />
                             </div>
-                            <p className=' !font-medium text-base ' >Turn your fans from spectators to influencers, stakeholders, record labels and investors.</p>
+                            <p className=' wow txt !text-[14.7px] text-white !font-normal mt-1 !leading-normal ' >Turn your fans from spectators to influencers, stakeholders, record labels and investors.</p>
                         </div>
                         <div className=' flex -mt-3  ' >
                             <div className=' w-fit mr-3 mt-[11px] ' >
                                 <div className=' w-[5px] h-[5px] rounded-full bg-white ' />
                             </div>
-                            <p className=' !font-medium text-base ' >No Web3 knowledge necessary, 5 seconds no-code launchpad.</p>
+                            <p className=' wow txt !text-[14.7px] text-white !font-normal mt-1 !leading-normal ' >No Web3 knowledge necessary, 5 seconds no-code launchpad.</p>
                         </div>
                             <img className=' w-full mt-4 ' alt='' src='/img/product.png' />
                     </div>
@@ -52,30 +52,30 @@ export default function Product() {
                     <label className="timeline-event-icon"></label>
                     <div className="timeline-event-copy">
                         <p className="timeline-event-thumbnail !text-xl !font-semibold !px-12 flex justify-center items-center ">MUSIC</p>
-                        <p className=' text-2xl !font-bold ' >World</p>
+                        <p className='txt font-bold text-[20px] text-white  ' >World</p>
                         <div className=' flex  ' >
                             <div className=' w-fit mr-3 mt-[11px] ' >
                                 <div className=' w-[5px] h-[5px] rounded-full bg-white ' />
                             </div>
-                            <p className=' !font-medium text-base ' >Trade2Earn</p>
+                            <p className=' wow txt !text-[14.7px] text-white !font-normal mt-1 !leading-normal ' >Trade2Earn</p>
                         </div>
                         <div className=' flex -mt-3  ' >
                             <div className=' w-fit mr-3 mt-[11px] ' >
                                 <div className=' w-[5px] h-[5px] rounded-full bg-white ' />
                             </div>
-                            <p className=' !font-medium text-base ' >Realtime</p>
+                            <p className=' wow txt !text-[14.7px] text-white !font-normal mt-1 !leading-normal ' >Realtime</p>
                         </div>
                         <div className=' flex -mt-3  ' >
                             <div className=' w-fit mr-3 mt-[11px] ' >
                                 <div className=' w-[5px] h-[5px] rounded-full bg-white ' />
                             </div>
-                            <p className=' !font-medium text-base ' >Turn</p>
+                            <p className=' wow txt !text-[14.7px] text-white !font-normal mt-1 !leading-normal ' >Turn</p>
                         </div>
                         <div className=' flex -mt-3  ' >
                             <div className=' w-fit mr-3 mt-[11px] ' >
                                 <div className=' w-[5px] h-[5px] rounded-full bg-white ' />
                             </div>
-                            <p className=' !font-medium text-base ' >No</p>
+                            <p className=' wow txt !text-[14.7px] text-white !font-normal mt-1 !leading-normal ' >No</p>
                         </div>
                             <img className=' w-full mt-4 ' alt='' src='/img/product.png' />
                     </div>
@@ -84,36 +84,36 @@ export default function Product() {
                     <label className="timeline-event-icon"></label>
                     <div className="timeline-event-copy">
                         <p className="timeline-event-thumbnail !text-xl !font-semibold !px-12 flex justify-center items-center ">2. AUDIO/VIDEO STREAMING </p>
-                        <p className=' text-2xl !font-bold ' >Inventing an incentive-based experience for streaming video/audio contents.</p>
+                        <p className='txt font-bold text-[20px] text-white  ' >Inventing an incentive-based experience for streaming video/audio contents.</p>
                         <div className=' flex  ' >
                             <div className=' w-fit mr-3 mt-[11px] ' >
                                 <div className=' w-[5px] h-[5px] rounded-full bg-white ' />
                             </div>
-                            <p className=' !font-medium text-base ' >The new Listen2Earn model.</p>
+                            <p className=' wow txt !text-[14.7px] text-white !font-normal mt-1 !leading-normal ' >The new Listen2Earn model.</p>
                         </div>
                         <div className=' flex -mt-3  ' >
                             <div className=' w-fit mr-3 mt-[11px] ' >
                                 <div className=' w-[5px] h-[5px] rounded-full bg-white ' />
                             </div>
-                            <p className=' !font-medium text-base ' >Real time royalty payouts in $LZR tokens.</p>
+                            <p className=' wow txt !text-[14.7px] text-white !font-normal mt-1 !leading-normal ' >Real time royalty payouts in $LZR tokens.</p>
                         </div>
                         <div className=' flex -mt-3  ' >
                             <div className=' w-fit mr-3 mt-[11px] ' >
                                 <div className=' w-[5px] h-[5px] rounded-full bg-white ' />
                             </div>
-                            <p className=' !font-medium text-base ' >Shared streaming revenue with token holders (fans) - reward your listeners.</p>
+                            <p className=' wow txt !text-[14.7px] text-white !font-normal mt-1 !leading-normal ' >Shared streaming revenue with token holders (fans) - reward your listeners.</p>
                         </div>
                         <div className=' flex -mt-3  ' >
                             <div className=' w-fit mr-3 mt-[11px] ' >
                                 <div className=' w-[5px] h-[5px] rounded-full bg-white ' />
                             </div>
-                            <p className=' !font-medium text-base ' >Immutable and transparent streaming stats.</p>
+                            <p className=' wow txt !text-[14.7px] text-white !font-normal mt-1 !leading-normal ' >Immutable and transparent streaming stats.</p>
                         </div>
                         <div className=' flex -mt-3  ' >
                             <div className=' w-fit mr-3 mt-[11px] ' >
                                 <div className=' w-[5px] h-[5px] rounded-full bg-white ' />
                             </div>
-                            <p className=' !font-medium text-base ' >No Ads!</p>
+                            <p className=' wow txt !text-[14.7px] text-white !font-normal mt-1 !leading-normal ' >No Ads!</p>
                         </div>
                             <img className=' w-full mt-4 ' alt='' src='/img/product.png' />
                     </div> 
@@ -122,24 +122,24 @@ export default function Product() {
                     <label className="timeline-event-icon"></label>
                     <div className="timeline-event-copy">
                         <p className="timeline-event-thumbnail !text-xl !font-semibold !px-12 flex justify-center items-center ">3. MUSIC NFT MARKETPLACE</p>
-                        <p className=' text-2xl !font-bold ' >Next generation of interoperable music NFTs at its finest - Music NFT Player.</p>
+                        <p className='txt font-bold text-[20px] text-white  ' >Next generation of interoperable music NFTs at its finest - Music NFT Player.</p>
                         <div className=' flex  ' >
                             <div className=' w-fit mr-3 mt-[11px] ' >
                                 <div className=' w-[5px] h-[5px] rounded-full bg-white ' />
                             </div>
-                            <p className=' !font-medium text-base ' >With the opportunity to profit from both streams & music trading, Loozr is the ultimate Music NFT bid/sales platform.</p>
+                            <p className=' wow txt !text-[14.7px] text-white !font-normal mt-1 !leading-normal ' >With the opportunity to profit from both streams & music trading, Loozr is the ultimate Music NFT bid/sales platform.</p>
                         </div>
                         <div className=' flex -mt-3  ' >
                             <div className=' w-fit mr-3 mt-[11px] ' >
                                 <div className=' w-[5px] h-[5px] rounded-full bg-white ' />
                             </div>
-                            <p className=' !font-medium text-base ' >Launch, purchase, sell, and interconnect all of your Music NFTs from other platforms, which can then be streamed and commercialised.</p>
+                            <p className=' wow txt !text-[14.7px] text-white !font-normal mt-1 !leading-normal ' >Launch, purchase, sell, and interconnect all of your Music NFTs from other platforms, which can then be streamed and commercialised.</p>
                         </div>
                         <div className=' flex -mt-3  ' >
                             <div className=' w-fit mr-3 mt-[11px] ' >
                                 <div className=' w-[5px] h-[5px] rounded-full bg-white ' />
                             </div>
-                            <p className=' !font-medium text-base ' >Collectors can liquify their favourite Music NFTs to generate streaming income and potential future sales.</p>
+                            <p className=' wow txt !text-[14.7px] text-white !font-normal mt-1 !leading-normal ' >Collectors can liquify their favourite Music NFTs to generate streaming income and potential future sales.</p>
                         </div> 
                             <img className=' w-full mt-4 ' alt='' src='/img/product.png' />
                     </div> 
@@ -148,24 +148,24 @@ export default function Product() {
                     <label className="timeline-event-icon"></label>
                     <div className="timeline-event-copy">
                         <p className="timeline-event-thumbnail !text-xl !font-semibold !px-12 flex justify-center items-center ">4. SOCIALFI</p>
-                        <p className=' text-2xl !font-bold ' >Diversifying revenue streams for music and content creators - Crypto for Communities.</p>
+                        <p className='txt font-bold text-[20px] text-white  ' >Diversifying revenue streams for music and content creators - Crypto for Communities.</p>
                         <div className=' flex  ' >
                             <div className=' w-fit mr-3 mt-[11px] ' >
                                 <div className=' w-[5px] h-[5px] rounded-full bg-white ' />
                             </div>
-                            <p className=' !font-medium text-base ' >The new Fan2Earn model.</p>
+                            <p className=' wow txt !text-[14.7px] text-white !font-normal mt-1 !leading-normal ' >The new Fan2Earn model.</p>
                         </div>
                         <div className=' flex -mt-3  ' >
                             <div className=' w-fit mr-3 mt-[11px] ' >
                                 <div className=' w-[5px] h-[5px] rounded-full bg-white ' />
                             </div>
-                            <p className=' !font-medium text-base ' >Launch your own coin, independent economy, and grow with your community - all on your own terms. </p>
+                            <p className=' wow txt !text-[14.7px] text-white !font-normal mt-1 !leading-normal ' >Launch your own coin, independent economy, and grow with your community - all on your own terms. </p>
                         </div>
                         <div className=' flex -mt-3  ' >
                             <div className=' w-fit mr-3 mt-[11px] ' >
                                 <div className=' w-[5px] h-[5px] rounded-full bg-white ' />
                             </div>
-                            <p className=' !font-medium text-base ' >Turn your fans from spectators into influencers and stakeholders.</p>
+                            <p className=' wow txt !text-[14.7px] text-white !font-normal mt-1 !leading-normal ' >Turn your fans from spectators into influencers and stakeholders.</p>
                         </div> 
                             <img className=' w-full mt-4 ' alt='' src='/img/product.png' />
                     </div> 
@@ -174,18 +174,18 @@ export default function Product() {
                     <label className="timeline-event-icon"></label>
                     <div className="timeline-event-copy">
                         <p className="timeline-event-thumbnail !text-xl !font-semibold !px-12 flex justify-center items-center ">MUSIC</p>
-                        <p className=' text-2xl !font-bold ' >5. LOOZRVERSE</p>
+                        <p className='txt font-bold text-[20px] text-white  ' >5. LOOZRVERSE</p>
                         <div className=' flex  ' >
                             <div className=' w-fit mr-3 mt-[11px] ' >
                                 <div className=' w-[5px] h-[5px] rounded-full bg-white ' />
                             </div>
-                            <p className=' !font-medium text-base ' >First-ever location-based immersive Metaverse (AR/VR) with gamified, incentivized and interactive experiences for businesses, events, and creators.</p>
+                            <p className=' wow txt !text-[14.7px] text-white !font-normal mt-1 !leading-normal ' >First-ever location-based immersive Metaverse (AR/VR) with gamified, incentivized and interactive experiences for businesses, events, and creators.</p>
                         </div>
                         <div className=' flex -mt-3  ' >
                             <div className=' w-fit mr-3 mt-[11px] ' >
                                 <div className=' w-[5px] h-[5px] rounded-full bg-white ' />
                             </div>
-                            <p className=' !font-medium text-base ' >Unleash imagination, hang out with celebrities, friends, fans, experience music, festivals, concerts and immerse yourself in the virtual world.</p>
+                            <p className=' wow txt !text-[14.7px] text-white !font-normal mt-1 !leading-normal ' >Unleash imagination, hang out with celebrities, friends, fans, experience music, festivals, concerts and immerse yourself in the virtual world.</p>
                         </div> 
                         <button style={{background: "linear-gradient(237.71deg, #8369F4 24.07%, #F039E2 116.61%)"}} className=' h-[50px] w-fit flex justify-center items-center px-9 rounded-full text-white mt-5 ' >
                             <svg className=' mr-3 ' width="19" height="24" viewBox="0 0 19 24" fill="none" xmlns="http://www.w3.org/2000/svg">
