@@ -7,12 +7,8 @@ export default function WhySection() {
   const [isHover, setIsHover] = React.useState(0)
 
   return (
-    <> 
-
-
-      <div
-        className=" w-full h-[100vh]  "
-      >
+    <>  
+      <div className=" w-full h-[100vh] " >
         <Swiper
           className=" h-[100vh] w-full max-w-[100vw]  flex items-center  overflow-hidden  "
           direction={'vertical'}
@@ -27,8 +23,7 @@ export default function WhySection() {
             el: 'w-3 h-3 rounded-full bg-white', 
           }}
           modules={[Mousewheel, Pagination]}
-        >
-
+        > 
           <SwiperSlide>
 
             <div className="container">
@@ -76,8 +71,7 @@ export default function WhySection() {
               </div>
             </div>   
             </SwiperSlide>
-          <SwiperSlide>
-
+          <SwiperSlide> 
             <div className="container">
               <div className="sec-head custom-font text-center">
                 <h6 id="gradenttext" className="wow fadeIn leading-[1.8] !font-medium !text-[15px] " data-wow-delay=".5s">

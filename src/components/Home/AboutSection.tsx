@@ -50,16 +50,16 @@ export default function AboutSection() {
   
   return (
     <div className=" px-20 pt-10 relative  " >
-      <div id="block-nvblockaboutindex" className="about flex pt-32 ">
-        <div className="container my-auto  ">
+      <div id="block-nvblockaboutindex" className="about flex">
+        <div className="container my-auto pt-32 ">
           <div className="sec-head mb-3  d-flex flex-column">
             <div className=" pl-8 max-w-[500px] ">
               <h6 className="wow fadeIn !tracking-widest !text-[#536079] txt leading-[1.8] !font-medium !text-[14px] " data-wow-delay=".5s">
                 THE FIRST SOCIAL MUSIC LAYER OF WEB3.0
               </h6> 
-              <p className="main-title !font-bold !text-white mt-8 !leading-[1.1] !text-[43px]  wow">
+              <p className="main-title !font-bold !text-white mt-8 !leading-[1.2] !text-[43px]  wow">
                 Where DeFi, GameFi & SocialFi Meet <br/>
-                <div className=" w-full h-[52px] relative" > 
+                <div className=" w-full h-[52px] mt-1 relative" > 
                     {array.map((item: any, index: any) => {
                       return( 
                         <AnimatePresence  key={index} >
@@ -88,9 +88,9 @@ export default function AboutSection() {
         </div>
         <div className="clearfix"></div>
         <div className=" lg:w-[60%] relative ">
-          <div className="mx-auto   ">
+          <div className="mx-auto mt-[20vh]  ">
             <div className="img1 wow imago" data-wow-delay=".5s">
-              <img src="/img/aboutus.png" className=" h-[80vh] object-contain   "  alt="" />
+              <img src="/img/aboutus.png" className=" h-[84vh] object-contain   "  alt="" />
             </div>
           </div>
         </div>
