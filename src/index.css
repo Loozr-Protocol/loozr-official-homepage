@@ -169,5 +169,26 @@ input.lower { text-transform: uppercase; }
   background: linear-gradient(255.45deg, #8369F4 39.69%, #F039E2 65.08%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
+}  
 
+#slides {
+  position: absolute;
+  top: 17%;
+  left: 10%;
+  right: 48%;
+  bottom: 17%;
+  overflow: hidden;
+}
+#slides ul {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  padding-top: 40px;
+  height: 100%;
+}
+#slides ul li {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
