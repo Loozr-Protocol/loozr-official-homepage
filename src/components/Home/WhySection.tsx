@@ -38,23 +38,19 @@ export default function WhySection() {
       return isIntersecting;
     }  
     
-    useEffect(()=> {
-      const timer = setTimeout(() => { 
-        if(isInViewport2) {
-          el.style.overflow = 'auto'; 
-          console.log("working"); 
-        } else if(isInViewport1){ 
+    useEffect(()=> {   
+      if(isInViewport1 || isInViewport2){ 
           el.style.overflow = 'hidden';
+          console.log("working"); 
           } else {
           el.style.overflow = 'auto';
-        }
-      }, 1000);
-      return () => clearTimeout(timer);
-    },[isInViewport1, isInViewport2])
+        } 
+      // return () => clearTimeout(timer);
+    },)
 
   return (
     <>  
-      <div className={isInViewport2 ? " w-full z-[200] inset-0 !bg-[#0c0f15] pt-24  h-[100vh] " :isInViewport1 ? " w-full fixed z-[200] inset-0 !bg-[#0c0f15] pt-24  h-[100vh] ": " w-full !bg-[#0c0f15] pt-24  h-[100vh] "} >
+      <div className={(isInViewport1 || isInViewport2 )? " w-full fixed z-[200] inset-0 !bg-[#0c0f15] pt-24  h-[100vh] ": " w-full !bg-[#0c0f15] pt-24  h-[100vh] "} >
         <div className="container ">
           <div className="sec-head custom-font text-center">
             <h6 id="gradenttext" className=" leading-[1.8] relative  !font-medium !text-[15px] " data-wow-delay=".5s">
@@ -110,39 +106,68 @@ export default function WhySection() {
                   </div>
                 </motion.div> 
               </div>
-            <div className="  "  ref={ref2}/>
             </div> 
-          </SwiperSlide>
-          <SwiperSlide> 
-            <div className=" w-full h-full flex flex-col items-center justify-center  " > 
-              <div id="slides">
-                <ul className="roller">
-                  <li className=" " >
-                    <div className=" bg-black absolute inset-0 bg-opacity-50 " />
-                    <img alt="" className=" h-full object-cover " src="/img/creator.png" /></li> 
-                </ul>
-              </div>  
-              <div className=" relative max-w-3xl pt-12 z-50 " > 
-                <p className=" font-bold  text-5xl text-center mt-12 text-[#8369F4] ">Music Creators</p>  
-                <motion.div
-                  initial={{ y: -100, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}  className=" py-2 mt-6 px-1 " >
-                  <div className=" flex text-white font-medium " >
-                    <div className=" w-fit " > 
-                      <div className=" w-[4px] h-[4px] mt-[12px]  bg-white rounded-full mr-2 " />
+          </SwiperSlide> 
+            <SwiperSlide> 
+              <div ref={ref1} className=" w-full h-full flex flex-col items-center justify-center  " >  
+                <div id="slides">
+                  <ul className="roller">
+                    <li className=" " >
+                      <div className=" bg-black absolute inset-0 bg-opacity-50 " />
+                      <img alt="" className=" h-full object-cover " src="/img/creator.png" /></li> 
+                  </ul>
+                </div>  
+                <div className=" relative max-w-3xl pt-12 z-50 " > 
+                  <p className=" font-bold  text-5xl text-center mt-12 text-[#8369F4] ">Music Creators</p>  
+                  <motion.div
+                    initial={{ y: -100, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}  className=" py-2 mt-6 px-1 " >
+                    <div className=" flex text-white font-medium " >
+                      <div className=" w-fit " > 
+                        <div className=" w-[4px] h-[4px] mt-[12px]  bg-white rounded-full mr-2 " />
+                      </div>
+                      <p className=" txt font-medium text-xl  " >Introducing multiple revenue streams for creators, access to a direct source of startup funding from their following, which can be used for production costs, touring, branding, etc.</p>
                     </div>
-                    <p className=" txt font-medium text-xl  " >Introducing multiple revenue streams for creators, access to a direct source of startup funding from their following, which can be used for production costs, touring, branding, etc.</p>
-                  </div>
-                  <div className=" flex mt-2  " >
-                    <div className=" w-fit " > 
-                      <div className=" w-[4px] h-[4px] mt-[12px]  bg-white rounded-full mr-2 " />
+                    <div className=" flex mt-2  " >
+                      <div className=" w-fit " > 
+                        <div className=" w-[4px] h-[4px] mt-[12px]  bg-white rounded-full mr-2 " />
+                      </div>
+                      <p className=" txt font-medium text-xl ">Looking to create and monetize on their terms, free of algorithms, brands, and ads.</p>
                     </div>
-                    <p className=" txt font-medium text-xl ">Looking to create and monetize on their terms, free of algorithms, brands, and ads.</p>
-                  </div>
-                </motion.div> 
+                  </motion.div> 
+                </div>
+              </div> 
+            </SwiperSlide>
+            <SwiperSlide> 
+              <div ref={ref2} className=" w-full h-full flex flex-col items-center justify-center  " >  
+                <div id="slides">
+                  <ul className="roller">
+                    <li className=" " >
+                      <div className=" bg-black absolute inset-0 bg-opacity-50 " />
+                      <img alt="" className=" h-full object-cover " src="/img/creator.png" /></li> 
+                  </ul>
+                </div>  
+                <div className=" relative max-w-3xl pt-12 z-50 " > 
+                  <p className=" font-bold  text-5xl text-center mt-12 text-[#8369F4] ">Music Creators</p>  
+                  <motion.div
+                    initial={{ y: -100, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}  className=" py-2 mt-6 px-1 " >
+                    <div className=" flex text-white font-medium " >
+                      <div className=" w-fit " > 
+                        <div className=" w-[4px] h-[4px] mt-[12px]  bg-white rounded-full mr-2 " />
+                      </div>
+                      <p className=" txt font-medium text-xl  " >Introducing multiple revenue streams for creators, access to a direct source of startup funding from their following, which can be used for production costs, touring, branding, etc.</p>
+                    </div>
+                    <div className=" flex mt-2  " >
+                      <div className=" w-fit " > 
+                        <div className=" w-[4px] h-[4px] mt-[12px]  bg-white rounded-full mr-2 " />
+                      </div>
+                      <p className=" txt font-medium text-xl ">Looking to create and monetize on their terms, free of algorithms, brands, and ads.</p>
+                    </div>
+                  </motion.div> 
+                </div>
               </div>
-            </div> 
-          </SwiperSlide>
+            </SwiperSlide> 
           <SwiperSlide> 
             <div className=" w-full h-full flex flex-col items-center justify-center  " > 
               <div id="slides">
@@ -172,38 +197,6 @@ export default function WhySection() {
                 </motion.div> 
               </div>
             </div>
-            <div className="  "  ref={ref1}/>
-          </SwiperSlide>
-          <SwiperSlide> 
-            <div className=" w-full h-full flex flex-col items-center justify-center  " > 
-              <div id="slides">
-                <ul className="roller">
-                  <li className=" " >
-                    <div className=" bg-black absolute inset-0 bg-opacity-50 " />
-                    <img alt="" className=" h-full object-cover " src="/img/creator.png" /></li> 
-                </ul>
-              </div>  
-              <div className=" relative max-w-3xl pt-12 z-50 " > 
-                <p className=" font-bold  text-5xl text-center mt-12 text-[#8369F4] ">Music Creators</p>  
-                <motion.div
-                  initial={{ y: -100, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}  className=" py-2 mt-6 px-1 " >
-                  <div className=" flex text-white font-medium " >
-                    <div className=" w-fit " > 
-                      <div className=" w-[4px] h-[4px] mt-[12px]  bg-white rounded-full mr-2 " />
-                    </div>
-                    <p className=" txt font-medium text-xl  " >Introducing multiple revenue streams for creators, access to a direct source of startup funding from their following, which can be used for production costs, touring, branding, etc.</p>
-                  </div>
-                  <div className=" flex mt-2  " >
-                    <div className=" w-fit " > 
-                      <div className=" w-[4px] h-[4px] mt-[12px]  bg-white rounded-full mr-2 " />
-                    </div>
-                    <p className=" txt font-medium text-xl ">Looking to create and monetize on their terms, free of algorithms, brands, and ads.</p>
-                  </div>
-                </motion.div> 
-              </div>
-            </div>
-            <div className="  "  ref={ref2}/>
           </SwiperSlide> 
         </Swiper> 
       </div>
