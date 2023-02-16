@@ -48,11 +48,11 @@ export default function Product() {
                             <img className=' w-full mt-4 ' alt='' src='/img/product.png' />
                     </div>
                 </li>
-                <li className="timeline-event">
+                {/* <li className="timeline-event">
                     <label className="timeline-event-icon"></label>
                     <div className="timeline-event-copy">
-                        <p className="timeline-event-thumbnail !text-xl !font-semibold !px-12 flex justify-center items-center ">MUSIC</p>
-                        <p className='txt font-bold text-[20px] text-white  ' >World</p>
+                        <p className="timeline-event-thumbnail !text-base rounded-[8px] !font-semibold !px-12 flex justify-center items-center">MUSIC</p>
+                        <p className=' !leading-normal txt font-bold text-[20px] text-white  ' >World</p>
                         <div className=' flex  ' >
                             <div className=' w-fit mr-3 mt-[11px] ' >
                                 <div className=' w-[5px] h-[5px] rounded-full bg-white ' />
@@ -79,12 +79,12 @@ export default function Product() {
                         </div>
                             <img className=' w-full mt-4 ' alt='' src='/img/product.png' />
                     </div>
-                </li>
+                </li> */}
                 <li className="timeline-event">
                     <label className="timeline-event-icon"></label>
                     <div className="timeline-event-copy">
-                        <p className="timeline-event-thumbnail !text-xl !font-semibold !px-12 flex justify-center items-center ">2. AUDIO/VIDEO STREAMING </p>
-                        <p className='txt font-bold text-[20px] text-white  ' >Inventing an incentive-based experience for streaming video/audio contents.</p>
+                        <p className="timeline-event-thumbnail !text-base rounded-[8px] !font-semibold !px-12 flex justify-center items-center">2. AUDIO/VIDEO STREAMING </p>
+                        <p className=' !leading-normal txt font-bold text-[20px] text-white  ' >Inventing an incentive-based experience for streaming video/audio contents.</p>
                         <div className=' flex  ' >
                             <div className=' w-fit mr-3 mt-[11px] ' >
                                 <div className=' w-[5px] h-[5px] rounded-full bg-white ' />
@@ -121,8 +121,8 @@ export default function Product() {
                 <li className="timeline-event">
                     <label className="timeline-event-icon"></label>
                     <div className="timeline-event-copy">
-                        <p className="timeline-event-thumbnail !text-xl !font-semibold !px-12 flex justify-center items-center ">3. MUSIC NFT MARKETPLACE</p>
-                        <p className='txt font-bold text-[20px] text-white  ' >Next generation of interoperable music NFTs at its finest - Music NFT Player.</p>
+                        <p className="timeline-event-thumbnail !text-base rounded-[8px] !font-semibold !px-12 flex justify-center items-center">3. MUSIC NFT MARKETPLACE</p>
+                        <p className=' !leading-normal txt font-bold text-[20px] text-white  ' >Next generation of interoperable music NFTs at its finest - Music NFT Player.</p>
                         <div className=' flex  ' >
                             <div className=' w-fit mr-3 mt-[11px] ' >
                                 <div className=' w-[5px] h-[5px] rounded-full bg-white ' />
@@ -147,8 +147,8 @@ export default function Product() {
                 <li className="timeline-event">
                     <label className="timeline-event-icon"></label>
                     <div className="timeline-event-copy">
-                        <p className="timeline-event-thumbnail !text-xl !font-semibold !px-12 flex justify-center items-center ">4. SOCIALFI</p>
-                        <p className='txt font-bold text-[20px] text-white  ' >Diversifying revenue streams for music and content creators - Crypto for Communities.</p>
+                        <p className="timeline-event-thumbnail !text-base rounded-[8px] !font-semibold !px-12 flex justify-center items-center">4. SOCIALFI</p>
+                        <p className=' !leading-normal txt font-bold text-[20px] text-white  ' >Diversifying revenue streams for music and content creators - Crypto for Communities.</p>
                         <div className=' flex  ' >
                             <div className=' w-fit mr-3 mt-[11px] ' >
                                 <div className=' w-[5px] h-[5px] rounded-full bg-white ' />
@@ -173,15 +173,9 @@ export default function Product() {
                 <li className="timeline-event">
                     <label className="timeline-event-icon"></label>
                     <div className="timeline-event-copy">
-                        <p className="timeline-event-thumbnail !text-xl !font-semibold !px-12 flex justify-center items-center ">MUSIC</p>
-                        <p className='txt font-bold text-[20px] text-white  ' >5. LOOZRVERSE</p>
+                        <p className="timeline-event-thumbnail !text-base rounded-[8px] !font-semibold !px-12 flex justify-center items-center">5. LOOZRVERSE</p>
+                        <p className=' !leading-normal txt font-bold text-[20px] text-white  ' >First-ever location-based immersive Metaverse (AR/VR) with gamified, incentivized and interactive experiences for businesses, events, and creators.</p>
                         <div className=' flex  ' >
-                            <div className=' w-fit mr-3 mt-[11px] ' >
-                                <div className=' w-[5px] h-[5px] rounded-full bg-white ' />
-                            </div>
-                            <p className=' wow txt !text-[14.7px] text-white !font-normal mt-1 !leading-normal ' >First-ever location-based immersive Metaverse (AR/VR) with gamified, incentivized and interactive experiences for businesses, events, and creators.</p>
-                        </div>
-                        <div className=' flex -mt-3  ' >
                             <div className=' w-fit mr-3 mt-[11px] ' >
                                 <div className=' w-[5px] h-[5px] rounded-full bg-white ' />
                             </div>
