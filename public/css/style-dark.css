@@ -1389,6 +1389,18 @@ body {
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
   opacity: 0.3;
 }
+.sec-head2 .tbg {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 10vw;
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+  opacity: 0.3;
+}
 .sec-head.tr-head {
   text-align: right;
   margin-bottom: 0;
