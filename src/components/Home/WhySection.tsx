@@ -112,7 +112,7 @@ export default function WhySection() {
       <div className={ " w-full !bg-[#0c0f15] pt-24 flex flex-col  h-[100vh] "} >
         <div className="w-full flex items-center relative lg:px-24 mb-12 ">
           <div className="sec-head custom-font  w-full text-left">
-            <h6 id="gradenttext" className=" leading-[1.8] relative  !font-medium !text-[15px] " data-wow-delay=".5s">
+            <h6 id="gradenttext" className=" leading-[1.8] relative !font-medium !text-[15px] " data-wow-delay=".5s">
               WHO ARE WE
             </h6>
             <p className=" !font-bold txt !text-white text-left mt-8 !leading-[1.1] !text-[80px]" data-splitting>
