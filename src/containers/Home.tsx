@@ -25,10 +25,8 @@ export default function Home() {
           </div>
         </div>
         <div className=" relative w-full z-10  !bg-[#0c0f15]   " > 
-          <ArtistShowcase />
-          <div className=" w-full h-[100vh] relative " >
-            <WhySection />
-          </div>
+          <ArtistShowcase /> 
+          <WhySection /> 
           <FlagShip />
           <FeatureSection />
           <FAQ />  

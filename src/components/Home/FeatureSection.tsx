@@ -8,7 +8,7 @@ export default function FeatureSection() {
                     <p className="wow fadeIn !text-[#0C0F15] txt !font-extrabold !leading-[1.1] !text-4xl " data-wow-delay=".5s">
                         FEATURES 
                     </p>
-                <p className="wow txt !text-[14.6px] !leading-normal  mt-4 !font-normal text-[#0C0F15] lg:max-w-2xl" >Loozr empowers creators through various services, which they can utilize via the following features:</p>
+                    <p className="wow txt !text-[14.6px] !leading-normal  mt-4 !font-normal text-[#0C0F15] lg:max-w-2xl" >Loozr empowers creators through various services, which they can utilize via the following features:</p>
                      
                 </div>
                 <div className=' w-full  grid grid-cols-1 lg:grid-cols-3 gap-9 mt-8 mb-20 ' >

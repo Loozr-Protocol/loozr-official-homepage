@@ -13,7 +13,7 @@ export default function ArtistShowcase() {
   return (
     <>
       <div
-        className="views-element-container work-carousel !bg-[#11151D] mt-5 section-padding metro position-re mb-80"
+        className="views-element-container work-carousel !bg-[#11151D] mt-5 section-padding metro position-re pb-80"
         id="block-views-block-nv-section-content-block-service"
       >
         <div className="container !bg-[#11151D]">
