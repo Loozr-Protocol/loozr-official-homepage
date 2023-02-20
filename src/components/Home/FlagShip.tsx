@@ -3,19 +3,19 @@ import React from 'react'
 export default function FlagShip() {
     return (
         <> 
-            <div className=' w-full pt-24 px-20 flex flex-col !bg-[#0c0f15] items-center ' > 
-                <div className="sec-head text-center relative "> 
+            <div className=' w-full pt-24 px-20 !bg-[#0c0f15] items-start ' > 
+                <div className="sec-head text-left relative "> 
                     <h6 id="gradenttext" className="wow !tracking-[0.4em] fadeIn txt !font-medium !text-[14px] " data-wow-delay=".5s">
                         5 FLAGSHIP SOLUTIONS
                     </h6>
-                    <p className=" txt !font-black  !text-center !text-white mt-4 !leading-[1.1] !text-4xl">
+                    <p className=" txt !font-black  !text-left !text-white mt-4 !leading-[1.1] !text-4xl">
                         LOOZR PRODUCTS
                     </p>
-                    <span className="tbg !absolute !right-0">Product</span>
+                    <span className="tbg !left-[9.5vw] !top-1">Product</span>
                 </div>
-                <p className="wow txt !text-[14.6px] text-center !leading-normal text-white !font-normal -mt-14 mb-10 lg:max-w-2xl " >Revolutionizing the music industry with 5 self-sustaining standalone solutions that bridge economic and entertainment services in the music industry.</p>
+                <p className="wow txt !text-[14.6px] text-left !leading-normal text-white !font-normal -mt-14 mb-10 lg:max-w-2xl " >Revolutionizing the music industry with 5 self-sustaining standalone solutions that bridge economic and entertainment services in the music industry.</p>
                 <button className=' h-[50px] px-9 rounded-full border !border-[#12161e] text-white mt-5 ' >Learn more</button>
-                <div className=' w-full grid grid-cols-1 lg:grid-cols-3 gap-9 mt-8 mb-20 ' >
+                <div className=' w-full grid grid-cols-1 lg:grid-cols-4 gap-9 gap-y-3 mt-8 mb-20 ' >
                     <div className=' w-full ' >
                         <div className=' w-[110px] h-[100px] flex justify-center items-center ' >
                             <img className=' w-[65%] ' src='/img/flag/1.png' alt='' />
