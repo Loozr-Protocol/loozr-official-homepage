@@ -11,7 +11,7 @@ export default function FeatureSection() {
                     <p className="wow txt !text-[14.6px] !leading-normal  mt-4 !font-normal text-[#0C0F15] lg:max-w-2xl" >Loozr empowers creators through various services, which they can utilize via the following features:</p>
                      
                 </div>
-                <div className=' w-full  grid grid-cols-1 lg:grid-cols-3 gap-9 mt-8 mb-20 ' >
+                <div className=' w-full  grid grid-cols-1 lg:grid-cols-4 gap-y-3 gap-9 mt-8 mb-20 ' >
                     <div className=' w-full ' > 
                         <p className=' txt font-bold mt-3 text-[20px] !text-[#0C0F15] leading-normal ' >Instant Tokenization & Trading</p>
                         <p className='wow txt !text-[14.7px] !font-normal mt-1  !text-[#0C0F15]  leading-normal ' >Investible music for all. </p>
