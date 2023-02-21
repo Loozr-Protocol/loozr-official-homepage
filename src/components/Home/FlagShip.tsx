@@ -20,35 +20,35 @@ export default function FlagShip() {
                         <div className=' w-[110px] h-[100px] flex justify-center items-center ' >
                             <img className=' w-[65%] ' src='/img/flag/1.png' alt='' />
                         </div>
-                        <p className=' txt font-bold mt-3 text-[20px] text-white ' >Music Token Launchpad</p>
+                        <p className=' txt font-bold mt-3 text-[20px] text-white !leading-tight ' >Music Token Launchpad</p>
                         <p className='wow txt !text-[14.7px] text-[#9EAAC0] !font-normal mt-1 !leading-normal ' >World’s first tokenized, collaborative and investible songs.</p>
                     </div>
                     <div className=' w-full ' >
                         <div className=' w-[110px] h-[100px] flex justify-center items-center ' >
                             <img className=' w-[65%] ' src='/img/flag/2.png' alt='' />
                         </div>
-                        <p className=' txt font-bold mt-3 text-[20px] text-white ' >Audio/Video Streaming</p>
+                        <p className=' txt font-bold mt-3 text-[20px] text-white !leading-tight ' >Audio/Video Streaming</p>
                         <p className='wow txt !text-[14.7px] text-[#9EAAC0] !font-normal mt-1 !leading-normal ' >Inventing an incentive-based experience for streaming video/audio contents.</p>
                     </div>
                     <div className=' w-full ' >
                         <div className=' w-[110px] h-[100px] flex justify-center items-center ' >
                             <img className=' w-[65%] ' src='/img/flag/3.png' alt='' />
                         </div>
-                        <p className=' txt font-bold mt-3 text-[20px] text-white ' >Music NFT Marketplace</p>
+                        <p className=' txt font-bold mt-3 text-[20px] text-white !leading-tight ' >Music NFT Marketplace</p>
                         <p className='wow txt !text-[14.7px] text-[#9EAAC0] !font-normal mt-1 !leading-normal ' >Next generation of interoperable music NFTs at its finest - Music NFT Player.</p>
                     </div>
                     <div className=' w-full ' >
                         <div className=' w-[110px] h-[100px] flex justify-center items-center ' >
                             <img className=' w-[65%] ' src='/img/flag/4.png' alt='' />
                         </div>
-                        <p className=' txt font-bold mt-3 text-[20px] text-white ' >SocialFi</p>
+                        <p className=' txt font-bold mt-3 text-[20px] text-white !leading-tight ' >SocialFi</p>
                         <p className='wow txt !text-[14.7px] text-[#9EAAC0] !font-normal mt-1 !leading-normal ' >Diversifying revenue streams for music and content creators - Crypto for Communities.</p>
                     </div>
                     <div className=' w-full ' >
                         <div className=' w-[110px] h-[100px] flex justify-center items-center ' >
                             <img className=' w-[65%] ' src='/img/flag/5.png' alt='' />
                         </div>
-                        <p className=' txt font-bold mt-3 text-[20px] text-white ' >LOOZRverse</p>
+                        <p className=' txt font-bold mt-3 text-[20px] text-white !leading-tight ' >LOOZRverse</p>
                         <p className='wow txt !text-[14.7px] text-[#9EAAC0] !font-normal mt-1 !leading-normal ' >First-ever location-based immersive Metaverse (AR/VR) with gamified, incentivized and interactive experiences for businesses, events, and creators.</p>
                     </div>
                 </div>

@@ -152,7 +152,7 @@ export default function WhySection() {
   return (
     <>  
       <div className={ " w-full !bg-[#11151D] pt-8 pb-24 flex flex-col "} >
-        <div className="w-full flex md:flex-row flex-col items-center relative px-6 md:px-24 ">
+        <div className="w-full flex lg:flex-row flex-col items-center relative px-6 md:px-24 ">
           <div className="sec-head custom-font  w-full text-left">
             <h6 id="gradenttext" className=" wow !tracking-[0.4em] fadeIn txt !font-medium !text-[14px]" data-wow-delay=".5s">
               WHO ARE WE BUILDING FOR?
@@ -162,7 +162,7 @@ export default function WhySection() {
               Independence.
             </p>
           </div> 
-          <div className=" w-full relative md:pt-14 sec-head " > 
+          <div className=" w-full relative lg:pt-14 sec-head " > 
             <span className="tbg md:block hidden ">BUILDING</span>
               <p className=" font-normal leading-normal md:mt-0 -mt-10 !text-[#9EAAC0] text-[17px] md:mx-auto txt lg:max-w-md " >Open web democratizing music industry participation, investible talents, community-driven ownership, better monetization, incentivized social interactions, and growth.</p>
           </div>

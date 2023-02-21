@@ -166,7 +166,7 @@ input.lower { text-transform: uppercase; }
 }
 
 #gradenttext {  
-  background: linear-gradient(255.45deg, #8369F4 39.69%, #F039E2 65.08%);
+  background: linear-gradient(255.45deg, #8369F4 39.69%, #F039E2 55.08%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }  

@@ -9,15 +9,15 @@ export default function Team() {
           <div className="row">
             <div className="col-lg-5 valign">
               <div className="content wow fadeInUp" data-wow-delay=".5s">
-                <div className="sub-title">
-                  <h6>The Team</h6>
+                <div className="sec-head custom-font !mb-0 ">
+                  <h6 id="gradenttext" className="wow  fadeIn leading-[1.8] !font-medium !text-[15px] " data-wow-delay=".5s" >The Team</h6>
                 </div>
-                <h3 className="co-tit custom-font mb-15">
+                <h3 className="co-tit custom-font !font-bold !text-[35px]  mb-15">
                   Driven by the vision of creating a new future that puts
                   creators first and employ DeFi to enable everyone to tokenize
                   their potential.
                 </h3>
-                <p>
+                <p className=" text-white !text-[14.4px] !font-normal  " >
                   View the LiteDoc to see the most up-to-date list of members
                   and collaborators.
                 </p>

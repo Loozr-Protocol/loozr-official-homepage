@@ -50,7 +50,7 @@ export default function RoadMap() {
       <div className="views-element-container services mt-70">
         <div className="container">
           <div className="sec-head custom-font text-center">
-            <h6 className="wow fadeIn" data-wow-delay=".5s">
+            <h6 id="gradenttext"  className="wow  fadeIn leading-[1.8] !font-medium !text-[15px] " data-wow-delay=".5s">
               GOALS & PLANS
             </h6>
             <h3 className="wow" data-splitting>
