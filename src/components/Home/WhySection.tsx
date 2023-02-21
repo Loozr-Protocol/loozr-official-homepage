@@ -157,7 +157,7 @@ export default function WhySection() {
             <h6 id="gradenttext" className=" wow !tracking-[0.4em] fadeIn txt !font-medium !text-[14px]" data-wow-delay=".5s">
               WHO ARE WE BUILDING FOR?
             </h6>
-            <p className=" !font-black txt text-left mt-4 !leading-[1.1] text-3xl md:!text-[65px]" data-splitting>
+            <p className=" !font-black txt text-left mt-4 !leading-[1.1] !text-white text-3xl md:!text-[65px]" data-splitting>
               Empowering <br/>
               Independence.
             </p>
@@ -168,7 +168,7 @@ export default function WhySection() {
           </div>
         </div>    
         <div className=" w-full md:block hidden lg:w-[80%] -mt-4 " > 
-          <Carousel slides={slides} autoplay={true} arrows={false} interval={4000} /> 
+          <Carousel slides={slides} autoplay={true}  interval={4000} /> 
         </div> 
         <div className=" px-2 w-full md:hidden " > 
           <div className="w-full relative  " > 

@@ -24,7 +24,7 @@ export default function FAQ() {
                 </h3>
                 <span className="tbg">Answers</span>
             </div>
-            <div className=' w-full flex md:flex-row flex-col mt-6 mb-20 ' >
+            <div className=' w-full flex lg:flex-row flex-col mt-6 mb-20 ' >
                 <div className=' w-full flex justify-center pr-10 ' >
                     <p className=' max-w-[450px] text-white wow txt !text-[14.7px] !font-normal  ' >Haven’t found what you’re looking for?
                         Try emailing <span  id="gradenttext" >support@loozr.io</span> — we’re here to help.</p>

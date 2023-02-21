@@ -7,7 +7,7 @@ export default function Footer() {
         <div className=" w-full grid grid-cols-1 lg:grid-cols-4 gap-12 pb-4 !pt-12" >
           <div className=" w-full " >
             <Link to="/" className="logo ">
-              <img className="logo-light h-10 " src="/img/logo-light.png" alt="Home" />
+              <img className="logo-light md:w-auto w-[40%] md:h-10 " src="/img/logo-light.png" alt="Home" />
             </Link>
             <p className=" font-medium mt-6 text-base txt text-[#536079] " >Social music streaming and DeFi platform for creators and music lovers. </p>
           </div>

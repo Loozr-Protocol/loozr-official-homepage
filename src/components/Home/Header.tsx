@@ -65,8 +65,8 @@ export default function Header() {
           <div className="mt-100 hero-content">
             <div className="d-flex">
               <div className="md:col-12 md:col-md-7 md:!pl-10  md:px-remove-all"> 
-                <div className=" w-full relative text-5xl md:!text-[68px] !font-bold " > 
-                <p className=" main-title -mb-[2px] md:mb-8 flex !font-bold !text-5xl md:!text-[68px] !text-white  wow" >
+                <div className=" w-full relative text-5xl md:!text-[68px] !font-black " > 
+                <p className=" main-title mb-[6px] md:mb-3 flex !font-black !text-5xl md:!text-[68px] !text-white  wow" >
                   <p >
                     {array.map((item: any, index: any) => {
                       return( 
@@ -89,16 +89,16 @@ export default function Header() {
                 <p className="mt-10 txt text-[14px] !font-medium  ">
                   Don’t just stream; earn and succeed with artists!
                 </p>
-                <div className="mt-20  flex ">
+                <div className="mt-20 flex ">
                   <a
                     href="https://loozr-1.gitbook.io/docs/"
-                    className="button btn-lit mr-3 w-full !flex justify-center items-center "
+                    className="button btn-lit mr-3 !flex justify-center items-center "
                   >
                     <span>Learn more</span>
                   </a>
                   <a
                     href="https://testnet.loozr.io/explore"
-                    className="button btn-primary btn-lit w-full !flex justify-center items-center"
+                    className="button btn-primary btn-lit !flex justify-center items-center"
                   >
                   Join Testnet
                   </a>
