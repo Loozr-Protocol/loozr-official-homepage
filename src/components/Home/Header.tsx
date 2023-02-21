@@ -65,7 +65,7 @@ export default function Header() {
           <div className="mt-100 hero-content">
             <div className="d-flex">
               <div className="md:col-12 md:col-md-7 md:!pl-10  md:px-remove-all"> 
-                <div className=" w-full relative text-5xl md:!text-[68px] !font-black " > 
+                <div className=" w-full relative main-title mb-[6px] md:mb-3 !font-black !text-5xl md:!text-[68px] !text-white  wow" > 
                 <p className=" main-title mb-[6px] md:mb-3 flex !font-black !text-5xl md:!text-[68px] !text-white  wow" >
                   <p >
                     {array.map((item: any, index: any) => {
