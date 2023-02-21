@@ -55,27 +55,7 @@ const Carousel = () => {
       link: "https://medium.com/@officialloozr/loozr-is-bringing-music-investing-and-streaming-to-the-near-protocol-5c8688b07c3",
       month:"Jun"
     },
-  ] 
-  // const numberOfSlides = 3;
-  // const paneNodes = Array.apply(null, Array(numberOfSlides)).map((_, i) => {
-  //   return (
-  //     <div
-  //       key={i}
-  //       className="w-full  min-h-[210px] bg-no-repeat bg-cover bg-center pl-8 py-7 flex flex-col justify-end mb-7 relative"
-  //       style={{ background: `url(${Banner})`, backgroundColor: "#000" }}
-  //     >
-  //       <p>
-  //         <span className="text-loozr-purple font-medium text-[13px]">
-  //           MUSIC
-  //         </span>{" "}
-  //         <span className="text-xs">/ 2 months ago</span>
-  //       </p>
-  //       <p className="text-white font-semibold text-[17px] leading-7 max-w-[300px]">
-  //         DISCOVER, BUY & SELL ARTISTE Coins.
-  //       </p> 
-  //     </div>
-  //   );
-  // });
+  ]  
  
 
   React.useEffect(() => { 
@@ -119,14 +99,7 @@ const Carousel = () => {
                 </a>
               }
             </AnimatePresence> 
-          )})} 
-          {/* <div className=" w-full flex justify-center absolute bottom-4 " >
-            {images.map((item: any, index: any) => { 
-              return(
-                <div onClick={()=> setIsShown(index) } key={item} className={isShown === index ? " w-2 h-2 bg-loozr-purple rounded-full mx-1 cursor-pointer " : " w-2 h-2 bg-white rounded-full mx-1 cursor-pointer "} /> 
-              )
-            })}
-          </div> */}
+          )})}  
     </div>
   )
 };

@@ -3,7 +3,7 @@ import React from 'react'
 export default function FeatureSection() {
     return ( 
         <> 
-            <div className=' w-full bg-[#8369F4] !text-[#0C0F15]  px-20 py-8 lg:py-0 lg:pt-20 relative ' > 
+            <div className=' w-full bg-[#8369F4] !text-[#0C0F15] px-6 md:px-20 py-8 lg:py-0 lg:pt-20 relative ' > 
                 <div className=" ">
                     <p className="wow fadeIn !text-[#0C0F15] txt !font-extrabold !leading-[1.1] !text-4xl " data-wow-delay=".5s">
                         FEATURES 
@@ -49,17 +49,17 @@ export default function FeatureSection() {
                         <p className='wow txt !text-[14.7px] !font-normal mt-1  !text-[#0C0F15]  leading-normal ' >Loozr's <span className=' text-white ' >#Listen2Earn</span> model allows music lovers to earn tokens whenever their favourite music is played.</p>
                     </div>
                 </div> 
-                <div className=' w-full h-[400px] ' > 
+                <div className=' w-full lg:block hidden md:h-[400px] ' > 
                     <div className=' w-full flex absolute right-0 bottom-0 justify-end ' > 
-                        <img className=' w-[75%] ' src='/img/Feature.png' alt='' />
+                        <img className=' w-full md:w-[75%] ' src='/img/Feature.png' alt='' />
                     </div>
                 </div>
             </div>
-            <div className='!px-20 my-28  ' > 
-                <div className=' bg-[#11151D] h-[140px] flex lg:justify-start justify-center pl-[140px] items-center ' >
+            <div className=' px-6 md:!px-20 my-28  ' > 
+                <div className=' bg-[#11151D] h-[140px] flex lg:justify-start justify-center pl-6 md:pl-[140px] items-center ' >
                     <p className=' txt !font-medium text-xl text-white ' >ROADMAP WORKING PERFECTLY </p>
                 </div>
-                <div className=' bg-[#11151D] mt-4 h-[140px] flex lg:justify-start justify-center pl-[140px] items-center ' >
+                <div className=' bg-[#11151D] mt-4 h-[140px] flex lg:justify-start justify-center pl-6 md:pl-[140px] items-center ' >
                     <p className=' txt !font-medium text-xl text-white ' >“TEAM”  WORKING PERFECTLY </p>
                 </div>
             </div>
