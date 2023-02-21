@@ -55,14 +55,14 @@ export default function FeatureSection() {
                     </div>
                 </div>
             </div>
-            <div className=' px-6 md:!px-20 my-28  ' > 
+            {/* <div className=' px-6 md:!px-20 my-28  ' > 
                 <div className=' bg-[#11151D] h-[140px] flex lg:justify-start justify-center pl-6 md:pl-[140px] items-center ' >
                     <p className=' txt !font-medium text-xl text-white ' >ROADMAP WORKING PERFECTLY </p>
                 </div>
                 <div className=' bg-[#11151D] mt-4 h-[140px] flex lg:justify-start justify-center pl-6 md:pl-[140px] items-center ' >
                     <p className=' txt !font-medium text-xl text-white ' >“TEAM”  WORKING PERFECTLY </p>
                 </div>
-            </div>
+            </div> */}
         </>
     )
 }

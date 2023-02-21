@@ -53,11 +53,11 @@ export default function FlagShip() {
                     </div>
                 </div>
             </div> 
-            <div className='  w-full justify-center !pb-40 px-6 md:px-20 ' >
+            {/* <div className='  w-full justify-center !pb-40 px-6 md:px-20 ' >
                 <div className=' bg-[#11151D] h-[180px] w-full pl-12 flex justify-center items-center ' >
                     <p className=' txt !font-medium text-xl w-full text-white ' >“HOW IT WORKS” WORKING PERFECTLY HERE </p>
                 </div>
-            </div>
+            </div> */}
         </>
     )
 } 

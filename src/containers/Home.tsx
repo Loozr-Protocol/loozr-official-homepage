@@ -27,14 +27,15 @@ export default function Home() {
         <div className=" relative w-full z-10  !bg-[#0c0f15]   " > 
           <ArtistShowcase /> 
           <WhySection /> 
-          <FlagShip />
+          <FlagShip /> 
+          <Services />
           <FeatureSection />
+          <RoadMap />
+          <Team />
           <FAQ />  
         </div>
-        {/* <Services />
-        <RoadMap />
+        {/*
         <Tokenomics />
-        <Team />
         <Community /> */}
       </div>
     </>
