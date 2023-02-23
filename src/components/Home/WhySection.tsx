@@ -81,7 +81,7 @@ export default function WhySection() {
 
   return (
     <>  
-      <div className={ " w-full !bg-[#11151D] pt-8 pb-24 flex flex-col "} >
+      <div className={ " w-full !bg-[#11151D] pt-8 pb-24 hidden md:flex flex-col "} >
         <div className="w-full flex lg:flex-row flex-col items-center relative px-6 md:px-24 ">
           <div className="sec-head custom-font  w-full text-left">
             <h6 id="gradenttext" className=" wow !tracking-[0.4em] fadeIn txt !font-medium !text-[14px]" data-wow-delay=".5s">

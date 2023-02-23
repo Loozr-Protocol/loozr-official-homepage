@@ -27,7 +27,7 @@ export default function Home() {
         </div>
         <div className=" relative w-full z-10  !bg-[#0c0f15]   " > 
           <ArtistShowcase /> 
-          <div className=" w-full md:block " > 
+          <div className=" w-full hidden md:block " > 
             <WhySection /> 
           </div>
           <div className=" w-full md:hidden " > 
