@@ -11,6 +11,7 @@ import FlagShip from "../components/Home/FlagShip";
 import FeatureSection from "../components/Home/FeatureSection";
 import FAQ from "../components/Home/FAQ";
 import { Parallax, Background } from 'react-parallax';
+import MobileWhySection from "../components/Home/MobileWhySection";
 
 export default function Home() {
   return (
@@ -26,7 +27,12 @@ export default function Home() {
         </div>
         <div className=" relative w-full z-10  !bg-[#0c0f15]   " > 
           <ArtistShowcase /> 
-          <WhySection /> 
+          <div className=" w-full md:block " > 
+            <WhySection /> 
+          </div>
+          <div className=" w-full md:hidden " > 
+            <MobileWhySection /> 
+          </div>
           <FlagShip /> 
           <Services />
           <FeatureSection />

@@ -7,7 +7,7 @@ import WaitlistModal from "./components/WaitlistModal";
 import AppLayout from "./components/Layout/App";
 import { authRoutes, dashboard, dashboardhome, routes } from "./router/routes";
 import Dashboard from "./components/Layout/dashboard";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux"; 
 import { getUserDetails } from "./state/user/userActions";
 import { AppState } from "./state/store";
 import RequireAuth, { AccountSetupCheckOnly } from "./containers/RequireAuth";

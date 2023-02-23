@@ -14,6 +14,7 @@ import { API_BASE_ENDPOINT } from "./config/constants/endpoints";
 import LogRocket from "logrocket";
 import { getUserDetails } from "./state/user/userActions";
 import { parseJwt } from "./utils/index";
+import { ChakraProvider } from "@chakra-ui/react";
 
 declare global {
   interface Window {
@@ -95,9 +96,11 @@ if (process.env.NODE_ENV === "production") {
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+      <Provider store={store}>
+        <ChakraProvider>
+            <App />
+        </ChakraProvider>
+      </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );
