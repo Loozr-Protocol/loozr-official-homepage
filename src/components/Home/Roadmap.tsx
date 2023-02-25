@@ -53,7 +53,7 @@ export default function RoadMap() {
             <h6 id="gradenttext"  className="wow  fadeIn leading-[1.8] !font-medium !text-[15px] " data-wow-delay=".5s">
               GOALS & PLANS
             </h6>
-            <h3 className="wow" data-splitting>
+            <h3 className="wow text-white" data-splitting>
               ROADMAP
             </h3>
             <span className="tbg">ROADMAP</span>
@@ -72,7 +72,7 @@ export default function RoadMap() {
                     <h6 className="mt-10">{quota.label}</h6>
                     <ul className="list-unstyled">
                       {quota.agendas.map((agenda, i) => (
-                        <li key={i}><span></span> {agenda}</li>
+                        <li className="text-white" key={i}><span></span> {agenda}</li>
                       ))}
                     </ul>
                   </div>

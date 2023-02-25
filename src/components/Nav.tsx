@@ -134,12 +134,12 @@ function Nav() {
                       </div> 
                       {tab && ( 
                         <div className=" font-semibold z-20 flex flex-col py-3 px-4  " >
-                          <a onClick={()=> setTab(false)} target="_blank" href="https://t.me/officialloozr" className=" text-white text-sm border-b border-[#5360791A] py-3 outline-none " >Join on Twitter</a>
-                          <a href="item" className=" text-white text-sm border-b border-[#5360791A] py-3 outline-none " >Join Telegram</a>
-                          <a href="item" className=" text-white text-sm border-b border-[#5360791A] py-3 outline-none " >Join Discord</a> 
-                          <a href="item" className=" text-white text-sm border-b border-[#5360791A] py-3 outline-none " >Join on Instagram</a>
-                          <a href="item" className=" text-white text-sm border-b border-[#5360791A] py-3 outline-none " >Follow on Tiktok</a>
-                          <a href="item" className=" text-white text-sm border-b border-[#5360791A] py-3 outline-none " >Watch Youtube</a> 
+                          <a onClick={()=> setTab(false)} target="_blank" href="https://t.me/officialloozr" className=" text-white text-base border-b border-[#5360791A] py-3 outline-none " >Join on Twitter</a>
+                          <a href="item" className=" text-white text-base border-b border-[#5360791A] py-3 outline-none " >Join Telegram</a>
+                          <a href="item" className=" text-white text-base border-b border-[#5360791A] py-3 outline-none " >Join Discord</a> 
+                          <a href="item" className=" text-white text-base border-b border-[#5360791A] py-3 outline-none " >Join on Instagram</a>
+                          <a href="item" className=" text-white text-base border-b border-[#5360791A] py-3 outline-none " >Follow on Tiktok</a>
+                          <a href="item" className=" text-white text-base border-b border-[#5360791A] py-3 outline-none " >Watch Youtube</a> 
                         </div>
                       )} 
                     </li>

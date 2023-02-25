@@ -12,7 +12,7 @@ export default function Team() {
                 <div className="sec-head custom-font !mb-0 ">
                   <h6 id="gradenttext" className="wow  fadeIn leading-[1.8] !font-medium !text-[15px] " data-wow-delay=".5s" >The Team</h6>
                 </div>
-                <h3 className="co-tit custom-font !font-bold !text-[35px]  mb-15">
+                <h3 className="co-tit custom-font text-white !font-bold !text-[35px]  mb-15">
                   Driven by the vision of creating a new future that puts
                   creators first and employ DeFi to enable everyone to tokenize
                   their potential.

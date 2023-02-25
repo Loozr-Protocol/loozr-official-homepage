@@ -8,7 +8,7 @@ export default function Services() {
         <div className="container">
           <div className="sec-head custom-font tr-head">
             <h6 id="gradenttext" className="wow  fadeIn leading-[1.8] !font-medium !text-[15px] ">HOW IT WORKS</h6>
-            <h3>SUMMARY!</h3>
+            <h3 className="text-white" >SUMMARY!</h3>
             <span className="tbg">SUMMARY!</span>
           </div>
         </div>
