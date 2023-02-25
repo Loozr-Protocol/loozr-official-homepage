@@ -19,7 +19,7 @@ function Nav() {
     <nav className="navbar navbar-expand-lg">
       <div className="container">
         <div id="block-avo-branding">
-          <Link to="/" className="logo !ml-10 ">
+          <Link to="/" className="logo lg:!ml-10 ">
             <img className="logo-light" src="/img/logo-light.png" alt="Home" />
           </Link>
         </div>
