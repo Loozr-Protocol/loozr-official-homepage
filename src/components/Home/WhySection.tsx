@@ -90,10 +90,10 @@ export default function WhySection() {
             <p className=" !font-black txt text-left mt-4 !leading-[1.1] !text-white text-3xl md:!text-[65px]" data-splitting>
               Empowering <br/>
               Independence.
-            </p>
+            </p> 
           </div> 
-          <div className=" w-full relative lg:pt-14 sec-head " > 
-            <span className="tbg md:block hidden ">BUILDING</span>
+          <div className=" w-full  lg:pt-14 sec-head custom-font " > 
+            <span className="tbg ">BUILDING</span>
               <p className=" font-normal leading-normal md:mt-0 -mt-10 !text-[#9EAAC0] text-[17px] md:mx-auto txt lg:max-w-md " >Open web democratizing music industry participation, investible talents, community-driven ownership, better monetization, incentivized social interactions, and growth.</p>
           </div>
         </div>    
