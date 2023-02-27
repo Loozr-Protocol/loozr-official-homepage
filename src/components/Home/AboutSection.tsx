@@ -51,9 +51,9 @@ export default function AboutSection() {
   return (
     <div className=" px-2 md:px-20 pt-10 relative  " >
       <div id="block-nvblockaboutindex" className="about flex">
-        <div className="container md:my-auto pt-12 mt-8 md:mt-0 md:pt-32 ">
-          <div className="sec-head custom-font mb-3  d-flex flex-column">
-            <div className=" md:pl-8 md:max-w-[500px] ">
+        <div className="container md:my-auto lg:mt-[20vh] ">
+          <div className="sec-head custom-font mb-3 lg:!flex lg:justify-center ">
+            <div className=" md:pl-8 md:max-w-[500px]">
               <h6 className="wow fadeIn !tracking-widest !text-[#536079] txt leading-[1.8] !font-medium !text-[14px] " data-wow-delay=".5s">
                 THE FIRST SOCIAL MUSIC LAYER OF WEB3.0
               </h6> 
