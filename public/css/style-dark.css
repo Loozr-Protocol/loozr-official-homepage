@@ -1386,7 +1386,7 @@ body {
   font-size: 10vw;
   font-weight: 700;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.1);
   opacity: 0.3;
 }
 .sec-head2 .tbg {
