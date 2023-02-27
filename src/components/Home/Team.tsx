@@ -3,7 +3,7 @@ export default function Team() {
     <>
       <div
         id="block-nvblockteamindex4"
-        className="team-crv section-padding pb-30"
+        className="team-crv section-padding pb-30 !px-2 md:!px-20"
       >
         <div className="container">
           <div className="row">

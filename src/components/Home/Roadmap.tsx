@@ -47,7 +47,7 @@ export default function RoadMap() {
   ];
   return (
     <>
-      <div className="views-element-container services mt-70">
+      <div className="views-element-container services !px-2 md:!px-20 mt-70">
         <div className="container">
           <div className="sec-head custom-font text-center">
             <h6 id="gradenttext"  className="wow  fadeIn leading-[1.8] !font-medium !text-[15px] " data-wow-delay=".5s">
@@ -69,7 +69,7 @@ export default function RoadMap() {
                     className="item-box xfact-item text-left wow fadeInLeft"
                     data-wow-delay=".5s"
                   >
-                    <h6 className="mt-10">{quota.label}</h6>
+                    <h6 className="mt-10 text-white ">{quota.label}</h6>
                     <ul className="list-unstyled">
                       {quota.agendas.map((agenda, i) => (
                         <li className="text-white" key={i}><span></span> {agenda}</li>
