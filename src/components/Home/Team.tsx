@@ -3,7 +3,7 @@ export default function Team() {
     <>
       <div
         id="block-nvblockteamindex4"
-        className="team-crv section-padding pb-30 !px-2 md:!px-20"
+        className="team-crv section-padding pb-30 !px-2 md:!pl-20"
       >
         <div className="container">
           <div className="row">
@@ -23,7 +23,7 @@ export default function Team() {
                 </p>
               </div>
             </div>
-            <div className="col-lg-6 offset-lg-1 sm-mt20">
+            <div className="col-lg-6 offset-lg-1 sm-mt20 !text-white">
               <div className="img-box">
                 <div className="row">
                   <div className="col-sm-6 toright">
@@ -65,8 +65,8 @@ export default function Team() {
                           className="imago wow"
                         />
                       </div>
-                      <div
-                        className="img sizsm"
+                      <div 
+                        className="img sizsm !text-white"
                         data-tooltip-tit="Ugochukwu Chukwudifu"
                         data-tooltip-sub="Product Designer"
                       >

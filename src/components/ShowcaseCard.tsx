@@ -55,7 +55,7 @@ export default function ShowcaseCard({ artist, id }: ShowcaseCardProps) {
         </div>
       </div>
       <div className="cont slide-media-action">
-        <h4 className="d-flex align-items-center">
+        <h4 className="d-flex text-white align-items-center">
           <Link to={`/artists/${id}`}>{artist.name} </Link>
           {artist.isVerified ? (
             <svg className=" w-4 ml-2 " viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -74,7 +74,7 @@ export default function ShowcaseCard({ artist, id }: ShowcaseCardProps) {
           <h3>{artist.tokenName}</h3>
         </Link>
         <div className="buy-section-xml">
-          <span>${artist.USDValue} ~ </span>
+          <span className=" font-medium " >${artist.USDValue} ~ </span>
           &nbsp;
           <Link to={`/artists/${id}`} className="buy-xhn">
             Buy Coin

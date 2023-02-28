@@ -24,7 +24,7 @@ export default function ArtistShowcase() {
             <h3 className="wow !font-black txt !text-white mt-8 !leading-[1.1] !text-[40px] " data-splitting>
               TOP ARTISTES
             </h3>
-            <span className="tbg">TOP ARTISTES</span>
+            <span className="tbg lg:-top-[100px] ">TOP ARTISTES</span>
           </div>
         </div>
         <div className="clearfix"></div>

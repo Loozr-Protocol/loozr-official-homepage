@@ -14,15 +14,18 @@ export default function FAQ() {
     }
 
     return (
-        <div className=' w-full px-6 md:px-20 flex py-40 flex-col !bg-[#0c0f15] items-center ' >
-            <div className="sec-head custom-font text-center">
-                <h6 id="gradenttext" className="wow fadeIn leading-[1.8] !font-medium !text-[15px] " data-wow-delay=".5s">
-                    NEED HELP WITH ANSWERS?
-                </h6>
-                <h3 className="wow  !font-bold !text-white !leading-[1.1] !text-5xl " data-splitting>
-                    FREQUENTLY ASKED!
-                </h3>
-                <span className="tbg">Answers</span>
+        <div className=' w-full px-6 md:px-20 flex  py-40 flex-col !bg-[#0c0f15] items-center ' >
+
+            <div className="container">
+                <div className="sec-head custom-font relative text-center">
+                    <h6 id="gradenttext" className="wow fadeIn leading-[1.8] !font-medium !text-[15px] " data-wow-delay=".5s">
+                        NEED HELP WITH ANSWERS?
+                    </h6>
+                    <h3 className="wow  !font-bold !text-white !leading-[1.1] !text-5xl " data-splitting>
+                        FREQUENTLY ASKED!
+                    </h3>
+                    <span className="tbg mt-">Answers</span>
+                </div>
             </div>
             <div className=' w-full flex lg:flex-row flex-col mt-6 mb-20 ' >
                 <div className=' w-full flex justify-center pr-10 ' >

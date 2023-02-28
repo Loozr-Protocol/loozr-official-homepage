@@ -54,10 +54,10 @@ export default function AboutSection() {
         <div className="container md:my-auto lg:mt-[20vh] ">
           <div className="sec-head custom-font mb-3 lg:!flex lg:justify-center ">
             <div className=" md:pl-8 md:max-w-[500px]">
-              <h6 className="wow fadeIn !tracking-widest !text-[#536079] txt leading-[1.8] !font-medium !text-[14px] " data-wow-delay=".5s">
+              <h6 className=" !tracking-widest !text-[#536079] txt leading-[1.8] !font-medium !text-[14px] ">
                 THE FIRST SOCIAL MUSIC LAYER OF WEB3.0
               </h6> 
-              <p className="main-title !font-bold !text-white mt-8 !leading-[1.2] !text-2xl md:!text-[43px]  wow">
+              <p className="main-title !font-bold !text-white mt-8 !leading-[1.2] !text-2xl md:!text-[43px] ">
                 Where DeFi, AR & SocialFi Meet <br/>
                 <div className=" w-full h-[52px] mt-1 relative" > 
                     {array.map((item: any, index: any) => {
