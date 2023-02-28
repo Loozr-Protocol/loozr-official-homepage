@@ -4,15 +4,17 @@ import "../mystyle.scss";
 export default function Product() {
     return (
         <div className=' w-full  flex flex-col py-32 px-4 !bg-[#0c0f15] items-center ' > 
-            <div className="sec-head text-center "> 
+        <div className=' container ' > 
+            <div className="sec-head custom-text text-center "> 
                 <h6 id="gradenttext" className="wow !tracking-[0.4em] fadeIn txt !font-medium !text-[14px] " data-wow-delay=".5s">
                    5 FLAGSHIP SOLUTIONS
                 </h6>
                 <h3 className="wow !font-black txt !text-white mt-8 !leading-[1.1] !text-4xl" data-splitting>
                     LOOZR PRODUCTS!
                 </h3>
-                <span className="tbg !absolute !left-auto !right-auto ">Product!</span>
+                <span className="tbg top-0 ">Product!</span>
             </div>
+        </div>
             <p className="  wow txt !text-[14.7px] mx-auto text-center !font-normal !leading-normal  -mt-14 mb-10 text-white lg:max-w-3xl tracking-[0.4px] " >Revolutionizing the music industry with 5 self-sustaining standalone solutions that bridge economic and entertainment services in the music industry.</p>
             <button className=' h-[50px] w-fit mx-auto px-9 rounded-full border !border-[#12161e] text-white mt-5 ' >Learn more</button>
             <ul className="timeline">
