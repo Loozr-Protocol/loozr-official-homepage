@@ -86,7 +86,7 @@ export default function MobileWhySection() {
             <h6 id="gradenttext" className=" wow !tracking-[0.4em] fadeIn txt !font-medium !text-[14px]" data-wow-delay=".5s">
               WHO ARE WE BUILDING FOR?
             </h6>
-            <p className=" !font-black txt text-left mt-4 !leading-[1.1] !text-white text-3xl md:!text-[65px]" data-splitting>
+            <p className=" !font-black txt text-left mt-4 !leading-[1.1] tracking-[0.4px] !text-white text-3xl md:!text-[65px]" data-splitting>
               Empowering <br/>
               Independence.
             </p>
@@ -116,7 +116,7 @@ export default function MobileWhySection() {
                                     <div className=" w-fit " > 
                                       <div className=" w-[4px] h-[4px] mt-[12px]  bg-white rounded-full mr-2 " />
                                     </div>
-                                    <p className=" txt font-normal leading-normal !text-[#9EAAC0]    " >{item}</p>
+                                    <p className=" txt font-normal leading-normal tracking-[0.4px] !text-[#9EAAC0]    " >{item}</p>
                                   </div> 
                                 )
                               })}

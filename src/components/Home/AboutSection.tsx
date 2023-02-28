@@ -73,7 +73,7 @@ export default function AboutSection() {
                     })}  
                   </div> 
               </p> 
-              <p className="wow txt !text-[14.7px] md:pr-8 text-white !font-normal ">
+              <p className="wow txt !text-[14.7px] tracking-[0.4px] md:pr-8 text-white !font-normal ">
                 It enables creators to tokenize their name/brand, content, and songs; allowing fans to buy, sell, trade and promote these tokens directly in real time on the blockchain while also sharing streaming earnings.
                 <br/>
                 <span className="mt-2" >

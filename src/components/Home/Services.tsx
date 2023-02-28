@@ -23,7 +23,7 @@ export default function Services() {
                 <div className="step-item !px-6 py-6 xtop">
                   <img src="/img/icon-launch.png" className=" mx-auto " alt="" />
                   <h6 className=" txt font-bold mt-3 text-[16px] text-white !leading-tight" >Launch Your Coin</h6>
-                  <p className="wow txt !text-[14.7px] text-[#9EAAC0] !font-normal mt-1 !leading-normal" >
+                  <p className="wow txt !text-[14.7px] text-[#9EAAC0] !font-normal mt-1 tracking-[0.4px] !leading-normal" >
                     Get tokenised by creating your Profile, adding your Songs &
                     Playlists.
                   </p>
@@ -36,7 +36,7 @@ export default function Services() {
                 <div className="step-item !px-6 py-6 xcolor xcenter">
                   <img src="/img/music-chart.png" className=" mx-auto " alt="" />
                   <h6 className=" txt font-bold mt-3 text-[16px] text-white !leading-tight" >Buy, Sell & Trade</h6>
-                  <p className="wow txt !text-[14.7px] text-[#9EAAC0] !font-normal mt-1 !leading-normal" >
+                  <p className="wow txt !text-[14.7px] text-[#9EAAC0] !font-normal mt-1 tracking-[0.4px] !leading-normal" >
                     With Loozr coin, fans can stream and trade Artist Profile,
                     Songs, and Playlist tokens.
                   </p>
@@ -49,7 +49,7 @@ export default function Services() {
                 <div className="step-item !px-6 py-6 xbottom  ">
                   <img src="/img/icon-hearts.png" className=" mx-auto " alt="" />
                   <h6 className=" txt font-bold mt-3 text-[16px] text-white !leading-tight" >Collective Wins</h6>
-                  <p className="wow txt !text-[14.7px] text-[#9EAAC0] !font-normal mt-1 !leading-normal" >
+                  <p className="wow txt !text-[14.7px] text-[#9EAAC0] !font-normal mt-1 tracking-[0.4px] !leading-normal" >
                     When fans invest in a token, like Bitcoin, the price of that
                     token price rises. Artistes receive a percentage incentive
                     from these trades in addition to their streaming money.

@@ -16,7 +16,7 @@ export default function WhySection() {
       <div className=" px-4 md:pr-14 py-8 pt-4 w-full md:px-12 flex flex-col items-center" >   
         <div  className=" relative max-w-3xl z-50 " > 
           <p  id="gradenttext"  className=" font-bold text-2xl text-left  ">For Music Creators</p>  
-          <div className=" py-2 pt-2 w-full px-1 !text-[#9EAAC0] " >
+          <div className=" py-2 pt-2 w-full px-1 tracking-[0.4px] !text-[#9EAAC0] " >
             <div className=" flex font-normal leading-normal  " >
               <div className=" w-fit " > 
                 <div className=" w-[4px] h-[4px] mt-[12px]  bg-white rounded-full mr-2 " />
@@ -38,7 +38,7 @@ export default function WhySection() {
       <div className=" px-4 md:pr-14 py-8 pt-4 w-full md:px-12 flex flex-col items-center " >  
         <div  className=" relative max-w-3xl z-50 " > 
           <p  id="gradenttext"  className=" font-bold text-2xl text-left  ">For Music Creators</p>  
-          <div className=" py-2 pt-2 w-full px-1 !text-[#9EAAC0] " >
+          <div className=" py-2 pt-2 w-full px-1 !text-[#9EAAC0] tracking-[0.4px]  " >
             <div className=" flex font-normal leading-normal  " >
               <div className=" w-fit " > 
                 <div className=" w-[4px] h-[4px] mt-[12px]  bg-white rounded-full mr-2 " />
@@ -60,7 +60,7 @@ export default function WhySection() {
       <div className=" px-4 md:pr-14 py-8 pt-4 w-full md:px-12 flex flex-col items-center" >  
         <div  className=" relative max-w-3xl z-50 " > 
           <p  id="gradenttext"  className=" font-bold text-2xl txt text-left  ">For Music Creators</p>  
-          <div className=" py-2 pt-2 w-full px-1 !text-[#9EAAC0] " >
+          <div className=" py-2 pt-2 w-full px-1 !text-[#9EAAC0] tracking-[0.4px] " >
             <div className=" flex font-normal leading-normal  " >
               <div className=" w-fit " > 
                 <div className=" w-[4px] h-[4px] mt-[12px]  bg-white rounded-full mr-2 " />
@@ -94,7 +94,7 @@ export default function WhySection() {
           </div> 
           <div className=" w-full  lg:pt-14 sec-head custom-font " > 
             <span className="tbg ">BUILDING</span>
-              <p className=" font-normal leading-normal md:mt-0 -mt-10 !text-[#9EAAC0] text-[17px] md:mx-auto txt lg:max-w-md " >Open web democratizing music industry participation, investible talents, community-driven ownership, better monetization, incentivized social interactions, and growth.</p>
+              <p className=" font-normal leading-normal tracking-[0.4px] md:mt-0 -mt-10 !text-[#9EAAC0] text-[17px] md:mx-auto txt lg:max-w-md " >Open web democratizing music industry participation, investible talents, community-driven ownership, better monetization, incentivized social interactions, and growth.</p>
           </div>
         </div>    
         <div className=" w-full md:block hidden lg:w-[80%] -mt-4 " > 
