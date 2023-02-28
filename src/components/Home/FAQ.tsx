@@ -30,7 +30,7 @@ export default function FAQ() {
             <div className=' w-full flex lg:flex-row flex-col mt-6 mb-20 ' >
                 <div className=' w-full flex justify-center pr-10 ' >
                     <p className=' max-w-[450px] text-white wow txt !text-[14.7px] !font-normal  ' >Haven’t found what you’re looking for?
-                        Try emailing <span  id="gradenttext" >support@loozr.io</span> — we’re here to help.</p>
+                        Try emailing  <a href="mailto:support@loozr.io"><span  id="gradenttext" >support@loozr.io</span></a> — we’re here to help.</p>
                 </div>
                 <div className=' w-full flex justify-center md:pl-10 text-white ' >
                     <div className=' w-[600px] ' >
