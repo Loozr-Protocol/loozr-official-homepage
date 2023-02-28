@@ -54,8 +54,8 @@ export default function Team() {
                   </div>
                   <div className="col-sm-6 toleft valign">
                     <div className="full-width text-left d-flex d-sm-block">
-                      <div
-                        className="img sizmd mb-30"
+                      <div  
+                        className="img sizmd mb-30 "
                         data-tooltip-tit="Confidence Yobo"
                         data-tooltip-sub="Blockchain & Software Engineer"
                       >
@@ -65,7 +65,7 @@ export default function Team() {
                           className="imago wow"
                         />
                       </div>
-                      <div 
+                      <div  
                         className="img sizsm !text-white"
                         data-tooltip-tit="Ugochukwu Chukwudifu"
                         data-tooltip-sub="Product Designer"

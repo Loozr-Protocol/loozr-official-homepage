@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  color: white !important;
+}
+
 @layer components {
   .active-tab {
     @apply text-white font-semibold before:w-full before:h-0.5 before:absolute relative before:bg-accent before:bottom-0 before:left-0 before:right-[50%];

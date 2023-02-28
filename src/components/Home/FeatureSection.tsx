@@ -8,45 +8,45 @@ export default function FeatureSection() {
                     <p className="wow fadeIn !text-[#0C0F15] txt !font-extrabold !leading-[1.1] !text-4xl " data-wow-delay=".5s">
                         FEATURES 
                     </p>
-                    <p className="wow txt !text-[14.6px] !leading-normal  mt-4 !font-normal text-[#0C0F15] lg:max-w-2xl" >Loozr empowers creators through various services, which they can utilize via the following features:</p>
+                    <p className="wow txt !text-[14.6px] !leading-normal tracking-[0.4px] mt-4 !font-normal text-[#0C0F15] lg:max-w-2xl" >Loozr empowers creators through various services, which they can utilize via the following features:</p>
                      
                 </div>
-                <div className=' w-full  grid grid-cols-1 lg:grid-cols-4 gap-y-3 gap-9 mt-8 mb-20 ' >
+                <div className=' w-full  grid grid-cols-1 lg:grid-cols-4 gap-y-3 gap-[34px] mt-8 mb-20 ' >
                     <div className=' w-full ' > 
-                        <p className=' txt font-bold mt-3 text-[20px] !text-[#0C0F15] leading-normal ' >Instant Tokenization & Trading</p>
-                        <p className='wow txt !text-[14.7px] !font-normal mt-1  !text-[#0C0F15]  leading-normal ' >Investible music for all. </p>
+                        <p className=' txt font-bold mt-3 text-[20px] !text-[#0C0F15] leading-tight tracking-[0.3px] ' >Instant Tokenization & Trading</p>
+                        <p className='wow txt !text-[14.7px] !font-normal mt-1 !text-[#0C0F15] tracking-[0.4px]  leading-normal ' >Investible music for all. </p>
                     </div>
                     <div className=' w-full ' > 
-                        <p className=' txt font-bold mt-3 text-[20px] !text-[#0C0F15] leading-normal ' >Community-driven ownership </p>
-                        <p className='wow txt !text-[14.7px] !font-normal mt-1  !text-[#0C0F15]  leading-normal ' >Take control of your content, launch your own independent economy, and succeed together. </p>
+                        <p className=' txt font-bold mt-3 text-[20px] !text-[#0C0F15] leading-tight tracking-[0.3px] ' >Community-driven ownership </p>
+                        <p className='wow txt !text-[14.7px] !font-normal mt-1  !text-[#0C0F15] tracking-[0.4px]  leading-normal ' >Take control of your content, launch your own independent economy, and succeed together. </p>
                     </div>
                     <div className=' w-full ' > 
-                        <p className=' txt font-bold mt-3 text-[20px] !text-[#0C0F15] leading-normal ' >Transparency & smart contracts</p>
-                        <p className='wow txt !text-[14.7px] !font-normal mt-1  !text-[#0C0F15]  leading-normal ' >Decentralizing finance, contracts, and establishing a completely open royalty and streaming accounting system.</p>
+                        <p className=' txt font-bold mt-3 text-[20px] !text-[#0C0F15] leading-tight tracking-[0.3px] ' >Transparency & smart contracts</p>
+                        <p className='wow txt !text-[14.7px] !font-normal mt-1  !text-[#0C0F15] tracking-[0.4px]  leading-normal ' >Decentralizing finance, contracts, and establishing a completely open royalty and streaming accounting system.</p>
                     </div>
                     <div className=' w-full ' > 
-                        <p className=' txt font-bold mt-3 text-[20px] !text-[#0C0F15] leading-normal ' >Secure and scalable </p>
-                        <p className='wow txt !text-[14.7px] !font-normal mt-1  !text-[#0C0F15]  leading-normal ' >Transactions are carried out using the NEAR Protocol, a reliable and secure L1 with sharding support.</p>
+                        <p className=' txt font-bold mt-3 text-[20px] !text-[#0C0F15] leading-tight tracking-[0.3px] ' >Secure and scalable </p>
+                        <p className='wow txt !text-[14.7px] !font-normal mt-1  !text-[#0C0F15] tracking-[0.4px]  leading-normal ' >Transactions are carried out using the NEAR Protocol, a reliable and secure L1 with sharding support.</p>
                     </div>
                     <div className=' w-full ' > 
-                        <p className=' txt font-bold mt-3 text-[20px] !text-[#0C0F15] leading-normal ' >Launchpad for creators </p>
-                        <p className='wow txt !text-[14.7px] !font-normal mt-1  !text-[#0C0F15]  leading-normal ' >Web3-native crowdinvesting platform that allows you to start, fund, and trade the Next Big Talent.</p>
+                        <p className=' txt font-bold mt-3 text-[20px] !text-[#0C0F15] leading-tight tracking-[0.3px] ' >Launchpad for creators </p>
+                        <p className='wow txt !text-[14.7px] !font-normal mt-1  !text-[#0C0F15] tracking-[0.4px]  leading-normal ' >Web3-native crowdinvesting platform that allows you to start, fund, and trade the Next Big Talent.</p>
                     </div>
                     <div className=' w-full ' > 
-                        <p className=' txt font-bold mt-3 text-[20px] !text-[#0C0F15] leading-normal ' >Lightning fast and self-sustainable</p>
-                        <p className='wow txt !text-[14.7px] !font-normal mt-1  !text-[#0C0F15]  leading-normal ' >Instant payouts, better monetization, and directly rewarding artists, fans, and creators.</p>
+                        <p className=' txt font-bold mt-3 text-[20px] !text-[#0C0F15] leading-tight tracking-[0.3px] ' >Lightning fast and self-sustainable</p>
+                        <p className='wow txt !text-[14.7px] !font-normal mt-1  !text-[#0C0F15] tracking-[0.4px]  leading-normal ' >Instant payouts, better monetization, and directly rewarding artists, fans, and creators.</p>
                     </div>
                     <div className=' w-full ' > 
-                        <p className=' txt font-bold mt-3 text-[20px] !text-[#0C0F15] leading-normal ' >Frictionless user experience </p>
-                        <p className='wow txt !text-[14.7px] !font-normal mt-1  !text-[#0C0F15]  leading-normal ' >Web2 frontend feel, Web3 backend integration — No knowledge of crypto needed.</p>
+                        <p className=' txt font-bold mt-3 text-[20px] !text-[#0C0F15] leading-tight tracking-[0.3px] ' >Frictionless user experience </p>
+                        <p className='wow txt !text-[14.7px] !font-normal mt-1  !text-[#0C0F15] tracking-[0.4px]  leading-normal ' >Web2 frontend feel, Web3 backend integration — No knowledge of crypto needed.</p>
                     </div>
                     <div className=' w-full ' > 
-                        <p className=' txt font-bold mt-3 text-[20px] !text-[#0C0F15] leading-normal ' >Unlimited music distribution</p>
-                        <p className='wow txt !text-[14.7px] !font-normal mt-1  !text-[#0C0F15]  leading-normal ' >Distribute with one click to over 220+ stores globally, including Tiktok & Youtube. Decentralize your finances and stats on-chain. Keep 100% of your song's royalties and rights.</p>
+                        <p className=' txt font-bold mt-3 text-[20px] !text-[#0C0F15] leading-tight tracking-[0.3px] ' >Unlimited music distribution</p>
+                        <p className='wow txt !text-[14.7px] !font-normal mt-1  !text-[#0C0F15] tracking-[0.4px]  leading-normal ' >Distribute with one click to over 220+ stores globally, including Tiktok & Youtube. Decentralize your finances and stats on-chain. Keep 100% of your song's royalties and rights.</p>
                     </div>
                     <div className=' w-full ' > 
-                        <p className=' txt font-bold mt-3 text-[20px] !text-[#0C0F15] leading-normal ' >Mining via music streaming</p>
-                        <p className='wow txt !text-[14.7px] !font-normal mt-1  !text-[#0C0F15]  leading-normal ' >Loozr's <span className=' text-white ' >#Listen2Earn</span> model allows music lovers to earn tokens whenever their favourite music is played.</p>
+                        <p className=' txt font-bold mt-3 text-[20px] !text-[#0C0F15] leading-tight tracking-[0.3px] ' >Mining via music streaming</p>
+                        <p className='wow txt !text-[14.7px] !font-normal mt-1  !text-[#0C0F15] tracking-[0.4px]  leading-normal ' >Loozr's <span className=' text-white ' >#Listen2Earn</span> model allows music lovers to earn tokens whenever their favourite music is played.</p>
                     </div>
                 </div> 
                 <div className=' w-full lg:block hidden md:h-[400px] ' > 
