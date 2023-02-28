@@ -9,7 +9,7 @@ export default function Footer() {
             <Link to="/" className="logo ">
               <img className="logo-light md:w-auto w-[40%] md:h-10 " src="/img/logo-light.png" alt="Home" />
             </Link>
-            <p className=" font-medium mt-6 text-base txt text-[#536079] " >Social music streaming and DeFi platform for creators and music lovers. </p>
+            <p className=" font-medium mt-6 text-base txt text-[#536079] tracking-[0.4px]  " >Social music streaming and DeFi platform for creators and music lovers. </p>
           </div>
           <div className=" w-full flex flex-col lg:items-start  " > 
             <p className=" font-bold text-white text-lg lg:h-10 " >COMPANY</p>

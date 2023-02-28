@@ -141,7 +141,7 @@ export default function Header() {
         </div>
       </div>
       <div className="clearfix"></div>
-      <div className=" md:!hidden flex flex-col py-1 justify-center items-center " >
+      <div className=" md:!hidden flex flex-col py-1  justify-center items-center " >
           <p className=" text-[#536079] txt !font-medium " >Powered by</p>
           <div className="!grid  grid-cols-2 items-center gap-2  "> 
             <img className=" w-[100px] " src="/img/unity.png" alt="unity" />
@@ -159,7 +159,7 @@ export default function Header() {
           </div>
       </div>
       <div className="container hidden md:flex ">
-        <div className=" d-flex flex-wrap align-items-center mt-50 powered-section">
+        <div className=" d-flex flex-wrap align-items-center md:px-10 mt-50 powered-section">
           <span className=" txt !font-medium " >Powered by </span>
           <img src="/img/unity.png" alt="unity" />
           <img src="/img/near.png" alt="near" />
