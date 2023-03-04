@@ -44,7 +44,7 @@ export default function FAQ() {
                             {tab === 0 && ( 
                                 <motion.p
                                 initial={{ y: -100, opacity: 0 }}
-                                animate={{ y: 0, opacity: 1 }} className=' mt-3 tracking-[0.4px]  ' >Token-powered creator economy platform that allows anyone to invest in and profit from music and content creators' success per second.</motion.p>
+                                animate={{ y: 0, opacity: 1 }} className=' mt-3 tracking-[0.4px]  ' > Community-driven music streaming platform enabling creators & musicians to launch tokens, stream music and earn.</motion.p>
                             )}
                         </div>
                         <div className=' w-full border-b py-4 border-[#536079] ' > 
@@ -57,7 +57,7 @@ export default function FAQ() {
                             {tab === 1 && ( 
                                 <motion.p
                                 initial={{ y: -100, opacity: 0 }}
-                                animate={{ y: 0, opacity: 1 }} className=' mt-3 wow txt !text-[14.7px] !font-normal tracking-[0.4px]  ' >Token-powered creator economy platform that allows anyone to invest in and profit from music and content creators' success per second.</motion.p>
+                                animate={{ y: 0, opacity: 1 }} className=' mt-3 wow txt !text-[14.7px] !font-normal tracking-[0.4px]  ' >All Loozr users are allowed by LNS to use a human-readable. lzr name as their wallet address. Simply register and enter your unique .lzr name.</motion.p>
                             )}
                         </div>
                         <div className=' w-full border-b py-4 border-[#536079] ' > 
@@ -70,7 +70,7 @@ export default function FAQ() {
                             {tab === 2 && ( 
                                 <motion.p
                                 initial={{ y: -100, opacity: 0 }}
-                                animate={{ y: 0, opacity: 1 }} className=' mt-3 tracking-[0.4px]  ' >Token-powered creator economy platform that allows anyone to invest in and profit from music and content creators' success per second.</motion.p>
+                                animate={{ y: 0, opacity: 1 }} className=' mt-3 tracking-[0.4px]  ' >Simply create a user account, apply to become an artist, review community terms and verify you’re an artist (KYC), done!</motion.p>
                             )}
                         </div>
                         <div className=' w-full border-b py-4 border-[#536079] ' > 
@@ -83,7 +83,7 @@ export default function FAQ() {
                             {tab === 3 && ( 
                                 <motion.p
                                 initial={{ y: -100, opacity: 0 }}
-                                animate={{ y: 0, opacity: 1 }} className=' mt-3 tracking-[0.4px]  ' >Token-powered creator economy platform that allows anyone to invest in and profit from music and content creators' success per second.</motion.p>
+                                animate={{ y: 0, opacity: 1 }} className=' mt-3 tracking-[0.4px]  ' >Simply create a user account, apply to become an artist, review community terms and verify you’re an artist (KYC), done!</motion.p>
                             )}
                         </div>
                         <div className=' w-full border-b py-4 border-[#536079] ' > 
@@ -96,7 +96,7 @@ export default function FAQ() {
                             {tab === 4 && ( 
                                 <motion.p
                                 initial={{ y: -100, opacity: 0 }}
-                                animate={{ y: 0, opacity: 1 }} className=' mt-3 tracking-[0.4px]  ' >Token-powered creator economy platform that allows anyone to invest in and profit from music and content creators' success per second.</motion.p>
+                                animate={{ y: 0, opacity: 1 }} className=' mt-3 tracking-[0.4px]  ' >Nope! The Loozr model works for both creators and musicians, as well as businesses, events, podcasters, TikTokers/YouTubers, content creators, and so on.</motion.p>
                             )}
                         </div>
                     </div>

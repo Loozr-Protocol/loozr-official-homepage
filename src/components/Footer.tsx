@@ -18,7 +18,7 @@ export default function Footer() {
                 <div className="w-fit" >
                   <div className=" w-1 h-1 rounded-full bg-[#536079] mr-3 " />
                 </div>
-                 <p className=" font-medium text-sm txt text-[#536079]  " >Loozr Products </p>
+                 <a href="/product" className=" font-medium text-sm txt text-[#536079]  " >Loozr Products </a>
               </div>
               <div className=" flex items-center mt-2 " >
                 <div className="w-fit" >
@@ -41,13 +41,13 @@ export default function Footer() {
                 <div className="w-fit" >
                   <div className=" w-1 h-1 rounded-full bg-[#536079] mr-3 " />
                 </div>
-                 <p className=" font-medium text-sm txt text-[#536079]  " >Launch Testnet</p>
+                 <a target="" href="/explore" className=" font-medium text-sm txt text-[#536079]  " >Launch Testnet</a>
               </div>
               <div className=" flex items-center mt-2 " >
                 <div className="w-fit" >
                   <div className=" w-1 h-1 rounded-full bg-[#536079] mr-3 " />
                 </div>
-                 <p className=" font-medium text-sm txt text-[#536079]  " >LiteDOC</p>
+                 <a target="_blank" href="https://docs.loozr.io/" className=" font-medium text-sm txt text-[#536079]  " >LiteDOC</a>
               </div>
               <div className=" flex items-center mt-2 " >
                 <div className="w-fit" >
@@ -82,37 +82,43 @@ export default function Footer() {
                 <div className="w-fit" >
                   <div className=" w-1 h-1 rounded-full bg-[#536079] mr-3 " />
                 </div>
-                 <a href="#" className=" font-medium text-sm txt text-[#536079]  " > Twitter </a>
+                 <a target="_blank" href="https://twitter.com/officialloozr" className=" font-medium text-sm txt text-[#536079]  " > Twitter </a>
               </div>
               <div className=" flex items-center mt-2 " >
                 <div className="w-fit" >
                   <div className=" w-1 h-1 rounded-full bg-[#536079] mr-3 " />
                 </div>
-                 <a href="#" className=" font-medium text-sm txt text-[#536079]  " > Discord  </a>
+                 <a target="_blank" href="https://discord.gg/loozr" className=" font-medium text-sm txt text-[#536079]  " > Discord  </a>
               </div>
               <div className=" flex items-center mt-2 " >
                 <div className="w-fit" >
                   <div className=" w-1 h-1 rounded-full bg-[#536079] mr-3 " />
                 </div>
-                 <a href="#" className=" font-medium text-sm txt text-[#536079]  " > Telegram</a>
+                 <a target="_blank" href="https://t.me/officialloozr" className=" font-medium text-sm txt text-[#536079]  " > Telegram</a>
               </div>
               <div className=" flex items-center mt-2 " >
                 <div className="w-fit" >
                   <div className=" w-1 h-1 rounded-full bg-[#536079] mr-3 " />
                 </div>
-                 <a href="#" className=" font-medium text-sm txt text-[#536079]  " > Medium </a>
+                 <a target="_blank" href="https://medium.com/@officialloozr" className=" font-medium text-sm txt text-[#536079]  " > Medium </a>
               </div>
               <div className=" flex items-center mt-2 " >
                 <div className="w-fit" >
                   <div className=" w-1 h-1 rounded-full bg-[#536079] mr-3 " />
                 </div>
-                 <a href="#" className=" font-medium text-sm txt text-[#536079]  " > Instagram  </a>
+                 <a target="_blank" href="https://www.youtube.com/@loozr_" className=" font-medium text-sm txt text-[#536079]  " > Youtube </a>
               </div>
               <div className=" flex items-center mt-2 " >
                 <div className="w-fit" >
                   <div className=" w-1 h-1 rounded-full bg-[#536079] mr-3 " />
                 </div>
-                 <a href="#" className=" font-medium text-sm txt text-[#536079]  " > Tiktok</a>
+                 <a target="_blank" href="https://www.instagram.com/officialloozr/" className=" font-medium text-sm txt text-[#536079]  " > Instagram  </a>
+              </div>
+              <div className=" flex items-center mt-2 " >
+                <div className="w-fit" >
+                  <div className=" w-1 h-1 rounded-full bg-[#536079] mr-3 " />
+                </div>
+                 <a target="_blank" href="https://www.tiktok.com/@officialloozr" className=" font-medium text-sm txt text-[#536079]  " > Tiktok</a>
               </div>
             </div>
           </div>

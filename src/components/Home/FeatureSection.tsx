@@ -5,10 +5,11 @@ export default function FeatureSection() {
         <> 
             <div className=' w-full bg-[#8369F4] !text-[#0C0F15] px-6 md:px-20 py-8 lg:py-0 lg:pt-20 relative ' > 
                 <div className=" ">
-                    <p className="wow fadeIn !text-[#0C0F15] txt !font-extrabold !leading-[1.1] !text-4xl " data-wow-delay=".5s">
-                        FEATURES 
+                    <p className="wow fadeIn !text-[#0C0F15] max-w-2xl txt !font-extrabold !leading-[52.5px] !text-4xl " data-wow-delay=".5s">
+                        Convert your monthly music
+                        subscriptions into investments. 
                     </p>
-                    <p className="wow txt !text-[14.6px] !leading-normal tracking-[0.4px] mt-4 !font-normal text-[#0C0F15] lg:max-w-2xl" >Loozr empowers creators through various services, which they can utilize via the following features:</p>
+                    {/* <p className="wow txt !text-[14.6px] !leading-normal tracking-[0.4px] mt-4 !font-normal text-[#0C0F15] lg:max-w-2xl" >Loozr empowers creators through various services, which they can utilize via the following features:</p> */}
                      
                 </div>
                 <div className=' w-full  grid grid-cols-1 lg:grid-cols-4 gap-y-3 gap-[34px] mt-8 mb-20 ' >
