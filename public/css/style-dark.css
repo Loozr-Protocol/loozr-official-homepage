@@ -42,7 +42,7 @@
 
 body {
   color: #fff;
-  background: #0c0f16;
+  background: #0c0f16 !important;
   line-height: 1.5;
   font-weight: 400;
   overflow-x: hidden !important;
@@ -4354,6 +4354,11 @@ body {
 
 .team-crv .img-box .toleft .img {
   margin-right: auto;
+}
+button{
+  font-weight: 600 !important;
+  font-size: 16px !important;
+
 }
 
 /* ====================== [ End Team ] ====================== */
