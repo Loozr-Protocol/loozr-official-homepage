@@ -39,7 +39,7 @@ export default function MobileWhySection() {
 
   React.useEffect(() => { 
     const t1 = setTimeout(() => {  
-      if(isShown === images.length-1){ 
+      if(isShown === image.length-1){ 
         setIsShown(0) 
       } else { 
         setIsShown(prev=>prev+1) 
@@ -54,26 +54,60 @@ export default function MobileWhySection() {
   const image: any = [ 
     {
       img: "/img/creator.png",
-      header: 'For Music Creators',
+      header: 'For Content Creators',
       list: [
               "Introducing multiple revenue streams for creators, access to a direct source of startup funding from their following, which can be used for production costs, touring, branding, etc.",
               "Looking to create and monetize on their terms, free of algorithms, brands, and ads."
             ]
-    },  
+    },   
     {
-      img: slide1,
-      header: 'Music Creators',
+      img: "/img/slider/1.png",
+      header: 'For Music Creators',
       list: [
-              "Introducing revenue streams for creators, access to a direct source of startup funding from their following, which can be used for production costs, touring, branding, etc.",
-              "Looking to create on their terms, free of algorithms, brands, and ads."
+              "Earn, grow, and connect with your fans directly",
+              "Launch your own music coin and independent economy."
             ]
     },    
     {
-      img: slide3,
-      header: 'For Creators',
+      img: "/img/slider/2.png",
+      header: 'For Fans / Listeners',
       list: [
-              "Introducing multiple revenue streams for, access to a direct source of startup funding from their following, which can be used for production costs, touring, branding, etc.",
-              "Looking to monetize on their terms, free of algorithms, brands, and ads."
+              "Converting followers and listeners into real-time investors, stakeholders, earners, and independent record labels."
+            ]
+    },  
+    {
+      img: "/img/slider/3.png",
+      header: 'For Record Labels',
+      list: [
+              "More freedom as a result of having access to a global catalog of artists to openly and seamlessly promote, invest in, support, and profit from while relaxing in your bathtub.",
+            ]
+    },  
+    {
+      img: "/img/slider/4.png",
+      header: 'For Podcasters / Spacehosts',
+      list: [
+              "Monetize your Podcast, audio events, comedy and incentivize your community."
+            ]
+    },  
+    {
+      img: "/img/slider/5.png",
+      header: 'For Small Businesses',
+      list: [
+              "Passion is the new currency; begin accepting creator tokens with lightning-fast transaction speed." 
+            ]
+    },  
+    {
+      img: "/img/slider/6.png",
+      header: 'For Events & Ticketing',
+      list: [
+              "From investible live performances to verifiable and token-gated events."
+            ]
+    },  
+    {
+      img: "/img/slider/7.png",
+      header: 'For Publishers / Distributors',
+      list: [
+              "Creators distribute music on-chain globally (over 220+ stores) without giving up ownership of their music or control of their careers -keep 100% royalties!"
             ]
     },  
   ]  
@@ -105,7 +139,7 @@ export default function MobileWhySection() {
                     <> 
                       <motion.div  
                         key={item} {...boxAnimation} className=" w-full flex absolute top-0 !bg-[#11151D] rounded-xl flex-col items-center" >  
-                        <img  src="/img/creator.png" className=" h-[250px] rounded-t-xl object-cover " alt="1" />
+                        <img  src={item?.img} className=" h-[250px] rounded-t-xl object-cover " alt="1" />
                         <div className=" px-4 md:pr-14 py-8 pt-4 w-full md:px-12 flex flex-col items-center" >   
                           <div  className=" relative w-full z-50 " > 
                             <p  id="gradenttext"  className=" font-bold text-2xl text-left  ">{item.header}</p>  
