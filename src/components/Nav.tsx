@@ -13,6 +13,7 @@ import {
 function Nav() {
   
   const [tab, setTab] = React.useState(false)
+  const [tab2, setTab2] = React.useState(false)
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (
@@ -54,10 +55,28 @@ function Nav() {
                 Features
               </a>
             </li>
-            <li className="nav-item">
-              <a className="txt text-[14px] !font-medium  " href="">
+            <li className="nav-item relative ">
+              <div 
+                role="button"
+                onClick={()=> setTab2((prev) => !prev)}
+                className="txt text-[14px] !font-medium mt-[3px]  flex items-center " 
+              >
                 About
-              </a>
+                <svg className={tab ? " ml-2 rotate-180 ": " ml-2 " } width="8" height="4" viewBox="0 0 8 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0.103374 0.103374C0.228676 -0.0219278 0.424753 -0.0333189 0.562923 0.0692008L0.602508 0.103374L3.64706 3.14776L6.69161 0.103374C6.81691 -0.0219278 7.01299 -0.0333189 7.15116 0.0692008L7.19074 0.103374C7.31605 0.228676 7.32744 0.424753 7.22492 0.562923L7.19074 0.602508L3.89663 3.89663C3.77132 4.02193 3.57525 4.03332 3.43708 3.9308L3.39749 3.89663L0.103374 0.602508C-0.034458 0.464676 -0.034458 0.241206 0.103374 0.103374Z" fill="#D9D9D9"/>
+                </svg>
+              </div> 
+              {tab2 && ( 
+                <div  style={{boxShadow: "10px 10px 30px 6px #000000CC"}} className=" font-semibold md:absolute md:w-[232px] z-20 top-14 py-8 bg-[#0C0F15] px-8  " > 
+                  <a onClick={()=> setTab2(false)} target="_blank" href="https://docs.loozr.io/" className=" text-white text-sm w-full border-b border-[#5360791A] flex hover:justify-center justify-center py-3 outline-none " >LiteDOC</a>
+                  <a onClick={()=> setTab2(false)} href="#token" className=" text-white text-sm w-full border-b border-[#5360791A] flex hover:justify-center justify-center py-3 outline-none " >Tokenomics</a> 
+                  <a onClick={()=> setTab2(false)} href="#roadmap" className=" text-white text-sm w-full border-b border-[#5360791A] flex hover:justify-center justify-center py-3 outline-none " >Roadmap</a>
+                  <a onClick={()=> setTab2(false)} href="#team" className=" text-white text-sm w-full border-b border-[#5360791A] flex hover:justify-center justify-center py-3 outline-none " >Team</a> 
+                </div>
+              )}
+              {tab2 && (
+                <div className=" fixed inset-0 bg-black bg-opacity-30 z-10 "  onClick={()=> setTab2(false)}   />
+              )}
             </li>
             <li className="nav-item">
               <a className="txt text-[14px] !font-medium  " href="https://medium.com/@officialloozr">
@@ -77,12 +96,12 @@ function Nav() {
               </div> 
               {tab && ( 
                 <div style={{boxShadow: "10px 10px 30px 6px #000000CC"}} className=" font-semibold md:absolute md:w-[232px] z-20 top-14 py-8 bg-[#0C0F15] px-8  " >
-                  <a onClick={()=> setTab(false)} target="_blank" href="https://t.me/officialloozr" className=" text-white text-sm w-full border-b border-[#5360791A] flex hover:justify-center justify-center py-3 outline-none " >Join on Twitter</a>
-                  <a href="item" className=" text-white text-sm w-full border-b border-[#5360791A] flex hover:justify-center justify-center py-3 outline-none " >Join Telegram</a>
-                  <a href="item" className=" text-white text-sm w-full border-b border-[#5360791A] flex hover:justify-center justify-center py-3 outline-none " >Join Discord</a> 
-                  <a href="item" className=" text-white text-sm w-full border-b border-[#5360791A] flex hover:justify-center justify-center py-3 outline-none " >Join on Instagram</a>
-                  <a href="item" className=" text-white text-sm w-full border-b border-[#5360791A] flex hover:justify-center justify-center py-3 outline-none " >Follow on Tiktok</a>
-                  <a href="item" className=" text-white text-sm w-full border-b border-[#5360791A] flex hover:justify-center justify-center py-3 outline-none " >Watch Youtube</a> 
+                  <a onClick={()=> setTab(false)} target="_blank" href="https://twitter.com/officialloozr" className=" text-white text-sm w-full border-b border-[#5360791A] flex hover:justify-center justify-center py-3 outline-none " >Join on Twitter</a>
+                  <a onClick={()=> setTab(false)} target="_blank" href="https://t.me/officialloozr" className=" text-white text-sm w-full border-b border-[#5360791A] flex hover:justify-center justify-center py-3 outline-none " >Join Telegram</a>
+                  <a onClick={()=> setTab(false)} target="_blank" href="https://discord.gg/loozr" className=" text-white text-sm w-full border-b border-[#5360791A] flex hover:justify-center justify-center py-3 outline-none " >Join Discord</a> 
+                  <a onClick={()=> setTab(false)} target="_blank" href="https://www.instagram.com/officialloozr/" className=" text-white text-sm w-full border-b border-[#5360791A] flex hover:justify-center justify-center py-3 outline-none " >Join on Instagram</a>
+                  <a onClick={()=> setTab(false)} target="_blank" href="https://www.tiktok.com/@officialloozr" className=" text-white text-sm w-full border-b border-[#5360791A] flex hover:justify-center justify-center py-3 outline-none " >Follow on Tiktok</a>
+                  <a onClick={()=> setTab(false)} target="_blank" href="https://www.youtube.com/@loozr_" className=" text-white text-sm w-full border-b border-[#5360791A] flex hover:justify-center justify-center py-3 outline-none " >Watch Youtube</a> 
                 </div>
               )}
               {tab && (

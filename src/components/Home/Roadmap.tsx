@@ -47,7 +47,7 @@ export default function RoadMap() {
   ];
   return (
     <>
-      <div className="views-element-container services lg:pt-12 !px-2 md:!px-20 mt-70">
+      <div id="roadmap" className="views-element-container services lg:pt-12 !px-2 md:!px-20 mt-70">
         <div className="container">
           <div className="sec-head custom-font text-center">
             <h6 id="gradenttext"  className="wow  fadeIn leading-[1.8] !font-medium !text-[15px] " data-wow-delay=".5s">

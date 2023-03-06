@@ -5,7 +5,8 @@ export default function Team() {
         id="block-nvblockteamindex4"
         className="team-crv section-padding pb-30 !px-2 md:!pl-20"
       >
-        <div className="container">
+        <div
+          id="team" className="container">
           <div className="row">
             <div className="col-lg-5 valign">
               <div className="content wow fadeInUp" data-wow-delay=".5s">
