@@ -41,11 +41,11 @@ export default function Team() {
                       </div>
                       <div
                         className="img sizmd"
-                        data-tooltip-tit="George Adowei"
-                        data-tooltip-sub="Product Manager"
+                        data-tooltip-tit="Sargon Cauz"
+                        data-tooltip-sub="Marketing Lead"
                       >
                         <img
-                          src="/img/team/2.png"
+                          src="/img/team/sargon.png"
                           alt=""
                           className="imago wow"
                         />
@@ -56,22 +56,22 @@ export default function Team() {
                     <div className="full-width text-left d-flex d-sm-block">
                       <div  
                         className="img sizmd mb-30 "
-                        data-tooltip-tit="Confidence Yobo"
-                        data-tooltip-sub="Blockchain & Software Engineer"
+                        data-tooltip-tit="Zeina "
+                        data-tooltip-sub="Business Relations"
                       >
                         <img
-                          src="/img/team/3.png"
+                          src="/img/team/zeina.jpg"
                           alt=""
                           className="imago wow"
                         />
                       </div>
                       <div  
                         className="img sizsm !text-white"
-                        data-tooltip-tit="Ugochukwu Chukwudifu"
-                        data-tooltip-sub="Product Designer"
+                        data-tooltip-tit="Ben Caeser"
+                        data-tooltip-sub="Artist Relations"
                       >
                         <img
-                          src="/img/team/4.png"
+                          src="/img/team/ben_caeser.png"
                           alt=""
                           className="imago wow"
                         />

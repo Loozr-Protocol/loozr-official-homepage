@@ -47,7 +47,7 @@ export default function Product() {
                             </div>
                             <p className=' wow txt !text-[14.7px] !text-[#9EAAC0]  !font-normal mt-1 !leading-normal tracking-[0.4px] ' >No Web3 knowledge necessary, 5 seconds no-code launchpad.</p>
                         </div>
-                            <img className=' w-full mt-4 ' alt='' src='/img/product.png' />
+                            <img className=' w-full mt-4 ' alt='' src='/img/product1.png' />
                     </div>
                 </li>
                 {/* <li className="timeline-event">
@@ -117,7 +117,7 @@ export default function Product() {
                             </div>
                             <p className=' wow txt !text-[14.7px] !text-[#9EAAC0]  !font-normal mt-1 !leading-normal tracking-[0.4px] ' >No Ads!</p>
                         </div>
-                            <img className=' w-full mt-4 ' alt='' src='/img/product.png' />
+                            <img className=' w-full mt-4 ' alt='' src='/img/product2.png' />
                     </div> 
                 </li>
                 <li className="timeline-event">
@@ -143,7 +143,7 @@ export default function Product() {
                             </div>
                             <p className=' wow txt !text-[14.7px] !text-[#9EAAC0]  !font-normal mt-1 !leading-normal tracking-[0.4px] ' >Collectors can liquify their favourite Music NFTs to generate streaming income and potential future sales.</p>
                         </div> 
-                            <img className=' w-full mt-4 ' alt='' src='/img/product.png' />
+                            <img className=' w-full mt-4 ' alt='' src='/img/product3.png' />
                     </div> 
                 </li>
                 <li className="timeline-event">
@@ -169,7 +169,7 @@ export default function Product() {
                             </div>
                             <p className=' wow txt !text-[14.7px] !text-[#9EAAC0]  !font-normal mt-1 !leading-normal tracking-[0.4px] ' >Turn your fans from spectators into influencers and stakeholders.</p>
                         </div> 
-                            <img className=' w-full mt-4 ' alt='' src='/img/product.png' />
+                            <img className=' w-full mt-4 ' alt='' src='/img/product4.png' />
                     </div> 
                 </li>
                 <li className="timeline-event">
