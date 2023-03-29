@@ -46,13 +46,13 @@ function Nav() {
               </a>
             </li>
             <li className="nav-item">
-              <a className="txt text-[14px] !font-medium   " href="">
+              <a className="txt text-[14px] !font-medium " target="_blank" href="https://docs.loozr.io/infrastructure/loozr-ecosystem">
                 Ecosystem
               </a>
             </li>
             <li className="nav-item">
-              <a className="txt text-[14px] !font-medium  " href="">
-                Features
+              <a className="txt text-[14px] !font-medium  " target="_blank" href="https://docs.loozr.io/infrastructure/loozr-applications">
+                Applications
               </a>
             </li>
             <li className="nav-item relative ">
@@ -69,9 +69,9 @@ function Nav() {
               {tab2 && ( 
                 <div  style={{boxShadow: "10px 10px 30px 6px #000000CC"}} className=" font-semibold md:absolute md:w-[232px] z-20 top-14 py-8 bg-[#0C0F15] px-8  " > 
                   <a onClick={()=> setTab2(false)} target="_blank" href="https://docs.loozr.io/" className=" text-white text-sm w-full border-b border-[#5360791A] flex hover:justify-center justify-center py-3 outline-none " >LiteDOC</a>
-                  <a onClick={()=> setTab2(false)} href="#token" className=" text-white text-sm w-full border-b border-[#5360791A] flex hover:justify-center justify-center py-3 outline-none " >Tokenomics</a> 
-                  <a onClick={()=> setTab2(false)} href="#roadmap" className=" text-white text-sm w-full border-b border-[#5360791A] flex hover:justify-center justify-center py-3 outline-none " >Roadmap</a>
-                  <a onClick={()=> setTab2(false)} href="#team" className=" text-white text-sm w-full border-b border-[#5360791A] flex hover:justify-center justify-center py-3 outline-none " >Team</a> 
+                  <a onClick={()=> setTab2(false)} target="_blank" href="#https://docs.loozr.io/tokenomics" className=" text-white text-sm w-full border-b border-[#5360791A] flex hover:justify-center justify-center py-3 outline-none " >Tokenomics</a> 
+                  <a onClick={()=> setTab2(false)} target="_blank" href="https://docs.loozr.io/roadmap" className=" text-white text-sm w-full border-b border-[#5360791A] flex hover:justify-center justify-center py-3 outline-none " >Roadmap</a>
+                  <a onClick={()=> setTab2(false)} target="_blank" href="https://docs.loozr.io/team" className=" text-white text-sm w-full border-b border-[#5360791A] flex hover:justify-center justify-center py-3 outline-none " >Team</a> 
                 </div>
               )}
               {tab2 && (

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function Footer() {
   return (
     <>
-      <footer className=" w-full !bg-[#11151D] relative px-6 lg:px-20 z-30 pb-0">
+      <footer className=" w-full txty !bg-[#11151D] relative px-6 lg:px-20 z-30 pb-0">
         <div className=" w-full grid grid-cols-1 lg:grid-cols-4 gap-12 pb-4 !pt-12" >
           <div className=" w-full " >
             <Link to="/" className="logo ">
@@ -12,113 +12,137 @@ export default function Footer() {
             <p className=" font-medium mt-6 text-base txt text-[#536079] tracking-[0.4px]  " >Social music streaming and DeFi platform for creators and music lovers. </p>
           </div>
           <div className=" w-full flex flex-col lg:items-start  " > 
-            <p className=" font-bold text-white text-lg lg:h-10 " >COMPANY</p>
-            <div className=" font-medium mt-3 lg:mt-6 text-sm txt text-[#536079]  " >
+            <p className=" font-bold text-white text-lg lg:h-10 " >Product</p>
+            <div className=" font-medium mt-3 lg:mt-6  text-base txt text-[#536079]  " >
               <div className=" flex items-center mt-2 " >
                 <div className="w-fit" >
                   <div className=" w-1 h-1 rounded-full bg-[#536079] mr-3 " />
                 </div>
-                 <a href="/product" className=" font-medium text-sm txt text-[#536079]  " >Loozr Products </a>
+                <a target="_blank" href="https://docs.loozr.io/loozr-products/music-fi" className=" font-medium  text-base txt text-[#536079]  " >MusicFi</a>
               </div>
               <div className=" flex items-center mt-2 " >
                 <div className="w-fit" >
                   <div className=" w-1 h-1 rounded-full bg-[#536079] mr-3 " />
                 </div>
-                 <p className=" font-medium text-sm txt text-[#536079]  " >Loozr Ecosystem  </p>
+                <a target="_blank" href="https://docs.loozr.io/loozr-products/social-fi" className=" font-medium  text-base txt text-[#536079]  " >SocialFI</a>
               </div>
               <div className=" flex items-center mt-2 " >
                 <div className="w-fit" >
                   <div className=" w-1 h-1 rounded-full bg-[#536079] mr-3 " />
                 </div>
-                 <p className=" font-medium text-sm txt text-[#536079]  " >Loozr Features</p>
+                <a target="_blank" href="https://docs.loozr.io/loozr-products/audio-video-streaming" className=" font-medium  text-base txt text-[#536079]  " >Audio/Video Streaming</a>
+              </div>
+              <div className=" flex items-center mt-2 " >
+                <div className="w-fit" >
+                  <div className=" w-1 h-1 rounded-full bg-[#536079] mr-3 " />
+                </div>
+                <a target="_blank" href="https://docs.loozr.io/" className=" font-medium  text-base txt text-[#536079]  " >Music NFT Marketplace</a>
+              </div>
+              <div className=" flex items-center mt-2 " >
+                <div className="w-fit" >
+                  <div className=" w-1 h-1 rounded-full bg-[#536079] mr-3 " />
+                </div>
+                <a target="_blank" href="https://docs.loozr.io/loozr-products/loozrverse" className=" font-medium  text-base txt text-[#536079]  " >LOOZRverse</a>
               </div>
             </div>
           </div> 
           <div className=" w-full hidden lg:flex flex-col items-start  " > 
             <p className=" font-bold text-white text-lg h-10 " >QUICK LINKS</p>
-            <div className=" font-medium mt-6 text-sm txt text-[#536079]  " >
+            <div className=" font-medium mt-6  text-base txt text-[#536079]  " >
               <div className=" flex items-center mt-2 " >
                 <div className="w-fit" >
                   <div className=" w-1 h-1 rounded-full bg-[#536079] mr-3 " />
                 </div>
-                 <a target="" href="/explore" className=" font-medium text-sm txt text-[#536079]  " >Launch Testnet</a>
+                 <a target="" href="/login" className=" font-medium  text-base txt text-[#536079]  " >Launch Testnet</a>
               </div>
               <div className=" flex items-center mt-2 " >
                 <div className="w-fit" >
                   <div className=" w-1 h-1 rounded-full bg-[#536079] mr-3 " />
                 </div>
-                 <a target="_blank" href="https://docs.loozr.io/" className=" font-medium text-sm txt text-[#536079]  " >LiteDOC</a>
+                 <a target="_blank" href="https://docs.loozr.io/infrastructure/loozr-ecosystem" className=" font-medium  text-base txt text-[#536079]  " >Loozr Ecosystem</a>
               </div>
               <div className=" flex items-center mt-2 " >
                 <div className="w-fit" >
                   <div className=" w-1 h-1 rounded-full bg-[#536079] mr-3 " />
                 </div>
-                 <p className=" font-medium text-sm txt text-[#536079]  " >Tokenomics</p>
+                 <a target="_blank" href="https://docs.loozr.io/infrastructure/loozr-applications" className=" font-medium  text-base txt text-[#536079]  " >Loozr Applications</a>
               </div>
               <div className=" flex items-center mt-2 " >
                 <div className="w-fit" >
                   <div className=" w-1 h-1 rounded-full bg-[#536079] mr-3 " />
                 </div>
-                 <p className=" font-medium text-sm txt text-[#536079]  " >Roadmap</p>
+                 <a target="_blank" href="https://docs.loozr.io/" className=" font-medium  text-base txt text-[#536079]  " >LiteDOC</a>
               </div>
               <div className=" flex items-center mt-2 " >
                 <div className="w-fit" >
                   <div className=" w-1 h-1 rounded-full bg-[#536079] mr-3 " />
                 </div>
-                 <p className=" font-medium text-sm txt text-[#536079]  " >Contributors</p>
+                 <a target="_blank" href="https://docs.loozr.io/tokenomics" className=" font-medium  text-base txt text-[#536079]  " >Tokenomics</a>
               </div>
               <div className=" flex items-center mt-2 " >
                 <div className="w-fit" >
                   <div className=" w-1 h-1 rounded-full bg-[#536079] mr-3 " />
                 </div>
-                 <p className=" font-medium text-sm txt text-[#536079]  " >FAQ</p>
+                 <a target="_blank" href="https://docs.loozr.io/roadmap" className=" font-medium  text-base txt text-[#536079]  " >Roadmap</a>
+              </div>
+              <div className=" flex items-center mt-2 " >
+                <div className="w-fit" >
+                  <div className=" w-1 h-1 rounded-full bg-[#536079] mr-3 " />
+                </div>
+                 <a target="_blank" href="https://docs.loozr.io/team" className=" font-medium  text-base txt text-[#536079]  " >Team</a>
+              </div>
+              <div className=" flex items-center mt-2 " >
+                <div className="w-fit" >
+                  <div className=" w-1 h-1 rounded-full bg-[#536079] mr-3 " />
+                </div>
+                 <a target="_blank" href="https://docs.loozr.io/frequently-asked-questions" className=" font-medium  text-base txt text-[#536079]  " >FAQ</a>
               </div>
             </div>
           </div> 
           <div className=" w-full hidden lg:flex flex-col items-start " > 
             <p className=" font-bold text-white text-lg h-10 " >SOCIALS</p>
-            <div className=" font-medium mt-6 text-sm txt text-[#536079]  " >
+            <div className=" font-medium mt-6  text-base txt text-[#536079]  " >
               <div className=" flex items-center mt-2 " >
                 <div className="w-fit" >
                   <div className=" w-1 h-1 rounded-full bg-[#536079] mr-3 " />
                 </div>
-                 <a target="_blank" href="https://twitter.com/officialloozr" className=" font-medium text-sm txt text-[#536079]  " > Twitter </a>
+                 <a target="_blank" href="https://twitter.com/officialloozr" className=" font-medium  text-base txt text-[#536079]  " > Twitter </a>
               </div>
               <div className=" flex items-center mt-2 " >
                 <div className="w-fit" >
                   <div className=" w-1 h-1 rounded-full bg-[#536079] mr-3 " />
                 </div>
-                 <a target="_blank" href="https://discord.gg/loozr" className=" font-medium text-sm txt text-[#536079]  " > Discord  </a>
+                 <a target="_blank" href="https://discord.gg/loozr" className=" font-medium  text-base txt text-[#536079]  " > Discord  </a>
               </div>
               <div className=" flex items-center mt-2 " >
                 <div className="w-fit" >
                   <div className=" w-1 h-1 rounded-full bg-[#536079] mr-3 " />
                 </div>
-                 <a target="_blank" href="https://t.me/officialloozr" className=" font-medium text-sm txt text-[#536079]  " > Telegram</a>
+                 <a target="_blank" href="https://t.me/officialloozr" className=" font-medium  text-base txt text-[#536079]  " > Telegram</a>
               </div>
               <div className=" flex items-center mt-2 " >
                 <div className="w-fit" >
                   <div className=" w-1 h-1 rounded-full bg-[#536079] mr-3 " />
                 </div>
-                 <a target="_blank" href="https://medium.com/@officialloozr" className=" font-medium text-sm txt text-[#536079]  " > Medium </a>
+                 <a target="_blank" href="https://medium.com/@officialloozr" className=" font-medium  text-base txt text-[#536079]  " > Medium </a>
+              </div>
+              {/* <div className=" flex items-center mt-2 " >
+                <div className="w-fit" >
+                  <div className=" w-1 h-1 rounded-full bg-[#536079] mr-3 " />
+                </div>
+                 <a target="_blank" href="https://www.youtube.com/@loozr_" className=" font-medium  text-base txt text-[#536079]  " > Youtube </a>
+              </div> */}
+              <div className=" flex items-center mt-2 " >
+                <div className="w-fit" >
+                  <div className=" w-1 h-1 rounded-full bg-[#536079] mr-3 " />
+                </div>
+                 <a target="_blank" href="https://www.instagram.com/officialloozr/" className=" font-medium  text-base txt text-[#536079]  " > Instagram  </a>
               </div>
               <div className=" flex items-center mt-2 " >
                 <div className="w-fit" >
                   <div className=" w-1 h-1 rounded-full bg-[#536079] mr-3 " />
                 </div>
-                 <a target="_blank" href="https://www.youtube.com/@loozr_" className=" font-medium text-sm txt text-[#536079]  " > Youtube </a>
-              </div>
-              <div className=" flex items-center mt-2 " >
-                <div className="w-fit" >
-                  <div className=" w-1 h-1 rounded-full bg-[#536079] mr-3 " />
-                </div>
-                 <a target="_blank" href="https://www.instagram.com/officialloozr/" className=" font-medium text-sm txt text-[#536079]  " > Instagram  </a>
-              </div>
-              <div className=" flex items-center mt-2 " >
-                <div className="w-fit" >
-                  <div className=" w-1 h-1 rounded-full bg-[#536079] mr-3 " />
-                </div>
-                 <a target="_blank" href="https://www.tiktok.com/@officialloozr" className=" font-medium text-sm txt text-[#536079]  " > Tiktok</a>
+                 <a target="_blank" href="https://www.tiktok.com/@officialloozr" className=" font-medium  text-base txt text-[#536079]  " > Tiktok</a>
               </div>
             </div>
           </div>
