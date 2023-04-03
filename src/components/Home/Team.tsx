@@ -30,7 +30,7 @@ export default function Team() {
                       <div
                         className="img sizxl mb-30"
                         data-tooltip-tit="Yobo Zorle"
-                        data-tooltip-sub="AR/VR/Software Developer"
+                        data-tooltip-sub="Co-founder"
                       >
                         <img
                           src="/img/team/1.png"

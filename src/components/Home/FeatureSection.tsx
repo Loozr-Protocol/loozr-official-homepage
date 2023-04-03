@@ -5,7 +5,7 @@ export default function FeatureSection() {
         <> 
             <div className=' w-full bg-[#8369F4] !text-[#0C0F15] px-6 md:px-20 py-8 lg:py-0 lg:pt-20 relative ' > 
                 <div className=" ">
-                    <p className="wow fadeIn !text-[#0C0F15] max-w-2xl txt !font-extrabold !leading-[52.5px] !text-4xl " data-wow-delay=".5s">
+                    <p className="wow fadeIn !text-[#0C0F15] max-w-2xl txt !font-extrabold md:!leading-[52.5px] !text-4xl " data-wow-delay=".5s">
                         Convert your monthly music
                         subscriptions into investments. 
                     </p>
