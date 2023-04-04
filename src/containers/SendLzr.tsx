@@ -8,7 +8,8 @@ import { MIXER_ACCOUNT, TOAST_OPTIONS, LZR_IN_USD } from "../config/constants";
 import { useLZRTransferCallback } from "../utils/calls/useLZRTransferCallback";
 import { useSearchUserCallback } from "../state/user/hooks/useAccount"; 
 import { getLZRBalanceCallback } from "../state/wallet/hooks/fetchBalance";
-import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";  
+import { addCase } from '../state/sendLoozr/sendLzr'
 import { AppState } from "../state/store";
 import { formatBalanceUSD, formatNumber, getFullDisplayBalance } from "../utils/formatBalance";
 import Photo from "../components/Photo";
@@ -33,6 +34,9 @@ const SendLzr = () => {
   }); 
   
   const user = useSelector((state: AppState) => state.user.userInfo);
+
+  const senduser = useSelector((state: any) => state.sendlzr.value ) 
+  
   const lzrAccountId = `${user?.accountId}.${MIXER_ACCOUNT}`;
   const [showModal, setShowModal] = React.useState(false)
   const [balanceInLzr, setLZRBalance] = useState("0.00");
@@ -64,6 +68,8 @@ const SendLzr = () => {
   const OnchangeAcount = async (item: any)=>{  
     setSearchValue(item) 
     setName(item) 
+    console.log(item);
+    
     // formik.setFieldValue("account_id", item)
     const result = await getSearchUser(item); 
     setData(result)
@@ -88,10 +94,17 @@ const SendLzr = () => {
   };
   
   const ClickHandler =(item: any, index: any)=> {
-    formik.setFieldValue("account_id", index)
+    formik.setFieldValue("account_id", index) 
     setName(item)
     setSearchValue("")
   }
+
+  React.useEffect(()=> { 
+    if(senduser){ 
+      formik.setFieldValue("account_id", senduser)
+      setName(senduser) 
+    }
+  },[])
 
   return (
     <div className="w-full px-6 md:px-0 mt-16 md:mt-0">
@@ -106,7 +119,8 @@ const SendLzr = () => {
               type="text"
               name="account_id"
               autoComplete="off"
-              value={name}
+              disabled={senduser? true:false}
+              value={senduser? senduser:name}
               onChange={(e)=> OnchangeAcount(e.target.value)}
               onBlur={formik.handleBlur}
               onFocus={() => formik.setFieldTouched("account_id", true, true)}

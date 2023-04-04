@@ -42,7 +42,7 @@
 
 body {
   color: #fff;
-  background: #0c0f16;
+  background: #0c0f16 !important;
   line-height: 1.5;
   font-weight: 400;
   overflow-x: hidden !important;
@@ -1381,6 +1381,18 @@ body {
   position: absolute;
   bottom: 0;
   left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 10vw;
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+  opacity: 0.3;
+}
+.sec-head2 .tbg {
+  position: absolute;
+  bottom: 0;
+  right: 0;
   width: 100%;
   text-align: center;
   font-size: 10vw;
@@ -4343,6 +4355,11 @@ body {
 .team-crv .img-box .toleft .img {
   margin-right: auto;
 }
+button{
+  font-weight: 600 !important;
+  font-size: 16px !important;
+
+}
 
 /* ====================== [ End Team ] ====================== */
 /* ====================== [ Start Call To Action  ] ====================== */
@@ -5398,6 +5415,16 @@ iframe {
   box-sizing: content-box;
   min-height: 80vh;
 }
+
+.hero-head-mobile {
+  position: relative;
+  padding: 0;
+  z-index: 1;
+  overflow: hidden;
+  box-sizing: content-box;
+  min-height: 70vh;
+}
+
 .hero-head .overlay {
   background: rgb(12, 15, 21);
   background: linear-gradient(
@@ -5527,8 +5554,8 @@ iframe {
     bottom: auto;
     z-index: 1;
     margin-top: 40px;
-    margin-left: -25px;
-    margin-right: -25px;
+    margin-left: -16px;
+    margin-right: -16px;
   }
 }
 @media (max-width: 600px) {

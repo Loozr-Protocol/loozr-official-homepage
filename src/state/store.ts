@@ -5,9 +5,11 @@ import artistReducer from './artist/artistReducer';
 import miscReducer from './misc/index';
 import notificationsReducer from './notifications/index';
 import coinsStatReducer from './coinStat/index';
+import sendLzr from './sendLoozr/sendLzr';
 
 const store = configureStore({
   reducer: {
+    sendlzr: sendLzr,
     coinsStat: coinsStatReducer,
     song: songReducer,
     user: userReducer,

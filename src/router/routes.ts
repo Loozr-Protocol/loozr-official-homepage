@@ -31,6 +31,8 @@ import SuggestedArtistes from "../containers/SuggestedArtistes";
 import MusicInfo from "../containers/MusicInfo"; 
 import ExploreDashboard from "../containers/ExploreDashboard";
 import UpdateProfile from "../containers/UpdateProfile";
+import ProfileScan from "../containers/ProfileScan";
+import Product from "../containers/Product";
 
 export const authRoutes = [
   {
@@ -112,6 +114,12 @@ export const routes = [
     path: "/",
     private: false,
     component: Home,
+  },
+  {
+    name: "product",
+    path: "/product",
+    private: false,
+    component: Product,
   },
   {
     name: "artists ecosystem",
@@ -209,5 +217,11 @@ export const dashboardhome = [
     path: "/:accountDomain",
     private: true,
     component: Profile,
+  },
+  {
+    name: "profile",
+    path: "/scan/:accountDomain",
+    private: true,
+    component: ProfileScan,
   },
 ]

@@ -13,24 +13,24 @@ export default function ArtistShowcase() {
   return (
     <>
       <div
-        className="views-element-container work-carousel section-padding pt-0 metro position-re mb-80"
+        className="views-element-container work-carousel !bg-[#11151D] !pt-12 md:!pt-24 md:mt-5 section-padding metro position-re pb-80"
         id="block-views-block-nv-section-content-block-service"
       >
-        <div className="container">
+        <div className="container !bg-[#11151D]">
           <div className="sec-head custom-font text-center">
-            <h6 className="wow fadeIn" data-wow-delay=".5s">
-              CREATOR ECOSYSTEM
+            <h6 id="gradenttext" className="wow fadeIn leading-[1.8] !font-medium !text-[15px] " data-wow-delay=".5s">
+              CREATOR ECOSYSTEM 
             </h6>
-            <h3 className="wow" data-splitting>
+            <h3 className="wow !font-black txt !text-white mt-8 !leading-[1.1] !text-[40px] " data-splitting>
               TOP ARTISTES
             </h3>
-            <span className="tbg">TOP ARTISTES</span>
+            <span className="tbg lg:-top-[100px] ">TOP ARTISTES</span>
           </div>
         </div>
         <div className="clearfix"></div>
-        <div className="container ontop">
-          <div className="row">
-            <div className="col-lg-12 no-padding">
+        <div className="container !px-0 ontop">
+          <div className="">
+            <div className=" w-full flex ">
               <Swiper
                 autoplay={{ delay: 5000 }}
                 loop={true}

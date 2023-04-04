@@ -7,20 +7,42 @@ import Services from "../components/Home/Services";
 import RoadMap from "../components/Home/Roadmap";
 import Tokenomics from "../components/Home/Tokenomics";
 import Team from "../components/Home/Team";
+import FlagShip from "../components/Home/FlagShip";
+import FeatureSection from "../components/Home/FeatureSection";
+import FAQ from "../components/Home/FAQ";
+import { Parallax, Background } from 'react-parallax';
+import MobileWhySection from "../components/Home/MobileWhySection";
 
 export default function Home() {
   return (
-    <>
-      <Header />
-      <div className="main-content">
-        <AboutSection />
-        <ArtistShowcase />
-        <WhySection />
-        <Services />
-        <RoadMap />
+    <> 
+      <div className=" relative w-full z-10 !bg-[#0c0f16] h-screen " >
+        <Header />  
+      </div>
+      <div className="main-content relative ">  
+        <div className=" w-full h-[100vh] relative " >
+          <div className=" fixed -z-10 inset-0 " >
+            <AboutSection /> 
+          </div>
+        </div>
+        <div className=" relative w-full z-10  !bg-[#0c0f15]   " > 
+          <ArtistShowcase /> 
+          <div className=" w-full hidden md:block " > 
+            <WhySection /> 
+          </div>
+          <div className=" w-full md:hidden " > 
+            <MobileWhySection /> 
+          </div>
+          <FlagShip /> 
+          <Services />
+          <FeatureSection />
+          <RoadMap />
+          <Team />
+          <FAQ />  
+        </div>
+        {/*
         <Tokenomics />
-        <Team />
-        <Community />
+        <Community /> */}
       </div>
     </>
   );
