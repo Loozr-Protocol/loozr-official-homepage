@@ -160,7 +160,7 @@ export default function Footer() {
         <div className=" w-full border-t border-[#536079] mt-4 py-4 lg:flex-row flex-col flex lg:justify-between  "  >
           <p className=" font-medium !text-sm txt text-[#536079]  " >© 2023 Loozr - All Rights Reserved.</p>
           <div className=" flex lg:flex-row flex-col lg:mt-0 mt-2 lg:items-start gap-2 lg:gap-5 " >
-            <p className=" font-medium !text-sm txt text-[#536079]  " >Cookie policy</p>
+            {/* <p className=" font-medium !text-sm txt text-[#536079]  " >Cookie policy</p> */}
             <p className=" font-medium !text-sm txt text-[#536079]  " >Privacy policy</p>
             <p className=" font-medium !text-sm txt text-[#536079]  " >Terms of service</p>
           </div>

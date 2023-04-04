@@ -189,13 +189,13 @@ export default function MobileWhySection() {
                         <div  
                           key={item} className=" w-full flex !bg-transparent rounded-xl flex-col items-center" >  
                           <div className=" h-[250px] " />
-                          <div className=" px-4 md:pr-14 py-8 pt-4 w-full md:px-12 flex flex-col items-center" >   
+                          <div className=" px-4 h-[250px] md:pr-14 py-8 pt-4 w-full md:px-12 flex flex-col items-center" >   
                             <div  className=" relative w-full z-50 " > 
                               <p className=" font-bold text-2xl text-left !text-transparent ">{item.header}</p>  
                               <div className=" py-2 pt-2 w-full px-1 !text-transparent " >
                                 {item.list.map((item: any, index: any) => {
                                   return( 
-                                    <div key={index} className=" flex mb-2 font-normal leading-normal  " >
+                                    <div key={index} className=" flex  mb-2 font-normal leading-normal  " >
                                       <div className=" w-fit " > 
                                         <div className=" w-[4px] h-[4px] mt-[12px]  bg-transparent rounded-full mr-2 " />
                                       </div>

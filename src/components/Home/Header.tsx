@@ -91,7 +91,8 @@ export default function Header() {
                 </p>
                 <div className="mt-20 flex ">
                   <a
-                    href="https://loozr-1.gitbook.io/docs/"
+                  target="_blank"
+                    href="https://docs.loozr.io"
                     className="button btn-lit mr-3 !flex justify-center items-center "
                   >
                     <span>Learn more</span>

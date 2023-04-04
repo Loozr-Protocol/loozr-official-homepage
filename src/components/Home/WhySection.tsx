@@ -16,7 +16,7 @@ export default function WhySection() {
       <div className=" w-full flex flex-col " >   
         <div  className=" relative max-w-3xl z-50 md:!pl-12 md:pr-14 px-4 py-8 pt-4 " > 
           <p  id="gradenttext"  className=" font-bold text-2xl text-left  ">For Content Creators</p>  
-          <div className=" py-2 pt-2 w-full px-1 tracking-[0.4px] !text-[#9EAAC0] " >
+          <div className=" py-2 h-[150px] rounded-b-xl pt-2 w-full px-1 tracking-[0.4px] !text-[#9EAAC0] " >
             <div className=" flex font-normal leading-normal  " >
               <div className=" w-fit " > 
                 <div className=" w-[4px] h-[4px] mt-[8px]  bg-white rounded-full mr-2 " />
@@ -38,7 +38,7 @@ export default function WhySection() {
       <div className=" w-full flex flex-col  " >  
         <div  className=" relative max-w-3xl z-50 md:!pl-12 md:pr-14 px-4 py-8 pt-4 " > 
           <p  id="gradenttext"  className=" font-bold text-2xl text-left  ">For Music Creators</p>  
-          <div className=" py-2 pt-2 w-full px-1 !text-[#9EAAC0] tracking-[0.4px]  " >
+          <div className=" py-2 h-[150px] rounded-b-xl pt-2 w-full px-1 !text-[#9EAAC0] tracking-[0.4px]  " >
             <div className=" flex font-normal leading-normal  " >
               <div className=" w-fit " > 
                 <div className=" w-[4px] h-[4px] mt-[8px]  bg-white rounded-full mr-2 " />
@@ -60,7 +60,7 @@ export default function WhySection() {
       <div className=" w-full flex flex-col  " >  
         <div  className=" relative max-w-3xl z-50 md:!pl-12 md:pr-14 px-4 py-8 pt-4 " > 
           <p  id="gradenttext"  className=" font-bold text-2xl text-left  ">For Fans/Listeners</p>  
-          <div className=" py-2 pt-2 w-full px-1 !text-[#9EAAC0] tracking-[0.4px]  " >
+          <div className=" py-2 h-[150px] rounded-b-xl pt-2 w-full px-1 !text-[#9EAAC0] tracking-[0.4px]  " >
             <div className=" flex font-normal leading-normal  " >
               <div className=" w-fit " > 
                 <div className=" w-[4px] h-[4px] mt-[8px]  bg-white rounded-full mr-2 " />
@@ -76,7 +76,7 @@ export default function WhySection() {
       <div className=" w-full flex flex-col  " >  
         <div  className=" relative max-w-3xl z-50 md:!pl-12 md:pr-14 px-4 py-8 pt-4 " > 
           <p  id="gradenttext"  className=" font-bold text-2xl text-left  ">For Record Labels</p>  
-          <div className=" py-2 pt-2 w-full px-1 !text-[#9EAAC0] tracking-[0.4px]  " >
+          <div className=" py-2 h-[150px] rounded-b-xl pt-2 w-full px-1 !text-[#9EAAC0] tracking-[0.4px]  " >
             <div className=" flex font-normal leading-normal  " >
               <div className=" w-fit " > 
                 <div className=" w-[4px] h-[4px] mt-[8px]  bg-white rounded-full mr-2 " />
@@ -92,7 +92,7 @@ export default function WhySection() {
       <div className=" w-full flex flex-col  " >  
         <div  className=" relative max-w-3xl z-50 md:!pl-12 md:pr-14 px-4 py-8 pt-4 " > 
           <p  id="gradenttext"  className=" font-bold text-2xl text-left  ">For Podcasters/Spacehosts</p>  
-          <div className=" py-2 pt-2 w-full px-1 !text-[#9EAAC0] tracking-[0.4px]  " >
+          <div className=" py-2 h-[150px] rounded-b-xl pt-2 w-full px-1 !text-[#9EAAC0] tracking-[0.4px]  " >
             <div className=" flex font-normal leading-normal  " >
               <div className=" w-fit " > 
                 <div className=" w-[4px] h-[4px] mt-[8px]  bg-white rounded-full mr-2 " />
@@ -108,7 +108,7 @@ export default function WhySection() {
       <div className=" w-full flex flex-col  " >  
         <div  className=" relative max-w-3xl z-50 md:!pl-12 md:pr-14 px-4 py-8 pt-4 " > 
           <p  id="gradenttext"  className=" font-bold text-2xl text-left  ">For Small Businesses </p>  
-          <div className=" py-2 pt-2 w-full px-1 !text-[#9EAAC0] tracking-[0.4px]  " >
+          <div className=" py-2 h-[150px] rounded-b-xl pt-2 w-full px-1 !text-[#9EAAC0] tracking-[0.4px]  " >
             <div className=" flex font-normal leading-normal  " >
               <div className=" w-fit " > 
                 <div className=" w-[4px] h-[4px] mt-[8px]  bg-white rounded-full mr-2 " />
@@ -124,7 +124,7 @@ export default function WhySection() {
       <div className=" w-full flex flex-col  " >  
         <div  className=" relative max-w-3xl z-50 md:!pl-12 md:pr-14 px-4 py-8 pt-4 " > 
           <p  id="gradenttext"  className=" font-bold text-2xl text-left  ">For Events & Ticketing </p>  
-          <div className=" py-2 pt-2 w-full px-1 !text-[#9EAAC0] tracking-[0.4px]  " >
+          <div className=" py-2 h-[150px] rounded-b-xl pt-2 w-full px-1 !text-[#9EAAC0] tracking-[0.4px]  " >
             <div className=" flex font-normal leading-normal  " >
               <div className=" w-fit " > 
                 <div className=" w-[4px] h-[4px] mt-[8px]  bg-white rounded-full mr-2 " />
@@ -140,7 +140,7 @@ export default function WhySection() {
       <div className=" w-full flex flex-col  " >  
         <div  className=" relative max-w-3xl z-50 md:!pl-12 md:pr-14 px-4 py-8 pt-4 " > 
           <p  id="gradenttext"  className=" font-bold text-2xl text-left  ">For Publishers/Distributors </p>  
-          <div className=" py-2 pt-2 w-full px-1 !text-[#9EAAC0] tracking-[0.4px]  " >
+          <div className=" py-2 h-[150px] rounded-b-xl pt-2 w-full px-1 !text-[#9EAAC0] tracking-[0.4px]  " >
             <div className=" flex font-normal leading-normal  " >
               <div className=" w-fit " > 
                 <div className=" w-[4px] h-[4px] mt-[8px]  bg-white rounded-full mr-2 " />
