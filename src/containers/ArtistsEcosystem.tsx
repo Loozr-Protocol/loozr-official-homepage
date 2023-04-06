@@ -5,9 +5,9 @@ import artistsData from "../config/mock-data/artists.json";
 export default function ArtistEcosystem() {
   const artists: Artist[] = artistsData.map((artist) => artist);
   const paddingStyle = {
-    "paddingTop": "15px",
-    "paddingBottom": "15px",
-  }
+    paddingTop: "15px",
+    paddingBottom: "15px",
+  };
   return (
     <>
       <div className="main-content">
@@ -17,7 +17,7 @@ export default function ArtistEcosystem() {
             className="section-padding mt-30 work-carousel"
           >
             <div className="container">
-              <div className="sec-head custom-font text-center mb-10">
+              <div className="sec-head custom-font text-center mb-2.5">
                 <h6 className="wow fadeIn" data-wow-delay=".5s">
                   CREATOR ECOSYSTEM
                 </h6>

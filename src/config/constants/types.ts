@@ -1,3 +1,5 @@
+import User from "./models/user";
+
 export interface Track {
   title: string;
   author: string;
@@ -30,4 +32,44 @@ export interface Artist {
   isVerified: boolean;
   photo: string;
   songs: Song[]
+}
+
+export interface Pagination {
+  currentCursor: string;
+  nextCursor: string;
+  reachMaxLimit: boolean;
+}
+
+export interface Balance {
+  balance: string;
+  balanceUSD: string;
+}
+
+export interface HodlerState {
+  user: User;
+  coin: string;
+  coinId: number;
+  balance?: Balance
+}
+
+export interface UserState {
+  userInfo: User;
+  suggestedUsers: {
+    users: User[];
+    pagination: Pagination;
+  }
+  currentProfile: User;
+  jwtToken: string;
+  loading: boolean;
+  success: boolean;
+  errorLoadingProfile: boolean;
+  signUpSuccess: boolean;
+  verifySuccess: boolean;
+  accountSetupSuccess: boolean;
+  error: string
+}
+
+export interface Model {
+  fromJson(jsonData: { [key: string]: any }): void;
+  toJson(): { [key: string]: any }
 }

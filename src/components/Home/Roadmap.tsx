@@ -1,7 +1,7 @@
 export default function RoadMap() {
   const quotas = [
     {
-      label: "Phase 01.",
+      label: "Phase 01",
       agendas: [
         "Ideation/structure formation",
         "Core team formation",
@@ -47,16 +47,16 @@ export default function RoadMap() {
   ];
   return (
     <>
-      <div className="views-element-container services mt-70">
+      <div id="roadmap" className="views-element-container services lg:pt-12 !px-2 md:!px-20 mt-70">
         <div className="container">
           <div className="sec-head custom-font text-center">
-            <h6 className="wow fadeIn" data-wow-delay=".5s">
+            <h6 id="gradenttext"  className="wow  fadeIn leading-[1.8] !font-medium !text-[15px] " data-wow-delay=".5s">
               GOALS & PLANS
             </h6>
-            <h3 className="wow" data-splitting>
+            <h3 className="wow text-white" data-splitting>
               ROADMAP
             </h3>
-            <span className="tbg">ROADMAP</span>
+            <span className="tbg lg:-top-[100px]">ROADMAP</span>
           </div>
         </div>
         <div className="clearfix"></div>
@@ -69,10 +69,10 @@ export default function RoadMap() {
                     className="item-box xfact-item text-left wow fadeInLeft"
                     data-wow-delay=".5s"
                   >
-                    <h6 className="mt-10">{quota.label}</h6>
+                    <h6 className="mt-10 text-[#536079] font-medium txt ">{quota.label}</h6>
                     <ul className="list-unstyled">
                       {quota.agendas.map((agenda, i) => (
-                        <li key={i}><span></span> {agenda}</li>
+                        <li className="text-white" key={i}><span></span> {agenda}</li>
                       ))}
                     </ul>
                   </div>

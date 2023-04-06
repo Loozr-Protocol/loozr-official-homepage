@@ -1,26 +1,30 @@
-import { applyMiddleware, createStore } from "redux";
-import thunk from "redux-thunk";
-import rootReducer from "./rootReducer";
-import artistsData from "../config/mock-data/artists.json";
-import { Song } from "../config/constants/types";
+import { configureStore } from '@reduxjs/toolkit';
+import songReducer from './song/songSlice';
+import userReducer from './user/userReducer';
+import artistReducer from './artist/artistReducer';
+import miscReducer from './misc/index';
+import notificationsReducer from './notifications/index';
+import coinsStatReducer from './coinStat/index';
+import sendLzr from './sendLoozr/sendLzr';
 
+const store = configureStore({
+  reducer: {
+    sendlzr: sendLzr,
+    coinsStat: coinsStatReducer,
+    song: songReducer,
+    user: userReducer,
+    artist: artistReducer,
+    notifications: notificationsReducer,
+    misc: miscReducer
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      thunk: true,
+      serializableCheck: false
+    }),
+  devTools: process.env.NODE_ENV === 'development',
+});
 
-const artistsSong = () => {
-  const songs: Song[] = [];
-  artistsData.map((artist) => songs.push(...artist.songs));
-  return songs;
-}
-
-const initialData = {
-  songs: artistsSong(),
-};
-
-const middlewares = [thunk];
-
-const store = createStore(
-  rootReducer,
-  initialData,
-  applyMiddleware(...middlewares)
-);
+export type AppState = ReturnType<typeof store.getState>;
 
 export default store;

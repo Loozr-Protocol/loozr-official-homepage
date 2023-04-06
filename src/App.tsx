@@ -1,13 +1,18 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Nav from "./components/Nav";
+import { ToastContainer } from "react-toastify";
 import Player from "./components/song/Player/Player";
-import Home from "./containers/Home";
-import ArtistDashboard from "./containers/ArtistDashboard";
 import Footer from "./components/Footer";
-import SongDashboard from "./containers/SongDashboard";
-import ArtistsEcosystem from "./containers/ArtistsEcosystem";
 import WaitlistModal from "./components/WaitlistModal";
+import AppLayout from "./components/Layout/App";
+import { authRoutes, dashboard, dashboardhome, routes } from "./router/routes";
+import Dashboard from "./components/Layout/dashboard";
+import { useDispatch, useSelector } from "react-redux"; 
+import { getUserDetails } from "./state/user/userActions";
+import { AppState } from "./state/store";
+import RequireAuth, { AccountSetupCheckOnly } from "./containers/RequireAuth";
+import { parseJwt } from "./utils/index";
+import FullpageLoader from "./components/loaders/FullpageLoader";
 
 const NotFound = () => (
   <div className="main-content">
@@ -16,63 +21,102 @@ const NotFound = () => (
   </div>
 );
 
-export default class App extends Component {
-  constructor(props: any) {
-    super(props);
-    this.state = {};
-  }
+const App = () => {
+  const { jwtToken } = useSelector((state: AppState) => state.user);
+  const dispatch = useDispatch();
 
-  render() {
-    return (
-      <>
-        <Router>
-          <div>
-            <a href="#main-content" className="visually-hidden focusable">
-              Skip to main content
-            </a>
+  useEffect(() => {
+    if (jwtToken) {
+      const decodedJwt = parseJwt(jwtToken);
+      dispatch(getUserDetails(decodedJwt.id));
+    }
+  }, [jwtToken, dispatch]);
 
-            <div id="preloader"></div>
-            <div className="progress-wrap cursor-pointer">
-              <svg
-                className="progress-circle svg-content"
-                width="100%"
-                height="100%"
-                viewBox="-1 -1 102 102"
-              >
-                <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
-              </svg>
-            </div>
-            <div className="mouse-cursor cursor-outer"></div>
-            <div className="mouse-cursor cursor-inner"></div>
+  return (
+    <>
+      <FullpageLoader />
+      <ToastContainer />
+      <Router>
+        <div id="preloader"></div>
+        <div className="progress-wrap cursor-pointer">
+          <svg
+            className="progress-circle svg-content"
+            width="100%"
+            height="100%"
+            viewBox="-1 -1 102 102"
+          >
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+          </svg>
+        </div>
+        <div className="mouse-cursor cursor-outer"></div>
+        <div className="mouse-cursor cursor-inner"></div>
 
-            <div
-              className="dialog-off-canvas-main-canvas"
-              data-off-canvas-main-canvas
-            >
-              <WaitlistModal />
-              <Nav />
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route
-                  path="/artistes/ecosystem"
-                  element={<ArtistsEcosystem />}
-                />
-                <Route path="/artists/:id" element={<ArtistDashboard />} />
-                <Route
-                  path="/artists/songs/:id"
-                  element={<SongDashboard />}
-                />
-                <Route path="*" element={NotFound} />
-              </Routes>
-              <Footer />
-              <Player />
-              <a href="#focused" id="focus-link" hidden>
-                Go to playing element
-              </a>
-            </div>
-          </div>
-        </Router>
-      </>
-    );
-  }
-}
+        <div
+          className="dialog-off-canvas-main-canvas"
+          data-off-canvas-main-canvas
+        >
+          <WaitlistModal />
+          <Routes>
+            {authRoutes.map((route) => (
+              <Route
+                key={route.name}
+                path={route.path}
+                element={
+                  <>
+                    <route.component />
+                    <Footer />
+                  </>
+                }
+              />
+            ))}
+            {routes.map((route) => (
+              <Route
+                key={route.name}
+                path={route.path}
+                element={
+                  <AppLayout>
+                    <route.component />
+                    <Footer />
+                  </AppLayout>
+                }
+              />
+            ))}
+            {dashboardhome.map((route) => (
+              <Route
+                key={route.name}
+                path={route.path}
+                element={
+                  <AccountSetupCheckOnly>
+                    <Dashboard>
+                      <route.component />
+                    </Dashboard>
+                  </AccountSetupCheckOnly>
+                }
+              />
+            ))}
+            {dashboard.map((route) => (
+              <Route
+                key={route.name}
+                path={route.path}
+                element={
+                  <RequireAuth>
+                    <Dashboard>
+                      <route.component />
+                    </Dashboard>
+                  </RequireAuth>
+                }
+              />
+            ))}
+            <Route path="*" element={NotFound} />
+          </Routes>
+          <Player />
+          <a href="#focused" id="focus-link" hidden>
+            Go to playing element
+          </a>
+        </div>
+      </Router>
+    </>
+  );
+};
+
+export default App;

@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  color: white !important;
+  background-color: #252626;
+}
+
+@layer components {
+  .active-tab {
+    @apply text-white font-semibold before:w-full before:h-0.5 before:absolute relative before:bg-accent before:bottom-0 before:left-0 before:right-[50%];
+  }
+  .pointer {
+    @apply relative before:bg-muted before:w-1 before:h-1 before:absolute before:left-0 before:top-1.5 before:rounded-full;
+  }
+  .card {
+    @apply rounded-2xl border border-grey-blur-20;
+  }
+  .active-tab-bottom {
+    @apply md:font-semibold text-sm text-white relative before:absolute before:w-full before:h-0.5 before:bg-loozr-purple before:bottom-[-13px];
+  }
+  .active-tab-top {
+  }
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.input-name:focus {
+  box-shadow:0 0 0 10px transparent;
+}
+
+button:disabled {
+  opacity: 0.6;
+}
+
+.fullpage-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+.fullpage-loader div {
+  color: #fff;
+  mix-blend-mode: difference;
+  font-size: 21px;
+}
+
+.name-tag {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+
+.coin-name-tag {
+  max-width: 80px;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+  position: relative;
+  top: 8px;
+}
+.pointer-cursor {
+  cursor: pointer;
+}
+ 
+.scroll_event::-webkit-scrollbar {
+  display: none;
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scroll_event {
+-ms-overflow-style: none;  /* IE and Edge */
+scrollbar-width: none;  /* Firefox */
+transition: transform 0.3s ease-out;
+scroll-behavior: smooth;
+}
+
+html{  
+  scroll-behavior: smooth; 
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+} 
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 25%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  
+}
+
+div:hover::-webkit-scrollbar-thumb {
+  background-color: transparent;
+} 
+
+.example1 {
+  height: 20px;  
+  overflow: hidden;
+  position: relative;
+}
+
+input.upper { text-transform: lowercase; }
+input.lower { text-transform: uppercase; }
+
+.example1 p {
+  position: absolute;
+  width: 100%; 
+  text-align: center;
+
+  /* Starting position */
+    -moz-transform:translateX(100%);
+    -webkit-transform:translateX(100%);  
+    transform:translateX(100%);
+
+  /* Apply animation to this element */  
+    -moz-animation: example1 4s linear infinite;
+    -webkit-animation: example1 4s linear infinite;
+    animation: example1 4s linear infinite;
+}
+
+/* Move it (define the animation) */
+@-moz-keyframes example1 {
+  0%   { -moz-transform: translateX(100%); }
+  100% { -moz-transform: translateX(-100%); }
+}
+@-webkit-keyframes example1 {
+  0%   { -webkit-transform: translateX(100%); }
+  100% { -webkit-transform: translateX(-100%); }
+}
+@keyframes example1 {
+  0%   { 
+  -moz-transform: translateX(100%); /* Firefox bug fix */
+  -webkit-transform: translateX(100%); /* Firefox bug fix */
+  transform: translateX(100%);         
+  }
+  100% { 
+  -moz-transform: translateX(-100%); /* Firefox bug fix */
+  -webkit-transform: translateX(-100%); /* Firefox bug fix */
+  transform: translateX(-100%); 
+  }
+}
+
+#gradenttext {  
+  background: linear-gradient(255.45deg, #8369F4 39.69%, #F039E2 55.08%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}  
+
+#slides {
+  position: absolute;
+  top: 17%;
+  left: 10%;
+  right: 48%;
+  bottom: 17%;
+  overflow: hidden;
+}
+#slides ul {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  padding-top: 40px;
+  height: 100%;
+}
+#slides ul li {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
