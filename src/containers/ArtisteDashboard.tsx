@@ -210,18 +210,20 @@ const ArtisteDashboard = () => {
                 </p>
               </button> 
               <div className=" md:flex hidden " >
-                <BorderLinearProgress
+                {/* <BorderLinearProgress
                   variant="determinate"
                   value={(curTime / duration) * 100}
                   className="ml-6 mr-8 min-w-[180px]"
-                />
+                /> */}
+                <div className=" bg-slate-400 ml-6 mr-8 min-w-[180px] h-[2px] rounded-lg " />
               </div>
               <div className=" md:hidden flex " >
-                <BorderLinearProgress
+                {/* <BorderLinearProgress
                   variant="determinate"
                   value={(curTime / duration) * 100}
                   className=" md:hidden mt-2 w-full "
-                />
+                /> */}
+                <div className=" bg-slate-400 md:hidden mt-2 w-full rounded-lg " />
               </div>
                 {/* <MusicInfo play={setIsPlaying} song={"/song.mp3"}/> */}
               <div> 
