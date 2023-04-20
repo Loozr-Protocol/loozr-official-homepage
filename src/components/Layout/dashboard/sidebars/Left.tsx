@@ -20,6 +20,7 @@ import { useBecomeArtisteCallback } from "../../../../state/artist/hooks";
 import { setPageLoaderStatus } from "../../../../state/misc";
 import Photo from "../../../Photo";
 import Marquee from "react-fast-marquee";
+import MusicUploadComponent from "../../../../containers/MusicUploadComponent";
 
 export const drawerMinWidth = 280;
 export const drawerMaxWidth = 20;
@@ -88,6 +89,7 @@ export const Left = () => {
     }
   };
     const [showModal, setShowModal] = React.useState(false);
+    const [showMusicModal, setShowMusicModal] = React.useState(false);
 
   const musicUpload = () => {
     toast.info("Coming soon!", TOAST_OPTIONS);
@@ -137,7 +139,7 @@ export const Left = () => {
             </button>
           ) : (
             <button
-              onClick={musicUpload}
+              onClick={()=> setShowMusicModal((prev)=> !prev)}
               className="hidden xl:block text-xs font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
             >
               Upload song
@@ -253,7 +255,7 @@ export const Left = () => {
       </div>
 
       {showModal && (
-        <div className=" fixed inset-0 flex justify-center items-center md:overflow-y-hidden bg-black bg-opacity-90 z-[70] ">
+        <div  className=" fixed inset-0 flex justify-center items-center md:overflow-y-hidden bg-black bg-opacity-90 z-[70] ">
           <div className=" w-full h-screen flex flex-col justify-center  md:w-[360px] md:h-auto relative z-[80]  md:rounded-2xl bg-[#12161F]">
             <div className=" w-full flex justify-between items-center py-4 px-6  border-b border-[#222A3B] ">
               <p className=" font-semibold text-[17px] text-white ">
@@ -321,6 +323,12 @@ export const Left = () => {
               </a>
             </div>
           </div>
+        </div>
+      )}
+
+      {showMusicModal && ( 
+        <div  className=" fixed inset-0 flex justify-center items-center md:overflow-y-hidden bg-black bg-opacity-90 z-[70] ">
+          <MusicUploadComponent close={setShowMusicModal} />
         </div>
       )}
     </div>

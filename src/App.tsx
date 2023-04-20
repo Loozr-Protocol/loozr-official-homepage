@@ -64,7 +64,9 @@ const App = () => {
                 element={
                   <>
                     <route.component />
-                    <Footer />
+                    {route.name !== "edittrack" && ( 
+                      <Footer />
+                    )}
                   </>
                 }
               />

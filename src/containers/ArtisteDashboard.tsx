@@ -72,7 +72,7 @@ const ArtisteDashboard = () => {
     return (
       <>
         <div className="flex items-center md:px-0 px-6 mt-[3px] justify-between mb-[15px]">
-          <p className="font-medium text-base md:text-[17px] text-white">
+          <p className="txt font-medium text-base md:text-[17px] txt text-white">
             Recent artist coins
           </p>
           <SlidesButton position={featuredRef} width={200} />
@@ -181,7 +181,7 @@ const ArtisteDashboard = () => {
   const renderAudioPlayer = useMemo(() => {
     return (
       <div
-        className={`${!canPlay && "hidden"} fixed md:top-auto md:right-auto bottom-20 left-0 right-0 z-50 md:bottom-6 md:left-14 rounded-[13px]`} >   
+        className={`${!canPlay && "hidden"} fixed md:top-auto !txt md:right-auto bottom-20 left-0 right-0 z-50 md:bottom-6 md:left-14 rounded-[13px]`} >   
           <audio id={`audio-100`} onCanPlay={() => setCanPlay(true)}>
             <source src={music} />
             Your browser does not support the <code>audio</code> element.
@@ -202,10 +202,10 @@ const ArtisteDashboard = () => {
           >
             <div className=" flex flex-1 md:flex-row flex-col pr-3 md:pr-0 md:items-center " >  
               <button onClick={()=> ClickHandler()} className=" w-fit " >
-                <p className="mb-px font-medium text-xs md:text-[13px] leading-5 text-white">
+                <p className="txt mb-px font-medium text-xs md:text-[13px] leading-5 text-white">
                   {!active ? "Chiling good" : nfts[active].album}
                 </p>
-                <p className="text-muted text-[10px] md:mt-0 -mt-1 md:text-xs font-normal md:font-normal">
+                <p className="txt text-muted text-[10px] md:mt-0 -mt-1 md:text-xs font-normal md:font-normal">
                   {!active ? "Goya Menor" : nfts[active].album}   
                 </p>
               </button> 
@@ -262,7 +262,7 @@ const ArtisteDashboard = () => {
       <Suggestion /> 
       <div className=" w-full  md:px-0 px-6 " > 
         <div className="flex items-center justify-between pb-2 ">
-          <p className="font-medium text-base md:text-[17px] text-white">
+          <p className="txt font-medium text-base md:text-[17px] text-white">
             Music NFT drops
           </p>
           {/* <div className="flex items-center">
@@ -287,27 +287,27 @@ const ArtisteDashboard = () => {
             ))}
           </div>
         </div>
-        <p className="font-medium text-base md:text-[17px] text-white mb-6">
+        <p className="txt font-medium text-base md:text-[17px] text-white mb-6">
           How does Loozr work?
         </p>
         <div className="grid gap-5 lg:gap-10 pb-44 md:pb-28 ">
           <div className="grid md:grid-cols-2 gap-5 lg:gap-10">
             <div className="bg-dark-700 py-7 px-7">
               <img src={Arrow} alt="" className="w-10 h-10 mb-[19px]" />
-              <p className="font-medium text-sm text-white mb-2.5">
+              <p className="txt font-medium text-sm text-white mb-2.5">
                 Launch Your Own Coin
               </p>
-              <p className="text-muted text-xs font-normal">
+              <p className="txt text-muted text-xs font-normal">
                 Get tokenised by creating your Profile, adding your Songs &
                 Playlists, EPs, Albums, etc.
               </p>
             </div>
             <div className="bg-dark-700 py-7 px-7">
               <img src={Chart} alt="" className="w-10 h-10 mb-[19px]" />
-              <p className="font-medium text-sm text-white mb-2.5">
+              <p className="txt font-medium text-sm text-white mb-2.5">
                 Buy, Sell & Trade
               </p>
-              <p className="text-muted text-xs font-normal">
+              <p className="txt text-muted text-xs font-normal">
                 Fans can stream and trade artiste profiles & songs with Loozr
                 coins & explore the Metaverse music world.
               </p>
@@ -315,10 +315,10 @@ const ArtisteDashboard = () => {
           </div>
           <div className="bg-dark-700 py-7 px-7 md:w-[85%]">
             <img src={Heart} alt="" className="w-10 h-10 mb-[19px]" />
-            <p className="font-medium text-sm text-white mb-2.5">
+            <p className="txt font-medium text-sm text-white mb-2.5">
               Collective Wins!
             </p>
-            <p className="text-muted text-xs font-normal">
+            <p className="txt text-muted text-xs font-normal">
               When fans invest in a token, like Bitcoin, the price of that token
               price rises. Artistes receive a percentage incentive from these
               trades in addition to their streaming money which they split with
