@@ -33,7 +33,7 @@ import ExploreDashboard from "../containers/ExploreDashboard";
 import UpdateProfile from "../containers/UpdateProfile";
 import ProfileScan from "../containers/ProfileScan";
 import Product from "../containers/Product";
-import EditTrack from "../containers/EditTrack";
+import SongTokenization from "../containers/SongTokenization/SongTokenization";
 
 export const authRoutes = [
   {
@@ -102,10 +102,10 @@ export const authRoutes = [
     component: MusicInfo,
   }, 
   {
-    name: "edittrack",
-    path: "/edittrack",
+    name: "songTokenization",
+    path: "song-tokenization",
     private: false,
-    component: EditTrack,
+    component: SongTokenization,
   },
   // {
   //   name: "updateprofile",

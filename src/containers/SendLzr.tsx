@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { motion } from "framer-motion";
-import { httpError } from "../utils/httpHelper";
+import { toastHttpError } from "../utils/httpHelper";
 import { toast } from "react-toastify";
 import { MIXER_ACCOUNT, TOAST_OPTIONS, LZR_IN_USD } from "../config/constants";
 import { useLZRTransferCallback } from "../utils/calls/useLZRTransferCallback";
@@ -89,7 +89,7 @@ const SendLzr = () => {
       setShowModal(false)
     } catch (err: any) {
       setLoading(false);
-      httpError(err);
+      toastHttpError(err);
     }
   };
   

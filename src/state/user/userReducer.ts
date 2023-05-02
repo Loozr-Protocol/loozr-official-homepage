@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import User from '../../config/constants/models/user';
 import { UserState } from '../../config/constants/types';
 import { jsonToUser, parseJwt } from '../../utils';
-import { httpError } from '../../utils/httpHelper';
+import { toastHttpError } from '../../utils/httpHelper';
 import { getUserDetails, signUp, resendVerificationMail, accountSetup, getIndividualProfile, getSuggestedUsers } from './userActions';
 
 const jwtToken = localStorage.getItem('jwtToken')
@@ -83,7 +83,7 @@ const userSlice = createSlice({
 
     builder.addCase(getUserDetails.rejected, (state, action) => {
       state.loading = false;
-      httpError(action.payload);
+      toastHttpError(action.payload);
     });
 
     builder.addCase(getIndividualProfile.fulfilled, (state, action) => {
@@ -93,7 +93,7 @@ const userSlice = createSlice({
 
     builder.addCase(getIndividualProfile.rejected, (state, action) => {
       state.errorLoadingProfile = true;
-      // httpError(action.payload);
+      // toastHttpError(action.payload);
     });
 
     builder.addCase(signUp.pending, (state) => {
@@ -107,7 +107,7 @@ const userSlice = createSlice({
 
     builder.addCase(signUp.rejected, (state, action) => {
       state.loading = false;
-      httpError(action.payload);
+      toastHttpError(action.payload);
     });
 
     builder.addCase(resendVerificationMail.pending, (state) => {
@@ -121,7 +121,7 @@ const userSlice = createSlice({
 
     builder.addCase(resendVerificationMail.rejected, (state, action) => {
       state.loading = false;
-      httpError(action.payload);
+      toastHttpError(action.payload);
     });
 
     builder.addCase(accountSetup.pending, (state) => {
@@ -137,7 +137,7 @@ const userSlice = createSlice({
     builder.addCase(accountSetup.rejected, (state, action) => {
       state.loading = false;
       state.accountSetupSuccess = false;
-      httpError(action.payload);
+      toastHttpError(action.payload);
     });
 
     builder.addCase(getSuggestedUsers.fulfilled, (state, action) => {

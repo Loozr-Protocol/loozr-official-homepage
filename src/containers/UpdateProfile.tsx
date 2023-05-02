@@ -8,7 +8,7 @@ import ToolTip from "../components/Tooltip";
 import { AppState } from "../state/store";
 import { useDispatch, useSelector } from "react-redux";
 import { MIXER_ACCOUNT, TOAST_OPTIONS } from "../config/constants";
-import { httpError } from "../utils/httpHelper";
+import { toastHttpError } from "../utils/httpHelper";
 import { useUpdateProfileCallback } from "../state/user/hooks/useAccount";
 import { toast } from "react-toastify";
 import { updateProfile } from "../state/user/userReducer";
@@ -77,7 +77,7 @@ export default function UpdateProfile() {
         setShowModal(true)
       } catch (err: any) {
         setLoading(false);
-        httpError(err);
+        toastHttpError(err);
       }
     };
 

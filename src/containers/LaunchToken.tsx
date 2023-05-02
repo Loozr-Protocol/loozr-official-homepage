@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import { TOAST_OPTIONS } from "../config/constants";
 import { useArtisteSetupCallback } from "../state/artist/hooks";
 import { jsonToArtist } from "../utils";
-import { httpError } from "../utils/httpHelper";
+import { toastHttpError } from "../utils/httpHelper";
 import { useDispatch } from "react-redux";
 import { updateProfile } from "../state/user/userReducer";
 import TipImg from "../assets/icons/tooltip.svg";
@@ -93,7 +93,7 @@ Setting this value too high will discourage buyers from ever purchasing your coi
       navigate(`/explore`, { replace: true });
     } catch (err) {
       setLoader(false);
-      httpError(err);
+      toastHttpError(err);
     }
   };
 

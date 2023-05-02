@@ -7,7 +7,7 @@ import { useFormik } from "formik";
 import { motion } from "framer-motion";
 import { useLoginCallback } from "../state/user/hooks/useAuth";
 import AuthImage from "../assets/img/auth-img.png";
-import { httpError } from "../utils/httpHelper";
+import { toastHttpError } from "../utils/httpHelper";
 import { useDispatch } from "react-redux";
 import { login } from "../state/user/userReducer";
 import { jsonToUser } from "../utils";
@@ -53,7 +53,7 @@ const Login = () => {
       push("/explore", { replace: true });
     } catch (err: any) {
       setLoading(false);
-       httpError(err);
+       toastHttpError(err);
     }
   };  
 

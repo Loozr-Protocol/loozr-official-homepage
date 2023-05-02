@@ -64,9 +64,7 @@ const App = () => {
                 element={
                   <>
                     <route.component />
-                    {route.name !== "edittrack" && ( 
-                      <Footer />
-                    )}
+                    {route.name !== "songTokenization" && <Footer />}
                   </>
                 }
               />
