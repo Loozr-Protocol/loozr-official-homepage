@@ -130,7 +130,6 @@ export default function SongTokenization() {
           artist: res["artist"],
           tokenUrl: `${res["token_name"]}.${SONG_COIN_DOMAIN}`,
         };
-        console.log("Heldldidididik::: ", track);
         setShowSuccessModal(track);
       })
       .catch((err) => {
