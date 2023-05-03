@@ -75,7 +75,7 @@ export default function SongTokenizedSuccessDialog({
           <button
             onClick={() => {
               window.open(`${nearExplorerAccount(track.tokenUrl)}`, "_blank");
-              navigate("/explore", { replace: true });
+              navigate("/" + user.accountDomain, { replace: true });
             }}
             className="!text-sm font-semibold py-[16px] mt-12 bg-s-gradient w-[352px] mb-6 outline-none focus:outline-none"
           >
