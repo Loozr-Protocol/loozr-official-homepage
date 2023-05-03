@@ -3,8 +3,9 @@
 @tailwind utilities;
 
 body {
-  color: white !important;
+  color: white !important; 
   background-color: #252626;
+  font-family: 'Poppins', sans-serif !important;
 }
 
 @layer components {

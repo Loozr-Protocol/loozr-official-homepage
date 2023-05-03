@@ -32,6 +32,7 @@ import CheckFollowerButton from "../components/CheckFollowerButton";
 import QRCode from "react-qr-code";
 import QrcodeModal from "../components/QrcodeModal";
 import QrcodeScanner from "../components/QrcodeScanner";
+import UserTracks from "./UserTracks";
 
 const Profile = (props) => {
   const push = useNavigate();
@@ -192,7 +193,7 @@ const Profile = (props) => {
       case 2:
         return <CoinsBought user={currentProfile} />;
       case 3:
-        return <Transaction />
+        return <UserTracks />
       default:
         return "";
     }
@@ -513,14 +514,14 @@ const Profile = (props) => {
             >
               Coins bought
             </p>
-            {/* <p
+            <p
               className={`cursor-pointer ${
                 active === 3 ? "active-tab-bottom " : "text-muted font-medium"
               }`}
               onClick={() => setActive(3)}
             >
-              Transactions
-            </p> */}
+              My Tracks 
+            </p>
           </div>
           {renderHistory}
         </>

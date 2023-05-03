@@ -4,7 +4,7 @@ import { Pagination, HodlerState } from '../../config/constants/types';
 import { jsonToUser } from '../../utils';
 import { priceInLoozr } from '../../utils/creatorCoinFormater';
 import { formatBalanceUSD, formatNumber, getBalanceAmount, getFullDisplayBalance } from '../../utils/formatBalance';
-import { httpError } from '../../utils/httpHelper';
+import { toastHttpError } from '../../utils/httpHelper';
 import { getArtists, getCoinPrice, getHodlers } from './actions';
 
 export interface ArtistState {
@@ -122,7 +122,7 @@ const artistSlice = createSlice({
       state.loading = false;
       state.success = false;
       state.error = null;
-      httpError(action.payload);
+      toastHttpError(action.payload);
     });
 
     builder.addCase(getCoinPrice.pending, (state) => {

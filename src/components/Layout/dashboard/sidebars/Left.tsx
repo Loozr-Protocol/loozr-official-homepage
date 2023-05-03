@@ -20,6 +20,7 @@ import { useBecomeArtisteCallback } from "../../../../state/artist/hooks";
 import { setPageLoaderStatus } from "../../../../state/misc";
 import Photo from "../../../Photo";
 import Marquee from "react-fast-marquee";
+import SongUploadDialog from "../../../../components/SongTokenization/SongUploadDialog";
 
 export const drawerMinWidth = 280;
 export const drawerMaxWidth = 20;
@@ -88,13 +89,14 @@ export const Left = () => {
     }
   };
     const [showModal, setShowModal] = React.useState(false);
-
-  const musicUpload = () => {
-    toast.info("Coming soon!", TOAST_OPTIONS);
-  };
+    const [showMusicModal, setShowMusicModal] = React.useState(false);
   
   const [isShown, setIsShown] = React.useState(false)
   const [shown, setShown] = React.useState(false)
+
+  const handleCloseSongTokenizationModal = () => {
+    setShowMusicModal(false);
+  };
 
   const Checking =(item: any)=> {
     if (user) {
@@ -130,14 +132,14 @@ export const Left = () => {
         <>
           {!user?.isArtist ? (
             <button
-              onClick={()=> setShowModal(true)}
+              onClick={() => setShowModal(true)}
               className="hidden xl:block text-xs font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
             >
               Become an artist
             </button>
           ) : (
             <button
-              onClick={musicUpload}
+              onClick={() => setShowMusicModal((prev) => !prev)}
               className="hidden xl:block text-xs font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
             >
               Upload song
@@ -167,18 +169,22 @@ export const Left = () => {
               } cursor-pointer hidden xl:inline`}
             >
               {tab.label}
-            </span> 
-              {tab.label === "Tracks"  && ( 
-                <div className=" text-[10px] text-[#141922] bg-[#FFCD43] rounded-[50px] md:hidden xl:flex font-semibold flex justify-center items-center ml-auto h-[24px] w-[84px] " >coming soon</div>
-              )} 
-            {tab.label === "Music NFT"  && ( 
-              <div className=" text-[10px] text-[#141922] bg-[#FFCD43] rounded-[50px] md:hidden xl:flex font-semibold flex justify-center items-center ml-auto h-[24px] w-[84px] " >coming soon</div>
+            </span>
+            {tab.label === "Tracks" && (
+              <div className=" text-[10px] text-[#141922] bg-[#FFCD43] rounded-[50px] md:hidden xl:flex font-semibold flex justify-center items-center ml-auto h-[24px] w-[84px] ">
+                coming soon
+              </div>
+            )}
+            {tab.label === "Music NFT" && (
+              <div className=" text-[10px] text-[#141922] bg-[#FFCD43] rounded-[50px] md:hidden xl:flex font-semibold flex justify-center items-center ml-auto h-[24px] w-[84px] ">
+                coming soon
+              </div>
             )}
           </Link>
         ))}
         <div className="h-px w-full lg:w-full bg-muted-50 mt-8 mb-7" />
         <div
-          onClick={() => user ? navigate("/" + user.accountDomain) : null}
+          onClick={() => (user ? navigate("/" + user.accountDomain) : null)}
           className=" flex w-full items-center mt-6 cursor-pointer"
           onMouseOver={() => {
             Checking(true);
@@ -188,8 +194,7 @@ export const Left = () => {
           }}
         >
           <div className=" w-fit ">
-            <div className=" w-12 h-12 xl:w-14 xl:h-14 flex" >
-
+            <div className=" w-12 h-12 xl:w-14 xl:h-14 flex">
               <Photo
                 alt=""
                 src={user?.photo}
@@ -201,25 +206,25 @@ export const Left = () => {
           </div>
           <div className="hidden xl:block w-full pl-2 ">
             {/* <div className={isShown ? "example1 " : " h-[20px] "}> */}
-              {user?.accountId && (
-                <>
-                  {isShown ? ( 
-                    <Marquee speed={50} gradient={false} >
-                      <p className=" text-sm font-extrabold text-white name-tag">
-                        {user?.accountId}
-                      </p>
-                    </Marquee>
-                  ) : (
+            {user?.accountId && (
+              <>
+                {isShown ? (
+                  <Marquee speed={50} gradient={false}>
                     <p className=" text-sm font-extrabold text-white name-tag">
-                      {user?.accountId.slice(0, 16)}
+                      {user?.accountId}
                     </p>
-                  )}
-                </>
-              )}
+                  </Marquee>
+                ) : (
+                  <p className=" text-sm font-extrabold text-white name-tag">
+                    {user?.accountId.slice(0, 16)}
+                  </p>
+                )}
+              </>
+            )}
             {/* </div> */}
             <div className={shown ? "h-[20px] " : " h-[20px] "}>
-              {shown ? ( 
-                <Marquee speed={50} gradient={false} >
+              {shown ? (
+                <Marquee speed={50} gradient={false}>
                   <p className="text-[11px] font-medium flex items-center w-auto flex-nowrap whitespace-nowrap text-muted">
                     {user?.isArtist ? (
                       <span>
@@ -321,6 +326,14 @@ export const Left = () => {
               </a>
             </div>
           </div>
+        </div>
+      )}
+
+      {showMusicModal && (
+        <div className=" fixed inset-0 flex justify-center items-center md:overflow-y-hidden bg-black bg-opacity-90 z-[70] ">
+          <SongUploadDialog
+            handleCloseModal={handleCloseSongTokenizationModal}
+          />
         </div>
       )}
     </div>

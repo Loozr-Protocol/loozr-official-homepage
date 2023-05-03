@@ -10,7 +10,7 @@ import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 import store from "./state/store";
-import { API_BASE_ENDPOINT } from "./config/constants/endpoints";
+import ENV from "./config/env";
 import LogRocket from "logrocket";
 import { getUserDetails } from "./state/user/userActions";
 import { parseJwt } from "./utils/index";
@@ -24,7 +24,7 @@ declare global {
 }
 Axios.defaults.headers.common["Content-Type"] = "application/json";
 Axios.defaults.headers.common["Accept"] = "application/json";
-Axios.defaults.baseURL = API_BASE_ENDPOINT;
+Axios.defaults.baseURL = ENV.apiUrl;
 
 setTimeout(() => {
   document.querySelector("#preloader")?.classList.add("isdone");
