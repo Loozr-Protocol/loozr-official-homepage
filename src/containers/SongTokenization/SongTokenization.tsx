@@ -10,8 +10,7 @@ import FullPageError from "../../components/FullPageError";
 import SongTokenizedSuccessDialog from "../../components/SongTokenization/SongTokenizedSuccessDialog";
 import ApiService from "../../services/ApiService/ApiService";
 import "./SongTokenization.scss";
-import { Track } from "../../types/Track";
-import { SONG_COIN_DOMAIN } from "../../utils/constants";
+import { parseRawTrack } from "../../utils/parser";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -110,26 +109,7 @@ export default function SongTokenization() {
     ApiService.post("/music/tokenize-song", formData)
       .then((res) => {
         setLoader(false);
-        const track: Track = {
-          id: res["created_at"],
-          releasedAt: res["created_at"],
-          songName: res["song_name"],
-          songTitle: res["song_title"],
-          songUrl: res["song_url"],
-          artwork: res["artwork"],
-          isNft: res["is_nft"],
-          description: res["description"],
-          genres: res["genres"],
-          moods: res["moods"],
-          isrcCode: res["isrc_code"],
-          upcCode: res["upc_code"],
-          features: res["features"],
-          founderReward: res["founder_reward"],
-          totalListens: res["total_listens"],
-          tokenName: res["token_name"],
-          artist: res["artist"],
-          tokenUrl: `${res["token_name"]}.${SONG_COIN_DOMAIN}`,
-        };
+        const track = parseRawTrack(res);
         setShowSuccessModal(track);
       })
       .catch((err) => {

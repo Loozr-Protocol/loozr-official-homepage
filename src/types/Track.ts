@@ -1,7 +1,6 @@
 export interface Track {
   id: number;
   releasedAt: string;
-  songName: string;
   songTitle: string;
   songUrl: string;
   artwork: string;
@@ -15,6 +14,8 @@ export interface Track {
   founderReward: number;
   totalListens: number;
   tokenName: string;
-  artist: number;
+  artistId: number;
+  artistName: string;
+  artistAccountId: string;
   tokenUrl?: string;
 }
