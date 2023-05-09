@@ -48,7 +48,6 @@ const tabs = [
     icon: NFT,
     label: "Music NFT",
     available: true,
-    path: "/nfts",
   },
   {
     icon: Wallet,

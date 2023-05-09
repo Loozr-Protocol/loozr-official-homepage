@@ -3,7 +3,7 @@ import { SONG_COIN_DOMAIN } from "../utils/constants";
 
 export function parseRawTrack(rawTrack: any): Track {
   return {
-    id: rawTrack.created_at,
+    id: rawTrack.id,
     releasedAt: rawTrack.created_at,
     songTitle: rawTrack.song_title,
     songUrl: rawTrack.song_url,

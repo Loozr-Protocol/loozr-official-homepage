@@ -43,13 +43,10 @@ const ArtisteDashboard = () => {
   const artists = useSelector((state: AppState) => state?.artist?.artists);
   const [canPlay, setCanPlay] = useState(false);
   const { playing, setPlaying, duration, curTime } = useAudioPlayer(100);
-  const featuredRef: any = React.useRef(null); 
-  const musicDropRef: any = React.useRef(null); 
+  const featuredRef: any = React.useRef(null);
 
   const navigate = useNavigate()
   const [active, setActive] = React.useState(null)
-
-  const nftype = "scroll"
 
   useEffect(() => {
     dispatch(getArtists(''));
@@ -261,32 +258,6 @@ const ArtisteDashboard = () => {
       <FeaturedArtistes />
       <Suggestion /> 
       <div className=" w-full  md:px-0 px-6 " > 
-        <div className="flex items-center justify-between pb-2 ">
-          <p className="txt font-medium text-base md:text-[17px] text-white">
-            Music NFT drops
-          </p>
-          {/* <div className="flex items-center">
-            <Link to="/nfts" className="text-xs font-medium text-muted">
-              View all
-            </Link>
-          </div> */}
-            <SlidesButton position={musicDropRef} width={250} />
-        </div>
-        <div
-          // className="grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-8 mb-16"
-          className="max-w-full overflow-auto scroll_event whitespace-nowrap pb-16"
-          ref={musicDropRef}
-        >
-          <div className="flex h-full py-3 ">
-            {nfts.map(({ album, artist, song, platform, price, liked, likes, token, img }, index) => (
-              <NFT
-                className="w-[200px] mr-[16px]"
-                key={index}
-                {...{ album, artist, song, platform, price, likes, liked, token, img, active, setActive, playing, setPlaying,  index, nftype }}
-              />
-            ))}
-          </div>
-        </div>
         <p className="txt font-medium text-base md:text-[17px] text-white mb-6">
           How does Loozr work?
         </p>
