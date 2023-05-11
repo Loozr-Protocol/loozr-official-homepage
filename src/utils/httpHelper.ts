@@ -34,6 +34,7 @@ export default class HttpClient {
 }
 
 export function toastHttpError(err: AxiosError | any) {
+  console.log('in herere', returnHttpError(err));
     toast.error(returnHttpError(err), TOAST_OPTIONS);
 }
 
@@ -44,6 +45,10 @@ export function returnHttpError(err: AxiosError) {
       const apiErrors = err.response.data['error']['details'];
       const errorKeys = Object.keys(apiErrors)
       errorMsg = apiErrors[errorKeys[0]];
+
+      if (typeof errorMsg !== 'string'){
+        errorMsg = errorMsg[0];
+      }
     } else {
       errorMsg = "Request failed! Please try again";
     }
