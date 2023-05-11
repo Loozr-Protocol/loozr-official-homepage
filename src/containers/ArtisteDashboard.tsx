@@ -1,24 +1,12 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useEffect } from "react";
 import Arrow from "../assets/Arrow.svg";
 import Heart from "../assets/Heart.svg";
 import Chart from "../assets/Chart.svg";
-import Goya from "../assets/img/artists/goya.png";
-import Forward from "../assets/svg/controls/forward.svg";
-import Rewind from "../assets/svg/controls/rewind.svg";
-import Play from "../assets/svg/controls/play.svg";
-import Pause from "../assets/svg/controls/pause.svg";
 import Suggestion from "../components/suggestion";
 import Carousel from "../components/Carousel";
 import VerifiedBadge from "../assets/icons/verified_badge.svg";
 import { Link } from "react-router-dom";
-import NFT from "../components/SingleNFT";
-import { nfts } from "../components/dummy/nfts";
-import LinearProgress, {
-  linearProgressClasses,
-} from "@mui/material/LinearProgress";
 import { useNavigate } from "react-router-dom";
-import { styled } from "@mui/material/styles";
-import useAudioPlayer from "../hooks/useAudioPlayer";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../state/store";
 import { getArtists } from "../state/artist/actions";
@@ -26,27 +14,12 @@ import Photo from "../components/Photo";
 import SlidesButton from "../components/SlidesButton";
 import verified from "../assets/icons/verified.svg"
 
-const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
-  height: 4,
-  borderRadius: 5,
-  [`&.${linearProgressClasses.colorPrimary}`]: {
-    backgroundColor: "#536079",
-  },
-  [`& .${linearProgressClasses.bar}`]: {
-    borderRadius: 5,
-    backgroundColor: "#D9D9D9",
-  },
-}));
-
 const ArtisteDashboard = () => {
   const dispatch = useDispatch();
   const artists = useSelector((state: AppState) => state?.artist?.artists);
-  const [canPlay, setCanPlay] = useState(false);
-  const { playing, setPlaying, duration, curTime } = useAudioPlayer(100);
   const featuredRef: any = React.useRef(null);
 
   const navigate = useNavigate()
-  const [active, setActive] = React.useState(null)
 
   useEffect(() => {
     dispatch(getArtists(''));
@@ -152,109 +125,9 @@ const ArtisteDashboard = () => {
     );
   } 
 
-  const[music, setMusic] = React.useState("/song.mp3")
-  const[loading, setLoading] = React.useState(false) 
-
-  React.useEffect(() => {
-    
-    setLoading(true)
-    if(active){ 
-      setMusic(nfts[active].song)
-    }
-    const t1 = setTimeout(() => {   
-      setLoading(false)
-      clearTimeout(t1); 
-    }, 2000);
-    // return () => {
-    //   clearTimeout(t1); 
-    // }
-  }, [active]) 
-   
-  const ClickHandler =()=>{
-    sessionStorage.setItem("music", active)
-    navigate("/artists/music-info")
-  }
-  
-  const renderAudioPlayer = useMemo(() => {
-    return (
-      <div
-        className={`${!canPlay && "hidden"} fixed md:top-auto !txt md:right-auto bottom-20 left-0 right-0 z-50 md:bottom-6 md:left-14 rounded-[13px]`} >   
-          <audio id={`audio-100`} onCanPlay={() => setCanPlay(true)}>
-            <source src={music} />
-            Your browser does not support the <code>audio</code> element.
-          </audio>   
-        <div className="flex w-full md:w-auto md:h-auto h-[70px] md:rounded-[13px] md:py-0 items-center " 
-          style={{
-            background: "rgba(20, 25, 34, 0.65)",
-            backdropFilter: "blur(12.5px)",
-          }}>
-            <div className=" w-12 md:w-14 md:ml-0 ml-3 " > 
-              <img src={!active ? Goya: nfts[active].img} alt="" className=" rounded-full md:rounded-r-none md:rounded-l-[13px] w-full" />
-            </div>
-          <div
-            className="py-2 px-3 bg-transparent md:w-auto w-full md:rounded-r-[13px] flex items-center"
-            style={{  
-              // backdropFilter: "blur(12.5px)",
-            }}
-          >
-            <div className=" flex flex-1 md:flex-row flex-col pr-3 md:pr-0 md:items-center " >  
-              <button onClick={()=> ClickHandler()} className=" w-fit " >
-                <p className="txt mb-px font-medium text-xs md:text-[13px] leading-5 text-white">
-                  {!active ? "Chiling good" : nfts[active].album}
-                </p>
-                <p className="txt text-muted text-[10px] md:mt-0 -mt-1 md:text-xs font-normal md:font-normal">
-                  {!active ? "Goya Menor" : nfts[active].album}   
-                </p>
-              </button> 
-              <div className=" md:flex hidden " >
-                {/* <BorderLinearProgress
-                  variant="determinate"
-                  value={(curTime / duration) * 100}
-                  className="ml-6 mr-8 min-w-[180px]"
-                /> */}
-                <div className=" bg-slate-400 ml-6 mr-8 min-w-[180px] h-[2px] rounded-lg " />
-              </div>
-              <div className=" md:hidden flex " >
-                {/* <BorderLinearProgress
-                  variant="determinate"
-                  value={(curTime / duration) * 100}
-                  className=" md:hidden mt-2 w-full "
-                /> */}
-                <div className=" bg-slate-400 md:hidden mt-2 w-full rounded-lg " />
-              </div>
-                {/* <MusicInfo play={setIsPlaying} song={"/song.mp3"}/> */}
-              <div> 
-              </div>
-            </div>
-            <div className="flex items-center mr-3">
-              <img src={Rewind} alt="" className="cursor-pointer w-4 h-4" />
-              {playing ? (
-                <img
-                  src={Pause}
-                  alt=""
-                  onClick={() => setPlaying(false)}
-                  className="mx-6 cursor-pointer w-5 h-6"
-                />
-              ) : (
-                <img
-                  src={Play}
-                  alt=""
-                  onClick={() => setPlaying(true)}
-                  className="mx-6 cursor-pointer w-5 h-7"
-                />
-              )}
-              <img src={Forward} alt="" className="cursor-pointer w-4 h-4" />
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }, [canPlay, curTime, duration, playing, setPlaying]);
-
   return (
     <div className=" w-screen md:w-full flex flex-col ">
       <Carousel />  
-      {renderAudioPlayer}  
       <FeaturedArtistes />
       <Suggestion /> 
       <div className=" w-full  md:px-0 px-6 " > 
