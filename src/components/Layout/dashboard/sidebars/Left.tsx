@@ -41,13 +41,8 @@ const tabs = [
   {
     icon: Tracks,
     label: "Tracks",
-    available: false,
-    path: "/tracks",
-  },
-  {
-    icon: NFT,
-    label: "Music NFT",
     available: true,
+    path: "/tracks",
   },
   {
     icon: Wallet,
@@ -169,7 +164,7 @@ export const Left = () => {
             >
               {tab.label}
             </span>
-            {tab.label === "Tracks" && (
+            {!tab.available && (
               <div className=" text-[10px] text-[#141922] bg-[#FFCD43] rounded-[50px] md:hidden xl:flex font-semibold flex justify-center items-center ml-auto h-[24px] w-[84px] ">
                 coming soon
               </div>
