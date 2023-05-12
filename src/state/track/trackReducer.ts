@@ -53,6 +53,15 @@ const trackSlice = createSlice({
       if (!state.pagination.nextCursor) return;
       state.pagination.currentCursor = state.pagination.nextCursor;
     },
+    resetTracks(state) {
+        state.data = [];
+        state.pagination = {
+          nextCursor: '',
+          currentCursor: '',
+          reachMaxLimit: false
+        };
+      state.tracksLoaded = false;
+    },
     setCurrentTrackIndex: (state, action: PayloadAction<{ trackIndex: number }>) => {
       state.currentTrackIndex = action.payload.trackIndex;
     },
@@ -105,5 +114,6 @@ export const {
   setCurrentTime,
   setIsPlaying,
   setQueue,
+  resetTracks,
 } = trackSlice.actions
 export default trackSlice.reducer

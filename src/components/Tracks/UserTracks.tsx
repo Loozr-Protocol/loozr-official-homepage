@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../../state/store";
 import User from "../../config/constants/models/user";
 import Pagination from "../Pagination";
 import TrackCard from "./Track";
 import { getTracks } from "../../state/track/actions";
-import { changePage } from "../../state/track/trackReducer";
+import { changePage, resetTracks } from "../../state/track/trackReducer";
 
 const RenderTracks = (props) => {
   return (
@@ -36,17 +36,21 @@ export default function UserTracks({ user }: { user: User }) {
   const tracks = useSelector((state: AppState) => state.tracks.data);
   const pagination = useSelector((state: AppState) => state.tracks.pagination);
 
+  useEffect(() => {
+    dispatch(resetTracks());
+  }, [dispatch, user]);
+
   return (
     <Pagination
       reachMaxLimit={pagination.reachMaxLimit}
       dataList={tracks}
       onFetchData={() =>
-        dispatch(
+        user.isArtist ? dispatch(
           getTracks({
             artistToken: user.tokenName,
             nextCursor: pagination.nextCursor,
           })
-        )
+        ): null
       }
       currentCursor={pagination.currentCursor}
       nextCursor={pagination.nextCursor}
