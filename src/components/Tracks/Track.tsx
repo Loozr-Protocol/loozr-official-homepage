@@ -48,53 +48,50 @@ const TrackCard = ({ track }: TrackProps) => {
         scale: 1.02,
         transition: { duration: 0.3 },
       }}
-      onMouseOut={() => setIsShown(null)}
-      onMouseOver={() => setIsShown(track.id)}
-      className="flex flex-col h-auto mr-3 min-w-[100px] relative cursor-pointer"
+      onMouseEnter={() => setIsShown(true)}
+      onMouseLeave={() => setIsShown(false)}
+      className="flex flex-col h-auto mr-3 min-w-[180px] relative cursor-pointer"
     >
       <img
         src={track.artwork}
         alt=""
-        className="object-cover h-36 w-h-36 mb-[15px]"
+        className="object-cover h-48 w-h-48 mb-[10px]"
       />
-      <div className=" w-full ">
+      <div className="w-full">
         <Marquee
           speed={50}
-          loop={isShown === track.id + "" ? 0 : -1}
+          loop={isShown ? 0 : -1}
           gradient={false}
         >
           <p className="mb-[3px] font-medium text-sm text-white">
             {track.songTitle}
           </p>
         </Marquee>
-      </div>
+        </div>
       <p className="text-muted text-xs font-normal md:text-[13px] mt-[2px] md:font-normal">
         {track.artistName}
       </p>
-      <div
-        className={`absolute inset-y-[36%] inset-x-[38%] ${
-          !isShown ? "hidden" : ""
-        }`}
-        style={{ zIndex: 1000 }}
-      >
-        {isCurrentlyPlaying() ? (
-          <button
-            style={{ backgroundColor: "rgba(255, 255, 255, 0.4)" }}
-            className=" w-[50px] h-[50px] relative rounded-full flex justify-center items-center "
-            onClick={() => dispatch(setIsPlaying(false))}
-          >
-            <img src={Pause} alt="" className=" cursor-pointer w-4 h-5" />
-          </button>
-        ) : (
-          <button
-            style={{ backgroundColor: "rgba(255, 255, 255, 0.4)" }}
-            className=" w-[50px] h-[50px] relative z-20 rounded-full flex justify-center items-center "
-            onClick={() => playTrack()}
-          >
+      {isShown && (
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          {isCurrentlyPlaying() ? (
+            <button
+              style={{ backgroundColor: "rgba(255, 255, 255, 0.4)" }}
+              className="w-[50px] h-[50px] relative rounded-full flex justify-center items-center"
+              onClick={() => dispatch(setIsPlaying(false))}
+            >
+              <img src={Pause} alt="" className="cursor-pointer w-4 h-5" />
+            </button>
+          ) : (
+            <button
+              style={{ backgroundColor: "rgba(255, 255, 255, 0.4)" }}
+              className="w-[50px] h-[50px] relative z-20 rounded-full flex justify-center items-center"
+              onClick={() => playTrack()}
+            >
             <img src={Play} alt="" className="cursor-pointer  w-4 h-6" />
           </button>
         )}
-      </div>
+        </div>
+      )}
     </motion.div>
   );
 };
