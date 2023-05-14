@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../state/store";
 import Pagination from "../components/Pagination";
 import TrackCard from "../components/Tracks/Track";
 import { getTracks } from "../state/track/actions";
-import { changePage } from "../state/track/trackReducer";
+import { changePage, resetTracks } from "../state/track/trackReducer";
 
 const RenderTracks = (props) => {
   return (
@@ -34,6 +34,10 @@ const Tracks = () => {
   const dispatch = useDispatch();
   const tracks = useSelector((state: AppState) => state.tracks.data);
   const pagination = useSelector((state: AppState) => state.tracks.pagination);
+
+  useEffect(() => {
+    dispatch(resetTracks());
+  }, [dispatch]);
 
   return (
     <Pagination

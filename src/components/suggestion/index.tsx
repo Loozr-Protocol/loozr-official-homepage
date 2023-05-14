@@ -4,6 +4,7 @@ import { AppState } from "../../state/store";
 import TrackCard from "../Tracks/Track";
 import { getTracks } from "../../state/track/actions";
 import SlidesButton from "../SlidesButton";
+import { resetTracks } from "../../state/track/trackReducer";
 
 const Suggestion = () => {
   const ref: any = React.useRef(null);
@@ -11,8 +12,9 @@ const Suggestion = () => {
   const tracks = useSelector((state: AppState) => state.tracks.data);
 
   useEffect(() => {
+    dispatch(resetTracks());
     dispatch(getTracks({ nextCursor: "" }));
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="w-full mt-[2px] md:px-0 px-6 ">
