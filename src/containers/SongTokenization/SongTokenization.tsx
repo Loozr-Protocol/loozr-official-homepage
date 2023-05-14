@@ -16,6 +16,52 @@ function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 
+const genres = [
+  "Acapella",
+  "Afro",
+  "Arabic",
+  "Bollywood",
+  "Children's",
+  "Classical",
+  "Country",
+  "Caribbean",
+  "Desi",
+  "DJ Mix",
+  "Electronic",
+  "Folk",
+  "Gospel",
+  "Instrumental",
+  "Jazz/Blues",
+  "Kompa",
+  "Latin",
+  "Pop",
+  "Punjabi",
+  "Hip-Hop/Rap",
+  "R&B",
+  "Rock",
+  "Soca",
+];
+
+const moods = [
+  "Angry",
+  "Chill",
+  "Dark",
+  "Faded",
+  "Focus",
+  "Funny",
+  "Happy",
+  "Heartbreak",
+  "Inspirational",
+  "Love",
+  "Mellow",
+  "Motivation",
+  "Party",
+  "Sad",
+  "Sex",
+  "Throwback",
+  "Workout",
+];
+
 export default function SongTokenization() {
   const query = useQuery();
   const songUrl = query.get("songUrl");
@@ -96,15 +142,8 @@ export default function SongTokenization() {
       (formik.values.founderReward * 100).toString()
     );
 
-    const genreArray = formik.values.genre.split(",");
-    genreArray.forEach((genre) => {
-      formData.append("genres", genre.trim());
-    });
-
-    const moodArray = formik.values.mood.split(",");
-    moodArray.forEach((mood) => {
-      formData.append("moods", mood.trim());
-    });
+    formData.append("genres", formik.values.genre);
+    formData.append("moods", formik.values.mood);
 
     ApiService.post("/music/tokenize-song", formData)
       .then((res) => {
@@ -216,9 +255,9 @@ export default function SongTokenization() {
                 <option value="" disabled selected hidden>
                   Choose genre *
                 </option>
-                <option value="dance">Dance</option>
-                <option value="pop">Pop</option>
-                <option value="jazz">Jazz</option>
+                {genres.map((genre) => (
+                  <option value={genre}>{genre}</option>
+                ))}
               </select>
               {formik.touched.genre && formik.errors.genre && (
                 <motion.div
@@ -278,9 +317,9 @@ export default function SongTokenization() {
               <option value="" disabled selected hidden>
                 Select mood
               </option>
-              <option value="reading">reading</option>
-              <option value="club">club</option>
-              <option value="cool">cool</option>
+              {moods.map((mood) => (
+                <option value={mood}>{mood}</option>
+              ))}
             </select>
             {formik.touched.mood && formik.errors.mood && (
               <motion.div
