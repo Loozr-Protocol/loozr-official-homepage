@@ -78,7 +78,7 @@ export const Left = () => {
   const user = useSelector((state: AppState) => state.user.userInfo);
   const { handleBecomeArtiste } = useBecomeArtisteCallback();
 
-  const becomeArtist = async () => { 
+  const becomeArtist = async () => {
     dispatch(setPageLoaderStatus(true));
     try {
       await handleBecomeArtiste({});
@@ -87,30 +87,30 @@ export const Left = () => {
       dispatch(setPageLoaderStatus(false));
     }
   };
-    const [showModal, setShowModal] = React.useState(false);
+  const [showModal, setShowModal] = React.useState(false);
 
   const musicUpload = () => {
     toast.info("Coming soon!", TOAST_OPTIONS);
   };
-  
+
   const [isShown, setIsShown] = React.useState(false)
   const [shown, setShown] = React.useState(false)
 
-  const Checking =(item: any)=> {
+  const Checking = (item: any) => {
     if (user) {
       if (user.accountId.length > 16) {
         setIsShown(item);
       } else {
         setIsShown(false);
       }
-    if(user.tokenName && user.tokenName.length > 5){ 
-      setShown(item)
-    } else { 
-      setShown(false)
+      if (user.tokenName && user.tokenName.length > 5) {
+        setShown(item)
+      } else {
+        setShown(false)
+      }
     }
   }
-  } 
-  
+
 
   return (
     <div
@@ -130,15 +130,15 @@ export const Left = () => {
         <>
           {!user?.isArtist ? (
             <button
-              onClick={()=> setShowModal(true)}
-              className="hidden xl:block text-xs font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
+              onClick={() => setShowModal(true)}
+              className="hidden xl:block text-xs font-semibold py-[14px] rounded-full bg-s-gradient w-full mb-6 outline-none focus:outline-none"
             >
               Become an artist
             </button>
           ) : (
             <button
               onClick={musicUpload}
-              className="hidden xl:block text-xs font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
+              className="hidden xl:block text-xs font-semibold py-[14px] rounded-full bg-s-gradient w-full mb-6 outline-none focus:outline-none"
             >
               Upload song
             </button>
@@ -156,22 +156,20 @@ export const Left = () => {
             }
           >
             <tab.icon
-              className={`object-contain w-4 xl:w-3.5 h-4 xl:h-3.5 mr-3 xl:mr-4 ${
-                tab.path === pathname ? "text-white" : "text-[#536079]"
-              }`}
+              className={`object-contain w-4 xl:w-3.5 h-4 xl:h-3.5 mr-3 xl:mr-4 ${tab.path === pathname ? "text-white" : "text-[#536079]"
+                }`}
             />
 
             <span
-              className={`${
-                tab.path === pathname && "font-bold text-sm text-white"
-              } cursor-pointer hidden xl:inline`}
+              className={`${tab.path === pathname && "font-bold text-sm text-white"
+                } cursor-pointer hidden xl:inline`}
             >
               {tab.label}
-            </span> 
-              {tab.label === "Tracks"  && ( 
-                <div className=" text-[10px] text-[#141922] bg-[#FFCD43] rounded-[50px] md:hidden xl:flex font-semibold flex justify-center items-center ml-auto h-[24px] w-[84px] " >coming soon</div>
-              )} 
-            {tab.label === "Music NFT"  && ( 
+            </span>
+            {tab.label === "Tracks" && (
+              <div className=" text-[10px] text-[#141922] bg-[#FFCD43] rounded-[50px] md:hidden xl:flex font-semibold flex justify-center items-center ml-auto h-[24px] w-[84px] " >coming soon</div>
+            )}
+            {tab.label === "Music NFT" && (
               <div className=" text-[10px] text-[#141922] bg-[#FFCD43] rounded-[50px] md:hidden xl:flex font-semibold flex justify-center items-center ml-auto h-[24px] w-[84px] " >coming soon</div>
             )}
           </Link>
@@ -201,24 +199,24 @@ export const Left = () => {
           </div>
           <div className="hidden xl:block w-full pl-2 ">
             {/* <div className={isShown ? "example1 " : " h-[20px] "}> */}
-              {user?.accountId && (
-                <>
-                  {isShown ? ( 
-                    <Marquee speed={50} gradient={false} >
-                      <p className=" text-sm font-extrabold text-white name-tag">
-                        {user?.accountId}
-                      </p>
-                    </Marquee>
-                  ) : (
+            {user?.accountId && (
+              <>
+                {isShown ? (
+                  <Marquee speed={50} gradient={false} >
                     <p className=" text-sm font-extrabold text-white name-tag">
-                      {user?.accountId.slice(0, 16)}
+                      {user?.accountId}
                     </p>
-                  )}
-                </>
-              )}
+                  </Marquee>
+                ) : (
+                  <p className=" text-sm font-extrabold text-white name-tag">
+                    {user?.accountId.slice(0, 16)}
+                  </p>
+                )}
+              </>
+            )}
             {/* </div> */}
             <div className={shown ? "h-[20px] " : " h-[20px] "}>
-              {shown ? ( 
+              {shown ? (
                 <Marquee speed={50} gradient={false} >
                   <p className="text-[11px] font-medium flex items-center w-auto flex-nowrap whitespace-nowrap text-muted">
                     {user?.isArtist ? (
@@ -313,8 +311,8 @@ export const Left = () => {
                 className="w-full mt-9"
               >
                 <div
-                  onClick={becomeArtist}
-                  className=" h-[50px] flex justify-center items-center text-white  disabled:text-muted font-medium md:text-[13px] bg-gradient-ld disabled:bg-dark-800 mb-11 w-full"
+                  onClick={() => becomeArtist()}
+                  className=" h-[50px] flex justify-center items-center text-white disabled:text-muted font-medium md:text-[13px] bg-gradient-ld disabled:bg-dark-800 mb-11 w-full"
                 >
                   Verify now!
                 </div>

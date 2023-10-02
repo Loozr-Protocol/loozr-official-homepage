@@ -41,7 +41,7 @@ const Signup = () => {
   const formik = useFormik({
     initialValues: { email: "", password: "", retyped_password: "" },
     validationSchema: formSchema,
-    onSubmit: () => {},
+    onSubmit: () => { },
   });
 
   const handleSubmit = async () => {

@@ -9,7 +9,7 @@ import LoozrGradient from "../../../../assets/icons/loozr-gradient.svg";
 import SearchWhiteIcon from "../../../../assets/icons/search-white.svg";
 import PlusIcon from "../../../../assets/icons/plus.svg";
 import UserIcon from "../../../../assets/icons/user.svg";
-import { LZR_IN_USD, MIXER_ACCOUNT } from "../../../../config/constants"; 
+import { LZR_IN_USD, MIXER_ACCOUNT } from "../../../../config/constants";
 import Photo from "../../../Photo";
 import { useSearchUserCallback } from "../../../../state/user/hooks/useAccount";
 
@@ -20,14 +20,14 @@ export const TopBar = () => {
   const [searchValue, setSearchValue] = React.useState("")
   const [data, setData] = React.useState([] as any)
   const user = useSelector((state: AppState) => state.user.userInfo);
-  const { getSearchUser } = useSearchUserCallback(); 
+  const { getSearchUser } = useSearchUserCallback();
 
-  const OnchangeHandler = async (item: any)=>{ 
-    setSearchValue(item) 
-    const result = await getSearchUser(item); 
+  const OnchangeHandler = async (item: any) => {
+    setSearchValue(item)
+    const result = await getSearchUser(item);
     setData(result)
-  } 
-  
+  }
+
   const becomeArtist = async () => {
     dispatch(setPageLoaderStatus(true));
     try {
@@ -38,7 +38,7 @@ export const TopBar = () => {
     }
   };
 
-  const ClickHandler =(item: any)=>{
+  const ClickHandler = (item: any) => {
     navigate(item)
     setSearchValue("")
   }
@@ -46,7 +46,7 @@ export const TopBar = () => {
   return (
     <div className="w-full mb-6 md:px-0 px-6 md:pr-4 ">
       <div className="flex justify-between px-0 sm:px-4  items-center">
-        <div className="hidden md:flex md:w-[300px] relative">
+        <div className="hidden md:flex md:w-[100vw] relative">
           <input
             type="text"
             value={searchValue}
