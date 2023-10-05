@@ -90,7 +90,7 @@ Setting this value too high will discourage buyers from ever purchasing your coi
         ...TOAST_OPTIONS,
         autoClose: 10000,
       });
-      navigate(`/explore`, { replace: true });
+      navigate(`/:accountDomain`, { replace: true });
     } catch (err) {
       setLoader(false);
       // toastHttpError(err);

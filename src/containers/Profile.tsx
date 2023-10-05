@@ -424,7 +424,7 @@ const Profile = (props) => {
                   )}
                 </>
               )}
-              <div className="flex items-center mb-2">
+              <div className="flex items-center mb-6">
                 <p
                   onClick={() => ClickFollwer()}
                   className="text-xs md:text-sm cursor-pointer font-bold mr-6"
