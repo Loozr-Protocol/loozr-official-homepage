@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import songReducer from './song/songSlice';
 import userReducer from './user/userReducer';
+import trackReducer from './track/trackReducer';
 import artistReducer from './artist/artistReducer';
 import miscReducer from './misc/index';
 import notificationsReducer from './notifications/index';
@@ -13,6 +14,7 @@ const store = configureStore({
     coinsStat: coinsStatReducer,
     song: songReducer,
     user: userReducer,
+    tracks: trackReducer,
     artist: artistReducer,
     notifications: notificationsReducer,
     misc: miscReducer

@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import SuggestedUser from "../components/SuggestedUser" 
 import { useSelectGenreCallback } from '../state/user/hooks/useAccount'
-import { httpError } from '../utils/httpHelper'
+import { toastHttpError } from '../utils/httpHelper'
 
 export default function SelectGenres() {
 
@@ -34,7 +34,7 @@ export default function SelectGenres() {
             setShowModal(true)
         } catch (err: any) {
             setLoading(false);
-            httpError(err);
+            toastHttpError(err);
         }
     };  
 

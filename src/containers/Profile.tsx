@@ -18,30 +18,41 @@ import { getIndividualProfile } from "../state/user/userActions";
 import User from "../config/constants/models/user";
 import CreatorStatCard from "../components/CreatorStatCard";
 import CoinHodlers from "../components/history/CoinHodlers";
-import { resetCoinPrice, resetHoldersList } from "../state/artist/artistReducer";
+import {
+  resetCoinPrice,
+  resetHoldersList,
+} from "../state/artist/artistReducer";
 import { decodedJWT } from "../utils";
 import Photo from "../components/Photo";
-import VerifiedBadge from "../assets/icons/verified.svg"
-import { useFollowerCallback, useFollowingCallback, useCheckFollowerCallback } from "../state/user/hooks/useAccount";
+import VerifiedBadge from "../assets/icons/verified.svg";
+import {
+  useFollowerCallback,
+  useFollowingCallback,
+  useCheckFollowerCallback,
+} from "../state/user/hooks/useAccount";
 import { MIXER_ACCOUNT } from "../config/constants";
 import CoinsBought from "../components/history/CoinsBought";
 import { removeSuggestedUser } from "../state/user/userReducer";
-import { useFollowCallback, useUnFollowCallback } from "../state/user/hooks/follows";
+import {
+  useFollowCallback,
+  useUnFollowCallback,
+} from "../state/user/hooks/follows";
 import CheckFollower from "../components/CheckFollower";
 import CheckFollowerButton from "../components/CheckFollowerButton";
 import QRCode from "react-qr-code";
 import QrcodeModal from "../components/QrcodeModal";
 import QrcodeScanner from "../components/QrcodeScanner";
+import UserTracks from "../components/Tracks/UserTracks";
 
 const Profile = (props) => {
   const push = useNavigate();
   let { accountDomain } = useParams();
   const [active, setActive] = useState(1);
-  const [isShown, setIsShown] = useState(false)
-  const [checkData, setCheckData] = useState(false)
-  const [checkFollower, setCheckFollower] = useState("")
-  const [showBio, setShowBio] = useState(false)
-  const [data, setData] = useState([] as any)
+  const [isShown, setIsShown] = useState(false);
+  const [checkData, setCheckData] = useState(false);
+  const [checkFollower, setCheckFollower] = useState("");
+  const [showBio, setShowBio] = useState(false);
+  const [data, setData] = useState([] as any);
   const dispatch = useDispatch();
   const user = useSelector((state: AppState) => state.user.userInfo);
   const errorLoadingProfile = useSelector(
@@ -55,47 +66,47 @@ const Profile = (props) => {
 
   const { getFollower } = useFollowerCallback();
   const { getFollowing } = useFollowingCallback();
-  const { getCheckFollower } = useCheckFollowerCallback()
+  const { getCheckFollower } = useCheckFollowerCallback();
 
-  const [showModal, setShowModal] = React.useState(false)
-  const [qrCodeModal, setQrCodeModal] = React.useState(false)
-  const [qrCodeScanerModal, setQrCodeScannerModal] = React.useState(false)
-  const [copySuccess, setCopySuccess] = React.useState('');
+  const [showModal, setShowModal] = React.useState(false);
+  const [qrCodeModal, setQrCodeModal] = React.useState(false);
+  const [qrCodeScanerModal, setQrCodeScannerModal] = React.useState(false);
+  const [copySuccess, setCopySuccess] = React.useState("");
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const CheckFollowers = async () => {
     if (currentProfile?.id) {
       const result: any = await getCheckFollower(currentProfile?.id);
-      setCheckFollower(result)
+      setCheckFollower(result);
       console.log(result);
     }
-  }
+  };
 
   React.useEffect(() => {
-    CheckFollowers()
-  }, [])
+    CheckFollowers();
+  }, []);
 
   const ClickFollwer = async () => {
     const result = await getFollower(currentProfile.id);
-    setData(result)
-    setShowModal(true)
-  }
+    setData(result);
+    setShowModal(true);
+  };
 
   const ClickFollwing = async () => {
     const result = await getFollowing(currentProfile.id);
-    setData(result)
-    setShowModal(true)
-  }
+    setData(result);
+    setShowModal(true);
+  };
 
   function copyToClipboard(item: any, text: any) {
-    navigator.clipboard.writeText(item)
+    navigator.clipboard.writeText(item);
     setCopySuccess(text);
     const t1 = setTimeout(() => {
-      setCopySuccess('');
+      setCopySuccess("");
       clearTimeout(t1);
     }, 2000);
-  };
+  }
 
   const loadProfile = () => {
     if (accountDomain) {
@@ -111,8 +122,8 @@ const Profile = (props) => {
 
   const CloseModal = () => {
     dispatch(getIndividualProfile(accountDomain));
-    setShowModal(false)
-  }
+    setShowModal(false);
+  };
 
   useEffect(() => {
     dispatch(resetCoinPrice());
@@ -130,16 +141,18 @@ const Profile = (props) => {
   }, [currentProfileFromState]);
 
   const GotoDomain = (item) => {
-    setShowModal(false)
-    navigate(`/${item}`)
-  }
+    setShowModal(false);
+    navigate(`/${item}`);
+  };
 
   const Transaction = () => {
     return (
       <>
         {transactions.length === 0 ? (
-          <div className=" w-full py-5 rounded-lg bg-opacity-50 bg-[#10141C] mb-32 md:mb-12 " >
-            <p className=" font-medium text-[13px] text-center " >No information avaliable 👋</p>
+          <div className=" w-full py-5 rounded-lg bg-opacity-50 bg-[#10141C] mb-32 md:mb-12 ">
+            <p className=" font-medium text-[13px] text-center ">
+              No information avaliable 👋
+            </p>
           </div>
         ) : (
           <>
@@ -179,38 +192,39 @@ const Profile = (props) => {
               </div>
             ))}
           </>
-        )
-        }
+        )}
       </>
-    )
-  }
+    );
+  };
 
   const renderHistory = useMemo(() => {
     switch (active) {
       case 1:
-        return coinInfo ? <CoinHodlers coin={currentProfile} user={user} /> : null;
+        return coinInfo ? (
+          <CoinHodlers coin={currentProfile} user={user} />
+        ) : null;
       case 2:
         return <CoinsBought user={currentProfile} />;
       case 3:
-        return <Transaction />
+        return <UserTracks user={currentProfile} />;
       default:
         return "";
     }
-  }, [active, currentProfile, coinInfo]);
+  }, [active, currentProfile, coinInfo, user]);
 
   if (currentProfile && !currentProfile.accountId) {
     return <div className="text-center mb-32">Profile Not Found!</div>;
   }
 
   const qrHandler = () => {
-    setQrCodeModal(true)
-    setIsShown(false)
-  }
+    setQrCodeModal(true);
+    setIsShown(false);
+  };
 
   const qrScanHandler = () => {
-    setQrCodeScannerModal(true)
-    setIsShown(false)
-  }
+    setQrCodeScannerModal(true);
+    setIsShown(false);
+  };
 
   return (
     <div className="w-full md:px-0 px-6 mb-20 ">
@@ -495,6 +509,19 @@ const Profile = (props) => {
                   </div> */}
                 </div>
               ) : null}
+              {currentProfile?.website && (
+                <div className=" flex items-center py-2 ">
+                  <img src={chain} alt="chain" className=" w-[12.39px] " />
+                  <a
+                    target="_blank"
+                    href={"http://" + currentProfile?.website + ""}
+                    className=" font-medium text-sm ml-2 "
+                    rel="noreferrer"
+                  >
+                    {currentProfile?.website}
+                  </a>
+                </div>
+              )}
             </div>
           </div>
           <div className="w-full pb-2 mb-9 border-b-2 border-muted-50 flex items-center text-sm font-medium text-muted">
@@ -512,14 +539,14 @@ const Profile = (props) => {
             >
               Coins bought
             </p>
-            {/* <p
+            <p
               className={`cursor-pointer ${
                 active === 3 ? "active-tab-bottom " : "text-muted font-medium"
               }`}
               onClick={() => setActive(3)}
             >
-              Transactions
-            </p> */}
+              My Tracks
+            </p>
           </div>
           {renderHistory}
         </>
@@ -535,9 +562,7 @@ const Profile = (props) => {
         <QrcodeScanner close={setQrCodeScannerModal}  />
       )} */}
       {showModal && (
-        <div
-          className=" fixed inset-0 flex justify-center items-center md:overflow-y-hidden bg-black bg-opacity-40 z-[70] "
-        >
+        <div className=" fixed inset-0 flex justify-center items-center md:overflow-y-hidden bg-black bg-opacity-40 z-[70] ">
           <div className=" w-full md:w-[360px] md:h-auto relative z-[120] h-screen rounded-2xl bg-[#12161F]">
             <div className=" w-full flex items-center border-b border-[#222A3B] justify-between py-4 px-6 ">
               <p className="  font-medium text-white">Follows</p>
@@ -562,7 +587,8 @@ const Profile = (props) => {
                     >
                       <div
                         onClick={() => GotoDomain(domainName)}
-                        className=" w-fit relative cursor-pointer " >
+                        className=" w-fit relative cursor-pointer "
+                      >
                         <Photo
                           alt=""
                           userId={item.account_id}
@@ -581,7 +607,8 @@ const Profile = (props) => {
                       {/* <div className=' w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] ' /> */}
                       <div
                         onClick={() => GotoDomain(domainName)}
-                        className=" ml-3  cursor-pointer ">
+                        className=" ml-3  cursor-pointer "
+                      >
                         <div className=" flex -mt-1 items-center ">
                           <p className=" text-[13px] font-semibold ">
                             {" "}
@@ -594,7 +621,12 @@ const Profile = (props) => {
                           </p>
                         </div>
                       </div>
-                      <CheckFollower current={currentProfile} otheruser={item} check={data} user={user} />
+                      <CheckFollower
+                        current={currentProfile}
+                        otheruser={item}
+                        check={data}
+                        user={user}
+                      />
                     </div>
                   );
                 })}

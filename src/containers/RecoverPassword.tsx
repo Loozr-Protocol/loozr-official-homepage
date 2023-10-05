@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { motion } from "framer-motion";
-import { httpError } from "../utils/httpHelper";
+import { toastHttpError } from "../utils/httpHelper";
 import AuthImage from "../assets/img/auth-img.png";
 import { toast } from "react-toastify";
 import { TOAST_OPTIONS } from "../config/constants";
@@ -40,7 +40,7 @@ const RecoverPassword = () => {
         toast.success("A password reset link has been sent to your email address", TOAST_OPTIONS);
      } catch (err: any) {
        setLoading(false);
-       httpError(err);
+       toastHttpError(err);
      }
    };
 
