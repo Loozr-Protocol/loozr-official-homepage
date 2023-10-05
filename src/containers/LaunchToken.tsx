@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import { TOAST_OPTIONS } from "../config/constants";
 import { useArtisteSetupCallback } from "../state/artist/hooks";
 import { jsonToArtist } from "../utils";
-import { httpError } from "../utils/httpHelper";
+// import { toastHttpError } from "../utils/httpHelper";
 import { useDispatch } from "react-redux";
 import { updateProfile } from "../state/user/userReducer";
 import TipImg from "../assets/icons/tooltip.svg";
@@ -33,22 +33,22 @@ A value of 0% means you get no money when someone buys, whereas a value of 100% 
 
 Setting this value too high will discourage buyers from ever purchasing your coin. It's a delicate balance, so tread carefully or stick with the default.`;
 
-  const CustomWidthTooltip = styled(({ className, ...props }: TooltipProps) => (
-    <Tooltip {...props} arrow classes={{ popper: className }} />
-  ))(({ theme }) => ({
-    [`& .${tooltipClasses.arrow}`]: {
-      color: theme.palette.common.black,
-    },
-    [`& .${tooltipClasses.tooltip}`]: {
-      backgroundColor: "#141922",
-      maxWidth: 320,
-      paddingTop: 20,
-      paddingBottom: 20,
-      paddingLeft: 40,
-      paddingRight: 40,
-      fontSize: 14,
-    },
-  }));
+  // const CustomWidthTooltip = styled(({ className, ...props }: TooltipProps) => (
+  //   <Tooltip {...props} arrow classes={{ popper: className }} />
+  //     ))(({ theme }) => ({
+  //       [`& .${tooltipClasses.arrow}`]: {
+  //         color: theme.palette.common.black,
+  //       },
+  //       [`& .${tooltipClasses.tooltip}`]: {
+  //         backgroundColor: "#141922",
+  //         maxWidth: 320,
+  //         paddingTop: 20,
+  //         paddingBottom: 20,
+  //         paddingLeft: 40,
+  //         paddingRight: 40,
+  //         fontSize: 14,
+  //       },
+  //     }));
 
   const formSchema = yup.object({
     account_id: yup.string().required("Please enter coin name"),
@@ -93,7 +93,7 @@ Setting this value too high will discourage buyers from ever purchasing your coi
       navigate(`/explore`, { replace: true });
     } catch (err) {
       setLoader(false);
-      httpError(err);
+      // toastHttpError(err);
     }
   };
 
@@ -141,9 +141,9 @@ Setting this value too high will discourage buyers from ever purchasing your coi
               Set Founder Reward:
             </p>
 
-            <CustomWidthTooltip title={longText} className=" font-normal " arrow placement="top" >
-              <img className=" w-5 h-5 " src={TipImg} alt="tooltip" />
-            </CustomWidthTooltip>
+            {/* <CustomWidthTooltip title={longText} className=" font-normal " arrow placement="top" > 
+              <img className=" w-5 h-5 " src={TipImg} alt="tooltip" /> 
+            </CustomWidthTooltip> */}
           </div>
           <input
             type="number"
