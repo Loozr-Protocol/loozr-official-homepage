@@ -157,7 +157,7 @@ const ArtisteDashboard = () => {
               </p>
             </div>
           </div>
-          <div className="bg-dark-700 py-7 px-7 md:w-[85%]">
+          <div className="bg-dark-700 py-7 px-7 md:w-full">
             <img src={Heart} alt="" className="w-10 h-10 mb-[19px]" />
             <p className="txt font-medium text-sm text-white mb-2.5">
               Collective Wins!

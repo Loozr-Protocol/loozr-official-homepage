@@ -509,19 +509,6 @@ const Profile = (props) => {
                   </div> */}
                 </div>
               ) : null}
-              {currentProfile?.website && (
-                <div className=" flex items-center py-2 ">
-                  <img src={chain} alt="chain" className=" w-[12.39px] " />
-                  <a
-                    target="_blank"
-                    href={"http://" + currentProfile?.website + ""}
-                    className=" font-medium text-sm ml-2 "
-                    rel="noreferrer"
-                  >
-                    {currentProfile?.website}
-                  </a>
-                </div>
-              )}
             </div>
           </div>
           <div className="w-full pb-2 mb-9 border-b-2 border-muted-50 flex items-center text-sm font-medium text-muted">
