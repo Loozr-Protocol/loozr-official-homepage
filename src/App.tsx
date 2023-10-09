@@ -65,7 +65,8 @@ const App = () => {
                 element={
                   <>
                     <route.component />
-                    {route.name !== "songTokenization" && <Footer />}
+                    {/* {route.name !== "songTokenization" && <Footer />}
+                    {route.name === "login" || 'signup' && <Footer />} */}
                   </>
                 }
               />

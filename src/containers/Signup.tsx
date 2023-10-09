@@ -85,8 +85,8 @@ const Signup = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             onFocus={() => formik.setFieldTouched("email", true, true)}
-            className="py-8 !px-[39px] text-muted placeholder:text-muted font-medium text-base bg-dark-800 mb-7"
-            style={{ backgroundColor: "#12161F", height: 74 }}
+            className="py-8 !px-[39px] text-muted placeholder:text-muted font-medium text-base bg-dark-800 mb-6"
+            style={{ backgroundColor: "#12161F", height: 74, borderRadius: 10, }}
           />
           <div className="w-full h-auto pt-2">
             {formik.touched.email && formik.errors.email && (
@@ -108,8 +108,8 @@ const Signup = () => {
               onBlur={formik.handleBlur}
               onFocus={() => formik.setFieldTouched("password", true, true)}
               placeholder="Password"
-              className="py-8 !px-[39px] text-muted placeholder:text-muted font-medium text-base bg-dark-800 mb-7"
-              style={{ backgroundColor: "#12161F", height: 74 }}
+              className="py-8 !px-[39px] text-muted placeholder:text-muted font-medium text-base bg-dark-800 mb-6"
+              style={{ backgroundColor: "#12161F", height: 74, borderRadius: 10, }}
             />
             <span
               className="absolute right-10 inset-y-6 cursor-pointer"
@@ -145,7 +145,7 @@ const Signup = () => {
               }
               placeholder="Re-type Password"
               className="py-8 !px-[39px] text-muted placeholder:text-muted font-medium text-base bg-dark-800 "
-              style={{ backgroundColor: "#12161F", height: 74 }}
+              style={{ backgroundColor: "#12161F", height: 74, borderRadius: 10, }}
             />
             <span
               className="absolute right-10 inset-y-6 cursor-pointer"
@@ -178,7 +178,7 @@ const Signup = () => {
           <button
             onClick={handleSubmit}
             disabled={isLoading}
-            className="py-3 md:py-6 text-white disabled:text-muted font-medium text-base bg-gradient-ld disabled:bg-dark-800 mb-11 w-full focus:outline-none h-[74px]"
+            className="py-3 md:py-6 text-white disabled:text-muted font-medium text-base bg-gradient-ld disabled:bg-dark-800 mb-11 w-full focus:outline-none h-[74px] rounded-[10px]"
           >
             {isLoading ? "Processing..." : "Create account"}
           </button>

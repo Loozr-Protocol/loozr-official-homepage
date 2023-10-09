@@ -53,7 +53,7 @@ const Login = () => {
       push("/explore", { replace: true });
     } catch (err: any) {
       setLoading(false);
-       toastHttpError(err);
+      toastHttpError(err);
     }
   };
 
@@ -65,10 +65,10 @@ const Login = () => {
         className="w-full lg:w-4/5 hidden md:block h-screen"
       />
       <div className="flex flex-col items-center justify-center px-6 md:px-auto">
-        <div style={{ zoom: "85%", width: "100%" }}>
-          <p className="text-sm font-normal text-muted mb-3">WELCOME BACK</p>
+        <div style={{ zoom: "80%", width: "100%" }}>
+          <p className="text-sm font-normal text-muted mb-3">WELCOME BACK!</p>
           <p className="text-4xl font-bold mb-9 text-white">Login account</p>
-          <p className="text-[15px] font-normal mb-11">
+          <p className="text-[15px] font-normal mb-8">
             Don&apos;t have an account?{" "}
             <Link to="/signup" className="text-loozr-purple">
               Create account
@@ -82,11 +82,12 @@ const Login = () => {
             onFocus={() => formik.setFieldTouched("email", true, true)}
 
             placeholder="Enter email"
-            className="input-name py-8 relative z-10 !px-[39px] text-muted placeholder:text-muted text-base font-medium bg-dark-800 mb-7"
+            className="input-name py-8 relative z-10 !px-[39px] text-muted placeholder:text-muted text-base font-medium bg-dark-800 mb-6"
             style={{
               backgroundColor: "#12161F",
               height: 74,
               padding: "auto 40px",
+              borderRadius: 10,
             }}
           />
           <div className="w-full h-auto pt-2">
@@ -115,6 +116,7 @@ const Login = () => {
                 marginBottom: 43,
                 height: 74,
                 padding: "auto 40px",
+                borderRadius: 10,
               }}
             />
             <span
@@ -141,7 +143,7 @@ const Login = () => {
             )}
           </div>
           <button
-            className="py-3 md:py-6 text-white disabled:text-muted font-medium text-base bg-gradient-ld disabled:bg-dark-800 mb-4 md:!mb-12 w-full focus:outline-none h-[74px]"
+            className="py-3 md:py-6 text-white disabled:text-muted font-medium text-base bg-gradient-ld disabled:bg-dark-800 mb-2 md:!mb-10 w-full rounded-[10px] focus:outline-none h-[74px]"
             onClick={handleLoginSubmit}
             disabled={isLoading}
           >
