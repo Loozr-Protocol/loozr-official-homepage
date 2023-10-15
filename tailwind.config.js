@@ -17,6 +17,8 @@ module.exports = {
         "dark-900": "#0C0F15",
         "dark-800": "#12161F",
         "dark-700": "#141922",
+        "dark-600": "rgba(98, 192, 255, 0.13)",
+        "new-100": "rgba(243, 236, 78, 0.1)",
         "white-40": "rgba(255, 255, 255, 0.4)",
       },
       backgroundImage: {

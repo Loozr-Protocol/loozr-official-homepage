@@ -10,6 +10,7 @@ import { getSuggestedUsers } from "../../state/user/userActions";
 import { removeSuggestedUser } from "../../state/user/userReducer";
 import Photo from "../Photo";
 import VerifiedBadge from "../../assets/icons/verified.svg"
+import { Add } from "@mui/icons-material";
 
 const SuggestedFollows = (props: any) => {
   const dispatch = useDispatch();
@@ -24,11 +25,11 @@ const SuggestedFollows = (props: any) => {
   const onFollow = async (user: User) => {
     dispatch(removeSuggestedUser(user.id));
     await handleFollow(user.id);
-  }; 
+  };
 
   const SuggestedUserTable = ({ user }: { user: any }) => (
     <div className=' w-full flex justify-between my-2 items-center ' >
-      <div className=" relative " > 
+      <div className=" relative " >
         <Photo
           alt=""
           userId={user.accountId}
@@ -50,10 +51,10 @@ const SuggestedFollows = (props: any) => {
           <p className=' text-[13px] font-semibold ' > {user.accountId}</p>
         </div>
         <div className=' flex -mt-1 items-center ' >
-          <p className=' text-[11px] font-semibold text-[#536079] ' >{user.accountDomain}</p> 
+          <p className=' text-[11px] font-semibold text-[#536079] ' >{user.accountDomain}</p>
         </div>
       </div>
-      <p onClick={() => onFollow(user)} className=' text-[12px] ml-auto font-bold text-[#8369F4] cursor-pointer ' >Follow</p>
+      <p onClick={() => onFollow(user)} className=' text-[12px] ml-auto font-bold text-white bg-[#536079] p-4 cursor-pointer ' ><Add /></p>
     </div>
   )
 
@@ -66,7 +67,7 @@ const SuggestedFollows = (props: any) => {
 
   return (
     <>
-      <div className="flex justify-between items-center mb-10">
+      <div className="flex justify-between items-center mb-10 w-full">
         <p className="text-sm font-semibold text-white">Suggested For You</p>
         <p onClick={() => props.modal(true)} className="text-xs cursor-pointer font-medium text-muted">View all</p>
       </div>

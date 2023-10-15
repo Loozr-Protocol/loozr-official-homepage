@@ -44,7 +44,7 @@ export default function SelectGenres() {
     }
 
     return (
-        <div className=' w-full flex py-12 justify-center items-center  ' >
+        <div className=' w-full flex justify-center items-center  ' >
             <div className=' w-full bg-[#12161F] px-6 md:px-36 mx-0 md:mx-10 flex justify-center flex-col items-center py-14' > 
                 <p className="font-bold text-2xl md:text-[35px] text-white mb-2 md:mb-7">
                     Select your genres

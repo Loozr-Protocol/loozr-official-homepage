@@ -27,6 +27,7 @@ import Notifications from "../containers/Notifications";
 import BuyArtistToken from "../containers/BuyArtistToken";
 import SellArtistToken from "../containers/SellArtistToken";
 import SelectGenres from "../containers/SelectGenres";
+import SubmitTwitter from "../containers/SubmitTwitter";
 import SuggestedArtistes from "../containers/SuggestedArtistes";
 import MusicInfo from "../containers/MusicInfo"; 
 import ExploreDashboard from "../containers/ExploreDashboard";
@@ -47,6 +48,12 @@ export const authRoutes = [
     path: "select-genres",
     private: false,
     component: SelectGenres,
+  },
+  {
+    name: "submit-twitter",
+    path: "submit-twitter",
+    private: false,
+    component: SubmitTwitter,
   },
   // {
   //   name: "suggested-artistes",
@@ -216,6 +223,12 @@ export const dashboardhome = [
   {
     name: "artiste dashboard",
     path: "explore",
+    private: false,
+    component: ArtisteDashboard,
+  },
+  {
+    name: "feeds",
+    path: "feeds",
     private: false,
     component: ArtisteDashboard,
   },
