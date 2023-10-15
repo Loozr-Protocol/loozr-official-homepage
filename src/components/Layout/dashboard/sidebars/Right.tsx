@@ -67,7 +67,7 @@ export default function Right() {
 
   return (
     <>
-      <div className="bg-dark-800 flex flex-col items-start h-screen gap-6 py-8 px-10 xl:p-4 pb-12 mb-5" style={{ width: xl ? `${drawerMaxWidth}vw` : md ? "max-content" : 0, }}>
+      <div className="bg-dark-800 flex flex-col items-start h-screen gap-6 py-10 px-10 xl:p-4 pb-12 mb-5" style={{ width: xl ? `${drawerMaxWidth}vw` : md ? "max-content" : 0, }}>
         <div onClick={() => (user ? navigate("/" + user.accountDomain) : null)} className=" flex w-full items-center cursor-pointer" onMouseOver={() => { Checking(true); }} onMouseOut={() => { Checking(false); }} >
           <div className="relative w-fit ">
             <div className=" w-12 h-12 xl:w-14 xl:h-14 flex">
@@ -103,7 +103,10 @@ export default function Right() {
 
           </div>
         </div>
+        <div className="w-full">
+        <div className="h-px w-full lg:w-full bg-muted-50 mt-8 mb-7" />
         <SuggestedFollows modal={setShowModal} />
+        </div>
         <div className="flex flex-col gap-[18px] h-screen justify-end w-full">
           <p className="text-[13px] font-medium leading-5 text-muted">
             Coming Soon
@@ -112,7 +115,7 @@ export default function Right() {
             <img src={AppStore} alt="" className="w-[40%] cursor-pointer" />
             <img src={GooglePlay} alt="" className="w-[40%] cursor-pointer" />
           </div>
-          <div className="flex gap-4 items-center flex-wrap mb-4">
+          <div className="flex gap-4 items-center flex-wrap">
             <p className="text-[13px] font-medium leading-5 text-muted">
               Report problem
             </p>

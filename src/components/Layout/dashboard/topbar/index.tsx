@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { AppState } from "../../../../state/store";
 import { useBecomeArtisteCallback } from "../../../../state/artist/hooks";
 import { setPageLoaderStatus } from "../../../../state/misc";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SearchIcon from "../../../../assets/icons/search.svg";
 import LoozrGradient from "../../../../assets/icons/loozr-gradient.svg";
 import SearchWhiteIcon from "../../../../assets/icons/search-white.svg";
@@ -15,6 +15,7 @@ import { useSearchUserCallback } from "../../../../state/user/hooks/useAccount";
 
 export const TopBar = () => {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   const dispatch = useDispatch();
   const { handleBecomeArtiste } = useBecomeArtisteCallback();
   const [searchValue, setSearchValue] = React.useState("")
@@ -43,10 +44,32 @@ export const TopBar = () => {
     setSearchValue("")
   }
 
+  const getText = () => {
+    switch (pathname) {
+      case '/feeds':
+        return 'Feeds';
+      case '/artistes':
+        return 'Artistes';
+      case '/tracks':
+        return 'Tracks';
+      case '/wallet':
+        return 'Wallet';
+      case '/airdrops':
+        return 'Airdrops';
+      default:
+        return '';
+    }
+  };
+
   return (
-    <div className="w-full mb-6 md:px-0 px-6 md:pr-4 ">
-      <div className="flex justify-between px-0 sm:px-4  items-center">
-        <div className="hidden md:flex w-[68%] relative">
+    <div className="w-full mb-6">
+      <div className="flex justify-between px-0 sm:px-4 md:mr-6 items-center">
+        <div>
+          <p className="font-medium text-base md:text-[20px] text-white">
+            {getText()}
+          </p>
+        </div>
+        <div className="hidden md:flex w-[30%] relative">
           <input
             type="text"
             value={searchValue}

@@ -28,7 +28,7 @@ const SuggestedFollows = (props: any) => {
   };
 
   const SuggestedUserTable = ({ user }: { user: any }) => (
-    <div className=' w-full flex justify-between my-2 items-center ' >
+    <div className=' w-full flex justify-between my-4 items-center ' >
       <div className=" relative " >
         <Photo
           alt=""
@@ -54,7 +54,7 @@ const SuggestedFollows = (props: any) => {
           <p className=' text-[11px] font-semibold text-[#536079] ' >{user.accountDomain}</p>
         </div>
       </div>
-      <p onClick={() => onFollow(user)} className=' text-[12px] ml-auto font-bold text-white bg-[#536079] p-4 cursor-pointer ' ><Add /></p>
+      <p onClick={() => onFollow(user)} className=' text-[12px] ml-auto font-bold text-white bg-[#536079] rounded-full p-2 cursor-pointer ' ><Add /></p>
     </div>
   )
 
