@@ -69,7 +69,7 @@ export const TopBar = () => {
             {getText()}
           </p>
         </div>
-        <div className="hidden md:flex w-[30%] relative">
+        <div className="hidden md:flex w-[25%] relative">
           <input
             type="text"
             value={searchValue}

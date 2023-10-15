@@ -28,7 +28,7 @@ const SuggestedFollows = (props: any) => {
   };
 
   const SuggestedUserTable = ({ user }: { user: any }) => (
-    <div className=' w-full flex justify-between my-4 items-center ' >
+    <div className=' w-full flex justify-between my-2 items-center ' >
       <div className=" relative " >
         <Photo
           alt=""
@@ -67,8 +67,8 @@ const SuggestedFollows = (props: any) => {
 
   return (
     <>
-      <div className="flex justify-between items-center mb-10 w-full">
-        <p className="text-sm font-semibold text-white">Suggested For You</p>
+      <div className="flex justify-between items-center mb-3 w-full">
+        <p className="text-sm font-semibold text-muted ">Suggested For You</p>
         <p onClick={() => props.modal(true)} className="text-xs cursor-pointer font-medium text-muted">View all</p>
       </div>
       {users

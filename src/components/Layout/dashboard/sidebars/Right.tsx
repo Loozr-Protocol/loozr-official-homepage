@@ -11,6 +11,8 @@ import { formatBalanceUSD, formatNumber, getFullDisplayBalance, } from "../../..
 import SuggestedFollows from "../../../suggestion/SuggestedFollows";
 import SuggestedUser from "../../../SuggestedUser"
 import Verify from "../../../../assets/svg/verify.svg";
+import More from "../../../../assets/svg/More";
+import userComing from "../../../../assets/svg/userComing.svg";
 import { drawerMaxWidth, drawerMinWidth } from './Left'
 import Marquee from "react-fast-marquee";
 import Photo from "../../../Photo";
@@ -67,7 +69,7 @@ export default function Right() {
 
   return (
     <>
-      <div className="bg-dark-800 flex flex-col items-start h-screen gap-6 py-10 px-10 xl:p-4 pb-12 mb-5" style={{ width: xl ? `${drawerMaxWidth}vw` : md ? "max-content" : 0, }}>
+      <div className="bg-dark-800 flex flex-col items-start h-screen gap-6 py-10 px-4 md:px-12 xl:p-4 pb-12 mb-5" style={{ width: xl ? `${drawerMaxWidth}vw` : md ? "max-content" : 0, }}>
         <div onClick={() => (user ? navigate("/" + user.accountDomain) : null)} className=" flex w-full items-center cursor-pointer" onMouseOver={() => { Checking(true); }} onMouseOut={() => { Checking(false); }} >
           <div className="relative w-fit ">
             <div className=" w-12 h-12 xl:w-14 xl:h-14 flex">
@@ -103,9 +105,17 @@ export default function Right() {
 
           </div>
         </div>
-        <div className="w-full">
-        <div className="h-px w-full lg:w-full bg-muted-50 mt-8 mb-7" />
-        <SuggestedFollows modal={setShowModal} />
+        <div className="w-full flex flex-col mt-8">
+          <div className="flex flex-col gap-3">
+            <p className="text-sm font-semibold text-muted">Coming to Loozr! </p>
+            <p className="text-sm text-white">Snoop Dogg, Burna Boy plus 15K+ Artist profiles reserved.</p>
+            <div className="w-full flex items-center justify-between p-3 rounded-[18px] bg-dark-700">
+              <img src={userComing} alt='' className="w-[120px]" />
+              <More />
+            </div>
+          </div>
+          <div className="h-px w-full lg:w-full bg-muted-50 mt-4 mb-3" />
+          <SuggestedFollows modal={setShowModal} />
         </div>
         <div className="flex flex-col gap-[18px] h-screen justify-end w-full">
           <p className="text-[13px] font-medium leading-5 text-muted">
