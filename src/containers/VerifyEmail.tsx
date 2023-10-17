@@ -31,8 +31,8 @@ const VerifyEmail = () => {
           className="bg-dark-800 text-center w-full py-16 px-7 md:px-[107px]"
           style={{ zoom: "85%" }}
         >
-          <p className="text-xl text-white mb-8 font-medium max-w-[358px] mx-auto">
-            Verification email has been sent to {email}
+          <p className="text-xl text-white mb-8 font-medium max-w-[458px] mx-auto">
+            Verification email has been sent to <br /> {email}
           </p>
 
           <p className="text-base font-medium text-muted max-w-[496px] mx-auto">
