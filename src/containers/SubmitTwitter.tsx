@@ -5,7 +5,7 @@ import { toastHttpError } from '../utils/httpHelper'
 import Confetti from "../assets/svg/confetti.svg";
 import Check from "../assets/svg/check.svg";
 import ConnectTwitter from "../assets/svg/connectTwitter.svg";
-import { RiTwitterXLine } from 'react-icons/ri'
+import { RiTwitterXLine } from "react-icons/ri"
 
 export default function SubmitTwitter() {
 
