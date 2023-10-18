@@ -28,6 +28,8 @@ module.exports = {
           "linear-gradient(180.44deg, rgba(131, 105, 244, 0.4) 27.17%, rgba(240, 57, 226, 0.4) 156.68%)",
         "s-gradient":
           "linear-gradient(180deg, #8369F4 27.69%, #F039E2 178.46%)",
+        "g-gradient":
+          "linear-gradient(90deg, #F039E2 0%, #8369F4 100%)",
       },
       fontSize: {
         label: ["3.5rem", 1],
