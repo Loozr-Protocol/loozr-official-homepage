@@ -132,7 +132,7 @@ export const TopBar = () => {
               </div>
             )}
           </div>
-          <div className="border-[1px] border-[#222A3B] text-[#222A3B] px-2.5 py-2 w-fit rounded-full">
+          <div className="border-[1px] border-[#141922] text-[#536079] px-2.5 py-2 w-fit rounded-full">
             <NotificationsNoneIcon fontSize='small' />
           </div>
         </div>
