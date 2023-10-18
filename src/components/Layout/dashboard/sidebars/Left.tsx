@@ -92,7 +92,7 @@ export const Left = () => {
 
 
   return (
-    <div className={`bg-dark-800 flex flex-col items-start h-screen md:pl-11 xl:pl -14 pr-auto md:pr-4 xl:pr-4 pt-8 pb-12 mb-5`}
+    <div className={`bg-dark-800 flex flex-col items-start h-screen md:pl-20 xl:pl-[70px] pr-auto md:pr-6 xl:pr-10 pt-8 pb-12 mb-5`}
       style={{ width: xl ? `${drawerMaxWidth}vw` : md ? "max-content" : 0, }}>
       {xl ? (
         <img src={LoozrBeta} alt="" className={`w-32 h-8 mb-7`} />
