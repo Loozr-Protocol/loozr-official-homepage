@@ -17,7 +17,7 @@ import NFTModal from "../components/NftModal";
 
 export default function Home() {
 
-  const [isModal, setIsModal] = useState(false)
+  const [isModal, setIsModal] = useState(true)
 
   return (
     <>
