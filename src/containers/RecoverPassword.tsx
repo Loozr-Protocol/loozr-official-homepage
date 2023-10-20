@@ -57,7 +57,7 @@ const RecoverPassword = () => {
           <p className="text-4xl font-bold mb-6 md:!mb-9">
             Recover password
           </p>
-          <p className="text-[15px] font-normal mb-10">
+          <p className="text-[15px] font-normal mb-8">
             Please provide your email address in order to receive a password reset link.
           </p>
           <input
@@ -68,7 +68,7 @@ const RecoverPassword = () => {
             onFocus={() => formik.setFieldTouched("email", true, true)}
             placeholder="Enter email"
             className="py-8 !px-[39px] text-muted placeholder:text-muted font-medium text-base h-[74px] bg-dark-800 mb-11"
-            style={{ backgroundColor: "#12161F" }}
+            style={{ backgroundColor: "#12161F", borderRadius: 10, }}
           />
           <div className="w-full h-auto pt-2">
             {formik.touched.email && formik.errors.email && (
@@ -84,7 +84,7 @@ const RecoverPassword = () => {
           </div>
           <div className="w-full">
             <button
-              className="py-6 text-white disabled:text-muted font-medium text-xl bg-gradient-ld disabled:bg-dark-800 mb-6 md:mb-11 w-full focus:outline-none"
+              className="py-6 text-white disabled:text-muted font-medium text-xl bg-gradient-ld disabled:bg-dark-800 mb-6 md:mb-11 w-full focus:outline-none rounded-[10px]"
               onClick={handleSubmit}
               disabled={isLoading}
             >

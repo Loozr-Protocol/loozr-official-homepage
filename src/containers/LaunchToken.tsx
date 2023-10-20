@@ -13,7 +13,7 @@ import { useDispatch } from "react-redux";
 import { updateProfile } from "../state/user/userReducer";
 import TipImg from "../assets/icons/tooltip.svg";
 import AccountSetupInput from "../components/AccountSetupInput";
-import AccountSetupInputCoin from "../components/AccountSetupInputCoin"; 
+import AccountSetupInputCoin from "../components/AccountSetupInputCoin";
 import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
 import { styled } from '@mui/material/styles';
 
@@ -24,10 +24,10 @@ const LaunchToken = () => {
   const [number, setNumber] = useState()
   const { handleArtisteSetup } = useArtisteSetupCallback();
   const [isAccountAvailable, setAvailableState] = useState(false);
-  const [isLoading, setLoader] = useState<boolean>(false);  
+  const [isLoading, setLoader] = useState<boolean>(false);
 
 
-const longText = `When someone purchases your coin, a percentage of that gets allocated to you as a founder reward.
+  const longText = `When someone purchases your coin, a percentage of that gets allocated to you as a founder reward.
 
 A value of 0% means you get no money when someone buys, whereas a value of 100% means that no one else can ever get coins because 100% of every purchase goes to you.
 
@@ -62,13 +62,13 @@ Setting this value too high will discourage buyers from ever purchasing your coi
   const formik = useFormik({
     initialValues: { account_id: "", founder_reward: 0 },
     validationSchema: formSchema,
-    onSubmit: () => {},
+    onSubmit: () => { },
   });
-  
-  useEffect(() => {  
-    formik.setFieldValue("account_id", text) 
+
+  useEffect(() => {
+    formik.setFieldValue("account_id", text)
   }, [text])
- 
+
   const handleLaunchToken = async () => {
     if (!formik.dirty) {
       return;
@@ -90,7 +90,7 @@ Setting this value too high will discourage buyers from ever purchasing your coi
         ...TOAST_OPTIONS,
         autoClose: 10000,
       });
-      navigate(`/explore`, { replace: true });
+      navigate(`/:accountDomain`, { replace: true });
     } catch (err) {
       setLoader(false);
       toastHttpError(err);
@@ -136,7 +136,7 @@ Setting this value too high will discourage buyers from ever purchasing your coi
           Coin name: {formik.values.account_id}.{CREATOR_COIN_DOMAIN}
         </p> */}
         <div className="w-full mb-8">
-          <div className=" mb-5 flex items-center " > 
+          <div className=" mb-5 flex items-center " >
             <p className="text-sm font-medium text-muted mr-2">
               Set Founder Reward:
             </p>
@@ -147,7 +147,7 @@ Setting this value too high will discourage buyers from ever purchasing your coi
           </div>
           <input
             type="number"
-            name="founder_reward" 
+            name="founder_reward"
             // onKeyPress={(e) => {
             //   if (e.key === "e" || e.key === "-" || e.key === "+") {
             //     e.preventDefault();

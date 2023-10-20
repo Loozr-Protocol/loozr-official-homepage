@@ -24,21 +24,21 @@ const ArtisteDashboard = () => {
   useEffect(() => {
     dispatch(getArtists(''));
   }, []);
-  
-  const FeaturedArtistes =()=>{ 
+
+  const FeaturedArtistes = () => {
 
     const [isShownText, setIsShownText] = React.useState(-1)
     const [isShown, setIsShown] = React.useState(-1)
 
-    const Checking =(item: any, text: any)=> {
+    const Checking = (item: any, text: any) => {
       setIsShown(item)
-      if(text.length > 7){
+      if (text.length > 7) {
         setIsShownText(item)
       } else {
         setIsShownText(-1)
       }
-    } 
-    
+    }
+
     return (
       <>
         <div className="flex items-center md:px-0 px-6 mt-[3px] justify-between mb-[15px]">
@@ -123,14 +123,14 @@ const ArtisteDashboard = () => {
         </div>
       </>
     );
-  } 
+  }
 
   return (
     <div className=" w-screen md:w-full flex flex-col ">
-      <Carousel />  
+      <Carousel />
       <FeaturedArtistes />
-      <Suggestion /> 
-      <div className=" w-full  md:px-0 px-6 " > 
+      <Suggestion />
+      <div className=" w-full  md:px-0 px-6 " >
         <p className="txt font-medium text-base md:text-[17px] text-white mb-6">
           How does Loozr work?
         </p>
@@ -157,7 +157,7 @@ const ArtisteDashboard = () => {
               </p>
             </div>
           </div>
-          <div className="bg-dark-700 py-7 px-7 md:w-[85%]">
+          <div className="bg-dark-700 py-7 px-7 md:w-full">
             <img src={Heart} alt="" className="w-10 h-10 mb-[19px]" />
             <p className="txt font-medium text-sm text-white mb-2.5">
               Collective Wins!

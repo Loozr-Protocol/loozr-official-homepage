@@ -210,7 +210,7 @@ const Profile = (props) => {
       default:
         return "";
     }
-  }, [active, currentProfile, coinInfo]);
+  }, [active, currentProfile, coinInfo, user]);
 
   if (currentProfile && !currentProfile.accountId) {
     return <div className="text-center mb-32">Profile Not Found!</div>;
@@ -266,7 +266,7 @@ const Profile = (props) => {
                 </button>
                 {copySuccess === "Copied!" && copySuccess}
               </div>
-              <p className="text-muted font-medium mt-[2px] text-xs md:text-xs mb-[10px]">
+              <p className="text-muted font-medium mt-[2px] text-xs md:text-xs">
                 <span>
                   {currentProfile.username
                     ? currentProfile.username
@@ -438,7 +438,7 @@ const Profile = (props) => {
                   )}
                 </>
               )}
-              <div className="flex items-center mb-9">
+              <div className="flex items-center mb-6">
                 <p
                   onClick={() => ClickFollwer()}
                   className="text-xs md:text-sm cursor-pointer font-bold mr-6"
@@ -483,6 +483,19 @@ const Profile = (props) => {
                 </div>
               ) : null}
               <CheckFollowerButton otheruser={currentProfile} user={user} />
+              {currentProfile?.website && (
+                <div className=" flex items-center py-2 mb-4 ">
+                  <img src={chain} alt="chain" className=" w-[12.39px] " />
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href={"http://" + currentProfile?.website + ""}
+                    className=" font-medium text-sm ml-2 "
+                  >
+                    {currentProfile?.website}
+                  </a>
+                </div>
+              )}
               {currentProfile?.id === user?.id ? (
                 <div className="flex items-center mb-4">
                   <button
@@ -496,33 +509,19 @@ const Profile = (props) => {
                   </div> */}
                 </div>
               ) : null}
-              {currentProfile?.website && (
-                <div className=" flex items-center py-2 ">
-                  <img src={chain} alt="chain" className=" w-[12.39px] " />
-                  <a
-                    target="_blank"
-                    href={"http://" + currentProfile?.website + ""}
-                    className=" font-medium text-sm ml-2 "
-                  >
-                    {currentProfile?.website}
-                  </a>
-                </div>
-              )}
             </div>
           </div>
           <div className="w-full pb-2 mb-9 border-b-2 border-muted-50 flex items-center text-sm font-medium text-muted">
             <p
-              className={`mr-10 cursor-pointer ${
-                active === 1 ? "active-tab-bottom " : "text-muted font-medium"
-              }`}
+              className={`mr-10 cursor-pointer ${active === 1 ? "active-tab-bottom " : "text-muted font-medium"
+                }`}
               onClick={() => setActive(1)}
             >
               Coin holders
             </p>
             <p
-              className={`mr-10 cursor-pointer ${
-                active === 2 ? "active-tab-bottom " : "text-muted font-medium"
-              }`}
+              className={`mr-10 cursor-pointer ${active === 2 ? "active-tab-bottom " : "text-muted font-medium"
+                }`}
               onClick={() => setActive(2)}
             >
               Coins bought
