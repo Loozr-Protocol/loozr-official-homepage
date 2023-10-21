@@ -3,31 +3,32 @@ import { useSelector, useDispatch } from "react-redux";
 import { AppState } from "../../../../state/store";
 import { useBecomeArtisteCallback } from "../../../../state/artist/hooks";
 import { setPageLoaderStatus } from "../../../../state/misc";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SearchIcon from "../../../../assets/icons/search.svg";
 import LoozrGradient from "../../../../assets/icons/loozr-gradient.svg";
 import SearchWhiteIcon from "../../../../assets/icons/search-white.svg";
 import PlusIcon from "../../../../assets/icons/plus.svg";
 import UserIcon from "../../../../assets/icons/user.svg";
-import { LZR_IN_USD, MIXER_ACCOUNT } from "../../../../config/constants"; 
+import { LZR_IN_USD, MIXER_ACCOUNT } from "../../../../config/constants";
 import Photo from "../../../Photo";
 import { useSearchUserCallback } from "../../../../state/user/hooks/useAccount";
 
 export const TopBar = () => {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   const dispatch = useDispatch();
   const { handleBecomeArtiste } = useBecomeArtisteCallback();
   const [searchValue, setSearchValue] = React.useState("")
   const [data, setData] = React.useState([] as any)
   const user = useSelector((state: AppState) => state.user.userInfo);
-  const { getSearchUser } = useSearchUserCallback(); 
+  const { getSearchUser } = useSearchUserCallback();
 
-  const OnchangeHandler = async (item: any)=>{ 
-    setSearchValue(item) 
-    const result = await getSearchUser(item); 
+  const OnchangeHandler = async (item: any) => {
+    setSearchValue(item)
+    const result = await getSearchUser(item);
     setData(result)
-  } 
-  
+  }
+
   const becomeArtist = async () => {
     dispatch(setPageLoaderStatus(true));
     try {
@@ -38,21 +39,43 @@ export const TopBar = () => {
     }
   };
 
-  const ClickHandler =(item: any)=>{
+  const ClickHandler = (item: any) => {
     navigate(item)
     setSearchValue("")
   }
 
+  const getText = () => {
+    switch (pathname) {
+      case '/feeds':
+        return 'Feeds';
+      case '/artistes':
+        return 'Artistes';
+      case '/tracks':
+        return 'Tracks';
+      case '/wallet':
+        return 'Wallet';
+      case '/airdrops':
+        return 'Airdrops';
+      default:
+        return '';
+    }
+  };
+
   return (
-    <div className="w-full mb-6 md:px-0 px-6 md:pr-4 ">
-      <div className="flex justify-between px-0 sm:px-4  items-center">
-        <div className="hidden md:flex md:w-[300px] relative">
+    <div className="w-full mb-6">
+      <div className="flex justify-between px-0 sm:px-4 md:mr-6 items-center">
+        <div>
+          <p className="font-medium text-base md:text-[20px] text-white">
+            {getText()}
+          </p>
+        </div>
+        <div className="hidden md:flex w-[25%] relative">
           <input
             type="text"
             value={searchValue}
             placeholder="Search artiste, fans… "
             onChange={(e) => OnchangeHandler(e.target.value)}
-            className="placeholder:text-[#536079]  w-full rounded-full h-[48px] text-xs"
+            className="placeholder:text-[#536079]  w-full rounded-full h-[40px] text-xs"
             style={{
               paddingLeft: "3.5rem",
               paddingRight: 16,
@@ -63,7 +86,7 @@ export const TopBar = () => {
           <img
             src={SearchIcon}
             alt=""
-            className="absolute w-4 h-4 object-contain inset-y-[16px] left-7"
+            className="absolute w-4 h-4 object-contain inset-y-[12px] left-7"
           />
           {searchValue && (
             <div className=" absolute bg-[#12161F] top-[50px] overflow-y-auto max-h-[250px] z-[120] py-2 mt-2 rounded-lg px-4 w-full  ">
@@ -108,18 +131,12 @@ export const TopBar = () => {
           )}
         </div>
         {!user && (
-          <div className=" flex  items-center justify-end gap-x-4">
-            <button
-              className="rounded-full h-[48px] w-[170px] bg-[#141922]  text-[11.5px] font-semibold outline-none focus:outline-none"
-              onClick={() => navigate("/login")}
-            >
-              LOG IN
+          <div className=" flex items-center justify-end gap-x-2">
+            <button className="rounded-full h-[40px] px-8 bg-[#141922] outline-none focus:outline-none" onClick={() => navigate("/login")}>
+              Login
             </button>
-            <button
-              className="rounded-full h-[48px] md:px-6 w-[170px] bg-s-gradient hidden lg:block text-[11.5px] font-semibold outline-none focus:outline-none"
-              onClick={() => navigate("/signup")}
-            >
-              CREATE ACCOUNT
+            <button className="rounded-full h-[40px] px-8 bg-s-gradient hidden lg:block outline-none focus:outline-none" onClick={() => navigate("/signup")}>
+              Create Account
             </button>
           </div>
         )}

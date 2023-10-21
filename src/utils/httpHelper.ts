@@ -1,14 +1,14 @@
-import axios, { AxiosStatic } from 'axios';
+import axios, { AxiosStatic, AxiosError } from 'axios';
 import { toast } from "react-toastify";
 import { HTTP_STATUS_CODES, TOAST_OPTIONS } from '../config/constants';
-import { API_BASE_ENDPOINT } from '../config/constants/endpoints';
+import ENV from '../config/env';
 
 export default class HttpClient {
   axiosInstance: AxiosStatic;
 
   constructor() {
     this.axiosInstance = axios;
-    this.axiosInstance.defaults.baseURL = API_BASE_ENDPOINT;
+    this.axiosInstance.defaults.baseURL = ENV.apiUrl;
     this.axiosInstance.defaults.headers.post['Content-Type'] = 'application/json';
 
     this.axiosInstance.interceptors.request.use(function (config) {
@@ -33,27 +33,22 @@ export default class HttpClient {
   }
 }
 
-export function httpError(err: any) {
-  if (err.response) {
-    if (err.response.status === HTTP_STATUS_CODES.BAD_REQUEST) {
-      err.response.data.errors.forEach(errMsg => {
-        toast.error(errMsg, TOAST_OPTIONS);
-      });
-    } else {
-      toast.error("Request failed! Please try again", TOAST_OPTIONS);
-    }
-  } else {
-    toast.error("Request failed! Please try again", TOAST_OPTIONS);
-  }
+export function toastHttpError(err: AxiosError | any) {
+  console.log('in herere', returnHttpError(err));
+    toast.error(returnHttpError(err), TOAST_OPTIONS);
 }
 
-export function returnHttpError(err: any) {
+export function returnHttpError(err: AxiosError) {
   let errorMsg: string;
   if (err.response) {
     if (err.response.status === HTTP_STATUS_CODES.BAD_REQUEST) {
-      err.response.data.errors.forEach(errMsg => {
-        errorMsg = errMsg;
-      });
+      const apiErrors = err.response.data['error']['details'];
+      const errorKeys = Object.keys(apiErrors)
+      errorMsg = apiErrors[errorKeys[0]];
+
+      if (typeof errorMsg !== 'string'){
+        errorMsg = errorMsg[0];
+      }
     } else {
       errorMsg = "Request failed! Please try again";
     }

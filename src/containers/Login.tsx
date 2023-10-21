@@ -7,17 +7,17 @@ import { useFormik } from "formik";
 import { motion } from "framer-motion";
 import { useLoginCallback } from "../state/user/hooks/useAuth";
 import AuthImage from "../assets/img/auth-img.png";
-import { httpError } from "../utils/httpHelper";
+import { toastHttpError } from "../utils/httpHelper";
 import { useDispatch } from "react-redux";
 import { login } from "../state/user/userReducer";
 import { jsonToUser } from "../utils";
 
 const Login = () => {
-  const [passwordVisible, setPasswordVisible] = useState(false); 
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const [isLoading, setLoading] = useState(false);
   const push = useNavigate();
   const dispatch = useDispatch();
-  const { handleLogin } = useLoginCallback(); 
+  const { handleLogin } = useLoginCallback();
 
   const loginSchema = yup.object({
     email: yup
@@ -32,8 +32,8 @@ const Login = () => {
   const formik = useFormik({
     initialValues: { email: "", password: "" },
     validationSchema: loginSchema,
-    onSubmit: () => {},
-  }); 
+    onSubmit: () => { },
+  });
 
   const handleLoginSubmit = async () => {
     if (!formik.dirty) {
@@ -53,9 +53,9 @@ const Login = () => {
       push("/explore", { replace: true });
     } catch (err: any) {
       setLoading(false);
-       httpError(err);
+      toastHttpError(err);
     }
-  };  
+  };
 
   return (
     <div className="min-h-screen w-full grid md:grid-cols-2 lg:grid-cols-3">
@@ -65,30 +65,31 @@ const Login = () => {
         className="w-full lg:w-4/5 hidden md:block h-screen"
       />
       <div className="flex flex-col items-center justify-center px-6 md:px-auto">
-        <div style={{ zoom: "85%", width: "100%" }}>
-          <p className="text-sm font-normal text-muted mb-3">WELCOME BACK</p>
+        <div style={{ zoom: "80%", width: "100%" }}>
+          <p className="text-sm font-normal text-muted mb-3">WELCOME BACK!</p>
           <p className="text-4xl font-bold mb-9 text-white">Login account</p>
-          <p className="text-[15px] font-normal mb-11">
+          <p className="text-[15px] font-normal mb-8">
             Don&apos;t have an account?{" "}
             <Link to="/signup" className="text-loozr-purple">
               Create account
             </Link>
           </p>
-            <input
-              type="email" 
-              name="email" 
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              onFocus={() => formik.setFieldTouched("email", true, true)}
-              
-              placeholder="Enter email"
-              className="input-name py-8 relative z-10 !px-[39px] text-muted placeholder:text-muted text-base font-medium bg-dark-800 mb-7"
-              style={{
-                backgroundColor: "#12161F",
-                height: 74,
-                padding: "auto 40px",
-              }}
-            />  
+          <input
+            type="email"
+            name="email"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            onFocus={() => formik.setFieldTouched("email", true, true)}
+
+            placeholder="Enter email"
+            className="input-name py-8 relative z-10 !px-[39px] text-muted placeholder:text-muted text-base font-medium bg-dark-800 mb-6"
+            style={{
+              backgroundColor: "#12161F",
+              height: 74,
+              padding: "auto 40px",
+              borderRadius: 10,
+            }}
+          />
           <div className="w-full h-auto pt-2">
             {formik.touched.email && formik.errors.email && (
               <motion.div
@@ -115,6 +116,7 @@ const Login = () => {
                 marginBottom: 43,
                 height: 74,
                 padding: "auto 40px",
+                borderRadius: 10,
               }}
             />
             <span
@@ -126,7 +128,7 @@ const Login = () => {
               ) : (
                 <VisibilityOffIcon style={{ color: "#536079" }} />
               )}
-            </span> 
+            </span>
           </div>
           <div className="w-full h-auto pt-2">
             {formik.touched.password && formik.errors.password && (
@@ -141,7 +143,7 @@ const Login = () => {
             )}
           </div>
           <button
-            className="py-3 md:py-6 text-white disabled:text-muted font-medium text-base bg-gradient-ld disabled:bg-dark-800 mb-4 md:!mb-12 w-full focus:outline-none h-[74px]"
+            className="py-3 md:py-6 text-white disabled:text-muted font-medium text-base bg-gradient-ld disabled:bg-dark-800 mb-2 md:!mb-10 w-full rounded-[10px] focus:outline-none h-[74px]"
             onClick={handleLoginSubmit}
             disabled={isLoading}
           >

@@ -9,7 +9,7 @@ import {
 } from "../state/artist/hooks";
 import Artist from "../config/constants/models/artist";
 import { jsonToArtist } from "../utils";
-import { httpError } from "../utils/httpHelper";
+import { toastHttpError } from "../utils/httpHelper";
 import { Link } from "react-router-dom";
 import Photo from "../components/Photo";
 import { LZR_IN_USD, MIXER_ACCOUNT } from "../config/constants";
@@ -101,7 +101,7 @@ const BuyArtistToken = () => {
     } catch (err: any) {
       setSuccess(false);
       setLoading(false);
-      httpError(err);
+      toastHttpError(err);
     }
   };
 

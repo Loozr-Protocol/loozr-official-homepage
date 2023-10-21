@@ -13,6 +13,7 @@ import { AppState } from "./state/store";
 import RequireAuth, { AccountSetupCheckOnly } from "./containers/RequireAuth";
 import { parseJwt } from "./utils/index";
 import FullpageLoader from "./components/loaders/FullpageLoader";
+import MusicPlayer from "./components/MusicPlayer/MusicPlayer";
 
 const NotFound = () => (
   <div className="main-content">
@@ -64,7 +65,8 @@ const App = () => {
                 element={
                   <>
                     <route.component />
-                    <Footer />
+                    {/* {route.name !== "songTokenization" && <Footer />}
+                    {route.name === "login" || 'signup' && <Footer />} */}
                   </>
                 }
               />
@@ -110,6 +112,7 @@ const App = () => {
             <Route path="*" element={NotFound} />
           </Routes>
           <Player />
+          <MusicPlayer />
           <a href="#focused" id="focus-link" hidden>
             Go to playing element
           </a>

@@ -7,7 +7,7 @@ import { useFormik } from "formik";
 import { motion } from "framer-motion";
 import { useCheckPasswordResetDataCallback, usePasswordResetCallback } from "../state/user/hooks/useAuth";
 import FullPageError from "../components/FullPageError";
-import { httpError, returnHttpError } from "../utils/httpHelper";
+import { toastHttpError, returnHttpError } from "../utils/httpHelper";
 import { TOAST_OPTIONS } from "../config/constants";
 import { toast } from "react-toastify";
 
@@ -72,7 +72,7 @@ const ResetPassword = () => {
       }, 5000);
     } catch (err: any) {
       setLoading(false);
-      httpError(err);
+      toastHttpError(err);
     }
   };
 

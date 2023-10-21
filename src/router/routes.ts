@@ -27,12 +27,14 @@ import Notifications from "../containers/Notifications";
 import BuyArtistToken from "../containers/BuyArtistToken";
 import SellArtistToken from "../containers/SellArtistToken";
 import SelectGenres from "../containers/SelectGenres";
+import SubmitTwitter from "../containers/SubmitTwitter";
 import SuggestedArtistes from "../containers/SuggestedArtistes";
 import MusicInfo from "../containers/MusicInfo"; 
 import ExploreDashboard from "../containers/ExploreDashboard";
 import UpdateProfile from "../containers/UpdateProfile";
 import ProfileScan from "../containers/ProfileScan";
 import Product from "../containers/Product";
+import SongTokenization from "../containers/SongTokenization/SongTokenization";
 
 export const authRoutes = [
   {
@@ -46,6 +48,12 @@ export const authRoutes = [
     path: "select-genres",
     private: false,
     component: SelectGenres,
+  },
+  {
+    name: "submit-twitter",
+    path: "submit-twitter",
+    private: false,
+    component: SubmitTwitter,
   },
   // {
   //   name: "suggested-artistes",
@@ -100,6 +108,12 @@ export const authRoutes = [
     private: false,
     component: MusicInfo,
   }, 
+  {
+    name: "songTokenization",
+    path: "song-tokenization",
+    private: false,
+    component: SongTokenization,
+  },
   // {
   //   name: "updateprofile",
   //   path: "updateprofile",
@@ -209,6 +223,12 @@ export const dashboardhome = [
   {
     name: "artiste dashboard",
     path: "explore",
+    private: false,
+    component: ArtisteDashboard,
+  },
+  {
+    name: "feeds",
+    path: "feeds",
     private: false,
     component: ArtisteDashboard,
   },

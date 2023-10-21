@@ -68,6 +68,7 @@ export function useAccountSetupCallback() {
   const handleAccountSetup = async (account_id: string): Promise<any> => {
     const httpClient = new HttpClient();
     const result = await httpClient.axiosInstance.post('/users/account-setup', { account_id });
+    // const result = await httpClient.axiosInstance.post('/users/account-setup', { account_id });
     return result.data;
   }
   return { handleAccountSetup }
