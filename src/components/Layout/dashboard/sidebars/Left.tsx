@@ -23,7 +23,7 @@ import Marquee from "react-fast-marquee";
 import SongUploadDialog from "../../../../components/SongTokenization/SongUploadDialog";
 
 export const drawerMinWidth = 280;
-export const drawerMaxWidth = 20;
+export const drawerMaxWidth = 24;
 
 const tabs = [
   {
