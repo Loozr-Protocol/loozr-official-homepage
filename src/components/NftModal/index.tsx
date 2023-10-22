@@ -13,11 +13,11 @@ export default function NFTModal({ setIsModal }) {
                 </VStack>
                 <VStack gap='25px' align='left'>
                     <CountdownTimer />
-                    <Text fontSize={['10px', '12px']} bgGradient='linear(to-l, #8369F4, #F039E2 )' bgClip='text' fontWeight='500' letterSpacing={3.5}>MINTING SOON - 9:00 AM UTC/23RD JULY</Text>
+                    <Text fontSize={['10px', '12px']} bgGradient='linear(to-l, #8369F4, #F039E2 )' bgClip='text' fontWeight='500' letterSpacing={3.5}>MINTING SOON - 9:00 AM UTC/27TH SEPT.</Text>
                     <Heading fontSize={['30px', '30px']} fontWeight='800'>Loozr AR Access <br /> Card Collection.</Heading>
                     <Flex gap='20px'>
-                        <Box onClick={() => setIsModal(false)} px='30px' py='12px' fontWeight={600} rounded='full' cursor='pointer' border='1px' borderColor='#536079' w='fit-content' h='fit-content' fontSize={['12px', '']}>Learn more</Box>
-                        <Box as='a' href='https://loozr.vercel.app' px='30px' py='12px' fontWeight={600} rounded='full' cursor='pointer' bgGradient='linear(to-l, #8369F4, #F039E2 )' w='fit-content' h='fit-content' fontSize={['12px', '']}>View collection</Box>
+                        <Box onClick={() => setIsModal(false)} px='30px' py='12px' fontWeight={600} rounded='full' cursor='pointer' border='1px' borderColor='#536079' w='fit-content' h='fit-content' fontSize={['10px', '']}>Learn more</Box>
+                        <Box as='a' href='https://nft.loozr.io' target='_blank' px='30px' py='12px' fontWeight={600} rounded='full' cursor='pointer' bgGradient='linear(to-l, #8369F4, #F039E2 )' w='fit-content' h='fit-content' fontSize={['10px', '']}>View collection</Box>
                     </Flex>
                     <Flex align='center' gap='5px'>
                         <Text color='#536079' fontWeight={600} fontSize={15} >Already a Testnet user?</Text>

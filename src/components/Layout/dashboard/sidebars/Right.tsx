@@ -69,42 +69,53 @@ export default function Right() {
 
   return (
     <>
-      <div className="bg-dark-800 flex flex-col items-start h-screen gap-6 py-10 px-4 md:px-12 xl:p-4 pb-12 mb-5" style={{ width: xl ? `${drawerMaxWidth}vw` : md ? "max-content" : 0, }}>
-        <div onClick={() => (user ? navigate("/" + user.accountDomain) : null)} className=" flex w-full items-center cursor-pointer" onMouseOver={() => { Checking(true); }} onMouseOut={() => { Checking(false); }} >
-          <div className="relative w-fit ">
-            <div className=" w-12 h-12 xl:w-14 xl:h-14 flex">
-              <Photo
-                alt=""
-                src={user?.photo}
-                userId={user?.accountId}
-                className="object-cover w-12 h-12 xl:w-14 xl:h-14 flex justify-center items-center rounded-full  "
-                style={{ border: "5px solid #141922" }}
-              />
+      <div className="bg-dark-800 flex flex-col items-start h-screen gap-6 py-4 md:pr-20 md:pl-6 xl:pr-[70px] xl:pl-10 pb-12 mb-5" style={{ width: xl ? `${drawerMaxWidth}vw` : md ? "max-content" : 0, }}>
+        {!user ? (
+          <div className=" flex items-center justify-end gap-x-2 w-full">
+            {/* <button className="rounded-full h-[40px] px-8 bg-[#141922] outline-none focus:outline-none" onClick={() => navigate("/login")}>
+              Login
+            </button> */}
+            <button className="rounded-full h-[40px] w-full px-8 bg-s-gradient hidden lg:block outline-none focus:outline-none" onClick={() => navigate("/login")}>
+              Login
+            </button>
+          </div>
+        ) : (
+          <div onClick={() => (user ? navigate("/" + user.accountDomain) : null)} className=" flex w-full items-center cursor-pointer" onMouseOver={() => { Checking(true); }} onMouseOut={() => { Checking(false); }} >
+            <div className="relative w-fit ">
+              <div className=" w-12 h-12 flex">
+                <Photo
+                  alt=""
+                  src={user?.photo}
+                  userId={user?.accountId}
+                  className="object-cover w-12 h-12 flex justify-center items-center rounded-full  "
+                  style={{ border: "5px solid #141922" }}
+                />
+              </div>
+              <img src={Verify} alt="" className="absolute bottom-0 right-0 w-6 " />
             </div>
-            <img src={Verify} alt="" className="absolute bottom-0 right-0 w-6 " />
+            <div className="hidden xl:block w-full pl-2 ">
+              {user?.accountId && (
+                <>
+                  {isShown ? (
+                    <Marquee speed={50} gradient={false}>
+                      <p className=" text-sm font-extrabold text-white name-tag">
+                        {user?.accountId}
+                      </p>
+                    </Marquee>
+                  ) : (
+                    <div className="flex items-center gap-3">
+                      <p className=" text-sm font-extrabold text-white name-tag">
+                        {user?.accountId.slice(0, 16)}
+                      </p>
+                      <ExpandMore />
+                    </div>
+                  )}
+                </>
+              )}
+            </div>
           </div>
-          <div className="hidden xl:block w-full pl-2 ">
-            {user?.accountId && (
-              <>
-                {isShown ? (
-                  <Marquee speed={50} gradient={false}>
-                    <p className=" text-sm font-extrabold text-white name-tag">
-                      {user?.accountId}
-                    </p>
-                  </Marquee>
-                ) : (
-                  <div className="flex items-center gap-3">
-                    <p className=" text-sm font-extrabold text-white name-tag">
-                      {user?.accountId.slice(0, 16)}
-                    </p>
-                    <ExpandMore />
-                  </div>
-                )}
-              </>
-            )}
-
-          </div>
-        </div>
+        )}
+        <div className="h-px w-full lg:w-full bg-muted-50 mt-[-10px] mb-3" />
         <div className="w-full flex flex-col mt-8">
           <div className="flex flex-col gap-3">
             <p className="text-sm font-semibold text-muted">Coming to Loozr! </p>
@@ -121,18 +132,18 @@ export default function Right() {
           <p className="text-[13px] font-medium leading-5 text-muted">
             Coming Soon
           </p>
-          <div className="flex gap-8 items-center w-full">
+          <div className="flex gap-4 items-center w-full">
             <img src={AppStore} alt="" className="w-[40%] cursor-pointer" />
             <img src={GooglePlay} alt="" className="w-[40%] cursor-pointer" />
           </div>
-          <div className="flex gap-4 items-center flex-wrap">
-            <p className="text-[13px] font-medium leading-5 text-muted">
+          <div className="flex gap-2 items-center flex-wrap">
+            <p className="text-[12px] font-medium leading-5 text-muted">
               Report problem
             </p>
-            <p className="text-[13px] font-medium leading-5 text-muted">
+            <p className="text-[12px] font-medium leading-5 text-muted">
               Terms & Policies
             </p>
-            <p className="text-[13px] font-medium leading-5 text-muted">
+            <p className="text-[12px] font-medium leading-5 text-muted">
               Coming Soon
             </p>
           </div>
