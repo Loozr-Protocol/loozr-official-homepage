@@ -12,50 +12,40 @@ import FeatureSection from "../components/Home/FeatureSection";
 import FAQ from "../components/Home/FAQ";
 import { Parallax, Background } from 'react-parallax';
 import MobileWhySection from "../components/Home/MobileWhySection";
-import { useState } from "react";
-import NFTModal from "../components/NftModal";
 
 export default function Home() {
 
-  const [isModal, setIsModal] = useState(true)
 
   return (
     <>
-      {
-        isModal === true ? (
-          <NFTModal setIsModal={setIsModal} />
-        ) : (
-          <>
-            <div className=" relative w-full z-10 !bg-[#0c0f16] h-screen " >
-              <Header />
-            </div>
-            <div className="main-content relative ">
-              <div className=" w-full h-[100vh] relative " >
-                <div className=" fixed -z-10 inset-0 " >
-                  <AboutSection />
-                </div>
-              </div>
-              <div className=" relative w-full z-10  !bg-[#0c0f15]   " >
-                <ArtistShowcase />
-                <div className=" w-full hidden md:block " >
-                  <WhySection />
-                </div>
-                <div className=" w-full md:hidden " >
-                  <MobileWhySection />
-                </div>
-                <FlagShip />
-                <Services />
-                <FeatureSection />
-                <RoadMap />
-                <Team />
-                <FAQ />
-              </div>
-              {/*
+      <div className=" relative w-full z-10 !bg-[#0c0f16] h-screen " >
+        <Header />
+      </div>
+      <div className="main-content relative ">
+        <div className=" w-full h-[100vh] relative " >
+          <div className=" fixed -z-10 inset-0 " >
+            <AboutSection />
+          </div>
+        </div>
+        <div className=" relative w-full z-10  !bg-[#0c0f15]   " >
+          <ArtistShowcase />
+          <div className=" w-full hidden md:block " >
+            <WhySection />
+          </div>
+          <div className=" w-full md:hidden " >
+            <MobileWhySection />
+          </div>
+          <FlagShip />
+          <Services />
+          <FeatureSection />
+          <RoadMap />
+          <Team />
+          <FAQ />
+        </div>
+        {/*
         <Tokenomics />
         <Community /> */}
-            </div>
-          </>
-        )}
+      </div>
     </>
   );
 }

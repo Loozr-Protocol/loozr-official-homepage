@@ -11,7 +11,7 @@ import Explore from "../../../assets/svg/Explore";
 import Artist from "../../../assets/svg/Artist";
 import Wallet from "../../../assets/svg/Wallet";
 import More from "../../../assets/svg/More";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { LZR_IN_USD, MIXER_ACCOUNT } from "../../../config/constants";
 import {
@@ -67,7 +67,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
   const xl = useMediaQuery("(min-width:1280px)");
   // const lg = useMediaQuery("(min-width:1024px)");
   const md = useMediaQuery("(min-width:768px)");
-  const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   const user = useSelector((state: AppState) => state.user.userInfo);
   const lzrAccountId = `${user?.accountId}.${MIXER_ACCOUNT}`;
@@ -139,7 +139,19 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
           ))}
         </div> */}
       </div>
-      
+      {!user && (
+        <div className="absolute bottom-0 w-full bg-g-gradient py-2 px-10 flex justify-between items-center">
+          <p className="font-medium text-white">Enabling everyone to #Listen2Earn per second, trade, and invest in creators & music tokens.</p>
+          <div className="flex gap-6 items-center">
+            <p className="rounded-full px-4 py-2 text-white bg-white/20" onClick={() => navigate("/login")}>
+              Login account
+            </p>
+            <p className="rounded-full px-4 py-2 text-white bg-[#141922]" onClick={() => navigate("/signup")}>
+              Signup for free!
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
