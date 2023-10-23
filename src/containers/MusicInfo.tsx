@@ -63,7 +63,7 @@ export default function MusicInfo() {
 
     const GoBack =()=> { 
         canPlay.stop();
-        navigate("/explore")
+        navigate("/feeds")
     }
 
     return (

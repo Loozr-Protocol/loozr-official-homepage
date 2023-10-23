@@ -39,7 +39,7 @@ export default function SelectGenres() {
     };  
 
     const submit =()=> {
-        navigate("/explore")
+        navigate("/feeds")
         setShowModal(false)
     }
 

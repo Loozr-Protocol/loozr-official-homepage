@@ -64,7 +64,7 @@ const SellArtistToken = () => {
   });
 
   if (isNaN(Number(id))) {
-    navigate("/explore");
+    navigate("/feeds");
   }
 
   const loadArtistDetails = async () => {
@@ -107,7 +107,7 @@ const SellArtistToken = () => {
   }
 
   if (!artistDetails) {
-    navigate("/explore");
+    navigate("/feeds");
     return <></>;
   }
 
@@ -129,7 +129,7 @@ const SellArtistToken = () => {
             </strong>{" "}
             for LZR
           </p>
-          <Link to="/explore" className="mt-2 text-loozr-purple">
+          <Link to="/feeds" className="mt-2 text-loozr-purple">
             Continue
           </Link>
         </div>

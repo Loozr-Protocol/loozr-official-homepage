@@ -69,14 +69,14 @@ export default function Right() {
 
   return (
     <>
-      <div className="bg-dark-800 flex flex-col items-start h-screen gap-6 py-4 md:pr-20 md:pl-6 xl:pr-[70px] xl:pl-10 pb-12 mb-5" style={{ width: xl ? `${drawerMaxWidth}vw` : md ? "max-content" : 0, }}>
+      <div className="bg-dark-900 flex flex-col items-start h-screen gap-6 py-4 md:pr-20 md:pl-6 xl:pr-[150px] xl:pl-6 pb-12 mb-5" style={{ width: xl ? `${drawerMaxWidth}vw` : md ? "max-content" : 0, }}>
         {!user ? (
           <div className=" flex items-center justify-end gap-x-2 w-full">
             {/* <button className="rounded-full h-[40px] px-8 bg-[#141922] outline-none focus:outline-none" onClick={() => navigate("/login")}>
               Login
             </button> */}
-            <button className="rounded-full h-[40px] w-full px-8 bg-s-gradient hidden lg:block outline-none focus:outline-none" onClick={() => navigate("/login")}>
-              Login
+            <button className="rounded-full h-[40px] w-full px-8 bg-white text-dark-900 text-xs hidden lg:block outline-none focus:outline-none" onClick={() => navigate("/login")}>
+              Login account
             </button>
           </div>
         ) : (
@@ -118,8 +118,8 @@ export default function Right() {
         <div className="h-px w-full lg:w-full bg-muted-50 mt-[-10px] mb-3" />
         <div className="w-full flex flex-col mt-8">
           <div className="flex flex-col gap-3">
-            <p className="text-sm font-semibold text-muted">Coming to Loozr! </p>
-            <p className="text-sm text-white">Snoop Dogg, Burna Boy plus 15K+ Artist profiles reserved.</p>
+            <p className="text-xs font-semibold text-muted">Coming to Loozr! </p>
+            <p className="text-xs text-white">Snoop Dogg, Burna Boy plus 15K+ Artist profiles reserved.</p>
             <div className="w-full flex items-center justify-between p-3 rounded-[18px] bg-dark-700">
               <img src={userComing} alt='' className="w-[120px]" />
               <More />

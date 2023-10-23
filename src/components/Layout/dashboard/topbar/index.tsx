@@ -142,7 +142,7 @@ export const TopBar = () => {
             src={LoozrGradient}
             alt=""
             className="pointer-cursor"
-            onClick={() => navigate("/explore")}
+            onClick={() => navigate("/feeds")}
           />
         </div>
         <div className="md:hidden flex items-center">

@@ -56,12 +56,6 @@ const tabs = [
     available: false,
     path: "/airdrops",
   },
-  {
-    icon: More,
-    label: "For Artist",
-    available: false,
-    path: "/",
-  },
 ];
 
 export const Left = () => {
@@ -92,7 +86,7 @@ export const Left = () => {
 
 
   return (
-    <div className={`bg-dark-800 flex flex-col items-start h-screen md:pl-20 xl:pl-[70px] pr-auto md:pr-6 xl:pr-10 pt-8 pb-12 mb-5`}
+    <div className={`bg-dark-900 flex flex-col items-start h-screen md:pl-20 xl:pl-[150px] pr-auto md:pr-6 xl:pr-6 pt-8 pb-12 mb-5`}
       style={{ width: xl ? `${drawerMaxWidth}vw` : md ? "max-content" : 0, }}>
       {xl ? (
         <img src={LoozrBeta} alt="" className={`w-32 h-8 mb-7`} />
@@ -120,10 +114,10 @@ export const Left = () => {
       )} */}
       <div className="w-full  xl:h-[85%] flex flex-col items-end xl:block  overflow-y-auto overflow-x-hidden">
         {tabs.map((tab: any) => (
-          <Link className={`${tab.label === 'Wallet' && 'pt-6'} ${tab.label === 'For Artist' && 'hidden'} hover:flex flex items-center text-sm font-medium relative text-[#536079] mt-2.5 xl:mt-auto mb-[22px]`} to={tab.path || "#!"} key={tab.label} onClick={() => tab.path ? null : toast.info("Coming soon!", TOAST_OPTIONS)}>
+          <Link className={`${tab.label === 'Wallet' && 'pt-6 border-t-[1px] border-muted-50'} hover:flex flex items-center text-xs font-medium relative text-[#536079] mt-2.5 xl:mt-auto mb-[22px]`} to={tab.path || "#!"} key={tab.label} onClick={() => tab.path ? null : toast.info("Coming soon!", TOAST_OPTIONS)}>
             <tab.icon className={`object-contain w-4 xl:w-3.5 h-4 xl:h-3.5 mr-3 xl:mr-4 ${tab.path === pathname ? "text-white" : "text-[#536079]"}`} />
 
-            <span className={`${tab.path === pathname && "font-bold text-sm text-white"} cursor-pointer hidden xl:inline`}>
+            <span className={`${tab.path === pathname && "font-bold text-xs text-white"} cursor-pointer hidden xl:inline`}>
               {tab.label}
             </span>
 
@@ -134,19 +128,8 @@ export const Left = () => {
             )}
           </Link>
         ))}
-        <div className="h-px w-full lg:w-full bg-muted-50 mt-8 mb-7" />
-        {tabs.map((tab: any) => (
-          <Link className={`${tab.label !== 'For Artist' && 'hidden'} hover:flex flex items-center text-sm font-medium relative text-[#536079] mt-2.5 xl:mt-auto mb-[22px]`} to={tab.path || "#!"} key={tab.label} onClick={() => tab.path ? null : toast.info("Coming soon!", TOAST_OPTIONS)}>
-            <tab.icon className={`object-contain w-4 xl:w-3.5 h-4 xl:h-3.5 mr-3 xl:mr-4 ${tab.path === pathname ? "text-white" : "text-[#536079]"}`} />
-
-            <span className={`${tab.path === pathname && "font-bold text-sm text-white"} cursor-pointer hidden xl:inline`}>
-              {tab.label}
-            </span>
-          </Link>
-        ))}
-
+        {/* <div className="h-px w-full lg:w-full bg-muted-50 mt-8 mb-7" /> */}
       </div>
-
       {showModal && (
         <div className=" fixed inset-0 flex justify-center items-center md:overflow-y-hidden bg-black bg-opacity-90 z-[70] ">
           <div className=" w-full h-screen flex flex-col justify-center  md:w-[360px] md:h-auto relative z-[80]  md:rounded-2xl bg-[#12161F]">
