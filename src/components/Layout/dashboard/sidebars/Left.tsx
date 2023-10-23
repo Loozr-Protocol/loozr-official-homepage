@@ -93,25 +93,18 @@ export const Left = () => {
       ) : (
         <img src={Loozr} alt="" className={`mb-6 ml-[12px] h-6 w-6`} />
       )}
-      {/* {user && (
+      {user && (
         <>
-          {!user?.isArtist ? (
-            <button
-              onClick={() => setShowModal(true)}
-              className="hidden xl:block text-xs font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
-            >
-              Become an artist
-            </button>
-          ) : (
+          {!user?.isArtist && (
             <button
               onClick={() => setShowMusicModal((prev) => !prev)}
-              className="hidden xl:block text-xs font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
+              className="hidden xl:block text-[10px] font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-4 outline-none focus:outline-none"
             >
-              Upload song
+              Upload tracks
             </button>
           )}
         </>
-      )} */}
+      )}
       <div className="w-full  xl:h-[85%] flex flex-col items-end xl:block  overflow-y-auto overflow-x-hidden">
         {tabs.map((tab: any) => (
           <Link className={`${tab.label === 'Wallet' && 'pt-6 border-t-[1px] border-muted-50'} hover:flex flex items-center text-xs font-medium relative text-[#536079] mt-2.5 xl:mt-auto mb-[22px]`} to={tab.path || "#!"} key={tab.label} onClick={() => tab.path ? null : toast.info("Coming soon!", TOAST_OPTIONS)}>

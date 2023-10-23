@@ -10,7 +10,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        muted: "#536079",
+        'muted': "#536079",
         "muted-50": "#222A3B",
         "loozr-purple": "#8369F4",
         "loozr-green": "#15FFAB",
