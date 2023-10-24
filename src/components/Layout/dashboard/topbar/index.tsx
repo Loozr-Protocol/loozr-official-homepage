@@ -45,22 +45,22 @@ export const TopBar = () => {
     setSearchValue("")
   }
 
-  const getText = () => {
-    switch (pathname) {
-      case '/feeds':
-        return 'Feeds';
-      case '/artistes':
-        return 'Artistes';
-      case '/tracks':
-        return 'Tracks';
-      case '/wallet':
-        return 'Wallet';
-      case '/airdrops':
-        return 'Airdrops';
-      default:
-        return '';
-    }
+  const textMap = {
+    '/feeds': 'Feeds',
+    '/artistes': 'Artistes',
+    '/tracks': 'Tracks',
+    '/wallet': 'Wallet',
+    '/airdrops': 'Airdrops',
   };
+
+  const getText = () => {
+    if (pathname === `/${user.accountDomain}`) {
+      return 'Artist Profile';
+    }
+
+    return textMap[pathname] || '';
+  };
+
 
   return (
     <div className="w-full mb-6">

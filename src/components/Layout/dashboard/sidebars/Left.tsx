@@ -2,15 +2,10 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LoozrBeta from "../../../../assets/icons/loozr-beta.svg";
 import Loozr from "../../../../assets/icons/loozr.svg";
-import Explore from "../../../../assets/svg/Explore";
 import Feeds from "../../../../assets/svg/Feeds";
 import Artist from "../../../../assets/svg/Artist";
-import Tracks from "../../../../assets/svg/Tracks";
-import NFT from "../../../../assets/svg/NFT";
 import Wallet from "../../../../assets/svg/Wallet";
-import Notification from "../../../../assets/svg/Notification";
-import More from "../../../../assets/svg/More";
-import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { AppState } from "../../../../state/store";
@@ -18,9 +13,9 @@ import { toast } from "react-toastify";
 import { TOAST_OPTIONS } from "../../../../config/constants";
 import { useBecomeArtisteCallback } from "../../../../state/artist/hooks";
 import { setPageLoaderStatus } from "../../../../state/misc";
-import Photo from "../../../Photo";
-import Marquee from "react-fast-marquee";
 import SongUploadDialog from "../../../../components/SongTokenization/SongUploadDialog";
+import Speaker from "../../../../assets/svg/Speaker";
+import Airdrop from "../../../../assets/svg/Airdrop";
 
 export const drawerMinWidth = 280;
 export const drawerMaxWidth = 24;
@@ -39,7 +34,7 @@ const tabs = [
     path: "/artistes",
   },
   {
-    icon: Tracks,
+    icon: Speaker,
     label: "Tracks",
     available: true,
     path: "/tracks",
@@ -51,10 +46,10 @@ const tabs = [
     path: "/wallet",
   },
   {
-    icon: Notification,
+    icon: Airdrop,
     label: "Airdrops",
     available: false,
-    path: "/airdrops",
+    path: "",
   },
 ];
 
@@ -95,7 +90,7 @@ export const Left = () => {
       )}
       {user && (
         <>
-          {!user?.isArtist && (
+          {user?.isArtist && (
             <button
               onClick={() => setShowMusicModal((prev) => !prev)}
               className="hidden xl:block text-[10px] font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-4 outline-none focus:outline-none"
@@ -107,7 +102,7 @@ export const Left = () => {
       )}
       <div className="w-full  xl:h-[85%] flex flex-col items-end xl:block  overflow-y-auto overflow-x-hidden">
         {tabs.map((tab: any) => (
-          <Link className={`${tab.label === 'Wallet' && 'pt-6 border-t-[1px] border-muted-50'} hover:flex flex items-center text-xs font-medium relative text-[#536079] mt-2.5 xl:mt-auto mb-[22px]`} to={tab.path || "#!"} key={tab.label} onClick={() => tab.path ? null : toast.info("Coming soon!", TOAST_OPTIONS)}>
+          <Link className={`${tab.label === 'Wallet' && 'pt-6 border-t-[1px] border-muted-50'} hover:flex flex items-center text-xs font-medium relative text-[#536079] mt-2.5 xl:mt-auto mb-[18px]`} to={tab.path || "#!"} key={tab.label} onClick={() => tab.path ? null : toast.info("Coming soon!", TOAST_OPTIONS)}>
             <tab.icon className={`object-contain w-4 xl:w-3.5 h-4 xl:h-3.5 mr-3 xl:mr-4 ${tab.path === pathname ? "text-white" : "text-[#536079]"}`} />
 
             <span className={`${tab.path === pathname && "font-bold text-xs text-white"} cursor-pointer hidden xl:inline`}>
