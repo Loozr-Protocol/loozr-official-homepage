@@ -2,15 +2,10 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LoozrBeta from "../../../../assets/icons/loozr-beta.svg";
 import Loozr from "../../../../assets/icons/loozr.svg";
-import Explore from "../../../../assets/svg/Explore";
 import Feeds from "../../../../assets/svg/Feeds";
 import Artist from "../../../../assets/svg/Artist";
-import Tracks from "../../../../assets/svg/Tracks";
-import NFT from "../../../../assets/svg/NFT";
 import Wallet from "../../../../assets/svg/Wallet";
-import Notification from "../../../../assets/svg/Notification";
-import More from "../../../../assets/svg/More";
-import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { AppState } from "../../../../state/store";
@@ -18,9 +13,9 @@ import { toast } from "react-toastify";
 import { TOAST_OPTIONS } from "../../../../config/constants";
 import { useBecomeArtisteCallback } from "../../../../state/artist/hooks";
 import { setPageLoaderStatus } from "../../../../state/misc";
-import Photo from "../../../Photo";
-import Marquee from "react-fast-marquee";
 import SongUploadDialog from "../../../../components/SongTokenization/SongUploadDialog";
+import Speaker from "../../../../assets/svg/Speaker";
+import Airdrop from "../../../../assets/svg/Airdrop";
 
 export const drawerMinWidth = 280;
 export const drawerMaxWidth = 24;
@@ -39,7 +34,7 @@ const tabs = [
     path: "/artistes",
   },
   {
-    icon: Tracks,
+    icon: Speaker,
     label: "Tracks",
     available: true,
     path: "/tracks",
@@ -51,16 +46,10 @@ const tabs = [
     path: "/wallet",
   },
   {
-    icon: Notification,
+    icon: Airdrop,
     label: "Airdrops",
     available: false,
-    path: "/airdrops",
-  },
-  {
-    icon: More,
-    label: "For Artist",
-    available: false,
-    path: "/",
+    path: "",
   },
 ];
 
@@ -92,61 +81,40 @@ export const Left = () => {
 
 
   return (
-    <div className={`bg-dark-800 flex flex-col items-start h-screen md:pl-20 xl:pl-[70px] pr-auto md:pr-6 xl:pr-10 pt-8 pb-12 mb-5`}
+    <div className={`bg-dark-900 flex flex-col items-start h-screen md:pl-20 xl:pl-[150px] pr-auto md:pr-6 xl:pr-6 pt-8 pb-12 mb-5`}
       style={{ width: xl ? `${drawerMaxWidth}vw` : md ? "max-content" : 0, }}>
       {xl ? (
-        <img src={LoozrBeta} alt="" className={`w-32 h-8 mb-7`} />
+        <img src={LoozrBeta} alt="" className={`w-28 mb-7`} />
       ) : (
         <img src={Loozr} alt="" className={`mb-6 ml-[12px] h-6 w-6`} />
       )}
-      {/* {user && (
+      {user && (
         <>
-          {!user?.isArtist ? (
-            <button
-              onClick={() => setShowModal(true)}
-              className="hidden xl:block text-xs font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
-            >
-              Become an artist
-            </button>
-          ) : (
-            <button
-              onClick={() => setShowMusicModal((prev) => !prev)}
-              className="hidden xl:block text-xs font-semibold py-[16px] rounded-full bg-s-gradient w-full mb-10 outline-none focus:outline-none"
-            >
-              Upload song
+          {user?.isArtist && (
+            <button onClick={() => setShowMusicModal((prev) => !prev)} className="hidden xl:block text-[6px] py-2.5 px-4 font-medium rounded-full bg-s-gradient mb-6 " >
+              <span className="text-xs">Upload tracks</span>
             </button>
           )}
         </>
-      )} */}
-      <div className="w-full  xl:h-[85%] flex flex-col items-end xl:block  overflow-y-auto overflow-x-hidden">
+      )}
+      <div className="w-[85%] xl:h-[85%] flex flex-col items-end justify-center xl:block  overflow-y-auto overflow-x-hidden">
         {tabs.map((tab: any) => (
-          <Link className={`${tab.label === 'Wallet' && 'pt-6'} ${tab.label === 'For Artist' && 'hidden'} hover:flex flex items-center text-sm font-medium relative text-[#536079] mt-2.5 xl:mt-auto mb-[22px]`} to={tab.path || "#!"} key={tab.label} onClick={() => tab.path ? null : toast.info("Coming soon!", TOAST_OPTIONS)}>
-            <tab.icon className={`object-contain w-4 xl:w-3.5 h-4 xl:h-3.5 mr-3 xl:mr-4 ${tab.path === pathname ? "text-white" : "text-[#536079]"}`} />
+          <Link className={`${tab.label === 'Wallet' && 'pt-6 border-t-[1px] border-[#141922]'} hover:flex flex items-center text-[14px] font-medium relative text-[#536079] mt-2.5 xl:mt-auto mb-[22px]`} to={tab.path || "#!"} key={tab.label} onClick={() => tab.path ? null : toast.info("Coming soon!", TOAST_OPTIONS)}>
+            <tab.icon className={`object-contain w-4 xl:w-4 h-4 xl:h-4 mr-3 xl:mr-4 ${tab.path === pathname ? "text-white" : "text-[#536079]"}`} />
 
-            <span className={`${tab.path === pathname && "font-bold text-sm text-white"} cursor-pointer hidden xl:inline`}>
+            <span className={`${tab.path === pathname && "font-bold text-[14px] text-white"} cursor-pointer hidden xl:inline`}>
               {tab.label}
             </span>
 
             {tab.label === "Airdrops" && (
-              <div className=" text-[10px] text-[#FFCD43] bg-new-100 rounded-[50px] md:hidden xl:flex font-semibold flex justify-center items-center ml-auto px-3 h-[24px] w-fit ">
+              <div className=" text-[9px] py-1 text-[#F3EC4E] bg-new-100 rounded-full md:hidden xl:flex font-medium flex justify-center items-center ml-auto px-3 w-fit ">
                 New
               </div>
             )}
           </Link>
         ))}
-        <div className="h-px w-full lg:w-full bg-muted-50 mt-8 mb-7" />
-        {tabs.map((tab: any) => (
-          <Link className={`${tab.label !== 'For Artist' && 'hidden'} hover:flex flex items-center text-sm font-medium relative text-[#536079] mt-2.5 xl:mt-auto mb-[22px]`} to={tab.path || "#!"} key={tab.label} onClick={() => tab.path ? null : toast.info("Coming soon!", TOAST_OPTIONS)}>
-            <tab.icon className={`object-contain w-4 xl:w-3.5 h-4 xl:h-3.5 mr-3 xl:mr-4 ${tab.path === pathname ? "text-white" : "text-[#536079]"}`} />
-
-            <span className={`${tab.path === pathname && "font-bold text-sm text-white"} cursor-pointer hidden xl:inline`}>
-              {tab.label}
-            </span>
-          </Link>
-        ))}
-
+        {/* <div className="h-px w-full lg:w-full bg-muted-50 mt-8 mb-7" /> */}
       </div>
-
       {showModal && (
         <div className=" fixed inset-0 flex justify-center items-center md:overflow-y-hidden bg-black bg-opacity-90 z-[70] ">
           <div className=" w-full h-screen flex flex-col justify-center  md:w-[360px] md:h-auto relative z-[80]  md:rounded-2xl bg-[#12161F]">

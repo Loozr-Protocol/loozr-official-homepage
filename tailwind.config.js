@@ -10,7 +10,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        muted: "#536079",
+        'muted': "#536079",
         "muted-50": "#222A3B",
         "loozr-purple": "#8369F4",
         "loozr-green": "#15FFAB",
@@ -19,6 +19,7 @@ module.exports = {
         "dark-700": "#141922",
         "dark-600": "rgba(98, 192, 255, 0.13)",
         "new-100": "rgba(243, 236, 78, 0.1)",
+        'new-200': 'rgba(83, 96, 121, 0.2)',
         "white-40": "rgba(255, 255, 255, 0.4)",
       },
       backgroundImage: {

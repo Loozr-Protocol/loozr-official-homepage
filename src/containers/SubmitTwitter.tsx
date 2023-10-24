@@ -30,7 +30,7 @@ export default function SubmitTwitter() {
     };
 
     const submit = () => {
-        navigate("/explore")
+        navigate("/feeds")
         setShowModal(false)
     }
 
