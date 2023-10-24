@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import AppStore from "../../../../assets/img/AppStore.png";
 import GooglePlay from "../../../../assets/img/GooglePlay.png";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -36,6 +36,23 @@ export default function Right() {
   const [isShown, setIsShown] = React.useState(false)
   const [showMobileModal, setShowMobileModal] = useState(false);
   const [profileModal, setProfileModal] = useState(false);
+
+  const modalRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        setProfileModal(false);
+      }
+    }
+
+    // Attach the click event listener
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      // Remove the event listener on cleanup
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [modalRef, setProfileModal]);
 
   const Checking = (item: any) => {
     if (user) {
@@ -119,7 +136,7 @@ export default function Right() {
               profileModal && (
                 <>
                   {/* onClick={() => (user ? navigate("/" + user.accountDomain) : null)}  */}
-                    <div className="absolute top-14 w-full bg-dark-900 rounded-[12px] overflow-hidden" style={{ border: "2px solid rgba(83, 96, 121, 0.2)" }}>
+                    <div ref={modalRef} className="absolute top-14 w-full bg-dark-900 rounded-[12px] overflow-hidden" style={{ border: "2px solid rgba(83, 96, 121, 0.2)" }}>
                     <div className="flex items-start justify-between p-3">
                       <p className="txt text-muted font-[600]">Total Wallet:</p>
                       <div className="flex flex-col gap-1 items-right">
