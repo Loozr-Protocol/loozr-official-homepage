@@ -86,7 +86,7 @@ export default function Right() {
 
   return (
     <>
-      <div className="bg-dark-900 flex flex-col items-start h-screen gap-6 py-4 md:pr-20 md:pl-6 xl:pr-[130px] xl:pl-6 pb-12 mb-5" style={{ width: xl ? `${drawerMaxWidth}vw` : md ? "max-content" : 0, }}>
+      <div className="bg-dark-900 flex flex-col items-start h-screen gap-6 py-4 md:pr-20 md:pl-6 xl:pr-[100px] xl:pl-3 pb-12 mb-5" style={{ width: xl ? `${drawerMaxWidth}vw` : md ? "max-content" : 0, }}>
         {!user ? (
           <div className=" flex items-center justify-end gap-x-2 w-full">
             {/* <button className="rounded-full h-[40px] px-8 bg-[#141922] outline-none focus:outline-none" onClick={() => navigate("/login")}>
@@ -97,7 +97,7 @@ export default function Right() {
             </button>
           </div>
         ) : (
-          <div onClick={() => setProfileModal(true)} className="relative flex w-full items-center cursor-pointer" onMouseOver={() => { Checking(true); }} onMouseOut={() => { Checking(false); }} >
+          <div onClick={() => setProfileModal(true)} className="relative mt-1.5 flex w-full items-center cursor-pointer" onMouseOver={() => { Checking(true); }} onMouseOut={() => { Checking(false); }} >
             <div className="relative w-fit ">
               <div className=" w-10 h-10 flex">
                 <Photo
@@ -105,7 +105,7 @@ export default function Right() {
                   src={user?.photo}
                   userId={user?.accountId}
                   className="object-cover w-10 h-10 flex justify-center items-center rounded-full  "
-                  style={{ border: "5px solid #141922" }}
+                  style={{ border: "3px solid #141922" }}
                 />
               </div>
               <img src={Verify} alt="" className="absolute bottom-0 right-0 w-4 " />
@@ -118,15 +118,15 @@ export default function Right() {
                       <p className=" text-xs font-bold text-white name-tag">
                         {user?.accountId}
                       </p>
-                      <div className="bg-new-100 text-[#F3EC4E] py-1 px-2 rounded-full text-[10px] w-fit">3.32$LZR</div>
+                      <div className="bg-new-100 text-[#F3EC4E] text-medium py-1 px-2 rounded-full text-[10px] w-fit">3.32$LZR</div>
                     </Marquee>
                   ) : (
-                    <div className="flex items-center gap-2 w-full">
+                    <div className="flex items-center gap-[4px] w-full">
                       <p className=" text-xs font-bold text-white name-tag">
                         {user?.accountId.slice(0, 16)}
                       </p>
-                      <ExpandMore />
-                      <div className="bg-new-100 text-[#F3EC4E] py-1 px-2 rounded-full text-[10px] w-fit">3.82$LZR</div>
+                      <ExpandMore fontSize='small' />
+                          <div className="bg-new-100 text-[#F3EC4E] text-medium py-1 px-2 rounded-full text-[10px] w-fit">3.82$LZR</div>
                     </div>
                   )}
                 </>
