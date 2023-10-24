@@ -1,12 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { AppState } from "../../../../state/store";
 import { useBecomeArtisteCallback } from "../../../../state/artist/hooks";
 import { setPageLoaderStatus } from "../../../../state/misc";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import SearchIcon from "../../../../assets/icons/search.svg";
 import LoozrGradient from "../../../../assets/icons/loozr-gradient.svg";
-import SearchWhiteIcon from "../../../../assets/icons/search-white.svg";
 import PlusIcon from "../../../../assets/icons/plus.svg";
 import UserIcon from "../../../../assets/icons/user.svg";
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';

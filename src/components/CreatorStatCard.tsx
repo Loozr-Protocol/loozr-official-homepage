@@ -34,7 +34,7 @@ export default function CreatorStatCard({ user }: { user: User }) {
 
   useEffect(() => {
     dispatch(getCoinPrice(user.id));
-  }, [user])
+  }, [user, dispatch])
 
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {

@@ -1,16 +1,12 @@
 import React, { useEffect } from "react";
-import Suggestion from "../components/suggestion";
 import Carousel from "../components/Carousel";
-import VerifiedBadge from "../assets/icons/verified_badge.svg";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../state/store";
 import { getArtists } from "../state/artist/actions";
 import Photo from "../components/Photo";
-import SlidesButton from "../components/SlidesButton";
 import verified from "../assets/icons/verified.svg"
-import HowItWorks from "./HowItWorks";
 import FeedsCard from "./FeedsCard";
 
 const ArtisteDashboard = () => {
@@ -24,7 +20,7 @@ const ArtisteDashboard = () => {
 
   useEffect(() => {
     dispatch(getArtists(''));
-  }, []);
+  }, [dispatch]);
 
   const FeaturedArtistes = () => {
 
