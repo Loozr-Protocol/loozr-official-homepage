@@ -30,6 +30,7 @@ export default function CreatorStatCard({ user }: { user: User }) {
   const dispatch = useDispatch();
   const bpsDenominator = 100;
   const coinInfo = useSelector((state: AppState) => state.artist.coinInfo);
+  console.log(coinInfo)
 
   useEffect(() => {
     dispatch(getCoinPrice(user.id));

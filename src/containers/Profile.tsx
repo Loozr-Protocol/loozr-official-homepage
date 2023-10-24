@@ -60,7 +60,7 @@ const Profile = (props) => {
   );
   const currentProfileFromState = useSelector(
     (state: AppState) => state.user.currentProfile
-  );
+  );  
   const [currentProfile, setCurrentProfile] = useState<User>();
   const coinInfo = useSelector((state: AppState) => state.artist.coinInfo);
 
