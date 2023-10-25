@@ -54,6 +54,9 @@ export const TopBar = () => {
   };
 
   const getText = () => {
+    if (!user) {
+      return '';
+    }
     if (pathname === `/${user.accountDomain}`) {
       return 'Artist Profile';
     }

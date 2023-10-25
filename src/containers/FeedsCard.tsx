@@ -5,7 +5,10 @@ import { AppState } from '../state/store';
 import Verify from "../assets/svg/verify.svg";
 import MusicCover1 from '../assets/img/artists/hbaa.png'
 import MusicCover2 from '../assets/img/artists/hb.png'
-import { RiHeartFill } from 'react-icons/ri';
+import Comment from '../assets/svg/comment.svg'
+import Retweet from '../assets/svg/retweet.svg'
+import Share from '../assets/svg/share.svg'
+import { BsHeart } from 'react-icons/bs';
 
 export default function FeedsCard() {
 
@@ -35,19 +38,19 @@ export default function FeedsCard() {
                         </div>
                         <button className='ml-10 bg-[#141922] py-2 px-3 rounded-xl text-[14px]'>BUY COIN</button>
                     </div>
-                    <div className='flex items-center gap-4 font-[8px]'>
-                        <div className="bg-new-100 text-[#F3EC4E] py-1 px-2 rounded-full">3.8732 $LZR</div>
-                        <p className='text-muted'>5 mins ago</p>
+                    <div className='flex items-center gap-4 '>
+                        <div className="bg-new-100 text-[#F3EC4E] text-[12px] py-1 px-2 rounded-full">3.8732 $LZR</div>
+                        <p className='text-muted text-[10px]'>5 mins ago</p>
                     </div>
                     <div className="flex items-center gap-4">
                         <img src={MusicCover1} alt="" className='w-[250px] h-[250px] rounded-[14px]' />
                         <img src={MusicCover2} alt="" className='w-[250px] h-[250px] rounded-[14px]' />
                     </div>
-                    <div className='flex items-center gap-4'>
-                        <RiHeartFill />
-                        <RiHeartFill />
-                        <RiHeartFill />
-                        <RiHeartFill />
+                    <div className='flex items-center gap-4 w-full'>
+                        <BsHeart size={25} />
+                        <img src={Comment} alt="" className='w-[20px]' />
+                        <img src={Retweet} alt="" className='w-[20px]' />
+                        <img src={Share} alt="" className='w-[20px]' />
                     </div>
                 </div>
             </div>
