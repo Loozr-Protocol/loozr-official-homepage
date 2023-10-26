@@ -25,7 +25,7 @@ export default function SelectGenres() {
           setSelected(clone); 
         } 
     } 
-
+console.log(selected)
     const handleSubmit = async () => { 
         setLoading(true);
         try {
@@ -39,7 +39,7 @@ export default function SelectGenres() {
     };  
 
     const submit =()=> {
-        navigate("/explore")
+        navigate("/feeds")
         setShowModal(false)
     }
 

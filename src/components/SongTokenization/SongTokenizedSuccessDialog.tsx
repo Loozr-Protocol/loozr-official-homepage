@@ -24,7 +24,7 @@ export default function SongTokenizedSuccessDialog({
           <p className=" txt font-bold text-xl text-white ">Success!!</p>
           <svg
             role="button"
-            onClick={() => navigate("/explore", { replace: true })}
+            onClick={() => navigate("/feeds", { replace: true })}
             width="19"
             height="19"
             viewBox="0 0 19 19"

@@ -50,7 +50,7 @@ const Login = () => {
       sessionStorage.setItem("isLoggedIn", "true");
       const user = jsonToUser(result["user"]);
       dispatch(login(user));
-      push("/explore", { replace: true });
+      push("/feeds", { replace: true });
     } catch (err: any) {
       setLoading(false);
       toastHttpError(err);

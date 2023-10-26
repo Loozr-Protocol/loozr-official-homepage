@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { AppState } from "../../../../state/store";
 import { useBecomeArtisteCallback } from "../../../../state/artist/hooks";
 import { setPageLoaderStatus } from "../../../../state/misc";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import SearchIcon from "../../../../assets/icons/search.svg";
 import LoozrGradient from "../../../../assets/icons/loozr-gradient.svg";
-import SearchWhiteIcon from "../../../../assets/icons/search-white.svg";
+import Notifi from "../../../../assets/svg/notifi.svg";
 import PlusIcon from "../../../../assets/icons/plus.svg";
 import UserIcon from "../../../../assets/icons/user.svg";
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
@@ -45,28 +45,31 @@ export const TopBar = () => {
     setSearchValue("")
   }
 
-  const getText = () => {
-    switch (pathname) {
-      case '/feeds':
-        return 'Feeds';
-      case '/artistes':
-        return 'Artistes';
-      case '/tracks':
-        return 'Tracks';
-      case '/wallet':
-        return 'Wallet';
-      case '/airdrops':
-        return 'Airdrops';
-      default:
-        return '';
-    }
+  const textMap = {
+    '/feeds': 'Feeds',
+    '/artistes': 'Artistes',
+    '/tracks': 'Tracks',
+    '/wallet': 'Wallet',
+    '/airdrops': 'Airdrops',
   };
+
+  const getText = () => {
+    if (!user) {
+      return '';
+    }
+    if (pathname === `/${user.accountDomain}`) {
+      return 'Artist Profile';
+    }
+
+    return textMap[pathname] || '';
+  };
+
 
   return (
     <div className="w-full mb-6">
       <div className="flex justify-between px-0 sm:px-4 md:mr-6 items-center">
         <div>
-          <p className="font-medium text-base md:text-[20px] text-white">
+          <p className="font-bold text-base md:text-[24px] text-white">
             {getText()}
           </p>
         </div>
@@ -77,11 +80,11 @@ export const TopBar = () => {
               value={searchValue}
               placeholder="Search artiste, fans… "
               onChange={(e) => OnchangeHandler(e.target.value)}
-              className="placeholder:text-[#536079]  w-full rounded-full h-[40px] text-xs"
+              className="placeholder:text-[#536079] w-full rounded-full h-[42px] text-xs"
               style={{
-                paddingLeft: "3.5rem",
+                paddingLeft: "4rem",
                 paddingRight: 16,
-                background: "#12161F",
+                background: "#141922",
                 color: "#536079",
               }}
             />
@@ -132,8 +135,9 @@ export const TopBar = () => {
               </div>
             )}
           </div>
-          <div className="border-[1px] border-[#141922] text-[#536079] px-2.5 py-2 w-fit rounded-full">
-            <NotificationsNoneIcon fontSize='small' />
+          <div className="relative">
+            <img src={Notifi} alt="" />
+            <p className=' rounded-full px-2 py-0.5 absolute bg-[#FF1744] top-0 right-0 text-[8px]'>3</p>
           </div>
         </div>
         <div className="md:hidden flex items-center">
@@ -142,7 +146,7 @@ export const TopBar = () => {
             src={LoozrGradient}
             alt=""
             className="pointer-cursor"
-            onClick={() => navigate("/explore")}
+            onClick={() => navigate("/feeds")}
           />
         </div>
         <div className="md:hidden flex items-center">

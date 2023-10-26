@@ -67,7 +67,7 @@ const BuyArtistToken = () => {
   });
 
   if (isNaN(Number(id))) {
-    navigate("/explore");
+    navigate("/feeds");
   }
 
   const loadArtistDetails = async () => {
@@ -110,7 +110,7 @@ const BuyArtistToken = () => {
   }
 
   if (!artistDetails) {
-    navigate("/explore");
+    navigate("/feeds");
     return <></>;
   }
 

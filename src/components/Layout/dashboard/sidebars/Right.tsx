@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import AppStore from "../../../../assets/img/AppStore.png";
 import GooglePlay from "../../../../assets/img/GooglePlay.png";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -35,6 +35,24 @@ export default function Right() {
   const [showModal, setShowModal] = useState(false);
   const [isShown, setIsShown] = React.useState(false)
   const [showMobileModal, setShowMobileModal] = useState(false);
+  const [profileModal, setProfileModal] = useState(false);
+
+  const modalRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        setProfileModal(false);
+      }
+    }
+
+    // Attach the click event listener
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      // Remove the event listener on cleanup
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [modalRef, setProfileModal]);
 
   const Checking = (item: any) => {
     if (user) {
@@ -46,7 +64,6 @@ export default function Right() {
     }
   }
 
-  console.log(user);
 
 
   useEffect(() => {
@@ -69,57 +86,78 @@ export default function Right() {
 
   return (
     <>
-      <div className="bg-dark-800 flex flex-col items-start h-screen gap-6 py-4 md:pr-20 md:pl-6 xl:pr-[70px] xl:pl-10 pb-12 mb-5" style={{ width: xl ? `${drawerMaxWidth}vw` : md ? "max-content" : 0, }}>
+      <div className="bg-dark-900 flex flex-col items-start h-screen gap-6 py-4 md:pr-20 md:pl-6 xl:pr-[100px] xl:pl-3 pb-12 mb-5" style={{ width: xl ? `${drawerMaxWidth}vw` : md ? "max-content" : 0, }}>
         {!user ? (
           <div className=" flex items-center justify-end gap-x-2 w-full">
             {/* <button className="rounded-full h-[40px] px-8 bg-[#141922] outline-none focus:outline-none" onClick={() => navigate("/login")}>
               Login
             </button> */}
-            <button className="rounded-full h-[40px] w-full px-8 bg-s-gradient hidden lg:block outline-none focus:outline-none" onClick={() => navigate("/login")}>
-              Login
+            <button className="rounded-full h-[40px] w-full px-8 bg-white text-dark-900 text-xs hidden lg:block outline-none focus:outline-none" onClick={() => navigate("/login")}>
+              Login account
             </button>
           </div>
         ) : (
-          <div onClick={() => (user ? navigate("/" + user.accountDomain) : null)} className=" flex w-full items-center cursor-pointer" onMouseOver={() => { Checking(true); }} onMouseOut={() => { Checking(false); }} >
+          <div onClick={() => setProfileModal(true)} className="relative mt-1.5 flex w-full items-center cursor-pointer" onMouseOver={() => { Checking(true); }} onMouseOut={() => { Checking(false); }} >
             <div className="relative w-fit ">
-              <div className=" w-12 h-12 flex">
+              <div className=" w-10 h-10 flex">
                 <Photo
                   alt=""
                   src={user?.photo}
                   userId={user?.accountId}
-                  className="object-cover w-12 h-12 flex justify-center items-center rounded-full  "
-                  style={{ border: "5px solid #141922" }}
+                  className="object-cover w-10 h-10 flex justify-center items-center rounded-full  "
+                  style={{ border: "3px solid #141922" }}
                 />
               </div>
-              <img src={Verify} alt="" className="absolute bottom-0 right-0 w-6 " />
+              <img src={Verify} alt="" className="absolute bottom-0 right-0 w-4 " />
             </div>
             <div className="hidden xl:block w-full pl-2 ">
               {user?.accountId && (
                 <>
                   {isShown ? (
                     <Marquee speed={50} gradient={false}>
-                      <p className=" text-sm font-extrabold text-white name-tag">
+                      <p className=" text-xs font-bold text-white name-tag">
                         {user?.accountId}
                       </p>
+                      <div className="bg-new-100 text-[#F3EC4E] text-medium py-1 px-2 rounded-full text-[10px] w-fit">3.32$LZR</div>
                     </Marquee>
                   ) : (
-                    <div className="flex items-center gap-3">
-                      <p className=" text-sm font-extrabold text-white name-tag">
+                    <div className="flex items-center gap-[4px] w-full">
+                      <p className=" text-xs font-bold text-white name-tag">
                         {user?.accountId.slice(0, 16)}
                       </p>
-                      <ExpandMore />
+                      <ExpandMore fontSize='small' />
+                          <div className="bg-new-100 text-[#F3EC4E] text-medium py-1 px-2 rounded-full text-[10px] w-fit">3.82$LZR</div>
                     </div>
                   )}
                 </>
               )}
             </div>
+            {
+              profileModal && (
+                <>
+                  {/* onClick={() => (user ? navigate("/" + user.accountDomain) : null)}  */}
+                    <div ref={modalRef} className="absolute top-14 w-full bg-dark-900 rounded-[12px] overflow-hidden" style={{ border: "2px solid rgba(83, 96, 121, 0.2)" }}>
+                    <div className="flex items-start justify-between p-3">
+                      <p className="txt text-muted font-[600]">Total Wallet:</p>
+                      <div className="flex flex-col gap-1 items-right">
+                        <div className="text-[#F3EC4E] text-[12px]">3.32$LZR</div>
+                        <div className="text-muted text-[10px]">~$102.3232</div>
+                      </div>
+                    </div>
+                      <div className="p-3 bg-dark-700" style={{ borderTop: "2px solid rgba(83, 96, 121, 0.2)" }} onClick={() => (user ? navigate("/" + user.accountDomain) : null)} >View my profile</div>
+                      <div className="p-3 bg-dark-700" style={{ borderTop: "2px solid rgba(83, 96, 121, 0.2)" }}>Edit profile</div>
+                      <div className="p-3 bg-dark-700" style={{ borderTop: "2px solid rgba(83, 96, 121, 0.2)" }}>My wallet</div>
+                      <div className="p-3 bg-dark-700" style={{ borderTop: "2px solid rgba(83, 96, 121, 0.2)" }}>Log out</div>
+                  </div>
+                </>
+              )}
           </div>
         )}
         <div className="h-px w-full lg:w-full bg-muted-50 mt-[-10px] mb-3" />
         <div className="w-full flex flex-col mt-8">
           <div className="flex flex-col gap-3">
-            <p className="text-sm font-semibold text-muted">Coming to Loozr! </p>
-            <p className="text-sm text-white">Snoop Dogg, Burna Boy plus 15K+ Artist profiles reserved.</p>
+            <p className="text-xs font-semibold text-muted">Coming to Loozr! </p>
+            <p className="text-xs text-white">Snoop Dogg, Burna Boy plus 15K+ Artist profiles reserved.</p>
             <div className="w-full flex items-center justify-between p-3 rounded-[18px] bg-dark-700">
               <img src={userComing} alt='' className="w-[120px]" />
               <More />
