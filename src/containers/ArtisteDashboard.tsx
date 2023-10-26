@@ -13,7 +13,7 @@ const ArtisteDashboard = () => {
   const dispatch = useDispatch();
   const artists = useSelector((state: AppState) => state?.artist?.artists);
   const featuredRef: any = React.useRef(null);
-  console.log(artists);
+  // console.log(artists);
 
 
   const navigate = useNavigate()

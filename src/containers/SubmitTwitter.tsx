@@ -77,7 +77,7 @@ export default function SubmitTwitter() {
                         <p className='text-xs text-white'>QR code available for secure access.</p>
                     </div>
                 </div>
-                <button onClick={() => handleSubmit()} className="mt-12 text-white disabled:text-muted font-medium text-base rounded-full bg-gradient-ld disabled:bg-dark-800 mb-10 w-full md:w-[230px] focus:outline-none h-[48px]" >
+                <button onClick={() => navigate("/feeds")} className="mt-12 text-white disabled:text-muted font-medium text-base rounded-full bg-gradient-ld disabled:bg-dark-800 mb-10 w-full md:w-[230px] focus:outline-none h-[48px]" >
                     {isLoading ? "Loading..." : "Continue"}
                 </button>
                 <div className='flex gap-4 items-center'>
