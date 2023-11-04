@@ -165,12 +165,12 @@ export const TopBar = () => {
             )}
           </div>
           <div className="h-8 w-[1px] bg-muted-50" />
-          <div className="bg-[#141922] text-medium py-2.5 px-4 rounded-full w-fit flex gap-2 items-center">
+          <div className="bg-[#141922] text-medium py-2.5 px-4 rounded-full w-fit flex gap-2 items-center" onClick={() => (user ? navigate("/wallet") : null)}>
             <img src='/coin.svg' alt='' className="w-[20px]" />
             <p className="text-[12px] text-[#F3EC4E]">
               {balanceInLzr}LZR
             </p>
-          </div>
+          L</div>
         </div>
         <div className="md:hidden flex items-center">
           <p className="text-white pr-0.5 font-bold">~${LZR_IN_USD}/</p>
