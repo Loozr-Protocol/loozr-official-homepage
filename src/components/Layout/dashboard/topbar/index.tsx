@@ -54,12 +54,12 @@ export const TopBar = () => {
   };
 
   const getText = () => {
-    if (!user) {
-      return '';
-    }
-    if (pathname === `/${user.accountDomain}`) {
-      return 'Artist Profile';
-    }
+    // if (!user) {
+    //   return '';
+    // }
+    // if (pathname === `/${user.accountDomain}`) {
+    //   return 'Artist Profile';
+    // }
 
     return textMap[pathname] || '';
   };
@@ -74,7 +74,12 @@ export const TopBar = () => {
           </p>
         </div>
         <div className="flex items-center gap-4">
-          <div className="hidden md:flex w-[300px] relative">
+          <div className="relative">
+            <img src={Notifi} alt="" />
+            <p className=' rounded-full px-1.5 py-0.5 absolute bg-[#FF1744] top-0 right-0 text-[8px]'>3</p>
+          </div>
+          <div className="h-8 w-[1px] bg-muted-50" />
+          <div className="hidden md:flex w-[250px] relative">
             <input
               type="text"
               value={searchValue}
@@ -135,9 +140,10 @@ export const TopBar = () => {
               </div>
             )}
           </div>
-          <div className="relative">
-            <img src={Notifi} alt="" />
-            <p className=' rounded-full px-2 py-0.5 absolute bg-[#FF1744] top-0 right-0 text-[8px]'>3</p>
+          <div className="h-8 w-[1px] bg-muted-50" />
+          <div className="bg-[#141922] text-medium py-2.5 px-4 rounded-full w-fit flex gap-2 items-center">
+            <img src='/coin.svg' alt='' className="w-[20px]" />
+            <p className="text-[12px] text-[#F3EC4E]">3.82$LZR</p>
           </div>
         </div>
         <div className="md:hidden flex items-center">

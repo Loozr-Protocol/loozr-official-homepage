@@ -88,11 +88,11 @@ export default function Right() {
     <>
       <div className="bg-dark-900 flex flex-col items-start h-screen gap-6 py-4 md:pr-20 md:pl-6 xl:pr-[100px] xl:pl-3 pb-12 mb-5" style={{ width: xl ? `${drawerMaxWidth}vw` : md ? "max-content" : 0, }}>
         {!user ? (
-          <div className=" flex items-center justify-end gap-x-2 w-full">
+          <div className=" flex items-center justify-left gap-x-2 w-full">
             {/* <button className="rounded-full h-[40px] px-8 bg-[#141922] outline-none focus:outline-none" onClick={() => navigate("/login")}>
               Login
             </button> */}
-            <button className="rounded-full h-[40px] w-full px-8 bg-white text-dark-900 text-xs hidden lg:block outline-none focus:outline-none" onClick={() => navigate("/login")}>
+            <button className="rounded-full h-[40px] w-fit px-8 bg-white text-dark-900 text-xs hidden lg:block outline-none focus:outline-none" onClick={() => navigate("/login")}>
               Login account
             </button>
           </div>
@@ -118,7 +118,7 @@ export default function Right() {
                       <p className=" text-xs font-bold text-white name-tag">
                         {user?.accountId}
                       </p>
-                      <div className="bg-new-100 text-[#F3EC4E] text-medium py-1 px-2 rounded-full text-[10px] w-fit">3.32$LZR</div>
+                      {/* <div className="bg-new-100 text-[#F3EC4E] text-medium py-1 px-2 rounded-full text-[10px] w-fit">3.32$LZR</div> */}
                     </Marquee>
                   ) : (
                     <div className="flex items-center gap-[4px] w-full">
@@ -126,7 +126,7 @@ export default function Right() {
                         {user?.accountId.slice(0, 16)}
                       </p>
                       <ExpandMore fontSize='small' />
-                          <div className="bg-new-100 text-[#F3EC4E] text-medium py-1 px-2 rounded-full text-[10px] w-fit">3.82$LZR</div>
+                          {/* <div className="bg-new-100 text-[#F3EC4E] text-medium py-1 px-2 rounded-full text-[10px] w-fit">3.82$LZR</div> */}
                     </div>
                   )}
                 </>
@@ -153,7 +153,7 @@ export default function Right() {
               )}
           </div>
         )}
-        <div className="h-px w-full lg:w-full bg-muted-50 mt-[-10px] mb-3" />
+        {/* <div className="h-px w-full lg:w-full bg-muted-50 mt-[-10px] mb-3" /> */}
         <div className="w-full flex flex-col mt-8">
           <div className="flex flex-col gap-3">
             <p className="text-xs font-semibold text-muted">Coming to Loozr! </p>
