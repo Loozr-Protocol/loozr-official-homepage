@@ -161,9 +161,9 @@ export const TopBar = () => {
             )}
           </div>
           <div className="h-8 w-[1px] bg-muted-50" />
-          <div className="bg-[#141922] text-medium py-2.5 px-3 rounded-full w-fit flex gap-2 items-center" onClick={() => (user ? navigate("/wallet") : null)}>
+          <div className="bg-[#141922] text-medium py-2.5 px-3 rounded-full w-fit flex gap-3 items-center" onClick={() => (user ? navigate("/wallet") : null)}>
             <img src='/coin.svg' alt='' className="w-[20px]" />
-            <p className="text-[12px] text-[#F3EC4E]" font-medium>
+            <p className="text-[12px] text-[#F3EC4E] font-medium">
               {balanceInLzr} LZR
             </p>
           </div>
