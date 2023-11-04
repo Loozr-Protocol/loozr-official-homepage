@@ -170,7 +170,7 @@ export const TopBar = () => {
             <p className="text-[12px] text-[#F3EC4E]">
               {balanceInLzr}LZR
             </p>
-          L</div>
+          </div>
         </div>
         <div className="md:hidden flex items-center">
           <p className="text-white pr-0.5 font-bold">~${LZR_IN_USD}/</p>
