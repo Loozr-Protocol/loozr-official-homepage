@@ -138,7 +138,7 @@ export default function Right() {
                   {/* onClick={() => (user ? navigate("/" + user.accountDomain) : null)}  */}
                     <div ref={modalRef} className="absolute top-14 w-full bg-dark-900 rounded-[12px] overflow-hidden z-30" style={{ border: "2px solid rgba(83, 96, 121, 0.2)" }}>
                     <div className="flex items-start justify-between py-3 px-4">
-                      <p className="text-[12px] text-muted font-[600]">Total Balance:</p>
+                      <p className="text-[14px] text-muted font-[600]">Total Balance:</p>
                       <div className="flex flex-col gap-1 items-right">
                           <div className="text-[#F3EC4E] text-[12px]">{balanceInLzr} LZR</div>
                           <div className="text-muted text-[10px]">~$ {balanceUsd}</div>

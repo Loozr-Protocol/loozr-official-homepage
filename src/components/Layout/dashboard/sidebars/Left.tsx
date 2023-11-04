@@ -16,6 +16,7 @@ import { setPageLoaderStatus } from "../../../../state/misc";
 import SongUploadDialog from "../../../../components/SongTokenization/SongUploadDialog";
 import Speaker from "../../../../assets/svg/Speaker";
 import Airdrop from "../../../../assets/svg/Airdrop";
+import Help from "../../../../assets/svg/Help";
 
 export const drawerMinWidth = 280;
 export const drawerMaxWidth = 24;
@@ -50,6 +51,12 @@ const tabs = [
     label: "Airdrops",
     available: false,
     path: "",
+  },
+  {
+    icon: Help,
+    label: "Help",
+    available: false,
+    path: "https://docs.loozr.io/",
   },
 ];
 
