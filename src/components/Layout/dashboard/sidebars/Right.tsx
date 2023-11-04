@@ -156,8 +156,8 @@ export default function Right() {
         {/* <div className="h-px w-full lg:w-full bg-muted-50 mt-[-10px] mb-3" /> */}
         <div className="w-full flex flex-col mt-8">
           <div className="flex flex-col gap-3">
-            <p className="text-xs font-semibold text-muted">Coming to Loozr! </p>
-            <p className="text-xs text-white">Snoop Dogg, Burna Boy plus 15K+ Artist profiles reserved.</p>
+            <p className="text-xs font-normal text-muted">Coming to Loozr! </p>
+            <p className="text-xs text-white font-medium">Snoop Dogg, Burna Boy plus 15K+ Artist profiles reserved.</p>
             <div className="w-full flex items-center justify-between p-3 rounded-[18px] bg-dark-700">
               <img src={userComing} alt='' className="w-[120px]" />
               <More />
