@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { AppState } from "../../../../state/store";
 import { useBecomeArtisteCallback } from "../../../../state/artist/hooks";
@@ -14,21 +14,38 @@ import { LZR_IN_USD, MIXER_ACCOUNT } from "../../../../config/constants";
 import Photo from "../../../Photo";
 import { useSearchUserCallback } from "../../../../state/user/hooks/useAccount";
 import { getCoinPrice } from "../../../../state/artist/actions";
+import { getLZRBalanceCallback } from "../../../../state/wallet/hooks/fetchBalance";
+import { formatBalanceUSD, formatNumber, getFullDisplayBalance } from "../../../../utils/formatBalance";
 
 export const TopBar = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const dispatch = useDispatch();
+  const user = useSelector((state: AppState) => state.user.userInfo);
   const { handleBecomeArtiste } = useBecomeArtisteCallback();
   const [searchValue, setSearchValue] = React.useState("")
+  const lzrAccountId = `${user.accountId}.${MIXER_ACCOUNT}`;
+  const [balanceInLzr, setLZRBalance] = useState("_");
   const [data, setData] = React.useState([] as any)
-  const user = useSelector((state: AppState) => state.user.userInfo);
-  const coinInfo = useSelector((state: AppState) => state.artist.coinInfo);
   const { getSearchUser } = useSearchUserCallback();
 
   useEffect(() => {
-    dispatch(getCoinPrice(user.id));
-  }, [user, dispatch])
+    const loadLZRBalance = async (accountId: string) => {
+      const { handleGetLZRBalanace } = getLZRBalanceCallback();
+      try {
+        const result = await handleGetLZRBalanace(accountId);
+        const balanceResult = result;
+        const balanceBN = getFullDisplayBalance(balanceResult);
+
+        setLZRBalance(formatNumber(Number(balanceBN)));
+        // setBalanceUSD(formatBalanceUSD(Number(balanceBN)));
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    loadLZRBalance(lzrAccountId);
+  }, []);
 
   const OnchangeHandler = async (item: any) => {
     setSearchValue(item)
@@ -151,13 +168,7 @@ export const TopBar = () => {
           <div className="bg-[#141922] text-medium py-2.5 px-4 rounded-full w-fit flex gap-2 items-center">
             <img src='/coin.svg' alt='' className="w-[20px]" />
             <p className="text-[12px] text-[#F3EC4E]">
-              {coinInfo ? (
-                <>
-                  {coinInfo.priceUSD}
-                </>
-              ) : (
-                <></>
-              )}
+              {balanceInLzr}LZR
             </p>
           </div>
         </div>
