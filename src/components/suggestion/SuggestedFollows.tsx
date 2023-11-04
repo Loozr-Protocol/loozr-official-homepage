@@ -56,7 +56,7 @@ const SuggestedFollows = (props: any) => {
           </div>
         </div>
       </div>
-      <p onClick={() => onFollow(user)} className='text-white bg-[#536079] rounded-full px-2 py-1 cursor-pointer' ><Add fontSize="small" /></p>
+      <p onClick={() => onFollow(user)} className='text-white bg-[#141922] rounded-full px-2 py-1 cursor-pointer' ><Add fontSize="small" /></p>
     </div>
   )
 
