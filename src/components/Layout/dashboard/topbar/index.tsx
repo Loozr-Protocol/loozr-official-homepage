@@ -22,6 +22,7 @@ export const TopBar = () => {
   const [searchValue, setSearchValue] = React.useState("")
   const [data, setData] = React.useState([] as any)
   const user = useSelector((state: AppState) => state.user.userInfo);
+  const coinInfo = useSelector((state: AppState) => state.artist.coinInfo);
   const { getSearchUser } = useSearchUserCallback();
 
   const OnchangeHandler = async (item: any) => {
@@ -63,6 +64,7 @@ export const TopBar = () => {
 
     return textMap[pathname] || '';
   };
+    
 
 
   return (
@@ -143,7 +145,7 @@ export const TopBar = () => {
           <div className="h-8 w-[1px] bg-muted-50" />
           <div className="bg-[#141922] text-medium py-2.5 px-4 rounded-full w-fit flex gap-2 items-center">
             <img src='/coin.svg' alt='' className="w-[20px]" />
-            <p className="text-[12px] text-[#F3EC4E]">3.82$LZR</p>
+            <p className="text-[12px] text-[#F3EC4E]">{coinInfo.priceUSD}</p>
           </div>
         </div>
         <div className="md:hidden flex items-center">
