@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { AppState } from "../../../../state/store";
 import { useBecomeArtisteCallback } from "../../../../state/artist/hooks";
@@ -13,6 +13,7 @@ import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import { LZR_IN_USD, MIXER_ACCOUNT } from "../../../../config/constants";
 import Photo from "../../../Photo";
 import { useSearchUserCallback } from "../../../../state/user/hooks/useAccount";
+import { getCoinPrice } from "../../../../state/artist/actions";
 
 export const TopBar = () => {
   const navigate = useNavigate();
@@ -24,6 +25,10 @@ export const TopBar = () => {
   const user = useSelector((state: AppState) => state.user.userInfo);
   const coinInfo = useSelector((state: AppState) => state.artist.coinInfo);
   const { getSearchUser } = useSearchUserCallback();
+
+  useEffect(() => {
+    dispatch(getCoinPrice(user.id));
+  }, [user, dispatch])
 
   const OnchangeHandler = async (item: any) => {
     setSearchValue(item)
@@ -145,7 +150,15 @@ export const TopBar = () => {
           <div className="h-8 w-[1px] bg-muted-50" />
           <div className="bg-[#141922] text-medium py-2.5 px-4 rounded-full w-fit flex gap-2 items-center">
             <img src='/coin.svg' alt='' className="w-[20px]" />
-            <p className="text-[12px] text-[#F3EC4E]">{coinInfo.priceUSD}</p>
+            <p className="text-[12px] text-[#F3EC4E]">
+              {coinInfo ? (
+                <>
+                  {coinInfo.priceUSD}
+                </>
+              ) : (
+                <></>
+              )}
+            </p>
           </div>
         </div>
         <div className="md:hidden flex items-center">
