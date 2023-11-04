@@ -136,18 +136,18 @@ export default function Right() {
               profileModal && (
                 <>
                   {/* onClick={() => (user ? navigate("/" + user.accountDomain) : null)}  */}
-                    <div ref={modalRef} className="absolute top-14 w-full bg-dark-900 rounded-[12px] overflow-hidden" style={{ border: "2px solid rgba(83, 96, 121, 0.2)" }}>
+                    <div ref={modalRef} className="absolute top-14 w-full bg-dark-900 rounded-[12px] overflow-hidden z-30" style={{ border: "2px solid rgba(83, 96, 121, 0.2)" }}>
                     <div className="flex items-start justify-between p-3">
-                      <p className="txt text-muted font-[600]">Total Wallet:</p>
+                      <p className="text-[12px] text-muted font-[600]">Total Wallet:</p>
                       <div className="flex flex-col gap-1 items-right">
-                        <div className="text-[#F3EC4E] text-[12px]">3.32$LZR</div>
-                        <div className="text-muted text-[10px]">~$102.3232</div>
+                          <div className="text-[#F3EC4E] text-[12px]">{balanceInLzr}LZR</div>
+                          <div className="text-muted text-[10px]">~${balanceUsd}</div>
                       </div>
                     </div>
-                      <div className="p-3 bg-dark-700" style={{ borderTop: "2px solid rgba(83, 96, 121, 0.2)" }} onClick={() => (user ? navigate("/" + user.accountDomain) : null)} >View my profile</div>
-                      <div className="p-3 bg-dark-700" style={{ borderTop: "2px solid rgba(83, 96, 121, 0.2)" }}>Edit profile</div>
-                      <div className="p-3 bg-dark-700" style={{ borderTop: "2px solid rgba(83, 96, 121, 0.2)" }}>My wallet</div>
-                      <div className="p-3 bg-dark-700" style={{ borderTop: "2px solid rgba(83, 96, 121, 0.2)" }}>Log out</div>
+                      <div className="p-3 bg-dark-700 text-[12px]" style={{ borderTop: "2px solid rgba(83, 96, 121, 0.2)" }} onClick={() => (user ? navigate("/" + user.accountDomain) : null)} >View my profile</div>
+                      <div className="p-3 bg-dark-700 text-[12px]" style={{ borderTop: "2px solid rgba(83, 96, 121, 0.2)" }}>Edit profile</div>
+                      <div className="p-3 bg-dark-700 text-[12px]" style={{ borderTop: "2px solid rgba(83, 96, 121, 0.2)" }}>My wallet</div>
+                      <div className="p-3 bg-dark-700 text-[12px]" style={{ borderTop: "2px solid rgba(83, 96, 121, 0.2)" }}>Log out</div>
                   </div>
                 </>
               )}
