@@ -109,19 +109,15 @@ export const TopBar = () => {
               value={searchValue}
               placeholder="Search artiste, fans… "
               onChange={(e) => OnchangeHandler(e.target.value)}
-              className="placeholder:text-[#536079] w-full rounded-full h-[42px] text-xs"
+              className="placeholder:text-[#536079] w-full rounded-full h-[42px] text-xs font-medium"
               style={{
                 paddingLeft: "3rem",
                 paddingRight: 16,
                 background: "#141922",
-                color: "#536079",
+                color: "white",
               }}
             />
-            <img
-              src={SearchIcon}
-              alt=""
-              className="absolute w-4 h-4 object-contain inset-y-[12px] left-4"
-            />
+            <img src={SearchIcon} alt="" className="absolute w-4 h-4 object-contain inset-y-[12px] left-4" />
             {searchValue && (
               <div className=" absolute bg-[#12161F] top-[50px] overflow-y-auto max-h-[250px] z-[120] py-2 mt-2 rounded-lg px-4 w-full  ">
                 {data.map((item: any, index: any) => {
@@ -165,9 +161,9 @@ export const TopBar = () => {
             )}
           </div>
           <div className="h-8 w-[1px] bg-muted-50" />
-          <div className="bg-[#141922] text-medium py-2.5 px-4 rounded-full w-fit flex gap-2 items-center" onClick={() => (user ? navigate("/wallet") : null)}>
+          <div className="bg-[#141922] text-medium py-2.5 px-3 rounded-full w-fit flex gap-2 items-center" onClick={() => (user ? navigate("/wallet") : null)}>
             <img src='/coin.svg' alt='' className="w-[20px]" />
-            <p className="text-[12px] text-[#F3EC4E]">
+            <p className="text-[12px] text-[#F3EC4E]" font-medium>
               {balanceInLzr} LZR
             </p>
           </div>
