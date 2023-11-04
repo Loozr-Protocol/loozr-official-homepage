@@ -49,10 +49,10 @@ const SuggestedFollows = (props: any) => {
         </div>
         <div onClick={() => navigate(`/${user.accountDomain}`)}>
           <div className=' flex -mt-1 items-center ' >
-            <p className=' text-[13px] font-semibold ' > {user.accountId}</p>
+            <p className=' text-[13px] font-normal ' > {user.accountId}</p>
           </div>
           <div className=' flex -mt-1 items-center ' >
-            <p className=' text-[11px] font-semibold text-[#536079] ' >{user.accountType}</p>
+            <p className=' text-[11px] font-normal text-[#536079] ' >{user.accountType}</p>
           </div>
         </div>
       </div>
