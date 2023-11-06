@@ -86,23 +86,18 @@ export const TopBar = () => {
 
     return textMap[pathname] || '';
   };
-    
+
 
 
   return (
     <div className="w-full mb-6">
-      <div className="flex justify-between px-0 sm:px-4 md:mr-6 items-center">
+      <div className="flex gap-[20px] px-0 sm:px-4 md:mr-6 items-center">
         <div>
           <p className="font-bold text-base md:text-[24px] text-white">
             {getText()}
           </p>
         </div>
         <div className="flex items-center gap-4">
-          <div className="relative">
-            <img src={Notifi} alt="" />
-            <p className=' rounded-full px-1.5 py-0.5 absolute bg-[#FF1744] top-0 right-0 text-[8px]'>3</p>
-          </div>
-          <div className="h-8 w-[1px] bg-muted-50" />
           <div className="hidden md:flex w-[250px] relative">
             <input
               type="text"
@@ -161,12 +156,17 @@ export const TopBar = () => {
             )}
           </div>
           <div className="h-8 w-[1px] bg-muted-50" />
+          <div className="relative">
+            <img src={Notifi} alt="" />
+            <p className=' rounded-full px-1.5 py-0.5 absolute bg-[#FF1744] top-0 right-0 text-[8px]'>3</p>
+          </div>
+          {/* <div className="h-8 w-[1px] bg-muted-50" />
           <div className="bg-[#141922] text-medium py-2.5 px-[13px] rounded-full w-fit flex gap-3 items-center" onClick={() => (user ? navigate("/wallet") : null)}>
             <img src='/coin.svg' alt='' className="w-[20px]" />
             <p className="text-[12px] text-[#F3EC4E] font-medium">
               {balanceInLzr} LZR
             </p>
-          </div>
+          </div> */}
         </div>
         <div className="md:hidden flex items-center">
           <p className="text-white pr-0.5 font-bold">~${LZR_IN_USD}/</p>

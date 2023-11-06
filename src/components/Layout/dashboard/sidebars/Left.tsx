@@ -15,8 +15,8 @@ import { useBecomeArtisteCallback } from "../../../../state/artist/hooks";
 import { setPageLoaderStatus } from "../../../../state/misc";
 import SongUploadDialog from "../../../../components/SongTokenization/SongUploadDialog";
 import Speaker from "../../../../assets/svg/Speaker";
-import Airdrops from "../../../../assets/svg/Airdrop";
 import Help from "../../../../assets/svg/Help";
+import Airdrop from "../../../../assets/svg/Airdrop";
 
 export const drawerMinWidth = 280;
 export const drawerMaxWidth = 24;
@@ -47,7 +47,7 @@ const tabs = [
     path: "/wallet",
   },
   {
-    icon: Airdrops,
+    icon: Wallet,
     label: "Airdrops",
     available: false,
     path: "",
