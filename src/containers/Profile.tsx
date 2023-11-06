@@ -60,7 +60,7 @@ const Profile = (props) => {
   );
   const currentProfileFromState = useSelector(
     (state: AppState) => state.user.currentProfile
-  );  
+  );
   const [currentProfile, setCurrentProfile] = useState<User>();
   const coinInfo = useSelector((state: AppState) => state.artist.coinInfo);
 
@@ -254,7 +254,9 @@ const Profile = (props) => {
             <div className="md:ml-10">
               <div className=" flex ">
                 <p className="text-[17px] md:text-xl font-medium text-white mb-1.5">
-                  {currentProfile.accountDomain}
+                  {currentProfile.username
+                    ? currentProfile.username
+                    : currentProfile.accountId}
                 </p>
                 <button
                   onClick={() =>
@@ -280,7 +282,7 @@ const Profile = (props) => {
                   ""
                 )}
               </p>
-              <div className=" w-full py-6 flex items-center ">
+              <div className=" w-full py-4 flex items-center ">
                 <div className=" mx-[9px] ">
                   {currentProfile.soundCloudLink ? (
                     <a href={currentProfile.soundCloudLink}>
@@ -385,6 +387,27 @@ const Profile = (props) => {
                     />
                   )}
                 </div>
+                <div className=" mx-[9px] mt-1 ">
+                  {currentProfile.website ? (
+                    <a target="_blank" rel="noreferrer" href={"http://" + currentProfile?.website + ""}>
+                      <img src={chain} alt="" className=" w-[16.76px]  " />
+                    </a>
+                  ) : (
+                    <img src={chain} alt="" className=" w-[16.76px]  " />
+                  )}
+                </div>
+                <div className=' bg-[#141922] px-2  py-1 rounded-[10px] flex gap-1 items-center'>
+                  <p className='font-medium text-[#536079] text-[12px] '>0x1fAd...90dAe9F</p>
+                  <button
+                    onClick={() =>
+                      copyToClipboard(currentProfile.accountDomain, "Copied!")
+                    }
+                    className=" w-[30px] ml-2 h-[30px] rounded-full bg-[#141922] flex justify-center items-center"
+                  >
+                    <img src={copy} alt="copy" className=" w-[10.17px] " />
+                  </button>
+                  {copySuccess === "Copied!" && copySuccess}
+                </div>
                 {/* <div className=" relative  mx-2  ">
                   <img
                     onClick={() => setIsShown((prev) => !prev)}
@@ -398,13 +421,13 @@ const Profile = (props) => {
                 <div className=" w-full py-6 flex items-center " >
                   <button
                       onClick={() => setQrCodeModal(true)}
-                      className="py-[14.1px] px-3 sm:px-6 md:px-7 text-xs md:text-sm font-medium bg-loozr-purple mr-2 rounded-full"
+                      className="py-[10px] px-4 sm:px-6 md:px-8 text-sm font-medium bg-loozr-purple mr-2 rounded-full"
                     >
                     Qr Code
                   </button>
                   <button
                       onClick={() => setQrCodeScannerModal(true)}
-                      className="py-[14.1px] px-3 sm:px-6 md:px-7 text-xs md:text-sm font-medium bg-loozr-purple ml-2 rounded-full"
+                      className="py-[10px] px-4 sm:px-6 md:px-8 text-sm font-medium bg-loozr-purple ml-2 rounded-full"
                     >
                     Scan Qr Code
                   </button>
@@ -441,49 +464,49 @@ const Profile = (props) => {
               <div className="flex items-center mb-6">
                 <p
                   onClick={() => ClickFollwer()}
-                  className="text-xs md:text-sm cursor-pointer font-bold mr-6"
+                  className="text-[16px] cursor-pointer font-bold mr-2"
                 >
                   {abbrevNumber(currentProfile.followersCount)}
-                  <span className="ml-2 text-sm text-muted font-medium">
+                  <span className="ml-2 text-muted">
                     Followers
                   </span>
                 </p>
                 <p
                   onClick={() => ClickFollwing()}
-                  className="text-xs md:text-sm cursor-pointer font-bold mr-6"
+                  className="text-[16px] cursor-pointer font-bold mr-2"
                 >
                   {abbrevNumber(currentProfile.followingsCount)}
-                  <span className="ml-2 text-sm text-muted font-medium">
+                  <span className="ml-2 text-muted">
                     Following
                   </span>
                 </p>
-                {currentProfile?.isArtist && currentProfile.tokenName ? (
+                {/* {currentProfile?.isArtist && currentProfile.tokenName ? (
                   <p className="text-xs md:text-sm font-bold">
                     0
                     <span className="ml-2 text-sm text-muted font-medium">
                       Listens
                     </span>
                   </p>
-                ) : null}
+                ) : null} */}
               </div>
               {currentProfile?.isArtist && currentProfile?.tokenName ? (
-                <div className="flex items-start mb-[15px]">
+                <div className="flex items-start gap-3 mb-[15px]">
                   <button
                     onClick={() => push(`/artistes/buy/${currentProfile?.id}`)}
-                    className="py-[14.1px] px-3 sm:px-6 md:px-7 text-xs md:text-sm font-medium bg-loozr-purple rounded-full"
+                    className="py-[10px] px-4 sm:px-6 md:px-8 text-sm font-medium bg-loozr-purple rounded-full"
                   >
-                    Buy artiste coin
+                    Buy coin
                   </button>
                   <button
                     onClick={() => push(`/artistes/sell/${currentProfile?.id}`)}
-                    className="py-[14.1px] px-3 sm:px-6 md:px-7 text-xs md:text-sm font-medium bg-dark-700 rounded-full ml-6"
+                    className="py-[10px] px-4 sm:px-6 md:px-8 text-sm font-medium border-[1px] border-dark-700 rounded-full"
                   >
-                    Sell artiste coin
+                    Sell coin
                   </button>
                 </div>
               ) : null}
               <CheckFollowerButton otheruser={currentProfile} user={user} />
-              {currentProfile?.website && (
+              {/* {currentProfile?.website && (
                 <div className=" flex items-center py-2 mb-4 ">
                   <img src={chain} alt="chain" className=" w-[12.39px] " />
                   <a
@@ -495,7 +518,7 @@ const Profile = (props) => {
                     {currentProfile?.website}
                   </a>
                 </div>
-              )}
+              )} */}
               {currentProfile?.id === user?.id ? (
                 <div className="flex items-center mb-4">
                   <button
@@ -527,9 +550,8 @@ const Profile = (props) => {
               Coins bought
             </p>
             <p
-              className={`cursor-pointer ${
-                active === 3 ? "active-tab-bottom " : "text-muted font-medium"
-              }`}
+              className={`cursor-pointer ${active === 3 ? "active-tab-bottom " : "text-muted font-medium"
+                }`}
               onClick={() => setActive(3)}
             >
               My Tracks
