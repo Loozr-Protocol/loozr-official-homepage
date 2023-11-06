@@ -12,6 +12,7 @@ import instagram from "../assets/icons/instagram.svg";
 import twitter from "../assets/icons/twitter.svg";
 import share from "../assets/icons/share.svg";
 import chain from "../assets/icons/chain.png";
+import more from "../assets/icons/more.svg";
 import copy from "../assets/icons/copy.png";
 import { abbrevNumber } from "../utils/formatBalance";
 import { getIndividualProfile } from "../state/user/userActions";
@@ -327,73 +328,13 @@ const Profile = (props) => {
                     <img src={twitter} alt="" className=" w-[18.76px]  " />
                   )}
                 </div>
-                <div className=" relative  mx-2  ">
-                  <img
-                    onClick={() => setIsShown((prev) => !prev)}
-                    src={share}
-                    alt=""
-                    className=" w-[12.67px] cursor-pointer "
-                  />
-                  {isShown && (
-                    <div className=" absolute w-[200px] bg-[#12161F] z-20 top-7 px-4 py-3 rounded-lg  shadow-xl ">
-                      <a
-                        target="_blank"
-                        rel="noreferrer"
-                        href={
-                          "https://explorer.testnet.near.org/accounts/" +
-                          currentProfile.accountDomain
-                        }
-                        className="font-medium text-[13px] cursor-pointer  "
-                      >
-                        View user on explorer
-                      </a>
-                      {currentProfile.isArtist && currentProfile.tokenName && (
-                        <p className=" font-medium text-[13px] cursor-pointer mt-1  ">
-                          View artist on explorer
-                        </p>
-                      )}
-                      <p
-                        onClick={() =>
-                          copyToClipboard(window.location.href, "Copied")
-                        }
-                        className=" font-medium text-[13px] mt-1 cursor-pointer  "
-                      >
-                        {copySuccess === "Copied"
-                          ? copySuccess
-                          : "Copy profile link"}
-                      </p>
-                      {/* {currentProfile?.id === user?.id && (  */}
-                      <p
-                        onClick={() => qrHandler()}
-                        className=" font-medium text-[13px] mt-1 cursor-pointer  "
-                      >
-                        My Qr Code
-                      </p>
-                      {/* // )} */}
-                      {/* {currentProfile?.id === user?.id && ( 
-                        <p
-                          onClick={() => qrScanHandler()}
-                          className=" font-medium text-[13px] mt-1 cursor-pointer  "
-                        >
-                          Scan Qr Code
-                        </p>
-                      )} */}
-                    </div>
-                  )}
-                  {isShown && (
-                    <div
-                      onClick={() => setIsShown(false)}
-                      className=" fixed cursor-pointer z-10 inset-0 "
-                    />
-                  )}
-                </div>
                 <div className=" mx-[9px] mt-1 ">
                   {currentProfile.website ? (
                     <a target="_blank" rel="noreferrer" href={"http://" + currentProfile?.website + ""}>
-                      <img src={chain} alt="" className=" w-[16.76px]  " />
+                      <img src={chain} alt="" className=" w-[15.76px]  " />
                     </a>
                   ) : (
-                    <img src={chain} alt="" className=" w-[16.76px]  " />
+                    <img src={chain} alt="" className=" w-[15.76px]  " />
                   )}
                 </div>
                 <div className=' bg-[#141922] px-2  py-1 rounded-[10px] flex gap-1 items-center'>
@@ -491,18 +432,42 @@ const Profile = (props) => {
               </div>
               {currentProfile?.isArtist && currentProfile?.tokenName ? (
                 <div className="flex items-start gap-3 mb-[15px]">
-                  <button
-                    onClick={() => push(`/artistes/buy/${currentProfile?.id}`)}
-                    className="py-[10px] px-4 sm:px-6 md:px-8 text-sm font-medium bg-loozr-purple rounded-full"
-                  >
+                  <button onClick={() => push(`/artistes/buy/${currentProfile?.id}`)} className="py-[10px] px-4 sm:px-6 md:px-8 text-sm font-medium cursor-pointer bg-loozr-purple rounded-full" >
                     Buy coin
                   </button>
-                  <button
-                    onClick={() => push(`/artistes/sell/${currentProfile?.id}`)}
-                    className="py-[10px] px-4 sm:px-6 md:px-8 text-sm font-medium border-[1px] border-dark-700 rounded-full"
-                  >
+                  <button onClick={() => push(`/artistes/sell/${currentProfile?.id}`)} className="py-[10px] px-4 sm:px-6 md:px-8 text-sm font-medium cursor-pointer border-[1px] border-dark-700 rounded-full" >
                     Sell coin
                   </button>
+                  <div className="relative mx-2">
+                    <div className="p-[18px] text-sm font-medium border-[1px] border-dark-700 rounded-full">
+                      <img onClick={() => setIsShown((prev) => !prev)} src={more} alt="" className=" w-[12.67px] cursor-pointer " />
+                    </div>
+                    {isShown && (
+                      <div className=" absolute w-[210px] bg-[#12161F] z-20 top-16 rounded-lg border-[1px] border-[#5360791A] shadow-xl ">
+                        <div className="py-3 px-4 text-[12px] cursor-pointer" onClick={() => copyToClipboard(window.location.href, "Copied")} >
+                          {copySuccess === "Copied" ? copySuccess : "Copy profile link"}
+                        </div>
+                        {currentProfile.isArtist && currentProfile.tokenName && (
+                          <div className="py-3 px-4 text-[12px] cursor-pointer" style={{ borderTop: "1px solid rgba(83, 96, 121, 0.2)" }} onClick={() => (user ? navigate("https://explorer.testnet.near.org/accounts/" + currentProfile.accountDomain) : null)}>Artist on NEAR Explorer</div>
+                        )}
+                        <div className="py-3 px-4 text-[12px] cursor-pointer" style={{ borderTop: "1px solid rgba(83, 96, 121, 0.2)" }} onClick={() => qrHandler()}>View profile QR code</div>
+
+
+                        {/* // )} */}
+                        {/* {currentProfile?.id === user?.id && ( 
+                        <p
+                          onClick={() => qrScanHandler()}
+                          className=" font-medium text-[13px] mt-1 cursor-pointer  "
+                        >
+                          Scan Qr Code
+                        </p>
+                      )} */}
+                      </div>
+                    )}
+                    {isShown && (
+                      <div onClick={() => setIsShown(false)} className=" fixed cursor-pointer z-10 inset-0 " />
+                    )}
+                  </div>
                 </div>
               ) : null}
               <CheckFollowerButton otheruser={currentProfile} user={user} />
