@@ -24,28 +24,28 @@ export const TopBar = () => {
   const user = useSelector((state: AppState) => state.user.userInfo);
   const { handleBecomeArtiste } = useBecomeArtisteCallback();
   const [searchValue, setSearchValue] = React.useState("")
-  const lzrAccountId = `${user.accountId}.${MIXER_ACCOUNT}`;
-  const [balanceInLzr, setLZRBalance] = useState("_");
+  // const lzrAccountId = `${user.accountId}.${MIXER_ACCOUNT}`;
+  // const [balanceInLzr, setLZRBalance] = useState("_");
   const [data, setData] = React.useState([] as any)
   const { getSearchUser } = useSearchUserCallback();
 
-  useEffect(() => {
-    const loadLZRBalance = async (accountId: string) => {
-      const { handleGetLZRBalanace } = getLZRBalanceCallback();
-      try {
-        const result = await handleGetLZRBalanace(accountId);
-        const balanceResult = result;
-        const balanceBN = getFullDisplayBalance(balanceResult);
+  // useEffect(() => {
+  //   const loadLZRBalance = async (accountId: string) => {
+  //     const { handleGetLZRBalanace } = getLZRBalanceCallback();
+  //     try {
+  //       const result = await handleGetLZRBalanace(accountId);
+  //       const balanceResult = result;
+  //       const balanceBN = getFullDisplayBalance(balanceResult);
 
-        setLZRBalance(formatNumber(Number(balanceBN)));
-        // setBalanceUSD(formatBalanceUSD(Number(balanceBN)));
-      } catch (err) {
-        console.log(err);
-      }
-    };
+  //       setLZRBalance(formatNumber(Number(balanceBN)));
+  //       // setBalanceUSD(formatBalanceUSD(Number(balanceBN)));
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
 
-    loadLZRBalance(lzrAccountId);
-  }, []);
+  //   loadLZRBalance(lzrAccountId);
+  // }, []);
 
   const OnchangeHandler = async (item: any) => {
     setSearchValue(item)
@@ -80,9 +80,9 @@ export const TopBar = () => {
     // if (!user) {
     //   return '';
     // }
-    // if (pathname === `/${user.accountDomain}`) {
-    //   return 'Artist Profile';
-    // }
+    if (pathname.includes("loozr.testnet")) {
+      return 'Artist Profile';
+    }
 
     return textMap[pathname] || '';
   };
