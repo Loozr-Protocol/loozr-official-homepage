@@ -235,54 +235,63 @@ const Profile = (props) => {
             <CreatorStatCard user={currentProfile} />
           )}
           <div className="flex md:flex-row flex-col mt-[32px] items-start mb-7">
-            <div className=" relative md:w-auto w-fit flex md:justify-start justify-start md:mb-0 mb-8 ">
+            <div className="h-fit relative md:w-auto w-fit flex md:justify-start justify-start md:mb-0 mb-8 ">
               <Photo
                 alt={currentProfile.accountDomain}
                 userId={currentProfile.accountId}
                 src={currentProfile?.photo}
-                className="h-[170px] md:h-[130px] text-4xl w-[170px] md:w-[130px] object-cover rounded-full md:mr-3"
+                className="max-h-[170px] md:max-h-[130px] text-4xl w-[170px] md:w-[130px] object-cover rounded-full md:mr-3"
                 style={{ border: "8px solid #141922" }}
               />
 
-              {/* {!currentProfile && (
+              {currentProfile && (
                 <img
                   src={VerifiedBadge}
                   alt=""
                   className="absolute md:w-9 w-12 md:h-9 h-12 md:right-3 md:bottom-2 right-0 bottom-4"
                 />
-              )} */}
+              )}
             </div>
-            <div className="md:ml-10">
-              <div className=" flex ">
-                <p className="text-[17px] md:text-xl font-medium text-white mb-1.5">
-                  {currentProfile.username
-                    ? currentProfile.username
-                    : currentProfile.accountId}
-                </p>
-                <button
-                  onClick={() =>
-                    copyToClipboard(currentProfile.accountDomain, "Copied!")
-                  }
-                  className=" w-[30px] ml-2 h-[30px] rounded-full bg-[#141922] flex justify-center items-center mr-2  "
-                >
-                  <img src={copy} alt="copy" className=" w-[12.17px] " />
-                </button>
-                {copySuccess === "Copied!" && copySuccess}
+            <div className="md:ml-10 w-full">
+              <div className="flex items-center justify-between w-full">
+                <div className='flex flex-col'>
+                  <div className="flex">
+                    <p className="text-[17px] md:text-xl font-medium text-white mb-1.5">
+                      {currentProfile.username
+                        ? currentProfile.username
+                        : currentProfile.accountId}
+                    </p>
+                    <button
+                      onClick={() =>
+                        copyToClipboard(currentProfile.accountDomain, "Copied!")
+                      }
+                      className=" w-[30px] ml-2 h-[30px] rounded-full bg-[#141922] flex justify-center items-center mr-2  "
+                    >
+                      <img src={copy} alt="copy" className=" w-[12.17px] " />
+                    </button>
+                    {copySuccess === "Copied!" && copySuccess}
+                  </div>
+                  <p className="text-muted font-medium mt-[2px] text-xs md:text-xs">
+                    <span>
+                      {currentProfile.username
+                        ? currentProfile.username
+                        : currentProfile.accountId}
+                    </span>
+                    {currentProfile.isArtist && currentProfile.tokenName ? (
+                      <span className="pointer ml-2 pl-2 before:top-[6px]">
+                        Artiste
+                      </span>
+                    ) : (
+                      ""
+                    )}
+                  </p>
+                </div>
+                <div className="mr-10">
+                  <div onClick={() => push("/profile/edit")} className="py-[8px] px-[14px] text-[12px] text-dark-700 font-semibold bg-white rounded-full" >
+                    Edit profile
+                  </div>
+                </div>
               </div>
-              <p className="text-muted font-medium mt-[2px] text-xs md:text-xs">
-                <span>
-                  {currentProfile.username
-                    ? currentProfile.username
-                    : currentProfile.accountId}
-                </span>
-                {currentProfile.isArtist && currentProfile.tokenName ? (
-                  <span className="pointer ml-2 pl-2 before:top-[6px]">
-                    Artiste
-                  </span>
-                ) : (
-                  ""
-                )}
-              </p>
               <div className=" w-full py-4 flex items-center ">
                 <div className=" mx-[9px] ">
                   {currentProfile.soundCloudLink ? (
@@ -430,31 +439,34 @@ const Profile = (props) => {
                   </p>
                 ) : null} */}
               </div>
-              {currentProfile?.isArtist && currentProfile?.tokenName ? (
-                <div className="flex items-start gap-3 mb-[15px]">
-                  <button onClick={() => push(`/artistes/buy/${currentProfile?.id}`)} className="py-[10px] px-4 sm:px-6 md:px-8 text-sm font-medium cursor-pointer bg-loozr-purple rounded-full" >
-                    Buy coin
-                  </button>
-                  <button onClick={() => push(`/artistes/sell/${currentProfile?.id}`)} className="py-[10px] px-4 sm:px-6 md:px-8 text-sm font-medium cursor-pointer border-[1px] border-dark-700 rounded-full" >
-                    Sell coin
-                  </button>
-                  <div className="relative mx-2">
-                    <div className="p-[18px] text-sm font-medium border-[1px] border-dark-700 rounded-full">
-                      <img onClick={() => setIsShown((prev) => !prev)} src={more} alt="" className=" w-[12.67px] cursor-pointer " />
-                    </div>
-                    {isShown && (
-                      <div className=" absolute w-[210px] bg-[#12161F] z-20 top-16 rounded-lg border-[1px] border-[#5360791A] shadow-xl ">
-                        <div className="py-3 px-4 text-[12px] cursor-pointer" onClick={() => copyToClipboard(window.location.href, "Copied")} >
-                          {copySuccess === "Copied" ? copySuccess : "Copy profile link"}
-                        </div>
-                        {currentProfile.isArtist && currentProfile.tokenName && (
-                          <a className="py-3 px-4 text-[12px] cursor-pointer" style={{ borderTop: "1px solid rgba(83, 96, 121, 0.2)" }} target="_blank" rel="noreferrer" href={"https://explorer.testnet.near.org/accounts/" + currentProfile.accountDomain}>Artist on NEAR Explorer</a>
-                        )}
-                        <div className="py-3 px-4 text-[12px] cursor-pointer" style={{ borderTop: "1px solid rgba(83, 96, 121, 0.2)" }} onClick={() => qrHandler()}>View profile QR code</div>
+              <div className="flex items-start gap-3 mb-[15px]">
+                {currentProfile?.isArtist && currentProfile?.tokenName ? (
+                  <>
+                    <button onClick={() => push(`/artistes/buy/${currentProfile?.id}`)} className="py-[10px] px-4 sm:px-6 md:px-8 text-sm font-medium cursor-pointer bg-loozr-purple rounded-full" >
+                      Buy coin
+                    </button>
+                    <button onClick={() => push(`/artistes/sell/${currentProfile?.id}`)} className="py-[10px] px-4 sm:px-6 md:px-8 text-sm font-medium cursor-pointer border-[1px] border-dark-700 rounded-full" >
+                      Sell coin
+                    </button>
+                  </>
+                ) : null}
+                <div className="relative mx-2">
+                  <div className="p-[18px] text-sm font-medium border-[1px] border-dark-700 rounded-full">
+                    <img onClick={() => setIsShown((prev) => !prev)} src={more} alt="" className=" w-[12.67px] cursor-pointer " />
+                  </div>
+                  {isShown && (
+                    <div className=" absolute w-[210px] bg-[#12161F] z-20 top-16 rounded-lg border-[1px] border-[#5360791A] shadow-xl ">
+                      <div className="py-3 px-4 text-[12px] cursor-pointer" onClick={() => copyToClipboard(window.location.href, "Copied")} >
+                        {copySuccess === "Copied" ? copySuccess : "Copy profile link"}
+                      </div>
+                      {currentProfile.isArtist && currentProfile.tokenName && (
+                        <a className="py-3 px-4 text-[12px] cursor-pointer" style={{ borderTop: "1px solid rgba(83, 96, 121, 0.2)" }} target="_blank" rel="noreferrer" href={"https://explorer.testnet.near.org/accounts/" + currentProfile.accountDomain}>Artist on NEAR Explorer</a>
+                      )}
+                      <div className="py-3 px-4 text-[12px] cursor-pointer" style={{ borderTop: "1px solid rgba(83, 96, 121, 0.2)" }} onClick={() => qrHandler()}>View profile QR code</div>
 
 
-                        {/* // )} */}
-                        {/* {currentProfile?.id === user?.id && ( 
+                      {/* // )} */}
+                      {/* {currentProfile?.id === user?.id && ( 
                         <p
                           onClick={() => qrScanHandler()}
                           className=" font-medium text-[13px] mt-1 cursor-pointer  "
@@ -462,14 +474,13 @@ const Profile = (props) => {
                           Scan Qr Code
                         </p>
                       )} */}
-                      </div>
-                    )}
-                    {isShown && (
-                      <div onClick={() => setIsShown(false)} className=" fixed cursor-pointer z-10 inset-0 " />
-                    )}
-                  </div>
+                    </div>
+                  )}
+                  {isShown && (
+                    <div onClick={() => setIsShown(false)} className=" fixed cursor-pointer z-10 inset-0 " />
+                  )}
                 </div>
-              ) : null}
+              </div>
               <CheckFollowerButton otheruser={currentProfile} user={user} />
               {/* {currentProfile?.website && (
                 <div className=" flex items-center py-2 mb-4 ">
@@ -486,12 +497,6 @@ const Profile = (props) => {
               )} */}
               {currentProfile?.id === user?.id ? (
                 <div className="flex items-center mb-4">
-                  {/* <button
-                    onClick={() => push("/profile/edit")}
-                    className="py-[14.1px] px-[27px] text-sm font-medium  bg-dark-700 rounded-full"
-                  >
-                    Update profile
-                  </button> */}
                   {/* <div className="w-[50px] h-[50px] rounded-full bg-dark-700 flex items-center justify-center ml-6">
                     <MoreIcon />
                   </div> */}
