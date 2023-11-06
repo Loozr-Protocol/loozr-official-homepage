@@ -337,8 +337,8 @@ const Profile = (props) => {
                     <img src={chain} alt="" className=" w-[15.76px]  " />
                   )}
                 </div>
-                <div className=' bg-[#141922] px-2  py-1 rounded-[10px] flex gap-1 items-center'>
-                  <p className='font-medium text-[#536079] text-[12px] '>0x1fAd...90dAe9F</p>
+                <div className=' bg-[#141922] px-2 rounded-[10px] flex gap-1 items-center'>
+                  <p className='font-medium text-[#536079] text-[12px] pl-[3px] '>0x1fAd...90dAe9F</p>
                   <button
                     onClick={() =>
                       copyToClipboard(currentProfile.accountDomain, "Copied!")
@@ -448,7 +448,7 @@ const Profile = (props) => {
                           {copySuccess === "Copied" ? copySuccess : "Copy profile link"}
                         </div>
                         {currentProfile.isArtist && currentProfile.tokenName && (
-                          <div className="py-3 px-4 text-[12px] cursor-pointer" style={{ borderTop: "1px solid rgba(83, 96, 121, 0.2)" }} onClick={() => (user ? navigate("https://explorer.testnet.near.org/accounts/" + currentProfile.accountDomain) : null)}>Artist on NEAR Explorer</div>
+                          <a className="py-3 px-4 text-[12px] cursor-pointer" style={{ borderTop: "1px solid rgba(83, 96, 121, 0.2)" }} target="_blank" rel="noreferrer" href={"https://explorer.testnet.near.org/accounts/" + currentProfile.accountDomain}>Artist on NEAR Explorer</a>
                         )}
                         <div className="py-3 px-4 text-[12px] cursor-pointer" style={{ borderTop: "1px solid rgba(83, 96, 121, 0.2)" }} onClick={() => qrHandler()}>View profile QR code</div>
 
@@ -486,12 +486,12 @@ const Profile = (props) => {
               )} */}
               {currentProfile?.id === user?.id ? (
                 <div className="flex items-center mb-4">
-                  <button
+                  {/* <button
                     onClick={() => push("/profile/edit")}
                     className="py-[14.1px] px-[27px] text-sm font-medium  bg-dark-700 rounded-full"
                   >
                     Update profile
-                  </button>
+                  </button> */}
                   {/* <div className="w-[50px] h-[50px] rounded-full bg-dark-700 flex items-center justify-center ml-6">
                     <MoreIcon />
                   </div> */}
