@@ -75,7 +75,7 @@ const ArtisteDashboard = () => {
                     </p>
                   </div>
                 </div>
-                <div className=" w-full px-[2px] ">
+                {/* <div className=" w-full px-[2px] ">
                   <button onClick={() => navigate(`/artistes/buy/${_.user.id}`)}
                     className={isShown === i
                       ? " bg-[#8369F4] h-[35px] md:flex justify-center items-center font-medium hidden rounded-full w-[105px] mt-[12px] text-[11.5px]  "
@@ -83,7 +83,7 @@ const ArtisteDashboard = () => {
                     } >
                     Buy coin
                   </button>
-                </div>
+                </div> */}
               </div>
             ))}
           </div>

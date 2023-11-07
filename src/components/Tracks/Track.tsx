@@ -11,6 +11,7 @@ import {
 import { Track } from "../../types/Track";
 import Play from "../../assets/svg/controls/play.svg";
 import Pause from "../../assets/svg/controls/pause.svg";
+import VerifiedBadge from "../../assets/icons/verified.svg";
 
 interface TrackProps {
   track: Track;
@@ -67,12 +68,13 @@ const TrackCard = ({ track }: TrackProps) => {
             {track.songTitle}
           </p>
         </Marquee>
-        </div>
-      <p className="text-muted text-xs font-normal md:text-[13px] mt-[2px] md:font-normal">
+      </div>
+      <p className="flex text-muted text-xs font-normal md:text-[13px] mt-[2px] md:font-normal">
         {track.artistName}
+        <img src={VerifiedBadge} alt="" className="w-9 h-9" />
       </p>
       {isShown && (
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div className="absolute top-[40%] left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           {isCurrentlyPlaying() ? (
             <button
               style={{ backgroundColor: "rgba(255, 255, 255, 0.4)" }}
@@ -87,9 +89,9 @@ const TrackCard = ({ track }: TrackProps) => {
               className="w-[50px] h-[50px] relative z-20 rounded-full flex justify-center items-center"
               onClick={() => playTrack()}
             >
-            <img src={Play} alt="" className="cursor-pointer  w-4 h-6" />
-          </button>
-        )}
+              <img src={Play} alt="" className="cursor-pointer  w-4 h-6" />
+            </button>
+          )}
         </div>
       )}
     </motion.div>
