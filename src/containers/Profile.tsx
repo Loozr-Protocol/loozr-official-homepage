@@ -240,7 +240,7 @@ const Profile = (props) => {
                 alt={currentProfile.accountDomain}
                 userId={currentProfile.accountId}
                 src={currentProfile?.photo}
-                className="max-h-[170px] md:max-h-[130px] text-4xl w-[170px] md:w-[130px] object-cover rounded-full md:mr-3"
+                className="text-4xl min-h-[140px] max-h-[140px] min-w-[140px] max-w-[140px] object-cover rounded-full md:mr-3"
                 style={{ border: "8px solid #141922" }}
               />
 
@@ -286,11 +286,14 @@ const Profile = (props) => {
                     )}
                   </p>
                 </div>
-                <div className="mr-10">
-                  <div onClick={() => push("/profile/edit")} className="py-[8px] px-[14px] text-[12px] text-dark-700 font-semibold bg-white rounded-full" >
-                    Edit profile
+                <CheckFollowerButton otheruser={currentProfile} user={user} />
+                {currentProfile?.id === user?.id ? (
+                  <div className="mr-10">
+                    <div onClick={() => push("/profile/edit")} className="py-[8px] px-[14px] text-[12px] text-dark-700 font-semibold bg-white rounded-full" >
+                      Edit profile
+                    </div>
                   </div>
-                </div>
+                ) : null}
               </div>
               <div className=" w-full py-4 flex items-center ">
                 <div className=" mx-[9px] ">
@@ -451,8 +454,8 @@ const Profile = (props) => {
                   </>
                 ) : null}
                 <div className="relative mx-2">
-                  <div className="p-[18px] text-sm font-medium border-[1px] border-dark-700 rounded-full">
-                    <img onClick={() => setIsShown((prev) => !prev)} src={more} alt="" className=" w-[12.67px] cursor-pointer " />
+                  <div onClick={() => setIsShown((prev) => !prev)} className="px-[18px] cursor-pointer py-[20px] text-sm font-medium border-[1px] border-dark-700 rounded-full">
+                    <img src={more} alt="" className=" w-[12.67px]  " />
                   </div>
                   {isShown && (
                     <div className=" absolute w-[210px] bg-[#12161F] z-20 top-16 rounded-lg border-[1px] border-[#5360791A] shadow-xl ">
@@ -481,7 +484,7 @@ const Profile = (props) => {
                   )}
                 </div>
               </div>
-              <CheckFollowerButton otheruser={currentProfile} user={user} />
+             
               {/* {currentProfile?.website && (
                 <div className=" flex items-center py-2 mb-4 ">
                   <img src={chain} alt="chain" className=" w-[12.39px] " />
