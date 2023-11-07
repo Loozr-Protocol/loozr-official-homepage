@@ -26,6 +26,8 @@ const ArtisteDashboard = () => {
 
     const [isShownText, setIsShownText] = React.useState(-1)
     const [isShown, setIsShown] = React.useState(-1)
+    const [isHover, setIsHover] = React.useState(false)
+    const [hoverStates, setHoverStates] = React.useState({});
 
     const Checking = (item: any, text: any) => {
       setIsShown(item)
@@ -35,6 +37,15 @@ const ArtisteDashboard = () => {
         setIsShownText(-1)
       }
     }
+    const handleMouseEnter = (index) => {
+      setHoverStates(prevStates => ({ ...prevStates, [index]: true }));
+      setIsHover(true);
+    };
+
+    const handleMouseLeave = (index) => {
+      setHoverStates(prevStates => ({ ...prevStates, [index]: false }));
+      setIsHover(false);
+    };
 
     return (
       <>
@@ -54,7 +65,7 @@ const ArtisteDashboard = () => {
         >
           <div className="flex ">
             {artists.map((_, i) => (
-              <div key={i} onMouseOver={() => Checking(i, _.creatorCoinId)} onMouseOut={() => Checking(-1, _.creatorCoinId)} className="flex flex-col items-center mr-[22px] md:h-fit min-w-max md:w-[105px]" >
+              <div key={i} onMouseOver={() => Checking(i, _.creatorCoinId)} onMouseOut={() => Checking(-1, _.creatorCoinId)} onMouseEnter={() => handleMouseEnter(i)} onMouseLeave={() => handleMouseLeave(i)} className="relative flex flex-col items-center mr-[22px] md:h-fit min-w-max md:w-[105px]" >
                 <Link to={`/${_.user.accountDomain}`} className="relative">
                   <div className=" relative ">
                     <Photo alt="" userId={_.user.accountId} className="object-cover h-[100px] text-4xl md:h-[105px] flex justify-center items-center w-[100px] md:w-[105px] rounded-full  mb-[16px]"
@@ -84,6 +95,13 @@ const ArtisteDashboard = () => {
                     Buy coin
                   </button>
                 </div> */}
+                {hoverStates[i] && (
+                  <>
+                    <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-dark-700/20 backdrop-blur-sm">
+                      <div onClick={() => navigate(`/artistes/buy/${_.user.id}`)} className="cursor-pointer bg-s-gradient px-[12px] py-[7px] rounded-full text-[12px]">Buy coin</div>
+                    </div>
+                  </>
+                )}
               </div>
             ))}
           </div>
