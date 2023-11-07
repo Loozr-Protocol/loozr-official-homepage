@@ -20,9 +20,11 @@ const RenderTxHistory = (props) => {
             No information available 👋
           </p>
         </div>
-      ) : props.dataList.map((hodler, index) => (
-        <TxHistoryCard key={index} hodler={hodler} coin="" txType="COINSBOUGHT" />
-      ))}
+      ) : (
+        props.dataList.map((hodler, index) => (
+          <TxHistoryCard key={index} hodler={hodler} coin="" txType="COINSBOUGHT" />
+        ))
+      )}
     </div>
   );
 };
@@ -43,30 +45,30 @@ export default function CoinBought({ user }: { user: User }) {
   useEffect(() => {
     let coinsList = '';
     coins.forEach(async (coin) => {
-      if(Number(coin.balance.balanceUSD) > 0) return;
+      if (Number(coin.balance.balanceUSD) > 0) return;
       coinsList += coin.coinId + ',';
     });
-    if(coinsList.length > 0) {
+    if (coinsList.length > 0) {
       dispatch(loadCoinsBoughtInfo(coinsList));
     }
   }, [coins]);
 
   return (
     <>
-        <Pagination
-          reachMaxLimit={pagination.reachMaxLimit}
-          dataList={coins}
-          onFetchData={() =>
-            dispatch(
-              getCoinsBought({ id: user.id, nextCursor: pagination.nextCursor })
-            )
-          }
-          currentCursor={pagination.currentCursor}
-          nextCursor={pagination.nextCursor}
-          onSetCurrentCursor={() => dispatch(changePageForCoinsBought())}
-        >
-          <RenderTxHistory/>
-        </Pagination>
+      <Pagination
+        reachMaxLimit={pagination.reachMaxLimit}
+        dataList={coins}
+        onFetchData={() =>
+          dispatch(
+            getCoinsBought({ id: user.id, nextCursor: pagination.nextCursor })
+          )
+        }
+        currentCursor={pagination.currentCursor}
+        nextCursor={pagination.nextCursor}
+        onSetCurrentCursor={() => dispatch(changePageForCoinsBought())}
+      >
+        <RenderTxHistory />
+      </Pagination>
     </>
   );
 }
