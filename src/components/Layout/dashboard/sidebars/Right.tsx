@@ -110,7 +110,7 @@ export default function Right() {
               </div>
               <img src={Verify} alt="" className="absolute bottom-0 right-0 w-4 " />
             </div>
-            <div className="hidden xl:block w-full pl-2 ">
+            <div className="hidden xl:block w-full pl-3 ">
               {user?.accountId && (
                 <>
                   {isShown ? (
@@ -121,12 +121,18 @@ export default function Right() {
                       {/* <div className="bg-new-100 text-[#F3EC4E] text-medium py-1 px-2 rounded-full text-[10px] w-fit">3.32$LZR</div> */}
                     </Marquee>
                   ) : (
-                    <div className="flex items-center gap-[4px] w-full">
-                      <p className=" text-xs font-bold text-white name-tag">
-                        {user?.accountId.slice(0, 16)}
-                      </p>
-                      <ExpandMore fontSize='small' />
-                          {/* <div className="bg-new-100 text-[#F3EC4E] text-medium py-1 px-2 rounded-full text-[10px] w-fit">3.82$LZR</div> */}
+                    <div className="flex flex-col items-left gap-[4px]">
+                      <div className="flex items-center gap-[4px] w-full">
+                        <p className=" text-xs font-bold text-white name-tag">
+                          {user?.accountId.slice(0, 16)}
+                        </p>
+                        <ExpandMore fontSize='small' />
+                      </div>
+                      <div className="flex items-center gap-2 bg-[#141922] text-[#F3EC4E] text-medium py-1 px-3 rounded-full text-[10px] w-fit">
+                        <img src='/coin.svg' alt='' className="w-[12px]" />
+                        {balanceInLzr} LZR
+                      </div>
+
                     </div>
                   )}
                 </>
@@ -136,18 +142,18 @@ export default function Right() {
               profileModal && (
                 <>
                   {/* onClick={() => (user ? navigate("/" + user.accountDomain) : null)}  */}
-                    <div ref={modalRef} className="absolute top-14 w-full bg-dark-900 rounded-[12px] overflow-hidden z-30" style={{ border: "2px solid rgba(83, 96, 121, 0.2)" }}>
+                  <div ref={modalRef} className="absolute top-14 w-full bg-dark-900 rounded-[12px] overflow-hidden z-30" style={{ border: "2px solid rgba(83, 96, 121, 0.2)" }}>
                     <div className="flex items-start justify-between py-3 px-4">
                       <p className="text-[13px] text-muted font-[600]">Balance:</p>
                       <div className="flex flex-col gap-1 items-right">
-                          <div className="text-[#F3EC4E] text-[12px]">{balanceInLzr} LZR</div>
-                          <div className="text-muted text-[10px]">~$ {balanceUsd}</div>
+                        <div className="text-[#F3EC4E] text-[12px]">{balanceInLzr} LZR</div>
+                        <div className="text-muted text-[10px]">~$ {balanceUsd}</div>
                       </div>
                     </div>
-                      <div className="py-3 px-4 bg-dark-700 text-[12px]" style={{ borderTop: "1px solid rgba(83, 96, 121, 0.2)" }} onClick={() => (user ? navigate("/" + user.accountDomain) : null)} >View my profile</div>
-                      <div className="py-3 px-4 bg-dark-700 text-[12px]" style={{ borderTop: "1px solid rgba(83, 96, 121, 0.2)" }}>Edit profile</div>
-                      <div className="py-3 px-4 bg-dark-700 text-[12px]" style={{ borderTop: "1px solid rgba(83, 96, 121, 0.2)" }}>My wallet</div>
-                      <div className="py-3 px-4 bg-dark-700 text-[12px]" style={{ borderTop: "1px solid rgba(83, 96, 121, 0.2)" }}>Log out</div>
+                    <div className="py-3 px-4 bg-dark-700 text-[12px]" style={{ borderTop: "1px solid rgba(83, 96, 121, 0.2)" }} onClick={() => (user ? navigate("/" + user.accountDomain) : null)} >View my profile</div>
+                    <div className="py-3 px-4 bg-dark-700 text-[12px]" style={{ borderTop: "1px solid rgba(83, 96, 121, 0.2)" }}>Edit profile</div>
+                    <div className="py-3 px-4 bg-dark-700 text-[12px]" style={{ borderTop: "1px solid rgba(83, 96, 121, 0.2)" }}>My wallet</div>
+                    <div className="py-3 px-4 bg-dark-700 text-[12px]" style={{ borderTop: "1px solid rgba(83, 96, 121, 0.2)" }}>Log out</div>
                   </div>
                 </>
               )}
