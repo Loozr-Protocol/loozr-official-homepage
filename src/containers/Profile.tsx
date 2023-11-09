@@ -228,7 +228,7 @@ const Profile = (props) => {
   };
 
   return (
-    <div className="w-full md:px-0 px-6 mb-20 ">
+    <div className="w-full md:px-0 px-6 mb-20 mt-3">
       {currentProfile ? (
         <>
           {currentProfile.isArtist && currentProfile.tokenName && (

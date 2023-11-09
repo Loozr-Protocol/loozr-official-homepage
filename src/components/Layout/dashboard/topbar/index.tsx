@@ -4,6 +4,7 @@ import { AppState } from "../../../../state/store";
 import { useBecomeArtisteCallback } from "../../../../state/artist/hooks";
 import { setPageLoaderStatus } from "../../../../state/misc";
 import { useLocation, useNavigate } from "react-router-dom";
+import Loozr from "../../../../assets/icons/loozr.svg";
 import SearchIcon from "../../../../assets/icons/search.svg";
 import LoozrGradient from "../../../../assets/icons/loozr-gradient.svg";
 import Notifi from "../../../../assets/svg/notifi.svg";
@@ -16,6 +17,7 @@ import { useSearchUserCallback } from "../../../../state/user/hooks/useAccount";
 import { getCoinPrice } from "../../../../state/artist/actions";
 import { getLZRBalanceCallback } from "../../../../state/wallet/hooks/fetchBalance";
 import { formatBalanceUSD, formatNumber, getFullDisplayBalance } from "../../../../utils/formatBalance";
+import { Link } from "react-router-dom";
 
 export const TopBar = () => {
   const navigate = useNavigate();
@@ -24,28 +26,28 @@ export const TopBar = () => {
   const user = useSelector((state: AppState) => state.user.userInfo);
   const { handleBecomeArtiste } = useBecomeArtisteCallback();
   const [searchValue, setSearchValue] = React.useState("")
-  // const lzrAccountId = `${user.accountId}.${MIXER_ACCOUNT}`;
-  // const [balanceInLzr, setLZRBalance] = useState("_");
+  const lzrAccountId = `${user.accountId}.${MIXER_ACCOUNT}`;
+  const [balanceInLzr, setLZRBalance] = useState("_");
   const [data, setData] = React.useState([] as any)
   const { getSearchUser } = useSearchUserCallback();
 
-  // useEffect(() => {
-  //   const loadLZRBalance = async (accountId: string) => {
-  //     const { handleGetLZRBalanace } = getLZRBalanceCallback();
-  //     try {
-  //       const result = await handleGetLZRBalanace(accountId);
-  //       const balanceResult = result;
-  //       const balanceBN = getFullDisplayBalance(balanceResult);
+  useEffect(() => {
+    const loadLZRBalance = async (accountId: string) => {
+      const { handleGetLZRBalanace } = getLZRBalanceCallback();
+      try {
+        const result = await handleGetLZRBalanace(accountId);
+        const balanceResult = result;
+        const balanceBN = getFullDisplayBalance(balanceResult);
 
-  //       setLZRBalance(formatNumber(Number(balanceBN)));
-  //       // setBalanceUSD(formatBalanceUSD(Number(balanceBN)));
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
+        setLZRBalance(formatNumber(Number(balanceBN)));
+        // setBalanceUSD(formatBalanceUSD(Number(balanceBN)));
+      } catch (err) {
+        console.log(err);
+      }
+    };
 
-  //   loadLZRBalance(lzrAccountId);
-  // }, []);
+    loadLZRBalance(lzrAccountId);
+  }, []);
 
   const OnchangeHandler = async (item: any) => {
     setSearchValue(item)
@@ -90,124 +92,123 @@ export const TopBar = () => {
 
 
   return (
-    <div className="w-full mb-6">
-      <div className="flex gap-[20px] px-0 sm:px-4 md:mr-6 items-center">
-        <div>
-          <p className="font-bold text-base md:text-[24px] text-white">
-            {getText()}
-          </p>
-        </div>
-        <div className="flex items-center gap-4">
-          <div className="hidden md:flex w-[250px] relative">
-            <input
-              type="text"
-              value={searchValue}
-              placeholder="Search artiste, fans… "
-              onChange={(e) => OnchangeHandler(e.target.value)}
-              className="placeholder:text-[#536079] w-full rounded-full h-[42px] text-xs font-medium"
-              style={{
-                paddingLeft: "3rem",
-                paddingRight: 16,
-                background: "#141922",
-                color: "white",
-              }}
-            />
-            <img src={SearchIcon} alt="" className="absolute w-4 h-4 object-contain inset-y-[12px] left-4" />
-            {searchValue && (
-              <div className=" absolute bg-[#12161F] top-[50px] overflow-y-auto max-h-[250px] z-[120] py-2 mt-2 rounded-lg px-4 w-full  ">
-                {data.map((item: any, index: any) => {
-                  const domainName = item.account_id + "." + MIXER_ACCOUNT;
+    <>
+      <div className="hidden md:block w-full mb-6">
+        <div className="flex gap-[20px] px-0 sm:px-4 md:mr-6 items-center">
+          <div>
+            <p className="font-bold text-base md:text-[24px] text-white">
+              {getText()}
+            </p>
+          </div>
+          <div className="flex items-center gap-4">
+            <div className="hidden md:flex w-[250px] relative">
+              <input
+                type="text"
+                value={searchValue}
+                placeholder="Search artiste, fans… "
+                onChange={(e) => OnchangeHandler(e.target.value)}
+                className="placeholder:text-[#536079] w-full rounded-full h-[42px] text-xs font-medium"
+                style={{
+                  paddingLeft: "3rem",
+                  paddingRight: 16,
+                  background: "#141922",
+                  color: "white",
+                }}
+              />
+              <img src={SearchIcon} alt="" className="absolute w-4 h-4 object-contain inset-y-[12px] left-4" />
+              {searchValue && (
+                <div className=" absolute bg-[#12161F] top-[50px] overflow-y-auto max-h-[250px] z-[120] py-2 mt-2 rounded-lg px-4 w-full  ">
+                  {data.map((item: any, index: any) => {
+                    const domainName = item.account_id + "." + MIXER_ACCOUNT;
 
-                  return (
-                    <div
-                      key={index}
-                      onClick={() => ClickHandler(`/${domainName}`)}
-                      className=" w-full cursor-pointer relative z-[120] flex my-3 items-center "
-                    >
-                      <Photo
-                        alt=""
-                        className="object-contain w-10 h-10 rounded-full "
-                        style={{ border: "3px solid #141922" }}
-                      />
-                      {/* <div className=' w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] ' /> */}
-                      <div className=" ml-3 ">
-                        <div className=" flex -mt-1 items-center ">
-                          <p className=" text-[13px] font-semibold ">
-                            {" "}
-                            {item?.account_id}
-                          </p>
-                        </div>
-                        <div className=" flex -mt-1 items-center ">
-                          <p className=" text-[11px] font-semibold text-[#536079] ">
-                            {domainName.slice(0, 30)}
-                          </p>
+                    return (
+                      <div
+                        key={index}
+                        onClick={() => ClickHandler(`/${domainName}`)}
+                        className=" w-full cursor-pointer relative z-[120] flex my-3 items-center "
+                      >
+                        <Photo
+                          alt=""
+                          className="object-contain w-10 h-10 rounded-full "
+                          style={{ border: "3px solid #141922" }}
+                        />
+                        {/* <div className=' w-10 h-10 rounded-full bg-red-600 border-[3px] border-[#222A3B] ' /> */}
+                        <div className=" ml-3 ">
+                          <div className=" flex -mt-1 items-center ">
+                            <p className=" text-[13px] font-semibold ">
+                              {" "}
+                              {item?.account_id}
+                            </p>
+                          </div>
+                          <div className=" flex -mt-1 items-center ">
+                            <p className=" text-[11px] font-semibold text-[#536079] ">
+                              {domainName.slice(0, 30)}
+                            </p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  );
-                })}
-                {searchValue && (
-                  <div
-                    className=" fixed inset-0 z-[90] "
-                    onClick={() => setSearchValue("")}
-                  />
-                )}
-              </div>
-            )}
-          </div>
-          <div className="h-8 w-[1px] bg-muted-50" />
-          <div className="relative">
-            <img src={Notifi} alt="" />
-            <p className=' rounded-full px-1.5 py-0.5 absolute bg-[#FF1744] top-0 right-0 text-[8px]'>3</p>
-          </div>
-          {/* <div className="h-8 w-[1px] bg-muted-50" />
+                    );
+                  })}
+                  {searchValue && (
+                    <div
+                      className=" fixed inset-0 z-[90] "
+                      onClick={() => setSearchValue("")}
+                    />
+                  )}
+                </div>
+              )}
+            </div>
+            <div className="h-8 w-[1px] bg-muted-50" />
+            <div className="relative">
+              <img src={Notifi} alt="" />
+              <p className=' rounded-full px-1.5 py-0.5 absolute bg-[#FF1744] top-0 right-0 text-[8px]'>3</p>
+            </div>
+            {/* <div className="h-8 w-[1px] bg-muted-50" />
           <div className="bg-[#141922] text-medium py-2.5 px-[13px] rounded-full w-fit flex gap-3 items-center" onClick={() => (user ? navigate("/wallet") : null)}>
             <img src='/coin.svg' alt='' className="w-[20px]" />
             <p className="text-[12px] text-[#F3EC4E] font-medium">
               {balanceInLzr} LZR
             </p>
           </div> */}
-        </div>
-        <div className="md:hidden flex items-center">
-          <p className="text-white pr-0.5 font-bold">~${LZR_IN_USD}/</p>
-          <img
-            src={LoozrGradient}
-            alt=""
-            className="pointer-cursor"
-            onClick={() => navigate("/feeds")}
-          />
-        </div>
-        <div className="md:hidden flex items-center">
-          {/*
-          <img
-            src={SearchWhiteIcon}
-            alt=""
-            className="ml-8"
-            width={17}
-            height={17}
-          /> */}
-          {!user?.isArtist ? (
-            <img
-              src={PlusIcon}
-              onClick={becomeArtist}
-              alt=""
-              className="pointer-cursor"
-              width={17}
-              height={17}
-            />
-          ) : null}
-          {user ? (
-            <img
-              src={UserIcon}
-              alt=""
-              className="ml-8 pointer-cursor"
-              onClick={() => navigate("/" + user.accountDomain)}
-              width={17}
-              height={17}
-            />
-          ) : null}
+          </div>
         </div>
       </div>
-    </div>
+      <div className="w-full mb-4 block md:hidden">
+        <div className="flex w-full px-[26px] items-center justify-between">
+          <div className="flex items-center gap-3">
+            {!user ? (
+              <Link to='/feeds'>
+                <img src={LoozrGradient} alt="" className={`h-12 w-12`} />
+              </Link>
+            ) : (
+              <div className="flex items-center gap-2 bg-[#141922] text-[#F3EC4E] text-medium py-1 px-3 rounded-full text-[16px] w-fit">
+                <img src='/coin.svg' alt='' className="w-[24px]" />
+                {balanceInLzr} LZR
+              </div>
+            )}
+            <div className="h-8 w-[1px] bg-muted-50" />
+            <div className="relative w-fit ">
+              <div className=" w-10 h-10 flex">
+                <Photo
+                  alt=""
+                  src={user?.photo}
+                  userId={user?.accountId}
+                  className="object-cover w-10 h-10 flex justify-center items-center rounded-full  "
+                  style={{ border: "3px solid #141922" }}
+                />
+              </div>
+              <img src={Verify} alt="" className="absolute bottom-0 right-0 w-4 " />
+            </div>
+          </div>
+          <div className="flex items-center">
+            <img src={SearchIcon} alt="" className="text-white w-4 h-4 object-contain inset-y-[12px] left-4" />
+            <div className="relative">
+              <img src={Notifi} alt="" />
+              <p className=' rounded-full px-1.5 py-0.5 absolute bg-[#FF1744] top-0 right-0 text-[8px]'>3</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };

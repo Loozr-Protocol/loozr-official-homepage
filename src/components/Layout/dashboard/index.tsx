@@ -96,7 +96,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   return (
-    <div className=" w-full flex md:bg-dark-800 flex-col justify-center items-center ">
+    <div className=" w-full flex flex-col justify-center items-center ">
       <div className="flex justify-between relative h-screen md:bg-[#0c0f16] w-full md:w-[768px] lg:w-full !overflow-hidden">
         <Left />
         <div className={`flex-1 pt-4 pb-10 md:px-0 md:pl-7 max-w-full lg:pr-0 !overflow-x-hidden md:mb-auto`}>
