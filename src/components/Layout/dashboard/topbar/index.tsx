@@ -5,6 +5,7 @@ import { useBecomeArtisteCallback } from "../../../../state/artist/hooks";
 import { setPageLoaderStatus } from "../../../../state/misc";
 import { useLocation, useNavigate } from "react-router-dom";
 import Loozr from "../../../../assets/icons/loozr.svg";
+import Verify from "../../../../assets/svg/verify.svg";
 import SearchIcon from "../../../../assets/icons/search.svg";
 import LoozrGradient from "../../../../assets/icons/loozr-gradient.svg";
 import Notifi from "../../../../assets/svg/notifi.svg";
