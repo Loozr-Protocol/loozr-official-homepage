@@ -7,6 +7,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Verify from "../../../../assets/svg/verify.svg";
 import SearchIcon from "../../../../assets/icons/search-white.svg";
 import LoozrGradient from "../../../../assets/icons/loozr-gradient.svg";
+import Bell from "../../../../assets/icons/bell.svg";
+import Menu from "../../../../assets/icons/menu.svg";
 import Notifi from "../../../../assets/svg/notifi.svg";
 import { MIXER_ACCOUNT } from "../../../../config/constants";
 import Photo from "../../../Photo";
@@ -184,12 +186,12 @@ export const TopBar = () => {
             )}
             <div className="h-8 w-[1px] bg-muted-50" />
             <div className="relative w-fit ">
-              <div className=" w-10 h-10 flex">
+              <div className=" w-12 h-12 flex">
                 <Photo
                   alt=""
                   src={user?.photo}
                   userId={user?.accountId}
-                  className="object-cover w-10 h-10 flex justify-center items-center rounded-full  "
+                  className="object-cover w-12 h-12 flex justify-center items-center rounded-full  "
                   style={{ border: "3px solid #141922" }}
                 />
               </div>
@@ -197,11 +199,12 @@ export const TopBar = () => {
             </div>
           </div>
           <div className="flex items-center gap-[24px]">
-            <img src={SearchIcon} alt="" className="text-white w-6 h-6 object-contain inset-y-[12px] left-4" />
+            <img src={SearchIcon} alt="" className="text-white w-5 h-5 object-contain inset-y-[12px] left-4" />
             <div className="relative">
-              <img src={Notifi} alt="" className="w-6" />
-              <p className=' rounded-full px-1.5 py-0.5 absolute bg-[#FF1744] top-0 right-0 text-[8px]'>3</p>
+              <img src={Bell} alt="" className="w-5" />
+              <p className=' rounded-full px-1.5 py-0.5 absolute bg-[#FF1744] top-[-5px] right-[-5px] text-[8px]'>3</p>
             </div>
+            <img src={Menu} alt="" className="text-white w-5 h-5 object-contain inset-y-[12px] left-4" />
           </div>
         </div>
       </div>
