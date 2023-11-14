@@ -20,10 +20,16 @@ const RenderTracks = (props) => {
           </p>
         </div>
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-5  gap-y-10">
-          {props.dataList.map((track, index) => (
-            <TrackCard key={index} track={track} />
-          ))}
+        <div className="flex flex-col w-full gap-[24px]">
+          <div className="w-full flex justify-between items-center">
+            <p className="font-bold text-[14px] text-white">Tracks you'd love</p>
+            <p className="text-[12px] text-muted">view all</p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6  gap-y-10">
+            {props.dataList.map((track, index) => (
+              <TrackCard key={index} track={track} />
+            ))}
+          </div>
         </div>
       )}
     </div>
