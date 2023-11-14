@@ -104,7 +104,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
             <TopBar />
             <div className="w-full md:-mt-2 ">
               <div className="w-full flex  flex-col md:flex-row md:justify-between md:items-start">
-                <div className="w-screen md:pl-0 md:pr-7 h-[90vh] overflow-y-auto ">
+                <div className="w-screen px-[16px] md:px-0 md:pl-0 md:pr-7 h-[90vh] overflow-y-auto ">
                   {children}
                 </div>
               </div>

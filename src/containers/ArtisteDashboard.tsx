@@ -111,7 +111,7 @@ const ArtisteDashboard = () => {
   }
 
   return (
-    <div className=" w-screen md:w-full flex flex-col ">
+    <div className=" w-full md:w-full flex flex-col ">
       <Carousel />
       <FeaturedArtistes />
       <div className="h-px w-full lg:w-full bg-muted-50 mt-4 mb-3" />

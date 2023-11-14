@@ -4,18 +4,13 @@ import { AppState } from "../../../../state/store";
 import { useBecomeArtisteCallback } from "../../../../state/artist/hooks";
 import { setPageLoaderStatus } from "../../../../state/misc";
 import { useLocation, useNavigate } from "react-router-dom";
-import Loozr from "../../../../assets/icons/loozr.svg";
 import Verify from "../../../../assets/svg/verify.svg";
-import SearchIcon from "../../../../assets/icons/search.svg";
+import SearchIcon from "../../../../assets/icons/search-white.svg";
 import LoozrGradient from "../../../../assets/icons/loozr-gradient.svg";
 import Notifi from "../../../../assets/svg/notifi.svg";
-import PlusIcon from "../../../../assets/icons/plus.svg";
-import UserIcon from "../../../../assets/icons/user.svg";
-import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
-import { LZR_IN_USD, MIXER_ACCOUNT } from "../../../../config/constants";
+import { MIXER_ACCOUNT } from "../../../../config/constants";
 import Photo from "../../../Photo";
 import { useSearchUserCallback } from "../../../../state/user/hooks/useAccount";
-import { getCoinPrice } from "../../../../state/artist/actions";
 import { getLZRBalanceCallback } from "../../../../state/wallet/hooks/fetchBalance";
 import { formatBalanceUSD, formatNumber, getFullDisplayBalance } from "../../../../utils/formatBalance";
 import { Link } from "react-router-dom";
@@ -25,9 +20,9 @@ export const TopBar = () => {
   const { pathname } = useLocation();
   const dispatch = useDispatch();
   const user = useSelector((state: AppState) => state.user.userInfo);
+  const lzrAccountId = `${user?.accountId}.${MIXER_ACCOUNT}`;
   const { handleBecomeArtiste } = useBecomeArtisteCallback();
   const [searchValue, setSearchValue] = React.useState("")
-  const lzrAccountId = `${user.accountId}.${MIXER_ACCOUNT}`;
   const [balanceInLzr, setLZRBalance] = useState("_");
   const [data, setData] = React.useState([] as any)
   const { getSearchUser } = useSearchUserCallback();
@@ -175,14 +170,14 @@ export const TopBar = () => {
         </div>
       </div>
       <div className="w-full mb-4 block md:hidden">
-        <div className="flex w-full px-[26px] items-center justify-between">
+        <div className="flex w-full px-[20px] items-center justify-between">
           <div className="flex items-center gap-3">
             {!user ? (
               <Link to='/feeds'>
                 <img src={LoozrGradient} alt="" className={`h-12 w-12`} />
               </Link>
             ) : (
-              <div className="flex items-center gap-2 bg-[#141922] text-[#F3EC4E] text-medium py-1 px-3 rounded-full text-[16px] w-fit">
+              <div className="flex items-center gap-2 bg-[#141922] text-[#F3EC4E] text-medium py-2 px-3 rounded-full text-[16px] w-fit">
                 <img src='/coin.svg' alt='' className="w-[24px]" />
                 {balanceInLzr} LZR
               </div>
@@ -201,10 +196,10 @@ export const TopBar = () => {
               <img src={Verify} alt="" className="absolute bottom-0 right-0 w-4 " />
             </div>
           </div>
-          <div className="flex items-center">
-            <img src={SearchIcon} alt="" className="text-white w-4 h-4 object-contain inset-y-[12px] left-4" />
+          <div className="flex items-center gap-[24px]">
+            <img src={SearchIcon} alt="" className="text-white w-6 h-6 object-contain inset-y-[12px] left-4" />
             <div className="relative">
-              <img src={Notifi} alt="" />
+              <img src={Notifi} alt="" className="w-6" />
               <p className=' rounded-full px-1.5 py-0.5 absolute bg-[#FF1744] top-0 right-0 text-[8px]'>3</p>
             </div>
           </div>
