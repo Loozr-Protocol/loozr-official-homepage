@@ -124,8 +124,8 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
           </div>
         </div>
         <Right />
-        {/* {isLoggedIn && (  */}
-        {/* <div className="flex items-center justify-between md:hidden z-50 fixed gap-3 bottom-0 inset-x-0 px-2 py-4  bg-dark-900 w-full">
+        {user && ( 
+        <div className="flex items-center justify-between md:hidden z-50 fixed gap-3 bottom-0 inset-x-0 px-2 py-4  bg-dark-900 w-full">
           {tabs.map((tab, index) => (
             <Link
               to={tab.path || "#!"}
@@ -149,12 +149,12 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
               </p>
             </Link>
           ))}
-        </div> */}
+        </div> )}
       </div>
-      <div className="w-full fixed bottom-0 left-0 block md:hidden bg-[#0C0F15] py-[22px] px-[27px]">
+      {/* <div className="w-full fixed bottom-0 left-0 block md:hidden bg-[#0C0F15] py-[22px] px-[27px]">
         <div className="flex items-center justify-between">
           {tabs.map((tab: any) => (
-            <Link className={`${tab.path === pathname && 'flex flex-col gap-[8px]'} flex flex-col gap-[8px] items-center justify-center text-[10px] cursor-pointer font-medium relative text-[#536079]`} to={tab.path || "#!"} key={tab.label} onClick={() => tab.path ? null : toast.info("Coming soon!", TOAST_OPTIONS)}>
+            <Link className={`${tab.path === pathname && 'flex flex-col gap-[6px]'} flex flex-col gap-[6px] items-center justify-center text-[10px] cursor-pointer font-medium relative text-[#536079]`} to={tab.path || "#!"} key={tab.label} onClick={() => tab.path ? null : toast.info("Coming soon!", TOAST_OPTIONS)}>
               <tab.icon className={`w-5 h-5 ${tab.path === pathname ? "text-white" : "text-[#536079]"}`} />
               <span className={`${tab.path === pathname && "text-white"}`}>
                 {tab.label}
@@ -162,9 +162,9 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
             </Link>
           ))}
         </div>
-      </div>
+      </div> */}
       {!user && (
-        <div className="absolute bottom-0 w-full bg-g-gradient py-2 px-10 flex justify-between items-center">
+        <div className="hidden md:flex absolute bottom-0 w-full bg-g-gradient py-2 px-10 justify-between items-center">
           <p className="font-medium text-white">Enabling everyone to #Listen2Earn per second, trade, and invest in creators & music tokens.</p>
           <div className="flex gap-6 items-center">
             <p className="rounded-full px-4 py-2 text-white bg-white/20" onClick={() => navigate("/login")}>

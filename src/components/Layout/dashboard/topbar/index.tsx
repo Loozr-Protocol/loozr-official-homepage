@@ -184,21 +184,30 @@ export const TopBar = () => {
                 {balanceInLzr} LZR
               </div>
             )}
-            <div className="h-8 w-[1px] bg-muted-50" />
-            <div className="relative w-fit ">
-              <div className=" w-12 h-12 flex">
-                <Photo
-                  alt=""
-                  src={user?.photo}
-                  userId={user?.accountId}
-                  className="object-cover w-12 h-12 flex justify-center items-center rounded-full  "
-                  style={{ border: "3px solid #141922" }}
-                />
-              </div>
-              <img src={Verify} alt="" className="absolute bottom-0 right-0 w-4 " />
-            </div>
+            {user && (
+              <>
+                <div className="h-8 w-[1px] bg-muted-50" />
+                <div className="relative w-fit ">
+                  <div className=" w-12 h-12 flex">
+                    <Photo
+                      alt=""
+                      src={user?.photo}
+                      userId={user?.accountId}
+                      className="object-cover w-12 h-12 flex justify-center items-center rounded-full  "
+                      style={{ border: "3px solid #141922" }}
+                    />
+                  </div>
+                  <img src={Verify} alt="" className="absolute bottom-0 right-0 w-4 " />
+                </div>
+              </>
+            )}
           </div>
           <div className="flex items-center gap-[24px]">
+            {!user && (
+              <button className="rounded-full h-[40px] w-fit px-4 bg-white text-dark-900 text-xs outline-none focus:outline-none" onClick={() => navigate("/login")}>
+                Sign in
+              </button>
+            )}
             {/* <img src={SearchIcon} alt="" className="text-white w-5 h-5 object-contain inset-y-[12px] left-4" /> */}
             {/* <div className="relative">
               <img src={Bell} alt="" className="w-5" />
