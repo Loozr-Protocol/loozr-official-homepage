@@ -30,13 +30,16 @@ import Library from "../../../assets/svg/Library";
 import Music from "../../../assets/svg/Music";
 import { Input } from "@chakra-ui/react";
 import Right from "./sidebars/Right";
+import Feeds from "../../../assets/svg/Feeds";
+import Speaker from "../../../assets/svg/Speaker";
+import Help from "../../../assets/svg/Help";
 
 const tabs = [
   {
-    icon: Explore,
-    label: "Explore",
+    icon: Feeds,
+    label: "Feeds",
     available: true,
-    path: "/explore",
+    path: "/feeds",
   },
   {
     icon: Artist,
@@ -45,10 +48,10 @@ const tabs = [
     path: "/artistes",
   },
   {
-    icon: Music,
+    icon: Speaker,
     label: "Tracks",
     available: true,
-    path: "/wallet",
+    path: "/tracks",
   },
   {
     icon: Wallet,
@@ -57,10 +60,17 @@ const tabs = [
     path: "/wallet",
   },
   {
-    icon: Library,
-    label: "Library",
-    available: true,
+    icon: Wallet,
+    label: "Airdrops",
+    available: false,
+    path: "",
   },
+  // {
+  //   icon: Help,
+  //   label: "Help",
+  //   available: false,
+  //   path: "https://docs.loozr.io/",
+  // },
 ];
 
 const Dashboard = ({ children }: { children: React.ReactNode }) => {
@@ -68,6 +78,8 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
   // const lg = useMediaQuery("(min-width:1024px)");
   const md = useMediaQuery("(min-width:768px)");
   const navigate = useNavigate();
+  const { pathname } = useLocation();
+
 
   const user = useSelector((state: AppState) => state.user.userInfo);
   const lzrAccountId = `${user?.accountId}.${MIXER_ACCOUNT}`;
@@ -138,6 +150,18 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
             </Link>
           ))}
         </div> */}
+      </div>
+      <div className="w-full fixed bottom-0 left-0 block md:hidden bg-[#0C0F15] py-[22px] px-[27px]">
+        <div className="flex items-center justify-between">
+          {tabs.map((tab: any) => (
+            <Link className={`${tab.path === pathname && 'flex flex-col gap-[8px]'} flex flex-col gap-[8px] items-center justify-center text-[10px] cursor-pointer font-medium relative text-[#536079]`} to={tab.path || "#!"} key={tab.label} onClick={() => tab.path ? null : toast.info("Coming soon!", TOAST_OPTIONS)}>
+              <tab.icon className={`w-5 h-5 ${tab.path === pathname ? "text-white" : "text-[#536079]"}`} />
+              <span className={`${tab.path === pathname && "text-white"}`}>
+                {tab.label}
+              </span>
+            </Link>
+          ))}
+        </div>
       </div>
       {!user && (
         <div className="absolute bottom-0 w-full bg-g-gradient py-2 px-10 flex justify-between items-center">
