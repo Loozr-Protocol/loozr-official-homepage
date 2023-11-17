@@ -47,7 +47,7 @@ export default function FeedsCard() {
                         <img src={MusicCover2} alt="" className='w-[230px] h-[230px] rounded-[14px]' />
                     </div>
                     <div className='flex items-center gap-4 w-full'>
-                        <BsHeart size={25} />
+                        <BsHeart size={20} />
                         <img src={Comment} alt="" className='w-[20px]' />
                         <img src={Retweet} alt="" className='w-[20px]' />
                         <img src={Share} alt="" className='w-[20px]' />
