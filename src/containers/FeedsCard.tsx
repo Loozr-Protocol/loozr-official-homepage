@@ -33,14 +33,15 @@ export default function FeedsCard() {
                 </div>
                 <div className='flex flex-col gap-5 items-left'>
                     <div className='flex flex-col md:flex-row md:items-center items-left justify-between gap-2 md:gap-4'>
-                        <div>
-                            <h2 className='font-[600] text-[14px] max-w-[270px]'>yobo_z <span className='text-muted'> bought</span> 0.143264 $DAVIDO <span className='font-[500]'> artist coins.</span></h2>
+                        <div className='flex flex-col gap-[4px]'>
+                            <h2 className='font-[700] text-[16px] max-w-[270px]'>yobo_z</h2>
+                            <span className='text-white text-[14px] font-light'>Bought 0.143264 $DAVIDO artist coins.</span>
                         </div>
-                        <div className='bg-[#141922] py-2 px-3 w-fit rounded-xl text-[10px] md:text-[12px]'>BUY COIN</div>
+                        <p className='text-muted text-[10px]'>5 mins ago</p>
                     </div>
                     <div className='flex items-center gap-4 '>
                         <div className="bg-new-100 text-[#F3EC4E] text-[12px] py-1 px-2 rounded-full">3.8732 $LZR</div>
-                        <p className='text-muted text-[10px]'>5 mins ago</p>
+                        <div className='bg-[#141922] py-2 px-3 w-fit rounded-xl text-[10px] md:text-[12px]'>BUY COIN</div>
                     </div>
                     <div className="flex items-center gap-4 overflow-x-auto md:overflow-x-none">
                         <img src={MusicCover1} alt="" className='w-[230px] h-[230px] rounded-[14px]' />

@@ -171,7 +171,7 @@ export const TopBar = () => {
           </div>
         </div>
       </div>
-      <div className="w-full mb-4 block md:hidden">
+      <div className="w-full mb-2 block md:hidden">
         <div className="flex w-full px-[20px] items-center justify-between">
           <div className="flex items-center gap-3">
             {!user ? (
