@@ -82,7 +82,7 @@ const Carousel = () => {
                 <motion.div
                   key={item}
                   className=" w-screen md:w-full h-full absolute inset-x-0 top-0 bg-no-repeat bg-cover bg-center pl-8 py-7 flex flex-col justify-end "
-                  style={{ background: `url(${item.img})`, backgroundColor: "#000", backgroundPosition: "cover" }}
+                  style={{ background: `url(${item.img})`, borderRadius: '24px', backgroundColor: "#000", backgroundPosition: "cover" }}
                   {...boxAnimation}
                 >
                   <div className=" bg-black bg-opacity-40 z-10 absolute inset-0 " />
