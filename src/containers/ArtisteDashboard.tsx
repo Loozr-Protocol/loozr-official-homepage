@@ -119,6 +119,15 @@ const ArtisteDashboard = () => {
       <FeedsCard />
       <FeedsCard />
       <FeedsCard />
+      <FeedsCard />
+      <FeedsCard />
+      <FeedsCard />
+      <FeedsCard />
+      <FeedsCard />
+      <FeedsCard />
+      <FeedsCard />
+      <FeedsCard />
+      <FeedsCard />
     </div>
   );
 };
