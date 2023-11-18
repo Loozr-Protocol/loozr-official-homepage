@@ -176,7 +176,7 @@ export const TopBar = () => {
           <div className="flex items-center gap-3">
             {!user ? (
               <Link to='/feeds'>
-                <img src={LoozrGradient} alt="" className={`h-12 w-12`} />
+                <img src={LoozrGradient} alt="" className={`h-10 w-10`} />
               </Link>
             ) : (
               <div className="flex items-center gap-2 bg-[#141922] text-[#F3EC4E] text-medium py-2 px-3 rounded-full text-[16px] w-fit">
@@ -204,9 +204,9 @@ export const TopBar = () => {
           </div>
           <div className="flex items-center gap-[24px]">
             {!user && (
-              <button className="rounded-full h-[40px] w-fit px-4 bg-white text-dark-900 text-xs outline-none focus:outline-none" onClick={() => navigate("/login")}>
+              <div className="flex items-center justify-center rounded-full h-[40px] w-fit px-4 bg-white text-dark-900 text-[12px] font-bold" onClick={() => navigate("/login")}>
                 Sign in
-              </button>
+              </div>
             )}
             {/* <img src={SearchIcon} alt="" className="text-white w-5 h-5 object-contain inset-y-[12px] left-4" /> */}
             {/* <div className="relative">
