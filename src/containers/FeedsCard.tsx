@@ -41,7 +41,7 @@ export default function FeedsCard() {
                     </div>
                     <div className='flex items-center gap-4 '>
                         <div className="bg-new-100 text-[#F3EC4E] text-[12px] py-1 px-2 rounded-full">3.8732 $LZR</div>
-                        <div className='bg-[#141922] py-2 px-3 w-fit rounded-xl text-[10px] md:text-[12px]'>BUY COIN</div>
+                        <div className='bg-[#141922] py-2 px-3 w-fit font-medium rounded-xl text-[10px] md:text-[12px]'>BUY COIN</div>
                     </div>
                     <div className="flex items-center gap-4 overflow-x-auto md:overflow-x-none">
                         <img src={MusicCover1} alt="" className='w-[230px] h-[230px] rounded-[14px]' />
