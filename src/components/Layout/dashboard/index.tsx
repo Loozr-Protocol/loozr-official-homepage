@@ -30,13 +30,13 @@ import Library from "../../../assets/svg/Library";
 import Music from "../../../assets/svg/Music";
 import { Input } from "@chakra-ui/react";
 import Right from "./sidebars/Right";
-import Feeds from "../../../assets/svg/Feeds";
+import Feeds2 from "../../../assets/svg/Feeds2";
 import Speaker from "../../../assets/svg/Speaker";
 import Help from "../../../assets/svg/Help";
 
 const tabs = [
   {
-    icon: Feeds,
+    icon: Feeds2,
     label: "Feeds",
     available: true,
     path: "/feeds",
@@ -116,7 +116,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
             <TopBar />
             <div className="w-full md:-mt-2 ">
               <div className="w-full flex flex-col md:flex-row md:justify-between md:items-start">
-                <div className="w-screen px-[16px] md:px-0 md:pl-0 md:pr-7 h-[90vh] overflow-y-auto ">
+                <div className="w-screen px-[8px] md:px-0 md:pl-0 md:pr-7 h-[90vh] overflow-y-auto ">
                   {children}
                 </div>
               </div>
@@ -125,43 +125,22 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
         </div>
         <Right />
         {user && (
-          <div className="flex items-center justify-between md:hidden z-50 fixed gap-3 bottom-0 inset-x-0 px-2 py-4  bg-dark-900 w-full">
+          <div className="flex items-end justify-between md:hidden z-50 fixed gap-3 bottom-0 inset-x-0 p-[24px] bg-dark-900 w-full">
             {tabs.map((tab, index) => (
               <Link
                 to={tab.path || "#!"}
                 key={index}
-                className={`hover:flex flex flex-col items-center justify-center ${tabs.length !== index + 1 && ""
-                  }`}
-                onClick={() =>
-                  // tab.path ? null : toast.info("Coming soon!", TOAST_OPTIONS)
-                  setShowMobileModal(true)
-                }
+                className={`hover:flex flex flex-col gap-[6px] items-center justify-center cursor-pointer text-[#536079] ${tabs.length !== index + 1 && "" }`}
+                onClick={() => tab.path ? null : toast.info("Coming soon!", TOAST_OPTIONS)}
               >
-                <tab.icon
-                  className={`object-contain w-3.5 h-3.5 mb-2 ${tab.path === pathname ? "text-white" : "text-[#536079]"
-                    }`}
-                />
-                <p
-                  className={`text-xs font-medium ${tab.path === pathname ? "text-white" : "text-[#536079]"
-                    }`}
-                >
+                <tab.icon className={`object-contain w-6 h-6 ${tab.path === pathname ? "text-white" : "text-[#536079]" }`} />
+                <p className={`text-[8px] font-medium ${tab.path === pathname ? "text-white" : "text-[#536079]" }`} > 
                   {tab.label}
                 </p>
               </Link>
             ))}
-          </div>)}
-      </div>
-      <div className="w-full fixed bottom-0 left-0 block md:hidden bg-[#0C0F15] py-[22px] px-[27px]">
-        <div className="flex items-center justify-between">
-          {tabs.map((tab: any) => (
-            <Link className={`${tab.path === pathname && 'flex flex-col gap-[6px]'} flex flex-col gap-[6px] items-center justify-center text-[8px] cursor-pointer font-medium relative text-[#536079]`} to={tab.path || "#!"} key={tab.label} onClick={() => tab.path ? null : toast.info("Coming soon!", TOAST_OPTIONS)}>
-              <tab.icon className={`w-7 h-7 ${tab.path === pathname ? "text-white" : "text-[#536079]"}`} />
-              <span className={`${tab.path === pathname && "text-white"}`}>
-                {tab.label}
-              </span>
-            </Link>
-          ))}
-        </div>
+          </div>
+          )}
       </div>
       {!user && (
         <div className="hidden md:flex absolute bottom-0 w-full bg-g-gradient py-2 px-10 justify-between items-center">
