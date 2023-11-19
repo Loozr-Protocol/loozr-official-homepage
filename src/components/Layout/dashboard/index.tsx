@@ -124,8 +124,8 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
           </div>
         </div>
         <Right />
-        {user && (
-          <div className="flex items-end justify-between md:hidden z-50 fixed gap-3 bottom-0 inset-x-0 p-[24px] bg-dark-900 w-full">
+        {/* {user && ( */}
+          <div className="flex items-end justify-between md:hidden z-50 fixed gap-3 bottom-0 inset-x-0 py-[20px] px-[24px] bg-dark-900 w-full">
             {tabs.map((tab, index) => (
               <Link
                 to={tab.path || "#!"}
@@ -133,14 +133,14 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
                 className={`hover:flex flex flex-col gap-[6px] items-center justify-center cursor-pointer text-[#536079] ${tabs.length !== index + 1 && "" }`}
                 onClick={() => tab.path ? null : toast.info("Coming soon!", TOAST_OPTIONS)}
               >
-                <tab.icon className={`object-contain w-6 h-6 ${tab.path === pathname ? "text-white" : "text-[#536079]" }`} />
+                <tab.icon className={`object-contain w-5 h-5 ${tab.path === pathname ? "text-white" : "text-[#536079]" }`} />
                 <p className={`text-[8px] font-medium ${tab.path === pathname ? "text-white" : "text-[#536079]" }`} > 
                   {tab.label}
                 </p>
               </Link>
             ))}
           </div>
-          )}
+          {/* )} */}
       </div>
       {!user && (
         <div className="hidden md:flex absolute bottom-0 w-full bg-g-gradient py-2 px-10 justify-between items-center">

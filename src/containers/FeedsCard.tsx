@@ -34,8 +34,8 @@ export default function FeedsCard() {
                 <div className='flex flex-col gap-5 items-left'>
                     <div className='flex flex-col md:flex-row md:items-center items-left justify-between gap-2 md:gap-4'>
                         <div className='flex flex-col gap-[4px]'>
-                            <h2 className='font-[700] text-[16px] max-w-[270px]'>yobo_z</h2>
-                            <span className='text-white text-[14px] font-light'>Bought 0.143264 $DAVIDO artist coins.</span>
+                            <h2 className='font-[700] text-[14px] max-w-[270px]'>yobo_z</h2>
+                            <span className='text-white text-[12px] font-light'>Bought 0.143264 $DAVIDO artist coins.</span>
                         </div>
                         <p className='text-muted text-[10px]'>5 mins ago</p>
                     </div>

@@ -171,16 +171,16 @@ export const TopBar = () => {
           </div>
         </div>
       </div>
-      <div className="w-full mb-2 block md:hidden">
-        <div className="flex w-full px-[20px] py-[12px] items-center justify-between">
+      <div className="w-full mb-2 block relative md:hidden">
+        <div className="flex w-full px-[20px] py-[12px] relative items-center justify-between">
           <div className="flex items-center gap-3">
             {!user ? (
               <Link to='/feeds'>
-                <img src={LoozrGradient} alt="" className={`h-10 w-10`} />
+                <img src={LoozrGradient} alt="" className={`h-8 w-8`} />
               </Link>
             ) : (
-              <div className="flex items-center gap-2 bg-[#141922] text-[#F3EC4E] text-medium py-2 px-3 rounded-full text-[16px] w-fit">
-                <img src='/coin.svg' alt='' className="w-[24px]" />
+              <div className="flex items-center gap-2 bg-[#141922] text-[#F3EC4E] text-medium py-2 px-3 rounded-full text-[13px] w-fit">
+                <img src='/coin.svg' alt='' className="w-[20px]" />
                 {balanceInLzr} LZR
               </div>
             )}
@@ -188,12 +188,12 @@ export const TopBar = () => {
               <>
                 <div className="h-8 w-[1px] bg-muted-50" />
                 <div className="relative w-fit ">
-                  <div className=" w-12 h-12 flex">
+                  <div className="w-10 h-10 flex">
                     <Photo
                       alt=""
                       src={user?.photo}
                       userId={user?.accountId}
-                      className="object-cover w-12 h-12 flex justify-center items-center rounded-full  "
+                      className="object-cover w-10 h-10 flex justify-center items-center rounded-full  "
                       style={{ border: "3px solid #141922" }}
                     />
                   </div>
