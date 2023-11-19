@@ -85,7 +85,7 @@ const Carousel = () => {
                   style={{ background: `url(${item.img})`, borderRadius: '24px', backgroundColor: "none", backgroundPosition: "cover" }}
                   {...boxAnimation}
                 >
-                  <div className=" bg-black bg-opacity-40 z-10 absolute inset-0 " />
+                  {/* <div className=" bg-black bg-opacity-40 z-10 absolute inset-0 " /> */}
                   <p className=" relative z-20 text-white " >
                     <span className="text-loozr-purple relative z-20 font-medium text-[13px]">
                       MUSIC
