@@ -49,7 +49,7 @@ const ArtisteDashboard = () => {
 
     return (
       <>
-        <div className="flex items-center md:px-0 mt-[3px] justify-between mb-[14px]">
+        <div className="flex items-center md:px-0 mt-[3px] justify-between mb-[14px] mx-[8px] md:mx-0">
           <p className="txt font-medium text-base md:text-[17px] text-white">
             Latest Artist Coins
           </p>
@@ -111,10 +111,10 @@ const ArtisteDashboard = () => {
   }
 
   return (
-    <div className="w-full mb-[43px] md:mb-0 flex flex-col ">
+    <div className="w-full mb-[43px]  md:mb-0 flex flex-col ">
       <Carousel />
       <FeaturedArtistes />
-      <div className="h-px w-full lg:w-full bg-muted-50 mt-4 mb-3" />
+      <div className="h-px w-full lg:w-full bg-muted-50 mt-4 mb-3 mx-[8px] md:mx-0" />
       <FeedsCard />
       <FeedsCard />
       <FeedsCard />
