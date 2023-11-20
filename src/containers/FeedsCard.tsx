@@ -15,7 +15,7 @@ export default function FeedsCard() {
     const user = useSelector((state: AppState) => state.user.userInfo);
 
     return (
-        <div className='my-2 mx-[8px] md:mx-0'>
+        <div className='my-2 mx-[16px] md:mx-0'>
             <div className='flex gap-4 items-start h-fit'>
                 <div className='flex flex-col items-center gap-4 h-full'>
                     <div className="relative w-fit ">
