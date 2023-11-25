@@ -53,7 +53,7 @@ const TrackCard = ({ track }: TrackProps) => {
       onMouseLeave={() => setIsShown(false)}
       className="flex flex-col h-auto relative cursor-pointer w-fit overflow-hidden max-w-[150px]"
     >
-      <img src={track.artwork} alt="" className="object-cover h-[150px] w-[150px] mb-[10px] overflow-hidden rounded-4" />
+      <img src={track.artwork} alt="" className="object-cover h-[150px] w-[150px] mb-[10px] overflow-hidden rounded-[10px]" />
 
       <div className="w-fit">
         <Marquee speed={50} loop={isShown ? 0 : -1} gradient={false}>
