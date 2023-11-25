@@ -44,35 +44,30 @@ const TrackCard = ({ track }: TrackProps) => {
   };
 
   return (
-    <motion.div
-      whileHover={{
+    <motion.div 
+    whileHover={{
         scale: 1.02,
         transition: { duration: 0.3 },
       }}
       onMouseEnter={() => setIsShown(true)}
       onMouseLeave={() => setIsShown(false)}
-      className="flex flex-col h-auto mr-3 min-w-[180px] relative cursor-pointer"
+      className="flex flex-col h-auto relative cursor-pointer w-fit overflow-hidden max-w-[150px]"
     >
-      <img
-        src={track.artwork}
-        alt=""
-        className="object-cover h-48 w-h-48 mb-[10px]"
-      />
-      <div className="w-full">
-        <Marquee
-          speed={50}
-          loop={isShown ? 0 : -1}
-          gradient={false}
-        >
-          <p className="mb-[3px] font-medium text-sm text-white">
+      <img src={track.artwork} alt="" className="object-cover h-[150px] w-[150px] mb-[10px] overflow-hidden rounded-4" />
+
+      <div className="w-fit">
+        <Marquee speed={50} loop={isShown ? 0 : -1} gradient={false}>
+          <p className="mb-[3px] font-medium text-[14px] text-white">
             {track.songTitle}
           </p>
         </Marquee>
       </div>
-      <p className="flex items-center gap-[4px] text-muted text-xs font-normal md:text-[14px] mt-[2px] md:font-normal">
+
+      <p className="flex items-center gap-[4px] text-[#536079] text-[12px] font-normal md:font-normal">
         {track.artistName}
         <img src={VerifiedBadge} alt="" className="w-4 h-4" />
       </p>
+
       {isShown && (
         <div className="absolute top-[40%] left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           {isCurrentlyPlaying() ? (

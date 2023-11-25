@@ -68,7 +68,7 @@ const ArtisteDashboard = () => {
               <div key={i} onMouseOver={() => Checking(i, _.creatorCoinId)} onMouseOut={() => Checking(-1, _.creatorCoinId)} onMouseEnter={() => handleMouseEnter(i)} onMouseLeave={() => handleMouseLeave(i)} className="relative flex flex-col items-center mr-[22px] md:h-fit min-w-max md:w-[105px]" >
                 <Link to={`/${_.user.accountDomain}`} className="relative">
                   <div className=" relative ">
-                    <Photo alt="" userId={_.user.accountId} className="object-cover h-[100px] text-4xl md:h-[105px] flex justify-center items-center w-[100px] md:w-[105px] rounded-full  mb-[16px]"
+                    <Photo alt="" userId={_.user.accountId} className="object-cover h-[80px] text-4xl md:h-[105px] flex justify-center items-center w-[80px] md:w-[105px] rounded-full  mb-[16px]"
                       style={{
                         border: "8.7px solid #141922",
                       }} />
@@ -111,7 +111,7 @@ const ArtisteDashboard = () => {
   }
 
   return (
-    <div className="w-full mb-[43px]  md:mb-0 flex flex-col ">
+    <div className="w-full mb-[43px] md:mb-0 flex flex-col ">
       <Carousel />
       <FeaturedArtistes />
       <div className="h-px w-full lg:w-full bg-muted-50 mt-4 mb-3 mx-[8px] md:mx-0" />

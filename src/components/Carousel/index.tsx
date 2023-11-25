@@ -92,9 +92,9 @@ const Carousel = () => {
                     </span>{" "}
                     <span className="text-xs relative z-20">/{item.month}</span>
                   </p>
-                  <p className="text-white relative z-20 font-semibold text-[17px] leading-7 max-w-[450px]">
+                  {/* <p className="text-white relative z-20 font-semibold text-[17px] leading-7 max-w-[450px]">
                     {item.details}
-                  </p>
+                  </p> */}
                 </motion.div>
               </a>
             }

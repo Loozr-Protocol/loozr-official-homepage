@@ -21,7 +21,7 @@ const RenderTracks = (props) => {
           </p>
         </div>
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-5  gap-y-10">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-col-5  gap-x-5 gap-y-10 w-full">
           {props.dataList.map((track, index) => (
             <TrackCard key={index} track={track} />
           ))}
