@@ -16,6 +16,8 @@ import { useSearchUserCallback } from "../../../../state/user/hooks/useAccount";
 import { getLZRBalanceCallback } from "../../../../state/wallet/hooks/fetchBalance";
 import { formatBalanceUSD, formatNumber, getFullDisplayBalance } from "../../../../utils/formatBalance";
 import { Link } from "react-router-dom";
+import { useDisclosure } from "@chakra-ui/react";
+import Sidebar from "../sidebars/sidebar";
 
 export const TopBar = () => {
   const navigate = useNavigate();
@@ -28,6 +30,8 @@ export const TopBar = () => {
   const [balanceInLzr, setLZRBalance] = useState("_");
   const [data, setData] = React.useState([] as any)
   const { getSearchUser } = useSearchUserCallback();
+
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
   useEffect(() => {
     const loadLZRBalance = async (accountId: string) => {
@@ -208,15 +212,11 @@ export const TopBar = () => {
                 Sign in
               </div>
             )}
-            {/* <img src={SearchIcon} alt="" className="text-white w-5 h-5 object-contain inset-y-[12px] left-4" /> */}
-            {/* <div className="relative">
-              <img src={Bell} alt="" className="w-5" />
-              <p className=' rounded-full px-1.5 py-0.5 absolute bg-[#FF1744] top-[-5px] right-[-5px] text-[8px]'>3</p>
-            </div> */}
-            <img src={Menu} alt="" className="text-white w-5 h-5 object-contain inset-y-[12px] left-4" />
+            <img onClick={() => onOpen()} src={Menu} alt="" className="text-white w-5 h-5 object-contain inset-y-[12px] left-4" />
           </div>
         </div>
       </div>
+      <Sidebar isOpen={isOpen} onClose={onClose} />
     </>
   );
 };

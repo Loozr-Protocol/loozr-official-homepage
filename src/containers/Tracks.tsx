@@ -21,11 +21,11 @@ const RenderTracks = (props) => {
         </div>
       ) : (
         <div className="flex flex-col w-full gap-[24px]">
-          <div className="w-full flex justify-between items-center">
+          <div className="w-full flex justify-between items-center px-[16px]">
             <p className="font-bold text-[14px] text-white">Tracks you'd love</p>
             <p className="text-[12px] text-muted">view all</p>
           </div>
-            <div className="grid grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-x-5 gap-y-10 gap-x-3 gap-y-8 w-full">
+          <div className="grid grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-x-5 gap-y-10 gap-x-3 gap-y-8 w-full px-4 md:px-0">
             {props.dataList.map((track, index) => (
               <TrackCard key={index} track={track} />
             ))}
