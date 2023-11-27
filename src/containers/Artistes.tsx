@@ -25,9 +25,9 @@ const ArtisteRenderer = (props) => {
 
   return (
     <div
-      onScroll={props.onScroll}
-      ref={props.listInnerRef}
-      style={{ height: "100vh", overflowY: "auto" }}
+      // onScroll={props.onScroll}
+      // ref={props.listInnerRef}
+      // style={{ height: "100vh", overflowY: "auto" }}
     >
       <div className="grid grid-cols-3 md:grid-cols-4 gap-y-8">
         {props.dataList.map((_, i) => (
@@ -102,8 +102,8 @@ const Artistes = () => {
   const artists = useSelector((state: AppState) => state.artist.artists);
 
   return (
-    <div className="w-full mt-8 md:mt-0 pb-28">
-      <p className="text-white text-[17px] leading-7 font-thin md:font-medium mb-7">
+    <div className="w-full mt-2 md:mt-0 pb-28">
+      <p className="text-white text-[14px] leading-7 mx-[16px] font-bold mb-7">
         Artistes
       </p>
       <Pagination

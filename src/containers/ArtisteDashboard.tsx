@@ -8,6 +8,7 @@ import { getArtists } from "../state/artist/actions";
 import Photo from "../components/Photo";
 import verified from "../assets/icons/verified.svg"
 import FeedsCard from "./FeedsCard";
+import { BsCaretUpFill } from "react-icons/bs";
 
 const ArtisteDashboard = () => {
   const dispatch = useDispatch();
@@ -86,15 +87,10 @@ const ArtisteDashboard = () => {
                     </p>
                   </div>
                 </div>
-                {/* <div className=" w-full px-[2px] ">
-                  <button onClick={() => navigate(`/artistes/buy/${_.user.id}`)}
-                    className={isShown === i
-                      ? " bg-[#8369F4] h-[35px] md:flex justify-center items-center font-medium hidden rounded-full w-[105px] mt-[12px] text-[11.5px]  "
-                      : "bg-[#141922] text-[11.5px]  h-[35px] md:flex justify-center items-center font-medium hidden rounded-full w-[105px] mt-[12px] "
-                    } >
-                    Buy coin
-                  </button>
-                </div> */}
+                <div className="flex items-center gap-2">
+                  <BsCaretUpFill size={15} color='#31D298'/>
+                  <p className="text-[#536079] text-[12px] font-medium ">4.093 LZR</p>
+                </div>
                 {hoverStates[i] && (
                   <>
                     <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-dark-700/20 backdrop-blur-sm">
