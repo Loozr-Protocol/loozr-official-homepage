@@ -235,12 +235,12 @@ const Profile = (props) => {
             <CreatorStatCard user={currentProfile} />
           )}
           <div className="flex md:flex-row flex-col mt-[32px] items-start mb-7">
-            <div className="h-fit relative md:w-auto w-fit flex md:justify-start justify-start md:mb-0 mb-8 ">
+            <div className="h-fit relative md:w-auto w-fit flex md:justify-start justify-start md:mb-0 mb-4 ">
               <Photo
                 alt={currentProfile.accountDomain}
                 userId={currentProfile.accountId}
                 src={currentProfile?.photo}
-                className="text-4xl min-h-[140px] max-h-[140px] min-w-[140px] max-w-[140px] object-cover rounded-full md:mr-3"
+                className="text-4xl md:min-h-[140px] md:max-h-[140px] md:min-w-[140px] md:max-w-[140px] w-24 h-24 object-cover rounded-full md:mr-3"
                 style={{ border: "8px solid #141922" }}
               />
 
@@ -248,7 +248,7 @@ const Profile = (props) => {
                 <img
                   src={VerifiedBadge}
                   alt=""
-                  className="absolute md:w-9 w-12 md:h-9 h-12 md:right-3 md:bottom-2 right-0 bottom-4"
+                  className="absolute md:w-9 w-6 md:h-9 h-6 md:right-3 md:bottom-2 right-0 bottom-4"
                 />
               )}
             </div>
@@ -288,8 +288,8 @@ const Profile = (props) => {
                 </div>
                 <CheckFollowerButton otheruser={currentProfile} user={user} />
                 {currentProfile?.id === user?.id ? (
-                  <div className="mr-10">
-                    <div onClick={() => push("/profile/edit")} className="py-[8px] px-[14px] text-[12px] text-dark-700 font-semibold bg-white rounded-full" >
+                  <div className="md:mr-10">
+                    <div onClick={() => push("/profile/edit")} className="py-[8px] px-[14px] text-[12px] w-fit text-dark-700 font-semibold bg-white rounded-full" >
                       Edit profile
                     </div>
                   </div>
@@ -445,12 +445,12 @@ const Profile = (props) => {
               <div className="flex items-start gap-3 mb-[15px]">
                 {currentProfile?.isArtist && currentProfile?.tokenName ? (
                   <>
-                    <button onClick={() => push(`/artistes/buy/${currentProfile?.id}`)} className="py-[10px] px-4 sm:px-6 md:px-8 text-sm font-medium cursor-pointer bg-loozr-purple rounded-full" >
+                    <div onClick={() => push(`/artistes/buy/${currentProfile?.id}`)} className="py-[10px] px-4 sm:px-6 md:px-8 text-[14px] font-medium cursor-pointer bg-loozr-purple rounded-full" >
                       Buy coin
-                    </button>
-                    <button onClick={() => push(`/artistes/sell/${currentProfile?.id}`)} className="py-[10px] px-4 sm:px-6 md:px-8 text-sm font-medium cursor-pointer border-[1px] border-dark-700 rounded-full" >
+                    </div>
+                    <div onClick={() => push(`/artistes/sell/${currentProfile?.id}`)} className="py-[10px] px-4 sm:px-6 md:px-8 text-[14px] font-medium cursor-pointer border-[1px] border-dark-700 rounded-full" >
                       Sell coin
-                    </button>
+                    </div>
                   </>
                 ) : null}
                 <div className="relative mx-2">

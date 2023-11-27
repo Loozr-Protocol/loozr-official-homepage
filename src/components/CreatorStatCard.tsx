@@ -51,7 +51,7 @@ export default function CreatorStatCard({ user }: { user: User }) {
   };
 
   return coinInfo ? (
-    <div style={{ background: "linear-gradient(58deg, rgba(20, 25, 34, 1) -12.45%, rgba(20, 25, 34, 0) 27.33%)" }}  className="w-full rounded-[40px] overflow-hidden px-3 md:p-8 min-h-[210px]">
+    <div style={{ background: "linear-gradient(58deg, rgba(20, 25, 34, 1) -12.45%, rgba(20, 25, 34, 0) 27.33%)" }} className="w-full rounded-[16px] md:rounded-[40px] overflow-hidden p-4 md:p-8 min-h-[210px]">
       <div className="grid grid-cols-1 md:flex">
         <div className="flex-1">
           <p className="font-medium text-xs text-muted mb-2 md:mb-[22px]">
@@ -60,7 +60,7 @@ export default function CreatorStatCard({ user }: { user: User }) {
           <p className="font-extrabold uppercase text-[22px] md:text-3xl text-white mb-6">
             ${user.tokenName}
           </p>
-          <div className="flex items-center justify-between mb-6 md:mb-auto">
+          <div className="flex flex-wrap items-center gap-2 justify-between mb-6 md:mb-auto">
             <div className="flex flex-col gap-1 items-left md:text-left">
               <p className="text-muted text-sm font-medium">Coin price</p>
               <p className="font-bold text-sm md:text-[18px] text-white text-left mb-0">

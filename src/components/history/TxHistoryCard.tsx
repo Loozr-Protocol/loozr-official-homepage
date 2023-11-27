@@ -18,12 +18,10 @@ export default function TxHistoryCard(props: TxHistoryProps) {
     return <span className="uppercase">{coinName + " "}</span>;
   };
 
-  console.log(props.hodler);
-
 
   return (
-    <div className="w-full flex items-center justify-between text-white mb-10 md:mb-6">
-      <div className="flex items-center">
+    <div className="w-max md:w-full flex items-center gap-6 justify-between text-white mb-8 md:mb-6 overflow-auto">
+      <div className="flex items-center w-fit">
         <div className=" w-fit ">
           <Photo
             alt=""
@@ -45,10 +43,10 @@ export default function TxHistoryCard(props: TxHistoryProps) {
                   Owns {props.hodler.balance.balance} $
                   {props.txType === TXTYPES[1] ?
                     <>
-                      {renderCoinName(props.coin)}
+                      {renderCoinName(props.coin)} {" "}
                     </> :
                     <>
-                      {renderCoinName(props.hodler.coin)}
+                      {renderCoinName(props.hodler.coin)} {" "}
                     </>}
                   {" "} coins
                 </>
@@ -68,10 +66,10 @@ export default function TxHistoryCard(props: TxHistoryProps) {
                   Owns {props.hodler.balance.balance} $
                   {props.txType === TXTYPES[1] ?
                     <>
-                      {renderCoinName(props.coin)}
+                      {renderCoinName(props.coin)} {" "}
                     </> :
                     <>
-                      {renderCoinName(props.hodler.coin)}
+                      {renderCoinName(props.hodler.coin)} {" "}
                     </>}
                   {" "} coins
                 </>
