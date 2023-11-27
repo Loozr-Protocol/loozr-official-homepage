@@ -191,7 +191,7 @@ export const TopBar = () => {
             {user && (
               <>
                 <div className="h-8 w-[1px] bg-muted-50" />
-                <div className="relative w-fit ">
+                <div className="relative w-fit" onClick={() => (user ? navigate("/" + user.accountDomain) : null)}>
                   <div className="w-10 h-10 flex">
                     <Photo
                       alt=""
