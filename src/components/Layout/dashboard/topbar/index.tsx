@@ -176,28 +176,28 @@ export const TopBar = () => {
         </div>
       </div>
       <div className="w-full mb-2 block relative md:hidden">
-        <div className="flex w-full px-[16px] py-[12px] relative items-center justify-between">
+        <div className="flex w-full px-[16px] py-[4px] relative items-center justify-between">
           <div className="flex items-center gap-3">
             {!user ? (
               <Link to='/feeds'>
-                <img src={LoozrGradient} alt="" className={`h-8 w-8`} />
+                <img src={LoozrGradient} alt="" className={`h-6 w-6`} />
               </Link>
             ) : (
-              <div className="flex items-center gap-2 bg-[#141922] text-[#F3EC4E] text-medium py-2 px-3 rounded-full text-[13px] w-fit">
-                <img src='/coin.svg' alt='' className="w-[20px]" />
+              <div className="flex items-center gap-2 bg-[#141922] text-[#F3EC4E] text-medium py-2 px-3 rounded-full text-[11px] w-fit">
+                <img src='/coin.svg' alt='' className="w-[18px]" />
                 {balanceInLzr} LZR
               </div>
             )}
             {user && (
               <>
-                <div className="h-8 w-[1px] bg-muted-50" />
+                <div className="h-7 w-[1px] bg-dark-700" />
                 <div className="relative w-fit" onClick={() => (user ? navigate("/" + user.accountDomain) : null)}>
-                  <div className="w-10 h-10 flex">
+                  <div className="w-8 h-8 flex">
                     <Photo
                       alt=""
                       src={user?.photo}
                       userId={user?.accountId}
-                      className="object-cover w-10 h-10 flex justify-center items-center rounded-full  "
+                      className="object-cover w-8 h-8 flex justify-center items-center rounded-full  "
                       style={{ border: "3px solid #141922" }}
                     />
                   </div>
@@ -206,13 +206,17 @@ export const TopBar = () => {
               </>
             )}
           </div>
-          <div className="flex items-center gap-[24px]">
+          <div className="flex items-center gap-[14px]">
             {!user && (
               <div className="flex items-center justify-center rounded-full h-[40px] w-fit px-4 bg-white text-dark-900 text-[12px] font-bold" onClick={() => navigate("/login")}>
                 Sign in
               </div>
             )}
-            <img onClick={() => onOpen()} src={Menu} alt="" className="text-white w-5 h-5 object-contain inset-y-[12px] left-4" />
+            <div className="relative" onClick={() => navigate("/notification")}>
+              <img src={Notifi} alt="" />
+              <p className=' rounded-full px-[7px] py-[2px] absolute bg-[#FF1744] top-1 right-0 text-medium text-[8px]'>3</p>
+            </div>
+            <img onClick={() => onOpen()} src={Menu} alt="" className="text-white w-4 h-4 object-contain inset-y-[12px] left-4" />
           </div>
         </div>
       </div>

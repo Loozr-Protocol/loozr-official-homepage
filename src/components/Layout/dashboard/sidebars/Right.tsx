@@ -86,7 +86,7 @@ export default function Right() {
 
   return (
     <>
-      <div className="bg-dark-900 flex flex-col items-start h-screen gap-6 py-2 hidden md:hidden lg:block lg:pr-10 md:pr-12 md:pl-6 xl:pr-[100px] xl:pl-3 pb-12 mb-5" style={{ width: xl ? `${drawerMaxWidth}vw` : md ? "300px" : 0, }}>
+      <div className="bg-dark-900 flex flex-col items-start h-screen gap-6 py-2 hidden lg:ml-4 md:hidden lg:block lg:pr-10 md:pr-12 md:pl-6 xl:pr-[100px] xl:pl-3 pb-12 mb-5" style={{ width: xl ? `${drawerMaxWidth}vw` : md ? "300px" : 0, }}>
         {!user ? (
           <div className=" flex items-center justify-left gap-x-2 w-full">
             {/* <button className="rounded-full h-[40px] px-8 bg-[#141922] outline-none focus:outline-none" onClick={() => navigate("/login")}>

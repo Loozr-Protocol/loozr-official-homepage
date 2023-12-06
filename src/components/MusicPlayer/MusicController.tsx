@@ -42,7 +42,7 @@ const MusicController = ({track}: MusicControllerProps) => {
     <>
       <div
         className="flex w-full md:w-auto md:h-auto h-[70px] md:rounded-[13px] md:py-0 items-center "
-        style={{
+        style={{ 
           background: "rgba(20, 25, 34, 0.65)",
           backdropFilter: "blur(12.5px)",
         }}

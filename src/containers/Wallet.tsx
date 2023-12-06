@@ -26,7 +26,7 @@ const Wallet = () => {
   const [balanceUsd, setBalanceUSD] = useState("_.__");
 
   const [copySuccess, setCopySuccess] = React.useState('');
-  
+
   useEffect(() => {
     const loadLZRBalance = async (accountId: string) => {
       const { handleGetLZRBalanace } = getLZRBalanceCallback();
@@ -45,14 +45,14 @@ const Wallet = () => {
     loadLZRBalance(lzrAccountId);
   }, []);
 
-  function copyToClipboard(item: any, text: any) { 
-      navigator.clipboard.writeText(item)
-      setCopySuccess(text);
-      const t1 = setTimeout(() => {
-          setCopySuccess('');
-          clearTimeout(t1); 
-      }, 2000); 
-  }; 
+  function copyToClipboard(item: any, text: any) {
+    navigator.clipboard.writeText(item)
+    setCopySuccess(text);
+    const t1 = setTimeout(() => {
+      setCopySuccess('');
+      clearTimeout(t1);
+    }, 2000);
+  };
 
   const renderHistory = useMemo(() => {
     switch (active) {
@@ -101,13 +101,7 @@ const Wallet = () => {
 
   return (
     <div className="w-full">
-      <div
-        style={{
-          background:
-            "linear-gradient(180deg, #12161F 0%, rgba(18, 22, 31, 0) 100%)",
-        }}
-        className="w-full  p-4 md:!py-8 rounded-t-[14px] md:!px-11 mb-7"
-      >
+      <div style={{ background: "linear-gradient(180deg, #12161F 0%, rgba(18, 22, 31, 0) 100%)", }} className="w-full p-4 md:!py-8 rounded-t-[24px] mb-7" >
         <div className="flex items-center rounded-t-[14px] justify-between mb-9">
           <p className="text-[17px] leading-7 font-medium md:font-medium text-white">
             My Wallet
@@ -129,7 +123,7 @@ const Wallet = () => {
         <div className="flex items-center mb-8 md:mb-9">
           <button
             onClick={() => navigate("/lzr/send")}
-            className="py-2.5 md:py-2.5 px-7 lg:px-auto lg:w-[130px] rounded-full bg-white text-black text-sm mr-4 font-semibold"
+            className="py-2.5 md:py-2.5 px-7 lg:px-auto rounded-full bg-white text-black text-sm mr-4 font-semibold"
           >
             Send $LZR
           </button>
@@ -156,9 +150,8 @@ const Wallet = () => {
       </div>
       <div className="w-full pb-2 mb-9 border-b-2 border-muted-50 flex items-center text-sm font-medium text-muted">
         <p
-          className={`mr-10 cursor-pointer ${
-            active === 1 ? "active-tab-bottom" : "text-muted font-medium"
-          }`}
+          className={`mr-10 cursor-pointer ${active === 1 ? "active-tab-bottom" : "text-muted font-medium"
+            }`}
           onClick={() => setActive(1)}
         >
           Coins bought
