@@ -13,7 +13,7 @@ const MusicPlayer = () => {
   const [progress, setProgress] = useState(0); // Progress of the current track
   const [isLoading, setIsLoading] = useState(false); // Loading state of the audio
 
-  console.log('Progress:', progress, 'Loading:', isLoading)
+  // console.log('Progress:', progress, 'Loading:', isLoading)
 
   const dispatch = useDispatch();
   const queue = useSelector((state: AppState) => state.tracks.queue);
@@ -32,17 +32,13 @@ const MusicPlayer = () => {
       // Define event listener functions
       const onTimeUpdate = () => {
         if (audioPlayer) {
-          const currentTime = audioPlayer.currentTime; // Get the current playback time
-          const duration = audioPlayer.duration; // Get the total duration of the audio
-          const progressBar = (currentTime / duration) * 100; // Calculate the progress as a percentage
-          console.log('Current Time:', currentTime, 'Progress:', progressBar);
+          const currentTime = audioPlayer.currentTime; 
+          const duration = audioPlayer.duration; 
+          const progressBar = (currentTime / duration) * 100;
+          // console.log('Current Time:', currentTime, 'Progress:', progressBar);
           setProgress(progressBar);
 
-          // Dispatch an action to update the current time in your Redux store
           dispatch(setCurrentTime(currentTime));
-
-          // If you have a progress state in your Redux store, you can also dispatch an action to update it
-          // dispatch(setProgress(progress));
         }
       };
 
