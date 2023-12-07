@@ -175,7 +175,7 @@ export const TopBar = () => {
           </div>
         </div>
       </div>
-      <div className="w-full mb-2 block relative md:hidden bg-[#141922]">
+      <div className="w-full mb-2 block relative md:hidden">
         <div className="flex w-full px-[16px] py-[4px] relative items-center justify-between">
           <div className="flex items-center gap-3">
             {!user ? (

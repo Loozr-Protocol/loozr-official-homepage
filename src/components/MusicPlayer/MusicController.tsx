@@ -46,7 +46,7 @@ const MusicController = ({ track, progress, isLoading }: MusicControllerProps) =
   return (
     <>
       <div className="flex w-full md:w-auto h-[60px] md:h-[70px] overflow-hidden md:rounded-[13px] md:py-0 items-center" style={{ background: "rgba(20, 25, 34, 0.65)", backdropFilter: "blur(12.5px)", }} >
-        <div className="md:!ml-0 ml-4 overflow-hidden w-[55px] h-[46px] md:w-[70px] md:h-[70px]">
+        <div className="md:!ml-0 ml-3 overflow-hidden w-[55px] h-[46px] md:w-[70px] md:h-[70px]">
           <img src={track.artwork} alt="" className="object-cover rounded-full md:rounded-r-none md:rounded-l-[13px] w-[55px] h-[46px] md:w-[70px] md:h-[70px]" />
         </div>
         <div className="py-2 px-3 bg-transparent md:w-auto w-full md:rounded-r-[13px] min-w-[220px] flex justify-between items-center">
@@ -59,13 +59,13 @@ const MusicController = ({ track, progress, isLoading }: MusicControllerProps) =
                 {track.artistName}  <img src={VerifiedBadge} alt="" className="w-4 h-4" />
               </p>
             </div>
-            <div className=" md:flex hidden relative w-[200px] ">
-              <div className="absolute bg-white top-0 left-0 ml-6 mr-8 h-[2px] rounded-lg " style={{ width: `${progress}%` }} />
-              <div className="bg-slate-600 ml-6 mr-8 w-full h-[2px] rounded-lg " />
+            <div className=" md:flex hidden relative w-[180px] mx-4">
+              <div className="absolute bg-white top-0 left-0 h-[2px] rounded-lg " style={{ width: `${progress}%` }} />
+              <div className="bg-slate-600 w-full h-[2px] rounded-lg " />
             </div>
-            <div className=" md:hidden flex relative w-[180px] mt-2">
-              <div className="absolute bg-white top-0 left-0 mr-8 h-[2px] rounded-lg " style={{ width: `${progress}%` }} />
-              <div className="bg-slate-600 mr-8 w-full h-[2px] rounded-lg " />
+            <div className=" md:hidden flex relative w-[180px] pr-3 md:pr-0 mt-2">
+              <div className="absolute bg-white top-0 left-0 h-[2px] rounded-lg " style={{ width: `${progress}%` }} />
+              <div className="bg-slate-600 w-full h-[2px] rounded-lg " />
             </div>
           </div>
           <div className="flex items-center mr-3">
