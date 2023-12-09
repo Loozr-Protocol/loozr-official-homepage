@@ -27,7 +27,7 @@ export const TopBar = () => {
   const lzrAccountId = `${user?.accountId}.${MIXER_ACCOUNT}`;
   const { handleBecomeArtiste } = useBecomeArtisteCallback();
   const [searchValue, setSearchValue] = React.useState("")
-  const [balanceInLzr, setLZRBalance] = useState("_");
+  const [balanceInLzr, setLZRBalance] = useState("0.00");
   const [data, setData] = React.useState([] as any)
   const { getSearchUser } = useSearchUserCallback();
 

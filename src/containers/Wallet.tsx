@@ -22,8 +22,8 @@ const Wallet = () => {
   const [active, setActive] = useState(1);
   const user = useSelector((state: AppState) => state.user.userInfo);
   const lzrAccountId = `${user.accountId}.${MIXER_ACCOUNT}`;
-  const [balanceInLzr, setLZRBalance] = useState("_");
-  const [balanceUsd, setBalanceUSD] = useState("_.__");
+  const [balanceInLzr, setLZRBalance] = useState("0.00");
+  const [balanceUsd, setBalanceUSD] = useState("0.00");
 
   const [copySuccess, setCopySuccess] = React.useState('');
 
@@ -129,7 +129,7 @@ const Wallet = () => {
           </button>
           <button
             onClick={() => toast.info("Coming soon!", TOAST_OPTIONS)}
-            className="py-2.5 md:py-2.5 px-7 lg:px-auto lg:w-[130px] rounded-full text-white text-sm font-semibold"
+            className="py-2.5 md:py-2.5 px-7 lg:px-auto rounded-full text-white text-sm mr-4 font-semibold"
             style={{ border: "1.5px solid #222A3B" }}
           >
             Buy $LZR

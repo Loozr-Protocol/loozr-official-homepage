@@ -44,6 +44,8 @@ import QRCode from "react-qr-code";
 import QrcodeModal from "../components/QrcodeModal";
 import QrcodeScanner from "../components/QrcodeScanner";
 import UserTracks from "../components/Tracks/UserTracks";
+import { InfoRounded } from "@mui/icons-material";
+import { Spinner } from "@chakra-ui/react";
 
 const Profile = (props) => {
   const push = useNavigate();
@@ -214,7 +216,10 @@ const Profile = (props) => {
   }, [active, currentProfile, coinInfo, user]);
 
   if (currentProfile && !currentProfile.accountId) {
-    return <div className="text-center mb-32">Profile Not Found!</div>;
+    return <div className="text-center h-[400px] flex flex-col justify-center items-center gap-4 italic">
+      <InfoRounded />
+      <p>Profile Not Found! or Error loading profile</p>
+    </div>;
   }
 
   const qrHandler = () => {
@@ -484,7 +489,7 @@ const Profile = (props) => {
                   )}
                 </div>
               </div>
-             
+
               {/* {currentProfile?.website && (
                 <div className=" flex items-center py-2 mb-4 ">
                   <img src={chain} alt="chain" className=" w-[12.39px] " />
@@ -533,9 +538,15 @@ const Profile = (props) => {
           {renderHistory}
         </>
       ) : errorLoadingProfile ? (
-        <div className="text-center">Profile Not Found!</div>
+        <div className="text-center h-[400px] flex flex-col justify-center items-center gap-4 italic">
+          <InfoRounded />
+          <p>Profile Not Found! or Error loading profile</p>
+        </div>
       ) : (
-        <div className="text-center">Loading Profile...</div>
+            <div className="text-center h-[400px] flex flex-col gap-3 justify-center items-center">
+              <Spinner />
+              Loading Profile...
+            </div>
       )}
       {qrCodeModal && (
         <QrcodeModal close={setQrCodeModal} userInfo={currentProfile} />

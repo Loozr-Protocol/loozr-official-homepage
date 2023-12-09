@@ -84,8 +84,8 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
   const user = useSelector((state: AppState) => state.user.userInfo);
   const lzrAccountId = `${user?.accountId}.${MIXER_ACCOUNT}`;
 
-  const [balanceInLzr, setLZRBalance] = useState('_');
-  const [balanceUsd, setBalanceUSD] = useState('_.__');
+  const [balanceInLzr, setLZRBalance] = useState('0.00');
+  const [balanceUsd, setBalanceUSD] = useState('0.00');
   const [showModal, setShowModal] = useState(false);
   const [showMobileModal, setShowMobileModal] = useState(false);
 
@@ -109,14 +109,14 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <div className=" w-full flex flex-col justify-center items-center ">
-      <div className="flex justify-between relative h-screen md:bg-[#0c0f16] w-full md:w-[768px] lg:w-full !overflow-hidden">
+      <div className="flex justify-between relative h-screen bg-[#0c0f16] w-full md:w-[768px] lg:w-full">
         <Left />
-        <div className={`md:flex-1 md:pt-4 mb-10 md:px-0  !pr-0 w-full w-full !overflow-x-hidden`}>
-          <div className="flex flex-col relative h-screen overflow-y-hidden items-center w-full !overflow-x-hidden">
+        <div className='md:flex-1 md:pt-4 mb-10 !pr-0 w-full !overflow-hidden'>
+          <div className="flex flex-col relative h-screen overflow-y-hidden items-center w-full">
             <TopBar />
             <div className="w-full md:-mt-2 !px-0 ">
               <div className="w-full flex flex-col !px-0 md:flex-row md:justify-between md:items-start">
-                <div className="w-screen w-full !px-0 md:px-0 md:pl-0 md:pr-7 h-[90vh] overflow-y-auto ">
+                <div className="w-screen w-full !px-0 md:px-0 md:pl-0 md:pr-7 h-[90vh] overflow-y-auto">
                   {children}
                 </div>
               </div>

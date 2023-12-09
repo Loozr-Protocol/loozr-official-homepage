@@ -30,8 +30,8 @@ export default function Right() {
   const user = useSelector((state: AppState) => state.user.userInfo);
   const lzrAccountId = `${user?.accountId}.${MIXER_ACCOUNT}`;
 
-  const [balanceInLzr, setLZRBalance] = useState('_');
-  const [balanceUsd, setBalanceUSD] = useState('_.__');
+  const [balanceInLzr, setLZRBalance] = useState('0.00');
+  const [balanceUsd, setBalanceUSD] = useState('0.00');
   const [showModal, setShowModal] = useState(false);
   const [isShown, setIsShown] = React.useState(false)
   const [showMobileModal, setShowMobileModal] = useState(false);
