@@ -30,8 +30,8 @@ export default function Right() {
   const user = useSelector((state: AppState) => state.user.userInfo);
   const lzrAccountId = `${user?.accountId}.${MIXER_ACCOUNT}`;
 
-  const [balanceInLzr, setLZRBalance] = useState('_');
-  const [balanceUsd, setBalanceUSD] = useState('_.__');
+  const [balanceInLzr, setLZRBalance] = useState('0.00');
+  const [balanceUsd, setBalanceUSD] = useState('0.00');
   const [showModal, setShowModal] = useState(false);
   const [isShown, setIsShown] = React.useState(false)
   const [showMobileModal, setShowMobileModal] = useState(false);
@@ -86,87 +86,95 @@ export default function Right() {
 
   return (
     <>
-      <div className="bg-dark-900 flex flex-col items-start h-screen gap-6 py-4 md:pr-20 md:pl-6 xl:pr-[100px] xl:pl-3 pb-12 mb-5" style={{ width: xl ? `${drawerMaxWidth}vw` : md ? "max-content" : 0, }}>
-        {!user ? (
-          <div className=" flex items-center justify-end gap-x-2 w-full">
-            {/* <button className="rounded-full h-[40px] px-8 bg-[#141922] outline-none focus:outline-none" onClick={() => navigate("/login")}>
+      <div className="bg-dark-900 lg:flex flex-col items-start justify-between h-screen gap-6 py-2 hidden lg:ml-4 md:hidden lg:block lg:pr-10 md:pr-12 md:pl-6 xl:pr-[100px] xl:pl-3 pb-12 mb-5" style={{ width: xl ? `${drawerMaxWidth}vw` : md ? "300px" : 0, }}>
+        <div className="flex flex-col gap-6">
+          {!user ? (
+            <div className=" flex items-center justify-left gap-x-2 w-full">
+              {/* <button className="rounded-full h-[40px] px-8 bg-[#141922] outline-none focus:outline-none" onClick={() => navigate("/login")}>
               Login
             </button> */}
-            <button className="rounded-full h-[40px] w-full px-8 bg-white text-dark-900 text-xs hidden lg:block outline-none focus:outline-none" onClick={() => navigate("/login")}>
-              Login account
-            </button>
-          </div>
-        ) : (
-          <div onClick={() => setProfileModal(true)} className="relative mt-1.5 flex w-full items-center cursor-pointer" onMouseOver={() => { Checking(true); }} onMouseOut={() => { Checking(false); }} >
-            <div className="relative w-fit ">
-              <div className=" w-10 h-10 flex">
-                <Photo
-                  alt=""
-                  src={user?.photo}
-                  userId={user?.accountId}
-                  className="object-cover w-10 h-10 flex justify-center items-center rounded-full  "
-                  style={{ border: "3px solid #141922" }}
-                />
+              <button className="rounded-full h-[40px] w-fit px-8 bg-white text-dark-900 text-xs hidden lg:block outline-none focus:outline-none" onClick={() => navigate("/login")}>
+                Login account
+              </button>
+            </div>
+          ) : (
+            <div onClick={() => setProfileModal(true)} className="relative mt-1.5 flex w-full items-center cursor-pointer" onMouseOver={() => { Checking(true); }} onMouseOut={() => { Checking(false); }} >
+              <div className="relative w-fit ">
+                <div className=" w-10 h-10 flex">
+                  <Photo
+                    alt=""
+                    src={user?.photo}
+                    userId={user?.accountId}
+                    className="object-cover w-10 h-10 flex justify-center items-center rounded-full  "
+                    style={{ border: "3px solid #141922" }}
+                  />
+                </div>
+                <img src={Verify} alt="" className="absolute bottom-0 right-0 w-4 " />
               </div>
-              <img src={Verify} alt="" className="absolute bottom-0 right-0 w-4 " />
-            </div>
-            <div className="hidden xl:block w-full pl-2 ">
-              {user?.accountId && (
-                <>
-                  {isShown ? (
-                    <Marquee speed={50} gradient={false}>
-                      <p className=" text-xs font-bold text-white name-tag">
-                        {user?.accountId}
-                      </p>
-                      <div className="bg-new-100 text-[#F3EC4E] text-medium py-1 px-2 rounded-full text-[10px] w-fit">3.32$LZR</div>
-                    </Marquee>
-                  ) : (
-                    <div className="flex items-center gap-[4px] w-full">
-                      <p className=" text-xs font-bold text-white name-tag">
-                        {user?.accountId.slice(0, 16)}
-                      </p>
-                      <ExpandMore fontSize='small' />
-                          <div className="bg-new-100 text-[#F3EC4E] text-medium py-1 px-2 rounded-full text-[10px] w-fit">3.82$LZR</div>
-                    </div>
-                  )}
-                </>
-              )}
-            </div>
-            {
-              profileModal && (
-                <>
-                  {/* onClick={() => (user ? navigate("/" + user.accountDomain) : null)}  */}
-                    <div ref={modalRef} className="absolute top-14 w-full bg-dark-900 rounded-[12px] overflow-hidden" style={{ border: "2px solid rgba(83, 96, 121, 0.2)" }}>
-                    <div className="flex items-start justify-between p-3">
-                      <p className="txt text-muted font-[600]">Total Wallet:</p>
-                      <div className="flex flex-col gap-1 items-right">
-                        <div className="text-[#F3EC4E] text-[12px]">3.32$LZR</div>
-                        <div className="text-muted text-[10px]">~$102.3232</div>
+              <div className="hidden md:block xl:block w-full pl-3 ">
+                {user?.accountId && (
+                  <>
+                    {isShown ? (
+                      <Marquee speed={50} gradient={false}>
+                        <p className=" text-xs font-bold text-white name-tag">
+                          {user?.accountId}
+                        </p>
+                        {/* <div className="bg-new-100 text-[#F3EC4E] text-medium py-1 px-2 rounded-full text-[10px] w-fit">3.32$LZR</div> */}
+                      </Marquee>
+                    ) : (
+                      <div className="flex flex-col items-left gap-[4px]">
+                        <div className="flex items-center gap-[4px] w-full">
+                          <p className=" text-xs font-bold text-white name-tag">
+                            {user?.accountId.slice(0, 16)}
+                          </p>
+                          <ExpandMore fontSize='small' />
+                        </div>
+                        <div className="flex items-center gap-2 bg-[#141922] text-[#F3EC4E] text-medium py-1 px-3 rounded-full text-[10px] w-fit">
+                          <img src='/coin.svg' alt='' className="w-[12px]" />
+                          {balanceInLzr} LZR
+                        </div>
+
                       </div>
+                    )}
+                  </>
+                )}
+              </div>
+              {
+                profileModal && (
+                  <>
+                    {/* onClick={() => (user ? navigate("/" + user.accountDomain) : null)}  */}
+                    <div ref={modalRef} className="absolute top-14 w-full bg-dark-900 rounded-[12px] overflow-hidden z-30" style={{ border: "2px solid rgba(83, 96, 121, 0.2)" }}>
+                      <div className="flex items-start justify-between py-3 px-4">
+                        <p className="text-[13px] text-muted font-[600]">Balance:</p>
+                        <div className="flex flex-col gap-1 items-right">
+                          <div className="text-[#F3EC4E] text-[12px]">{balanceInLzr} LZR</div>
+                          <div className="text-muted text-[10px]">~$ {balanceUsd}</div>
+                        </div>
+                      </div>
+                      <div className="py-3 px-4 bg-dark-700 text-[12px]" style={{ borderTop: "1px solid rgba(83, 96, 121, 0.2)" }} onClick={() => (user ? navigate("/" + user.accountDomain) : null)} >View my profile</div>
+                      <div className="py-3 px-4 bg-dark-700 text-[12px]" style={{ borderTop: "1px solid rgba(83, 96, 121, 0.2)" }}>Edit profile</div>
+                      <div className="py-3 px-4 bg-dark-700 text-[12px]" style={{ borderTop: "1px solid rgba(83, 96, 121, 0.2)" }}>My wallet</div>
+                      <div className="py-3 px-4 bg-dark-700 text-[12px]" style={{ borderTop: "1px solid rgba(83, 96, 121, 0.2)" }}>Log out</div>
                     </div>
-                      <div className="p-3 bg-dark-700" style={{ borderTop: "2px solid rgba(83, 96, 121, 0.2)" }} onClick={() => (user ? navigate("/" + user.accountDomain) : null)} >View my profile</div>
-                      <div className="p-3 bg-dark-700" style={{ borderTop: "2px solid rgba(83, 96, 121, 0.2)" }}>Edit profile</div>
-                      <div className="p-3 bg-dark-700" style={{ borderTop: "2px solid rgba(83, 96, 121, 0.2)" }}>My wallet</div>
-                      <div className="p-3 bg-dark-700" style={{ borderTop: "2px solid rgba(83, 96, 121, 0.2)" }}>Log out</div>
-                  </div>
-                </>
-              )}
-          </div>
-        )}
-        <div className="h-px w-full lg:w-full bg-muted-50 mt-[-10px] mb-3" />
-        <div className="w-full flex flex-col mt-8">
-          <div className="flex flex-col gap-3">
-            <p className="text-xs font-semibold text-muted">Coming to Loozr! </p>
-            <p className="text-xs text-white">Snoop Dogg, Burna Boy plus 15K+ Artist profiles reserved.</p>
-            <div className="w-full flex items-center justify-between p-3 rounded-[18px] bg-dark-700">
-              <img src={userComing} alt='' className="w-[120px]" />
-              <More />
+                  </>
+                )}
             </div>
+          )}
+          {/* <div className="h-px w-full lg:w-full bg-muted-50 mt-[-10px] mb-3" /> */}
+          <div className="w-full flex flex-col mt-2">
+            <div className="flex flex-col gap-3">
+              <p className="text-xs font-normal text-muted">Coming to Loozr! </p>
+              <p className="text-xs text-white font-medium">Snoop Dogg, Burna Boy plus 15K+ Artist profiles reserved.</p>
+              <div className="w-full flex items-center justify-between p-3 rounded-[18px] bg-dark-700">
+                <img src={userComing} alt='' className="w-[120px]" />
+                <More />
+              </div>
+            </div>
+            <div className="h-px w-full lg:w-full bg-muted-50 mt-4 mb-3" />
+            <SuggestedFollows modal={setShowModal} />
           </div>
-          <div className="h-px w-full lg:w-full bg-muted-50 mt-4 mb-3" />
-          <SuggestedFollows modal={setShowModal} />
         </div>
-        <div className="flex flex-col gap-[18px] h-screen justify-end w-full">
+        <div className="flex flex-col gap-[18px] justify-end w-full">
           <p className="text-[13px] font-medium leading-5 text-muted">
             Coming Soon
           </p>
@@ -181,9 +189,9 @@ export default function Right() {
             <p className="text-[12px] font-medium leading-5 text-muted">
               Terms & Policies
             </p>
-            <p className="text-[12px] font-medium leading-5 text-muted">
+            {/* <p className="text-[12px] font-medium leading-5 text-muted">
               Coming Soon
-            </p>
+            </p> */}
           </div>
         </div>
       </div>

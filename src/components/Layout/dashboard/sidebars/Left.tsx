@@ -15,6 +15,7 @@ import { useBecomeArtisteCallback } from "../../../../state/artist/hooks";
 import { setPageLoaderStatus } from "../../../../state/misc";
 import SongUploadDialog from "../../../../components/SongTokenization/SongUploadDialog";
 import Speaker from "../../../../assets/svg/Speaker";
+import Help from "../../../../assets/svg/Help";
 import Airdrop from "../../../../assets/svg/Airdrop";
 
 export const drawerMinWidth = 280;
@@ -46,10 +47,16 @@ const tabs = [
     path: "/wallet",
   },
   {
-    icon: Airdrop,
+    icon: Wallet,
     label: "Airdrops",
     available: false,
     path: "",
+  },
+  {
+    icon: Help,
+    label: "Help",
+    available: false,
+    path: "https://docs.loozr.io/",
   },
 ];
 
@@ -81,7 +88,7 @@ export const Left = () => {
 
 
   return (
-    <div className={`bg-dark-900 flex flex-col items-start h-screen md:pl-20 xl:pl-[150px] pr-auto md:pr-6 xl:pr-6 pt-8 pb-12 mb-5`}
+    <div className={`bg-dark-900 flex flex-col items-start hidden md:block h-screen md:pl-20 xl:pl-[150px] pr-auto md:pr-6 xl:pr-6 pt-8 pb-12 mb-5`}
       style={{ width: xl ? `${drawerMaxWidth}vw` : md ? "max-content" : 0, }}>
       {xl ? (
         <img src={LoozrBeta} alt="" className={`w-28 mb-7`} />
