@@ -88,11 +88,18 @@ const MusicPlayer = () => {
 
   useEffect(() => {
     if (currentTrackIndex !== -1) {
-      if (audioPlayer) {
-        audioPlayer.pause();
+      let audio;
+      if (!audioPlayer) {
+        audio = new Audio();
+        setAudioPlayer(audio);
+      } else {
+        audio = audioPlayer;
       }
 
-      const audio = new Audio(queue[currentTrackIndex].songUrl);
+      // const audio = new Audio(queue[currentTrackIndex].songUrl);
+      audio.src = queue[currentTrackIndex].songUrl;
+      audio.load();
+
       audio.addEventListener("ended", () => {
         dispatch(setIsPlaying(false));
         if (currentTrackIndex + 1 < queue.length) {
@@ -104,12 +111,22 @@ const MusicPlayer = () => {
           dispatch(setCurrentTime(0));
         }
       });
+
+      if (isPlaying) {
+        audio.play().catch((e) => console.error("Playback failed", e));
+      }
+
       audio.addEventListener("timeupdate", () => {
         dispatch(setCurrentTime(audio.currentTime));
       });
       setAudioPlayer(audio);
+
+      audio.addEventListener('error', (e) => {
+        console.error('Audio playback error:', e);
+      });
+
     }
-  }, [currentTrackIndex, dispatch, queue]);
+  }, [currentTrackIndex, dispatch, queue, audioPlayer, isPlaying]);
 
   return (
     <>
