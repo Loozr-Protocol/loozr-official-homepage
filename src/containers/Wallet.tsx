@@ -100,7 +100,7 @@ const Wallet = () => {
   }, [active]);
 
   return (
-    <div className="w-full">
+    <div className="w-full px-2 md:!px-0">
       <div style={{ background: "linear-gradient(180deg, #12161F 0%, rgba(18, 22, 31, 0) 100%)", }} className="w-full p-4 md:!py-8 rounded-t-[24px] mb-7" >
         <div className="flex items-center rounded-t-[14px] justify-between mb-9">
           <p className="text-[17px] leading-7 font-medium md:font-medium text-white">

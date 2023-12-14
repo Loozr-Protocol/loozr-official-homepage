@@ -78,6 +78,7 @@ export const TopBar = () => {
     '/tracks': 'Tracks',
     '/wallet': 'Wallet',
     '/airdrops': 'Airdrops',
+    '/notifications': 'Notifications',
   };
 
   const getText = () => {
@@ -176,7 +177,7 @@ export const TopBar = () => {
         </div>
       </div>
       <div className="w-full mb-2 block relative md:hidden">
-        <div className="flex w-full px-[16px] py-[4px] relative items-center justify-between">
+        <div className="flex w-full px-[16px] py-[6px] relative items-center justify-between">
           <div className="flex items-center gap-3">
             {!user ? (
               <Link to='/feeds'>
@@ -212,7 +213,7 @@ export const TopBar = () => {
                 Sign in
               </div>
             )}
-            <div className="relative" onClick={() => navigate("/notification")}>
+            <div className="relative" onClick={() => navigate("/notifications")}>
               <img src={Notifi} alt="" />
               <p className=' rounded-full px-[7px] py-[2px] absolute bg-[#FF1744] top-1 right-0 text-medium text-[8px]'>3</p>
             </div>
