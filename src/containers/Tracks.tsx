@@ -11,7 +11,7 @@ const RenderTracks = (props) => {
     <div
       onScroll={props.onScroll}
       ref={props.listInnerRef}
-      style={{ height: "100vh", overflowY: "auto" }}
+      style={{ height: "100vh"}}
     >
       {props.dataList.length === 0 ? (
         <div className=" w-full py-5 rounded-lg mb-32 bg-[#10141C] bg-opacity-50 md:backdrop:mb-12 ">

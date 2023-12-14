@@ -96,10 +96,10 @@ export default function Sidebar({ isOpen, onClose }) {
                                         </div>
                                     )}
                                 </div>
-                                <div className="relative">
+                                {/* <div className="relative">
                                     <img src={Notifi} alt="" />
                                     <p className=' rounded-full px-1.5 py-0.5 absolute bg-[#FF1744] top-0 right-0 text-[8px]'>3</p>
-                                </div>
+                                </div> */}
                             </Flex>
                             <VStack w='full' align='left' pt='40px'>
                                 <Flex w='full' align='center' justify='space-between'>
