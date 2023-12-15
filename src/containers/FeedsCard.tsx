@@ -8,7 +8,7 @@ import MusicCover2 from '../assets/img/artists/hb.png'
 import Comment from '../assets/svg/comment.svg'
 import Retweet from '../assets/svg/retweet.svg'
 import Share from '../assets/svg/share.svg'
-import { BsHeart } from 'react-icons/bs';
+import { BsHeart, BsHeartFill } from 'react-icons/bs';
 import Play from "../assets/svg/controls/play.svg";
 import Pause from "../assets/svg/controls/pause.svg";
 
@@ -16,6 +16,7 @@ export default function FeedsCard() {
 
     const user = useSelector((state: AppState) => state.user.userInfo);
     const [playButton, setPlayButton] = useState(false)
+    const [like, setLike] = useState(false)
 
     return (
         <div className='my-2 ml-[16px] md:!ml-0 w-full'>
@@ -111,7 +112,15 @@ export default function FeedsCard() {
                         <div className="flex-shrink-0 w-4 md:w-0"></div>
                     </div>
                     <div className='flex items-center gap-4 w-full'>
-                        <BsHeart size={20} />
+                        {like ? (
+                            <div onClick={() => setLike(false)}>
+                                <BsHeartFill size={20} color='#FF1744' />
+                            </div>
+                        ) : (
+                            <div onClick={() => setLike(true)}>
+                                    <BsHeart size={20} />
+                            </div>
+                        )}
                         <img src={Comment} alt="" className='w-[20px]' />
                         <img src={Retweet} alt="" className='w-[20px]' />
                         <img src={Share} alt="" className='w-[20px]' />
