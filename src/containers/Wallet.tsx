@@ -100,7 +100,7 @@ const Wallet = () => {
   }, [active]);
 
   return (
-    <div className="w-full px-2 md:!px-0">
+    <div className="w-full px-3 mt-3 md:!px-0">
       <div style={{ background: "linear-gradient(180deg, #12161F 0%, rgba(18, 22, 31, 0) 100%)", }} className="w-full p-4 md:!py-8 rounded-t-[24px] mb-7" >
         <div className="flex items-center rounded-t-[14px] justify-between mb-9">
           <p className="text-[17px] leading-7 font-medium md:font-medium text-white">
@@ -120,16 +120,16 @@ const Wallet = () => {
         <p className="font-light text-sm md:font-medium text-white mb-4 md:mb-8">
           ≈ ${balanceUsd} USD
         </p>
-        <div className="flex items-center mb-8 md:mb-9">
+        <div className="flex gap-4 w-full items-center mb-7 md:mb-9">
           <button
             onClick={() => navigate("/lzr/send")}
-            className="py-2.5 md:py-2.5 px-7 lg:px-auto rounded-full bg-white text-black text-sm mr-4 font-semibold"
+            className="py-2.5 px-6 lg:px-auto rounded-full bg-white text-black text-[12px] md:text-[14px] font-semibold"
           >
             Send $LZR
           </button>
           <button
             onClick={() => toast.info("Coming soon!", TOAST_OPTIONS)}
-            className="py-2.5 md:py-2.5 px-7 lg:px-auto rounded-full text-white text-sm mr-4 font-semibold"
+            className="py-2.5 px-6 lg:px-auto rounded-full text-white text-[12px] md:text-[14px] font-semibold"
             style={{ border: "1.5px solid #222A3B" }}
           >
             Buy $LZR

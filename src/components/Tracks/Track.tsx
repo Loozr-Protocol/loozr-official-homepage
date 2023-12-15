@@ -63,10 +63,14 @@ const TrackCard = ({ track }: TrackProps) => {
         </Marquee>
       </div>
 
-      <p className="flex items-center gap-[4px] text-[#536079] text-[12px] font-normal md:font-normal">
+      <p className="flex items-center uppercase gap-[4px] text-[#536079] text-[12px] font-normal md:font-normal">
+        ${track.tokenName}
+        {/* <img src={VerifiedBadge} alt="" className="w-4 h-4" /> */}
+      </p>
+      {/* <p className="flex items-center gap-[4px] text-[#536079] text-[12px] font-normal md:font-normal">
         {track.artistName}
         <img src={VerifiedBadge} alt="" className="w-4 h-4" />
-      </p>
+      </p> */}
 
       {isShown && (
         <div className="absolute grid place-items-center top-[-30px] left-0 w-full h-full">
