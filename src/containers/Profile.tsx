@@ -233,7 +233,7 @@ const Profile = (props) => {
   };
 
   return (
-    <div className="w-full md:px-0 px-6 mb-20 mt-3">
+    <div className="w-full md:px-0 px-3 mb-20 mt-3">
       {currentProfile ? (
         <>
           {currentProfile.isArtist && currentProfile.tokenName && (
@@ -543,10 +543,10 @@ const Profile = (props) => {
           <p>Profile Not Found! or Error loading profile</p>
         </div>
       ) : (
-            <div className="text-center h-[400px] flex flex-col gap-3 justify-center items-center">
-              <Spinner />
-              Loading Profile...
-            </div>
+        <div className="text-center h-[400px] flex flex-col gap-3 justify-center items-center">
+          <Spinner />
+          Loading Profile...
+        </div>
       )}
       {qrCodeModal && (
         <QrcodeModal close={setQrCodeModal} userInfo={currentProfile} />

@@ -25,26 +25,26 @@ const ArtisteRenderer = (props) => {
 
   return (
     <div
-      // onScroll={props.onScroll}
-      // ref={props.listInnerRef}
-      // style={{ height: "100vh", overflowY: "auto" }}
+    // onScroll={props.onScroll}
+    // ref={props.listInnerRef}
+    // style={{ height: "100vh", overflowY: "auto" }}
     >
-      <div className="grid grid-cols-3 md:grid-cols-4 gap-y-8">
+      <div className="grid grid-cols-3 md:grid-cols-4 gap-y-6">
         {props.dataList.map((_, i) => (
           <div
             key={i}
             onMouseOver={() => Checking(i, _.creatorCoinId)}
             onMouseOut={() => Checking(-1, _.creatorCoinId)}
-            className="flex flex-col items-center mr-4 min-w-full md:min-w-[140px]"
+            className="flex flex-col items-center mr-2 min-w-full md:min-w-[140px]"
           >
             <Link to={`/${_.user.accountDomain}`} className="relative">
               <Photo
-              // photoColor={_.user.profileColor}(`/${_.user.accountDomain}`)}
+                // photoColor={_.user.profileColor}(`/${_.user.accountDomain}`)}
                 alt=""
                 userId={_.user.accountId}
-                className="object-cover text-4xl flex justify-center items-center h-[100px] md:h-[105px] w-[100px] md:w-[105px] rounded-full mb-[16px]"
+                className="object-cover text-4xl flex justify-center items-center h-[90px] w-[90px] md:h-[110px] md:w-[110px] rounded-full mb-[8px]"
                 style={{
-                  border: "10px solid #141922",
+                  border: "6px solid #141922",
                 }}
               />
               {_.isVerified && (

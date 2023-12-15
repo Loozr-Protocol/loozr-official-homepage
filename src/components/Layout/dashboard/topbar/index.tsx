@@ -216,11 +216,11 @@ export const TopBar = () => {
             )}
             <div className="relative hidden md:block" onClick={() => navigate("/notifications")}>
               <img src={Notifi} alt="" className="" />
-              <p className=' rounded-full px-[7px] py-[2px] absolute bg-[#FF1744] top-1 right-0 text-semibold text-[8px]'>3</p>
+              <p className=' rounded-full px-[7px] py-[2px] absolute bg-[#FF1744] top-1 right-0 font-semibold text-[8px]'>3</p>
             </div>
             <div className="relative block md:hidden mr-2" onClick={() => navigate("/notifications")}>
               <img src={Notification} alt="" className="w-[18px] text-white" />
-              <p className=' rounded-full px-[5px] py-[1px] absolute bg-[#FF1744] top-[-5px] right-[-10px] text-semibold text-[8px]'>3</p>
+              <p className=' rounded-full px-[5px] py-[1px] absolute bg-[#FF1744] top-[-5px] right-[-10px] font-semibold text-[6px]'>3</p>
             </div>
             <img onClick={() => onOpen()} src={Menu} alt="" className="text-white w-5 h-5 object-contain inset-y-[12px] left-4" />
           </div>
