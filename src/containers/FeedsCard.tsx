@@ -35,7 +35,7 @@ export default function FeedsCard() {
                     <div className="h-[360px] md:h-[300px] w-[1px] lg:w-[1px] bg-muted-50 mt-1 mb-1" />
                 </div>
                 <div className='flex flex-col w-full gap-5 items-left'>
-                    <div className='flex flex-col md:flex-row md:items-center items-left justify-between gap-2 md:gap-4'>
+                    <div className='flex flex-col md:flex-row md:items-center items-left justify-between gap-2 md:gap-4 pr-[12px]'>
                         <div className='flex flex-col gap-[4px]'>
                             <h2 className='font-[600] text-[14px]'>yobo_z <span className='text-[#536079] text-[14px] font-light'>bought</span> 0.143264 $DAVIDO artist coins.</h2>
                         </div>
