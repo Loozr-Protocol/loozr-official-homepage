@@ -69,7 +69,7 @@ const TrackCard = ({ track }: TrackProps) => {
       </p>
 
       {isShown && (
-        <div className="absolute top-[40%] left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div className="absolute grid place-items-center top-[-30px] left-0 w-full h-full">
           {isCurrentlyPlaying() ? (
             <button
               style={{ backgroundColor: "rgba(255, 255, 255, 0.4)" }}

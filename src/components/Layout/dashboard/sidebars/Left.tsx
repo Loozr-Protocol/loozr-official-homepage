@@ -104,7 +104,7 @@ export const Left = () => {
           )}
         </>
       )}
-      <div className="w-[85%] xl:h-[85%] flex flex-col items-end justify-center xl:block  overflow-y-auto overflow-x-hidden">
+      <div className="w-[85%] mx-2 xl:h-[85%] flex flex-col items-end justify-center xl:block  overflow-y-auto overflow-x-hidden">
         {tabs.map((tab: any) => (
           <Link className={`${tab.label === 'Wallet' && 'pt-6 border-t-[1px] border-[#141922]'} hover:flex flex items-center text-[14px] font-medium relative text-[#536079] mt-2.5 xl:mt-auto mb-[22px]`} to={tab.path || "#!"} key={tab.label} onClick={() => tab.path ? null : toast.info("Coming soon!", TOAST_OPTIONS)}>
             <tab.icon className={`object-contain w-4 xl:w-4 h-4 xl:h-4 mr-3 xl:mr-4 ${tab.path === pathname ? "text-white" : "text-[#536079]"}`} />
