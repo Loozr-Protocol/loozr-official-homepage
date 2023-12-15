@@ -37,13 +37,13 @@ export default function FeedsCard() {
                 <div className='flex flex-col w-full gap-5 items-left'>
                     <div className='flex flex-col md:flex-row md:items-center items-left justify-between gap-2 md:gap-4 pr-[12px]'>
                         <div className='flex flex-col gap-[4px]'>
-                            <h2 className='font-[600] text-[14px]'>yobo_z <span className='text-[#536079] text-[14px] font-light'>bought</span> 0.143264 $DAVIDO artist coins.</h2>
+                            <h2 className='font-[600] text-[14px]'>yobo_z <span className='text-[#536079] text-[14px] font-normal'>bought</span> 0.143264 $DAVIDO <span className='text-[14px] font-normal'>artist coins.</span></h2>
                         </div>
-                        <div className='bg-[#141922] py-2 px-3 w-fit font-medium rounded-xl text-[10px] md:text-[12px]'>BUY COIN</div>
+                        <p className='text-muted text-[12px]'>5 mins ago</p>
                     </div>
                     <div className='flex items-center gap-4 '>
                         <div className="bg-new-100 text-[#F3EC4E] text-[12px] py-1 px-2 rounded-full">3.8732 $LZR</div>
-                        <p className='text-muted text-[12px]'>5 mins ago</p>
+                        <div className='bg-[#141922] py-2 px-3 w-fit font-medium rounded-xl text-[10px] md:text-[12px]'>BUY COIN</div>
                     </div>
                     <div className="flex gap-4 overflow-x-auto md:overflow-x-none">
                         <div className="relative flex-shrink-0">

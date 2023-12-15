@@ -10,6 +10,7 @@ import LoozrGradient from "../../../../assets/icons/loozr-gradient.svg";
 import Bell from "../../../../assets/icons/bell.svg";
 import Menu from "../../../../assets/icons/menu.svg";
 import Notifi from "../../../../assets/svg/notifi.svg";
+import Notification from "../../../../assets/icons/notification.svg";
 import { MIXER_ACCOUNT } from "../../../../config/constants";
 import Photo from "../../../Photo";
 import { useSearchUserCallback } from "../../../../state/user/hooks/useAccount";
@@ -214,7 +215,8 @@ export const TopBar = () => {
               </div>
             )}
             <div className="relative" onClick={() => navigate("/notifications")}>
-              <img src={Notifi} alt="" />
+              <img src={Notifi} alt="" className="hidden md:block" />
+              <img src={Notification} alt="" className="block md:hidden" />
               <p className=' rounded-full px-[7px] py-[2px] absolute bg-[#FF1744] top-1 right-0 text-medium text-[8px]'>3</p>
             </div>
             <img onClick={() => onOpen()} src={Menu} alt="" className="text-white w-4 h-4 object-contain inset-y-[12px] left-4" />
