@@ -66,7 +66,7 @@ const ArtisteDashboard = () => {
         >
           <div className="flex">
             {artists.map((_, i) => (
-              <div key={i} onMouseOver={() => Checking(i, _.creatorCoinId)} onMouseOut={() => Checking(-1, _.creatorCoinId)} onMouseEnter={() => handleMouseEnter(i)} onMouseLeave={() => handleMouseLeave(i)} className="relative ml-[16px] flex flex-col items-center mr-[8px] h-fit min-w-max w-[110px]" >
+              <div key={i} onMouseOver={() => Checking(i, _.creatorCoinId)} onMouseOut={() => Checking(-1, _.creatorCoinId)} onMouseEnter={() => handleMouseEnter(i)} onMouseLeave={() => handleMouseLeave(i)} className="relative ml-[16px] flex flex-col items-center h-fit min-w-max w-[110px]" >
                 {/* <Link to={`/${_.user.accountDomain}`} className="relative"> */}
                   <div className=" relative mb-[10px]">
                     <Photo alt="" userId={_.user.accountId} className="object-cover text-4xl h-[110px] flex justify-center items-center w-[110px] rounded-full "
