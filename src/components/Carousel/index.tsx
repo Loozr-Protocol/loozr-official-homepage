@@ -73,7 +73,7 @@ const Carousel = () => {
 
 
   return (
-    <div className="h-[130px] md:h-[160px] mb-6 md:w-full relative rounded-[24px] overflow-hidden mx-[16px] md:mx-0" >
+    <div className="h-[130px] md:h-[160px] mb-6 md:w-full relative rounded-[13px] overflow-hidden mx-[16px] md:mx-0" >
       {image.map((item: any, index: any) => {
         return (
           <AnimatePresence key={index} >
@@ -81,8 +81,8 @@ const Carousel = () => {
               <a target="_blank" rel="noreferrer" href={item.link} >
                 <motion.div
                   key={item}
-                  className=" w-screen md:w-full h-full absolute inset-x-0 top-0 bg-no-repeat bg-cover bg-center rounded-[24px] pl-8 py-7 flex flex-col justify-end "
-                  style={{ background: `url(${item.img})`, borderRadius: '24px', backgroundColor: "none", backgroundPosition: "cover" }}
+                  className=" w-screen md:w-full h-full absolute inset-x-0 top-0 bg-no-repeat bg-cover bg-center rounded-[13px] pl-8 py-7 flex flex-col justify-end "
+                  style={{ background: `url(${item.img})`, borderRadius: '13px', backgroundColor: "none", backgroundPosition: "cover" }}
                   {...boxAnimation}
                 >
                   {/* <div className=" bg-black bg-opacity-40 z-10 absolute inset-0 " /> */}

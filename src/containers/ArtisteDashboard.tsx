@@ -51,7 +51,7 @@ const ArtisteDashboard = () => {
     return (
       <>
         <div className="flex items-center md:px-0 mt-[3px] justify-between mb-[14px] mx-[16px] md:mx-0">
-          <p className="txt font-medium text-base md:text-[17px] text-white">
+          <p className="txt font-medium md:text-[17px] text-[14px] text-white">
             Latest Artist Coins
           </p>
           <p className="font-light text-xs text-muted">
@@ -64,30 +64,30 @@ const ArtisteDashboard = () => {
           className="max-w-full md:px-0 px-0 md:px-6 overflow-auto scroll_event whitespace-nowrap md:mb-[2px] mb-2"
           ref={featuredRef}
         >
-          <div className="flex ">
+          <div className="flex">
             {artists.map((_, i) => (
-              <div key={i} onMouseOver={() => Checking(i, _.creatorCoinId)} onMouseOut={() => Checking(-1, _.creatorCoinId)} onMouseEnter={() => handleMouseEnter(i)} onMouseLeave={() => handleMouseLeave(i)} className="relative flex flex-col items-center mr-[22px] md:h-fit min-w-max md:w-[105px]" >
-                <Link to={`/${_.user.accountDomain}`} className="relative">
-                  <div className=" relative ">
-                    <Photo alt="" userId={_.user.accountId} className="object-cover h-[80px] text-4xl md:h-[105px] flex justify-center items-center w-[80px] md:w-[105px] rounded-full  mb-[16px]"
+              <div key={i} onMouseOver={() => Checking(i, _.creatorCoinId)} onMouseOut={() => Checking(-1, _.creatorCoinId)} onMouseEnter={() => handleMouseEnter(i)} onMouseLeave={() => handleMouseLeave(i)} className="relative ml-[16px] flex flex-col items-center mr-[20px] h-fit min-w-max w-[90px]" >
+                {/* <Link to={`/${_.user.accountDomain}`} className="relative"> */}
+                  <div className=" relative mb-[10px]">
+                    <Photo alt="" userId={_.user.accountId} className="object-cover text-4xl h-[90px] flex justify-center items-center w-[90px] rounded-full "
                       style={{
-                        border: "8.7px solid #141922",
+                        border: "6px solid #141922",
                       }} />
                     {_.isVerified && (
                       <img src={verified} alt="verified" className=" absolute bottom-1 right-0 w-[32px] " />
                     )}
                   </div>
-                </Link>
-                <div className=" w-[105px]">
+                {/* </Link> */}
+                <div className=" w-[90px]">
                   <div className={isShownText === i ? "example1" : " h-[20px] w-full flex justify-center "}>
                     <p onClick={() => navigate(`/${_.user.accountDomain}`)} className=" cursor-pointer mb-[3px] font-medium text-sm text-white" >
-                      $ {isShownText === i
+                      ${isShownText === i
                         ? _.creatorCoinId.toUpperCase()
                         : _.creatorCoinId.slice(0, 7).toUpperCase()}
                     </p>
                   </div>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1">
                   <BsCaretUpFill size={15} color='#31D298'/>
                   <p className="text-[#536079] text-[12px] font-medium ">4.093 LZR</p>
                 </div>
@@ -110,7 +110,7 @@ const ArtisteDashboard = () => {
     <div className="w-full mb-[43px] md:mb-0 flex flex-col">
       <Carousel />
       <FeaturedArtistes />
-      <div className="h-px w-full bg-muted-50 mt-4 mb-4 px-[8px] md:mx-0" />
+      <div className="h-px w-full bg-[#141922] mt-4 mb-4 px-[8px] md:mx-0" />
       <FeedsCard />
       <FeedsCard />
       <FeedsCard />
