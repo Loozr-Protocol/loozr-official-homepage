@@ -10,6 +10,7 @@ import LoozrGradient from "../../../../assets/icons/loozr-gradient.svg";
 import Bell from "../../../../assets/icons/bell.svg";
 import Menu from "../../../../assets/icons/menu.svg";
 import Notifi from "../../../../assets/svg/notifi.svg";
+import Notification from "../../../../assets/icons/notification.svg";
 import { MIXER_ACCOUNT } from "../../../../config/constants";
 import Photo from "../../../Photo";
 import { useSearchUserCallback } from "../../../../state/user/hooks/useAccount";
@@ -177,7 +178,7 @@ export const TopBar = () => {
         </div>
       </div>
       <div className="w-full mb-2 block relative md:hidden">
-        <div className="flex w-full px-[16px] py-[6px] relative items-center justify-between">
+        <div className="flex w-full px-[16px] pb-[6px] pt-[12px] relative items-center justify-between">
           <div className="flex items-center gap-3">
             {!user ? (
               <Link to='/feeds'>
@@ -207,17 +208,21 @@ export const TopBar = () => {
               </>
             )}
           </div>
-          <div className="flex items-center gap-[14px]">
+          <div className="flex items-center gap-[18px]">
             {!user && (
-              <div className="flex items-center justify-center rounded-full h-[40px] w-fit px-4 bg-white text-dark-900 text-[12px] font-bold" onClick={() => navigate("/login")}>
+              <div className="flex items-center justify-center rounded-full h-[40px] w-fit px-4 bg-white text-dark-900 text-[11px] font-semibold" onClick={() => navigate("/login")}>
                 Sign in
               </div>
             )}
-            <div className="relative" onClick={() => navigate("/notifications")}>
-              <img src={Notifi} alt="" />
-              <p className=' rounded-full px-[7px] py-[2px] absolute bg-[#FF1744] top-1 right-0 text-medium text-[8px]'>3</p>
+            <div className="relative hidden md:block" onClick={() => navigate("/notifications")}>
+              <img src={Notifi} alt="" className="" />
+              <p className=' rounded-full px-[7px] py-[2px] absolute bg-[#FF1744] top-1 right-0 text-semibold text-[8px]'>3</p>
             </div>
-            <img onClick={() => onOpen()} src={Menu} alt="" className="text-white w-4 h-4 object-contain inset-y-[12px] left-4" />
+            <div className="relative block md:hidden mr-2" onClick={() => navigate("/notifications")}>
+              <img src={Notification} alt="" className="w-[18px] text-white" />
+              <p className=' rounded-full px-[5px] py-[1px] absolute bg-[#FF1744] top-[-5px] right-[-10px] text-semibold text-[8px]'>3</p>
+            </div>
+            <img onClick={() => onOpen()} src={Menu} alt="" className="text-white w-5 h-5 object-contain inset-y-[12px] left-4" />
           </div>
         </div>
       </div>

@@ -66,10 +66,10 @@ const ArtisteDashboard = () => {
         >
           <div className="flex">
             {artists.map((_, i) => (
-              <div key={i} onMouseOver={() => Checking(i, _.creatorCoinId)} onMouseOut={() => Checking(-1, _.creatorCoinId)} onMouseEnter={() => handleMouseEnter(i)} onMouseLeave={() => handleMouseLeave(i)} className="relative ml-[16px] flex flex-col items-center mr-[20px] h-fit min-w-max w-[90px]" >
+              <div key={i} onMouseOver={() => Checking(i, _.creatorCoinId)} onMouseOut={() => Checking(-1, _.creatorCoinId)} onMouseEnter={() => handleMouseEnter(i)} onMouseLeave={() => handleMouseLeave(i)} className="relative ml-[16px] flex flex-col items-center h-fit min-w-max w-[110px]" >
                 {/* <Link to={`/${_.user.accountDomain}`} className="relative"> */}
                   <div className=" relative mb-[10px]">
-                    <Photo alt="" userId={_.user.accountId} className="object-cover text-4xl h-[90px] flex justify-center items-center w-[90px] rounded-full "
+                    <Photo alt="" userId={_.user.accountId} className="object-cover text-4xl h-[110px] flex justify-center items-center w-[110px] rounded-full "
                       style={{
                         border: "6px solid #141922",
                       }} />
@@ -78,9 +78,9 @@ const ArtisteDashboard = () => {
                     )}
                   </div>
                 {/* </Link> */}
-                <div className=" w-[90px]">
+                <div className=" w-[110px]">
                   <div className={isShownText === i ? "example1" : " h-[20px] w-full flex justify-center "}>
-                    <p onClick={() => navigate(`/${_.user.accountDomain}`)} className=" cursor-pointer mb-[3px] font-medium text-sm text-white" >
+                    <p onClick={() => navigate(`/${_.user.accountDomain}`)} className=" cursor-pointer mb-[3px] font-semibold text-sm text-white" >
                       ${isShownText === i
                         ? _.creatorCoinId.toUpperCase()
                         : _.creatorCoinId.slice(0, 7).toUpperCase()}
@@ -88,7 +88,7 @@ const ArtisteDashboard = () => {
                   </div>
                 </div>
                 <div className="flex items-center gap-1">
-                  <BsCaretUpFill size={15} color='#31D298'/>
+                  <BsCaretUpFill size={10} color='#31D298'/>
                   <p className="text-[#536079] text-[12px] font-medium ">4.093 LZR</p>
                 </div>
                 {hoverStates[i] && (
