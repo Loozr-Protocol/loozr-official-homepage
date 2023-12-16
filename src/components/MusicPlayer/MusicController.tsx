@@ -56,7 +56,8 @@ const MusicController = ({ track, progress, isLoading }: MusicControllerProps) =
                 {track.songTitle}
               </p>
               <p className="txt flex gap-2 items-center text-muted text-[10px] md:mt-0 -mt-1 md:text-[12px] font-normal md:font-normal">
-                {track.artistName}  <img src={VerifiedBadge} alt="" className="w-4 h-4" />
+                ${track.tokenName} 
+                 {/* <img src={VerifiedBadge} alt="" className="w-4 h-4" /> */}
               </p>
             </div>
             <div className=" md:flex hidden relative w-[180px] mx-4">

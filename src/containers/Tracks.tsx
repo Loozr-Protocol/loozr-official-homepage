@@ -10,9 +10,9 @@ const RenderTracks = (props) => {
 
   return (
     <div
-      onScroll={props.onScroll}
-      ref={props.listInnerRef}
-      style={{ height: "100vh", overflowY: "auto" }}
+      // onScroll={props.onScroll}
+      // ref={props.listInnerRef}
+      // style={{ height: "100vh", overflowY: "auto" }}
     >
       <div className="flex flex-col w-full gap-[24px]">
         <div className="w-full flex justify-between items-center px-[16px]">
