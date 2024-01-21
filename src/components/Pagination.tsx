@@ -61,8 +61,8 @@ const Pagination = ({
     <>
       {childrenWithProps}
       {!reachMaxLimit && (
-        <div className="w-full grid place-items-center mt-6">
-          <div className="bg-[#141922] hover:bg-[#536079] text-white font-semibold py-2 px-8 rounded-[24px] mb-[40px]" onClick={handleLoadMore}>{loading ? <Spinner /> : 'Load More'}</div>
+        <div className="w-full grid place-items-center mt-6 mb-[80px]">
+          <div className="bg-[#141922] hover:bg-[#536079] text-white font-semibold py-2 px-8 rounded-[24px]" onClick={handleLoadMore}>{loading ? <Spinner /> : 'Load More'}</div>
         </div>
       )}
     </>
