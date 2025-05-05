@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import Player from "./components/song/Player/Player";
 import Footer from "./components/Footer";
-import WaitlistModal from "./components/WaitlistModal";
+// import WaitlistModal from "./components/WaitlistModal";
 import AppLayout from "./components/Layout/App";
 import { authRoutes, dashboard, dashboardhome, routes } from "./router/routes";
 import Dashboard from "./components/Layout/dashboard";
@@ -56,72 +56,69 @@ const App = () => {
         <div className="mouse-cursor cursor-inner"></div>
 
         <div className="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas >
-          <WaitlistModal />
-          {isModal === true ? (
-            <NFTModal setIsModal={setIsModal} />
-          ) : (
-            <>
-              <Routes>
-                {authRoutes.map((route) => (
-                  <Route
-                    key={route.name}
-                    path={route.path}
-                    element={
-                      <>
-                        <route.component />
-                        {/* {route.name !== "songTokenization" && <Footer />}
+          {/* <WaitlistModal /> */}
+
+          <>
+            <Routes>
+              {authRoutes.map((route) => (
+                <Route
+                  key={route.name}
+                  path={route.path}
+                  element={
+                    <>
+                      <route.component />
+                      {/* {route.name !== "songTokenization" && <Footer />}
                     {route.name === "login" || 'signup' && <Footer />} */}
-                      </>
-                    }
-                  />
-                ))}
-                {routes.map((route) => (
-                  <Route
-                    key={route.name}
-                    path={route.path}
-                    element={
-                      <AppLayout>
+                    </>
+                  }
+                />
+              ))}
+              {routes.map((route) => (
+                <Route
+                  key={route.name}
+                  path={route.path}
+                  element={
+                    <AppLayout>
+                      <route.component />
+                      <Footer />
+                    </AppLayout>
+                  }
+                />
+              ))}
+              {dashboardhome.map((route) => (
+                <Route
+                  key={route.name}
+                  path={route.path}
+                  element={
+                    <AccountSetupCheckOnly>
+                      <Dashboard>
                         <route.component />
-                        <Footer />
-                      </AppLayout>
-                    }
-                  />
-                ))}
-                {dashboardhome.map((route) => (
-                  <Route
-                    key={route.name}
-                    path={route.path}
-                    element={
-                      <AccountSetupCheckOnly>
-                        <Dashboard>
-                          <route.component />
-                        </Dashboard>
-                      </AccountSetupCheckOnly>
-                    }
-                  />
-                ))}
-                {dashboard.map((route) => (
-                  <Route
-                    key={route.name}
-                    path={route.path}
-                    element={
-                      <RequireAuth>
-                        <Dashboard>
-                          <route.component />
-                        </Dashboard>
-                      </RequireAuth>
-                    }
-                  />
-                ))}
-                <Route path="*" element={NotFound} />
-              </Routes>
-              <Player />
-              <MusicPlayer />
-              <a href="#focused" id="focus-link" hidden>
-                Go to playing element
-              </a>
-            </>
-          )}
+                      </Dashboard>
+                    </AccountSetupCheckOnly>
+                  }
+                />
+              ))}
+              {dashboard.map((route) => (
+                <Route
+                  key={route.name}
+                  path={route.path}
+                  element={
+                    <RequireAuth>
+                      <Dashboard>
+                        <route.component />
+                      </Dashboard>
+                    </RequireAuth>
+                  }
+                />
+              ))}
+              <Route path="*" element={NotFound} />
+            </Routes>
+            <Player />
+            <MusicPlayer />
+            <a href="#focused" id="focus-link" hidden>
+              Go to playing element
+            </a>
+          </>
         </div>
       </Router>
     </>
